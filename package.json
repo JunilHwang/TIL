@@ -5,8 +5,8 @@
   "repository": "https://github.com/JunilHwang/TIL",
   "author": "junil-hwang <tjsdlf4261@naver.com>",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build"
   },
   "license": "MIT",
   "devDependencies": {
