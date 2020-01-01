@@ -1,0 +1,15 @@
+{
+  "name": "TIL",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JunilHwang/TIL",
+  "author": "junil-hwang <tjsdlf4261@naver.com>",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  }
+}
