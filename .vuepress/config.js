@@ -6,5 +6,8 @@ module.exports = {
       { text: 'Home', link: '/' }
     ]
   },
-  base: '/TIL/'
+  base: '/TIL/',
+  markdown: {
+    // lineNumbers: true
+  }
 }

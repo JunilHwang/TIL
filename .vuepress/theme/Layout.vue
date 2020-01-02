@@ -31,3 +31,5 @@
     </footer>
   </div>
 </template>
+
+<style lang="stylus" src="@vuepress/theme-default/styles/code.styl"></style>
