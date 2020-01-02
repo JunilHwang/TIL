@@ -19,6 +19,10 @@ body
     height 80px
     line-height 80px
     border-bottom 1px solid #ddd
+    
+    .container
+      position relative
+
   &Logo
     vertical-align middle
     display inline-block
@@ -86,5 +90,49 @@ body
   opacity 0
   transition opacity 0.3s
   
-[id]:hover>.header-anchor
-  opacity 1
+  [id]:hover > &
+    opacity 1
+
+.gnb
+  position absolute
+  right 0
+  top 0
+  bottom 0
+
+  &::after
+    content ""
+    display block
+    clear both
+  
+  a
+    float left
+    text-decoration none
+    font-weight bold
+    color inherit
+    margin-left 20px
+    
+    &.router-link-exact-active span
+      color #000
+      
+      &::before
+        left 0
+        right 0
+  
+  span
+    display inline-block
+    line-height 200%
+    position relative
+    color #aaa
+
+    &::before
+      content ""
+      position absolute
+      left 50%
+      right 50%
+      bottom 0
+      height 2px
+      background #09F
+      transition-property left, right
+      transition-duration 0.3s
+
+        

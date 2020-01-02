@@ -3,11 +3,18 @@ module.exports = {
   description: 'Today I leanred',
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' }
+      { text: 'Home', link: '/' },
+      { text: 'Vuepress', link: '/vuepress/'}
     ]
   },
   base: '/TIL/',
   markdown: {
     // lineNumbers: true
-  }
+  },
+  plugins: [
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: true
+    }]
+  ]
 }

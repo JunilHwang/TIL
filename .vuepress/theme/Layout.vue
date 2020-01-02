@@ -11,6 +11,11 @@
             <em>Today I Learned</em>
           </div>
         </router-link>
+        <nav class="gnb">
+          <router-link v-for="(v, k) in $themeConfig.nav" :to="v.link" :key="k">
+            <span v-html="v.text" />
+          </router-link>
+        </nav>
       </div>
     </header>
     <main class="content container">
