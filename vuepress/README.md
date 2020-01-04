@@ -42,7 +42,9 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
 최신 동향은 [StaticGen](https://www.staticgen.com/) 에서 확인할 수 있다.
 
 ::: tip Nuxt와 Next
+
 StaticGen에서 Nuxt와 Next에 대한 정보도 확인할 수 있다. 개인적으로 Nuxt와 Next는 SSG보단 SSR을 위한 도구라고 생각하기 때문에 위의 목록에서 제외했다. 
+
 :::
 
 ## VuePress 시작하기
@@ -74,9 +76,11 @@ yarn add -D vuepress
 그리고 pacakge.json 파일에 `scripts`를 추가해야 한다. 추가하기 전에 vuepress cli에 대한 이해가 필요하다. 
 
 ::: tip vuepress cli 
+
 - vuepress \<command\> [targetDir] [options]
 - targetDir와 options은 생략 가능하다.
 - [vuepress cli 명령어 확인하기](https://vuepress.vuejs.org/api/cli.html)
+
 ::: 
 
 ``` json {8,9,10,11}
@@ -193,7 +197,7 @@ __\* config.js의 내용은 [Config Reference](https://vuepress.vuejs.org/config
 
 ![결과 화면 2](./2.jpg)
 
-`logo`와 `navigation`, 그리고 'sidebar' 가 생긴것을 확인할 수 있다. 마치 [vue.js 공식문서](https://kr.vuejs.org/v2/guide/) 처럼 생겼다. 공식문서도 vuepress로 만들어졌기 때문이다.
+`logo`와 `navigation`, 그리고 `sidebar` 가 생긴것을 확인할 수 있다. 마치 [vue.js 공식문서](https://kr.vuejs.org/v2/guide/) 처럼 생겼다. 공식문서도 vuepress로 만들어졌기 때문이다.
 
 ## Reference
 - [VuePress 공식문서](https://vuepress.vuejs.org/)

@@ -1,5 +1,9 @@
-# 2020년 목표
+# Today I Learned
+[github pages로 문서 보기](https://junilhwang.github.io/TIL/)
 
+- [Vuepress](/vuepress/)
+
+## 2020 목표
 - 여태까지 올라온 코드 스피츠 강의 내용을 보고 정리하기
 - 하루에 한 번 이상 commit 하기
 - 학부 시절 공부한 자료 정리해서 공유하기
