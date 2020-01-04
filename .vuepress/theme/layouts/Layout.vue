@@ -44,6 +44,7 @@
         #bottom
       />
     </Page>
+    <Footer />
   </div>
 </template>
 
@@ -52,10 +53,11 @@ import Home from '@theme/components/Home.vue'
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
+import Footer from '@theme/components/Footer.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  components: { Home, Page, Sidebar, Navbar, Footer },
 
   data () {
     return {

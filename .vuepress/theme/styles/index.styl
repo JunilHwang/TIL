@@ -17,9 +17,6 @@ body
   font-size 16px
   color $textColor
 
-.page
-  padding-left $sidebarWidth
-
 .navbar
   position fixed
   z-index 20
@@ -42,17 +39,11 @@ body
 
 .sidebar
   font-size 16px
-  background-color #fff
-  width $sidebarWidth
   position fixed
-  z-index 10
+  z-index 20
   margin 0
   top $navbarHeight
-  left 0
-  bottom 0
-  box-sizing border-box
-  border-right 1px solid $borderColor
-  overflow-y auto
+  left calc(50% + 440px)
 
 {$contentClass}:not(.custom)
   @extend $wrapper
