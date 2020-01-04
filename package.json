@@ -6,7 +6,8 @@
   "author": "junil-hwang <tjsdlf4261@naver.com>",
   "scripts": {
     "docs:dev": "vuepress dev",
-    "docs:build": "vuepress build"
+    "docs:build": "vuepress build",
+    "docs:eject": "vuepress eject"
   },
   "license": "MIT",
   "devDependencies": {

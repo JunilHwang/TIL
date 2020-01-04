@@ -38,3 +38,4 @@
 </template>
 
 <style lang="stylus" src="@vuepress/theme-default/styles/code.styl"></style>
+<style lang="stylus" src="@vuepress/theme-default/styles/custom-blocks.styl"></style>
