@@ -22,7 +22,7 @@ module.exports = {
   },
   base: '/TIL/',
   markdown: {
-    lineNumbers: true
+    // lineNumbers: true
   },
   plugins: [
     ['@vuepress/pwa', {
