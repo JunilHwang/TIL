@@ -5,6 +5,24 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
+
+    <Home v-if="$page.frontmatter.home"/>
+
+    <Page
+      v-else
+      :sidebar-items="sidebarItems"
+    >
+      <slot
+        name="page-top"
+        #top
+      />
+      <slot
+        name="page-bottom"
+        #bottom
+      />
+    </Page>
+
+
     <Navbar
       v-if="shouldShowNavbar"
       @toggle-sidebar="toggleSidebar"
@@ -29,21 +47,6 @@
       />
     </Sidebar>
 
-    <Home v-if="$page.frontmatter.home"/>
-
-    <Page
-      v-else
-      :sidebar-items="sidebarItems"
-    >
-      <slot
-        name="page-top"
-        #top
-      />
-      <slot
-        name="page-bottom"
-        #bottom
-      />
-    </Page>
     <Footer />
   </div>
 </template>
@@ -117,6 +120,10 @@ export default {
   mounted () {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
+    })
+
+    window.addEventListener('scroll', e => {
+      console.log('scrolled');
     })
   },
 

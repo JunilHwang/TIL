@@ -49,6 +49,8 @@ body
   font-size 13px
   color #848d95
   min-width 1200px
+  position relative
+  z-index 30
   p
     margin 0
   &Copyright
@@ -66,10 +68,11 @@ body
     padding-top 50px
     max-width 800px
 
-a.sidebar-link
-  .sidebar-group &
+.sidebar-group-items > li > .sidebar-sub-headers
+  position fixed
+  top 120px
+  left calc(50% + 440px)
+  ul, li
+    list-style none
+  a
     font-size 13px
-    color #666
-  &.active
-    border-left-color transparent !important
-    color #09F

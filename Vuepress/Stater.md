@@ -1,13 +1,18 @@
-# Vuepress
+---
 
+prev: false
+next: ./Theme
+sidebarDepth: 2
+
+---
+
+# Vuepress 시작하기
 현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.
 
 ## Static Site Generator
-
 먼저 vuepress 이전에 `SSG(Static Site Generator)` 에 대한 이해가 필요하다. SSG는 한국말로 `정적 사이트 생성기` 이며, 말 그대로 html, js, css 로만 만들어진 사이트를 의미한다. 감이 잘 안잡힌다면 `동적 사이트` 라는 개념을 생각해보자.
 
 ### 동적 사이트(Dynamic Site)
-
 아마 다음과 같은 기술(혹은 프로그래밍 언어, 프레임워크)은 익숙할 것이다.
 
 - `java` Spring framework, jsp
@@ -22,7 +27,6 @@
 그리고 `조회 페이지`의 경우 __하나의 페이지를 프로그래밍 하여 만들어 놓으면 그 페이지에 게시물 정보가 매칭되어 여러 개의 페이지가 만들어지는 것이다.__
 
 ### 정적 사이트(Static Site)
-
 정적 사이트는 오직 HTML, CSS, Javascript 만 사용하여 만들어진 것이다.
 Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하는 게 아니기 때문에 작성/수정/삭제 같은 기능은 존재할 수 없다.
 오직 페이지를 조회하는 것만 가능하다.

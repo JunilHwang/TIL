@@ -1,7 +1,16 @@
+---
+
+sidebar: false
+next: false
+
+---
+
 # Today I Learned
 [github pages로 문서 보기](https://junilhwang.github.io/TIL/)
 
-- [Vuepress](/vuepress/)
+- Vuepress
+  - [Vuepress 시작하기](/Vuepress/Stater)
+  - [Vuepress 테마설정](/Vuepress/Theme)
 
 ## 2020 목표
 - 여태까지 올라온 코드 스피츠 강의 내용을 보고 정리하기

@@ -5,14 +5,24 @@ module.exports = {
     logo: 'https://avatars1.githubusercontent.com/u/18749057?s=460&v=4',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Vuepress', link: '/vuepress/'}
     ],
     search: false,
-    sidebar: 'auto'
+    sidebar: [
+      { title: 'Home', path: '/' },
+      {
+        title: 'Vuepresse',
+        children: [
+          '/Vuepress/Stater',
+          '/Vuepress/Theme',
+        ]
+      },
+    ],
+    lastUpdated: 'Last Updated',
+    smoothScroll: true
   },
   base: '/TIL/',
   markdown: {
-    // lineNumbers: true
+    lineNumbers: true
   },
   plugins: [
     ['@vuepress/pwa', {
