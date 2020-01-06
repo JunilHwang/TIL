@@ -13,7 +13,8 @@ module.exports = {
         children: [
           '/Vuepress/Stater',
           '/Vuepress/Theme',
-          '/Vuepress/Plugins',
+          '/Vuepress/Deploy',
+          '/Vuepress/Plantuml',
         ]
       },
     ],

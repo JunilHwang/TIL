@@ -4,15 +4,11 @@ sidebarDepth: 2
 
 ---
 
-# Vuepress 플러그인 
+# markdown-it-plantuml 
 
-필자가 사용하는 Vuepress 플러그인을 소개하는 페이지이다.
+최근에 사내 입문교육에서 git, github, markdown에 대한 교육을 받았다. git과 github는 이미 익숙했기 때문에 주의 깊게 듣진 않았는데(?) 마지막에 `plantuml`에 대한 소개는 관심이 갔다.
 
-## 1. Plantuml
-
-최근에 사내 입문교육에서 git, github, markdown에 대한 교육을 받았다. git과 github는 이미 익숙하니까 흥미롭거나 하진 않았는데 마지막에 `plantuml`에 대한 소개는 관심이 갔다.
-
-### Plantuml 소개
+## 1. Plantuml 소개
 
 plantuml은 `markdown에서 uml을 사용`할 수 있게 해주는 플러그인이다.
 
@@ -63,7 +59,7 @@ Server <<- MySQL : Data
 
 이렇게 작성하고 보니 학부시절 umlet으로 모든 도형을 하나하나 마우스로 그리고 배치하던게 주마등처럼 스쳐간다..  
 
-### markdown-it-plantuml
+## 2. 플러그인 설치
 
 본격적으로 Vuepress에서 plantuml을 사용할 수 있도록 플러그인을 설치해보자. vuepress는 기본적으로 `markdown-it`을 사용하고 있기 때문에 `markdown-it-plantuml`을 markdown-it에 extend 하면 된다.  
 
@@ -91,9 +87,9 @@ module.exports = {
 
 이렇게 설정한 후에 plantuml을 사용하기만 하면 된다.
 
-### 응용
+## 3. plantuml 응용하기
 
-오늘(2020-01-06) 회사에서 사용한 내용이다.
+오늘(2020-01-06) 회사에서 진행중인 파일럿 프로젝트 문서에 사용한 plantuml의 일부다.
 
 ```
 @startuml
