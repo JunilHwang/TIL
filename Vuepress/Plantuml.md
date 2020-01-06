@@ -10,7 +10,7 @@ feed:
 
 # markdown-it-plantuml 
 
-최근에 사내 입문교육에서 git, github, markdown에 대한 교육을 받았다. git과 github는 이미 익숙했기 때문에 주의 깊게 듣진 않았는데(?) 마지막에 `plantuml`에 대한 소개는 관심이 갔다.
+최근에 사내 입문교육에서 `plantuml`을 접했고 관심이 생겨서 정리한 내용이다.
 
 ## 1. Plantuml 소개
 
@@ -24,13 +24,13 @@ Bob->Alice : hello
 @enduml
 ```
 
-위의 문법은 다음과 같이 변환된다.
+그리고 위의 코드는 다음과 같이 UML형태의 SVG로 변환 된다.
 
 @startuml
 Bob->Alice : hello
 @enduml
 
-정말 간단한 문법으로 UML을 표현할 수 있다. 조금 더 응용하여 웹 서비스의 구조를 표현해보도록 하자.
+조금 더 응용하여 웹 서비스의 구조를 표현해보도록 하자.
 
 ```
 @startuml
@@ -60,8 +60,10 @@ Client ->> Server : Http Request
 Server ->> Client : Http Response
 Server <<- MySQL : Data
 @enduml
+ 
+이렇게 작성하고 보니 학부시절 [umlet](https://www.umlet.com/)으로 모든 도형을 하나하나 마우스로 그리고 배치하던게 주마등처럼 스쳐간다..
 
-이렇게 작성하고 보니 학부시절 umlet으로 모든 도형을 하나하나 마우스로 그리고 배치하던게 주마등처럼 스쳐간다..  
+![아련..](https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg)  
 
 ## 2. 플러그인 설치
 
