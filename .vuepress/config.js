@@ -28,18 +28,7 @@ module.exports = {
     }
   },
   plugins: [
-    [
-      '@vuepress/pwa',
-      { serviceWorker: true, updatePopup: true }
-    ],
-    [
-      'vuepress-plugin-rss', {
-        base_url: '/TIL/', // required
-        site_url: 'https://junilhwang.github.io', // required
-        copyright: '2019 Junil Hwang', // optional
-        filter: frontmatter => ([true|false]),
-        count: 20
-      }
-    ]
+    ['@vuepress/pwa', { serviceWorker: true, updatePopup: true }],
+    ['feed', { canonical_base: 'https://junilhwang.github.io/TIL/' }]
   ]
 }

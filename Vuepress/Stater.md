@@ -1,14 +1,16 @@
 ---
 
 title: Vuepress 시작하기
-date: 2020-01-04
 prev: false
 next: ./Theme
 sidebarDepth: 2
+feed:
+  enable: true
 
 ---
 
 # Vuepress 시작하기
+
 현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.
 
 ## Static Site Generator
