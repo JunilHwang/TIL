@@ -1,6 +1,7 @@
 ---
 
 title: VuePress 테마 설정
+description: 현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.
 sidebarDepth: 2
 feed:
   enable: true
@@ -395,3 +396,4 @@ theme
 - [공식문서](https://vuepress.vuejs.org/theme/)
 - [vuepress로 블로그 만들기](https://blog.g40n.xyz/posts/2019-01-01-vuepress-blog.html)  
 
+<Comment />

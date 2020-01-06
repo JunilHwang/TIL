@@ -1,7 +1,7 @@
 ---
 
 title: markdown-it-plantuml
-date: 2020-01-06
+description: plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.
 sidebarDepth: 2
 feed:
   enable: true
