@@ -11,7 +11,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.2.0",
+    "vuepress-plugin-rss": "^2.0.0"
   },
   "dependencies": {
     "markdown-it-plantuml": "^1.4.1"
