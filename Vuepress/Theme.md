@@ -395,5 +395,3 @@ theme
 ## Reference
 - [공식문서](https://vuepress.vuejs.org/theme/)
 - [vuepress로 블로그 만들기](https://blog.g40n.xyz/posts/2019-01-01-vuepress-blog.html)  
-
-<Comment />

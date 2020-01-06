@@ -22,6 +22,8 @@
       />
     </Page>
 
+    <Comment />
+
 
     <Navbar
       v-if="shouldShowNavbar"
@@ -120,10 +122,6 @@ export default {
   mounted () {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
-    })
-
-    window.addEventListener('scroll', e => {
-      console.log('scrolled');
     })
   },
 
