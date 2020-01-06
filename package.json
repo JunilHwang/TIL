@@ -12,5 +12,8 @@
   "license": "MIT",
   "devDependencies": {
     "vuepress": "^1.2.0"
+  },
+  "dependencies": {
+    "markdown-it-plantuml": "^1.4.1"
   }
 }

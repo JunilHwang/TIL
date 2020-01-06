@@ -6,7 +6,6 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
     ],
-    search: false,
     sidebar: [
       { title: 'Home', path: '/' },
       {
@@ -14,6 +13,7 @@ module.exports = {
         children: [
           '/Vuepress/Stater',
           '/Vuepress/Theme',
+          '/Vuepress/Plugins',
         ]
       },
     ],
@@ -22,7 +22,9 @@ module.exports = {
   },
   base: '/TIL/',
   markdown: {
-    // lineNumbers: true
+    extendMarkdown: md => {
+      md.use(require('markdown-it-plantuml'))
+    }
   },
   plugins: [
     ['@vuepress/pwa', {
