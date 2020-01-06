@@ -7,4 +7,4 @@ git add .
 git commit -m "$1"
 git push origin master
 
-sh deploy.sh
+sh deploy.sh "$1"
