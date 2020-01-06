@@ -1,5 +1,7 @@
 ---
 
+title: VuePress 테마 설정
+date: 2020-01-04
 sidebarDepth: 2
 
 ---

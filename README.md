@@ -1,5 +1,7 @@
 ---
 
+title: Today I Learned
+date: 2020-01-01
 sidebar: false
 next: false
 

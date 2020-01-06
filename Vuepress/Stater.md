@@ -1,5 +1,7 @@
 ---
 
+title: Vuepress 시작하기
+date: 2020-01-04
 prev: false
 next: ./Theme
 sidebarDepth: 2

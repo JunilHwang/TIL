@@ -37,6 +37,7 @@ module.exports = {
         base_url: '/TIL/', // required
         site_url: 'https://junilhwang.github.io', // required
         copyright: '2019 Junil Hwang', // optional
+        filter: frontmatter => ([true|false]),
         count: 20
       }
     ]
