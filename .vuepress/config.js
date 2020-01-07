@@ -5,6 +5,7 @@ module.exports = {
     logo: 'https://avatars1.githubusercontent.com/u/18749057?s=460&v=4',
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Repository', link: 'https://github.com/junilhwang/TIL/' },
     ],
     sidebar: [
       { title: 'Home', path: '/' },
