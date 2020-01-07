@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Tue, 07 Jan 2020 14:14:45 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Jan 2020 14:23:04 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -37,7 +37,7 @@
             <title><![CDATA[Vuepress + Utterances]]></title>
             <link>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</link>
             <guid>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</guid>
-            <pubDate>Tue, 07 Jan 2020 00:00:00 GMT</pubDate>
+            <pubDate>Tue, 07 Jan 2020 22:00:00 GMT</pubDate>
             <description><![CDATA[Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.]]></description>
             <enclosure url="https://junilhwang.github.io/TIL/./8.jpg">
             </enclosure>
