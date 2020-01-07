@@ -2,17 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-01-07T00:58:10.398Z</updated>
+    <updated>2020-01-07T13:08:35.891Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
     <subtitle>Today I leanred</subtitle>
     <entry>
+        <title type="html"><![CDATA[markdown-it-plantuml]]></title>
+        <id>https://junilhwang.github.io/TIL/Vuepress/Plantuml.html</id>
+        <link href="https://junilhwang.github.io/TIL/Vuepress/Plantuml.html">
+        </link>
+        <updated>2020-01-07T13:08:35.886Z</updated>
+        <summary type="html"><![CDATA[plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[github page에 배포하기]]></title>
         <id>https://junilhwang.github.io/TIL/Vuepress/Deploy.html</id>
         <link href="https://junilhwang.github.io/TIL/Vuepress/Deploy.html">
         </link>
-        <updated>2020-01-07T00:58:10.393Z</updated>
+        <updated>2020-01-07T13:08:35.887Z</updated>
         <summary type="html"><![CDATA[Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.]]></summary>
     </entry>
     <entry>
@@ -20,23 +28,23 @@
         <id>https://junilhwang.github.io/TIL/Vuepress/Stater.html</id>
         <link href="https://junilhwang.github.io/TIL/Vuepress/Stater.html">
         </link>
-        <updated>2020-01-07T00:58:10.393Z</updated>
+        <updated>2020-01-07T13:08:35.887Z</updated>
         <summary type="html"><![CDATA[현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[markdown-it-plantuml]]></title>
-        <id>https://junilhwang.github.io/TIL/Vuepress/Plantuml.html</id>
-        <link href="https://junilhwang.github.io/TIL/Vuepress/Plantuml.html">
+        <title type="html"><![CDATA[Vuepress + Utterances]]></title>
+        <id>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</id>
+        <link href="https://junilhwang.github.io/TIL/Vuepress/Utterances.html">
         </link>
-        <updated>2020-01-07T00:58:10.394Z</updated>
-        <summary type="html"><![CDATA[plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.]]></summary>
+        <updated>2020-01-07T13:08:35.887Z</updated>
+        <summary type="html"><![CDATA[Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[VuePress 테마 설정]]></title>
         <id>https://junilhwang.github.io/TIL/Vuepress/Theme.html</id>
         <link href="https://junilhwang.github.io/TIL/Vuepress/Theme.html">
         </link>
-        <updated>2020-01-07T00:58:10.394Z</updated>
+        <updated>2020-01-07T13:08:35.887Z</updated>
         <summary type="html"><![CDATA[현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.]]></summary>
     </entry>
 </feed>
