@@ -21,6 +21,7 @@ next: false
   - [Vuepress 테마설정](/Vuepress/Theme.md)
   - [github page에 배포하기](/Vuepress/Deploy.md)
   - [markdown-it-plantuml](/Vuepress/Plantuml.md)
+  - [Vuepress + Utterances](/Vuepress/Utterances.md)
 
 ## 2020 목표
 - 여태까지 올라온 코드 스피츠 강의 내용을 보고 정리하기
