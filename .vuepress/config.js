@@ -15,6 +15,7 @@ module.exports = {
           '/Vuepress/Theme',
           '/Vuepress/Deploy',
           '/Vuepress/Plantuml',
+          '/Vuepress/Utterances',
         ]
       },
     ],
