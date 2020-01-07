@@ -172,6 +172,79 @@ sh deploy.sh
 
 이 부분은 [공식문서](https://vuepress.vuejs.org/guide/deploy.html)를 참고하는걸로..
 
+## 6. gh-pages branch 에 commit 기록 남기기
+
+배포를 성공하는 것 까진 좋았다. 그런데 gh-pages에는 항상 commit 기록이 1개만 남아있는 상태가 유지된다. 이 때 `deploy.sh`의 내용을 조금 손보면 된다.
+
+``` sh
+#!/usr/bin/env sh
+
+# 오류 발생시 중단한다.
+set -e
+
+# 문서(md)를 build하여 html로 만든다. 
+yarn docs:build
+
+# build가 output된 폴더로 이동한다. 
+cd docs/.vuepress/dist
+
+# https://<USERNAME>.github.io 에 배포하는 경우
+# git clone https://github.com/<USERNAME>/<USERNAME>.github.io/
+
+# https://<USERNAME>.github.io/<REPO> 에 배포하는 경우
+# 필자는 이 경우에 해당한다.
+git clone -b gh-pages https://github.com/<USERNAME>/<REPO>/
+
+# .git의 내용을 복사한 후 clone은 삭제한다.
+cp -rf TIL/.git ./.git
+rm -rf TIL
+
+# 이제 add + commit + push를 차례대로 실행해주면 끝
+# $1은 문자열 인자
+git add .
+git commit -m '$1'
+
+# https://<USERNAME>.github.io/<REPO> 에 배포하는 경우
+# git push origin master
+
+# https://<USERNAME>.github.io/<REPO> 에 배포하는 경우
+# 필자는 이 경우에 해당한다.
+git push origin gh-pages
+
+cd -
+```
+
+이렇게 작성된 `deploy.sh`은 다음과 같이 사용하면 된다.
+
+``` sh
+sh deploy.sh "커밋 메세지"
+```
+
+`문서 commit + deploy까지 같이 자동화` 하고 싶다면 또 새로운 shell scripts를 작성하면 된다.
+
+파일명은 대충 `commit.sh` 이라고 지었다. 
+
+``` sh
+#!/usr/bin/env sh
+
+# abort on errors
+set -e
+
+git add .
+git commit -m "$1"
+git push origin master
+
+sh deploy.sh "$1"
+```
+
+사용 방법은 다음과 같다.
+
+``` sh
+sh commit.sh "커밋 메세지"
+```
+
+이러면 문서도 commit해주고 같은 commit message로 배포까지 완료해준다.
+
 ## Reference
 
 - [Github Pages 기능 이용하기](http://dogfeet.github.io/articles/2012/github-pages.html)
