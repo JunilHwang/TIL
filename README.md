@@ -8,7 +8,13 @@ next: false
 ---
 
 # Today I Learned
-[github pages로 문서 보기](https://junilhwang.github.io/TIL/)
+
+매일 매일 꾸준히만 하자!
+
+- [GitHub Pages](https://junilhwang.github.io/TIL/)
+- [RSS feed](https://junilhwang.github.io/TIL/rss.xml)
+
+## Posts
 
 - Vuepress
   - [Vuepress 시작하기](/Vuepress/Stater.md)

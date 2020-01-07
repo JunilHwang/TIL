@@ -2,3 +2,4 @@ node_modules
 .vuepress/dist
 /.idea/
 TIL.iml
+yarn-error.log
