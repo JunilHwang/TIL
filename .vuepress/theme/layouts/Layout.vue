@@ -22,9 +22,6 @@
       />
     </Page>
 
-    <Comment />
-
-
     <Navbar
       v-if="shouldShowNavbar"
       @toggle-sidebar="toggleSidebar"

@@ -151,10 +151,6 @@ github issue를 comment로 사용하기
 <Comment />
 ```
 
-<Comment />
-
-그러면 위와 같이 현재 Post에 Comment를 붙일 수 있다.
-
 ## Reference
 
 - [Utterances 공식문서](https://utteranc.es/)
