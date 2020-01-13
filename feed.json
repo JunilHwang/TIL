@@ -29,20 +29,20 @@
             "date_modified": "2020-01-02T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
-            "title": "VuePress 테마 설정",
-            "summary": "현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.",
-            "image": "https://junilhwang.github.io/TIL/./3.jpg",
-            "date_modified": "2020-01-02T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Utterances.html",
             "url": "https://junilhwang.github.io/TIL/Vuepress/Utterances.html",
             "title": "Vuepress + Utterances",
             "summary": "Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.",
             "image": "https://junilhwang.github.io/TIL/./8.jpg",
             "date_modified": "2020-01-07T22:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
+            "title": "VuePress 테마 설정",
+            "summary": "현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.",
+            "image": "https://junilhwang.github.io/TIL/./3.jpg",
+            "date_modified": "2020-01-02T00:00:00.000Z"
         }
     ]
 }
