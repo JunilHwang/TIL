@@ -25,7 +25,7 @@ module.exports = {
           {
             title: '객체지향 자바스크립트',
             children: [
-              '/CodeSpitz/Object-Oriented/Intro'
+              '/CodeSpitz/Object-Oriented-Javascript/Intro'
             ]
           }
         ]
