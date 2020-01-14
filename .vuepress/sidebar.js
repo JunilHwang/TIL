@@ -22,7 +22,7 @@ module.exports = [
     children: [
       {
         title: 'Gradle',
-        children: ['GradleWrapper'].map(v => `/Gradle/${v}`)
+        children: ['GradleWrapper/'].map(v => `/Gradle/${v}`)
       }
     ]
   },
