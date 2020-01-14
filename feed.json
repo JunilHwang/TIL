@@ -6,12 +6,12 @@
     "description": "Today I leanred",
     "items": [
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Plantuml.html",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Plantuml.html",
-            "title": "markdown-it-plantuml",
-            "summary": "plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.",
-            "image": "https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg",
-            "date_modified": "2020-01-06T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "title": "Gradle Wrapper",
+            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
+            "image": "https://junilhwang.github.io/TIL/./01.jpg",
+            "date_modified": "2020-01-14T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy.html",
@@ -27,6 +27,14 @@
             "summary": "현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.",
             "image": "https://junilhwang.github.io/TIL/./1.jpg",
             "date_modified": "2020-01-02T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Plantuml.html",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Plantuml.html",
+            "title": "markdown-it-plantuml",
+            "summary": "plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.",
+            "image": "https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg",
+            "date_modified": "2020-01-06T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
