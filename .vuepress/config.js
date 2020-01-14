@@ -1,3 +1,5 @@
+const sidebar = require('./sidebar')
+
 module.exports = {
   title: '개발자 황준일',
   description: 'Today I leanred',
@@ -7,30 +9,7 @@ module.exports = {
       { text: 'Home', link: '/' },
       { text: 'Repository', link: 'https://github.com/junilhwang/TIL/' },
     ],
-    sidebar: [
-      { title: 'Home', path: '/' },
-      {
-        title: 'Vuepresse',
-        children: [
-          '/Vuepress/Stater',
-          '/Vuepress/Theme',
-          '/Vuepress/Deploy',
-          '/Vuepress/Plantuml',
-          '/Vuepress/Utterances',
-        ]
-      },
-      {
-        title: '코드스피츠',
-        children: [
-          {
-            title: '객체지향 자바스크립트',
-            children: [
-              '/CodeSpitz/Object-Oriented-Javascript/Intro'
-            ]
-          }
-        ]
-      }
-    ],
+    sidebar,
     lastUpdated: 'Last Updated',
     smoothScroll: true
   },
