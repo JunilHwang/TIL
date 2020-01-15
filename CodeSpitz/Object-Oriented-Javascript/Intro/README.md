@@ -270,3 +270,30 @@ package "**Module** 개발자" as Module3 <<Rectangle>> {
 @enduml
 
 이렇게 역할이 명확하다면 interface를 통해서 구분해야한다.
+
+### _D_ IP(Dependency Inversion, 다운캐스팅금지) 원칙
+
+의존성 역전의 법칙이라고도 한다. 의존성은 언제나 부모쪽으로만 흘러야 한다는 뜻이다. 반대로, 다운캐스팅이 있다면 객체지향은 무너진다. 이것을 지키기 위해선 앞서 설명한 원칙들이 무조건 지켜져야 하낟.
+
+::: tip
+- 고차원의 모듈은 저차원의 모듈에 의존하면 안 된다. 두 모듈 모두 추상화된 것에 의존해야 한다.
+- 추상화 된 것은 구체적인 것에 의존하면 안 된다. 구체적인 것이 추상화된 것에 의존해야 한다.
+:::
+
+### 기타
+
+- **DI**(Dependency Injection, 의존성 주입). 다른 말로 **IoC**(Inversion of control, 제어역전)
+- **DRY**(Don't Repeat Yourself, 중복방지)
+- **Hollyworld Principle**(의존성 부패방지)
+  - 물어보지 말고 요청하거나 기다려라.
+  - Action을 처리할 대상이 요청하게 해야 한다.
+  - 연락처를 물어보는 것 **(X)**
+    - 상대방이 연락처를 알려준 직후에 전화번호를 바꾼다면?
+  - 연락을 달라고 하는 것(연락처를 주는 것) **(O)**
+  - 이것이 지켜지지 않는다 = 은닉or캡슐화가 지켜지지 않은 것
+- **Law of demeter** (최소지식)
+  - classA.methodA의 최대시직한계
+    - classA의 필드 객체
+    - methodA가 생성한 객체
+    - methodA의 인자로 넘어온 객체
+  - Law of demeter가 지켜지지 않을 경우 : **열차 전복(train wreck)** 상태로 한다.
