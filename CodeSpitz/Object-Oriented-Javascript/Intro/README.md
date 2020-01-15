@@ -220,16 +220,53 @@ class 황준일 {
   월세납부()
   맥북구매()
 }
-object 학생 {
-  등록금지불()
+package "**Module** 학생" as 학생 <<Rectangle>> {
 }
-object 세입자 {
-  월세납부()
+package "**Module** 세입자" as 세입자 <<Rectangle>> {
 }
-object 개발자 {
-  맥북구매()
+package "**Module** 개발자" as 개발자 <<Rectangle>> {
 }
 황준일 --> 학생
 황준일 --> 세입자
 황준일 --> 개발자
 @enduml
+
+위와 같은 상태를 ISP를 반영하면 다음과 같이 바꿀 수 있다.
+
+@startuml
+class 황준일 {
+  int money
+  ---
+  등록금지불()
+  월세납부()
+  맥북구매()
+}
+interface 학생 {
+  ---
+  등록금지불()
+}
+interface 세입자 {
+  ---
+  월세납부()
+}
+interface 개발자 {
+  ---
+  맥북구매()
+}
+
+package "**Module** 학생" as Module1 <<Rectangle>> {
+}
+package "**Module** 세입자" as Module2 <<Rectangle>> {
+}
+package "**Module** 개발자" as Module3 <<Rectangle>> {
+}
+
+황준일 --> 학생
+황준일 --> 세입자
+황준일 --> 개발자
+학생 --> Module1
+세입자 --> Module2
+개발자 --> Module3
+@enduml
+
+이렇게 역할이 명확하다면 interface를 통해서 구분해야한다.
