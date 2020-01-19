@@ -11,25 +11,25 @@ next: false
 
 매일 매일 꾸준히만 하자!
 
-- [GitHub Pages](https://junilhwang.github.io/TIL/)
-- [RSS feed](https://junilhwang.github.io/TIL/rss.xml)
+- [GitHub Pages](./)
+- [RSS feed](./rss.xml)
 
 ## Posts
 
 ### Vuepress
-- [Vuepress 시작하기](/Vuepress/Stater)
-- [Vuepress 테마설정](/Vuepress/Theme)
-- [github page에 배포하기](/Vuepress/Deploy)
-- [markdown-it-plantuml](/Vuepress/Plantuml)
-- [Vuepress + Utterances](/Vuepress/Utterances)
+- [Vuepress 시작하기](./Vuepress/Stater)
+- [Vuepress 테마설정](./Vuepress/Theme)
+- [github page에 배포하기](./Vuepress/Deploy)
+- [markdown-it-plantuml](./Vuepress/Plantuml)
+- [Vuepress + Utterances](./Vuepress/Utterances)
 
 ### 코드스피츠
 - 객체지향 자바스크립트
-  - [1회차](/CodeSpitz/Object-Oriented-Javascript/Intro/)
+  - [1회차](./CodeSpitz/Object-Oriented-Javascript/Intro/)
 
 ### 개발환경
 - Gradle
-  - [GradleWrapper](/Gradle/GradleWrapper/)
+  - [GradleWrapper](./Gradle/GradleWrapper/)
 
 ### SpringFramework
 
