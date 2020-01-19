@@ -29,7 +29,7 @@ next: false
 
 ### 개발환경
 - Gradle
-  - [GradleWrapper](/Gradle/GradleWrapper)
+  - [GradleWrapper](/Gradle/GradleWrapper/)
 
 ### SpringFramework
 

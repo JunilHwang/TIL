@@ -297,3 +297,219 @@ package "**Module** 개발자" as Module3 <<Rectangle>> {
     - methodA가 생성한 객체
     - methodA의 인자로 넘어온 객체
   - Law of demeter가 지켜지지 않을 경우 : **열차 전복(train wreck)** 상태로 한다.
+  
+## Message
+
+### 단일책임원칙(SRP)을 준수하는 객체망의 문제를 해결
+
+- 책임이 너무 세분화 된다 = 책임이 연결리스트처럼 이어져있다
+- 언제나 상황/조직을 보고 유연하게 설계해야 한다. 절대적으로 옳은 것은 없다.
+
+### 단일책임원칙(SRP)을 준수하는 객체에게 책임 이상의 업무를 부여하면?
+
+- 만능 객체가 되려 한다.
+- 다른 객체에게 의뢰한다.
+
+다른 객체에게 메세지를 보내는 것 = 다른 객체에게 메세지를 보내는 것
+  - 메세지 : 의뢰할 내용
+  - 오퍼레이션 : 메세지를 수신할 객체가 제공하는 서비스
+    - 오퍼레이션을 내부에 어떤 메소드가 처리할지는 런타임에 따라 달라진다.
+    - 오퍼레이터가 런타임에 어떤 메소드랑 매핑될지 결정하는 것을 `동적바인딩`이라고 한다.
+    - 동적바인딩을 지원하는 언어에서는 오퍼레이션과 메소드가 틀릴 가능성이 높다.
+  - 메소드 : 오퍼레이션이 연결될 실제 처리기
+
+추상 클래스를 상속받게 만들거나, 인터페이스를 구현하는 이유는 오퍼레이션과 메소드를 분리해서 런타임에 원하는 것을 가져오기 위해서이다. 이게 결국 OCP를 만들어낸다.
+
+## Dependency
+
+### 의존성의 종류
+
+의존성은 격리(가장 중요함)의 문제이다.
+
+기획자 <- 디자이너 <- 백엔드 <- 프런트엔드
+
+격리성을 갖는가 = 의존성을 어떻게 관리 했는가
+
+의존 객체에 문제가 있으면 자신에게도 문제가 생긴다.
+
+- 의존성이 아예 없다(만능 객체) = 한 객체(사람)이 모든 일을 다 한다 = 만능 객체 빼고 다 필요 없다 => 나머지 구성원은 퇴사
+- 의존성이 매우 강하다 = 모든 사람이 각자의 일을 딱 맞게 수행한다 = 한 명에게 문제가 생기면 나머지에도 문제가 생긴다 => 모두 휴가를 갈 수 없다 => 결국 퇴사(?)
+
+그래서 의존성은 적당한게 제일 좋다
+
+객체의 생명주기 전체에 걸친 의존성
+- 상속(extends) : 상속 받는 모든 객체가 부모 객체를 쓰면 반드시 망가진다 - 위험도가 높다(의존성이 강력하다)
+- 연관(association) : 다른 객체를 알고 있다(소유하고 있다)
+
+> 상속을 연관(소유)로 바꿔라
+
+오퍼레이션 실행 시 임시적인 의존성(메소드 호출이 끝나면 의존성 종료)
+- 의존(dependency)
+
+의존성이 높을 경우
+- 수정 여파 규모 증가
+- 수정하기 어려운 구조 생성
+- 순환 의존성: 모두가 다 한 가족이 된다.
+
+객체지향을 배우는 이유는 격리 구간을 세우고 의존성을 관리하기 위해서다.
+
+> 변화에 대한 격리를 위함
+
+::: tip Dependency Inversion
+
+어떠한 경우에도 다운캐스팅은 금지
+폴리모피즘(추상인터페이스 사용)
+
+:::
+
+``` js{16,17,18}
+const Worker = class {
+  run() { console.log('working') }
+  print() { this.run() }
+}
+
+// Overriding
+const HardWorker = class extends Worker {
+  run() { console.log('HardWorking') }
+}
+
+const worker = new HardWorker()
+
+const Manager = class {
+  #workers
+  constructor(...workers) {
+    // 추상화된 것을 의존하고 있다. 즉, HardWorker는 몰라도 된다.
+    // 이 구문이 없어도 되지만, 코드의 뉘앙스(의도)를 표현할 수 있다
+    // "worker level의 method를 쓸 것이다."
+    if(workers.every(w => w instanceof Worker))
+      this.#workers = workers;
+    else throw 'invalid workers'
+  }
+  doWork() {
+    this.#wokers.forEach(w => w.run())
+  }
+}
+
+const manager = new Manager(new Worker(), new HardWorker())
+manager.doWork();
+// working
+// hardworking
+```
+
+- DIP는 OCP와 깊은 관계.
+- OCP가 안 되면 DIP도 안 된다.
+
+## Inversion of Control(제어역전)
+
+_IOC는 객체지향의 궁극적인 목표. 모든 원칙을 달성해야 도달할 수 있다._
+
+::: tip 제어역전의 개념과 필요성
+
+1. Control = flow control(흐름 제어)
+2. 광의에서 흐름 제어 = 프로그램 실행 통제
+3. 동기 흐름제어, 비동기 흐름제어 등
+
+:::
+
+::: tip Inversion
+- ~~역전~~
+- 위임 하겠다
+- 대체 하겠다
+:::
+
+_제어 흐름이 어려운 이유_
+
+- 흐름 제어는 상태와 결합하여 진행됨
+  - 루프가 진행될수록 루프가 다루는 상태를 예측하기가 힘들다.
+- 상태 통제와 흐름 제어 = 알고리즘
+- 변화에 취약하고 구현하기도 어려움
+  - 제어문을 만들기도 힘든데, 제어문을 유지보수 하는 것은 더 어렵다.
+
+_대안_
+- 제어를 추상화하고 한 번만 만들자(한 번의 if, 한 번의 roop)
+  - 일반화라는 관점이 필요하다.
+  - "달라보이지만 같다" - 연역적 추리, 귀납적 추리
+  - 하나를 가르쳤더니 열 개를 안다 = 연역적 사고(원리를 안다)
+  - 현상으로 부터 원리를 알고 원리를 적용한다.
+- 개별 제어의 차이점만 외부에서 주입 받는다.
+
+``` js{20,21,22}
+const renderer = class {
+  #view = null
+  #base = null
+
+  constructor (baseElement) {
+    this.#base = baseElement
+  }
+  
+  set view (v) {
+    if(v instanceof View) this.#view = v
+    else throw `invalid view: ${v}`
+  }
+
+  renderer (data) {
+    const base = this.#base, view = this.#view
+    if(!base || !view) throw 'no base or no view'
+    let target = base.firstElementChild
+    do base.removeChild(target)
+    while (target = target.nextElementSibling)
+    base.appendChild(view.getElement(data))
+    view.initAni()
+    view.startAni()
+  }
+}
+
+const View = class {
+  getElement (data) { throw `override!` }
+  initAni () { throw 'override!' }
+  startAni () { throw 'override!' }
+}
+
+const renderer = new Renderer(document.body)
+renderer.view = new class extends View {
+  #el
+  getElement (data) {
+    this.#el = document.createElement('div')
+    this.#el.innerHTML = `<h2>${data.title}</h2><p>${data.description}</p>`
+    this.#el.style.cssText = `width:100%;background:${data.background}`
+    return this.#el
+  }
+  initAni () {
+    const style = this.#el.style
+    style.marginLeft = '100%'
+    style.transition = '0.3s'
+  }
+  startAni () {
+    requestAnimationFrame(() => this.#el.style.marginLeft = 0)
+  }
+}
+
+renderer.render({
+  title: 'title test',
+  description: 'contents...',
+  background: '#ffa'
+})
+```
+
+__제어는 renderer에서만 처리한다.__
+
+Framework = 제어 역전을 담당한다.
+Library = 제어에 대한 책임이 없다.
+
+::: tip 제어역전에 대한 디자인 패턴
+
+전략 패턴(소유), 템플릿 메소드 패턴(상속) < 컴포지트 패턴 < 비지터 패턴
+
+:::
+
+궁극적으로 보다 넓은 범위의 제어 역전을 실현한다.
+
+::: tip 추상 팩토리 메소드 패턴
+
+왼쪽 패턴은 이미 만들어진 객체의 행위 제어역전에 참여시킬 수 있지만, 참여할 객체 자체를 생서할 수 없다.
+
+참여할 객체를 상황에 맞게 생성하고, 행위까지 위임하기 위해 추상 팩토리 메소드를 사용한다.
+
+:::
+
+추상 팩토리 메소드 패턴은 비지터 패턴과 같이 사용될 수 밖에 없다.
