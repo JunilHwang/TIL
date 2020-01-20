@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sun, 19 Jan 2020 05:47:29 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Jan 2020 07:33:14 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -16,12 +16,12 @@
             <description><![CDATA[객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.]]></description>
         </item>
         <item>
-            <title><![CDATA[VuePress 테마 설정]]></title>
-            <link>https://junilhwang.github.io/TIL/Vuepress/Theme.html</link>
-            <guid>https://junilhwang.github.io/TIL/Vuepress/Theme.html</guid>
-            <pubDate>Thu, 02 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.]]></description>
-            <enclosure url="https://junilhwang.github.io/TIL/./3.jpg">
+            <title><![CDATA[Gradle Wrapper]]></title>
+            <link>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</link>
+            <guid>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</guid>
+            <pubDate>Tue, 14 Jan 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></description>
+            <enclosure url="https://junilhwang.github.io/TIL/./01.jpg">
             </enclosure>
         </item>
         <item>
@@ -34,22 +34,11 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[Gradle Wrapper]]></title>
-            <link>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</link>
-            <guid>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</guid>
-            <pubDate>Tue, 14 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></description>
-            <enclosure url="https://junilhwang.github.io/TIL/./01.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Vuepress + Utterances]]></title>
-            <link>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</link>
-            <guid>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</guid>
-            <pubDate>Tue, 07 Jan 2020 22:00:00 GMT</pubDate>
-            <description><![CDATA[Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.]]></description>
-            <enclosure url="https://junilhwang.github.io/TIL/./8.jpg">
-            </enclosure>
+            <title><![CDATA[github page에 배포하기]]></title>
+            <link>https://junilhwang.github.io/TIL/Vuepress/Deploy.html</link>
+            <guid>https://junilhwang.github.io/TIL/Vuepress/Deploy.html</guid>
+            <pubDate>Mon, 06 Jan 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.]]></description>
         </item>
         <item>
             <title><![CDATA[Vuepress 시작하기]]></title>
@@ -61,11 +50,22 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[github page에 배포하기]]></title>
-            <link>https://junilhwang.github.io/TIL/Vuepress/Deploy.html</link>
-            <guid>https://junilhwang.github.io/TIL/Vuepress/Deploy.html</guid>
-            <pubDate>Mon, 06 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.]]></description>
+            <title><![CDATA[VuePress 테마 설정]]></title>
+            <link>https://junilhwang.github.io/TIL/Vuepress/Theme.html</link>
+            <guid>https://junilhwang.github.io/TIL/Vuepress/Theme.html</guid>
+            <pubDate>Thu, 02 Jan 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.]]></description>
+            <enclosure url="https://junilhwang.github.io/TIL/./3.jpg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Vuepress + Utterances]]></title>
+            <link>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</link>
+            <guid>https://junilhwang.github.io/TIL/Vuepress/Utterances.html</guid>
+            <pubDate>Tue, 07 Jan 2020 22:00:00 GMT</pubDate>
+            <description><![CDATA[Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.]]></description>
+            <enclosure url="https://junilhwang.github.io/TIL/./8.jpg">
+            </enclosure>
         </item>
     </channel>
 </rss>

@@ -13,12 +13,12 @@
             "date_modified": "2020-01-19T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
-            "title": "VuePress 테마 설정",
-            "summary": "현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.",
-            "image": "https://junilhwang.github.io/TIL/./3.jpg",
-            "date_modified": "2020-01-02T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "title": "Gradle Wrapper",
+            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
+            "image": "https://junilhwang.github.io/TIL/./01.jpg",
+            "date_modified": "2020-01-14T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Plantuml.html",
@@ -29,20 +29,11 @@
             "date_modified": "2020-01-06T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
-            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
-            "title": "Gradle Wrapper",
-            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
-            "image": "https://junilhwang.github.io/TIL/./01.jpg",
-            "date_modified": "2020-01-14T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Utterances.html",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Utterances.html",
-            "title": "Vuepress + Utterances",
-            "summary": "Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.",
-            "image": "https://junilhwang.github.io/TIL/./8.jpg",
-            "date_modified": "2020-01-07T22:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy.html",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy.html",
+            "title": "github page에 배포하기",
+            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
+            "date_modified": "2020-01-06T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Stater.html",
@@ -53,11 +44,20 @@
             "date_modified": "2020-01-02T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy.html",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy.html",
-            "title": "github page에 배포하기",
-            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
-            "date_modified": "2020-01-06T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Theme.html",
+            "title": "VuePress 테마 설정",
+            "summary": "현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.",
+            "image": "https://junilhwang.github.io/TIL/./3.jpg",
+            "date_modified": "2020-01-02T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Utterances.html",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Utterances.html",
+            "title": "Vuepress + Utterances",
+            "summary": "Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.",
+            "image": "https://junilhwang.github.io/TIL/./8.jpg",
+            "date_modified": "2020-01-07T22:00:00.000Z"
         }
     ]
 }
