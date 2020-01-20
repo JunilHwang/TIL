@@ -17,19 +17,19 @@ next: false
 ## Posts
 
 ### Vuepress
-- [Vuepress 시작하기](/Vuepress/Stater.md)
-- [Vuepress 테마설정](/Vuepress/Theme.md)
-- [github page에 배포하기](/Vuepress/Deploy.md)
-- [markdown-it-plantuml](/Vuepress/Plantuml.md)
-- [Vuepress + Utterances](/Vuepress/Utterances.md)
+- [Vuepress 시작하기](https://junilhwang.github.io/TIL/Vuepress/Stater)
+- [Vuepress 테마설정](https://junilhwang.github.io/TIL/Vuepress/Theme)
+- [github page에 배포하기](https://junilhwang.github.io/TIL/Vuepress/Deploy)
+- [markdown-it-plantuml](https://junilhwang.github.io/TIL/Vuepress/Plantuml)
+- [Vuepress + Utterances](https://junilhwang.github.io/TIL/Vuepress/Utterances)
 
 ### 코드스피츠
 - 객체지향 자바스크립트
-  - [1회차](/CodeSpitz/Object-Oriented-Javascript/Intro.md)
+  - [1회차](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/Intro/)
 
 ### 개발환경
 - Gradle
-  - [GradleWrapper](/Gradle/GradleWrapper)
+  - [GradleWrapper](https://junilhwang.github.io/TIL/Gradle/GradleWrapper/)
 
 ## 공부해야할 것
 
