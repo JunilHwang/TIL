@@ -31,13 +31,53 @@ next: false
 - Gradle
   - [GradleWrapper](/Gradle/GradleWrapper)
 
-### SpringFramework
+## 공부해야할 것
+
+### 코어
+
+- V8 Engine
+- JVM
+
+### 개발환경 및 운영
+
+- jenkins
+- docker
+- aws
+- Kubernetes
+- Sentry
+- logging
+- pipeline
+- gradle
+- webpack
+
+### 개발 방법론
+
+- Object-Oriented Programming
+  - Design Pattern
+  - Spring Framework Core
+- Functional Programming
+  - RxJS
+  - RxJava
+- DDD(Domain-Driven Development)
+- TDD(Test-Driven Development)
+- BDD(Behavior-Driven Development)
+
+### 언어 및 프레임워크
+
+- golang
+- kotlin
+- javascript
+  - React
+- Python
+  - Django
+  - Flask
 
 ## 2020 목표
 - 여태까지 올라온 코드 스피츠 강의 내용을 보고 정리하기
 - 하루에 한 번 이상 commit 하기
 - 학부 시절 공부한 자료 정리해서 공유하기
-- 단국대학교 소프트웨어학과 커뮤니티 사이트 기필코 만들기
+- 사이드 프로젝트 진행하기
+  - 단국대학교 소프트웨어학과 커뮤니티 사이트 기필코 만들기
 - 한 달에 최소 한 권 이상의 개발 서적 읽고 정리하기
   - PPP 시리즈 읽어보기
     - 밑바닥 부터 만드는 컴퓨팅 시스템
@@ -47,4 +87,4 @@ next: false
     - 클린 코드
     - 테스트 주도 개발
     - 생각하는 프로그래밍
-- VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)
+- ~~VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)~~
