@@ -11,7 +11,14 @@ feed:
 
 # 객체지향의 기본 이론
 
-[코드스피츠 86기 1회차](https://www.youtube.com/watch?v=E9NZ0YEZrYU&t=3914s)를 보고 정리한 내용입니다.
+::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
+
+- [코드스피츠 86기 1회차 동영상](https://www.youtube.com/watch?v=E9NZ0YEZrYU&t=3914s)
+- [코드스피츠 86기 1회차 교안](https://onedrive.live.com/?cid=ae0bf2746200b9cd&id=AE0BF2746200B9CD%2171900&authkey=%21AFfPE11pYD1zy7I)
+
+:::
+
+객체지향을 사용하는 목적과 원칙들에 대해 살펴보자.
 
 ## Value vs Identifier
 
