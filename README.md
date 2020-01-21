@@ -25,8 +25,8 @@ next: false
 
 ### 코드스피츠
 - [86기] 객체지향 자바스크립트
-  - [1회차](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/Intro/)
-  - [2회차](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/MVVC/)
+  - [1회차 - 객체지향 프로그래밍의 목적과 원칙](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/Intro/)
+  - [2회차 - MVVM System 구축](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/MVVC/)
 
 ### 개발환경
 - Gradle

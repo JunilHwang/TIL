@@ -9,7 +9,7 @@ feed:
 
 ---
 
-# MVVC System 만들기
+# MVVM System 만들기
 
 ::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
 
