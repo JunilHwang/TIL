@@ -52,9 +52,9 @@ console.log(JSON.stringify(a) === JSON.stringify(b)); // true
 
 - 하나의 원본
 - 상태 변화를 내부에서 책임짐
-  - 평소엔 정상이네 술먹었더니 꽐라가된다(?)
-  - 정상이든 꽐라든 할일은 하도록 만들어야 한다.
-- 메세지를 기반으로 로직을 전개 --> 로직을 위임할 수 있다
+  - 평소엔 정상인데 술을 먹더니 꽐라가 된다(?)
+  - 정상이든 꽐라든 해야할 일은 할 수 있도록 만들어야 한다.
+- 메세지를 기반으로 로직을 전개 → 로직을 위임할 수 있다
 
 ::: tip
 객체지향은 값을 사용하면 안 된다.
@@ -100,7 +100,7 @@ worker.print() // HardWorker의 print. 내적일관성
 :::
 
 ::: tip Polymorphism of Prototype
-javascript는 prototype을 이용해서 대체가능성과 내적일관성을 유지한다.
+javascript는 `prototype`을 이용해서 대체가능성과 내적일관성을 유지한다.
 ``` js
 console.log(worker.__proto__ === HardWorker.prototype); // true
 console.log(HardWorker.prototype.__proto__ === Worker.prototype); // true
@@ -114,13 +114,18 @@ console.log(worker.__proto__.__proto__.__proto__ === Object.prototype); // true
 
 각 언어마다 굉장히 다른 시스템을 사용하지만, 객체지향이라고 불리기 위해선 어떤 형태로든 **대체가능성**과 **내적가능성**을 유지할 수 있어야한다.
 
-**즉, 객체지향언어는 Polymorphism이 언어차원에서 지원한다.**
+**즉, 객체지향언어는 Polymorphism을 언어차원에서 지원한다.**
 
-## Object essentials(객체의 본질)
+## Object Essentials
 
-Java 혹은 Javascript는 객체지향언어의 조건을 만족하고 있다. 하지만, 객체지향언어를 사용한다고 해서 객체지향 프로그래밍을 하는 것은 아니다.
+::: tip Object Essentials
 
-객체가 정상작동하고 객체지향답게 움직여야 하는 본질적인 조건이 필요하다.
+- 객체의 본질
+- Java 혹은 Javascript는 객체지향언어의 조건을 만족하고 있다.
+- 하지만, 객체지향언어를 사용한다고 해서 객체지향 프로그래밍을 하는 것은 아니다.
+- 객체가 정상작동하고 객체지향답게 움직여야 하는 본질적인 조건이 필요하다.
+
+:::
 
 ``` js
 const EssentialObject = class {
@@ -352,6 +357,8 @@ _즉, SRP를 통해 문제를 해결하게 되는 과정에 OCP가 만들어진�
 
 ::: tip 의존 객체에 문제가 있으면 자신에게도 문제가 생긴다.
 
+회사의 업무를 예로 들면 다음과 같다
+
 - 의존성이 아예 없다(만능 객체)\
   → 한 객체(사람)이 모든 일을 다 한다\
   → 만능 객체 빼고 다 필요 없다\
@@ -359,7 +366,7 @@ _즉, SRP를 통해 문제를 해결하게 되는 과정에 OCP가 만들어진�
 - 의존성이 매우 강하다\
   → 모든 사람이 각자의 일을 딱 맞게 수행한다\
   → 한 명에게 문제가 생기면 나머지에도 문제가 생긴다\
-  → 두 휴가를 갈 수 없다\
+  → 모두 휴가를 갈 수 없다\
   → ~~결국 모두 퇴사(?)~~
 
 :::
