@@ -102,3 +102,57 @@ View에는 Logic이 없고, getter와 setter만 있다. Presenter는 View의 get
 - View Component가 매우 커진다.
 - 가볍게 Application을 만들기는 너무 부담스럽다.
 - 그래서 Framework 차원에서 제공하는 경우에만 사용한다.
+
+## MVVM
+
+이제 MVVM(Model - View - ModelView)에 대해 알아보자.
+
+@startuml
+rectangle View
+rectangle Binder
+rectangle Model
+agent ViewModel
+
+View -[hidden] Model : "                    "
+View <<-- Binder
+Binder ->> ViewModel : "**observer**"
+Model <<-- ViewModel 
+Model -->> ViewModel 
+@enduml
+
+MVVM은 ViewModel에 대해 이해해야 한다.
+
+ViewModel은 인메모리로서의 순수한 Data에 대한 View를 의미한다.
+
+즉, View를 대신하는 순수한 data 구조체(객체)이다.
+
+Binder는 ViewModel을 감지하여 View에 반영하기도 한다.
+
+양방향 바인딩의 경우 Binder가 View에도 Observing을 하고 있는 상태이다. 즉, Binder가 View와 ViewModel 모두 감지하여 모두 반영하는 것을 의미한다. 
+
+그래서 Binder가 없으면 MVVM은 성립하지 않으며 Binder로 인해 ViewModel은 View를 모르는 상태로 유지할 수 있다.
+
+위의 형태를 직접 구현하기는 무척 힘들다. 그래서 다음과 같이 만들어볼 것이다.
+
+@startuml
+rectangle View
+rectangle Binder
+rectangle Model
+agent ViewModel
+
+View -[hidden] Model : "                    "
+View <<-- Binder
+Binder ->> ViewModel
+Binder <<- ViewModel : "**call**"
+Model <<-- ViewModel 
+Model -->> ViewModel 
+@enduml
+
+ViewModel이 Binder에게 변화를 알리는 방식으로 구현할 것이다.
+즉, 자동으로 감지하는 방식(Observer)에서 수동으로 감지를 알리는 방식(Call)을 사용하는 것이다.
+
+1. ViewModel의 순수한 데이터 갱신
+2. Binder에 알림
+3. Binder가 View를 갱신
+4. 결론적으로 ViewModel은 View를 모르는 상태로 유지한다.
+
