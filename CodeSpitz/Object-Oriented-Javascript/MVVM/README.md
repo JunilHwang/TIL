@@ -202,3 +202,224 @@ test2("abc", 123, true);
 ```
 
 이렇게 type을 check하면 큰 실수가 퍼져나가는 것을 방지할 수 있다.
+
+## View hook & bind
+
+```html
+<section id="target" data-viewmodel="wrapper">
+  <h2 data-viewmodel="title"></h2>
+  <section data-viewmodel="contents"></section>
+</section>
+```
+
+### Role Design
+
+MVVM의 핵심은 Binder에 있다.
+
+Binding에는 두 가지 방식이 있다. Vue나 Angular는 Template은 Scan하는 방식이고, React는 Data와 연결되어있는 view를 만들고, binder가 view를 꼭 껴안아 가지고 있는 방식이다.
+
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+rectangle Binder {
+  rectangle BinderItem
+}
+rectangle ViewModel
+agent Scanner
+rectangle HTMLElement as el
+ViewModel <<- Binder
+Binder <<- Scanner
+BinderItem <<- Scanner
+Scanner ->> el
+@enduml
+
+Binder가 HTML을 인식하는 부분을 밖으로 빼야 된다. 그래서 Scanner가 필요하다.
+코드의 변화율(변화하는 주기)에 따라 객체를 분리하여 관리해야 한다.
+혹은 코드를 바꾸는 이유가 같은지의 여부에 따라 관리해야 한다.
+Binder와 HTMLElement는 코드의 변경 이유가 다르기 때문에 Binder에서 Scanner를 분리하여 관리하는 게 좋다. 이게 바로 SRP 원칙이다.
+
+Scanner의 역할 : Binder와 HTMLElement의 연결을 끊어준다.
+
+### ViewModel
+
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+rectangle Binder {
+  rectangle BinderItem
+}
+rectangle ViewModel #09F
+agent Scanner
+rectangle HTMLElement as el
+ViewModel <<- Binder
+Binder <<- Scanner
+BinderItem <<- Scanner
+Scanner ->> el
+@enduml
+
+ViewModel은 순수한 Data Object 이기 때문에 제일 만들기가 쉽다.
+
+```js
+const ViewModel = class {
+  static #private = Symbol()
+  static get (data) {
+    return new ViewModel(this.#private, data)
+  } 
+  style = {}; attributes = {}; properties = {}; events = {};
+  constructor(checker, data) {
+    if (checker != ViewModel.#private) throw 'use ViewModel.get()!'
+    Object.entries(data).forEach(([k, v]) => {
+      switch (k) {
+        case 'styles': this.styles = v; break;
+        case 'attributes': this.attributes = v; break;
+        case 'properties': this.properties = v; break;
+        case 'events': this.events = v; break;
+        default: this[k] = v;
+      }
+    });
+    Object.seal(this); // Value를 바꿀 순 있지만 Key를 추가할 순 없다.
+  }
+}
+```
+
+ViewModel을 사용하면 unit test를 하기가 굉장히 쉽다.
+
+어떠한 종류의 ViewModel, View 든 상관없이 Draw(혹은 Rendering) Logic은 Binder에게 위임한다.
+
+즉, IoC(제어역전)이 되는 것이다.
+
+개발자는 Data만 조작하면 되기 때문에 View에 대해서는 일절 신경쓰지 않아도 된다.
+
+### Binder
+
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+rectangle Binder {
+  rectangle BinderItem #09F
+}
+rectangle ViewModel
+agent Scanner
+rectangle HTMLElement as el
+ViewModel <<- Binder
+Binder <<- Scanner
+BinderItem <<- Scanner
+Scanner ->> el
+@enduml
+
+```js
+const BinderItem = class {
+  el; viewmodel;
+  constructor (el, viewmodel, _0 = type(el, HTMLElement), _1 = type(viewmodel, 'string')) {
+    this.el = el
+    this.viewmodel = viewmodel
+    Object.freeze(this) // 아예 불변 객체로 만든다. 
+  }
+}
+
+// 이렇게 사용하면 된다.
+new BinderItem(section, 'wrapper')
+new BinderItem(h2, 'title')
+new BinderItem(section2, 'contents')
+```
+
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+rectangle Binder #09F {
+  rectangle BinderItem #FFA
+}
+rectangle ViewModel
+agent Scanner
+rectangle HTMLElement as el
+ViewModel <<- Binder
+Binder <<- Scanner
+BinderItem <<- Scanner
+Scanner ->> el
+@enduml
+
+```js
+const Binder = class {
+  // Set을 사용하는 이유는 Value Context를 사용하지 않기 위함이다.
+  // Set을 사용한다 = Identifier Context를 사용한다.
+  #items = new Set()
+  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
+  render (viewmodel, _ = type(viewmodel, ViewModel)) {
+    this.#items.forEach(item => {
+      const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+      Object.entries(vm.styles).forEach(([k, v]) => el.style[k] = v)
+      Object.entries(vm.attributes).forEach(([k, v]) => el.attribute[k] = v)
+      Object.entries(vm.properties).forEach(([k, v]) => el[k] = v)
+      Object.entries(vm.events).forEach(([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel))
+    })
+  }
+}
+```
+
+### Scanner
+
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+rectangle Binder {
+  rectangle BinderItem
+}
+rectangle ViewModel
+agent Scanner #09F
+rectangle HTMLElement as el
+ViewModel <<- Binder
+Binder <<- Scanner
+BinderItem <<- Scanner
+Scanner ->> el
+@enduml
+
+Scanner는 binder를 만들어서 반환한다.
+
+```js{3,13}
+const Scanner = class {
+  scan (el, _ = type(el, HTMLElement)) {
+    const binder = new Binder();
+    this.checkItem(binder, el)
+    const stack = [el.firstElementChild]
+
+    // HTML 전체에 대한 순회
+    let target
+    while (target = stack.pop()) {
+      this.checkItem(binder, target)
+      if (target.firstElementChild) stack.push(target.firstElementChild)
+      if (target.nextElementSibling) stack.push(target.nextElementSibling)
+    }
+    return binder;
+  }
+  checkItem (binder, el) {
+  	const vm = el.getAttribute('data-viewmodel')
+  	if (vm) binder.add(new BinderItem(el, vm))
+  }
+}
+```
+
+### Client
+
+위에서 작성한 코드를 직접 사용해보도록 하자.
+
+```js
+const viewmodel = ViewModel.get({
+  wrapper: ViewModel.get({
+    styles: { width: '50%', background: '#ffa', cursor: 'pointer'}
+  }),
+  title: ViewModel.get({
+  	properties: { innerHTML: 'Title' }
+  }),
+  contents: ViewModel.get({
+  	properties: { innerHTML: 'Contents' }
+  })
+})
+```
+
+HTML 처럼 보이지만 순수한 In Momory Object로 만든 데이터들이다. 그래서 View를 직접 조작하지 않고 ViewModel을 통해 조작하게 된다.
+
+```js{3}
+const scanner = new Scanner
+const binder = scanner.scan(document.querySelector('#target'))
+binder.render(viewmodel) // 제어 역전
+```
