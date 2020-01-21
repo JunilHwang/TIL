@@ -156,3 +156,49 @@ ViewModel이 Binder에게 변화를 알리는 방식으로 구현할 것이다.
 3. Binder가 View를 갱신
 4. 결론적으로 ViewModel은 View를 모르는 상태로 유지한다.
 
+## TypeCheck
+
+MVVM을 들어가기 전에, TypeCheck에 대해 알아보도록 하자.
+
+```js
+const type = (target, type) => {
+  if (typeof type == "string") {
+    if (typeof target != type) throw `invalid type ${target} : ${type}`
+  } else if (!(target instanceof type)) {
+    throw `invalid type ${target} : ${type}`
+  }
+  return target;
+}
+
+type(12, 'number')
+type('abc', 'string')
+type([1, 2, 3 ], Array)
+type(new Set, Set)
+type(document.body, HTMLElement)
+```
+
+javascript는 compile 언어가 아니기 때문에 runtime에 무조건 throw 하지 않으면 무조건 오류가 전파된다.
+그래서 runtime 에서 실행되는 언어는 에러가 발견되는 즉시 throw로 멈춰야 디버깅할 수 있다.
+
+개발할 때는 throw를 던지는 방식으로 개발 하고, 배포할 때는 console.log 같은 걸로 처리하면 된다.
+
+사용은 위와 같이 하면 된다.
+
+그리고 다음과 같이 응용할 수 있다.
+
+```js
+const test = (arr, _ = type(arr, Array)) => {
+  console.log(arr)
+}
+
+test([1, 2, 3]) // 정상
+test(123) // 오류.  throw로 인해 멈춤
+
+const test2 = (a, b, c, _0 = type(a, "string"), _1 = type(b, "number"), _2 = type(c, "boolean")) => {
+  console.log(a, b, c);
+}
+
+test2("abc", 123, true);
+```
+
+이렇게 type을 check하면 큰 실수가 퍼져나가는 것을 방지할 수 있다.
