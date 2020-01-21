@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MVVM</title>
+</head>
+<body>
+<section id="target" data-viewmodel="wrapper">
+  <h2 data-viewmodel="title"></h2>
+  <section data-viewmodel="contents"></section>
+</section>
+<script>
+
+const type = (target, type) => {
+  if (typeof type == "string") {
+    if (typeof target != type) throw `invalid type ${target} : ${type}`
+  } else if (!(target instanceof type)) {
+    throw `invalid type ${target} : ${type}`
+  }
+  return target;
+}
+
+const ViewModel = class {
+  static #private = Symbol()
+  static get (data) {
+    return new ViewModel(this.#private, data)
+  } 
+  styles = {}; attributes = {}; properties = {}; events = {};
+  constructor(checker, data) {
+    if (checker != ViewModel.#private) throw 'use ViewModel.get()!'
+    Object.entries(data).forEach(([k, v]) => {
+      switch (k) {
+        case 'styles': this.styles = v; break;
+        case 'attributes': this.attributes = v; break;
+        case 'properties': this.properties = v; break;
+        case 'events': this.events = v; break;
+        default: this[k] = v;
+      }
+    });
+    Object.seal(this); // Value를 바꿀 순 있지만 Key를 추가할 순 없다.
+  }
+}
+
+const BinderItem = class {
+  el; viewmodel;
+  constructor (el, viewmodel, _0 = type(el, HTMLElement), _1 = type(viewmodel, 'string')) {
+    this.el = el
+    this.viewmodel = viewmodel
+    Object.freeze(this)
+  }
+}
+
+const Binder = class {
+  #items = new Set()
+  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
+  render (viewmodel, _ = type(viewmodel, ViewModel)) {
+    this.#items.forEach(item => {
+      console.log(item)
+      const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+      Object.entries(vm.styles).forEach(([k, v]) => el.style[k] = v)
+      Object.entries(vm.attributes).forEach(([k, v]) => el.attribute[k] = v)
+      Object.entries(vm.properties).forEach(([k, v]) => el[k] = v)
+      Object.entries(vm.events).forEach(([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel))
+    })
+  }
+}
+
+const Scanner = class {
+  scan (el, _ = type(el, HTMLElement)) {
+    const binder = new Binder();
+    this.checkItem(binder, el)
+    const stack = [el.firstElementChild]
+
+    // HTML 전체에 대한 순회
+    let target
+    while (target = stack.pop()) {
+      this.checkItem(binder, target)
+      if (target.firstElementChild) stack.push(target.firstElementChild)
+      if (target.nextElementSibling) stack.push(target.nextElementSibling)
+    }
+    return binder;
+  }
+  checkItem (binder, el) {
+    const vm = el.getAttribute('data-viewmodel')
+    if (vm) binder.add(new BinderItem(el, vm))
+  }
+}
+
+const viewmodel = ViewModel.get({
+  wrapper: ViewModel.get({
+    styles: { width: '50%', background: '#ffa', cursor: 'pointer'}
+  }),
+  title: ViewModel.get({
+    properties: { innerHTML: 'Title' }
+  }),
+  contents: ViewModel.get({
+    properties: { innerHTML: 'Contents' }
+  })
+})
+
+
+const scanner = new Scanner()
+const binder = scanner.scan(document.querySelector('#target'))
+binder.render(viewmodel) // 제어 역전
+</script>
+</body>
+</html>

@@ -265,7 +265,7 @@ const ViewModel = class {
   static get (data) {
     return new ViewModel(this.#private, data)
   } 
-  style = {}; attributes = {}; properties = {}; events = {};
+  styles = {}; attributes = {}; properties = {}; events = {};
   constructor(checker, data) {
     if (checker != ViewModel.#private) throw 'use ViewModel.get()!'
     Object.entries(data).forEach(([k, v]) => {
@@ -292,6 +292,8 @@ ViewModel을 사용하면 unit test를 하기가 굉장히 쉽다.
 
 ### Binder
 
+Binder를 만들기 이전에, BinderItem을 만들어야 한다.
+
 @startuml
 skinparam linetype polyline
 skinparam linetype ortho
@@ -317,11 +319,17 @@ const BinderItem = class {
   }
 }
 
-// 이렇게 사용하면 된다.
+```
+
+다음과 같이 사용할 수 있다.
+
+```js
 new BinderItem(section, 'wrapper')
 new BinderItem(h2, 'title')
 new BinderItem(section2, 'contents')
 ```
+
+이제 Binder를 만들 차례다.
 
 @startuml
 skinparam linetype polyline
@@ -423,3 +431,74 @@ const scanner = new Scanner
 const binder = scanner.scan(document.querySelector('#target'))
 binder.render(viewmodel) // 제어 역전
 ```
+
+결과 화면은 다음과 같다.
+
+![example](./example.png)
+
+### 약간 개선하기
+
+viewmodel을 개선해보자.
+
+```js{6-7}
+const getRandom = () => parseInt(Math.random() * 150) + 100
+const viewmodel2 = ViewModel.get({
+  isStop: false,
+  changeContents () {
+    // viewmodel을 갱신하면, binder가 viewmodel을 view에 rendering 한다.
+    // 즉, '인메모리 객체'만 수정하면 된다
+    this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
+    this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
+    binder.render(viewmodel2).
+  },
+  wrapper: ViewModel.get({
+    styles: { width: '50%', background: '#fff', cursor: 'pointer' },
+    events: { click(e, vm) { vm.isStop = true } }
+  }),
+  title: ViewModel.get({
+    properties: { innerHTML: 'Title' }
+  }),
+  contents: ViewModel.get({
+    properties: { innerHTML: 'Contents' }
+  })
+})
+
+const f = () => {
+  viewmodel2.changeContents()
+  binder.render(viewmodel2)
+  if (!viewmodel2.isStop) requestAnimationFrame(f)
+}
+
+requestAnimationFrame(f)
+```
+
+![example2](./example2.gif)
+
+### 전체 코드
+
+<<< @/CodeSpitz/Object-Oriented-Javascript/MVVM/example2.html
+
+## MVVM의 사용 결과
+
+모든 코드에 View를 Control 하는 Code는 나오지 않았다. 제어역전을 Binder에다가 전부다 부어버렸기 때문이다.
+
+MVVM을 사용하면 인메모리 객체만 수정하면 View에도 반영되고, unit test도 ViewModel만 검증하면 된다. 즉, View를 조작하는 코드 자체가 아예 필요 없어진 것이다.
+
+그리고 MVVM을 구축하는 과정 보다 MVVM이라는 프레임워크 자체의 객체 구조를 이해하는 것이 객체를 관리하는 것에 도움이 된다.
+
+- MVVM으로 어떤 문제를 해결했는가?
+- Model이 바뀔 때 마다 View가 영향을 받는 의존성 문제
+- View 마다 View를 그리는 로직을 다 MVC에서 하나하나 만들어야 하는 문제
+- 어떻게해야 View마다 View를 그리는 로직을 다 없앨까?
+  - 제어 역전을 통해서
+  - View를 직접적으로 알지 못하게 하는 모델을 만들어서
+
+객체지향에서 문제의 핵심은 대부분 다 의존성에 있다.
+
+- 생명주기
+- 갱신주기
+- 수정주기
+- 변화율이 다른 객체들의 의존성
+
+의존관계를 어떻게 분리하느냐가 핵심이다.
+
