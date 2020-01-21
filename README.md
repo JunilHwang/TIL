@@ -24,8 +24,9 @@ next: false
 - [Vuepress + Utterances](https://junilhwang.github.io/TIL/Vuepress/Utterances)
 
 ### 코드스피츠
-- 객체지향 자바스크립트
+- [86기] 객체지향 자바스크립트
   - [1회차](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/Intro/)
+  - [2회차](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/MVVC/)
 
 ### 개발환경
 - Gradle

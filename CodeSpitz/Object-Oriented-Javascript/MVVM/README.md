@@ -11,20 +11,20 @@ sidebarDepth: 2
 
 MVVM : Model - View - ViewModel
 
-### MVC Model
+## MVC Model
 
 MVVC를 언급하기 이전에, MVC부터 알아야 한다.
 
 MVC는 Model - View - Controller 등을 사용하며, 주로 Spring Framework 같이 Server에서 사용 된다.
 
 @startuml
-card View
-card Model
-card Controller
+rectangle View
+rectangle Model
+rectangle Controller
 
-View -[hidden] Model
-Controller -->> Model
-View <<-- Controller : data
+View -[hidden] Model : "          "
+Model <<-- Controller 
+View <<-- "data" Controller
 @enduml
 
 이렇게 Server에서 사용하는 MVC의 형태는 View와 Model은 직접적으로 의존하지 않고 Controller를 통해서 메세지를 주고 받는다.
@@ -32,13 +32,13 @@ View <<-- Controller : data
 그런데 Client에서 사용할 땐 다음과 같이 바뀌게 된다.
 
 @startuml
-card View
-card Model
-card Controller
+rectangle View
+rectangle Model
+rectangle Controller
 
-View ->> Model
-Controller -->> Model
-View <<-- Controller : data
+View ->> Model : "          "
+Model <<-- Controller 
+View <<-- "data" Controller
 @enduml
 
 - Controller는 Model과 View를 알고 있다.
@@ -57,18 +57,48 @@ View <<-- Controller : data
 실제로 많은 사람들이 사용하는 MVC는 다음과 같은 `제왕적 MVC Model`이다.
 
 @startuml
-card View
-card Model
-card Controller
+rectangle View
+rectangle Model
+rectangle Controller
 
-View -[hidden] Model
-Controller -->> Model
-Controller <<-- Model
-View <<-- Controller
-View -->> Controller : data
+View --[hidden]right-- Model : "          "
+Model --->> Controller 
+Model <<--- Controller 
+View <<--- "data" Controller
+View --->> Controller
 @enduml
 
 이 구조에서는 View가 Model에 의존하는 건 없지만, Controller에 대한 의존이 너무 강하다는 것이다.
 
 즉, Controller가 View와 Model의 변화를 흡수해야 한다는 것이고, 그럴 수록 Controller의 변화가 매우 많다.
 
+## MVP
+
+MVP : Model - View - `Presenter`
+
+- MFC 같은 Builder에서 사용된다
+- 안드로이드에서도 사용하고 있다 
+
+@startuml
+rectangle "**View**\n- getter\n- setter" as View
+rectangle Model
+agent Presenter
+
+View --[hidden]right-- Model : "          "
+Model --->> Presenter 
+Model <<--- Presenter 
+View <<--- Presenter
+View --->> Presenter
+@enduml
+
+View에는 Logic이 없고, getter와 setter만 있다. Presenter는 View의 getter, setter를 사용 한다.
+
+이럴 경우, View는 Model에 대한 의존성이 완전히 없어진다. 즉, View는 Model을 몰라도 된다.
+
+그러기 위해선, _필요한 모든 getter와 setter를 만들어야 한다._ 
+
+문제점
+
+- View Component가 매우 커진다.
+- 가볍게 Application을 만들기는 너무 부담스럽다.
+- 그래서 Framework 차원에서 제공하는 경우에만 사용한다.
