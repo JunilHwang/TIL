@@ -177,3 +177,68 @@ card Processor
 Binder ->> Processor : Dependency Injection
 @enduml
 Binder에 Processor를 주입 받는다. 그리고 의존성은 한 방향으로만 되어있어야 한다.
+
+## Observer
+
+이제 Observer를 만들어야 한다.
+
+@startuml
+rectangle View
+agent Binder
+rectangle ViewModel
+rectangle Model
+
+View -[hidden] Model
+View <<-- Binder
+Binder ->> ViewModel : Observe
+Binder <<- ViewModel : notify
+Model <<->> ViewModel
+@enduml
+
+Observer Pattern에서는 감시 당하는 쪽(Subject)이 변화가 생기면 Observer(Listener)에게 변화의 내용을 알려줘야 한다.
+
+javascript 에서는 변화의 감지를 위해서 다음과 같은 API가 있다.
+
+- `defineProperty` : 실무 상에서 사용할 수 있다.
+- `Proxy` : Babel로 Converting이 되지 않는다.
+
+``` js
+const ViewModelListener = class {
+  viewmodelUpdated(updated){throw 'override'}
+}
+const ViewModel = class {
+  static get(data){return new ViewModel(data)}
+  styles={}; attributes={}; properties={}; events={};
+  #isUpadated = new Set; #listenters = new Set;
+  addListener(v, _ = type(v, ViewModelListener)){ this.#listenters.add(v) }
+  removeListener(v, _ = type(v, ViewModelListener)){ this.#listenters.delete(v) }
+  notify(){this.#listenters.forEach(v => v.viewmodelUpdated(this.#isUpadated))}
+  constructor(checker, data, _ = type(data, 'object')) {
+    super();
+    Object.entries(data).forEach(([k, obj]) => {
+      if('styles,attributes,properties'.includes(k)) {
+        this[k] = Object.defineProperties(obj, Object.entries(obj).reduce((r, [k, v]) => {
+          r[k] = {
+            enumerable: true,
+            get: _ => v,
+            set: newV => {
+              v = newV; // 새로운 값에 대해 알린다.
+              vm.#isUpdated.add(new ViewModelValue(category, k, v))
+            }
+          }
+          return r
+        }, {}))
+      } else {
+        Object.defineProperty(this, k, {
+          enumerable: true,
+          get: _ => v,
+          set: newV => {
+            v = newV
+            this.#isUpadated.add(new ViewModelValue('', k, v))
+          }
+        })
+      }
+    })
+  }
+}
+```
