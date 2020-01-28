@@ -1,6 +1,6 @@
 ---
 
-title: MVVM 개선하기
+title: MVVM System 개선
 description: 다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.
 date: 2020-01-28
 sidebarDepth: 2
@@ -19,7 +19,7 @@ sidebarDepth: 2
 
 먼저 Binder에 대한 `자료구조` 부분이다.
 
-``` js{2-5}
+``` js{2-6}
 const Binder = class {
   #items = new Set()
   add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
@@ -64,7 +64,7 @@ const Binder = class {
 - `([k, v]) => el.style[k] = v`
 - `([k, v]) => el.attribute[k] = v`
 - `([k, v]) => el[k] = v`
-- `([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel)`
+- ```([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel)```
 
 :::
 

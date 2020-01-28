@@ -17,20 +17,21 @@ next: false
 ## Posts
 
 ### Vuepress
-- [Vuepress 시작하기](https://junilhwang.github.io/TIL/Vuepress/Stater)
-- [Vuepress 테마설정](https://junilhwang.github.io/TIL/Vuepress/Theme)
-- [github page에 배포하기](https://junilhwang.github.io/TIL/Vuepress/Deploy)
-- [markdown-it-plantuml](https://junilhwang.github.io/TIL/Vuepress/Plantuml)
-- [Vuepress + Utterances](https://junilhwang.github.io/TIL/Vuepress/Utterances)
+- [Vuepress 시작하기](/Vuepress/Stater)
+- [Vuepress 테마설정](/Vuepress/Theme)
+- [github page에 배포하기](/Vuepress/Deploy)
+- [markdown-it-plantuml](/Vuepress/Plantuml)
+- [Vuepress + Utterances](/Vuepress/Utterances)
 
 ### 코드스피츠
 - [86기] 객체지향 자바스크립트
-  - [1회차 - 객체지향 프로그래밍의 목적과 원칙](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/Intro/)
-  - [2회차 - MVVM System 구축](https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/MVVM/)
+  - [1회차 - 객체지향 프로그래밍의 목적과 원칙](/CodeSpitz/Object-Oriented-Javascript/Intro/)
+  - [2회차 - MVVM System 구축](/CodeSpitz/Object-Oriented-Javascript/MVVM/)
+  - [3회차 - MVVM System 개선](/CodeSpitz/Object-Oriented-Javascript/DesignPattern/)
 
 ### 개발환경
 - Gradle
-  - [GradleWrapper](https://junilhwang.github.io/TIL/Gradle/GradleWrapper/)
+  - [GradleWrapper](/Gradle/GradleWrapper/)
 
 ## 공부해야할 것
 

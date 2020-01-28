@@ -13,7 +13,7 @@ module.exports = [
     children: [
       {
         title: '객체지향 자바스크립트',
-        children: ['Intro/', 'MVVM/'].map(v => `${CodeSpitzOOJS}/${v}`)
+        children: ['Intro/', 'MVVM/', 'DesignPattern/'].map(v => `${CodeSpitzOOJS}/${v}`)
       }
     ]
   },
