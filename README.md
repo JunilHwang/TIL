@@ -17,7 +17,7 @@ next: false
 ## Posts
 
 ### Vuepress
-- [Vuepress 시작하기](/Vuepress/Stater/)
+- [Vuepress 시작하기](/Vuepress/Starter/)
 - [Vuepress 테마설정](/Vuepress/Theme/)
 - [github page에 배포하기](/Vuepress/Deploy/)
 - [markdown-it-plantuml](/Vuepress/Plantuml/)
