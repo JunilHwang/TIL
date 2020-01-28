@@ -17,11 +17,11 @@ next: false
 ## Posts
 
 ### Vuepress
-- [Vuepress 시작하기](/Vuepress/Stater.md)
-- [Vuepress 테마설정](/Vuepress/Theme.md)
-- [github page에 배포하기](/Vuepress/Deploy.md)
-- [markdown-it-plantuml](/Vuepress/Plantuml.md)
-- [Vuepress + Utterances](/Vuepress/Utterances.md)
+- [Vuepress 시작하기](/Vuepress/Stater/)
+- [Vuepress 테마설정](/Vuepress/Theme/)
+- [github page에 배포하기](/Vuepress/Deploy/)
+- [markdown-it-plantuml](/Vuepress/Plantuml/)
+- [Vuepress + Utterances](/Vuepress/Utterances/)
 
 ### 코드스피츠
 - [86기] 객체지향 자바스크립트
