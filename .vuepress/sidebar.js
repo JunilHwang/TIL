@@ -6,7 +6,7 @@ module.exports = [
   { title: 'Home', path: '/' },
   {
     title: 'Vuepresse',
-    children: ['Stater', 'Theme', 'Deploy', 'Plantuml', 'Utterances'].map(v => `${vuepress}/${v}`)
+    children: ['Starter/', 'Theme/', 'Deploy/', 'Plantuml/', 'Utterances/'].map(v => `${vuepress}/${v}`)
   },
   {
     title: '코드스피츠',
