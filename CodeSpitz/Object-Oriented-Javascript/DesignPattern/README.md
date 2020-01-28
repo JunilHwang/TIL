@@ -242,3 +242,94 @@ const ViewModel = class {
   }
 }
 ```
+
+## Composite
+
+나의 문제를 **위임을 반복**하여 취합하는 행위 = **동적위임**
+
+``` js
+const ViewModel = class extends ViewModelListener {
+  // .. 생략
+  subKey = ''; parent = null;
+  constructor(checker, data, _ = type(data, 'object')) {
+    super()
+    Object.entries(data).forEach(([k, v]) => {
+      if ('styles,attributes,properties'.includes(data, 'object')) {
+        // .. 생략
+      } else {
+        Object.defineProperty(this, k, { /*생략*/ })
+        if (v instanceof ViewModel) {
+          // 역 참조할 수 있어야 한다. 
+          v.parent = this
+          v.subKey = k
+          
+          // 자식이 변화했을 때 변화를 알아차린다.
+          // ViewModel 은 Subject이자 Listener 인 경우가 빈번하다.
+          v.addListener(this)
+        }
+      }
+    })
+  }
+  viewmodelUpdated (updated) {
+    updated.forEach(v => this.#isUpdated.add(v))
+  }
+}
+```
+
+`ViewModelValue` 또한 변경해줘야 한다.
+
+``` js
+// Observer가 받는 Object = Info Object
+// notify를 수신하는 Object
+// Info Object를 잘 구성하기가 어렵다 
+const ViewModelValue = class {
+  subKey; category; k; v;
+  constructor (subKey, category, k, v) {
+    this.subKey = subKey
+    this.category = category
+    this.k = k
+    this.v = v
+    Object.freeze(this)
+  }
+}
+```
+
+`subKey` 가 생겼기 때문에, `defineProperty`도 수정해줘야 한다.
+
+``` js
+this.#isUpdated.add(new ViewModelValue(this.subKey, '', k, v))
+```
+
+마지막으로 `notify`와 `seal`을 추가해야 한다.
+
+``` js
+const ViewModel = class extends ViewModelListener {
+  static #subjects = new Set
+  static #inited = false
+  static notify (vm) {
+    this.#subjects.add(vm)
+    if (this.#inited) return
+    this.#inited = true
+    const f = () => {
+      this.#subjects.forEach(vm => {
+        if (vm.#isUpdated.size) {
+          vm.notify()
+          vm.#isUpdated.clear()
+        }
+      })
+      requestAnimationFrame(f)
+    }
+    requestAnimationFrame(f)
+  }
+  
+  // .. 생략
+  subKey = ''; parent = null;
+  constructor(checker, data, _ = type(data, 'object')) {
+    super()
+    Object.entries(data).forEach(([k, v]) => { /* 생략 */ })
+    ViewModel.notify(this)
+    Object.seal(this)
+  }
+  
+}
+```
