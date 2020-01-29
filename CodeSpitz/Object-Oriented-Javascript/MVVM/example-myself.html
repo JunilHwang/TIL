@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MVVM System</title>
+</head>
+<body>
+<div id="app">
+  <main data-viewmodel="wrapper">
+    <h1 data-viewmodel="title"></h1>
+    <section data-viewmodel="content"></section>
+  </main>
+</div>
+<script>
+  const ViewModel = class {
+    static #private = Symbol()
+    static get (data) { return new ViewModel(this.#private, data) }
+
+    styles = {}; properties = {}; attributes = {}; events = {};
+    constructor(checker, data) {
+      if (checker !== ViewModel.#private) throw `only use static method`
+      Object.assign(this, { ...data })
+      Object.seal(this)
+    }
+  }
+  const Binder = class {
+    #items = new Set
+    add (binderItem) {
+      this.#items.add(binderItem)
+    }
+    render (viewmodel) {
+      this.#items.forEach(({ el, vmName }) => {
+        const vm = viewmodel[vmName]
+        Object.entries(vm.attributes).forEach(([k, v]) => { el.setAttribute(k, v) })
+        Object.entries(vm.properties).forEach(([k, v]) => { el[k] = v })
+        Object.entries(vm.styles).forEach(([k, v]) => { el.style[k] = v })
+        Object.entries(vm.events).forEach(([k, v]) => { el[`on${k}`] = e => v.call(el, e,  viewmodel) })
+      })
+    }
+  }
+  const BinderItem = class {
+    vmName; el;
+    constructor (vmName, el) {
+      Object.assign(this, { vmName, el })
+      Object.freeze(this)
+    }
+  }
+  const Scanner = class {
+    #binder = new Binder
+    scan (el) {
+      const target = document.querySelector(el)
+      const stack = [target.firstElementChild]
+      while (stack.length) {
+        const el = stack.pop()
+        if (el.firstElementChild) stack.push(el.firstElementChild)
+        if (el.nextElementSibling) stack.push(el.nextElementSibling)
+        this.check(el)
+      }
+      return this.#binder
+    }
+    check (el) {
+      const vmName = el.dataset.viewmodel
+      if (vmName !== undefined) {
+        this.#binder.add(new BinderItem(vmName, el))
+      }
+    }
+  }
+
+  const scanner = new Scanner
+  const binder = scanner.scan('#app')
+  const viewmodel = ViewModel.get({
+    wrapper: ViewModel.get({
+      styles: { background: '#ff5' }
+    }),
+    title: ViewModel.get({
+      properties: { innerHTML: 'this is MVVM System' },
+      styles: { fontSize: '35px' }
+    }),
+    content: ViewModel.get({
+      properties: { innerHTML: 'Hello MVVM' },
+      events: {
+        click(e, vm) {
+          vm.content.properties.innerHTML = 'Change Value'
+          binder.render(vm)
+        }
+      }
+    })
+  })
+
+  binder.render(viewmodel)
+</script>
+</body>
+</html>
