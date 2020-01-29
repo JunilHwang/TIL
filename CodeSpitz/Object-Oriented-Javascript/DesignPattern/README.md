@@ -110,28 +110,7 @@ const Processor = class {
 
 자식에게 위임하는 것을 `template method` 라고 하고, 자식쪽에 의존하고 있는 method를 `hook`이라고 한다.
 
-위의 코드는 다음과 같이 사용하면 된다.
-
-``` js
-const binder = scanner.scan(document.querySelector('#target'))
-
-// instance는 무조건 한 개만 만들도록 한다.
-// Dependency Injection
-binder.addProcessor(new (class extends Processor{
-  _process(vm, el, k, v){el.style[k] = v}
-})('styles'));
-binder.addProcessor(new (class extends Processor{
-  _process(vm, el, k, v){el.setAttribute(k, v)}
-})('attributes'))
-binder.addProcessor(new (class extends Processor{
-  _process(vm, el, k, v){el[k] = v}
-})('properties'))
-binder.addProcessor(new (class extends Processor{
-  _process(vm, el, k, v){el[`on${k}`] = e => v.call(el, e, vm)}
-})('events'))
-```
-
-이제 Binder를 수정해야 한다.
+이제 `Binder`를 수정해야 한다.
 
 ``` js
 const Binder = class extends ViewModelListenter {

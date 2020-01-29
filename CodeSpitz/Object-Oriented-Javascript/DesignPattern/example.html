@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MVVM</title>
+</head>
+<body>
+<section id="target" data-viewmodel="wrapper">
+  <h2 data-viewmodel="title"></h2>
+  <section data-viewmodel="contents"></section>
+</section>
+<script>
+
+const type = (target, type) => {
+  if (typeof type == "string") {
+    if (typeof target != type) throw `invalid type ${target} : ${type}`
+  } else if (!(target instanceof type)) {
+    throw `invalid type ${target} : ${type}`
+  }
+  return target;
+}
+
+const ViewModelListener = class {
+  viewmodelUpdated(updated){throw 'override'}
+}
+
+const ViewModel = class extends ViewModelListener {
+  static #subjects = new Set
+  static #inited = false
+  static notify (vm) {
+    this.#subjects.add(vm)
+    if (this.#inited) return
+    this.#inited = true
+    const f = () => {
+      this.#subjects.forEach(vm => {
+        if (vm.#isUpdated.size) {
+          vm.notify()
+          vm.#isUpdated.clear()
+        }
+      })
+      requestAnimationFrame(f)
+    }
+    requestAnimationFrame(f)
+  }
+  static get(data){return new ViewModel(data)}
+
+  subKey = ''
+  parent = null
+  styles = {}
+  attributes={}
+  properties={}
+  events={}
+  #isUpdated = new Set
+  #listeners = new Set
+
+  addListener(v, _ = type(v, ViewModelListener)){ this.#listeners.add(v) }
+  removeListener(v, _ = type(v, ViewModelListener)){ this.#listeners.delete(v) }
+  notify(){this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated))}
+  constructor(data, _ = type(data, 'object')) {
+    super();
+    Object.entries(data).forEach(([category, obj]) => {
+      if('styles,attributes,properties'.includes(category)) {
+        this[category] = Object.defineProperties({}, Object.entries(obj).reduce((r, [k, v]) => {
+          r[k] = {
+            enumerable: true,
+            get: _ => v,
+            set: newV => {
+              v = newV; // 새로운 값에 대해 알린다.
+              this.#isUpdated.add(new ViewModelValue(this.subKey, category, k, v))
+            }
+          }
+          return r
+        }, {}))
+      } else {
+        Object.defineProperty(this, category, {
+          enumerable: true,
+          get: _ => obj,
+          set: newV => {
+            obj = newV
+            this.#isUpdated.add(new ViewModelValue(this.subKey, category, '', obj))
+          }
+        })
+        if (obj instanceof ViewModel) {
+          // 역 참조할 수 있어야 한다.
+          obj.parent = this
+          obj.subKey = category
+
+          // 자식이 변화했을 때 변화를 알아차린다.
+          // ViewModel 은 Subject이자 Listener 인 경우가 빈번하다.
+          obj.addListener(this)
+        }
+      }
+    })
+    ViewModel.notify(this)
+    Object.seal(this)
+  }
+
+  viewmodelUpdated (updated) {
+    updated.forEach(v => this.#isUpdated.add(v))
+  }
+}
+
+const ViewModelValue = class {
+  subKey; category; k; v;
+  constructor (subKey, category, k, v) {
+    Object.assign(this, { subKey, category, k, v })
+    Object.freeze(this)
+  }
+}
+
+const BinderItem = class {
+  el; viewmodel;
+  constructor (el, viewmodel, _0 = type(el, HTMLElement), _1 = type(viewmodel, 'string')) {
+    this.el = el
+    this.viewmodel = viewmodel
+    Object.freeze(this)
+  }
+}
+
+const Binder = class extends ViewModelListener {
+  #items = new Set;
+  // category당 한 개의 processor를 사용하게 하기 위함
+  // 자료구조를 선택할 때 심각하게 생각해야 한다.
+  #processors = {};
+  add(v, _ = type(v, BinderItem)){this.#items.add(v)}
+
+  // 값을 사용하는 형태. 값을 방어하는 다른 체계를 만들어줘야 한다.
+  addProcessor(v, _ = type(v, Processor)){this.#processors[v.category] = v}
+  render(viewmodel, _ = type(viewmodel, ViewModel)) {
+    const processores = Object.entries(this.#processors)
+    this.#items.forEach(item => {
+      const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+      processores.forEach(([pk, processor]) => {
+        Object.entries(vm[pk]).forEach(([k, v]) => {
+          // Binder는 processor의 protocal을 알고 있다. 즉, 의존성이 생긴 것이다.
+          // 이것을 알고리즘의 일반화라고 한다. (Generic Algorithm) => 제일 어려운 부분
+          // structure를 남기고 Strategy을 type으로 내보낸다.
+          // 안정화/일반화 되어 있는 코드는 protocal이 적다 = 만들기가 어렵다.
+          processor.process(vm, el, k, v)
+        })
+      })
+    })
+  }
+
+  watch(viewmodel, _ = type(viewmodel, ViewModel)){
+    viewmodel.addListener(this)
+    this.render(viewmodel)
+  }
+
+  unwatch(viewmodel, _ = type(viewmodel, ViewModel)){
+    viewmodel.removeListener(this)
+  }
+
+  viewmodelUpdated (updated) {
+    const items = {}
+    this.#items.forEach(item => {
+      items[item.viewmodel] = [type(viewmodel[item.viewmodel], ViewModel), item.el]
+    })
+    updated.forEach(({ subKey, category, k, v }) => {
+      if (!items[subKey]) return
+      const [vm, el] = items[subKey], processor = this.#processors[category]
+      // injection 이 안 되어 있을 경우  return
+      if (!el || !processor) return
+      processor.process(vm, el, k, v)
+    })
+  }
+}
+
+const Processor = class {
+  category;
+  constructor (category) {
+    this.category = category
+    Object.freeze(this)
+  }
+  // 추상 클래스를 가정한다.
+  process (vm, el, k, v, _0 = type(vm, ViewModel), _1 = type(el, HTMLElement), _2 = type(k, "string")) {
+    this._process(vm, el, k, v)
+  }
+  // template method: hook
+  _process (vm, el, k, v) { throw 'override' }
+}
+
+const Scanner = class {
+  scan (el, _ = type(el, HTMLElement)) {
+    const binder = new Binder();
+    this.checkItem(binder, el)
+    const stack = [el.firstElementChild]
+
+    // HTML 전체에 대한 순회
+    let target
+    while (target = stack.pop()) {
+      this.checkItem(binder, target)
+      if (target.firstElementChild) stack.push(target.firstElementChild)
+      if (target.nextElementSibling) stack.push(target.nextElementSibling)
+    }
+    return binder;
+  }
+  checkItem (binder, el) {
+    const vm = el.getAttribute('data-viewmodel')
+    if (vm) binder.add(new BinderItem(el, vm))
+  }
+}
+
+const scanner = new Scanner()
+const binder = scanner.scan(document.querySelector('#target'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el.style[k] = v }
+})('styles'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el.setAttribute(k, v) }
+})('attributes'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el[k] = v }
+})('properties'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+})('events'))
+
+const getRandom = () => parseInt(Math.random() * 150) + 100
+const viewmodel = ViewModel.get({
+  isStop: false,
+  changeContents () {
+    // render 사라졌다
+    this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
+    this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
+  },
+  wrapper: ViewModel.get({
+    styles: { width: '50%', background: '#ffa', cursor: 'pointer' },
+    events: {
+      click(e, vm) {
+        vm.parent.isStop = true // 부모(wrapper)의 값을 변경한다.
+      }
+    }
+  }),
+  title: ViewModel.get({
+    properties: { innerHTML: 'Title' }
+  }),
+  contents: ViewModel.get({
+    properties: { innerHTML: 'Contents' }
+  })
+})
+
+// watch가 생겼다.
+binder.watch(viewmodel)
+const f = () => {
+  // render가 사라졌다.
+  viewmodel.changeContents()
+  if (!viewmodel.isStop) requestAnimationFrame(f)
+}
+requestAnimationFrame(f)
+</script>
+</body>
+</html>
