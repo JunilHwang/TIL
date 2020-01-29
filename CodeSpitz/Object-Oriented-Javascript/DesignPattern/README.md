@@ -333,3 +333,90 @@ const ViewModel = class extends ViewModelListener {
   
 }
 ```
+
+## Observer (2)
+
+다시 Observer로 돌아와서, Binder의 입장을 살펴봐야 한다.
+
+``` js
+const Binder = class extends ViewModelListener {
+  #items = new Set; #processors = {}
+  add(v, _ = type(v, BinderItem)){ this.#items.add(v) }
+  addProcessor(v, _ = type(v, Processor)){/*생략*/}
+  render(viewmodel, _ = type(viewmodel, ViewModel)){/*생략*/}
+  watch(viewmodel, _ = type(viewmodel, ViewModel)){
+    viewmodel.addListener(this)
+    this.render(viewmodel)
+  }
+  unwatch(viewmodel, _ = type(viewmodel, ViewModel)){
+    viewmodel.removeListener(this)
+  }
+  viewmodelUpdated (updated) {
+    const items = {}
+    this.#items.forEach(item => {
+      items[item.viewmodel] = [type(viewmodel[item.viewmodel], ViewModel), item.el]
+    })
+    updated.forEach(({ subKey, category, k, v }) => {
+      if (!items[subKey]) return
+      const [vm, el] = items[subKey], processor = this.#processors[category]
+      // injection 이 안 되어 있을 경우  return
+      if (!el || !processor) return
+      processor.process(vm, el, k, v) 
+    })
+  }
+}
+```
+
+## Client
+
+위에서 작성한 코드를 직접 사용해보자.
+
+``` js
+const scanner = new Scanner()
+const binder = scanner.scan(document.querySelector('#target'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el.style[k] = v }
+})('styles'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el.setAttribute(k, v) }
+})('attributes'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el[k] = v }
+})('properties'))
+binder.addProcessor(new (class extends Processor {
+  _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+})('events'))
+
+const getRandom = () => parseInt(Math.random() * 150) + 100
+const viewmodel = ViewModel.get({
+  isStop: false,
+  changeContents () {
+    // render 사라졌다
+    this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
+    this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
+  },
+  wrapper: ViewModel.get({
+    styles: { width: '50%', background: '#ffa', cursor: 'pointer' },
+    events: {
+      click(e, vm) {
+        vm.parent.isStop = true // 부모(wrapper)의 값을 변경한다.
+      }
+    }
+  }),
+  title: ViewModel.get({
+    properties: { innerHTML: 'Title' }
+  }),
+  contents: ViewModel.get({
+    properties: { innerHTML: 'Contents' }
+  })
+})
+
+// watch가 생겼다.
+binder.watch(viewmodel)
+const f = () => {
+  // render가 사라졌다.
+  viewmodel.chagneContents()
+  if (!viewmodel.isStop) requestAnimationFrame(f)
+}
+requestAnimationFrame(f)
+```
