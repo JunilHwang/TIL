@@ -25,6 +25,7 @@ const ViewModelListener = class {
 }
 
 const ViewModel = class extends ViewModelListener {
+  static get(data){return new ViewModel(data)}
   static #subjects = new Set
   static #inited = false
   static notify (vm) {
@@ -42,52 +43,40 @@ const ViewModel = class extends ViewModelListener {
     }
     requestAnimationFrame(f)
   }
-  static get(data){return new ViewModel(data)}
+  static defineProperty = (vm, category, k, v) => ({
+    enumerable: true,
+    get: () => v,
+    set: newV => {
+      v = newV
+      vm.#isUpdated.add(new ViewModelValue(vm.subKey, category, k, v))
+    }
+  })
 
-  subKey = ''
-  parent = null
-  styles = {}
-  attributes={}
-  properties={}
-  events={}
-  #isUpdated = new Set
-  #listeners = new Set
+  static define = (vm, category, obj) => (
+    Object.defineProperties(
+      obj,
+      Object.entries(obj).reduce((r, [k, v]) => (
+        r[k] = ViewModel.defineProperty(vm, category, k, v), r
+      ), {}))
+  )
 
-  addListener(v, _ = type(v, ViewModelListener)){ this.#listeners.add(v) }
-  removeListener(v, _ = type(v, ViewModelListener)){ this.#listeners.delete(v) }
-  notify(){this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated))}
+  subKey = ''; parent = null
+  styles = {}; attributes = {}; properties = {}; events = {}
+  #isUpdated = new Set; #listeners = new Set
+
   constructor(data, _ = type(data, 'object')) {
     super();
-    Object.entries(data).forEach(([category, obj]) => {
-      if('styles,attributes,properties'.includes(category)) {
-        this[category] = Object.defineProperties({}, Object.entries(obj).reduce((r, [k, v]) => {
-          r[k] = {
-            enumerable: true,
-            get: _ => v,
-            set: newV => {
-              v = newV; // 새로운 값에 대해 알린다.
-              this.#isUpdated.add(new ViewModelValue(this.subKey, category, k, v))
-            }
-          }
-          return r
-        }, {}))
+    Object.entries(data).forEach(([k, v]) => {
+      if('styles,attributes,properties'.includes(k)) {
+        if(!v || typeof v != 'object') throw `invalid object k: ${k}, v:${v}`
+        this[k] = ViewModel.define(this, k, v)
       } else {
-        Object.defineProperty(this, category, {
-          enumerable: true,
-          get: _ => obj,
-          set: newV => {
-            obj = newV
-            this.#isUpdated.add(new ViewModelValue(this.subKey, category, '', obj))
-          }
-        })
-        if (obj instanceof ViewModel) {
-          // 역 참조할 수 있어야 한다.
-          obj.parent = this
-          obj.subKey = category
-
-          // 자식이 변화했을 때 변화를 알아차린다.
-          // ViewModel 은 Subject이자 Listener 인 경우가 빈번하다.
-          obj.addListener(this)
+        Object.defineProperty(this, k, ViewModel.defineProperty(this, '', k, v))
+        if (v instanceof ViewModel) {
+          v.parent = this // 역 참조할 수 있어야 한다.
+          v.subKey = k
+          v.addListener(this) // 자식이 변화했을 때 변화를 알아차린다.
+                              // ViewModel 은 Subject이자 Listener 인 경우가 빈번하다.
         }
       }
     })
@@ -95,9 +84,10 @@ const ViewModel = class extends ViewModelListener {
     Object.seal(this)
   }
 
-  viewmodelUpdated (updated) {
-    updated.forEach(v => this.#isUpdated.add(v))
-  }
+  viewmodelUpdated (updated) { updated.forEach(v => this.#isUpdated.add(v)) }
+  addListener(v, _ = type(v, ViewModelListener)){ this.#listeners.add(v) }
+  removeListener(v, _ = type(v, ViewModelListener)){ this.#listeners.delete(v) }
+  notify(){this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated))}
 }
 
 const ViewModelValue = class {
@@ -109,34 +99,33 @@ const ViewModelValue = class {
 }
 
 const BinderItem = class {
-  el; viewmodel;
-  constructor (el, viewmodel, _0 = type(el, HTMLElement), _1 = type(viewmodel, 'string')) {
+  el; vmName;
+  constructor (el, vmName, _0 = type(el, HTMLElement), _1 = type(vmName, 'string')) {
     this.el = el
-    this.viewmodel = viewmodel
+    this.vmName = vmName
     Object.freeze(this)
   }
 }
 
 const Binder = class extends ViewModelListener {
   #items = new Set;
-  // category당 한 개의 processor를 사용하게 하기 위함
-  // 자료구조를 선택할 때 심각하게 생각해야 한다.
-  #processors = {};
+  #processors = {}; // category당 한 개의 processor를 사용하게 하기 위함
+                    // 자료구조를 선택할 때 심각하게 생각해야 한다.
+
   add(v, _ = type(v, BinderItem)){this.#items.add(v)}
 
   // 값을 사용하는 형태. 값을 방어하는 다른 체계를 만들어줘야 한다.
   addProcessor(v, _ = type(v, Processor)){this.#processors[v.category] = v}
   render(viewmodel, _ = type(viewmodel, ViewModel)) {
     const processores = Object.entries(this.#processors)
-    this.#items.forEach(item => {
-      const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+    this.#items.forEach(({ vmName, el }) => {
+      const vm = type(viewmodel[vmName], ViewModel)
       processores.forEach(([pk, processor]) => {
         Object.entries(vm[pk]).forEach(([k, v]) => {
-          // Binder는 processor의 protocal을 알고 있다. 즉, 의존성이 생긴 것이다.
-          // 이것을 알고리즘의 일반화라고 한다. (Generic Algorithm) => 제일 어려운 부분
-          // structure를 남기고 Strategy을 type으로 내보낸다.
-          // 안정화/일반화 되어 있는 코드는 protocal이 적다 = 만들기가 어렵다.
-          processor.process(vm, el, k, v)
+          processor.process(vm, el, k, v) // Binder는 processor의 protocal을 알고 있다. 즉, 의존성이 생긴 것이다.
+                                          // 이것을 알고리즘의 일반화라고 한다. (Generic Algorithm) => 제일 어려운 부분
+                                          // structure를 남기고 Strategy을 type으로 내보낸다.
+                                          // 안정화/일반화 되어 있는 코드는 protocal이 적다 = 만들기가 어렵다.
         })
       })
     })
@@ -153,8 +142,8 @@ const Binder = class extends ViewModelListener {
 
   viewmodelUpdated (updated) {
     const items = {}
-    this.#items.forEach(item => {
-      items[item.viewmodel] = [type(viewmodel[item.viewmodel], ViewModel), item.el]
+    this.#items.forEach(({ vmName, el }) => {
+      items[vmName] = [type(viewmodel[vmName], ViewModel), el]
     })
     updated.forEach(({ subKey, category, k, v }) => {
       if (!items[subKey]) return
@@ -196,27 +185,37 @@ const Scanner = class {
     return binder;
   }
   checkItem (binder, el) {
-    const vm = el.getAttribute('data-viewmodel')
-    if (vm) binder.add(new BinderItem(el, vm))
+    const vmName = el.getAttribute('data-viewmodel')
+    if (vmName) binder.add(new BinderItem(el, vmName))
   }
 }
 
 const scanner = new Scanner()
 const binder = scanner.scan(document.querySelector('#target'))
-binder.addProcessor(new (class extends Processor {
+binder.addProcessor(new class extends Processor {
   _process (vm, el, k, v) { el.style[k] = v }
-})('styles'))
-binder.addProcessor(new (class extends Processor {
+}('styles'))
+binder.addProcessor(new class extends Processor {
   _process (vm, el, k, v) { el.setAttribute(k, v) }
-})('attributes'))
-binder.addProcessor(new (class extends Processor {
+}('attributes'))
+binder.addProcessor(new class extends Processor {
   _process (vm, el, k, v) { el[k] = v }
-})('properties'))
-binder.addProcessor(new (class extends Processor {
+}('properties'))
+binder.addProcessor(new class extends Processor {
   _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
-})('events'))
+}('events'))
 
 const getRandom = () => parseInt(Math.random() * 150) + 100
+const wrapper = ViewModel.get({
+  styles: { width: '50%', background: '#ffa', cursor: 'pointer' },
+  events: {
+    click(e, vm) {
+      vm.parent.isStop = true // 부모(wrapper)의 값을 변경한다.
+    }
+  }
+})
+const title = ViewModel.get({ properties: { innerHTML: 'Title' } })
+const contents = ViewModel.get({ properties: { innerHTML: 'Contents' } })
 const viewmodel = ViewModel.get({
   isStop: false,
   changeContents () {
@@ -224,20 +223,7 @@ const viewmodel = ViewModel.get({
     this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
     this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
   },
-  wrapper: ViewModel.get({
-    styles: { width: '50%', background: '#ffa', cursor: 'pointer' },
-    events: {
-      click(e, vm) {
-        vm.parent.isStop = true // 부모(wrapper)의 값을 변경한다.
-      }
-    }
-  }),
-  title: ViewModel.get({
-    properties: { innerHTML: 'Title' }
-  }),
-  contents: ViewModel.get({
-    properties: { innerHTML: 'Contents' }
-  })
+  wrapper, title, contents
 })
 
 // watch가 생겼다.
