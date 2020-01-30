@@ -2,8 +2,10 @@
 
 title: MVVM System 개선
 description: 다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.
-date: 2020-01-28
+date: 2020-01-30
 sidebarDepth: 2
+feed:
+  enable: true
 
 ---
 
