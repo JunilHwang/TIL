@@ -9,90 +9,117 @@ sidebarDepth: 2
 
 # MVVM 개선하기
 
-다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.
+::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
+
+- [코드스피츠 86기 3회차 동영상](https://www.youtube.com/watch?v=D450fPGffTg)
+- [코드스피츠 86기 3회차 교안](https://onedrive.live.com/?authkey=%21AJPuPvgOlGz%2D%5FQE&cid=AE0BF2746200B9CD&id=AE0BF2746200B9CD%2172145&parId=AE0BF2746200B9CD%2171745&o=OneUp)
+
+:::
+
+Strategy, Observer, Composite 등의 Design Pattern 을 이용하여 [앞서 작성한 MVVM System](../MVVM)을 개선하는 방법에 대해 기술합니다.
 
 ## Strategy Pattern
 
-`Strategy(전략)`이란 쉽게 말해서 프로그램을 만들었을 때 핵심적인 부분을 의미한다. 이전에 MVVM System을 만들 때 만든 Binder의 코드를 분해해보면 다음과 같다.
+`Strategy(전략)`이란 쉽게 말해서 프로그램의 핵심적인 부분을 의미한다.
 
-::: tip Structure
+### Defined
 
-먼저 Binder에 대한 `자료구조` 부분이다.
+- 목적을 달성하기 위해 일을 수행하는 방식, 비즈니스 규칙, 문제를 해결하는 알고리즘 등
+- Stategy Pattern: **전략을 쉽게 바꿀 수 있도록** 해주는 디자인 패턴
+- **같은 문제를 해결하는 여러 알고리즘**이 클래스별로 캡슐화되어 있고 이들이 필요할 때 교체할 수 있도록 함
 
-``` js{2-6}
-const Binder = class {
-  #items = new Set()
-  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
-  render (viewmodel, _ = type(viewmodel, ViewModel)) {
-    this.#items.forEach(item => {
-      const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
-      Object.entries(vm.styles).forEach(([k, v]) => el.style[k] = v)
-      Object.entries(vm.attributes).forEach(([k, v]) => el.attribute[k] = v)
-      Object.entries(vm.properties).forEach(([k, v]) => el[k] = v)
-      Object.entries(vm.events).forEach(([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel))
-    })
+@startuml
+interface Strategy
+Context *- Strategy : Context에서 Strategy를 사용한다.
+Strategy <|-- "구현체1" StrategyImplementer01
+Strategy <|-- "구현체2" StrategyImplementer02
+@enduml
+
+### Strategy 분석 및 추출
+
+앞서 작성한 MVVM System의 `Binder`를 분해해보면 다음과 같다.
+
+- 먼저 Binder에 대한 `Structure(자료구조)` 부분이다.
+  ``` js{2-6}
+  const Binder = class {
+    #items = new Set()
+    add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
+    render (viewmodel, _ = type(viewmodel, ViewModel)) {
+      this.#items.forEach(item => {
+        const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+        Object.entries(vm.styles).forEach(([k, v]) => el.style[k] = v)
+        Object.entries(vm.attributes).forEach(([k, v]) => el.attribute[k] = v)
+        Object.entries(vm.properties).forEach(([k, v]) => el[k] = v)
+        Object.entries(vm.events).forEach(([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel))
+      })
+    }
   }
-}
-```
-:::
+  ```
 
-::: tip Control
-
-`자료구조`를 제어하는 부분이다.
-
-``` js{7-10}
-const Binder = class {
-  #items = new Set()
-  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
-  render (viewmodel, _ = type(viewmodel, ViewModel)) {
-    this.#items.forEach(item => {
-      const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
-      Object.entries(vm.styles).forEach(([k, v]) => el.style[k] = v)
-      Object.entries(vm.attributes).forEach(([k, v]) => el.attribute[k] = v)
-      Object.entries(vm.properties).forEach(([k, v]) => el[k] = v)
-      Object.entries(vm.events).forEach(([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel))
-    })
+- `자료구조`를 `Control(제어)`하는 부분이다.
+  ``` js{7-10}
+  const Binder = class {
+    #items = new Set()
+    add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
+    render (viewmodel, _ = type(viewmodel, ViewModel)) {
+      this.#items.forEach(item => {
+        const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+        Object.entries(vm.styles).forEach(([k, v]) => el.style[k] = v)
+        Object.entries(vm.attributes).forEach(([k, v]) => el.attribute[k] = v)
+        Object.entries(vm.properties).forEach(([k, v]) => el[k] = v)
+        Object.entries(vm.events).forEach(([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel))
+      })
+    }
   }
-}
-```
-:::
+  ```
 
-::: tip Strategy
+- 마지막으로 Binder의 핵심인 `Strategy(전략,알고리즘)`에 해당하는 부분이다.
+  ``` js{8,11,14,17}
+  const Binder = class {
+    #items = new Set()
+    add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
+    render (viewmodel, _ = type(viewmodel, ViewModel)) {
+      this.#items.forEach(item => {
+        const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
+        Object.entries(vm.styles).forEach(
+          ([k, v]) => el.style[k] = v
+        )
+        Object.entries(vm.attributes).forEach(
+          ([k, v]) => el.attribute[k] = v
+        )
+        Object.entries(vm.properties).forEach(
+          ([k, v]) => el[k] = v
+        )
+        Object.entries(vm.events).forEach(
+          ([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel)
+        )
+      })
+    }
+  }
+  ```
 
-마지막으로 Binder의 핵심인 알고리즘 부분에 해당하는 부분이다.
+`Strategy`는 `Structure`를 가지고 있어야 작동하는데 이 때 `Composite Pattern`을 이용하여 해결한다.
+Strategy Pattern을 사용한다는 것은 **알고리즘이 사용된 Code를 object(객체)로 바꾸는 것**이라고 할 수 있다.
+그리고 이 때 **Binder는 Strategy에 대한 Dependency**가 생기게 된다.
 
-- `([k, v]) => el.style[k] = v`
-- `([k, v]) => el.attribute[k] = v`
-- `([k, v]) => el[k] = v`
-- ```([k, v]) => el[`on${k}`] = e => v.call(el, e, viewmodel)```
+::: tip Dependency가 발생하는 이유와 Dependency Injection
 
-:::
+객체지향에서는 자신이 가지고 있는 문제를 외부에 있는 객체의 도움(Strategy)을 통해 해결하기 때문에 자연스럽게 Dependency가 생기게 된다.
+반대로 외부 객체의 도움이 없다면 스스로 문제를 해결해야 한다는 것인데, 그 의미는 코드의 수정이 빈번하게 일어난다는 것이다.
 
-Strategy는 Structure와 분리되어 작동할 수 없다. Strategy는 Structure를 가지고 있어야 작동한다. 객체지향에서는 이것을 composition이라는 기법을 이용하여 해결한다.
-
-> code를 object(객체)로 바꾼다. object를 도출할 때 형태가 있어야 한다. 그래서 interface와 class로 도출해야 한다.
-
-이럴 경우, binder는 startegy 객체에 대한 dependency가 생기게 된다.
-
-::: tip 객체지향에서 Dependency가 발생하는 이유
-
-나의 strategy를 외부에 있는 객체의 도움으로 해결하기 때문이다. why? 그렇게 하지 않으면 변화가 생길 때 마다 코드를 수정해야 하기 때문이다.
-
-그래서 자연스럽게 의존성이 생기게 된다.
-
-:::
-
-위와 같은 내용으로 인하여 Binder는 BinderStrategy와 의존성이 생긴다.
-
-그리고 의존성이 생겼을 때 내부에 있는 서브 타입을 만드는 경우가 있고, 외부에서 타입을 공급 받는 경우가 있다.
-내부에서 sub type을 만들게 되면 계속에서 code를 수정 하게 되기 때문에 code에서 object로 변경한 의미가 없어지게 된다.
+의존성이 생겼을 때 내부에 `Sub Type`을 만드는 경우가 있고, 외부에서 `Type을 공급(Injection)` 받는 경우가 있다.
+Sub Type 사용시 계속에서 code를 수정 하게 되기 때문에 code에서 object로 변경한 의미가 없어지게 된다.
 따라서 type은 외부에서 주입 받아야 한다. 이것을 `DI(Dependency Injection)` 라고 한다.
+그래서 Strategy를 도출하는 순간 자동으로 `Dependency Injection`이 생기게 된다.
+**반대로 Dependency는 있는데 DI가 생기지 않았다면 그것은 잘못된 것이다.**
 
-이렇게 객체지향에서 코드를 객체로 변환하는 순간 자동으로 `DI`가 생기게 된다. 그리고, Dependency가 만들어졌는데 DI가 생기지 않았다면 그것은 잘못 만든 것이다.
+:::
 
-이제 Binder에서 위임하게 될 Processor Class를 만들어야 한다. 이러한 행위를 `Composition`이라고 한다.
+이제 Binder의 Strategy가 무엇인지 알았으니 이것을 **추출하여 위임** 해야 한다.
+**이러한 행위를 `Composition`이라고 한다.**
 
 ``` js
+// Binder의 Strategy가 될 Class
 const Processor = class {
   category;
   constructor (category) {
@@ -108,21 +135,38 @@ const Processor = class {
 }
 ```
 
-자식에게 위임하는 것을 `template method` 라고 하고, 자식쪽에 의존하고 있는 method를 `hook`이라고 한다.
+코드를 보면 **process method의 책임을 _process method에게 위임**한다.
+이 때 processor class를 상속 받아서 _process를 구현 하게 되는 데,
+**구현되는 method(_process)** 를 `Hook Method`라고 한고,
+**Hook method(_proces)에게 책임을 위임하게 되는 method(process)** 를 `Template Method` 라고 한다.
 
-이제 `Binder`를 수정해야 한다.
+***
+
+- `process`
+  - Template method
+  - Hook Method에게 책임을 위임한다.
+
+- `_process`
+  - Hook method
+  - template method에서 호출되는 method
+
+***
+
+ `Processor`를 작성했으면, `Binder`를 수정해야 한다.
 
 ``` js
-const Binder = class extends ViewModelListenter {
-  #item = new Set;
-  // category당 한 개의 processor를 사용하게 하기 위함
-  // 자료구조를 선택할 때 심각하게 생각해야 한다.
-  #processors = {};
-  add(v, _ = type(v, BinderItem)){this.#item.add(v)}
+const Binder = class {
+  #item = new Set
+  #processors = {}  // category당 한 개의 processor를 사용하게 하기 위함
+                    // 자료구조를 선택할 때 심각하게 생각해야 한다.
+                    
+  add (v, _ = type(v, BinderItem)) { this.#item.add(v) }
   
-  // 값을 사용하는 형태. 값을 방어하는 다른 체계를 만들어줘야 한다.
-  addProcessor(v, _ = type(v, Processor)){this.#processors[v.category] = v}
-  render(viewmodel, _ = type(viewmodel, ViewModel)) {
+  // Strategy
+  addProcessor (v, _ = type(v, Processor)) {
+    this.#processors[v.category] = v
+  }
+  render (viewmodel, _ = type(viewmodel, ViewModel)) {
     const processores = Object.entries(this.#processors)
     this.#item.forEach(item => {
       const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
