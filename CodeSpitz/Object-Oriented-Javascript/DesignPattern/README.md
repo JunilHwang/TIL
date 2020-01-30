@@ -305,14 +305,14 @@ ViewModel에서 notify는
 
 `Object.defineProperty`는 객체에 직접 새로운 속성을 정의하거나 이미 존재하는 속성을 수정한 후 그 객체를 반환한다.
 
-Parameter는 다음과 같다.
+`Parameter`는 다음과 같다.
 
-- obj: 속성을 정의할 객체
-- prop: 새로 정의하거나 수정하려는 속성의 이름
-- descriptor: 새로 정의하거나 수정하려는 속성을 기술하는 객체
-  - enumerable: iterator에 노출 가능 여부(true|false)
-  - get: prop에 대한 getter
-  - set: prop에 대한 setter
+- `obj` 속성을 정의할 객체
+- `prop` 새로 정의하거나 수정하려는 속성의 이름
+- `descriptor` 새로 정의하거나 수정하려는 속성을 기술하는 객체
+  - `enumerable` iterator에 노출 가능 여부(true|false)
+  - `get` prop에 대한 getter
+  - `set` prop에 대한 setter
 
 ``` js{6-10,27,29}
 const ViewModel = class extends ViewModelListener {
@@ -329,9 +329,9 @@ const ViewModel = class extends ViewModelListener {
   static defineProperties = (vm, category, obj) => (
     Object.defineProperties(
       obj,
-      Object.entries(obj).reduce((r, [k, v]) => (
-        r[k] = ViewModel.descriptor(vm, category, k, v), r
-      ), {}))
+      Object.entries(obj)
+            .reduce((r, [k, v]) => (r[k] = ViewModel.descriptor(vm, category, k, v), r), {})
+      )
   )
   
   styles={}; attributes={}; properties={}; events={};
@@ -362,7 +362,7 @@ Composite Pattern은 **위임을 반복**하여 취합한다 = **동적위임**
 
 이것을 ViewModel에 적용해야 한다.
 
-``` js{2-3,12-17,25,34-39,42-43,48}
+``` js{2-3,12-17,25,34-39,42-43,47-48}
 const ViewModel = class extends ViewModelListener {
   static #subjects = new Set
   static #inited = false
@@ -423,47 +423,73 @@ const ViewModelValue = class {
 }
 ```
 
+이 코드의 핵심 적인 내용은 _최상위의 ViewModel에서 모든 ViewModel의 변경내역을 취합하여 Binder에게 알리는 것_ 이다.
+
 ### Observer
 
 이제 Observer 역할을 하는 Binder의 입장을 살펴봐야 한다.
-Binder는  ViewModel이 보내는 **notify를 감지**하여 ViewModel의 값을 View에 **Rendering** 한다.
+Binder는  ViewModel이 보내는 **notify를 감지**하여 *ViewModel의 값을 View에 Rendering* 한다.
 
-``` js
+``` js{7-8,13-25}
 const Binder = class extends ViewModelListener {
   #items = new Set; #processors = {}
-  add(v, _ = type(v, BinderItem)){ this.#items.add(v) }
-  addProcessor(v, _ = type(v, Processor)){/*생략*/}
-  render(viewmodel, _ = type(viewmodel, ViewModel)){/*생략*/}
-  watch(viewmodel, _ = type(viewmodel, ViewModel)){
+  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
+  addProcessor (v, _ = type(v, Processor)) { /*생략*/ }
+  render (viewmodel, _ = type(viewmodel, ViewModel)) {/*생략*/}
+  watch (viewmodel, _ = type(viewmodel, ViewModel)) {
     viewmodel.addListener(this)
     this.render(viewmodel)
   }
-  unwatch(viewmodel, _ = type(viewmodel, ViewModel)){
+  unwatch (viewmodel, _ = type(viewmodel, ViewModel)) {
     viewmodel.removeListener(this)
   }
   viewmodelUpdated (updated) {
     const items = {}
-    this.#items.forEach(item => {
-      items[item.viewmodel] = [type(viewmodel[item.viewmodel], ViewModel), item.el]
+    this.#items.forEach(({ vmName, el }) => {
+      items[vmName] = [type(rootViewModel[vmName], ViewModel), el]
     })
     updated.forEach(({ subKey, category, k, v }) => {
       if (!items[subKey]) return
       const [vm, el] = items[subKey], processor = this.#processors[category]
       // injection 이 안 되어 있을 경우  return
       if (!el || !processor) return
-      processor.process(vm, el, k, v) 
+      processor.process(vm, el, k, v)
     })
   }
 }
 ```
+
+@startuml
+collections ChildViewModel order 1
+participant RootViewModel order 2
+participant Binder order 3
+participant View order 4
+RootViewModel <-- Binder : Observe(Watch)
+note over ChildViewModel : updated
+note over ChildViewModel : Notify
+ChildViewModel --> RootViewModel : Call **viewmodelUpdated**
+note over RootViewModel : Composite
+note over RootViewModel : Notify
+RootViewModel --> Binder : Call **viewmodelUpdated**
+Binder --> View : Rendering
+@enduml
+
+- Binder가 RootViewModel을 Observe 한다.
+- ChildViewModel이 Upated되면 Update된 내용을 취합하여 RootViewModel에게 보낸다.
+- RootViewModel은 취합된 내용을 Binder에게 알린다.
+
+이 설계에서 핵심이 되는 내용은, _Binder는 RootViewModel만 Observe 하고 있다는 것이다._
 
 ## Client
 
 위에서 작성한 코드를 직접 사용해보자.
 
 ``` js
+// HTML에 정의된 viewmodel을 scan한다.
 const scanner = new Scanner()
 const binder = scanner.scan(document.querySelector('#target'))
+
+// Binder에 Strategy를 주입한다.
 binder.addProcessor(new (class extends Processor {
   _process (vm, el, k, v) { el.style[k] = v }
 })('styles'))
@@ -477,11 +503,12 @@ binder.addProcessor(new (class extends Processor {
   _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
 })('events'))
 
+// ViewModel을 만든다.
 const getRandom = () => parseInt(Math.random() * 150) + 100
-const viewmodel = ViewModel.get({
+const rootViewModel = ViewModel.get({
   isStop: false,
   changeContents () {
-    // render 사라졌다
+    // ViewModel이 변경되면, 이를 취합하여 RootViewModel에게 보낸다.
     this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
     this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
   },
@@ -489,7 +516,7 @@ const viewmodel = ViewModel.get({
     styles: { width: '50%', background: '#ffa', cursor: 'pointer' },
     events: {
       click(e, vm) {
-        vm.parent.isStop = true // 부모(wrapper)의 값을 변경한다.
+        vm.parent.isStop = true // rootViewModel.isStop = true 로 해도 된다. 
       }
     }
   }),
@@ -501,12 +528,33 @@ const viewmodel = ViewModel.get({
   })
 })
 
-// watch가 생겼다.
-binder.watch(viewmodel)
+// Binder는 RootViewModel만 Observing 한다.
+binder.watch(rootViewModel)
+
+// 테스트를 위하여 viewmodel의 내용을 실시간으로 변경하도록 한다.
 const f = () => {
-  // render가 사라졌다.
   viewmodel.chagneContents()
   if (!viewmodel.isStop) requestAnimationFrame(f)
 }
 requestAnimationFrame(f)
 ```
+
+### 전체 코드
+
+<<< @/CodeSpitz/Object-Oriented-Javascript/DesignPattern/example.html
+
+[github에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/DesignPattern/example.html)
+
+## Summary
+
+- Strategy Pattern
+  - Binder의 Strategy를 찾아낸 후 추출한다.
+  - Binder에 사용되는 각각의 Strategy를 만들어서 주입한다. (Dependency Injection)
+  - 이 때 Strategy는 TypeCheck를 하고, 구현은 ChildStrategy에게 맡긴다 (Template Method Pattern)
+
+- Observer Pattern
+  - ViewModel의 변경 내역을 알리는 ViewModelListener Interface를 만들고, ViewModel과 Binder가 이를 상속하여 구현하도록 한다.
+  - ChildViewModel에 변경이 일어나면 이를 취합하여 RootViewModel에게 알린다 (Composite Pattern)
+  - RootViewModel은 취합한 내용을 Binder에게 알린다 (Notify)
+  - Binder는 RootViewModel만 Observing 한다.
+
