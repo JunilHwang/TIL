@@ -143,8 +143,8 @@ const Processor = class {
 
 코드를 보면 **process method의 책임을 _process method에게 위임**한다.
 이 때 processor class를 상속 받아서 _process를 구현 하게 되는 데,
-**구현되는 method(_process)** 를 `Hook Method`라고 한고,
-**Hook method(_proces)에게 책임을 위임하게 되는 method(process)** 를 `Template Method` 라고 한다.
+*구현되는 method(_process)* 를 `Hook Method`라고 한고,
+*Hook method(_proces)에게 책임을 위임하게 되는 method(process)* 를 `Template Method` 라고 한다.
 
 이것을 Template Method Pattern 이라고 한다. 자세한 내용은 [여기](https://gmlwjd9405.github.io/2018/07/13/template-method-pattern.html)를 참고하면 된다.
 
@@ -297,7 +297,7 @@ const ViewModel = class extends ViewModelListner {
 }
 ```
 
-ViewModel에도 Listener가 필요한 이유는, **자식의 변화를 부모가 알아야 하기 때문이다.**
+ViewModel에도 Listener가 필요한 이유는, _자식의 변화를 부모가 알아야 하기 때문이다._
 
 ### ViewModel
 
