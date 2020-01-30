@@ -102,6 +102,8 @@ Strategy <|-- "구현체2" StrategyImplementer02
 Strategy Pattern을 사용한다는 것은 **알고리즘이 사용된 Code를 object(객체)로 바꾸는 것**이라고 할 수 있다.
 그리고 이 때 **Binder는 Strategy에 대한 Dependency**가 생기게 된다.
 
+### Dependency Injection
+
 ::: tip Dependency가 발생하는 이유와 Dependency Injection
 
 객체지향에서는 자신이 가지고 있는 문제를 외부에 있는 객체의 도움(Strategy)을 통해 해결하기 때문에 자연스럽게 Dependency가 생기게 된다.
@@ -126,11 +128,15 @@ const Processor = class {
     this.category = category
     Object.freeze(this)
   }
-  // 추상 클래스를 가정한다.
-  process (vm, el, k, v, _0 = type(vm, ViewModel), _1 = type(el, HTMLElement), _2 = type(k, "string")) {
+  
+  // template method
+  process (vm, el, k, v, _0 = type(vm, ViewModel),
+                         _1 = type(el, HTMLElement),
+                         _2 = type(k, "string")) {
     this._process(vm, el, k, v)
   }
-  // template method: hook
+  
+  // hook method
   _process (vm, el, k, v) { throw 'override' }
 }
 ```
@@ -139,6 +145,8 @@ const Processor = class {
 이 때 processor class를 상속 받아서 _process를 구현 하게 되는 데,
 **구현되는 method(_process)** 를 `Hook Method`라고 한고,
 **Hook method(_proces)에게 책임을 위임하게 되는 method(process)** 를 `Template Method` 라고 한다.
+
+이것을 Template Method Pattern 이라고 한다. 자세한 내용은 [여기](https://gmlwjd9405.github.io/2018/07/13/template-method-pattern.html)를 참고하면 된다.
 
 ***
 
@@ -154,7 +162,7 @@ const Processor = class {
 
  `Processor`를 작성했으면, `Binder`를 수정해야 한다.
 
-``` js
+``` js{3,4,8,9,16-20}
 const Binder = class {
   #item = new Set
   #processors = {}  // category당 한 개의 processor를 사용하게 하기 위함
@@ -162,182 +170,214 @@ const Binder = class {
                     
   add (v, _ = type(v, BinderItem)) { this.#item.add(v) }
   
-  // Strategy
-  addProcessor (v, _ = type(v, Processor)) {
-    this.#processors[v.category] = v
-  }
+  // Strategy를 주입 받는다.
+  addProcessor (v, _ = type(v, Processor)) { this.#processors[v.category] = v }
+  
+  // Render에서 주입 받은 Strategy를 사용한다.
   render (viewmodel, _ = type(viewmodel, ViewModel)) {
     const processores = Object.entries(this.#processors)
     this.#item.forEach(item => {
       const vm = type(viewmodel[item.viewmodel], ViewModel), el = item.el
       processores.forEach(([pk, processor]) => {
         Object.entries(vm[pk]).forEach(([k, v]) => {
-          // Binder는 processor의 protocal을 알고 있다. 즉, 의존성이 생긴 것이다.
-          // 이것을 알고리즘의 일반화라고 한다. (Generic Algorithm) => 제일 어려운 부분
-          // structure를 남기고 Strategy을 type으로 내보낸다.
-          // 안정화/일반화 되어 있는 코드는 protocal이 적다 = 만들기가 어렵다.
           processor.process(vm, el, k, v)
         })
       })
     })
   }
 }
+
 ```
 
-::: tip Strategy Step
+::: tip 알고리즘의 일반화(Generic Algorithm)
 
-1. 구조적인 부분과 strategy 부분을 나눈다.
-2. strategy의 공통점을 찾는다.
-3. strategy와 어떻게 상태와 관계를 맺는지 찾는다.
-4. 앞에서 도출된 형을 가지고 알고리즘을 고치는 것
+- structure를 남기고 Strategy을 type으로 내보낸다.
+- Binder는 processor의 protocal을 알고 있다 = 의존성이 생긴 것
+- 이러한 과정을 **알고리즘의 일반화(Generic Algorithm)라고 함** → 제일 어려운 부분
+- 안정된 Generic Algorithm은 protocal이 적다 → 만들기가 어렵다.
 
 :::
 
+그리고 Strategy를 주입하는 Client Code는 다음과 같다.
+
+``` js{2,5,8,11}
+binder.addProcessor(new class extends Processor {
+  _process (vm, el, k, v) { el.style[k] = v }
+}('styles'))
+binder.addProcessor(new class extends Processor {
+  _process (vm, el, k, v) { el.setAttribute(k, v) }
+}('attributes'))
+binder.addProcessor(new class extends Processor {
+  _process (vm, el, k, v) { el[k] = v }
+}('properties'))
+binder.addProcessor(new class extends Processor {
+  _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+}('events'))
+```
 
 @startuml
 card Binder
 card Processor
 Binder ->> Processor : Dependency Injection
 @enduml
-Binder에 Processor를 주입 받는다. 그리고 의존성은 한 방향으로만 되어있어야 한다.
 
-## Observer
+- Binder가 Processor를 주입 받는다
+- 의존성은 단 방향으로만 되어있어야 한다.
+- ~~Binder가 Processor를 짝사랑한다.~~
 
-이제 Observer를 만들어야 한다.
+### 정리
+
+- 구조적인 부분과 strategy 부분을 나눈다.
+- strategy의 공통점을 찾는다.
+- strategy와 어떻게 상태와 관계를 맺는지 찾는다.
+- 앞에서 도출된 형(type,class,interface)을 가지고 알고리즘을 고치는 것
+
+## Observer Pattern
+
+기존에는 Observer 대신에 Call을 사용했다.
 
 @startuml
 rectangle View
-agent Binder
-rectangle ViewModel
+rectangle Binder
 rectangle Model
+agent ViewModel
+
+View -[hidden] Model
+View <<-- Binder
+Binder <<->> ViewModel : **call**
+Model <<-- ViewModel
+Model -->> ViewModel
+@enduml
+
+이제 Call을 이용하는 방식에서 Observer Pattern을 이용하는 방식으로 바꿔야 한다.
+
+@startuml
+rectangle View
+rectangle Binder
+rectangle Model
+agent ViewModel
 
 View -[hidden] Model
 View <<-- Binder
 Binder ->> ViewModel : Observe
-Binder <<- ViewModel : notify
-Model <<->> ViewModel
+Binder <<- ViewModel : Notify
+Model <<-- ViewModel
+Model -->> ViewModel
 @enduml
 
-Observer Pattern에서는 감시 당하는 쪽(Subject)이 변화가 생기면 Observer(Listener)에게 변화의 내용을 알려줘야 한다.
+Observer Pattern에서 중요한 점은 **감시 당하는 쪽(Subject)이 변화가 생기면 Observer(Listener)에게 변화의 내용을 알려줘야 한다(Notify).**
 
-javascript 에서는 변화의 감지를 위해서 다음과 같은 API가 있다.
+Javascript는 변화의 감지를 위해 사용하는 다음과 같은 API가 있다.
 
-- `defineProperty` : 실무 상에서 사용할 수 있다.
-- `Proxy` : Babel로 Converting이 되지 않는다.
+- `Proxy` : Babel로 Converting이 되지 않는다 = 실무에서 사용할 때 제약이 있다.
+- `defineProperty` : ES5 까지 지원한다 =  실무 상에서 사용할 수 있다.
+
+이러한 이유로 defineProperty를 이용하여 만들어볼 것이다.
+
+### Listener
+
+일단 변화의 감지에 대한 내용을 수신하는 객체가 필요하다.
 
 ``` js
 const ViewModelListener = class {
   viewmodelUpdated(updated){throw 'override'}
 }
-const ViewModel = class {
-  static get(data){return new ViewModel(data)}
+```
+
+Listener는 Binder와 ViewModel이 상속 받아 사용할 것이다.
+
+``` js
+const Binder = class extends ViewModelListner {
+  // .. 생략
+  viewmodelUpdated (updated) {}
+}
+const ViewModel = class extends ViewModelListner {
+  // .. 생략
+  viewmodelUpdated (updated) {}
+}
+```
+
+ViewModel에도 Listener가 필요한 이유는, **자식의 변화를 부모가 알아야 하기 때문이다.**
+
+### ViewModel
+
+ViewModel에서 notify는
+
+`Object.defineProperty`는 객체에 직접 새로운 속성을 정의하거나 이미 존재하는 속성을 수정한 후 그 객체를 반환한다.
+
+Parameter는 다음과 같다.
+
+- obj: 속성을 정의할 객체
+- prop: 새로 정의하거나 수정하려는 속성의 이름
+- descriptor: 새로 정의하거나 수정하려는 속성을 기술하는 객체
+  - enumerable: iterator에 노출 가능 여부(true|false)
+  - get: prop에 대한 getter
+  - set: prop에 대한 setter
+
+``` js{6-10,27,29}
+const ViewModel = class extends ViewModelListener {
+  static get = data => new ViewModel(data)
+  static descriptor = (vm, category, k, v) => ({
+    enumerable: true,
+    get: () => v,
+    set: newV => {
+      // 값을 대체 후, isUpdated에 등록하고, listener에게 변경된 내역이 전달된다.
+      v = newV
+      vm.#isUpdated.add(new ViewModelValue(vm.subKey, category, k, v))
+    }
+  })
+  static defineProperties = (vm, category, obj) => (
+    Object.defineProperties(
+      obj,
+      Object.entries(obj).reduce((r, [k, v]) => (
+        r[k] = ViewModel.descriptor(vm, category, k, v), r
+      ), {}))
+  )
+  
   styles={}; attributes={}; properties={}; events={};
   #isUpadated = new Set; #listenters = new Set;
-  addListener(v, _ = type(v, ViewModelListener)){ this.#listenters.add(v) }
-  removeListener(v, _ = type(v, ViewModelListener)){ this.#listenters.delete(v) }
-  notify(){this.#listenters.forEach(v => v.viewmodelUpdated(this.#isUpadated))}
+  
   constructor(checker, data, _ = type(data, 'object')) {
     super();
     Object.entries(data).forEach(([k, obj]) => {
       if('styles,attributes,properties'.includes(k)) {
-        this[k] = Object.defineProperties(obj, Object.entries(obj).reduce((r, [k, v]) => {
-          r[k] = {
-            enumerable: true,
-            get: _ => v,
-            set: newV => {
-              v = newV; // 새로운 값에 대해 알린다.
-              vm.#isUpdated.add(new ViewModelValue(category, k, v))
-            }
-          }
-          return r
-        }, {}))
+        this[k] = ViewModel.defineProperties(this, k, v)
       } else {
-        Object.defineProperty(this, k, {
-          enumerable: true,
-          get: _ => v,
-          set: newV => {
-            v = newV
-            this.#isUpadated.add(new ViewModelValue('', k, v))
-          }
-        })
+        Object.defineProperty(this, k, ViewModel.descriptor(this, '', k, v))
       }
     })
   }
+  addListener (v, _ = type(v, ViewModelListener)) { this.#listenters.add(v) }
+  removeListener (v, _ = type(v, ViewModelListener)) { this.#listenters.delete(v) }
+  notify () { this.#listenters.forEach(v => v.viewmodelUpdated(this.#isUpadated)) }
+  viewmodelUpdated (updated) { updated.forEach(v => this.#isUpdated.add(v)) }
 }
 ```
 
-## Composite
+이 코드의 핵심은 **descriptor에 정의한 setter를 통해서 값을 대체 한 다음 isUpdated에 변경된 내역을 추가하는 것이다.**
 
-나의 문제를 **위임을 반복**하여 취합하는 행위 = **동적위임**
+### Composite
 
-``` js
-const ViewModel = class extends ViewModelListener {
-  // .. 생략
-  subKey = ''; parent = null;
-  constructor(checker, data, _ = type(data, 'object')) {
-    super()
-    Object.entries(data).forEach(([k, v]) => {
-      if ('styles,attributes,properties'.includes(data, 'object')) {
-        // .. 생략
-      } else {
-        Object.defineProperty(this, k, { /*생략*/ })
-        if (v instanceof ViewModel) {
-          // 역 참조할 수 있어야 한다. 
-          v.parent = this
-          v.subKey = k
-          
-          // 자식이 변화했을 때 변화를 알아차린다.
-          // ViewModel 은 Subject이자 Listener 인 경우가 빈번하다.
-          v.addListener(this)
-        }
-      }
-    })
-  }
-  viewmodelUpdated (updated) {
-    updated.forEach(v => this.#isUpdated.add(v))
-  }
-}
-```
+Composite Pattern은 **위임을 반복**하여 취합한다 = **동적위임**
 
-`ViewModelValue` 또한 변경해줘야 한다.
+이것을 ViewModel에 적용해야 한다.
 
-``` js
-// Observer가 받는 Object = Info Object
-// notify를 수신하는 Object
-// Info Object를 잘 구성하기가 어렵다 
-const ViewModelValue = class {
-  subKey; category; k; v;
-  constructor (subKey, category, k, v) {
-    this.subKey = subKey
-    this.category = category
-    this.k = k
-    this.v = v
-    Object.freeze(this)
-  }
-}
-```
-
-`subKey` 가 생겼기 때문에, `defineProperty`도 수정해줘야 한다.
-
-``` js
-this.#isUpdated.add(new ViewModelValue(this.subKey, '', k, v))
-```
-
-마지막으로 `notify`와 `seal`을 추가해야 한다.
-
-``` js
+``` js{2-3,12-17,25,34-39,42-43,48}
 const ViewModel = class extends ViewModelListener {
   static #subjects = new Set
   static #inited = false
-  static notify (vm) {
+  static get = data => new ViewModel(data)
+  static descriptor = (/* 생략 */)
+  static defineProperties = (/* 생략 */)
+  static notify (vm) { // 변화를 감지하고 Observer(Binder)에게 알린다.
     this.#subjects.add(vm)
     if (this.#inited) return
     this.#inited = true
     const f = () => {
-      this.#subjects.forEach(vm => {
-        if (vm.#isUpdated.size) {
-          vm.notify()
-          vm.#isUpdated.clear()
+      this.#subjects.forEach(vm => { // 만들어진 ViewModel에 대해 반복문을 돌린다.
+        if (vm.#isUpdated.size) { // 변경된 내역이 있을 경우
+          vm.notify() // Listener에게 알리고
+          vm.#isUpdated.clear() // 변경된 내역을 삭제한다.
         }
       })
       requestAnimationFrame(f)
@@ -345,21 +385,48 @@ const ViewModel = class extends ViewModelListener {
     requestAnimationFrame(f)
   }
   
-  // .. 생략
+  #isUpadated = new Set; #listenters = new Set;
+  styles={}; attributes={}; properties={}; events={};
   subKey = ''; parent = null;
-  constructor(checker, data, _ = type(data, 'object')) {
-    super()
-    Object.entries(data).forEach(([k, v]) => { /* 생략 */ })
-    ViewModel.notify(this)
-    Object.seal(this)
-  }
   
+  constructor(checker, data, _ = type(data, 'object')) {
+    super();
+    Object.entries(data).forEach(([k, obj]) => {
+      if('styles,attributes,properties'.includes(k)) {
+        this[k] = ViewModel.defineProperties(this, k, v)
+      } else {
+        Object.defineProperty(this, k, ViewModel.descriptor(this, '', k, v))
+        if (v instanceof ViewModel) {
+          v.parent = this // 역 참조할 수 있어야 한다. 
+          v.subKey = k
+          v.addListener(this) // 자식이 변화했을 때 변화를 알아차린다.
+                              // ViewModel 은 Subject이자 Listener 인 경우가 빈번하다.
+        }
+      }
+    })
+    ViewModel.notify(this) // ViewModel이 생성되는 시점에 변화의 감지를 시작한다.
+    Object.seal(this) // key가 추가/수정/삭제 되지 않도록 한다.
+  }
+  addListener (v, _ = type(v, ViewModelListener)) { this.#listenters.add(v) }
+  removeListener (v, _ = type(v, ViewModelListener)) { this.#listenters.delete(v) }
+  notify () { this.#listenters.forEach(v => v.viewmodelUpdated(this.#isUpadated)) }
+  viewmodelUpdated (updated) { updated.forEach(v => this.#isUpdated.add(v)) }
+}
+
+// subKey가 생겼기 때문에 ViewModelValue 또한 변경해야한다. 
+const ViewModelValue = class {
+  subKey; category; k; v;
+  constructor (subKey, category, k, v) {
+    Object.assign(this, { subKey, category, k, v })
+    Object.freeze(this)
+  }
 }
 ```
 
-## Observer (2)
+### Observer
 
-다시 Observer로 돌아와서, Binder의 입장을 살펴봐야 한다.
+이제 Observer 역할을 하는 Binder의 입장을 살펴봐야 한다.
+Binder는  ViewModel이 보내는 **notify를 감지**하여 ViewModel의 값을 View에 **Rendering** 한다.
 
 ``` js
 const Binder = class extends ViewModelListener {
