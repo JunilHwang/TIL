@@ -1,13 +1,21 @@
 ---
 
 title: None Blocking Javascript 소개
-description: 거침없는(None Blocking) 자바스크립트에 대해 소개합니다.
+description: 거침없는(None Blocking) 자바스크립트의 특징들에 대해 소개합니다.
 date: 2020-01-31
 sidebarDepth: 2
 
 ---
 
 # None Blocking Javascript 소개
+
+::: tip 해당 포스트는 아래의 내용을 토대로 정리한 것입니다.
+
+- [코드스피츠 85기 - 거침없는 자바스크립트 1회차](https://www.youtube.com/watch?v=0NsJsBdYVHI&list=PLBNdLLaRx_rImvbuZnfO-Ecv9OpuCNoCl)
+
+:::
+
+Javascript 라는 언어의 특징에 대해 다루는 내용입니다.
 
 ## Javascript Pipeline
 
@@ -119,20 +127,25 @@ _Stage4 기준 보다 구글이 원하는 순서대로 크롬에 빨리 반영�
 
 ## Program & Timing
 
-1. Language code
+- Language code
   - Lint, IDE
   - ES2020, Tyescript ...
-1. Machine language (Browser, JVM 등의 Runtime)
+
+- Machine language (Browser, JVM 등의 Runtime)
   - Compiler, Transpiler
-1. File
+
+- File
   - Deploy
-1. Load
+
+- Load
   - Browser load
   - Browser parsing
-1. Run
+
+- Run
   - Browser parsing
   - Runtime
-1. Terminate
+
+- Terminate
   - Browser close
 
 개발의 목표
@@ -140,3 +153,5 @@ _Stage4 기준 보다 구글이 원하는 순서대로 크롬에 빨리 반영�
 - 만들어진 코드를 건드리지 않고 더 많은 기능이나 수정을 하는가.
 - 코드가 변화하는 이유를 한 가지고 규정하는 것
 - 변화에 대응하는 여파를 최소화 시키는 것
+
+자바스크립트는 Compile Time과 Run Time의 구분이 존재하지 않는다.
