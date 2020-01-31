@@ -104,7 +104,7 @@ _Stage4 기준 보다 구글이 원하는 순서대로 크롬에 빨리 반영�
 
 - optional catch
 
-### ES11(Strage11)
+### ES11(Stage11)
 
 - *Bigint*
 - *globalThis*
@@ -116,3 +116,27 @@ _Stage4 기준 보다 구글이 원하는 순서대로 크롬에 빨리 반영�
 - WeakReference
 
 *이미 크롬이 지원함*
+
+## Program & Timing
+
+1. Language code
+  - Lint, IDE
+  - ES2020, Tyescript ...
+1. Machine language (Browser, JVM 등의 Runtime)
+  - Compiler, Transpiler
+1. File
+  - Deploy
+1. Load
+  - Browser load
+  - Browser parsing
+1. Run
+  - Browser parsing
+  - Runtime
+1. Terminate
+  - Browser close
+
+개발의 목표
+
+- 만들어진 코드를 건드리지 않고 더 많은 기능이나 수정을 하는가.
+- 코드가 변화하는 이유를 한 가지고 규정하는 것
+- 변화에 대응하는 여파를 최소화 시키는 것
