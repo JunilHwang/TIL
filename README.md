@@ -24,7 +24,9 @@ next: false
 - [Vuepress + Utterances](/Vuepress/Utterances/)
 
 ### 코드스피츠
-- [86기] 객체지향 자바스크립트
+- [85기] 거침없는 자바스크립트(None Blocking Javascript)
+  - [1회차 - Javascript](/CodeSpitz/None-Blocking-Javascript/Intro/)
+- [86기] 객체지향 자바스크립트(Object Oriented Javascript)
   - [1회차 - 객체지향 프로그래밍의 목적과 원칙](/CodeSpitz/Object-Oriented-Javascript/Intro/)
   - [2회차 - MVVM System 구축](/CodeSpitz/Object-Oriented-Javascript/MVVM/)
   - [3회차 - MVVM System 개선](/CodeSpitz/Object-Oriented-Javascript/DesignPattern/)
