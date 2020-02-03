@@ -272,3 +272,110 @@ const ViewModel = class extends ViewModelListener {
 
 transaction이 발견 되면 무조건 function으로 표현해야 한다. transaction이 코드에 섞여있을 경우 문제가 발생할 확률이 높다(응용 하기가 쉽지 않다).
 
+
+## Visitor Pattern
+
+```js{15}
+const Scanner = class {
+  scan (el, _ = type(el, HTMLElement)) {
+    const binder = new Binder;
+    this.checkTiem(binder, el)
+    const stack = [el.firstElementChild]
+    let target
+    while (target = stack.pop()) {
+      this.checkItem(binder, target)
+      if (target.firstElementChild) stack.push(target.firstElementChild)
+      if (target.nextElementSibling) stack.push(target.nextElementSibling)
+    }
+    return binder;
+  }
+  checkItem (binder, el) {
+    const vm = el.getAttribute('data-viewmodel')
+    if (vm) binder.add(new BinderItem(el, vm))
+  }
+}
+```
+
+
+Binder : View에다가 ViewModel을 꽂아준다.
+
+Scanner : ViewModel을 읽어들인다.
+
+Scanner가 존재하는 이유는 checkItem의 정책 때문이다.
+그런데 여기서 문제가 scan과 checkItem의 변화율과 목적이 다르다.
+
+```js{5-11}
+const Scanner = class {
+  scan (el, _ = type(el, HTMLElement)) {
+    const binder = new Binder;
+    this.checkTiem(binder, el)
+    const stack = [el.firstElementChild]
+    let target
+    while (target = stack.pop()) {
+      this.checkItem(binder, target)
+      if (target.firstElementChild) stack.push(target.firstElementChild)
+      if (target.nextElementSibling) stack.push(target.nextElementSibling)
+    }
+    return binder;
+  }
+  checkItem (binder, el) {
+    const vm = el.getAttribute('data-viewmodel')
+    if (vm) binder.add(new BinderItem(el, vm))
+  }
+}
+```
+
+위의 코드에서 stack ~ binder 까지는 scanner의 역할이 아니기 때문에 해당 코드를 Visitor에게 위임해야 한다.
+
+```js{11,17}
+// Visitor : 제어를 Visitor에게 위임한다.
+const Visitor = class {
+  // target의 경우 HTML인지 Canvas인지 알 수 없다. 그래서 추상화 시켜야 한다.
+  visit (action, target, _ = type(action, 'function')) {
+    throw 'override'
+  }
+}
+const DomVisitor = class extends Visitor {
+  // 자식에서 구체적인 형을 알게 되는 것 : Generic
+  // 언어가 어떤 기능을 지원 하느냐보단 그 개념을 어떻게 적용하느냐가 중요하다.
+  visit (action, target , _0 = type(action, 'function'), _1 = type(target, HTMLElement)) {
+    // 제어의 코드가 Visitor에게 몰리기 때문에 제어 역전이 발생한다.
+    const stakc = {}
+    let curr = target.firstElementChild
+    do {
+      // loop 안에서 상호작용을 해야 한다.
+      action(curr) // template method의 hook가 비슷한 역할
+      if (curr.firstElementChild) stack.push(curr.firstElementChild)
+      if (curr.nextElementSibling) stack.push(curr.nextElementSibling)
+    } while (curr = stack.pop())
+  }
+}
+```
+
+Visitor를 작성했으니, Scanner의 코드를 다시 작성해야 한다.
+
+```js{9-12,15}
+const Scanner = class {
+  #visitor
+  constructor (visitor, _ = type(visitor, DomVisitor)) {
+    this.#visitor = visitor
+  }
+  scan (target, _ = type9target, HTMLElement) {
+    const binder = new Binder
+    // Scanner는 ViewModel을 읽어들이기만 하면 된다.
+    const f = el => {
+      const vm = el.getAttribute('data-viewmodel') // 코드의 변화 요인은 이 부분 밖에 없다
+      if (vm) binder.add(new BinderItem(el, vm))
+    }
+    f(target)
+    // DomScan은 Visitor에게 위임한다
+    this.#visitor.visit(f, target)
+    return binder
+  }
+}
+```
+
+설계라는 것은 객체의 재배치가 아니라 코드의 재배치이다.
+
+이 코드가 이 객체의 것인지 판단할 수 있는 능력이 중요하다.
+
