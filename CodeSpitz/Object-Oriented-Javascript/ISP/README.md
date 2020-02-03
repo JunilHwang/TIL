@@ -379,3 +379,228 @@ const Scanner = class {
 
 이 코드가 이 객체의 것인지 판단할 수 있는 능력이 중요하다.
 
+## 추상 계층 불일치
+
+객체 간의 계약 = 의존성
+
+어떤 객체를 알고 있다 = 어떤 객체의 스펙을 알고 있다.
+
+니가 망한다 = 나도 망한다
+
+의존성은 계층 관계를 보고 설정해야 한다.
+
+```js{9-12,15}
+const Scanner = class {
+  #visitor
+  constructor (visitor, _ = type(visitor, DomVisitor)) {
+    this.#visitor = visitor // 자식 계층(DomVisitor)을 사용하고 있다.
+  }
+  scan (target, _ = type9target, HTMLElement) {
+    const binder = new Binder
+    const f = el => {
+      const vm = el.getAttribute('data-viewmodel') 
+      if (vm) binder.add(new BinderItem(el, vm))
+    }
+    f(target)
+    this.#visitor.visit(f, target) // 부모 계층(Visitor)을 사용하고 있다.
+    return binder
+  }
+}
+```
+
+앞서 작성한 Scanner 코드의 경우, 추상 계층이 불일치 한다.
+
+Visitor는 계층이 두 개고, Scanner는 계층이 한 개이기 때문이다.
+
+그래서 추상 계층은 서로 일치를 시켜줘야 한다.
+
+```js{7,12,14-23}
+const Scanner = class {
+  #visitor
+  constructor (visitor, _ = type(visitor, Visitor)) {
+    this.#visitor = visitor
+  }
+  visit (f, target) { this.#visitor.visit(f, target) }
+  scan (target) { throw `override` }
+}
+
+const DomScanner = class extends Scanner {
+  constructor (visitor, _ = type(visitor, DomVisitor)) {
+    super(visitor) // 자식은 부모를 대체할 수 있다. LSP
+  }
+  scan (target, _ = type(target, HTMLElement)) {
+    const binder = new Binder
+    const f = el => {
+      const vm = el.getAttribute('data-viewmodel')
+      if (vm) binder.add(new BinderItem(el, vm))
+    }
+    f(target)
+    this.visit(f, target)
+    return binder
+  }
+}
+```
+
+::: tip 도메인 패턴
+
+기능적인 부분(변하지 않는 부분)과 도메인 부분(변하는 부분)을 나눠야 한다.
+
+추상 클래스(Scanner, Visitor)는 Native를 모르는 상태로 유지하고,
+Native는 구현 클래스(DomScanner, DomVisitor)에게 위임한다.
+
+from [엔터프라이즈 애플리케이션 아키텍처 패턴](https://wikibook.co.kr/peaa/)
+
+:::
+
+추상 레이어를 나누면 좋은점 : 코드를 고치지 않고, 코드를 추가한다.
+
+새로운 변화가 생기거나 새로운 요구사항이 생겼을 때 수정이 아니라 추가로 해결한다.
+
+OCP(Open Close) 원칙을 지키기 위해서는 추상화가 필수다.
+
+수정하지 않고 확장한다.
+
+SOLID 원칙은 사실 설계를 잘 했을 때 얻어지는 결과물이라고 할 수 있다.
+
+```js
+const scanner = new Scanner // 기존
+const scanner = new DomScanner(new DomVisitor) // 개선
+```
+
+## 설계 종합
+
+인간의 머리는 복잡성의 한계가 있다.
+
+그래서 객체지향을 통하여 좋은 코드를 만드는 방법은 코드를 잘 쪼개서 인간이 인식할 수 있는 복잡성 만큼 수용하는 것이다.
+
+그런데 쪼개는 것이 어렵다. 일관성 있게 쪼개는 방법이 중요하다.
+
+역할과 책임에 맡게 코드를 쪼개는 연습을 해야 한다.
+
+@startuml
+card ViewModel
+card ViewModelSubject
+card ViewModelListener
+card ViewModelValue
+
+ViewModelListener <-- ViewModelSubject
+ViewModelSubject <-- ViewModel
+
+ViewModelListener -> ViewModelValue
+ViewModelSubject -> ViewModelValue   
+ViewModelValue <-- ViewModel
+@enduml
+
+ViewModelValue의 경우 의존하는 객체가 많기 때문에 수정에 대한 위험성이 굉장히 크다
+
+지금 상태에서 좋은 점은, 단 방향으로만 의존성이 있다는 것이다. 순환 의존성이 생기지 않도록 해야 한다.
+
+의존성을 단방향으로 유지 하는 것이 목표다. 
+
+ViewModel 에서는 DOM에 의존적이지 않다. 그래서 ViewModel은 브라우저에서 작동하든, Node에서 작동하든 상관 없다.
+
+@startuml
+card Scanner
+card DomScanner
+card Visitor
+card DomVisitor
+
+Scanner <-- DomScanner
+Scanner -> Visitor
+Visitor <-- DomVisitor
+@enduml
+
+DomScanner와 DomVisitor는 간접적으로 의존하고 있다.
+
+DomScanner와 DomVisitor는 직접적으로 연결되어 있진 않지만, 어쨌든 DomScanner는 DomVisitor를 알고 있어야 한다.
+
+@startuml
+card Binder
+card Scanner
+card DomScanner
+card Visitor
+card DomVisitor
+card ViewModel
+card ViewModelSubject
+card ViewModelListener
+card ViewModelValue
+card BinderItem
+card Processor
+card ConcreateProcessor
+
+ViewModelListener <-- ViewModelSubject
+ViewModelSubject <-- ViewModel
+
+ViewModelListener -> ViewModelValue
+ViewModelSubject -> ViewModelValue
+ViewModelValue <-- ViewModel 
+
+Scanner <-- DomScanner
+Scanner -> Visitor
+Visitor <-- DomVisitor
+
+Binder <- Scanner
+BinderItem --> Binder 
+ViewModelListener <-- Binder
+ViewModelValue <- Binder
+Binder --> ViewModel
+Binder --> Processor
+Processor <-- ConcreateProcessor
+@enduml
+
+Binder는 상당히 위험한 객체이다. 
+
+모여드는 게 많을 경우 : 무거운 객체 (바뀌게 될 경우 영향의 여파가 크다)
+나가는 게 많을 경우 : 위험한 객체 (아무거나 건드려도 깨질 수 있다)
+
+
+@startuml
+card Binder
+card Scanner
+card DomScanner #faa
+card Visitor
+card DomVisitor #faa
+card ViewModel  #faf
+card ViewModelSubject
+card ViewModelListener
+card ViewModelValue
+card BinderItem
+card Processor
+card ConcreateProcessor #faa
+
+ViewModelListener <-- ViewModelSubject
+ViewModelSubject <-- ViewModel
+
+ViewModelListener -> ViewModelValue
+ViewModelSubject -> ViewModelValue
+ViewModelValue <-- ViewModel 
+
+Scanner <-- DomScanner
+Scanner -> Visitor
+Visitor <-- DomVisitor
+
+Binder <- Scanner
+BinderItem --> Binder 
+ViewModelListener <-- Binder
+ViewModelValue <- Binder
+Binder --> ViewModel
+Binder --> Processor
+Processor <-- ConcreateProcessor
+@enduml
+
+DomScanner, DomVisitor, ConcreateProcessor 이렇게 세 개만 DOM에 대한 의존성이 있다.
+
+나머지는 ViewModel 을 만드는 것들이다.
+
+MVVM은 대부분이 플랫폼에 종속적이지 않다. 
+
+그래서 DomScanner, DomVisitor, ConcreateProcessor 등만 교체하면 Android, IOS 에도 사용할 수 있다.
+
+이것이 가상화(추상화) 되어 있는 렌더링 시스템이다.
+
+그런데 Observer Pattern은 비용이 크다. 구현과 설계도 어렵고 성능 자체에 대한 비용도 있다.
+
+그래서 Binder를 수동으로 call 하는 경우가 생각보다 많다.
+
+어떤 환경에서든 특정한 Domain과 관련된 부분은 격리를 해야 된다.
+
