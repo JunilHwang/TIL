@@ -209,3 +209,66 @@ notify mechanism은 숨기고 인터페이스로 사용하는 것은 watch와 un
   }
 ```
 
+## 섬세한 권한 조정
+
+java의 기본 권한은 private 이고, javascript의 기본 권한은 public이다.
+
+그래서 javascript는 개발자가 하나하나 권한을 조정하지 않으면 기본적으로 public이 되서 엉망이 된다.
+getter, setter가 public일 경우 남들이 조정하기가 너무 쉽다
+
+```js
+const ViewModel = class extends ViewModelListener {
+  static get (data) { return new ViewModel(data) }
+  styles = {}; attributes = {}; properties = {}; events = {};
+  subKey = ''
+  get subKey () { return this.#subKey } // read only
+  #parent = null
+  get parent () { return this.#parent }
+  
+  // code에서  꼭 필요한 것 : transaction.
+  setParent (parent, subKey) {
+    // 함수를 통해서 transaction을 표현한다(한 번에 일어나는 일들)
+    this.#parent = type(parent, ViewModel)
+    this.#subKey = subKey
+    this.addListener(parent)
+  }
+  static descriptor = (vm, category, k, v) => ({
+    enumerable: true,
+    get: () => v,
+    set (newV) {
+      v = newV
+      this.add(new ViewModelValue(vm.subKey, category, k, v))
+    }
+  })
+
+  static define = (vm, category, obj) => (
+    Object.defineProperties(
+      obj,
+      Object.entries(obj)
+            .reduce((r, [k, v]) => (r[k] = ViewModel.descriptor(vm, category, k, v), r), {})
+    )
+  )
+
+  constructor(data, _ = type(data, 'object')) {
+    super();
+    Object.entries(data).forEach(([k, v]) => {
+      if('styles,attributes,properties'.includes(k)) {
+        if(!v || typeof v != 'object') throw `invalid object k: ${k}, v:${v}`
+        this[k] = ViewModel.define(this, k, v)
+      } else {
+        Object.defineProperty(this, k, ViewModel.descriptor(this, '', k, v))
+        if (v instanceof ViewModel) { 
+          // transaction을 method로 분리했다.
+          v.setParent(this, category)
+        }
+      }
+    })
+    Object.seal(this)
+  }
+
+  viewmodelUpdated (updated) { updated.forEach(v => this.add(v)) }
+}
+```
+
+transaction이 발견 되면 무조건 function으로 표현해야 한다. transaction이 코드에 섞여있을 경우 문제가 발생할 확률이 높다(응용 하기가 쉽지 않다).
+
