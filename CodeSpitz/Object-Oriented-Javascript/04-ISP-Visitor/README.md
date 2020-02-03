@@ -1,8 +1,7 @@
-
 ---
 
-title: MVVM System 개선 (2)
-description: ISP 원칙을 적용하여 MVVM System을 더욱 개선합니다.
+title: MVVM System 개선하기 (2)
+description: ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.
 date: 2020-02-03
 sidebarDepth: 2
 feed:

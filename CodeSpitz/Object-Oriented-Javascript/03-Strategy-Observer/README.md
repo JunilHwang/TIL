@@ -1,6 +1,6 @@
 ---
 
-title: MVVM System 개선
+title: MVVM System 개선하기 (1)
 description: 다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.
 date: 2020-01-30
 sidebarDepth: 2
@@ -9,7 +9,7 @@ feed:
 
 ---
 
-# MVVM 개선하기
+# MVVM System 개선하기 (1)
 
 ::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
 
@@ -18,7 +18,7 @@ feed:
 
 :::
 
-Strategy, Observer, Composite 등의 Design Pattern 을 이용하여 [앞서 작성한 MVVM System](../MVVM)을 개선하는 방법에 대해 기술합니다.
+Strategy, Observer, Composite 등의 Design Pattern 을 이용하여 [앞서 작성한 MVVM System](CodeSpitz/Object-Oriented-Javascript/02-MVVM)을 개선하는 방법에 대해 기술합니다.
 
 ## Strategy Pattern
 
