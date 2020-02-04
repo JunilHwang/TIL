@@ -553,7 +553,7 @@ requestAnimationFrame(f)
 
 <<< @/CodeSpitz/Object-Oriented-Javascript/MVVM/example2.html
 
-[github에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/MVVM/example2.html)
+[github에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/02-MVVM/example2.html)
 
 ## MVVM의 사용 결과
 

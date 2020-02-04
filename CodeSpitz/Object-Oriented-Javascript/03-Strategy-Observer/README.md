@@ -545,7 +545,7 @@ requestAnimationFrame(f)
 
 <<< @/CodeSpitz/Object-Oriented-Javascript/DesignPattern/example.html
 
-[github에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/DesignPattern/example.html)
+[github에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/example.html)
 
 ## Summary
 
