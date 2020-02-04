@@ -310,7 +310,7 @@ transaction이 발견 되면 무조건 function으로 표현해야 한다. trans
 const ViewModel = class extends ViewModelSubject {
   static get (data) { return new ViewModel(data) }
   styles = {}; attributes = {}; properties = {}; events = {};
-  subKey = ''
+  #subKey = ''
   get subKey () { return this.#subKey } // read only
   #parent = null
   get parent () { return this.#parent }
@@ -327,7 +327,7 @@ const ViewModel = class extends ViewModelSubject {
     get: () => v,
     set (newV) {
       v = newV
-      this.add(new ViewModelValue(vm.subKey, category, k, v))
+      vm.add(new ViewModelValue(vm.subKey, category, k, v))
     }
   })
 
@@ -349,7 +349,7 @@ const ViewModel = class extends ViewModelSubject {
         Object.defineProperty(this, k, ViewModel.descriptor(this, '', k, v))
         if (v instanceof ViewModel) { 
           // transaction을 method로 분리했다.
-          v.setParent(this, category)
+          v.setParent(this, k)
         }
       }
     })
@@ -429,7 +429,7 @@ const DomVisitor = class extends Visitor {
   // 언어가 어떤 기능을 지원 하느냐보단 그 개념을 어떻게 적용하느냐가 중요하다.
   visit (action, target , _0 = type(action, 'function'), _1 = type(target, HTMLElement)) {
     // 제어의 코드가 Visitor에게 몰리기 때문에 제어 역전이 발생한다.
-    const stakc = {}
+    const stack = []
     let curr = target.firstElementChild
     do {
       // loop 안에서 상호작용을 해야 한다.
@@ -567,6 +567,13 @@ Native는 구현 클래스(DomScanner, DomVisitor)에게 위임한다.
 - 단일책임원칙(OCP, Open Close Principle)을 지키기 위해서는 추상화가 필수다.
 
 **SOLID 원칙은 사실 설계를 잘 했을 때 얻어지는 결과물이라고 할 수 있다.**
+
+
+## 전체 코드
+
+<<< @/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/example.html
+
+[github에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/example.html) 
 
 ## 설계 종합
 
@@ -718,4 +725,3 @@ _DomScanner, DomVisitor, ConcreateProcessor 이렇게 세 개만 DOM에 대한 �
 - Observer Pattern은 구현과 설계도 어렵고 성능 자체에 대한 비용도 있다.
 
 그래서 현실적인 대안으로 MVVM을 사용할 때 Observing을 하는 것 보다 Binder를 수동으로 calling 하는 경우가 생각보다 많다.
-
