@@ -18,16 +18,17 @@ feed:
 
 :::
 
-객체지향 프로그램이란 처음에 이루고하자는 목표에서부터 덩어리진 것을 차근차근 분리하고 깎아내는 과정이다.
+객체지향 프로그램이란 처음에 이루고하자는 목표에서부터 _덩어리진 것을 차근차근 분리하고 깎아내는 과정_ 이다.
 그래서 객체지향 개발은 애자일(Agile) 소프트웨어 개발과 궁합이 좋다.
 
-객체지향에서 코드를 깎아내는 기준은 역할과 책임이다.
+객체지향에서 코드를 깎아내는 기준은 _역할과 책임_ 이다.
 역할과 책임은 비슷하지만 동전의 양면과 같다.
 
 ::: tip 역할과 책임
 
-- 책임을 진다는 것은, 책임에 맡는 권한도 갖고 있다.
-- 책임이 없는데 권한이 없거나, 권한이 없는데 책임이 있다면 문제가 생긴다.
+- 책임을 진다는 것은 책임에 적합한 권한도 갖고 있다는 것이다.
+- 권한이 있다는 것은 권한에 적합한 책임도 갖고 있다는 것이다.
+- 책임이 없는데 권한이 없거나 권한이 없는데 책임이 있다면 문제가 생긴다.
 
 :::
 
@@ -35,11 +36,26 @@ feed:
 
 ## 인터페이스 분리 원칙 (ISP)
 
-먼저 ViewModel에 인터페이스 분리 원칙(ISP, Interface Segregation Principle)을 적용해야 한다.
+먼저 ViewModel에 _인터페이스 분리 원칙(ISP, Interface Segregation Principle)_ 을 적용해야 한다.
+
+### 역할과 책임에 따른 분석
 
 여태까지 만든 ViewModel은 매우 heavy 한 상태다.
 
-```js
+@startuml
+rectangle ViewModel {
+  card "notify(static)" as n1
+  card "notify(public)" as n2
+  card addListener
+  card removeListener
+  card viewmodelUpdated
+  card get
+  card descriptor
+  card define
+}
+@enduml
+
+```js{3-19,39,61-63}
 const ViewModel = class extends ViewModelListener {
   static get = data => new ViewModel(data)
   static #subjects = new Set
@@ -108,26 +124,7 @@ const ViewModel = class extends ViewModelListener {
 
 그런데 과연 이 코드가 정말로 ViewModel에게 전부 필요한 것일까?
 
-ViewModel의 원래 역할은, 물리적은 view를 대신하여 메모리상에 순수한 메모리 객체로서의 View를 만들어내는 것이다. 
-
-```js
-addListener (v, _ = type(v, ViewModelListener)) { this.#listeners.add(v) }
-removeListener (v, _ = type(v, ViewModelListener)) { this.#listeners.delete(v) }
-notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated)) }
-```
-
-위의 메소드는 ViewModel의 역할에는 적합하지 않다. 이것은 Observer의 Subject 역할이다. 그래서 역할을 분리시켜야 한다.
-
-```js{1}
-#isUpdated = new Set; #listeners = new Set
-addListener (v, _ = type(v, ViewModelListener)) { this.#listeners.add(v) }
-removeListener (v, _ = type(v, ViewModelListener)) { this.#listeners.delete(v) }
-notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated)) }
-```
-
-그리고 Method가 의존하고 있는 field 또한 분리시켜야 한다.
-
-static method 또한 마찬가지다
+ViewModel의 원래 역할은 물리적인 View(DOM, Android, IOS, ..)를 대신하여 _순수한 메모리 객체로서의 View(가상의 View)_ 를 만들어내는 것이다. 
 
 ```js
 static #subjects = new Set
@@ -147,13 +144,55 @@ static notify (vm) {
   }
   requestAnimationFrame(f)
 }
+
+#isUpdated = new Set; #listeners = new Set // 메소드가 의존하고 있는 field
+addListener (v, _ = type(v, ViewModelListener)) { this.#listeners.add(v) }
+removeListener (v, _ = type(v, ViewModelListener)) { this.#listeners.delete(v) }
+notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated)) }
 ```
 
-현재의 ViewModel은 아래와 같은 구조다
+위의 Method와 Field는 ViewModel의 역할에 적합하지 않다.
+이것은 _Observer Pattern에서 Subject의 역할_ 에 해당하는 부분이다.
+그래서 이 Method와 이것에 의존하고 있는 field를 **역할에 따라 분리**시켜야 한다.
 
-// UML 그리기
+### ISP 적용하기
 
-```js
+기존의 ViewModel을 다음과 같은 형태로 변경할 것이다.
+
+@startuml
+rectangle ViewModel {
+  rectangle ViewModelSubject {
+    card "notify(public)" as n1
+    card "notify(static)" as n2
+    card addListener
+    card removeListener
+    card add #faf
+    card clear #faf
+    card watch #aaf
+    card unwatch #aaf
+  }
+  rectangle ViewModelListener {
+    card viewmodelUpdated
+  }
+  card get
+  card descriptor
+  card define
+  
+  get --[hidden] define
+  define --[hidden] descriptor
+  n1 -[hidden] n2
+  n2 -[hidden] addListener
+  addListener -[hidden] removeListener
+  n1 --[hidden] add
+  add -[hidden] clear
+  clear -[hidden] watch
+  watch -[hidden] unwatch
+}
+@enduml
+
+보다시피 `add`와 `clear`가 추가되었다. add와 clear를 통해서 부모(ViewModel)에게 역할을 위임하도록 만들 것이다.
+
+```js{9-10,13,17}
 // Javascript는 다중 상속이 불가능하기 때문에
 // ViewModelSubject가 ViewModelListener를 상속받아야 한다.
 const ViewModelSubject = class extends ViewModelListener {
@@ -176,15 +215,43 @@ const ViewModelSubject = class extends ViewModelListener {
 }
 ```
 
-그리고 static method 또한 추가해줘야 한다
+아직 코드상에 작성하진 않았지만 *addListener*에는 `ViewModelSubject.watch`가 생겼고,
+*removeListener*에는 `ViewModelSubject.unwatch`가 생겼다.
 
-그런데 notify를 잘 보면 notify 내부에 add가 있다.
-즉, notify는 두 가지의 역할을 수행하고 있기 때문에 이것을 분리해야 한다.
-오히려 외부에서 몰라도 되는 것은 notify이며, 외부에서 명시적으로 알아야 하는 것은 watch와 unwatch 이다.
+기존에는 `notify`를 통해서 데이터를 노출 시켰는데 _논리적으로 생각했을 때 외부에서 명시적으로 알아야 하는 것은 `watch`와 `unwatch`_ 이다.
+그래서 watch와 unwatch를 노출시키고, notify는 감추도록 만들어야 한다.
 
-notify mechanism은 숨기고 인터페이스로 사용하는 것은 watch와 unwatch 이다.
+::: tip
 
-```js{15,18}
+notify mechanism은 감추고, watch와 unwatch를 인터페이스로 공개한다.
+
+:::
+
+이제 `notify`를 살펴봐야 한다.
+
+```js{2}
+static notify (vm) {
+  this.#subjects.add(vm)
+  if (this.#inited) return
+  this.#inited = true
+  const f = () => {
+    this.#subjects.forEach(vm => {
+      if (vm.#isUpdated.size) {
+        vm.notify()
+        vm.#isUpdated.clear()
+      }
+    })
+    requestAnimationFrame(f)
+  }
+  requestAnimationFrame(f)
+}
+```
+
+notify method 내부에 `this.#subject.add`가 있다.
+그 의미는 notify가 두 가지의 역할을 수행하고 있다는 것이고, 이런 코드를 유지하게 될 경우 문제가 생길 수 있다.
+각각의 메소드는 가능한한 한 가지의 역할만 수행하게 하여 _단일책임원칙(SCP, Single Responsibility Principle)이 지켜지도록_ 해야한다
+
+```js{1,16,23}
   static #subjects = new Set
   static #inited = false
   static notify () {
@@ -212,15 +279,28 @@ notify mechanism은 숨기고 인터페이스로 사용하는 것은 watch와 un
   }
 ```
 
+위에도 언급 했듯이 notify mechanism은 감추고 watch와 unwatch를 통해 interface로 제공해야 한다.
+그리고 notify는 하나의 역할만 수행하도록 하여 책임을 분산시킨다.
+
 ## 섬세한 권한 조정
+
+::: tip 권한 조정이 필요한 이유
 
 java의 기본 권한은 private 이고, javascript의 기본 권한은 public이다.
 
 그래서 javascript는 개발자가 하나하나 권한을 조정하지 않으면 기본적으로 public이 되서 엉망이 된다.
-getter, setter가 public일 경우 남들이 조정하기가 너무 쉽다
+getter, setter 등이 public 으로 노출되면 코드 조작이 매우 쉬워지고 문제가 생길 수 있다.
 
-```js
-const ViewModel = class extends ViewModelListener {
+:::
+
+::: tip transaction
+
+transaction이 발견 되면 무조건 function으로 표현해야 한다. transaction이 코드에 섞여있을 경우 문제가 발생할 확률이 높다(응용 하기가 쉽지 않다).
+
+::: 
+
+```js{1,5,7,10-15,43,50}
+const ViewModel = class extends ViewModelSubject {
   static get (data) { return new ViewModel(data) }
   styles = {}; attributes = {}; properties = {}; events = {};
   subKey = ''
@@ -273,10 +353,17 @@ const ViewModel = class extends ViewModelListener {
 }
 ```
 
-transaction이 발견 되면 무조건 function으로 표현해야 한다. transaction이 코드에 섞여있을 경우 문제가 발생할 확률이 높다(응용 하기가 쉽지 않다).
+ViewModel에서 개선된 내용은 다음과 같다.
 
+- _권한 조정_ : subKey, parent에 대한 getter와 setter를 만들었다.
+- _역할/책임에 따른 인터페이스 분할(ISP)_  : ViewModel은 ViewModelSubject를 상속하도록 변경했다.
+- _tranaction 도출_ : parent에 대한 transaction 단위를 분리했다.
 
 ## Visitor Pattern
+
+`Visitor Pattern`은 객체의 구조와 기능을 분리시키는 패턴이다. 이것을 이용하여 DOM에 관련된 기능을 MVVM과 분리시키는 작업을 할 것이다.
+
+먼저 Scanner를 살펴보자.
 
 ```js{15}
 const Scanner = class {
@@ -299,16 +386,11 @@ const Scanner = class {
 }
 ```
 
+Scanner의 핵심은 _ViewModel을 읽어들여서 Binder에 전달_ 하는 것이다. 그리고 checkItem이 그러한 역할을 담당하고 있다.
 
-Binder : View에다가 ViewModel을 꽂아준다.
+여기서 문제되는 부분은 `scan method` 이다.
 
-Scanner : ViewModel을 읽어들인다.
-
-Scanner가 존재하는 이유는 checkItem의 정책 때문이다.
-그런데 여기서 문제가 scan과 checkItem의 변화율과 목적이 다르다.
-
-```js{5-11}
-const Scanner = class {
+```js{6-10}
   scan (el, _ = type(el, HTMLElement)) {
     const binder = new Binder;
     this.checkTiem(binder, el)
@@ -321,11 +403,6 @@ const Scanner = class {
     }
     return binder;
   }
-  checkItem (binder, el) {
-    const vm = el.getAttribute('data-viewmodel')
-    if (vm) binder.add(new BinderItem(el, vm))
-  }
-}
 ```
 
 위의 코드에서 stack ~ binder 까지는 scanner의 역할이 아니기 때문에 해당 코드를 Visitor에게 위임해야 한다.
