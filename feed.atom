@@ -2,11 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-02-04T07:38:20.977Z</updated>
+    <updated>2020-02-05T06:38:42.723Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
     <subtitle>Today I leanred</subtitle>
+    <entry>
+        <title type="html"><![CDATA[MVVM System 개선하기 (1)]]></title>
+        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
+        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/">
+        </link>
+        <updated>2020-01-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[객체지향의 기본 이론]]></title>
         <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</id>
@@ -24,12 +32,12 @@
         <summary type="html"><![CDATA[객체지향을 통해서 MVVM System을 만드는 과정입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MVVM System 개선하기 (1)]]></title>
-        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
-        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/">
+        <title type="html"><![CDATA[MVVM System 개선하기 (2)]]></title>
+        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</id>
+        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/">
         </link>
-        <updated>2020-01-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></summary>
+        <updated>2020-02-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Gradle Wrapper]]></title>
@@ -38,14 +46,6 @@
         </link>
         <updated>2020-01-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MVVM System 개선하기 (2)]]></title>
-        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</id>
-        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/">
-        </link>
-        <updated>2020-02-03T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[github page에 배포하기]]></title>
@@ -64,20 +64,20 @@
         <summary type="html"><![CDATA[plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[VuePress 테마 설정]]></title>
-        <id>https://junilhwang.github.io/TIL/Vuepress/Theme/</id>
-        <link href="https://junilhwang.github.io/TIL/Vuepress/Theme/">
-        </link>
-        <updated>2020-01-02T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Vuepress 시작하기]]></title>
         <id>https://junilhwang.github.io/TIL/Vuepress/Starter/</id>
         <link href="https://junilhwang.github.io/TIL/Vuepress/Starter/">
         </link>
         <updated>2020-01-02T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VuePress 테마 설정]]></title>
+        <id>https://junilhwang.github.io/TIL/Vuepress/Theme/</id>
+        <link href="https://junilhwang.github.io/TIL/Vuepress/Theme/">
+        </link>
+        <updated>2020-01-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Vuepress + Utterances]]></title>
