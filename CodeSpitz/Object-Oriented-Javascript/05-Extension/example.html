@@ -8,6 +8,9 @@
 <section id="target" data-viewmodel="wrapper">
   <h2 data-viewmodel="title"></h2>
   <section data-viewmodel="contents"></section>
+  <ol data-viwmodel="list">
+    <li data-template="listItem" data-viewmodel="item"></li>
+  </ol>
 </section>
 <script>
 
@@ -19,9 +22,10 @@ const type = (target, type) => {
   }
   return target;
 }
+const err = v => { throw v }
 
 const ViewModelListener = class {
-  viewmodelUpdated(updated){throw 'override'}
+  viewmodelUpdated(updated, viewmodel){throw 'override'}
 }
 
 const ViewModelSubject = class extends ViewModelListener {
@@ -62,53 +66,60 @@ const ViewModelSubject = class extends ViewModelListener {
     this.#listeners.delete(v)
     if (!this.#listeners.size) ViewModelSubject.unwatch(this)
   }
-  notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.#info)) }
+  notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.notifyTarget, this.#info)) }
+  get notifyTarget () { throw 'override!' }
 }
 
 
 const ViewModel = class extends ViewModelSubject {
   static get (data) { return new ViewModel(data) }
+  static KEY = Symbol()
+
   styles = {}; attributes = {}; properties = {}; events = {};
   #subKey = ''
   #parent = null
   get subKey () { return this.#subKey } // read only
   get parent () { return this.#parent }
-  setParent (parent, subKey) {
+  _setParent (parent, subKey) {
     this.#parent = type(parent, ViewModel)
     this.#subKey = subKey
     this.addListener(parent)
   }
-  static descriptor = (vm, category, k, v) => ({
-    enumerable: true,
-    get: () => v,
-    set (newV) {
-      v = newV
-      vm.add(new ViewModelValue(vm.subKey, category, k, v))
-    }
-  })
-  static define = (vm, category, obj) => (
-    Object.defineProperties(
-      obj,
-      Object.entries(obj)
-            .reduce((r, [k, v]) => (r[k] = ViewModel.descriptor(vm, category, k, v), r), {})
-    )
-  )
-  constructor(data, _ = type(data, 'object')) {
-    super();
-    Object.entries(data).forEach(([k, v]) => {
-      if('styles,attributes,properties'.includes(k)) {
-        if(!v || typeof v != 'object') throw `invalid object k: ${k}, v:${v}`
-        this[k] = ViewModel.define(this, k, v)
+  define(target, k, v) {
+    if (v && typeof v == 'object' && !(v instanceof ViewModel)) {
+      if (v instanceof Array) {
+        target[k] = []
+        target[k][ViewModel.KEY] = `${target[ViewModel.KEY]}.${k}`
+        v.forEach((v, i) => this.define(target[k], i, v))
       } else {
-        Object.defineProperty(this, k, ViewModel.descriptor(this, '', k, v))
-        if (v instanceof ViewModel) {
-          v.setParent(this, k)
-        }
+        target[k] = { [ViewModel.KEY]: `${target[ViewModel.KEY]}.${k}` }
+        Object.entries(v).forEach(([ik, iv]) => this.define(target[k], ik, iv))
       }
-    })
+      Object.defineProperty(target[k], 'subKey', {
+        get: () => target.subKey
+      })
+    } else {
+      if (v instanceof ViewModel) v._setParent(this, k)
+      Object.defineProperties(target, {
+        [k]: {
+          enumrable: true,
+          get: _ => v,
+          set: newV => {
+            v = newV
+            this.add(new ViewModelValue(target.subKey, target[ViewModel.KEY], k, v))
+          }
+        }
+      })
+    }
+  }
+  constructor (data, _ = type(data, "object")) {
+    super()
+    this[ViewModel.KEY] = 'root'
+    Object.entries(data).forEach(([k, v]) => this.define(this, k, v))
     Object.seal(this)
   }
-  viewmodelUpdated (updated) { updated.forEach(v => this.add(v)) }
+  viewmodelUpdated (target, updated) { updated.forEach(v => this.add(v)) }
+  get notifyTarget () { return this }
 }
 
 const ViewModelValue = class {
@@ -130,20 +141,18 @@ const BinderItem = class {
 
 const Binder = class extends ViewModelListener {
   #items = new Set;
-  #processors = {};
-  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
-  addProcessor (v, _ = type(v, Processor)) { this.#processors[v.category] = v }
+  #processor = null
+  set processor (v) { this.#processor = v }
   render (viewmodel, _ = type(viewmodel, ViewModel)) {
-    const processores = Object.entries(this.#processors)
     this.#items.forEach(({ vmName, el }) => {
       const vm = type(viewmodel[vmName], ViewModel)
-      processores.forEach(([pk, processor]) => {
-        Object.entries(vm[pk]).forEach(([k, v]) => {
-          processor.process(vm, el, k, v)
-        })
+
+      Object.entries(vm[pk]).forEach(([k, v]) => {
+        this.#processor.process(vm, el, k, v)
       })
     })
   }
+  add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
 
   watch(viewmodel, _ = type(viewmodel, ViewModel)){
     viewmodel.addListener(this)
@@ -154,14 +163,14 @@ const Binder = class extends ViewModelListener {
     viewmodel.removeListener(this)
   }
 
-  viewmodelUpdated (updated) {
+  viewmodelUpdated (target, updated) {
     const items = {}
     this.#items.forEach(({ vmName, el }) => {
-      items[vmName] = [type(rootViewModel[vmName], ViewModel), el]
+      items[vmName] = [type(target[vmName], ViewModel), el]
     })
     updated.forEach(({ subKey, category, k, v }) => {
       if (!items[subKey]) return
-      const [vm, el] = items[subKey], processor = this.#processors[category]
+      const [vm, el] = items[subKey], processor = this.#processor.search(category)
       if (!el || !processor) return
       processor.process(vm, el, k, v)
     })
@@ -169,17 +178,30 @@ const Binder = class extends ViewModelListener {
 }
 
 const Processor = class {
-  category;
+  #category;
+  #next = null;
   constructor (category) {
-    this.category = category
+    this.#category = category
     Object.freeze(this)
   }
   process (vm, el, k, v, _0 = type(vm, ViewModel),
-                         _1 = type(el, HTMLElement),
-                         _2 = type(k, "string")) {
+           _1 = type(el, HTMLElement),
+           _2 = type(k, "string")) {
     this._process(vm, el, k, v)
+    if (this.#next !== null) this.#next.process(vm, el, k, v)
   }
   _process (vm, el, k, v) { throw 'override' }
+  next (processor) {
+    this.#next = processor
+    return processor
+  }
+  search (category) {
+    if (this.#category === category) {
+      return this
+    } else {
+      return this.#next ? this.#next.search(category) : null
+    }
+  }
 }
 
 const Scanner = class {
@@ -192,14 +214,26 @@ const Scanner = class {
 }
 
 const DomScanner = class extends Scanner {
+  static #templates = new Map
+  static get (k) { return this.#templates.get(k) }
   constructor (visitor, _ = type(visitor, DomVisitor)) {
     super(visitor)
   }
   scan (target, _ = type(target, HTMLElement)) {
     const binder = new Binder
     const f = el => {
-      const vm = el.getAttribute('data-viewmodel')
-      if (vm) binder.add(new BinderItem(el, vm))
+      const template = el.getAttribute('data-template')
+      if (template) {
+        el.removeAttribute('data-template')
+        DomScanner.#templates.set(template, el)
+        el.parentElement.removeChild(el)
+      } else {
+        const vm = el.getAttribute('data-viewmodel')
+        if (vm) {
+          el.removeAttribute('data-viewmodel')
+          binder.add(new BinderItem(el, vm))
+        }
+      }
     }
     f(target)
     this.visit(f, target)
@@ -224,20 +258,57 @@ const DomVisitor = class extends Visitor {
   }
 }
 
-const scanner = new DomScanner(new DomVisitor)
-const binder = scanner.scan(document.querySelector('#target'))
-binder.addProcessor(new class extends Processor {
+const visitor = new DomVisitor
+const scanner = new DomScanner(visitor)
+const binder = type(scanner.scan(document.body), Binder)
+const processor = new class extends Processor {
   _process (vm, el, k, v) { el.style[k] = v }
-}('styles'))
-binder.addProcessor(new class extends Processor {
-  _process (vm, el, k, v) { el.setAttribute(k, v) }
-}('attributes'))
-binder.addProcessor(new class extends Processor {
-  _process (vm, el, k, v) { el[k] = v }
-}('properties'))
-binder.addProcessor(new class extends Processor {
-  _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
-}('events'))
+}('styles')
+processor
+  .next(
+    new class extends Processor {
+      _process (vm, el, k, v) { el.setAttribute(k, v) }
+    }('attributes')
+  )
+  .next(
+    new class extends Processor {
+      _process (vm, el, k, v) { el[k] = v }
+    }('properties')
+  )
+  .next(
+    new class extends Processor {
+      _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+    }('events')
+  )
+  .next(
+    new class extends Processor {
+      _process (vm, el, k, v) {
+        const { name = err('no name'), data = err('no data') } = vm.template
+        const template = DomScanner.get(name) || err('no template' + name)
+        if (!(data instanceof Array)) err('invalid data:' + data)
+        data.forEach((vm, i) => {
+          if (!(vm instanceof ViewModel)) err(`invalid Viewmodel: ${i} - ${vm}`)
+        })
+
+        Object.freeze(data)
+        visitor.visit(el => {
+          if (el.binder) {
+            const [binder, vm] = el.binder
+            binder.unwatch(vm)
+            delete el.binder
+          }
+        }, el)
+        el.innerHTML = ''
+        data.forEach(vm => {
+          const child = template.cloneNode(true)
+          const binder = scanner.scan(child)
+          binder.processor = processor
+          el.binders = [binder, vm]
+          binder.watch(vm)
+          el.appendChild(child)
+        })
+      }
+    })
 
 const getRandom = () => parseInt(Math.random() * 150) + 100
 const wrapper = ViewModel.get({
@@ -250,13 +321,24 @@ const wrapper = ViewModel.get({
 })
 const title = ViewModel.get({ properties: { innerHTML: 'Title' } })
 const contents = ViewModel.get({ properties: { innerHTML: 'Contents' } })
+const list = ViewModel.get({
+  template: {
+    name: 'listItem',
+    data: '1,2,3,4,5,6'.split(',').map(v => ViewModel.get({
+      item: ViewModel.get({
+        styles: { background: `rgb(${getRandom()},${getRandom()},${getRandom()})` },
+        properties: { innerHTML: `item${v}` }
+      })
+    }))
+  }
+})
 const rootViewModel = ViewModel.get({
   isStop: false,
   changeContents () {
     this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
     this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
   },
-  wrapper, title, contents
+  wrapper, title, contents, list
 })
 binder.watch(rootViewModel)
 const f = () => {

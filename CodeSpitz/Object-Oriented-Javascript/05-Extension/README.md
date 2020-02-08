@@ -82,7 +82,7 @@ Binder -> View : Rendering
 ```js
 const ViewModel = class extends ViewModelListener {
   /* 생략 */
-  notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.#isUpdated, this)) }
+  notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this, this.#isUpdated)) }
   // ViewModel에서 실행한 viewmodelUpdated는 viewmodel 인자를 사용하지 않는다.
   viewmodelUpdated (viewmodel, updated) { updated.forEach(v => this.#isUpdated.add(v)) }
 }
@@ -105,7 +105,7 @@ ViewModel일 수도 있게 된다.
 ```js
 const ViewModelSubject = class extends ViewModelListener {
   // ... 생략
-  notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.#info, this.notifyTarget)) }
+  notify () { this.#listeners.forEach(v => v.viewmodelUpdated(this.notifyTarget, this.#info)) }
   get notifyTarget () { throw 'must be override!' } // ViewModel에게 위임한다.
 }
 const ViewModel = class extends ViewModelSubject {
@@ -121,7 +121,7 @@ const ViewModel = class extends ViewModelSubject {
 ```js{4,7}
 const Binder = class extends ViewModelListener {
   // .. 생략
-  viewmodelUpdated(updated, target,
+  viewmodelUpdated(target, updated,
                    _ = type(target, ViewModel)){ // target은 ViewModel 이여야 한다.
     const items = {}
     this.#items.forEach(({ vmName, el }) => {
@@ -174,7 +174,7 @@ const ViewModel = class extends ViewModelSubject {
       } else {
         Object.defineProperty(this, k, ViewModel.descriptor(this, '', k, v))
         if (v instanceof ViewModel) {
-          v.setParent(this, k)
+          v._setParent(this, k)
         }
       }
     })
@@ -328,7 +328,7 @@ const SetDomProcessor = (() => {
     baseProcessors.forEach(v => binder.addProcessor(v))
   }
 })();
-const binder = setDomProcessor();
+const binder = SetDomProcessor();
 ```
 
 ## List를 표현하기
@@ -350,7 +350,7 @@ const binder = setDomProcessor();
 ```js{2,10-14}
 const DomScanner = class extends Scanner {
   static #templates = new Map
-  static get (k) { return this.#tempaltes.get(k) }
+  static get (k) { return this.#templates.get(k) }
   constructor (visitor, _ = type(visitor, DomVisitor)) {
     super(visitor)
   }
@@ -360,7 +360,7 @@ const DomScanner = class extends Scanner {
       const template = el.getAttribute('data-template')
       if (template) {
         el.removeAttribute('data-template')
-        DomScanner.#template.set(template, el)
+        DomScanner.#templates.set(template, el)
         el.parentElement?.removeChild(el) // Chrome 80 부터 Optional Chaining을 사용할 수 있게 됨
       } else {
         const vm = el.getAttribute('data-viewmodel')
@@ -468,7 +468,7 @@ _Linked List로 분산_ 시킨 다음 각각의 객체가 갖는 Method는 각�
 
 이제 코드상으로 살펴보자. 먼저 `Processor`를 수정해야 한다.
 
-```js
+```js{13-14}
 const Processor = class {
   category;
   #next = null;
@@ -480,12 +480,22 @@ const Processor = class {
                          _1 = type(el, HTMLElement),
                          _2 = type(k, "string")) {
     this._process(vm, el, k, v)
-    if (#next !== null) this.#next.process(vm, el, k, v)
+
+    // next가 있을 경우, next의 process를 실행한다.
+    if (this.#next !== null) this.#next.process(vm, el, k, v)
   }
   _process (vm, el, k, v) { throw 'override' }
   next (processor) {
-    #next = processor
+    this.#next = processor
     return processor
+  }
+  // category를 기준으로 linked list에서 탐색을 실행한다.
+  search (category) {
+    if (this.#category === category) {
+      return this
+    } else {
+      return this.#next ? this.#next.search(category) : null
+    }
   }
 }
 ```
@@ -510,12 +520,12 @@ processor
 
 그리고 `Binder` 또한 고쳐줘야 한다.
 
-```js
+```js{9}
 const Binder = new class extends ViewModelListener {
   // .. 생략
   // addProcessor, #processors 삭제
   #processor = null
-  set processor (v) { #processor = v }
+  set processor (v) { this.#processor = v }
   render (viewmodel, _ = type(viewmodel, ViewModel)) {
     this.#items.forEach(({ vmName, el }) => {
       const vm = type(viewmodel[vmName], ViewModel)
@@ -558,6 +568,7 @@ const SetDomProcessor = (() => {
 const binder = setDomProcessor();
 ```
 
+## 최종 코드
 ## 생각 정리
 
 함부로 성급한 일반화를 하지 않기 위해선 본체를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.
