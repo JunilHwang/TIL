@@ -468,7 +468,7 @@ _Linked List로 분산_ 시킨 다음 각각의 객체가 갖는 Method는 각�
 
 이제 코드상으로 살펴보자. 먼저 `Processor`를 수정해야 한다.
 
-```js{13-14}
+```js{14-15,17-18,21-24}
 const Processor = class {
   category;
   #next = null;
@@ -476,26 +476,22 @@ const Processor = class {
     this.category = category
     Object.freeze(this)
   }
-  process (vm, el, k, v, _0 = type(vm, ViewModel),
-                         _1 = type(el, HTMLElement),
-                         _2 = type(k, "string")) {
+  process (category, vm, el, k, v,
+            _0 = type(vm, ViewModel),
+            _1 = type(el, HTMLElement),
+            _2 = type(k, "string")) {
     this._process(vm, el, k, v)
 
     // next가 있을 경우, next의 process를 실행한다.
-    if (this.#next !== null) this.#next.process(vm, el, k, v)
+    if (this.#category === category) this._process(vm, el, k, v)
+
+    // category
+    if (this.#next !== null) this.#next.process(category, vm, el, k, v)
   }
   _process (vm, el, k, v) { throw 'override' }
   next (processor) {
     this.#next = processor
     return processor
-  }
-  // category를 기준으로 linked list에서 탐색을 실행한다.
-  search (category) {
-    if (this.#category === category) {
-      return this
-    } else {
-      return this.#next ? this.#next.search(category) : null
-    }
   }
 }
 ```
@@ -520,7 +516,7 @@ processor
 
 그리고 `Binder` 또한 고쳐줘야 한다.
 
-```js{9}
+```js{11}
 const Binder = new class extends ViewModelListener {
   // .. 생략
   // addProcessor, #processors 삭제
@@ -529,8 +525,10 @@ const Binder = new class extends ViewModelListener {
   render (viewmodel, _ = type(viewmodel, ViewModel)) {
     this.#items.forEach(({ vmName, el }) => {
       const vm = type(viewmodel[vmName], ViewModel)
-      Object.entries(vm[pk]).forEach(([k, v]) => {
-        this.#processor.process(vm, el, k, v) // 각각의 processor가 다음 processor를 호출할 것
+      Object.entries(vm).forEach(([category, childVm]) => {
+        Object.entries(childVm).forEach(([k, v]) => {
+          this.#processor.process(category, vm, el, k, v) // 각각의 processorr가 category를 식별하여 실행함
+        })
       })
     })
   }
@@ -540,45 +538,45 @@ const Binder = new class extends ViewModelListener {
 이제 `Binder`에 `Processor`를 주입할 땐 다음과 같이 해야 한다.
 
 ```js
+const visitor = new DomVisitor
+const scanner = new DomScanner(visitor)
+const binder = type(scanner.scan(document.body), Binder)
 
-const SetDomProcessor = (() => {
-  const visitor = new DomVisitor
-  const scanner = new DomScanner(visitor)
-  const binder = type(scanner.scan(document.body), Binder)
+// 첫 번째 processor 주입
+binder.processor = new class extends Processor {
+_process (vm, el, k, v) { el.style[k] = v }
+}('styles')
 
-  // 첫 번째 processor 주입
-  binder.processor = new class extends Processor {
-    _process (vm, el, k, v) { el.style[k] = v }
-  }('styles')
-
-  // 나머지 processor 주입
-  binder.processor 
-    .next(new class extends Processor {
-      _process (vm, el, k, v) { el.setAttribute(k, v) }
-    }('attributes'))
-    .next(new class extends Processor {
-      _process (vm, el, k, v) { el[k] = v }
-    }('properties'))
-    .next(new class extends Processor {
-      _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
-    }('events'))
-
-  return binder    
-})();
-const binder = setDomProcessor();
+// 나머지 processor 주입
+binder.processor 
+.next(new class extends Processor {
+  _process (vm, el, k, v) { el.setAttribute(k, v) }
+}('attributes'))
+.next(new class extends Processor {
+  _process (vm, el, k, v) { el[k] = v }
+}('properties'))
+.next(new class extends Processor {
+  _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+}('events'))
 ```
 
 ## 최종 코드
 
+Decorator 까지 반영한 코드는 다음과 같다.
+
 <<< @/CodeSpitz/Object-Oriented-Javascript/05-Extension/example.html
+
+[GitHub에서 보기](https://github.com/JunilHwang/TIL/blob/master/CodeSpitz/Object-Oriented-Javascript/05-Extension/example.html)
 
 ## 생각 정리
 
-함부로 성급한 일반화를 하지 않기 위해선 본체를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.
-코어는 안전해지고 가볍지만, 마지막 구현체에 따라서 프로젝트가 실패할 수 있다.
-
-제어역전을 통해서 코어를 무겁게 만들면 은신의 폭이 좁아지게 된다.
-
-안정화된 서비스 - 잘 변하지 않음 - 제어 역전의 효과를 보기가 쉽다.
-
-성장하는 서비스 - 잘 변함 - 제어 역전의 효과를 보기가 힘들다. 
+- 함부로 성급한 일반화를 하지 않기 위해선 코어(본체)를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.
+- 코어는 안전해지고 가볍지만, 마지막 구현체에 따라서 프로젝트가 실패할 수 있다.
+- 제어역전을 통해서 코어를 무겁게 만들면 은신의 폭이 좁아지게 된다.
+  - 안정화된 서비스 → 잘 변하지 않음 → 제어 역전의 효과를 보기가 쉽다.
+  - 성장하는 서비스 → 잘 변함 → 제어 역전의 효과를 보기가 힘들다.
+- 현대의 존재하는 대부분의 프레임워크는 코어를 가볍게 만든다.
+  - 대부분의 기능은 코어에 연결된 플러그인에게 위임한다
+  - 즉, 제어역전이 플러그인들에게 분할되어 있다.
+  - 코어 : Vue
+  - 플러그인 : VueRouter, Vuex, VueLoader 

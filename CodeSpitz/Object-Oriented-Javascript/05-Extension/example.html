@@ -183,7 +183,8 @@ const Processor = class {
     this.#category = category
     Object.freeze(this)
   }
-  process (category, vm, el, k, v, _0 = type(vm, ViewModel),
+  process (category, vm, el, k, v,
+           _0 = type(vm, ViewModel),
            _1 = type(el, HTMLElement),
            _2 = type(k, "string")) {
     if (this.#category === category) this._process(vm, el, k, v)
