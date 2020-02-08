@@ -36,6 +36,7 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 - [2회차 - MVVM System 구축](/CodeSpitz/Object-Oriented-Javascript/02-MVVM/)
 - [3회차 - MVVM System 개선 (1)](/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/)
 - [4회차 - MVVM System 개선 (2)](/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/)
+- [5회차 - MVVM System 개선 (3)](/CodeSpitz/Object-Oriented-Javascript/05-Extension/)
 
 ### JAVA
 
