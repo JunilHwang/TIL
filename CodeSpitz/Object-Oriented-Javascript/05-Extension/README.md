@@ -238,7 +238,7 @@ const ViewModel = class extends ViewModelSubject {
       if (v instanceof ViewModel) v._setParent(this, k)
       Object.defineProperties(target, {
         [k]: {
-          enumrable: true,
+          enumerable: true,
           get: _ => v,
           set: newV => {
             v = newV
@@ -415,7 +415,7 @@ new class extends Processor {
       el.appendChild(child)
     })
   }
-}
+}('template')
 ```
 
 코드를 작성할 때 _BlackList 영역에서 변수에 대한 검증을 하여 검증이 완료 된 WhiteList를 만든다._  
@@ -569,6 +569,9 @@ const binder = setDomProcessor();
 ```
 
 ## 최종 코드
+
+<<< @/CodeSpitz/Object-Oriented-Javascript/05-Extension/example.html
+
 ## 생각 정리
 
 함부로 성급한 일반화를 하지 않기 위해선 본체를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.

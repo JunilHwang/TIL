@@ -8,7 +8,7 @@
 <section id="target" data-viewmodel="wrapper">
   <h2 data-viewmodel="title"></h2>
   <section data-viewmodel="contents"></section>
-  <ol data-viwmodel="list">
+  <ol data-viewmodel="list">
     <li data-template="listItem" data-viewmodel="item"></li>
   </ol>
 </section>
@@ -33,10 +33,10 @@ const ViewModelSubject = class extends ViewModelListener {
   static #inited = false
   static notify () {
     const f = () => {
-      this.#subjects.forEach(v => {
-        if (v.#info.size) {
-          v.notify()
-          v.clear()
+      this.#subjects.forEach(vm => {
+        if (vm.#info.size) {
+          vm.notify()
+          vm.clear()
         }
       })
       if (this.#inited) requestAnimationFrame(f)
@@ -76,10 +76,8 @@ const ViewModel = class extends ViewModelSubject {
   static KEY = Symbol()
 
   styles = {}; attributes = {}; properties = {}; events = {};
-  #subKey = ''
-  #parent = null
-  get subKey () { return this.#subKey } // read only
-  get parent () { return this.#parent }
+  #subKey = ''; get subKey () { return this.#subKey } // read only
+  #parent = null; get parent () { return this.#parent }
   _setParent (parent, subKey) {
     this.#parent = type(parent, ViewModel)
     this.#subKey = subKey
@@ -102,7 +100,7 @@ const ViewModel = class extends ViewModelSubject {
       if (v instanceof ViewModel) v._setParent(this, k)
       Object.defineProperties(target, {
         [k]: {
-          enumrable: true,
+          enumerable: true,
           get: _ => v,
           set: newV => {
             v = newV
@@ -146,9 +144,10 @@ const Binder = class extends ViewModelListener {
   render (viewmodel, _ = type(viewmodel, ViewModel)) {
     this.#items.forEach(({ vmName, el }) => {
       const vm = type(viewmodel[vmName], ViewModel)
-
-      Object.entries(vm[pk]).forEach(([k, v]) => {
-        this.#processor.process(vm, el, k, v)
+      Object.entries(vm).forEach(([category, childVm]) => {
+        Object.entries(childVm).forEach(([k, v]) => {
+          this.#processor.process(category, vm, el, k, v)
+        })
       })
     })
   }
@@ -170,9 +169,9 @@ const Binder = class extends ViewModelListener {
     })
     updated.forEach(({ subKey, category, k, v }) => {
       if (!items[subKey]) return
-      const [vm, el] = items[subKey], processor = this.#processor.search(category)
+      const [vm, el] = items[subKey], processor = this.#processor
       if (!el || !processor) return
-      processor.process(vm, el, k, v)
+      processor.process(category.split('.').pop(), vm, el, k, v)
     })
   }
 }
@@ -184,23 +183,16 @@ const Processor = class {
     this.#category = category
     Object.freeze(this)
   }
-  process (vm, el, k, v, _0 = type(vm, ViewModel),
+  process (category, vm, el, k, v, _0 = type(vm, ViewModel),
            _1 = type(el, HTMLElement),
            _2 = type(k, "string")) {
-    this._process(vm, el, k, v)
-    if (this.#next !== null) this.#next.process(vm, el, k, v)
+    if (this.#category === category) this._process(vm, el, k, v)
+    if (this.#next !== null) this.#next.process(category, vm, el, k, v)
   }
   _process (vm, el, k, v) { throw 'override' }
   next (processor) {
     this.#next = processor
     return processor
-  }
-  search (category) {
-    if (this.#category === category) {
-      return this
-    } else {
-      return this.#next ? this.#next.search(category) : null
-    }
   }
 }
 
@@ -250,6 +242,7 @@ const DomVisitor = class extends Visitor {
   visit (action, target , _0 = type(action, 'function'), _1 = type(target, HTMLElement)) {
     const stack = []
     let curr = target.firstElementChild
+    if (!curr) return
     do {
       action(curr)
       if (curr.firstElementChild) stack.push(curr.firstElementChild)
@@ -308,7 +301,10 @@ processor
           el.appendChild(child)
         })
       }
-    })
+    }('template')
+  )
+
+binder.processor = processor
 
 const getRandom = () => parseInt(Math.random() * 150) + 100
 const wrapper = ViewModel.get({
@@ -337,6 +333,10 @@ const rootViewModel = ViewModel.get({
   changeContents () {
     this.wrapper.styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
     this.contents.properties.innerHTML = Math.random().toString(16).replace('.', '')
+    this.list.template.data.forEach(({ item: { styles, properties }}) => {
+      properties.innerHTML = Math.random().toString(16).replace(".", "");
+      styles.background = `rgb(${getRandom()},${getRandom()},${getRandom()})`
+    });
   },
   wrapper, title, contents, list
 })
@@ -345,7 +345,7 @@ const f = () => {
   rootViewModel.changeContents()
   if (!rootViewModel.isStop) requestAnimationFrame(f)
 }
-requestAnimationFrame(f)
+f()
 </script>
 </body>
 </html>
