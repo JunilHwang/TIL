@@ -440,7 +440,7 @@ const rootViewModel = ViewModel.get({
 })
 ```
 
-## Decorator Pattern 적용해보기
+## Decorator Pattern 적용
 
 ::: tip Decorator Pattern
 
@@ -455,19 +455,110 @@ const rootViewModel = ViewModel.get({
 :::
 
 기존의 Processor는 Collection 형태로 관리된다.
-그래서 의존성이 Collection에 몰리게 되고 이에 따라 책임이 비대해진다.
+그래서 _의존성이 Collection에 몰리게 되고 이에 따라 책임이 비대해진다._
 
 Collection을 사용하게 되면 높은 확률로 일반화가 무너지게 된다.
 특히 행위를 갖는 객체를 Collection으로 갖게 되면 문제가 발생할 확률이 높다.
-행위(Method)를 갖는 다는 것은 객체마다 가지고 있는 동작이 다르다는 것인데 이걸 Collection으로 묶을 경우 여러 가지 상황에 대한 대응이 힘들어질 수 밖에 없다.  
+행위(Method)를 갖는 다는 것은 **객체마다 가지고 있는 동작이 다르다는 것**인데 이걸 Collection으로 묶을 경우 _여러 가지 상황에 대한 대응이 힘들어질 수 밖에 없다._  
 
 그래서 Collection으로 관리 되고 있는 객체들을 Decoration Pattern을 사용하여
-Linked List로 분산 시킨 다음 각각의 객체가 갖는 Method는 각자 알아서 실행하고 다음 객체를 호출하면 된다. 
+_Linked List로 분산_ 시킨 다음 각각의 객체가 갖는 Method는 각자 알아서 실행하고 다음 객체를 호출하면 된다.
 
-loop가 나왔을 때 객체로 바꾸는 패턴.
-코드를 객체로 바꿔야 한다.
+즉, **Loop를 Object에게 위임하는 것**이라고 생각할 수도 있다. 코드를 객체로 바꾸는 것이다.
 
-## 정리
+이제 코드상으로 살펴보자. 먼저 `Processor`를 수정해야 한다.
+
+```js
+const Processor = class {
+  category;
+  #next = null;
+  constructor (category) {
+    this.category = category
+    Object.freeze(this)
+  }
+  process (vm, el, k, v, _0 = type(vm, ViewModel),
+                         _1 = type(el, HTMLElement),
+                         _2 = type(k, "string")) {
+    this._process(vm, el, k, v)
+    if (#next !== null) this.#next.process(vm, el, k, v)
+  }
+  _process (vm, el, k, v) { throw 'override' }
+  next (processor) {
+    #next = processor
+    return processor
+  }
+}
+```
+
+위의 코드는 다음과 같이 사용될 수 있다
+
+```js
+const processor = new class extends Processor {
+_process (vm, el, k, v) { el.style[k] = v }
+}('styles')
+processor
+  .next(new class extends Processor {
+    _process (vm, el, k, v) { el.setAttribute(k, v) }
+  }('attributes'))
+  .next(new class extends Processor {
+    _process (vm, el, k, v) { el[k] = v }
+  }('properties'))
+  .next(new class extends Processor {
+    _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+  }('events'))
+```
+
+그리고 `Binder` 또한 고쳐줘야 한다.
+
+```js
+const Binder = new class extends ViewModelListener {
+  // .. 생략
+  // addProcessor, #processors 삭제
+  #processor = null
+  set processor (v) { #processor = v }
+  render (viewmodel, _ = type(viewmodel, ViewModel)) {
+    this.#items.forEach(({ vmName, el }) => {
+      const vm = type(viewmodel[vmName], ViewModel)
+      Object.entries(vm[pk]).forEach(([k, v]) => {
+        this.#processor.process(vm, el, k, v) // 각각의 processor가 다음 processor를 호출할 것
+      })
+    })
+  }
+}
+```
+
+이제 `Binder`에 `Processor`를 주입할 땐 다음과 같이 해야 한다.
+
+```js
+
+const SetDomProcessor = (() => {
+  const visitor = new DomVisitor
+  const scanner = new DomScanner(visitor)
+  const binder = type(scanner.scan(document.body), Binder)
+
+  // 첫 번째 processor 주입
+  binder.processor = new class extends Processor {
+    _process (vm, el, k, v) { el.style[k] = v }
+  }('styles')
+
+  // 나머지 processor 주입
+  binder.processor 
+    .next(new class extends Processor {
+      _process (vm, el, k, v) { el.setAttribute(k, v) }
+    }('attributes'))
+    .next(new class extends Processor {
+      _process (vm, el, k, v) { el[k] = v }
+    }('properties'))
+    .next(new class extends Processor {
+      _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
+    }('events'))
+
+  return binder    
+})();
+const binder = setDomProcessor();
+```
+
+## 생각 정리
 
 함부로 성급한 일반화를 하지 않기 위해선 본체를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.
 코어는 안전해지고 가볍지만, 마지막 구현체에 따라서 프로젝트가 실패할 수 있다.
