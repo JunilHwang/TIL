@@ -92,13 +92,14 @@ const ViewModel = class extends ViewModelListener {
 
 그런데 [MVVM System 개선하기 (2)](../04-ISP-Visitor)에서 만든 viewmodelUpdated는 위와 같이 단순하지가 않다.
 `ViewModelSubject`는 `notify`를 통해 `Binder`에게 viewmodel의 updated 내역을 알린다.
+
 다르게 말하자면 **ViewModelSubject와 Binder가 계약(의존 관계)을 맺고 있기 때문**이다.
 
-그래서앞서 작성한 코드를 그대로 사용할 경우,
+그래서 앞서 작성한 코드를 그대로 사용할 경우,
 Binder에서 받아들이는 viewmodel이 ViewModelSubject일 수도 있고,
 ViewModel일 수도 있게 된다.
 
-그래서 Binder에서 사용하는 viewmodelUpdated가 무조건 ViewModel이 되도록 만들어야 하는데,
+따라서 Binder에서 사용하는 viewmodelUpdated가 무조건 ViewModel이 되도록 만들어야 하는데,
 이를 위해 _ViewModelSubject에서 Binder에게 넘기는 Parameter(viewmodel)를 ViewModel에게 위임해야 한다._
 
 ```js
@@ -144,7 +145,7 @@ _추상 계층을 분리하게 될 경우, 어떠한 문제가 생겼을 때 각
 
 현재 Strategy Pattern을 통해서 추출한 Processor는 약간의 문제를 가지고 있다.
 
-```js{11,24,42,45,48,51}
+```js{10,23,39,42,45,48}
 // Binder의 Render 부분
 const Binder = class extends ViewModelListener {
   // ... 생략
@@ -196,22 +197,25 @@ binder.addProcessor(new class extends Processor {
 }('events'))
 ```
 
-위 코드들의 문제점은 분명히 Processor는 확장 가능 하도록 만들었는데, 
-ViewModel 에서는 Processor의 종류를 style attributes properties 등으로 제한 하고 있다는 것이다.
+::: tip 처리기(Processor)는 데이터 구조(ViewModel)과 동기화 되어야 한다.
 
-즉, ViewModel이 Processor의 확장을 제한하고 있는 것이다.
+위 코드의 문제점은 바로
+**Processor는 확장 가능** 하도록 만들었지만
+ViewModel에서 Processor의 종류를 `style` `attributes` `properties` 등으로 **제한** 하고 있다는 것이다.
+
+_즉, ViewModel이 Processor의 확장을 제한하고 있는 것이다._
 그래서 이 부분을 잘 확장되도록 일반화 시켜야 한다.
 
-> 처리기(Processor)는 데이터 구조(ViewModel)과 동기화 되어야 한다.
+:::
 
-문제를 좀더 깊게 살펴보면, 지금 Spec이 Code로 정의 된 상태다.
-그래서 ViewModel이 자유롭게 작성되는 것 처럼 보이지만 사실 엄격하게 제한된 Spec을 기반으로 작성 되고 있다.
+문제를 더 깊게 살펴보면, 지금 **Processor의 `Spec`이 `Code`로 정의 된 상태다.**
+그래서 ViewModel이 자유롭게 작성되는 것 처럼 보이지만 사실 _엄격하게 제한된 Spec을 기반으로 작성 되고 있다._
 따라서 Code를 읽지 않으면 데이터 형식을 옳바르게 작성할 수 없게 된다.
 
-우리가 해야 하는 것은 자유롭게 ViewModel을 작성하게 할 수 있을까?
-어떤 형식이든 Getter와 Setter로 만드는 Parser와 Observer를 만들어야 한다.
+그러면 어떻게 ViewModel을 자유롭게 작성하게 할 수 있도록 만들 수 있을까?
+바로 _어떤 형식이든 Getter와 Setter로 만드는 Parser와 Observer를 만드는 것이다._
 
-```js{8,11,18-19}
+```js{8-9,11-12,18-19}
 const ViewModel = class extends ViewModelSubject {
   static KEY = Symbol()
   // 모든 Key를 Observer에게 보고한다.
@@ -254,7 +258,32 @@ const ViewModel = class extends ViewModelSubject {
 }
 ```
 
-그리고 Binder에서 Processor를 가져올 때 Category를 식별하는 로직이 필요하다.
+::: tip 재귀 함수
+
+기본적으로 재귀 함수는 느리고 위험성이 크다.
+함수를 실행하면 `Call Stack` 이라는 것이 쌓이게 되는데,
+브라우저에서는 Call Stack의 한계치가 있기 때문에 안전하다고 볼 수 없다.
+
+\* 다만 사파리의 경우 꼬리 물기 최적화가 되어 있기 때문에 다른 브라우저보단 재귀 함수의 작동이 비교적 안전하다.
+
+_그래서 알고리즘에 대한 이해도가 뛰어나다면, 재귀 함수 대신 stack 자료구조를 사용하여 반복문을 통해 구현 하는 것이 좋다._
+
+:::
+
+::: tip if Statement(조건 분기)
+
+조건 분기의 경우 _Optional과 Mandatory_ 두 가지가 있다.
+
+- **Optional** : else를 사용하지 않음
+- **Mandatory** : else를 사용함
+
+조건 문의 경우 어떻게 보면 당연한 이야기지만, _else를 사용하고 안하고에 따라서 코드의 의도가 굉장히 달라진다._
+
+재귀 함수의 경우, 재귀가  끝나는 조건이 필요하다. 그렇기 때문에 Mandatory한 분기 문을 통해서 재귀의 종료를 명시해야 한다.  
+
+:::
+
+그리고 Binder에서 Processor를 가져올 때 **Category를 식별하는 로직**이 필요하다.
 
 ```js{9}
 const Binder = class extends ViewModelListener {
@@ -272,17 +301,17 @@ const Binder = class extends ViewModelListener {
   }}
 ```
 
-이제 특정 Key 를 규정하는 것은 Processor 밖에 없다. ViewModel은 아무런 Spec도 강요하지 않게 되었다.
+_이제 특정 Key 를 규정하는 것은 Processor 밖에 없다._ ViewModel은 아무런 Spec도 강요하지 않게 되었다.
 
 ```js
 const SetDomProcessor = (() => {
   const visitor = new DomVisitor
   const scanner = new DomScanner(visitor)
+  // Process가 단순한 이유는 Binder가 무거워졌기 때문
+  // 이에 대한 의사결정은 조직에 따라 달라짐
   const baseProcessors = [
     new class extends Processor {
-      _process (vm, el, k, v) { el.style[k] = v } // Process가 단순한 이유는 Binder가 무거워졌기 때문에
-                                                  // 의사결정은 조직에 따라 달라진다.
-                                                  // Code의 Batch는 사람을 보고 결정한다.
+      _process (vm, el, k, v) { el.style[k] = v } 
     }('styles'),
     new class extends Processor {
       _process (vm, el, k, v) { el.setAttribute(k, v) }
@@ -294,35 +323,15 @@ const SetDomProcessor = (() => {
       _process (vm, el, k, v) { el[`on${k}`] = e => v.call(el, e, vm) }
     }('events')
   ]
-  const setProcessor = (binder, _ = type(binder, Binder)) => {
-    baseProcessors.forEach(v => binder.addProcessor(v)) // 데코레이터
+  const setProcessor = () => {
+    const binder = type(scanner.scan(document.body), Binder)
+    baseProcessors.forEach(v => binder.addProcessor(v))
   }
 })();
+const binder = setDomProcessor();
 ```
 
----
-
-데코레이터 패턴
-Linked List로 처리기를 알고 있는 것 - 의존성이 하나만 생긴다. - 책임 감소
-컬렉션을 사용할 경우 : 의존성이 여러개 생긴다. - 책임 막중
-일반화를 깨는 대부분의 요인이 컬렉션이다.
-객체 마다 사정이 있다
-행위를 갖는 객체를 Collection으로 갖게 되면 문제가 발생할 확률이 높다.
-그럴 때 Decoration Pattern을 사용하여 Linked List로 실행시키면 된다.
-loop가 나왔을 때 객체로 바꾸는 패턴.
-코드를 객체로 바꿔야 한다.
-
-함부로 성급한 일반화를 하지 않기 위해선 본체를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.
-코어는 안전해지고 가볍지만, 마지막 구현체에 따라서 프로젝트가 실패할 수 있다.
-
-제어역전을 통해서 코어를 무겁게 만들면 은신의 폭이 좁아지게 된다.
-
-안정화된 서비스 - 잘 변하지 않음 - 제어 역전의 효과를 보기가 쉽다.
-
-성장하는 서비스 - 잘 변함 - 제어 역전의 효과를 보기가 힘들다.
-
----
-
+## List를 표현하기
 
 이제 List를 표현할 수 있도록 Processor와 Scanner를 개선해야 한다.
 
@@ -336,9 +345,9 @@ loop가 나왔을 때 객체로 바꾸는 패턴.
 </section>
 ```
 
-먼저 list를 data-template 이라는 attribute로 표현한다고 했을 때, 다음과 같이 Scanner를 수정하면 된다.
+먼저 list를 `data-template` 이라는 attribute로 표현한다고 했을 때, 다음과 같이 Scanner를 수정하면 된다.
 
-```js
+```js{2,10-14}
 const DomScanner = class extends Scanner {
   static #templates = new Map
   static get (k) { return this.#tempaltes.get(k) }
@@ -352,7 +361,7 @@ const DomScanner = class extends Scanner {
       if (template) {
         el.removeAttribute('data-template')
         DomScanner.#template.set(template, el)
-        el.parentElement?.removeChild(el)
+        el.parentElement?.removeChild(el) // Chrome 80 부터 Optional Chaining을 사용할 수 있게 됨
       } else {
         const vm = el.getAttribute('data-viewmodel')
         if (vm) {
@@ -368,7 +377,8 @@ const DomScanner = class extends Scanner {
 }
 ```
 
-그리고 data-template을 사용하는 Processor를 만들어야 한다. 
+그리고 data-template을 사용하는 `Processor`를 만들어야 한다.
+ 
 ```js{8,10,28}
 new class extends Processor {
   _process (vm, el, k, v) {
@@ -408,7 +418,8 @@ new class extends Processor {
 }
 ```
 
-- 코드를 작성할 때 BlackList 영역에서 WhiteList를 뽑아내어 로직을 작성해야 한다.
+코드를 작성할 때 _BlackList 영역에서 변수에 대한 검증을 하여 검증이 완료 된 WhiteList를 만든다._  
+이렇게 할 경우 _로직은 WhiteList로 작성할 수 있다._
 
 이제 ViewModel의 Client 코드에 template 부분을 추가해줘야 한다.
 
@@ -427,4 +438,42 @@ const rootViewModel = ViewModel.get({
     }
   })
 })
-``` 
+```
+
+## Decorator Pattern 적용해보기
+
+::: tip Decorator Pattern
+
+- Decoratoer Pattern은 _객체의 결합 을 통해 기능을 동적으로 유연하게 확장 할 수 있게 해준다._
+- 추가할 수 있는 기능의 종류가 많은 경우 사용하기 좋다.
+- 추가 기능을 Decorator로 정의 한 후 조합 하여 설계 하는 방식이다.
+  - 객체의 의존성이 분산 된다
+  - 각각의 객체가 하나의 의존성을 갖는다
+  - _의존성의 분산 = 책임의 분산_
+- Collection을 Linked List로 관리하는 것이라고 볼 수도 있다
+
+:::
+
+기존의 Processor는 Collection 형태로 관리된다.
+그래서 의존성이 Collection에 몰리게 되고 이에 따라 책임이 비대해진다.
+
+Collection을 사용하게 되면 높은 확률로 일반화가 무너지게 된다.
+특히 행위를 갖는 객체를 Collection으로 갖게 되면 문제가 발생할 확률이 높다.
+행위(Method)를 갖는 다는 것은 객체마다 가지고 있는 동작이 다르다는 것인데 이걸 Collection으로 묶을 경우 여러 가지 상황에 대한 대응이 힘들어질 수 밖에 없다.  
+
+그래서 Collection으로 관리 되고 있는 객체들을 Decoration Pattern을 사용하여
+Linked List로 분산 시킨 다음 각각의 객체가 갖는 Method는 각자 알아서 실행하고 다음 객체를 호출하면 된다. 
+
+loop가 나왔을 때 객체로 바꾸는 패턴.
+코드를 객체로 바꿔야 한다.
+
+## 정리
+
+함부로 성급한 일반화를 하지 않기 위해선 본체를 가볍게 만들고, 뒤쪽으로 밀어내면 좋다.
+코어는 안전해지고 가볍지만, 마지막 구현체에 따라서 프로젝트가 실패할 수 있다.
+
+제어역전을 통해서 코어를 무겁게 만들면 은신의 폭이 좁아지게 된다.
+
+안정화된 서비스 - 잘 변하지 않음 - 제어 역전의 효과를 보기가 쉽다.
+
+성장하는 서비스 - 잘 변함 - 제어 역전의 효과를 보기가 힘들다. 
