@@ -13,8 +13,7 @@ feed:
 
 ::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
 
-- [코드스피츠 86기 4회차 동영상](https://www.youtube.com/watch?v=r4vOF7WpxgM&t=868s)
-- [코드스피츠 86기 4회차 교안](https://www.youtube.com/redirect?event=video_description&redir_token=XLwW9xXpx7jguNfQtusWz-xpQG18MTU4MDc3MTMzNEAxNTgwNjg0OTM0&q=https%3A%2F%2F1drv.ms%2Fb%2Fs%21As25AGJ08guuhLNW7fuz3TgPMCZSkA&v=r4vOF7WpxgM)
+[코드스피츠 86기 4회차 동영상](https://www.youtube.com/watch?v=r4vOF7WpxgM&t=868s)
 
 :::
 

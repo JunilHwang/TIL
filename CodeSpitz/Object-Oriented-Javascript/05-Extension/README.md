@@ -15,8 +15,7 @@ feed:
 
 ::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
 
-- [코드스피츠 86기 5회차 동영상](https://www.youtube.com/watch?v=5UUISCK6CL4)
-- 5회차는 따로 교안이 없고, [코드](https://gist.github.com/hikaMaeng/ae5301b2808afd150c4f55a47bd9466a)로 대체
+[코드스피츠 86기 5회차 동영상](https://www.youtube.com/watch?v=5UUISCK6CL4)
 
 :::
 

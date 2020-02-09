@@ -13,8 +13,7 @@ feed:
 
 ::: tip 해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.
 
-- [코드스피츠 86기 3회차 동영상](https://www.youtube.com/watch?v=D450fPGffTg)
-- [코드스피츠 86기 3회차 교안](https://onedrive.live.com/?authkey=%21AJPuPvgOlGz%2D%5FQE&cid=AE0BF2746200B9CD&id=AE0BF2746200B9CD%2172145&parId=AE0BF2746200B9CD%2171745&o=OneUp)
+[코드스피츠 86기 3회차 동영상](https://www.youtube.com/watch?v=D450fPGffTg)
 
 :::
 
