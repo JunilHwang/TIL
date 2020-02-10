@@ -35,6 +35,13 @@
             "date_modified": "2020-02-07T14:00:00.000Z"
         },
         {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "title": "MVVM System 개선하기 (3)",
+            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
+            "date_modified": "2020-02-08T23:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
             "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
             "title": "Gradle Wrapper",
@@ -56,13 +63,6 @@
             "summary": "plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.",
             "image": "https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg",
             "date_modified": "2020-01-06T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "title": "MVVM System 개선하기 (3)",
-            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
-            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Starter/",
