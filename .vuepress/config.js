@@ -22,6 +22,12 @@ module.exports = {
   },
   plugins: [
     ['@vuepress/pwa', { serviceWorker: true, updatePopup: true }],
-    ['feed', { canonical_base: 'https://junilhwang.github.io/TIL/' }]
+    ['feed', { canonical_base: 'https://junilhwang.github.io/TIL/' }],
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-113171398-2'
+      }
+    ]
   ]
 }
