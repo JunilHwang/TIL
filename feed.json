@@ -6,12 +6,11 @@
     "description": "Today I leanred",
     "items": [
         {
-            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
-            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
-            "title": "Gradle Wrapper",
-            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
-            "image": "https://junilhwang.github.io/TIL/./01.jpg",
-            "date_modified": "2020-01-14T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
+            "title": "객체지향의 기본 이론",
+            "summary": "객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.",
+            "date_modified": "2020-01-19T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/",
@@ -20,13 +19,6 @@
             "summary": "객체지향을 통해서 MVVM System을 만드는 과정입니다.",
             "image": "https://junilhwang.github.io/TIL/./example.png",
             "date_modified": "2020-01-21T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
-            "title": "객체지향의 기본 이론",
-            "summary": "객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.",
-            "date_modified": "2020-01-19T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
@@ -43,11 +35,12 @@
             "date_modified": "2020-02-07T14:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "title": "MVVM System 개선하기 (3)",
-            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
-            "date_modified": "2020-02-08T23:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "title": "Gradle Wrapper",
+            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
+            "image": "https://junilhwang.github.io/TIL/./01.jpg",
+            "date_modified": "2020-01-14T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
@@ -63,6 +56,13 @@
             "summary": "plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.",
             "image": "https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg",
             "date_modified": "2020-01-06T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "title": "MVVM System 개선하기 (3)",
+            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
+            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Starter/",
