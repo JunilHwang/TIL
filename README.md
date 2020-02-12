@@ -52,6 +52,16 @@ _Gradle_
  
 - [GradleWrapper](/Gradle/GradleWrapper/)
 
+### Book Review
+
+- 객체지향의 원리와 이해
+
+### Online Lecture Review
+
+- 함수형 프로그래밍과 ES6
+- The Java, 코드를 조작하는 다양한 방법
+- 예제로 배우는 스프링 입문
+
 ## 공부해야할 것
 
 ### 코어
