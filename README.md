@@ -107,10 +107,15 @@ _Gradle_
 ## 2020 목표
 - 여태까지 올라온 코드 스피츠 강의 내용을 보고 정리하기
 - 하루에 한 번 이상 commit 하기
-- 학부 시절 공부한 자료 정리해서 공유하기
+- [학부 시절 공부한 자료 정리해서 공유하기](https://github.com/JunilHwang/DKU-Software-Engineering-Logging)
+  - 오픈 소스처럼 관리할 수 있는 가이드라인 만들기
 - 사이드 프로젝트 진행하기
-  - 단국대학교 소프트웨어학과 커뮤니티 사이트 기필코 만들기
-- 한 달에 최소 한 권 이상의 개발 서적 읽고 정리하기
+  - [단국대학교 소프트웨어학과 커뮤니티 사이트 기필코 만들기(진행 중)](https://github.com/JunilHwang/DKU-Software-Engineering-Logging-Service) `진행 중`
+- 책 읽기
+  - 한 달에 최소 한 권 이상의 개발 서적 읽고 정리하기
+    - ~~1월~~ `실패`
+    - 2월 `성공`
+      - [스프링 입문을 위한 자바 객체지향의 원리와 이해](/Book/OOP-Principle/01-Intro/)
   - PPP 시리즈 읽어보기
     - 밑바닥 부터 만드는 컴퓨팅 시스템
     - 클린 아키텍쳐
@@ -119,4 +124,4 @@ _Gradle_
     - 클린 코드
     - 테스트 주도 개발
     - 생각하는 프로그래밍
-- ~~VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)~~
+- [VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)](/Vuepress/Starter/) `완료`

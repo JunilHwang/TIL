@@ -9,7 +9,7 @@ feed:
 
 ---
 
-# (책 소개) 객체지향의 원리와 이해
+# 책 소개
 
 본 포스트는 [스프링 입문을 위한 자바 객체지향의 원리와 이해](https://wikibook.co.kr/java-oop-for-spring/)라는 책에 대한 소개입니다.
 
@@ -22,20 +22,22 @@ feed:
 책의 내용과 구성은 기대를 저버리지 않았다.
 OOP의 개념을 더욱 확고하게 정립할 수 있었고 Spring을 사용하는 목적과 Spring이 지향하는 방향에 대해 이해할 수 있었다.
 
+
 ## 저자 소개
 
 저자에 대한 정보는 아래의 페이지들에서 자세하게 알 수 있다.
 
-- [블로그 - 여름나라 겨울이야기](https://expert0226.tistory.com/)
+- [블로그 - "여름나라 겨울이야기"](https://expert0226.tistory.com/)
 - [GitHub](https://github.com/expert0226)
 - [링크드인](https://kr.linkedin.com/in/%EC%A2%85%EB%AF%BC-%EA%B9%80-911410100)
+- [페이스북](https://www.facebook.com/NoviceRambo)
+- [유튜브 - "초보람보"](https://www.youtube.com/channel/UCvQOwKeXLw2jwecuL3bcw0w/videos)
 
 ## 책을 읽으면서 인상 깊었던 점
 
 ### 이해하기 쉽도록 전달
 
 기존에 알려진 지식을 그대로 전달하는 것이 아닌 저자 나름대로의 해석을 통해 독자가 이해하기 쉽도록 전달하는 게 좋았다.
-
 예를 들면 다음과 같다.
 
 ::: tip Define of Spring Framework
@@ -44,7 +46,7 @@ Spring Framework를 설명하는 공식적인 정의는 _자바 엔터프라이�
 
 그런데 저자는 다음과 같이 정의한다.
 
-_OOP 프레임워크_
+_"객체지향 프로그래밍을 위한 프레임워크"_ _"OOP Framework"_
 
 :::
 
@@ -68,7 +70,11 @@ _OOP 프레임워크_
 
 객체지향에서는 `상속(inherit)`이라는 단어를 많이 사용한다. 그런데 사실 이 단어는 잘못 된 것이고 `확장(extend)`가 맞다.
 
-우리가 코드를 클래스를 상속하는 코드를 작성할 때도 inherit이 아니라 extend를 사용한다.
+또한 클래스 상속 _코드를 작성할 때도 inherit이 아니라 extend를 사용한다._
+
+```java
+class Human extends Animal { }
+```
 
 상속은 일종 `가계도`라고 생각하면 된다.
 

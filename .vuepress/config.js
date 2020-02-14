@@ -18,6 +18,7 @@ module.exports = {
     extendMarkdown: md => {
       md.use(require('markdown-it-plantuml'))
       md.use(require('markdown-it-underline'))
+      md.use(require('markdown-it-task-lists'))
     }
   },
   plugins: [
