@@ -40,7 +40,7 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 ### JAVA
 
-- JVM 이해하기
+- JVM 이해하기(예정)
 - Reflection API(예정)
 - Byte Code 조작(예정)
 - Proxy(예정)
@@ -54,13 +54,13 @@ _Gradle_
 
 ### Book Review
 
-- 객체지향의 원리와 이해
+- 객체지향의 원리와 이해(예정)
 
 ### Online Lecture Review
 
-- 함수형 프로그래밍과 ES6
-- The Java, 코드를 조작하는 다양한 방법
-- 예제로 배우는 스프링 입문
+- 함수형 프로그래밍과 ES6(예정)
+- The Java, 코드를 조작하는 다양한 방법(예정)
+- 예제로 배우는 스프링 입문(예정)
 
 ## 공부해야할 것
 
@@ -85,7 +85,7 @@ _Gradle_
 
 - Object-Oriented Programming
   - Design Pattern
-  - Spring Framework Core
+  - OOP Framework
 - Functional Programming
   - RxJS
   - RxJava
