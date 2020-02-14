@@ -24,6 +24,11 @@ next: false
 - [markdown-it-plantuml](/Vuepress/Plantuml/)
 - [Vuepress + Utterances](/Vuepress/Utterances/)
 
+### Book Review
+
+- 스프링 입문을 위한 객체지향의 원리와 이해
+  - [01 책 소개](/Book/OOP-Principle/01-Intro/)
+
 ### 코드스피츠
 
 _85기 거침없는 자바스크립트(None Blocking Javascript)_
@@ -51,10 +56,6 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 _Gradle_
  
 - [GradleWrapper](/Gradle/GradleWrapper/)
-
-### Book Review
-
-- 객체지향의 원리와 이해(예정)
 
 ### Online Lecture Review
 

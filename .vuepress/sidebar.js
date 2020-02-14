@@ -2,12 +2,23 @@ const vuepress = '/Vuepress'
 const CodeSpitz = '/CodeSpitz'
 const CodeSpitzNBJS = `${CodeSpitz}/None-Blocking-Javascript`
 const CodeSpitzOOJS = `${CodeSpitz}/Object-Oriented-Javascript`
+const Book = `/Book`
+const OOPPrinciple = `${Book}/OOP-Principle`
 
 module.exports = [
   { title: 'Home', path: '/' },
   {
     title: 'Vuepresse',
     children: ['Starter/', 'Theme/', 'Deploy/', 'Plantuml/', 'Utterances/'].map(v => `${vuepress}/${v}`)
+  },
+  {
+    title: 'Book Review',
+    children: [
+      {
+        title: '객체지향의 원리와 이해',
+        children: ['01-Intro/'].map(v => `${OOPPrinciple}/${v}`)
+      },
+    ]
   },
   {
     title: '코드스피츠',
