@@ -35,18 +35,18 @@
             "date_modified": "2020-01-30T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
-            "title": "MVVM System 개선하기 (2)",
-            "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
-            "date_modified": "2020-02-07T14:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
             "title": "MVVM System 개선하기 (3)",
             "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
             "date_modified": "2020-02-08T23:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
+            "title": "MVVM System 개선하기 (2)",
+            "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
+            "date_modified": "2020-02-07T14:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
