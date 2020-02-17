@@ -6,9 +6,9 @@
     "description": "Today I leanred",
     "items": [
         {
-            "id": "https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Intro/",
-            "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Intro/",
-            "title": "(책 소개) 객체지향의 원리와 이해",
+            "id": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
+            "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
+            "title": "00 책 소개 | 객체지향의 원리와 이해",
             "summary": "김종민님이 저술한 \"스프링 입문을 위한 (자바) 객체지향의 원리와 이해\"에 대한 소개입니다.",
             "date_modified": "2020-02-14T00:00:00.000Z"
         },
@@ -35,18 +35,18 @@
             "date_modified": "2020-01-30T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "title": "MVVM System 개선하기 (3)",
-            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
-            "date_modified": "2020-02-08T23:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
             "title": "MVVM System 개선하기 (2)",
             "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
             "date_modified": "2020-02-07T14:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "title": "MVVM System 개선하기 (3)",
+            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
+            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
