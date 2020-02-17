@@ -18,8 +18,12 @@ module.exports = [
         title: '객체지향의 원리와 이해',
         children: [
           {
-            title: '책 소개',
-            path: `${OOPPrinciple}/01-Intro/`
+            title: '00 책 소개',
+            path: `${OOPPrinciple}/00-Intro/`
+          },
+          {
+            title: '01 사람을 사랑한 기술',
+            path: `${OOPPrinciple}/01-Loved-Human/`
           },
           ...[].map(v => `${OOPPrinciple}/${v}`)
         ]

@@ -27,7 +27,9 @@ next: false
 ### Book Review
 
 - 스프링 입문을 위한 객체지향의 원리와 이해
-  - [01 책 소개](/Book/OOP-Principle/01-Intro/)
+
+  - [00 책 소개](/Book/OOP-Principle/00-Intro/)
+  - [01 사람을 사랑한 기술](/Book/OOP-Principle/01-Loved-Human/)
 
 ### 코드스피츠
 
@@ -115,7 +117,7 @@ _Gradle_
   - 한 달에 최소 한 권 이상의 개발 서적 읽고 정리하기
     - ~~1월~~ `실패`
     - 2월 `성공`
-      - [스프링 입문을 위한 자바 객체지향의 원리와 이해](/Book/OOP-Principle/01-Intro/)
+      - [스프링 입문을 위한 자바 객체지향의 원리와 이해](/Book/OOP-Principle/00-Intro/)
   - PPP 시리즈 읽어보기
     - 밑바닥 부터 만드는 컴퓨팅 시스템
     - 클린 아키텍쳐
