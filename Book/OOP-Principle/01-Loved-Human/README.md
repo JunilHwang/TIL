@@ -4,8 +4,6 @@ title: 01 사람을 사랑한 기술 | 객체지향의 원리와 이해
 description: 객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.
 date: 2020-02-17
 sidebarDepth: 2
-feed:
-  enable: true
 
 ---
 
@@ -14,7 +12,7 @@ feed:
 ::: tip 신 기술은 이전 기술의 어깨를 딛고
 
 이미 있던 것이 후에 다시 있겠고, 이미 한 일을 후에 다시 할지라.\
-해 아래는 새 것이 없나니, 무엇을 가리켜 이르기를 보라.\
+해 아래는 새 것이 없나니, 무엇을 가리켜 이르기를 보라.
 
 이것이 새 것이라 할 것이 있으랴, 우리 오래 전 세대에도 이미 있었느니라.
 
@@ -42,3 +40,166 @@ feed:
 뿐만 아니라 연산을 틀리지 않고 정확하게 할 수 있다.
 인간은 이런 일이 불가능하다.
 
+어쨌든 인간은 이렇듯 성실하고 정확한 컴퓨터에게 0과 1로 만들어진 명령어를 전달하여 이를 수행하도록 하였다.
+하지만 0과 1로만 이루어진 연산은 인간이 이해하기 어려웠고, 그래서 어셈블리어가 탄생했다.
+
+### 어셈블리어
+
+::: tip 어셈블리어의 탄생
+
+기계어의 명령들을 일상 용어로 표현하고 기계어가 알 수 있는 기계어로 번역하게 하면 어떨까?
+
+:::
+
+위와 같은 생각에서 출발한 것이 바로 `어셈블리어`이며,
+기계어 명령어와 일상 용어를 1:1로 매칭하는 코드표가 만들어졌다.
+
+그리고 그 코드표를 어셈블리어라고 불렀으며,
+어셈블리어를 기계어로 번역해주는 소프트웨어를 `어셈블러`라고 했다.
+
+하지만 그 당시에 `애드삭` `유니박` 같은 여러 종류의 컴퓨터가 있었고,
+어셈블러와 기계어 또한 컴퓨터의 종류 마다 존재했어야 했다.
+
+@startuml
+rectangle "**애드삭** 전용 어셈블리어" as a1
+rectangle "애드삭 전용 기계어" as a2
+rectangle "애드삭" as a3
+rectangle "**유니박** 전용 어셈블리어" as b1
+rectangle "유니박 전용 기계어" as b2
+rectangle "유니박" as b3
+
+a1 --[hidden] b1
+a2 --[hidden] b2
+a3 --[hidden] b3
+a1 -> a2
+a2 -> a3
+b1 -> b2
+b2 -> b3
+
+a1 .. b2 : 번역 불가
+a2 .. b1
+a2 .. b3 : 실행 불가
+a3 .. b2
+@enduml
+
+### C 언어
+
+C 언어에는 `컴파일러`가 존재했으며,
+C 언어로 작성된 소스코드를 컴파일러가 알아서 각각의 컴퓨터 환경에 맞는 목적 파일을 만들어줬다.
+
+즉, 어셈블리어처럼 각각의 컴퓨터 환경에 맞는 소스코드를 작성할 필요가 없어진 것이다.
+
+
+
+@startuml
+rectangle "C 소스 파일" as c
+rectangle "맥용 컴파일러" as a1
+rectangle "맥용 목적 파일" as a2
+rectangle "윈도우용 컴파일러" as w1
+rectangle "윈도우용 목적 파일" as w2
+
+a1 --[hidden] w1
+a2 --[hidden] w2
+a1 -[hidden] a2
+w1 -[hidden] w2
+
+c -> a1
+c -> w1
+a1 -> a2 : "컴파일"
+w1 -> w2 : "컴파일"
+@enduml
+
+|-|기계어|어셈블리어|C언어|
+|:---:|:---:|:---:|:---:|
+|개발자의 코딩|0과 1의 나열|일상 단어 사용|수학적 기호 사용|
+|소스 파일|기종마다 하나씩|기종마다 하나씩|기종이 몇개든 단 하나|
+|목적 파일(기계어)|소스 그 자체|어셈블러로 소스를 번역해 생성|컴파일러로 소스를 번역해 생성|
+|기계어 비교|-|기계어와 1:1 대응|기계어와 m:n 대응|
+
+### C++. 객체 지향의 탄생 
+
+C++은 C에 객체 지향 개념을 도입된 것이다.
+
+하지만 C++은 객체 지향을 지원하는 것이지 객체 지향이 필수가 아니다.
+
+즉, C++은 객체 지향이 아닌 `객체 지원 언어`라고 할 수 있다.
+
+### Java. 진정한 객체 지향 언어
+
+java는 완벽하게 객체 지향 언어이다.
+왜냐하면 class가 없이는 무엇도 할 수 없기 때문이다.
+
+java에는 객체지향이라는 개념 말고도 `JVM(Java Virtual Machine)` 이라는 개념 또한 도입 되었다.
+
+@startuml
+rectangle "Java Source File" as java
+rectangle "Java Object File(Byte Code)" as object
+rectangle Mac {
+  rectangle "JRE for MAC" as jre1
+  rectangle "JVM for MAC" as jvm1
+}
+rectangle Window {
+  rectangle "JRE for Window" as jre2
+  rectangle "JVM for Window" as jvm2
+}
+
+jre1 --[hidden] jre2
+
+java -> object : 자바 컴파일러
+object -right-> jre1
+object -right-> jre2
+jre1 -> jvm1
+jre2 -> jvm2
+@enduml
+
+java compiler는 java soure file을 하나의 Object File(byte code)로 만들고,
+Byte Code는 각각의 OS에 맞게 만들어진 JRE에 전달되어 JVM에서 실행된다.
+
+|-|C|JAVA|
+|:---:|:---:|:---:|
+|소스 파일|1|1|
+|목적 파일|n|1|
+|실행|Use Anywhere|Use Anywhere|
+|비고|기종별 컴파일러 필요|기종별 JRE, JVM 필요|
+
+## 스프링 프레임워크를 이해하기 전에
+
+::: tip Spring Framework
+
+- 기술이 인간에 대한 완전무결한 사랑을 꿈꾸다
+- 거대함 속의 단순함과 완벽함, 그리고 유연함
+- _IoC/DI, AOP, PSA_ 라고 하는 객체지향의 **Best Practice** 를 통하여 아무리 거대한 프로그램도 쉽게 구현할 수 있음을 보여준다.
+- 단, _IoC/DI, AOP, PSA_ 안에 녹아든 기술들을 이해할 수 있어야 한다. 
+
+:::
+
+앞에서 기계어, 어셈블리어, C, C++, Java 등에 대해 살펴봤다.
+즉, 기계에서 실행되는 0과 1이 인간 중심적으로 발전하기 위한 과정을 본 것이다.
+
+`Spring Framework`는 그 자체로 `인간 중심` 이라고 봐도 무방할 만큼 `현실 세계를 정확히 반영`한다.
+Spring Framework는 객체지향을 정확하고 정교하게 쉽게, 그리고 잘 사용하는 것이 목적이다.  
+그래서 Spring을 이해하기 전에 객체지향의 원칙, 원리, 개념, 디자인 패턴 등을 알아야 한다.
+
+- 객체 지향의 4대 특성
+- 객체지향의 5대 원칙(SOLID 원칙)
+- 디자인 패턴
+- IoC/DI, AOP, PSA
+
+이러한 것들은 Spring Framework 뿐만 아니라 대부분의 Framework가 지향하고 지원하는 개념들이다.
+
+그리고 여기에 더해서 온전히 Spring을 사용하기 위하여 다음과 같은 것들을 알면 더 좋다.
+
+- JVM에서 실행되는 프로그램의 메모리 구조
+  - Stack Frame
+  - Heap Frame
+  - Static Frame
+  - Method Call
+- 자바가 확장한 객체지향
+  - abstract
+  - final
+  - package
+  - interface와 implements
+
+사실 JVM은 Java 뿐만 아니라 굉장히 다양한 언어에서 사용되고 있다.
+앞서 언급 했듯이, JVM만 있다면 _단 하나의 목적파일_ 만 있으면 되기 때문이다.
+더불어 이미 만들어진 JVM을 사용하면 되기 때문에 더더욱 JVM을 사용하는 것이 효율적이다.
