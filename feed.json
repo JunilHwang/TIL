@@ -20,13 +20,6 @@
             "date_modified": "2020-02-17T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
-            "title": "MVVM System 개선하기 (1)",
-            "summary": "다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.",
-            "date_modified": "2020-01-30T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
             "title": "객체지향의 기본 이론",
@@ -42,18 +35,18 @@
             "date_modified": "2020-01-21T00:00:00.000Z"
         },
         {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
+            "title": "MVVM System 개선하기 (1)",
+            "summary": "다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.",
+            "date_modified": "2020-01-30T00:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
             "title": "MVVM System 개선하기 (2)",
             "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
             "date_modified": "2020-02-07T14:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "title": "MVVM System 개선하기 (3)",
-            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
-            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
@@ -64,11 +57,11 @@
             "date_modified": "2020-01-14T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
-            "title": "github page에 배포하기",
-            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
-            "date_modified": "2020-01-06T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "title": "MVVM System 개선하기 (3)",
+            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
+            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Plantuml/",
@@ -76,6 +69,13 @@
             "title": "markdown-it-plantuml",
             "summary": "plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.",
             "image": "https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg",
+            "date_modified": "2020-01-06T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
+            "title": "github page에 배포하기",
+            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
             "date_modified": "2020-01-06T00:00:00.000Z"
         },
         {
