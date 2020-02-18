@@ -17,15 +17,14 @@ module.exports = [
       {
         title: '객체지향의 원리와 이해',
         children: [
-          {
-            title: '00 책 소개',
-            path: `${OOPPrinciple}/00-Intro/`
-          },
-          {
-            title: '01 사람을 사랑한 기술',
-            path: `${OOPPrinciple}/01-Loved-Human/`
-          },
-          ...[].map(v => `${OOPPrinciple}/${v}`)
+          { title: '책 소개', path: `${OOPPrinciple}/00-Intro/` },
+          { title: '사람을 사랑한 기술', path: `${OOPPrinciple}/01-Loved-Human/` },
+          { title: '언어로서의 자바', path: `${OOPPrinciple}/02-Java-As-PL/` },
+          { title: '자바와 객체지향', path: `${OOPPrinciple}/03-Java-As-OOP/` },
+          { title: '확장된 객체지향', path: `${OOPPrinciple}/04-Extended-By-Java/` },
+          { title: 'SOLID 원칙', path: `${OOPPrinciple}/05-SOLID/` },
+          { title: '디자인 패턴', path: `${OOPPrinciple}/06-Design-Pattern/` },
+          { title: 'Spring Triangle', path: `${OOPPrinciple}/07-Spring-Triangle/` },
         ]
       },
     ]
