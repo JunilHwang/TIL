@@ -30,7 +30,7 @@ next: false
 
   - [00 - 책 소개](/Book/OOP-Principle/00-Intro/)
   - [01 - 사람을 사랑한 기술](/Book/OOP-Principle/01-Loved-Human/)
-  - [02 - 언어로서의 자바(작성 예정)](/Book/OOP-Principle/02-Java-As-PL/)
+  - [02 - 언어로서의 자바(작성 중)](/Book/OOP-Principle/02-Java-As-PL/)
   - [03 - 자바와 객체지향(작성 예정)](/Book/OOP-Principle/03-Java-As-OOP/)
   - [04 - 확장된 객체지향(작성 예정)](/Book/OOP-Principle/04-Extended-By-Java/)
   - [05 - SOLID 원칙(작성 예정)](/Book/OOP-Principle/05-SOLID/)
