@@ -2,7 +2,7 @@
 
 title: 01 사람을 사랑한 기술 | 객체지향의 원리와 이해
 description: 객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.
-date: 2020-02-17
+date: 2020-02-18
 sidebarDepth: 2
 feed:
   enable: true
