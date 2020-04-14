@@ -4,7 +4,7 @@ const CodeSpitzNBJS = `${CodeSpitz}/None-Blocking-Javascript`
 const CodeSpitzOOJS = `${CodeSpitz}/Object-Oriented-Javascript`
 const Book = `/Book`
 const OOPPrinciple = `${Book}/OOP-Principle`
-const Review2020 = `Review/2020-year/`
+const Review2020 = `Review/2020-year`
 
 module.exports = [
   { title: 'Home', path: '/' },
@@ -13,7 +13,7 @@ module.exports = [
     children: [
       {
         title: '월 회고',
-        children: ['01-January/', '02-February', '03-March'].map(v => `${Review2020}/${v}`)
+        children: ['01-January/', '02-February/', '03-March/'].map(v => `${Review2020}/${v}`)
       },
       {
         title: '분기 회고',
