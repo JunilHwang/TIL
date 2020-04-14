@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Tue, 18 Feb 2020 07:57:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Apr 2020 14:22:22 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -67,6 +67,13 @@
             <description><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></description>
             <enclosure url="https://junilhwang.github.io/TIL/./01.jpg">
             </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[2020년 1월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/01-January/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/01-January/</guid>
+            <pubDate>Fri, 31 Jan 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 1월 회고 입니다.]]></description>
         </item>
         <item>
             <title><![CDATA[github page에 배포하기]]></title>
