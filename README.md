@@ -124,6 +124,7 @@ _Gradle_
     - ~~1월~~ `실패`
     - 2월 `성공`
       - [스프링 입문을 위한 자바 객체지향의 원리와 이해](/Book/OOP-Principle/00-Intro/)
+    - ~~3월~~ `실패`
   - PPP 시리즈 읽어보기
     - 밑바닥 부터 만드는 컴퓨팅 시스템
     - 클린 아키텍쳐
@@ -133,3 +134,15 @@ _Gradle_
     - 테스트 주도 개발
     - 생각하는 프로그래밍
 - [VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)](/Vuepress/Starter/) `완료`
+
+## 2020년 회고
+
+### 월 회고
+
+- [1월](/Review/2020-year/01-January/)
+- [2월](/Review/2020-year/02-February/)
+- [3월](/Review/2020-year/03-March/) 
+
+### 분기 회고
+
+- [1분기](/Review/2020-year/01-First-Quarter/)
