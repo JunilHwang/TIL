@@ -1,6 +1,6 @@
 ---
 
-title: 2020년 12 회고
+title: 2020년 2월 회고
 description: 2020년 2월 회고 입니다.
 date: 2020-02-29
 sidebarDepth: 1
@@ -27,14 +27,94 @@ feed:
 
 ```sh
 # 대략 다음과 같은 형태이다.
-curl --location --request GET 'http://localhost:8080/api/uri' \
---header 'Accept: application/vnd.version-1.5+json'
+curl -H "Accept: application/vnd.github.v3+json" "https://api.github.com/"
 ```
 
-그래서 사수가 작성한 python script를 이용해서 어느 정도 포맷팅을 하여 api를 확인할 수 있었는데 이건 또 grep이 안 되기 때문에 필요한 부분만 확인할 때 여전히 불편했으며,
-확인해야 하는 API 요청이 한 개가 아니기 때문에 말 그대로 불편함 그 자체였다.
-그래서 api version과 port를 입력 받으면 전체 request를 날린 후 response를 version.port.path 형태로 저장하도록 쉘 스크립트를 작성하여 사용했다.
+그러면 이렇게 한 줄로 출력이 된다(사실 위와 같이 github api를 요청하면 포맷팅이 된 형태로 반환한다.)
 
+```json
+{"current_user_url": "https://api.github.com/user","current_user_authorizations_html_url": "https://github.com/settings/connections/applications{/client_id}","authorizations_url": "https://api.github.com/authorizations","code_search_url": "https://api.github.com/search/code?q={query}{&page,per_page,sort,order}","commit_search_url": "https://api.github.com/search/commits?q={query}{&page,per_page,sort,order}","emails_url": "https://api.github.com/user/emails","emojis_url": "https://api.github.com/emojis","events_url": "https://api.github.com/events","feeds_url": "https://api.github.com/feeds","followers_url": "https://api.github.com/user/followers","following_url": "https://api.github.com/user/following{/target}","gists_url": "https://api.github.com/gists{/gist_id}","hub_url": "https://api.github.com/hub","issue_search_url": "https://api.github.com/search/issues?q={query}{&page,per_page,sort,order}","issues_url": "https://api.github.com/issues","keys_url": "https://api.github.com/user/keys","label_search_url": "https://api.github.com/search/labels?q={query}&repository_id={repository_id}{&page,per_page}","notifications_url": "https://api.github.com/notifications","organization_url": "https://api.github.com/orgs/{org}","organization_repositories_url": "https://api.github.com/orgs/{org}/repos{?type,page,per_page,sort}","organization_teams_url": "https://api.github.com/orgs/{org}/teams","public_gists_url": "https://api.github.com/gists/public","rate_limit_url": "https://api.github.com/rate_limit","repository_url": "https://api.github.com/repos/{owner}/{repo}","repository_search_url": "https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}","current_user_repositories_url": "https://api.github.com/user/repos{?type,page,per_page,sort}","starred_url": "https://api.github.com/user/starred{/owner}{/repo}","starred_gists_url": "https://api.github.com/gists/starred","user_url": "https://api.github.com/users/{user}","user_organizations_url": "https://api.github.com/user/orgs","user_repositories_url": "https://api.github.com/users/{user}/repos{?type,page,per_page,sort}","user_search_url": "https://api.github.com/search/users?q={query}{&page,per_page,sort,order}"}
+```
+
+그래서 사수가 알려준 python script를 이용하여 어느 정도 응답 형태를 이쁘게 만들었다.
+
+```sh
+curl -H "Accept: application/vnd.github.v3+json" "https://api.github.com/" | python -c "
+import fileinput, json
+print(
+    json.dumps(
+        json.loads(''.join(fileinput.input())),
+        sort_keys=True,
+        ensure_ascii=False,
+        indent=4
+    )
+)"
+```
+
+그러면 이렇게 포맷팅이 된 결과를 출력해준다.
+
+```js
+{
+  "current_user_url": "https://api.github.com/user",
+  "current_user_authorizations_html_url": "https://github.com/settings/connections/applications{/client_id}",
+  "authorizations_url": "https://api.github.com/authorizations",
+  "code_search_url": "https://api.github.com/search/code?q={query}{&page,per_page,sort,order}",
+  "commit_search_url": "https://api.github.com/search/commits?q={query}{&page,per_page,sort,order}",
+  "emails_url": "https://api.github.com/user/emails",
+  "emojis_url": "https://api.github.com/emojis",
+  "events_url": "https://api.github.com/events",
+  // 너무 길어서 생략
+}
+```
+
+이건 또 python으로 출력한 것이기 때문에 grep을 사용할 수 없다.
+그래서 몇 백줄이 되는 결과값에서 필요한 부분만 확인할 때 여전히 불편했으며, 확인해야 하는 API 요청이 한 개가 아니기 때문에 말 그대로 불편함 그 자체였다.
+
+> 그러나 개발자라면 불편함을 해결할 수 있어야 한다! ~~이름하여 창조적 귀찮음~~
+
+나는 위의 python script와 shell script을 결합하여 모든 요청을 한 번에 수행 후 파일로 저장하는 스크립트를 만들었다.
+
+#### /bin/ApiAllTestScript
+```sh
+#! /bin/sh
+
+version=$1
+path=$2
+
+# 예시를 위하여 github로 대체
+curl -H "Accept: application/vnd.github.v${version}+json" \
+"http://api.github.com/${path}" | python -c "
+import fileinput, json
+str = json.dumps(json.loads(''.join(fileinput.input())), sort_keys=True, ensure_ascii=False, indent=4)
+f = open('~/output_${version}', 'w')
+f.write(str.encode('utf-8'))
+f.close()"
+```
+#### /bin/ApiAllTestScript
+```sh
+#! /bin/sh
+
+str="path1,path2,path3,path4,path5,path6,path7,path8"
+
+mkdir ~/output_$1
+
+echo "" > ~/output_$1/moduleCheck
+
+for value in `echo ${str} | tr ',' '\n'`;
+do
+  sh ApiAllTestScript $1 $value
+  echo -e "\n\n[${value}]\n" >> ~/output_$1/moduleCheck
+  grep '            "type"' ~/output_$1/${value} | grep -v '                    ' >> ~/output_$1/moduleCheck
+done
+```
+
+실행은 다음과 같이 하면 된다.
+
+```sh
+> sh ApiAllTestScript 3
+```
+
+그러면 Shell Script 에 정의된 모든 path에 대해 api 요청 후 결과를 저장하게 된다.
 
 그래도 여전히.. 개발망에서 로그를 확인할 때는 여간 불편한게 아니였다.
 무엇보다 개발망에서 패키지를 설치하면 패키지 의존성이 전부 깨져있어서 원격데스크톱, vim, ssh 등의 편리한 도구들을 사용할 수 없었다.
@@ -51,78 +131,10 @@ curl --location --request GET 'http://localhost:8080/api/uri' \
  
 
 ### 2. CMS 프로젝트 시작
-
 ### 3. 코드 리뷰
-
 ### 4. 재택근무
 
 
 ## 사적
-
-2019년은 나에게 굉장히 권태로운 해였다. 그래서 2020년은 최대한 열심히 살아보기로 다짐했다.
-
-### 1. 일일 커밋
-
-열심히 살기 위한 첫 번째 목표가 일일커밋이다. 1월은 성공적으로 마무리되었다. 사실 매우 귀찮은 순간이 없지 않아 있었다.
-삶에 관성으로 인하여 공부하고 싶은 날들보단 놀고 싶은 날들이 많았다. 그래서 약간의 편법(~~학부 수업 자료를 매일 매일 나눠서 올린다거나..~~)을 많이 사용한 것 같다.
-어쨌든 하지 않는 것보단, 어떻게든 하는 것에 의미를 두기로 했다.
-
-공부에 대한 관성이 생길 수 있게, 그리고 유지할 수 있게 자극이 되는 영상을 보거나, 회고 같은 것들을 읽었다.
-
-- [지방대 개발 비전공자가 배달의민족 리드 개발자가 되기까지](https://www.youtube.com/watch?v=V9AGvwPmnZU&t=165s)
-- [체대 출신 개발자의 2019년 회고](https://ryan-han.com/post/memoirs/memoirs2019/)
-- [나의 소중하고 또 존경하는 친구의 기록들 - ChoDragon9/Posts](https://github.com/ChoDragon9/posts/wiki)
-- [김민준(Velopert)님의 2019년 회고](https://velog.io/@velopert/2019.log)
-
-참 치열하게, 그리고 열심히 살아가는 사람들의 글을 읽다 보면 괜히 마음이 뭉클하고
-존경심, 경외심, 그리고 그들처럼 살아가고 싶다고 생각하곤 한다.
-
-### 2. Today I Learn
-
-일일 커밋의 좋은 양분 중 하나가 `Today I Learn`이었다.
-공부한 것들을 기록하는 단순한 행위지만 그 효과는 상당히 좋다고 생각한다.
-다만, 개인적으로 관리하고 있던 블로그 때문에 약간의 갈등이 있었다.
-블로그는 생각보다 View가 많은 편이다.
-검색 우선순위가 높은 게시물이 몇 개 있다 보니까 하루 평균 500~600명 정도의 Page View가 발생하고 있었다.
-그래서 블로그를 계속 유지하는 게 좋을까, 유지하지 않는 게 좋을까 고민을 많이 했다.
-
-워드프레스에 공들여 작성한 일부 게시물을 TIL로 옮길까도 생각했고,
-TIL에 올린 걸 워드프레스에서 자동으로 읽어오도록 할까도 고민해 봤는데 단순하게 TIL을 더 잘 가꾸는 방향을 선택했다.
-
-그리고 TIL은 Vuepress를 이용하여 만들었는데, 생각 이상으로 손이 많이 가는 것 같다.
-하지만 디자인도 깔끔하고 한 번만 잘 구축하면 관리도 쉽기 때문에 잘한 선택이지 싶다.
-
-### 3. 코드 스피츠 86기, 그리고 객체지향
-
-미루고 미루었던 코드 스피츠를 유튜브로 보면서 정리했다.
-
-- [1회차](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/)
-- [2회차](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/)
-- [3회차](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/)
-- [4회차](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/)
-- [5회차](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/)
-
-Vue, React 같은 Front-end Framework에서 사용 하는 MVVM System을 직접 만들어 보는 내용이었다.
-내용은 생각 이상으로 알차고 재미있었다.
-무엇보다 여태까지 멋모르고 사용했던 프레임워크의 기본 원리를 알 수 있었기 때문에
-Vue, React 뿐만 아니라 Spring Framework에 담긴 원리들도 깨우칠 수 있었다.
-
-여태까지 내가 했던 개발은 개발이 아니라고 느끼는 계기가 되었다.
-무언가 많이 한 것 같은데, 사실 알맹이가 없었다. 왜 이걸 이제야 알았을까?
-
-코드스피츠 뿐만 아니라 인프런의 백기선 님이 올리신 강의들도 도움이 많이 되었다.
-
 ### 4. 아쉬운 점
-
-체력적인 한계를 느끼고 있다. 집에 오면 왜 이리 피곤한 걸까?
-다음 달부터는 수영하러 다녀야겠다. 몸도 찌뿌둥하고, 개발자에게 수영이 참 적합한 운동이라고 하니 꼭 다녀야지.
-
-그리고 책을 읽지 못했다. 2월에는 책을 꼭 읽어보자.
-
 ## Summary
-
-- 파일럿 프로젝트 마무리
-- 일일커밋 시작
-- Today I Learn 시작
-- 객체지향 이해
-- 체력적 한계 및 독서 실패
