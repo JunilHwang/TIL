@@ -3,7 +3,7 @@
 title: 2020년 2월 회고
 description: 2020년 2월 회고 입니다.
 date: 2020-02-29
-sidebarDepth: 1
+sidebarDepth: 2
 feed:
   enable: true
 
