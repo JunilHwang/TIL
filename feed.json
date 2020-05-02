@@ -94,6 +94,14 @@
             "date_modified": "2020-03-31T00:00:00.000Z"
         },
         {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
+            "title": "2020년 4월 회고",
+            "summary": "2020년 4월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
+            "date_modified": "2020-05-01T00:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
             "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
             "title": "github page에 배포하기",

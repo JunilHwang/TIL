@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sat, 02 May 2020 07:49:57 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 02 May 2020 14:55:22 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -98,6 +98,15 @@
             <pubDate>Tue, 31 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[2020년 3월 회고 입니다.]]></description>
             <enclosure url="https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[2020년 4월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/04-April/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/04-April/</guid>
+            <pubDate>Fri, 01 May 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 4월 회고 입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png">
             </enclosure>
         </item>
         <item>
