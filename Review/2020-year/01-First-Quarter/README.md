@@ -18,20 +18,26 @@ feed:
 
 ### 1. 일일커밋
 
-올해의 첫 번째 목표이자 제일 큰 목표는 바로 일일커밋이다.
+![일일커밋](https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png)
+
+올해의 첫 번째 목표이자 제일 큰 목표는 바로 **일일커밋**이다.
 이전에는 일일커밋이 부질없다고 생각했는데, 그 생각을 고쳐먹었다.
-무언가를 거창하게 하기보단, 작더라도 꾸준히 하는 것이 중요하다.
-나는 관성의 영향을 크게 받는 사람이다.
+_무언가를 거창하게 하기보단, 작더라도 꾸준히 하는 것이 중요하다._
+
+이런 생각은 [지방대 개발 비전공자가 배달의민족 리드 개발자가 되기까지](https://www.youtube.com/watch?v=V9AGvwPmnZU)에 언급된 `하루키 법칙`에서 비롯되었다.
+
+나는 **관성**의 영향을 크게 받는 사람이다.
 그래서 일일커밋이라는 관성에 탑승하기로 했다.
 ~~강제로 꾸준히 공부하다 보면 뭐라도 되어있겠지 하며..~~
 
-너무 피곤해서 못할뻔한 적도 있었지만, 머릿속으로 계속 '그래도 오늘 커밋을 해야 하는데...' 하며 몸을 일으키고 컴퓨터를 고 공부를 했다.
+너무 피곤해서 못할뻔한 적도 있었지만, 머릿속으로 계속 _'그래도 오늘 커밋을 해야 하는데...'_ 하며 몸을 일으키고 컴퓨터를 고 공부를 했다.
 이렇게까지 해야 하는 건가 싶을 때도 있었지만 어쨌든 결과적으론 나쁘지 않았다.
 
 일일커밋의 양분으로
-[Today I Learned](https://junilhwang.github.io/TIL/),
-[DKU-Software-Engineering-Logging](https://github.com/JunilHwang/DKU-Software-Engineering-Logging),
-그리고 사이트 프로젝트인 [DKU-Software-Engineering-Logging-service](https://github.com/JunilHwang/DKU-Software-Engineering-Logging-service)
+- [Today I Learned](https://junilhwang.github.io/TIL/),
+- 학과 수업 자료: [DKU-Software-Engineering-Logging](https://github.com/JunilHwang/DKU-Software-Engineering-Logging),
+- 사이트 프로젝트: [DKU-Software-Engineering-Logging-service](https://github.com/JunilHwang/DKU-Software-Engineering-Logging-service)
+
 등을 이용했다.
 
 학과 자료는 옛날부터 생각했던 거라서 그냥 시간 있을 때 조금씩 정리했고, TIL도 팀원들과 유명한 개발자들이 하고 있었기 때문에 나도 하고 싶다는 생각으로 시작했다.
@@ -43,7 +49,7 @@ feed:
 이 밀도를 3년 정도 유지하는 것이 나의 최대 목표다.
 그리고 이 목표를 얼마나 착실하게 이루어가느냐에 따라서 앞으로의 인생이 달라지겠지?
 
-내가 성공까진 아니더라도 나 자신에게 떳떳하게 살기 위한 한 걸음이리라.
+성공까진 아니더라도 나 자신에게 떳떳하게 살기 위한 한 걸음이리라.
 
 ### 2. Today I Learned
 
