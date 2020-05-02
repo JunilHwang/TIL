@@ -13,7 +13,7 @@ module.exports = [
     children: [
       {
         title: '월 회고',
-        children: ['01-January/', '02-February/', '03-March/'].map(v => `${Review2020}/${v}`)
+        children: ['01-January/', '02-February/', '03-March/', '04-April/'].map(v => `${Review2020}/${v}`)
       },
       {
         title: '분기 회고',
