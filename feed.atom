@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-05-01T08:09:42.311Z</updated>
+    <updated>2020-05-02T07:47:36.349Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -24,14 +24,6 @@
         <summary type="html"><![CDATA[객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MVVM System 개선하기 (1)]]></title>
-        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
-        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/">
-        </link>
-        <updated>2020-01-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[객체지향의 기본 이론]]></title>
         <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</id>
         <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/">
@@ -46,6 +38,14 @@
         </link>
         <updated>2020-01-21T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[객체지향을 통해서 MVVM System을 만드는 과정입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MVVM System 개선하기 (1)]]></title>
+        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
+        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/">
+        </link>
+        <updated>2020-01-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[MVVM System 개선하기 (2)]]></title>
@@ -72,12 +72,12 @@
         <summary type="html"><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 2월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-February/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-February/">
+        <title type="html"><![CDATA[2020년 1분기 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/">
         </link>
-        <updated>2020-02-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
+        <updated>2020-04-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 1분기 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 1월 회고]]></title>
@@ -86,6 +86,14 @@
         </link>
         <updated>2020-01-31T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 1월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 2월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-February/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-February/">
+        </link>
+        <updated>2020-02-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 3월 회고]]></title>
