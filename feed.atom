@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-05-02T14:55:22.723Z</updated>
+    <updated>2020-05-31T13:56:28.120Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -110,6 +110,14 @@
         </link>
         <updated>2020-05-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 4월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 5월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/05-May/">
+        </link>
+        <updated>2020-05-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 5월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[github page에 배포하기]]></title>
