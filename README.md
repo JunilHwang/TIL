@@ -113,6 +113,7 @@ _Gradle_
   - Flask
 
 ## 2020 목표
+
 - 여태까지 올라온 코드 스피츠 강의 내용을 보고 정리하기
 - 하루에 한 번 이상 commit 하기
 - [학부 시절 공부한 자료 정리해서 공유하기](https://github.com/JunilHwang/DKU-Software-Engineering-Logging)
@@ -143,6 +144,7 @@ _Gradle_
 - [2월](/Review/2020-year/02-February/)
 - [3월](/Review/2020-year/03-March/)
 - [4월](/Review/2020-year/04-April/) 
+- [5월](/Review/2020-year/05-May/) 
 
 ### 분기 회고
 
