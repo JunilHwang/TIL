@@ -205,7 +205,7 @@ Local에서 충분히 기능이 만들어졌다면 이제 RealAdapter를 만들�
 
 ##### Storage API 사용하기
 
-Storage API는 다음과 같이 사용할 수 있다.
+[Storage API](https://developer.chrome.com/extensions/storage)는 다음과 같이 사용할 수 있다.
 
 ``` js
 import { Store } from './Store.js';
@@ -214,6 +214,7 @@ export const ChromeStore = class extends Store {
   async _setter (key, value) {
     return new Promise((resolve, reject) => {
       try {
+        // key에 해당하는 value를 저장한다.
         chrome.storage.local.set({ [key]: value }, resolve)
       } catch (e) {
         reject(e)
@@ -231,6 +232,34 @@ export const ChromeStore = class extends Store {
     })
   }
 }
+```
+
+##### Bookmark API 사용하기
+
+북마크는 트리구조로 저장이 되어 있기 때문에, 이를 flat 형태로 만들어야 한다.
+
+```js
+
+const bookmarks = [];
+
+const getTree = () => new Promise(resolve => chrome.bookmarks.getTree(resolve));
+const load = async () => {
+  const [ tree ] = await getTree();
+  // tree 구조를 array로 펴주는 과정
+  let arr = tree.children.flatMap(v => v.children);
+  while (arr.find(v => v.children)) {
+    arr = arr.flatMap(v => v.children || [ v ])
+  }
+  bookmarks.push(...bookmarks.map(({ id, title, url }) => ({ id, title, url })))
+}
+const save = ({ id, title, url }, key) => {
+  chrome.bookmarks.update(id, { title, url }, () => {
+    bookmarks[key] = { id, title, url };
+  })
+}
+
+window.onload = load
+
 ```
 
 
