@@ -113,6 +113,8 @@ Local에서 충분히 기능이 만들어졌다면 이제 RealAdapter를 만들�
 
 [튜토리얼 레포지토리 바로가기](https://github.com/JunilHwang/chrome-extension-tutorial)
 
+![크롬 확장프로그램 튜토리얼](./2.png)
+
 일단, 개발에 앞서 ~~커밋 횟수도 채울겸~~ 튜토리얼을 진행했다. 개발에 필요한 API는 History, Bookmark, Storage API였다.
 
 ##### manifest.json
@@ -236,7 +238,11 @@ export const ChromeStore = class extends Store {
 
 ##### Bookmark API 사용하기
 
+[bookmarks api 공식문서](https://developer.chrome.com/extensions/bookmarks)
+
 북마크는 트리구조로 저장이 되어 있기 때문에, 이를 flat 형태로 만들어야 한다.
+
+![bookmark api](./1.png)
 
 ```js
 
@@ -262,8 +268,70 @@ window.onload = load
 
 ```
 
+##### 자주 방문한 사이트
 
+자주 방문한 사이트는 [history api](https://developer.chrome.com/extensions/history)를 사용하면 된다.
+
+그리고 history에서 다시 방문 빈도를 뽑아내기 위해서는 api 스펙에 대해 잘 알아야 되는데, 다행이도 [공식 튜토리얼](https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/docs/examples/api/history/showHistory/typedUrls.js)이 있어서 이해하기가 수월했다.
+
+```js
+
+// 최근 30일 간의 방문 기록 중
+const microsecondsPerWeek = 1000 * 60 * 60 * 24 * 30;
+const startTime = Date.now() - microsecondsPerWeek;
+
+// 1000 개를 가져온다.
+const maxResults = 1000
+
+const getFrequentlyVisited = () => new Promise(resolve => {
+  const visited = {}
+  const sorted = (a, b) => b[1].count - a[1].count;
+  chrome.history.search({text: '', startTime, maxResults}, items => {
+    items.forEach(({url, title}, key) => chrome.history.getVisits({url}, result => {
+      result.forEach(({ transition }) => {
+        if (transition === 'typed') {
+          visited[url] = (visited[url] || { title, count: 0 })
+          visited[url].count += 1;
+        }
+      })
+      if (key === maxResults - 1) resolve(Object.entries(visited).sort(sorted).map(([ url, { title } ]) => ({ url, title })))
+    }))
+  })
+});
+
+const visited = []
+window.onload = async () => {
+  visited.push(...[await getFrequentlyVisited()])
+}
+```
+
+##### 개발 환경에서 고려해야 할 것
+
+크롬 확장프로그램의 경우, 따로 웹 서버가 필요한게 아니다. 하지만 Chrome API를 사용하기 위해선 크롬 확장프로그램으로 등록되어 있어야 했다.
+그래서 스토리지에 대한 추상화도 필요했고, history나 bookmark대신에 localstorage를 활용해야 했다.
+
+이에 대한 과정은 아마 6월달에 회사 기술 블로그에 더 자세하게 소개할 수 있을 것 같다. 확장프로그램에 대한 소개는 여기까지!
 
 ## 사적
 
+### 단국대학교 알고리즘 스터디
+
+
+
+### 자바 클린코드 수강
+
+### 코덕
+
+### 기능경기대회
+
+### 수영
+
 ## Summary
+
+- 철저하게 망이 분리된 상태에서의 API 개발
+- 크롬 확장프로그램 개발 및 크롬 API 응용 방법
+- 코덕 1등
+- 단국대 알고리즘 스터디를 어느정도 잘 유지 중
+- 자바 클린코드 레이싱카 / 로또 완료. 이제 2개 남았음
+- 기능대회와의 손절은 언제 가능한 것인가..
+- 수영 열심히 다니는 
