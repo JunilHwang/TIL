@@ -391,7 +391,10 @@ window.onload = async () => {
 
 ### 2. 자바 클린코드 수강
 
-7기에는 수강신청 시간을 몰라서 응시하려고 보니 지났었는데, 이번에는 거의 1등으로 수강신청을 완료하지 않았을까 싶다 ㅋㅋ
+7기에는 수강신청 시간을 잘못 알고 있어서 마감이 됐었다.
+결과적으로 그 때 수강하지 않은건 코로나 때문에 잘 한 일이라고 생각한다.
+
+이번에는 거의 1등으로 수강신청을 완료하지 않았나 싶다.
 
 현재 회사에서 java를 사용하고 있긴 하지만, java의 코어를 잘 모르기 때문에 이번 기회에 제대로 익혀두자 싶어서 수강신청을 했다.
 결과는 ~~죽을맛이다~~ 매우 만족스럽다.
@@ -416,6 +419,28 @@ window.onload = async () => {
 하지만 그만큼 코드 자체는 극한의 아름다움을 보이게 된다.
 
 덕분에 잘 활용할 수 있게 된게 Stream API와 Enum이다.
+
+#### 코드리뷰 모음
+
+아직 3주차 밖에 되지 않았다. 수료까지는 5주가 남았지만, 개개인의 미션 진행 속도에 따라 다르다.
+
+- Racingcar
+  - [step1: String 클래스에 대한 학습](https://github.com/next-step/java-racingcar/pull/716)
+  - [step2: 문자열 계산기](https://github.com/next-step/java-racingcar/pull/761)
+  - [step3: 자동차 경주](https://github.com/next-step/java-racingcar/pull/826)
+  - [step4: 자동차 경주 우승자](https://github.com/next-step/java-racingcar/pull/870)
+  - [step5: 자동차 경주 리팩토링](https://github.com/next-step/java-racingcar/pull/984)
+- Lotto
+  - [step1: 문자열 덧셈 계산](https://github.com/next-step/java-lotto/pull/495)
+  - [step2: 로또 (1)](https://github.com/next-step/java-lotto/pull/509)
+  - [step2: 로또 (2)](https://github.com/next-step/java-lotto/pull/527)
+  - [step3: 로또 2등 (2)](https://github.com/next-step/java-lotto/pull/532)
+  - [step3: 로또 2등 (2)](https://github.com/next-step/java-lotto/pull/541)
+  - [step4: 로또 수동](https://github.com/next-step/java-lotto/pull/550)
+- ladder
+  - [step1](https://github.com/next-step/java-ladder/pull/389)
+
+[개인적으로 관리하고 있는 통합 저장소](https://github.com/JunilHwang/java-clean-code)
 
 ### 3. 코덕
 
