@@ -19,7 +19,7 @@ feed:
 API도 만들고 FE도 만들었다.
 그러면서 겪은 일들을 회고한다.
 
-### API 개발
+### 1. API 개발
 
 다른 회사는 어떤지 모르겠지만.. 우리 회사는 철저하게 망 분리가 된 상태로 서버를 관리하고 있다.
 이것도 [IDC(Internet Data Center)](https://blog.naver.com/kinxtime/220648265067?proxyReferer=https%3A%2F%2Fwww.google.com%2F)와
@@ -105,7 +105,135 @@ Local에서 충분히 기능이 만들어졌다면 이제 RealAdapter를 만들�
 
 - 브라우저 -> 서비스 서버의 캐시 데이터 호출
 - 서비스 서버 스케쥴러 -> Internal API의 캐시 데이터 호출 -> 캐시 최신화
-- Internal API 스케쥴러 -> 외부 API 호출 -> 캐시 최신화 
+- Internal API 스케쥴러 -> 외부 API 호출 -> 캐시 최신화
+
+### 2. 크롬 익스텐션 개발
+
+#### (1) 크롬 익스텐션 튜토리얼
+
+[튜토리얼 레포지토리 바로가기](https://github.com/JunilHwang/chrome-extension-tutorial)
+
+일단, 개발에 앞서 ~~커밋 횟수도 채울겸~~ 튜토리얼을 진행했다. 개발에 필요한 API는 History, Bookmark, Storage API였다.
+
+##### manifest.json
+
+먼저 확장프로그램에 꼭 필요한 파일이 바로 `manifest.json`이다.
+
+::: tip manifest.json
+
+[Chrome API 공식 문서](https://developer.chrome.com/extensions/manifest)에서 확인해볼 수 있긴 한데.. 설명이 좀 빈약하다.
+
+- manifest.json 파일은 json 포맷 파일로서, 모든 웹 익스텐션이 포함하고 있어야 하는 파일이다. 
+- manifest.json에 익스텐션의 이름, 버젼과 같은 기본 정보, 익스텐션의 기능 등을 명시해야 한다.
+- 예를 들어 기본 스크립트, 내용 스크립트, 브라우져 활동 등과 같은 측면을 명시할 수 있다. 
+
+[MDN Web Extension](https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/manifest.json)에서도 확인할 수 있다.
+
+:::
+
+``` js
+{
+  // 버전 명시.
+  "manifest_version": 2, 
+
+  // 확장 프로그램 이름
+  "name": "JunilChromeExtensionTutorial", 
+
+  // 확장 프로그램 설명
+  "description": "Chrome Extension Tutorial", 
+
+  // 확장 프로그램 버전
+  "version": "1.0", 
+
+  "browser_action": {
+    // 화장 프로그램의 아이콘
+    "default_icon": "icon.png" 
+  },
+
+  "permissions": [
+    "activeTab", // 현재 활성중인 탭에 대한 권한
+    "tabs",      // 열려 있는 탭에 대한 권한
+    "storage",   // chrome.storage API 사용. localstorage와 비슷한 기능
+    "bookmarks", // chrome.bookmarks API 사용. 즉, 북마크에 접근할 수 있다.
+    "history"    // chrome.history에 접근할 수 있음. 즉, 방문 기록을 접근할 수 있다. 
+  ], 
+
+  // 줄여서 CSP라고 한다. 리소스에 대한 보안정책을 설정할 수 있다.
+  // unsafe-eval이 있어야 vue를 사용할 수 있다. eval 함수를 사용할 수 있도록 정의하는 것이다.
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+  "chrome_url_overrides": {
+    // 새 탭을 열었을 때 보여지는 페이지를 설정할 수 있다.
+    "newtab": "index.html"
+  }
+}
+```
+
+튜토리얼에선 사용하지 않았지만, chrome의 기본 설정을 덮어씌우는 것도 가능하다.
+
+```js
+{
+  // 크롬의 기본적인 설정을 덮어씌울 수 있다.
+  "chrome_settings_overrides": {
+
+    // 검색 엔진에 대한 설정을 변경할 수 있다.
+    "search_provider": {
+
+      // 인코딩 설정
+      "encoding": "UTF-8",
+
+      // 검색엔진 키워드
+      "keyword": "junil hwang",
+     
+      // 검색엔진 이름
+      "name": "junil hwang blog Search",
+
+      // 검색 엔진
+      "search_url": "http://junil-hwang.com/blog/?s={searchTerms}",
+
+      // 기본 검색 엔진으로 설정할지의 여부
+      "is_default": true
+    },
+
+    // 시작페이지를 설정할 수 있따.
+    "startup_pages": ["http://junil-hwang.com"]
+  }
+}
+```
+
+이렇게 시작페이지 / 검색엔진 등을 교체할 수도 있지만 지금 당장은 필요하지 않아서 제외했다.
+
+##### Storage API 사용하기
+
+Storage API는 다음과 같이 사용할 수 있다.
+
+``` js
+import { Store } from './Store.js';
+
+export const ChromeStore = class extends Store {
+  async _setter (key, value) {
+    return new Promise((resolve, reject) => {
+      try {
+        chrome.storage.local.set({ [key]: value }, resolve)
+      } catch (e) {
+        reject(e)
+      }
+    })
+  }
+
+  async _getter (key) {
+    return new Promise((resolve, reject) => {
+      try {
+        chrome.storage.local.get(key, storage => resolve(storage[key]))
+      } catch (e) {
+        reject(e)
+      }
+    })
+  }
+}
+```
+
+
 
 ## 사적
 
