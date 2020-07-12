@@ -2,7 +2,7 @@
 
 title: 2020년 6월 회고
 description: 2020년 6월 회고 입니다.
-date: 2020-07-02
+date: 2020-07-12
 sidebarDepth: 2
 feed:
   enable: true
@@ -20,7 +20,7 @@ NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nex
 
 6월 업무는 말 그대로 확장프로그램과의 전쟁이었다. 개발이 어려운게 아니라 검수를 통과하는게 무척 어려웠다.
 
-![image](https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png)
+![image01](https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png)
 
 ![image](https://user-images.githubusercontent.com/18749057/86334283-fd082e00-bc87-11ea-9732-5f348891ec76.png)
 
