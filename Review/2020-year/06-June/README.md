@@ -102,6 +102,57 @@ NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nex
 NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nextstep.camp/c/8fWRxNWU) 를 6월 중순까지 마무리했다.
 내가 무사히 수료할 수 있을까 고민했는데, 운이 좋게 제일 먼저 수료할 수 있었다.
 
+::: tip 해당 과정을 진행하면서 올린 PR(코드리뷰) 모음
+
+- Racingcar
+  - [step1: String 클래스에 대한 학습](https://github.com/next-step/java-racingcar/pull/716)
+  - [step2: 문자열 계산기](https://github.com/next-step/java-racingcar/pull/761)
+  - [step3: 자동차 경주](https://github.com/next-step/java-racingcar/pull/826)
+  - [step4: 자동차 경주 우승자](https://github.com/next-step/java-racingcar/pull/870)
+  - [step5: 자동차 경주 리팩토링](https://github.com/next-step/java-racingcar/pull/984)
+- Lotto
+  - [step1: 문자열 덧셈 계산](https://github.com/next-step/java-lotto/pull/495)
+  - [step2: 로또 (1)](https://github.com/next-step/java-lotto/pull/509)
+  - [step2: 로또 (2)](https://github.com/next-step/java-lotto/pull/527)
+  - [step3: 로또 2등 (2)](https://github.com/next-step/java-lotto/pull/532)
+  - [step3: 로또 2등 (2)](https://github.com/next-step/java-lotto/pull/541)
+  - [step4: 로또 수동](https://github.com/next-step/java-lotto/pull/550)
+- Ladder
+  - [step1: Stream, Lambda, Optional](https://github.com/next-step/java-ladder/pull/389)
+  - [step2: 사다리 생성](https://github.com/next-step/java-ladder/pull/396)
+  - [step3: 사다리 게임 실행](https://github.com/next-step/java-ladder/pull/399)
+  - [step4: 리팩토링](https://github.com/next-step/java-ladder/pull/407)
+- Ladder
+  - [step1: Stream, Lambda, Optional](https://github.com/next-step/java-ladder/pull/389)
+  - [step2: 사다리 생성](https://github.com/next-step/java-ladder/pull/396)
+  - [step3: 사다리 게임 실행](https://github.com/next-step/java-ladder/pull/399)
+  - [step4: 리팩토링](https://github.com/next-step/java-ladder/pull/407)
+- Bowling
+  - [step1: 질문 삭제하기 기능 리팩토링](https://github.com/next-step/java-bowling/pull/155)
+  - [step2: 볼링 점수판](https://github.com/next-step/java-bowling/pull/157)
+  - [step3: 볼림 점수판 점수 계산](https://github.com/next-step/java-bowling/pull/164)
+  - [step4: 볼링 점수판 n명](https://github.com/next-step/java-bowling/pull/165)
+:::
+
+약간의 소감을 이야기 해보자면, 시작(Racingcar)과 끝(Bowling)이 어려웠다.
+
+시작할 때는 자바 자체에 익숙하지 않다보니, 말 그대로 모든 것들이 생소했다.
+그나마 스트림은 어느 정도 사용할 줄 알았기 때문에 코드를 짧게 작성한다던가, if나 while, for 없이 작성 하는 것은 어렵지 않았다.
+그런데 일급 컬렉션이나 원시값 포장 같은 개념은 쉽게 이해되지 않아서 애먹었다.
+이러한 문제점을 보완하기 위해서 실력이 뛰어난 다른 수강생 분들이나 코드리뷰를 해주시는 리뷰어 분들이 이 과정을 수행할 때 작성했던 코드를 보면서 많이 참고했다.
+
+> 개인적으로 생각하는 나의 장점 중 하나가 주변에 있는 뛰어난 사람들에게 주눅들기 보단 그 사람들의 노하우나 사고방식, 가치관을 잘 받아들이는 점이다. 
+
+그래도 초반애 애먹은 덕분에 Lotto와 Ladder는 쉽게 통과할 수 있었다.
+
+Bowling에서는 설계 자체가 정말 어려웠다. 정말 어떻게 설계하지? 라는 고민을 일주일 내내 했던 것 같다.
+그래서 step2를 진행할 때, 지웠다 썼다를 반복하다보니 무려의 한 step에 45개의 커밋이 발생했다.
+
+step1을 6월 9일에 완료 했고, step2를 6월 16일에 완료했다. 그리고 step3, step4는 각각 18일, 20일에 완료했다.
+step2에서 고민을 많이 한 덕분에 뒤에 있는 것들은 정말 거의 바로 끝낼 수 있었던 것 같다.   
+
+어쨌든 결과적으로 해당 과정을 전체 인원 중 첫 번째로 수료할 수 있었다.
+
 ![클린코드 수료](https://user-images.githubusercontent.com/18749057/87239161-d778e280-c446-11ea-808f-2f3e2d8966e4.png)
 
 내가 실력이 좋아서라기보단, 정말 하루도 쉬지 않고 꾸준히 했기 때문에 이런 성과를 낼 수 있었으리라 생각한다.
@@ -132,8 +183,6 @@ NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nex
 ![오버워치](https://user-images.githubusercontent.com/18749057/87240018-8b32a000-c450-11ea-91ea-1fcd41ecbd76.jpeg)
 
 약 2일만에 마스터를 찍어버렸다. ~~오버워치만 맨날 했으면 좋겠다!!~~
-
-
   
 
 ### 2. DKU Study
