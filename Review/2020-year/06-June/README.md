@@ -53,9 +53,9 @@ NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nex
 
 그래서 팀장님이 많이 고통받고 계신다...
 
-![image](https://user-images.githubusercontent.com/18749057/87239420-fc228980-c449-11ea-9441-e80ae62393b6.png)
+![팀장님 하소연 1](https://user-images.githubusercontent.com/18749057/87239420-fc228980-c449-11ea-9441-e80ae62393b6.png)
 
-![image](https://user-images.githubusercontent.com/18749057/87239366-4ce5b280-c449-11ea-9421-79231c4310e7.png)
+![팀장님 하소연 2](https://user-images.githubusercontent.com/18749057/87239366-4ce5b280-c449-11ea-9421-79231c4310e7.png)
 
 ~~이젠 그냥 체념하신 것 같은 느낌..?~~ 
 
@@ -98,6 +98,43 @@ NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nex
 ## 사적
 
 ### 1. Java Clean Code
+
+NextStep의 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nextstep.camp/c/8fWRxNWU) 를 6월 중순까지 마무리했다.
+내가 무사히 수료할 수 있을까 고민했는데, 운이 좋게 제일 먼저 수료할 수 있었다.
+
+![클린코드 수료](https://user-images.githubusercontent.com/18749057/87239161-d778e280-c446-11ea-808f-2f3e2d8966e4.png)
+
+내가 실력이 좋아서라기보단, 정말 하루도 쉬지 않고 꾸준히 했기 때문에 이런 성과를 낼 수 있었으리라 생각한다.
+
+::: tip 꾸준히 공부하는 습관을 가지자
+
+5월에는 코덕 1등을 했고, 6월에는 클린코드 1등을 했다.
+항상 한계점의 페이스를 유지하기 보단, 한 번 한계점까지 도달한 후에 70% ~ 80% 정도를 유지하는게 좋다고 생각한다.
+
+그렇지 않으면 너무 빨리 지치기 때문이다. 내가 줌인터넷에 입사한 다음에 주변 자극을 적극적으로 수용하고 있다.
+그 중에 제일 인상 깊었던 것은 우리 팀을 거쳐간 [우아한형제들에서 근무하고 계신 이동욱님 인터뷰](https://www.youtube.com/watch?v=V9AGvwPmnZU&t=174s)이다.
+무언가를 거창하게 하기 보단 그냥 매일 꾸준히 하는 것이다. 확실히 나에게는 이 방식이, 이 사고방식이, 이 가치관이 맞아 떨어진다. 
+
+* 근데 이동욱님은 굉장히 많은 것을 하고 계신다. ~~인간이 아닌듯~~
+
+:::
+
+전체 과정을 수료한 다음에 미션별로 파편화된 코드를 [한 저장소](https://github.com/junilhwang/java-clean-code)에 모아놨다. ~~사실 깃허브 잔디에 반영하고 싶었다.~~
+
+![java-clean-code-repository](https://user-images.githubusercontent.com/18749057/87239173-f5464780-c446-11ea-9383-9ae7cfcc95d0.png)
+
+모아놓고 보니, 거의 두 달 동안 약 600개의 commit이 발생했다. 내가 개발 공부를 이렇게 단 기간내에 열심히 했던 적이 있었나 싶다. ~~사실 고등학교 3학년 여름방학때 제일 열심히했다.~~
+
+덕분에 번아웃이 왔다. 번아웃이라기 보단, 한 동안 일상에서 큰 비중을 차지하고 있던 일이 사라지니까 그 시간을 어떻게 매꿔야 좋을까 고민했다.
+
+그래서 일단 오버워치를 주말 내내 원없이 했다. 
+
+![오버워치](https://user-images.githubusercontent.com/18749057/87240018-8b32a000-c450-11ea-91ea-1fcd41ecbd76.jpeg)
+
+약 2일만에 마스터를 찍어버렸다. ~~오버워치만 맨날 했으면 좋겠다!!~~
+
+
+  
 
 ### 2. DKU Study
 
