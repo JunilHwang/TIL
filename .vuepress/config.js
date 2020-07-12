@@ -14,6 +14,9 @@ module.exports = {
     smoothScroll: true
   },
   base: '/TIL/',
+  head: [
+    ['meta', { name: "google-site-verification", content: "sHfBWIoCUOYFXJ3b0ulN8jp9jpD8SEW5Wpxvlk-UABA" }]
+  ],
   markdown: {
     extendMarkdown: md => {
       md.use(require('markdown-it-plantuml'))
