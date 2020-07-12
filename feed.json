@@ -6,18 +6,18 @@
     "description": "Today I leanred",
     "items": [
         {
-            "id": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
-            "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
-            "title": "00 책 소개 | 객체지향의 원리와 이해",
-            "summary": "김종민님이 저술한 \"스프링 입문을 위한 (자바) 객체지향의 원리와 이해\"에 대한 소개입니다.",
-            "date_modified": "2020-02-14T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Loved-Human/",
             "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Loved-Human/",
             "title": "01 사람을 사랑한 기술 | 객체지향의 원리와 이해",
             "summary": "객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.",
             "date_modified": "2020-02-18T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
+            "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
+            "title": "00 책 소개 | 객체지향의 원리와 이해",
+            "summary": "김종민님이 저술한 \"스프링 입문을 위한 (자바) 객체지향의 원리와 이해\"에 대한 소개입니다.",
+            "date_modified": "2020-02-14T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
@@ -49,19 +49,19 @@
             "date_modified": "2020-02-07T14:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "title": "MVVM System 개선하기 (3)",
-            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
-            "date_modified": "2020-02-08T23:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
             "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
             "title": "Gradle Wrapper",
             "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
             "image": "https://junilhwang.github.io/TIL/./01.jpg",
             "date_modified": "2020-01-14T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "title": "MVVM System 개선하기 (3)",
+            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
+            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/",
@@ -79,13 +79,6 @@
             "date_modified": "2020-01-31T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
-            "title": "2020년 2월 회고",
-            "summary": "2020년 2월 회고 입니다.",
-            "date_modified": "2020-02-29T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
             "title": "2020년 3월 회고",
@@ -100,6 +93,21 @@
             "summary": "2020년 4월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
             "date_modified": "2020-05-01T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
+            "title": "2020년 6월 회고",
+            "summary": "2020년 6월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png",
+            "date_modified": "2020-07-12T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
+            "title": "2020년 2월 회고",
+            "summary": "2020년 2월 회고 입니다.",
+            "date_modified": "2020-02-29T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
@@ -125,12 +133,12 @@
             "date_modified": "2020-01-06T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Starter/",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Starter/",
-            "title": "Vuepress 시작하기",
-            "summary": "현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.",
-            "image": "https://junilhwang.github.io/TIL/./1.jpg",
-            "date_modified": "2020-01-02T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Utterances/",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Utterances/",
+            "title": "Vuepress + Utterances",
+            "summary": "Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.",
+            "image": "https://junilhwang.github.io/TIL/./8.jpg",
+            "date_modified": "2020-01-07T22:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Theme/",
@@ -141,12 +149,12 @@
             "date_modified": "2020-01-02T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Utterances/",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Utterances/",
-            "title": "Vuepress + Utterances",
-            "summary": "Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.",
-            "image": "https://junilhwang.github.io/TIL/./8.jpg",
-            "date_modified": "2020-01-07T22:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Starter/",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Starter/",
+            "title": "Vuepress 시작하기",
+            "summary": "현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.",
+            "image": "https://junilhwang.github.io/TIL/./1.jpg",
+            "date_modified": "2020-01-02T00:00:00.000Z"
         }
     ]
 }
