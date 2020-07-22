@@ -18,6 +18,7 @@
   "dependencies": {
     "markdown-it-plantuml": "^1.4.1",
     "markdown-it-task-lists": "^2.1.1",
-    "markdown-it-underline": "^1.0.1"
+    "markdown-it-underline": "^1.0.1",
+    "vuepress-plugin-sitemap": "^2.3.1"
   }
 }
