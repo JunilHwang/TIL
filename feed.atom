@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-07-12T09:44:20.784Z</updated>
+    <updated>2020-07-26T13:20:49.908Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -72,6 +72,14 @@
         <summary type="html"><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></summary>
     </entry>
     <entry>
+        <title type="html"><![CDATA[자바스크립트 실핸 컨텍스트]]></title>
+        <id>https://junilhwang.github.io/TIL/Javascript/Execution-Context/</id>
+        <link href="https://junilhwang.github.io/TIL/Javascript/Execution-Context/">
+        </link>
+        <updated>2020-07-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[자바스크립트 실행 컨텍스트에 대해 다룹니다.]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[2020년 1분기 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/">
@@ -96,6 +104,14 @@
         <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
     </entry>
     <entry>
+        <title type="html"><![CDATA[2020년 3월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/03-March/">
+        </link>
+        <updated>2020-03-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 3월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[2020년 4월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/04-April/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/04-April/">
@@ -104,12 +120,12 @@
         <summary type="html"><![CDATA[2020년 4월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 3월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/03-March/">
+        <title type="html"><![CDATA[2020년 6월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/06-June/">
         </link>
-        <updated>2020-03-31T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 3월 회고 입니다.]]></summary>
+        <updated>2020-07-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 6월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 5월 회고]]></title>
@@ -126,14 +142,6 @@
         </link>
         <updated>2020-01-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2020년 6월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/06-June/">
-        </link>
-        <updated>2020-07-12T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 6월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[markdown-it-plantuml]]></title>
@@ -158,13 +166,5 @@
         </link>
         <updated>2020-01-02T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Vuepress + Utterances]]></title>
-        <id>https://junilhwang.github.io/TIL/Vuepress/Utterances/</id>
-        <link href="https://junilhwang.github.io/TIL/Vuepress/Utterances/">
-        </link>
-        <updated>2020-01-07T22:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.]]></summary>
     </entry>
 </feed>
