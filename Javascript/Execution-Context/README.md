@@ -85,7 +85,10 @@ VariableEnvironment에 담기는 내용은 LexcicalEnvironment와 같지만, **�
 
 LexcialEnvironment의 내부에는 **environmentRecord**와 **outerEnvironmentReference**로 구성돼 있다.
 
-#### environmentRecord와 호이스팅
+- environmentRecord로 인하여 호이스팅이 발생한다.
+- outerEnvironmentReference로 인하여 스코프와 스코프체인이 형성된다.
+
+## environmentRecord와 Hoisting(호이스팅)
 
 자바스크립트는 코드를 실행하기전에 식별자를 수집한다.
 
@@ -176,7 +179,7 @@ function a () {
   var b;
   function b () {};
 
-  console.log(b); // function b () {}
+  console.log(b); // f b () {}
   b = 'bbb';
   console.log(b); // bbb
   console.log(b); // bbb
@@ -206,19 +209,139 @@ x를 만족할 때, 이를 일급객체라고 한다.
 
 :::
 
+앞의 예제의 함수를 표현식으로 변경해보자.
 
-```js{3}
+```js
 function a () {
-  var b;
-  function b () {};
-
-  console.log(b); // function b () {}
-  b = 'bbb';
-  console.log(b); // bbb
-  console.log(b); // bbb
+  console.log(b);
+  var b = 'bbb';
+  console.log(b);
+  var b = function () {}; // b에 익명함수를 할당했다.
+  console.log(b);
 }
 a();
 ```
+
+그리고 이 코드는 다음과 같이 해석될 수 있다.
+
+```js{8}
+function a () {
+  var b;
+  var b;
+
+  console.log(b); // undefined
+  b = 'bbb';
+  console.log(b); // bbb
+  b = function () {}; // b에 익명함수를 할당했다.
+  console.log(b); // f () {}
+}
+a();
+```
+
+## outerEnvironmentReference와 Scope
+
+::: tip scope
+
+스코프란 식별자에 대한 유효범위이다.
+
+- Scope A의 외부에서 선언한 변수는, A의 외부/내부 모두 접근 가능하다.
+- A의 내부에서 선언한 변수는 오직 A의 내부에서만 접근할 수 있다.
+
+:::
+
+스코프의 개념은 대부분의 언어에 존재하지만,
+ES5까지의 Javascript는 특이하게도 **오직 함수에 의해서**만 스코프가 생성된다.
+
+::: tip scope chain
+- **식별자의 유효범위**를 안에서 바깥으로 차례로 검색해나는 것
+- 이를 가능하게 하는 것이 **outerEnvironmentReference**이다.
+:::
+
+outerEnvironmentReference는 _현재 호출된 함수가 선언될 당시의 LexcialEnvironment를 참조한다._\
+`선언하다`라는 행위가 실제로 일어날 수 있는 시점은 _콜 스택 상에서 어떤 실행 컨텍스트가 활성화된 상태일 때뿐이다._
+**모든 코드는 실행 컨텍스트가 활서화 상태일 때 실행되기 때문이다.**
+
+```js
+var a = 1; // 전역 컨텍스트
+function outer () { // outer 컨텍스트
+  function inner () { // inner 컨텍스트
+    console.log(a);
+    var a = 3;
+    console.log(a);
+  }
+  inner(); // inner가 실행될 때 outer의 LexcicalEnvironemnt를 outerEnvironmentReference로 참조한다.
+  console.log(a);
+}
+outer(); // outer가 실행될 때 전역 컨텍스트의 LexcicalEnvironemnt를 outerEnvironmentReference로 참조한다.
+console.log(a);
+```
+
+위의 코드는 다음과 같은 scope chain을 형성한다.
+
+```
+inner LexcicalEnvironment {
+    식별자 a
+    outerEnvironmentReference = outer LexcialEnvironment {
+            식별자 a
+            outerEnvironmentReference = global LexcicalEnvironment {
+                식별자 a
+            }
+        }
+    }
+}
+```
+
+이러한 구조적 특성 덕분에 여러 스코프에 동일한 식별자를 선언할 경우,
+_무조건 scope chain 상에서 가장 먼저 발견된 식별자에만 접근 가능하게 된다._
+
+```{3,8,14}
+inner LexcicalEnvironment {
+
+    식별자 a        # inner function에서 a에 접근할 때 여기에 가장 먼저 접근
+
+    outerEnvironmentReference = outer LexcialEnvironment {
+
+            식별자 a        # outer function에서 a에 접근할 때 여기에 가장 먼저 접근
+            식별자 b        # inner function에서 b에 접근할 때 여기에 가장 먼저 접근
+
+            outerEnvironmentReference = global LexcicalEnvironment {
+
+                식별자 a        # 전역에서 a에 접근할 때 여기에 가장 먼저 접근
+                식별자 b        # 전역에서 b에 접근할 때 여기에 가장 먼저 접근
+                식별자 c        # inner function에서 c에 접근할 때 여기에 가장 먼저 접근
+
+            }
+
+        }
+
+    }
+
+}
+```
+
+## this
+
+실행 컨텍스트의 thisBinding에는 this로 지정된 객체가 저장된다.
+this는 여기에 다루기에 복잡한 내용이 많기 때문에 따로 작성할 예정이다.
+
+## Summary
+
+- 실행 컨텍스트는 실행할 코드에 제공할 환경 정보들을 모아놓은 객체이다.
+  - 전역 공간에서 자동으로 생성되는 전연 컨텍스트
+  - eval함수
+  - 함수 실행에 의한 컨텍스트
+- 실행 컨텍스트 객체는 활성화 되는 시점에 VariableEnviroment, LexcialEnvrionment, ThisBinding의 세 가지 정보를 수집한다.
+- 실행 컨텍스트를 생서할 때 VariableEnvironment와 LexcialEnvironment가 동일한 내용으로 구성된다.
+- LexcialEnvironment는 함수 실행 도중에 변경되는 사항이 즉시 반영된다.
+- LexcialEnvironment와 VariableEnvironment는 다음과 environmentRecord와 outerEnvironmentReference로 구성돼 있다.
+  - environmentRecord는 매개변수 식별자, 변수 식별자, 선언한 함수의 식별자 등을 수집한다.
+    - 이것 때문에 호이스팅이라는 개념이 사용된다.
+    - 호이스팅은 코드 해석을 좀 더 수월하게 하기 위해 environmentRecord의 수집 과정을 추상화한 개념이다.
+    - 변수 선언부와 함수 선언문에 호이스팅이 발생한다.
+    - 함수 표현식을 사용할 경우 함수의 선언부만 호이스팅이 발생한다.
+  - outerEnvironmentReference는 상위(직전) 컨텍스트의 LexcicalEnviroment 정보를 참조한다.
+    - 이것 때문에 스코프가 형성되고, 스코프 체인을 통해 상위 컨텍스트에 접근할 수 있다.
+    - 스코프는 변수의 유효범위를 말한다.
 
 ## Reference
 
