@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sun, 26 Jul 2020 13:20:49 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 26 Jul 2020 13:23:37 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -23,13 +23,6 @@
             <description><![CDATA[객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.]]></description>
         </item>
         <item>
-            <title><![CDATA[객체지향의 기본 이론]]></title>
-            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</link>
-            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</guid>
-            <pubDate>Sun, 19 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.]]></description>
-        </item>
-        <item>
             <title><![CDATA[MVVM System 만들기]]></title>
             <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/</link>
             <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/</guid>
@@ -37,6 +30,13 @@
             <description><![CDATA[객체지향을 통해서 MVVM System을 만드는 과정입니다.]]></description>
             <enclosure url="https://junilhwang.github.io/TIL/./example.png">
             </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[객체지향의 기본 이론]]></title>
+            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</link>
+            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</guid>
+            <pubDate>Sun, 19 Jan 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.]]></description>
         </item>
         <item>
             <title><![CDATA[MVVM System 개선하기 (1)]]></title>
@@ -69,7 +69,7 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[자바스크립트 실핸 컨텍스트]]></title>
+            <title><![CDATA[자바스크립트 실행 컨텍스트]]></title>
             <link>https://junilhwang.github.io/TIL/Javascript/Execution-Context/</link>
             <guid>https://junilhwang.github.io/TIL/Javascript/Execution-Context/</guid>
             <pubDate>Sun, 26 Jul 2020 00:00:00 GMT</pubDate>
@@ -117,21 +117,21 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2020년 6월 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</guid>
-            <pubDate>Sun, 12 Jul 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[2020년 6월 회고 입니다.]]></description>
-            <enclosure url="https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png">
-            </enclosure>
-        </item>
-        <item>
             <title><![CDATA[2020년 5월 회고]]></title>
             <link>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</link>
             <guid>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</guid>
             <pubDate>Sun, 31 May 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[2020년 5월 회고 입니다.]]></description>
             <enclosure url="https://junilhwang.github.io/TIL/./2.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[2020년 6월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</guid>
+            <pubDate>Sun, 12 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 6월 회고 입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png">
             </enclosure>
         </item>
         <item>
