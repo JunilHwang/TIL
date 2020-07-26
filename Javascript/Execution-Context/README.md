@@ -11,7 +11,7 @@ date: 2020-07-26
 실행 컨텍스트는 자바스크립트에서 가장 중요한 핵심 개념 중에 하나다.
 이를 정확히 이해하는 것은 자바스크립트 개발자에게 매우 중요하다.
 
-## 개념
+## 1. 개념
 
 ::: tip 실행 컨텍스트
 
@@ -28,7 +28,7 @@ date: 2020-07-26
 
 이로 인해 다른 언어에서 발견할 수 없는 특이한 현상들이 발생한다.
 
-## 실행 컨텍스트를 구성
+## 2. 실행 컨텍스트 구성
 
 실행 컨텍스트는 다음과 같은 것들을 이용하면 `call stack`에 쌓이게 된다.
 
@@ -83,5 +83,143 @@ VariableEnvironment에 담기는 내용은 LexcicalEnvironment와 같지만, **�
 
 ### Lexcial Environment
 
-LexcialEnvironment의 내부에는 environmentRecord와 outerEnvironmentReference로 구성돼 있다.
+LexcialEnvironment의 내부에는 **environmentRecord**와 **outerEnvironmentReference**로 구성돼 있다.
 
+#### environmentRecord와 호이스팅
+
+자바스크립트는 코드를 실행하기전에 식별자를 수집한다.
+
+::: tip environmentRecord
+현재 컨텍스트와 관련된 코드의 식별자 정보들이 저장된다.
+
+- 매개변수 식별자
+- 함수 자체
+- 함수 내부의 식별자
+:::
+
+::: tip Host Object(호스트 객체)
+- 전역 실행 컨텍스트는 변수 객체를 생성하는 대신 전역 객체를 활용한다.
+- 브라우저의 Window 객체, Node의 Global 객체 등이 이에 해당한다.
+- 이들은 Host Object로 분류된다.
+:::
+
+즉, 코드가 실행 되기 전에 자바스크립트의 엔진은 이미 실행 컨텍스트에 속한 변수명들을 모두 알고 있게 되는 셈이다.
+
+_이 때 호이스팅이란 개념이 이용된다._
+
+엔진의 실제 동작 방식 대신에 `자바스크립트 엔진은 식별자들을 최상단으로 끌어올려놓은 다음, 실제 코드를 실행한다` 라고 생각해도 코드 해석에 문제되는 것이 없기 때문이다.
+
+중요한 점은, 자바스크립트 엔진이 실제로 변수를 끌어올리지는 않지만, _편의상 끌어올리는 것으로 간주하자는 것이다._
+
+```js
+function a (x) {
+  console.log(x);
+  var x ;
+  console.log(x);
+  var x = 2;
+  console.log(x);
+}
+a(1);
+```
+
+위의 코드는 다음과 같이 해석될 수 있다.
+
+```js{2}
+function a () {
+  var x = 1; // 매개변수 할당
+  console.log(x);
+  var x ;
+  console.log(x);
+  var x = 2;
+  console.log(x);
+}
+a();
+```
+
+다시 위의 코드에서 호이스팅이 발생한다고 가정하면, 다음과 같이 해석될 수 있다.
+
+
+```js{2-4}
+function a () {
+  var x;
+  var x;
+  var x;
+
+  x = 1;
+  console.log(x); // 1
+  console.log(x); // 1
+  x = 2;
+  console.log(x); // 2
+}
+a();
+```
+
+변수의 호이스팅은 이처럼 해석될 수 있다. 함수의 호이스팅은 조금 다르다.
+
+다음 예를 통해 살펴보자.
+
+```js
+function a () {
+  console.log(b);
+  var b = 'bbb';
+  console.log(b);
+  function b () {};
+  console.log(b);
+}
+a();
+```
+
+변수의 경우 정의부만 호이스팅 되지만, 함수는 **함수 전체가 호이스팅 된다.**
+
+```js{3}
+function a () {
+  var b;
+  function b () {};
+
+  console.log(b); // function b () {}
+  b = 'bbb';
+  console.log(b); // bbb
+  console.log(b); // bbb
+}
+a();
+```
+
+그리고 자바스크립트의 함수는 일급객체(혹은 일급시민)이기 때문에 함수 표현식이 가능하다.
+
+::: tip 일급객체(일급시민)
+
+여기 x라는 것이 있다.
+
+- x를 변수에 담을 수 있다.
+- x를 매개변수에 넘길 수 있다.
+- x를 함수에서 반환할 수 있다.
+
+x를 만족할 때, 이를 일급객체라고 한다.
+
+즉, 자바스크립트의 함수는 일급객체이므로
+
+- 함수를 변수에 담을 수 있다.
+- 함수를 매개변수로 넘길 수 있다.
+- 함수를 함수에서 반환할 수 있다.
+
+위의 같은 조건을 만족한다.
+
+:::
+
+
+```js{3}
+function a () {
+  var b;
+  function b () {};
+
+  console.log(b); // function b () {}
+  b = 'bbb';
+  console.log(b); // bbb
+  console.log(b); // bbb
+}
+a();
+```
+
+## Reference
+
+[코어 자바스크립트](http://www.yes24.com/Product/Goods/78586788)
