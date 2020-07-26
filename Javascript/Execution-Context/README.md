@@ -1,12 +1,4 @@
----
-
-sidebarDepth: 2
-title: 자바스크립트 실행컨텍스트
-date: 2020-07-26
-
----
-
-# 실행 컨텍스트
+# 자바스크립트 실행 컨텍스트
 
 실행 컨텍스트는 자바스크립트에서 가장 중요한 핵심 개념 중에 하나다.
 이를 정확히 이해하는 것은 자바스크립트 개발자에게 매우 중요하다.
@@ -67,8 +59,8 @@ console.log(a); // 1
 - `VariableEnvironment`
   - 현재 컨텍스트 내의 식별자(변수)들에 대한 정보
   - 외부 환경 정보
-  - 선언 시점의 LexcialEnvironment의 스냅샷(변경사항 반영 X)
-- `LexcialEnvironment`
+  - 선언 시점의 LexicalEnvironment의 스냅샷(변경사항 반영 X)
+- `LexicalEnvironment`
   - 처음에는 VariableEnvironment와 같음
   - 변경 사항이 실시간으로 반영됨
 - `ThisBinding`
@@ -76,19 +68,19 @@ console.log(a); // 1
 
 ### Variable Environment
 
-VariableEnvironment에 담기는 내용은 LexcicalEnvironment와 같지만, **최초 실행 시의 스냅샷을 유지**한다.
-실행 컨텍스트를 생서할 때 VariableEnvironment에 정보를 먼저 담은 다음, 이를 복사해서 LexcicalEnvironment를 만든다.
+VariableEnvironment에 담기는 내용은 LexicalEnvironment와 같지만, **최초 실행 시의 스냅샷을 유지**한다.
+실행 컨텍스트를 생서할 때 VariableEnvironment에 정보를 먼저 담은 다음, 이를 복사해서 LexicalEnvironment를 만든다.
 
-주로 활용하는 것은 LexcicalEnvironment이다. 즉, VariableEnviroment는 스냅샷 유지를 목적으로 사용한다.
+주로 활용하는 것은 LexicalEnvironment이다. 즉, VariableEnviroment는 스냅샷 유지를 목적으로 사용한다.
 
 ### Lexcial Environment
 
-LexcialEnvironment의 내부에는 **environmentRecord**와 **outerEnvironmentReference**로 구성돼 있다.
+LexicalEnvironment의 내부에는 **environmentRecord**와 **outerEnvironmentReference**로 구성돼 있다.
 
 - environmentRecord로 인하여 호이스팅이 발생한다.
 - outerEnvironmentReference로 인하여 스코프와 스코프체인이 형성된다.
 
-## environmentRecord와 Hoisting(호이스팅)
+## 3. environmentRecord와 Hoisting(호이스팅)
 
 자바스크립트는 코드를 실행하기전에 식별자를 수집한다.
 
@@ -238,7 +230,7 @@ function a () {
 a();
 ```
 
-## outerEnvironmentReference와 Scope
+## 4. outerEnvironmentReference와 Scope
 
 ::: tip scope
 
@@ -257,7 +249,7 @@ ES5까지의 Javascript는 특이하게도 **오직 함수에 의해서**만 스
 - 이를 가능하게 하는 것이 **outerEnvironmentReference**이다.
 :::
 
-outerEnvironmentReference는 _현재 호출된 함수가 선언될 당시의 LexcialEnvironment를 참조한다._\
+outerEnvironmentReference는 _현재 호출된 함수가 선언될 당시의 LexicalEnvironment를 참조한다._\
 `선언하다`라는 행위가 실제로 일어날 수 있는 시점은 _콜 스택 상에서 어떤 실행 컨텍스트가 활성화된 상태일 때뿐이다._
 **모든 코드는 실행 컨텍스트가 활서화 상태일 때 실행되기 때문이다.**
 
@@ -279,11 +271,11 @@ console.log(a);
 위의 코드는 다음과 같은 scope chain을 형성한다.
 
 ```
-inner LexcicalEnvironment {
+inner LexicalEnvironment {
     식별자 a
-    outerEnvironmentReference = outer LexcialEnvironment {
+    outerEnvironmentReference = outer LexicalEnvironment {
             식별자 a
-            outerEnvironmentReference = global LexcicalEnvironment {
+            outerEnvironmentReference = global LexicalEnvironment {
                 식별자 a
             }
         }
@@ -295,16 +287,16 @@ inner LexcicalEnvironment {
 _무조건 scope chain 상에서 가장 먼저 발견된 식별자에만 접근 가능하게 된다._
 
 ```{3,8,14}
-inner LexcicalEnvironment {
+inner LexicalEnvironment {
 
     식별자 a        # inner function에서 a에 접근할 때 여기에 가장 먼저 접근
 
-    outerEnvironmentReference = outer LexcialEnvironment {
+    outerEnvironmentReference = outer LexicalEnvironment {
 
             식별자 a        # outer function에서 a에 접근할 때 여기에 가장 먼저 접근
             식별자 b        # inner function에서 b에 접근할 때 여기에 가장 먼저 접근
 
-            outerEnvironmentReference = global LexcicalEnvironment {
+            outerEnvironmentReference = global LexicalEnvironment {
 
                 식별자 a        # 전역에서 a에 접근할 때 여기에 가장 먼저 접근
                 식별자 b        # 전역에서 b에 접근할 때 여기에 가장 먼저 접근
@@ -319,7 +311,7 @@ inner LexcicalEnvironment {
 }
 ```
 
-## this
+## 5. this
 
 실행 컨텍스트의 thisBinding에는 this로 지정된 객체가 저장된다.
 this는 여기에 다루기에 복잡한 내용이 많기 때문에 따로 작성할 예정이다.
@@ -331,9 +323,9 @@ this는 여기에 다루기에 복잡한 내용이 많기 때문에 따로 작�
   - eval함수
   - 함수 실행에 의한 컨텍스트
 - 실행 컨텍스트 객체는 활성화 되는 시점에 VariableEnviroment, LexcialEnvrionment, ThisBinding의 세 가지 정보를 수집한다.
-- 실행 컨텍스트를 생서할 때 VariableEnvironment와 LexcialEnvironment가 동일한 내용으로 구성된다.
-- LexcialEnvironment는 함수 실행 도중에 변경되는 사항이 즉시 반영된다.
-- LexcialEnvironment와 VariableEnvironment는 다음과 environmentRecord와 outerEnvironmentReference로 구성돼 있다.
+- 실행 컨텍스트를 생서할 때 VariableEnvironment와 LexicalEnvironment가 동일한 내용으로 구성된다.
+- LexicalEnvironment는 함수 실행 도중에 변경되는 사항이 즉시 반영된다.
+- LexicalEnvironment와 VariableEnvironment는 다음과 environmentRecord와 outerEnvironmentReference로 구성돼 있다.
   - environmentRecord는 매개변수 식별자, 변수 식별자, 선언한 함수의 식별자 등을 수집한다.
     - 이것 때문에 호이스팅이라는 개념이 사용된다.
     - 호이스팅은 코드 해석을 좀 더 수월하게 하기 위해 environmentRecord의 수집 과정을 추상화한 개념이다.
