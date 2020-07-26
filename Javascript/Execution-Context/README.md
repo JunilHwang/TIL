@@ -1,6 +1,6 @@
 ---
 
-title: 자바스크립트 실핸 컨텍스트
+title: 자바스크립트 실행 컨텍스트
 description: 자바스크립트 실행 컨텍스트에 대해 다룹니다.
 date: 2020-07-26
 sidebarDepth: 2
