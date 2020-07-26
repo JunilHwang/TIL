@@ -28,7 +28,7 @@ date: 2020-07-26
 
 이로 인해 다른 언어에서 발견할 수 없는 특이한 현상들이 발생한다.
 
-## 실행 컨텍스트를 구성하는 방법
+## 실행 컨텍스트를 구성
 
 실행 컨텍스트는 다음과 같은 것들을 이용하면 `call stack`에 쌓이게 된다.
 
@@ -37,7 +37,7 @@ date: 2020-07-26
 - `eval()`함수를 실행한다.
 - `block`을 만든다 __(ES6+)__
 
-일반적으로 __함수를 이용한 실행 컨텍스트__를 사용한다.
+일반적으로 **함수를 이용한 실행 컨텍스트**를 사용한다.
 
 ```js
 var a = 1; // 전역 컨텍스트
@@ -56,8 +56,32 @@ console.log(a); // 1
 
 위와 같이 코드를 구성했을 때 실행 컨텍스트의 스택은 다음과 같은 순서로 실행된다.
 
-- `[전역컨텍스트]` a를 실행함 
-- `[전역컨텍스트, outer]` outer를 실행함
-- `[전역컨텍스트, outer, inner]` inner를 실행함
-- `[전역컨텍스트, outer]` inner 종료
-- `[전역컨텍스트]` outer 종료
+- 프로그램 실행: `[전역컨텍스트]` 
+- outer 실행: `[전역컨텍스트, outer]` 
+- inner 실행: `[전역컨텍스트, outer, inner]`
+- inner 종료: `[전역컨텍스트, outer]`
+- outer 종료: `[전역컨텍스트]`
+
+그리고 이러한 실행컨텍스트를 구성할 때 생기는 것들이 있다.
+
+- `VariableEnvironment`
+  - 현재 컨텍스트 내의 식별자(변수)들에 대한 정보
+  - 외부 환경 정보
+  - 선언 시점의 LexcialEnvironment의 스냅샷(변경사항 반영 X)
+- `LexcialEnvironment`
+  - 처음에는 VariableEnvironment와 같음
+  - 변경 사항이 실시간으로 반영됨
+- `ThisBinding`
+  - 식별자가 바라봐야 할 대상 객체
+
+### Variable Environment
+
+VariableEnvironment에 담기는 내용은 LexcicalEnvironment와 같지만, **최초 실행 시의 스냅샷을 유지**한다.
+실행 컨텍스트를 생서할 때 VariableEnvironment에 정보를 먼저 담은 다음, 이를 복사해서 LexcicalEnvironment를 만든다.
+
+주로 활용하는 것은 LexcicalEnvironment이다. 즉, VariableEnviroment는 스냅샷 유지를 목적으로 사용한다.
+
+### Lexcial Environment
+
+LexcialEnvironment의 내부에는 environmentRecord와 outerEnvironmentReference로 구성돼 있다.
+
