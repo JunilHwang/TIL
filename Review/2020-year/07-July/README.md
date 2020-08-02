@@ -696,7 +696,31 @@ export class Clock extends Component {
 
 카카오 면접을 앞두고 꽤 많은 포스트와 인터뷰에 대한 글들을 읽었다.
 
-- 코딩 인터뷰 핸드북
+- 깊이 있는 면접 준비를 위한 자료
+  - [시옷 스터디](https://gitlab.com/siots-study/topics/-/wikis/home)
+    - 개인적으로 인터넷에 나와있는 자료 중에서는 이게 제일 잘 정리되어있는 것 같다.
+    - 모든 자료에 추가적인 레퍼런스가 있기 때문에 특히 도움이 많이 된다.
+  - [프런트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/)
+    - 프런트엔드와 관련된 내용을 전반적으로 훑어볼 수 있어서 좋았다.
+    - 다만 깊이는 기대하기 어렵다.
+  - [TechnicalNote](https://github.com/jobhope/TechnicalNote)
+    - 프런트엔드 뿐만 아니라 개발에 필요한 기초적인 질문들이 포함되어 있어서 보기 좋았따.
+  - [초보자를 위한 코딩 인터뷰 질문 모음](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
+    - 커뮤니티에서 유명한 한재엽님을 필두로 하여 정리된 자료들
+    - 말 그대로 초보자들이 읽기 쉽게 정리되어 있다.
+  - [프런트엔드 성능 최적화](https://ui.toast.com/fe-guide/ko_PERFORMANCE/)
+    - 성능 최적화를 위한 모든 내용이 들어있다.
+    - 사실 성능 최적화와 관련된 내용보단 **브라우저 렌더링**과 관련된 내용이 더 잘 들어온다.   
+- 가볍게 읽기 좋은 것들
+  - [프런트엔드 면접 문제 은행](https://h5bp.org/Front-end-Developer-Interview-Questions/translations/korean/)
+  - [신입 프런트엔드 면접 질문 모음](https://velog.io/@honeysuckle/%EC%8B%A0%EC%9E%85-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EB%AA%A8%EC%9D%8C)
+  - [프런트엔드 개발자 면접 질문 정리](https://sunnykim91.tistory.com/121)
+- 자극이 되고, 뼈가 되고, 살이 되는 글
+  - [OKKY 미니 세미나 - 유명 IT 기업 입사 도전기](https://ict-nroo.tistory.com/72)
+  - [OKKY 미니 세미나 - 비전공 학원출신 SI개발자, 유명스타트업 들어간.ssul](https://jojoldu.tistory.com/247)
+- 난이도 최상의 심화자료
+  - 사실 [비사이드소프트](https://www.bsidesoft.com/)에 존재하는 모든 포스팅이 심오하다.
+  - 그 중에 제일 인상 깊었던 글은 [ES6의 class문은 특별할까?](https://www.bsidesoft.com/5370) 이다.
 
 ### 3. Java Clean Code 9기 Reviewer
 
