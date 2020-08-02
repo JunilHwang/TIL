@@ -17,14 +17,14 @@ feed:
 
 회사에서는 CMS 개발, API 분리, 크롬 확장프로그램 검수 위주의 일을 진행했다.
 
-### 크롬 확장프로그램
+### 1. 크롬 확장프로그램
 
 [5월 회고](../05-May/)와 [6월 회고](../06-June/)에 이어 확장프로그램과 관련된 일에 고통받고 있는 중이다.
 
 6월에 1차 개발이 완료 되었고, 7월 말에 프로젝트 완료보고를 진행했다.
 사실 7월에 뭔가 기능을 확장하거나 하진 않았고, 버그 수정만 했는데 문제는.. 검수가 너무 오래걸린다.
 
-#### 지긋지긋한 검수 과정
+#### (1) 지긋지긋한 검수 과정
 
 단지 UI를 수정했을 뿐인데 계속 사용자 데이터 보호와 관련된 내용으로 반려되고 있다.
 모든 호스트 권한을 https로 변경하면 잘 작동하지만, 검색줌 같은 경우에는 아직 http를 사용하고 있어서 문제가 되고 있다.
@@ -33,7 +33,7 @@ feed:
 
 여기서 무엇을 어떻게 얼마나 더 해야 좋을지 고민 중이다.
 
-#### 프로젝트 완료보고
+#### (2) 프로젝트 완료보고
 
 입사 후 처음으로 프로젝트 완료보고 발표를 했다.
 사장님이 참여하시는 줄 알고 꽤나 공들여 준비했는데, 불행인지 다행인지 참관하시진 않았다. ~~다행인듯~~
@@ -61,7 +61,7 @@ feed:
 불행인지 다행인지, 회사에서 개발직군이 할 수 있는 것은 개발 밖에 없다.
 어쨌든 개발자로서 최대한 좋은 퀄리티의 서비스를 만드는 것이 회사에 헌신하는 방법인 것 같다.
 
-### CMS 작업
+### 2. CMS 작업
 
 이번 달의 주요 업무는 핫이슈 CMS를 개발이었다. 현재 UI 개발까지 완료된 상태이다.
 
@@ -88,7 +88,7 @@ CMS 하나 때문에 최초 배포에 필요한 프로젝트만 3개인 것이�
 원래 이번 달까지 마무리 했어야 했지만, 같이 작업하는 팀원이 다른 일을 진행하느라 약간 지연되고 있다.
 8월에는 마무리할 수 있을 것 같다.    
 
-### API 분리 작업
+### 3. API 분리 작업
 
 현재
 [모바일줌](https://m.zum.com),
@@ -117,18 +117,202 @@ Mobile API의 분리는 거의 끝났다. 서비스존 배포까지 완료된 �
 
 ## 사적
 
-### 반응형 시스템 구축
+이번 달은 **카카오 면접** 덕분에 주로 Javascript 관련 서적을 읽고, 코딩 인터뷰를 준비했다.
 
-### 독서
+### 1. 디스코드 봇
 
-### 디스코드 봇
+![디스코드 봇](https://user-images.githubusercontent.com/18749057/89118668-5a3f0b80-d4e2-11ea-825d-9909b0026de0.png)
 
-### 카카오 면접
+6월에 [DKU-STUDY](https://github.com/DKU-STUDY/) 채팅방을 디스코드로 옮기면서 [디스코드 봇](https://github.com/JunilHwang/discord-study-bot)을 만들었다.
 
-### Java Clean Code 9기 Reviewer
+현재 _Pull Request, Push, Issue, Review 등이 발생하면 디스코드 봇이 디스코드 채널에 메세지를 보내도록_ 만들어놨다.
+
+일단 목표로 하는 기능은 다음과 같다.
+
+- **Github 관련**
+  - Github 로그인 (완성)
+  - Github Repository 불러오기 (완성)
+  - Github Repository를 선택하면 관련된 Hooks 불러오기 (완성)
+  - Hooks를 추가/수정/삭제하기
+  - Hooks와 관련된 템플릿 작성하기
+    - Pull Request
+    - Code Review
+    - Issue Comment
+    - Push
+- **Discord 관련**
+  - Discord 로그인
+  - Discord 채널 목록 불러오기
+  - Discord의 채널 ID 복사하기
+- **Discord와 Github 연동 관련**
+  - Github Hooks에 Discord Channel ID 연결하기
+
+Github 로그인은 일단 **Basic Auth**로 만들었는데, 이걸 **OAuth**로 수정해야 하나 고민중이다.
+아무래도 _로그인과 관련된 권한은 최소화할 수록 좋은 것 같다._
+
+사이드 프로젝트를 진행하면서 Github API에는 충분히 익숙해졌기 때문에 만드는데 큰 무리는 없다.
+
+다만, 카카오 면접 준비 때문에 일시 중단됭 상태다. 8월 부터 다시 만들어야지.. ㅋㅋ
+
+### 2. 카카오 면접
+
+5월에 재미로 친구들과 같이 [카카오 경력 개발자 영입 - 프론트엔드 개발 챌린지](https://programmers.co.kr/competitions/151/2020-kakao-fe-recruitment)에 지원했다.
+
+- 6월 첫째주에 **알고리즘 테스트**를 봤다.
+  - 3문제 중에 2문제를 풀었고, 무조건 탈락이구나 생각했는데 통과해버렸다.
+  - 같이 응시한 친구들 중에서 혼자 합격했다.
+  - 쓸쓸했다... 쳇
+- 6월 둘째주에 **프런트엔드 테스트**를 봤다. 필수 요구사항은 다 해결했고, 추가 요구사항에서 고전했다.
+
+***
+
+- 7월 첫째주에 프런트엔드 테스트에 대한 코드리뷰 및 결과 발표를 안내받았다.\
+  상위 13% 성적으로 합격했다.\
+  ![코드 리뷰](https://user-images.githubusercontent.com/18749057/89118842-033a3600-d4e4-11ea-8d3d-2040baf201d8.png)
+- 이력서를 작성했고, FE플랫폼 팀의 **비즈니스 서비스 파트**와 **티스토리,브런**파트에 지원했다.
+  - 비즈니스 서비스 파트에 친한 친구가 근무하고 있다.\
+    그 친구를 존경하고 좋아했기 때문에 같이 일해보고 싶었고 그래서 지원했다.
+- 7월 둘째주에 면접 과제를 풀이했다
+  - 이 때 직접 **반응형 시스템**을 구축하여 풀이했다.
+  - 프런트엔드 과제에 대한 **코드 리뷰를 반영**했다.
+- 7월 셋째주에 **1차 인터뷰**를 진행했다.\
+  <img alt="1차 인터뷰 안내" src="https://user-images.githubusercontent.com/18749057/89119015-c8d19880-d4e5-11ea-9ac4-4e0fb6060ed1.png" width="400" />
+  - 인사이드 자바스크립트, 코어 자바스크립트, 각종 코딩 인터뷰 포스팅 및 레포, 프레임워크 관련 서적을 참고했다.
+
+***
+
+- 7월 넷째주에 **1차 인터뷰 합격**을 안내 받았다.\
+  <img alt="1차 인터뷰 합격" src="https://user-images.githubusercontent.com/18749057/89119025-e0108600-d4e5-11ea-9fb1-91c1c88b04fb.png" width="400" />
+  - 원래 한 시간 인터뷰인데, 한 시간 반 정도 진행했다.
+  - 사실 애매하게 대답한 부분들이 있어서 큰 기대를 하지 않았는데, 1차까지 합격했다.
+
+***
+  
+- 7월 다섯째주에 **2차 인터뷰**를 진행했다.
+  - 1차 인터뷰와 마찬가지로 원래 한 시간 인터뷰인데, 한 시간 반 정도 진행했다.
+  - 긍정적인 신호라고 받아들여도 되겠지..?
+
+***
+
+그리고 **내일(8/3 월)** 최종 합격에 대한 안내를 받을 것 같다... 긴장 되서 미칠 지경
+
+#### (1) 반응형 시스템 구축
+
+면접 과제를 준비하면서 과제를 어떤 식으로 풀이해야 좋을지 고민하는 하다가 Vue와 같이 MVVM 시스템을 직접 구축해서 사용하는 것을 목표로 하여 공부했다.
+
+이 때 참고한 자료는 다음과 같다.
+
+- **Taost Meetup**의 [0.7KB로 Vue와 같은 반응형 시스템 만들기](https://meetup.toast.com/posts/188)
+- **코드스피츠 86기** [객체지향 자바스크립트, MVVM](https://www.youtube.com/watch?v=E9NZ0YEZrYU&t=3320s)
+- 그리고 위의 내용을 정리한 나의 포스트
+  - [객체지향의 기본 이론](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/)
+  - [MVVM System 만들기](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/)
+  - [MVVM System 개선 (1)](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/)
+  - [MVVM System 개선 (2)](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/)
+  - [MVVM System 개선 (3)](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/)
+
+처음에는 Proxy를 이용하여 Component Class를 만들었다.
+
+```js{11,51-61}
+export class Component {
+  $target; $components; $eventEmitter; $eventListener; $stores;
+  $data = {};
+  $observable = new Set();
+  $proxyHandler = {};
+
+  constructor($target, $components = {}) {
+    this.$target = $target;
+    this.$components = $components;
+    this.init();
+    this.observing();
+    this.render();
+    this.eventListening();
+  }
+
+  init() {
+    this.$data = this._init();
+    this.$stores = this._initStore();
+  }
+  _init () { return {} }
+  _initStore () { return {} }
+
+  render () {
+    const { $target, $proxyHandler, $observable, $stores } = this;
+    $proxyHandler.get = function (data, property, receiver) {
+      $observable.add(property);
+      return Reflect.get(...arguments);
+    }
+    const self = this;
+    Object.values($stores).forEach(store => {
+      store.setHandlerGet(function (data, property, receiver) {
+        store.addObservable(property, self);
+        return Reflect.get(...arguments);
+      })
+    })
+    $target.innerHTML = this._render() || '';
+    this.clearGetOfProxyHandler();
+    this.setEvent();
+  }
+  _render () { }
+
+  clearGetOfProxyHandler () {
+    const { $proxyHandler, $stores } = this;
+    delete $proxyHandler.get;
+    Object.values($stores).forEach(store => store.removeHandlerGet())
+  }
+
+  setEvent () { this._setEvent(); }
+  _setEvent () { }
+
+  observing () {
+    const self = this;
+    const { $proxyHandler, observer } = this;
+
+    $proxyHandler.set = function (data, property, value) {
+      Reflect.set(...arguments);
+      return observer.call(self, property);
+    }
+
+    this.$data = new Proxy(this.$data, $proxyHandler);
+  }
+
+  observer (property) {
+    if (this.$observable.has(property)) this.render();
+    return true;
+  }
+
+  eventListening () {
+    this.$eventListener = {};
+    this.$eventEmitter = new Proxy({}, {
+      set: (object, property, value) => {
+        this.$eventListener[property].call(this, value);
+        return true;
+      },
+    })
+  }
+
+  $on (eventName, callback) {
+    this.$eventListener[eventName] = callback;
+  }
+
+  $emit (eventName, payload) {
+    this.$eventEmitter[eventName] = payload;
+  }
+
+}
+```
+
+`$data`에 Proxy를 씌워서, $data의 property 값이 변경되면 render를 실행시키는 방식으로 만든 것이다. 
+
+#### (2) 독서
+
+#### (3) 코딩 인터뷰 공부
+
+### 3. Java Clean Code 9기 Reviewer
 
 ## 기타
 
-### 수영
+### 1. 수영
 
-### 오버워치
+### 2. 오버워치
+
+## Summary
