@@ -5,4 +5,6 @@ description: Promise, Generator, requestAnimationFrame 등을 이용하여 non-b
 
 ---
 
+** 아직 작성이 완료되지 않은 글입니다. **
+
 # Non-Blocking Loop 만들기
