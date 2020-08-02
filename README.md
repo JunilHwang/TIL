@@ -156,6 +156,7 @@ _Gradle_
 - [4월](/Review/2020-year/04-April/) 
 - [5월](/Review/2020-year/05-May/) 
 - [6월](/Review/2020-year/06-June/) 
+- [7월](/Review/2020-year/07-July/) 
 
 ### 분기 회고
 
