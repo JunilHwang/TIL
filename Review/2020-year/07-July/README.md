@@ -210,7 +210,9 @@ Github 로그인은 일단 **Basic Auth**로 만들었는데, 이걸 **OAuth**�
   - [MVVM System 개선 (2)](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/)
   - [MVVM System 개선 (3)](http://localhost:8080/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/)
 
-처음에는 Proxy를 이용하여 Component Class를 만들었다.
+처음에는 `Proxy`를 이용하여 Component Class를 만들었다.
+
+`$data`에 Proxy를 씌워서, $data의 property 값이 변경되면 render를 실행시키는 방식으로 만든 것이다.
 
 ```js{11,51-61}
 export class Component {
@@ -301,9 +303,364 @@ export class Component {
 }
 ```
 
-`$data`에 Proxy를 씌워서, $data의 property 값이 변경되면 render를 실행시키는 방식으로 만든 것이다. 
+이 때 문제가 되는 점은, proxy의 경우 **IE에서 지원을 아예 안 한다.**
+
+![Proxy 호환성](https://user-images.githubusercontent.com/18749057/89119627-bdcd3700-d4ea-11ea-8f68-a2920a3d0980.png)
+
+그래서 `Object.defineProperty`로 변경했다.
+
+```js{72-97}
+export class Component {
+  /** @type {HTMLElement|HTMLElementTagNameMap} **/
+  $target;
+
+  /** @type {Object.<string, Function>} **/
+  $eventListener = {};
+
+  /** @type {Object.<String, Store>} **/
+  $stores;
+
+  /** @type {Object.<String, any>} **/
+  $data;
+
+  /** @type {Set} **/
+  $observable = new Set();
+
+  /** @type {null|Function} **/
+  $getDescriptor = null;
+
+  /**
+   * 컴포넌트 초기화
+   * @param $target {HTMLElement|HTMLElementTagNameMap}
+   */
+  constructor($target) {
+    this.$target = $target; // 컴포넌트의 태그 설정
+    this.init(); // $data와 $stores 초기화
+    this.observing(); // $data와 $stores의 값들의 변화 감지
+    this.render(); // 렌더링
+  }
+
+  /** $data와 $stores 초기화 **/
+  init() {
+    this.$data = this._init();
+    this.$stores = this._initStore();
+  }
+  _init () { return {} }
+  _initStore () { return {} }
+
+  /**
+   * 렌더링
+   */
+  render () {
+    this.setGetDescriptor(); // $data와 $stores의 state에서 렌더링에 필요한 property를 감지한다.
+    this.$target.innerHTML = this._render() || ''; // 렌더링
+    this.resetGetDescriptor(); // 렌더링이 종료된 후 감지를 제거한다.
+    this.setEvent(); // 렌더링 후에 발생하는 이벤트 리스너 등록
+  }
+  _render () { }
+
+  /** $data와 $stores의 state에서 렌더링에 필요한 property를 감지한다. **/
+  setGetDescriptor () {
+    this.$getDescriptor = key => this.$observable.add(key);
+    Object.values(this.$stores).forEach(store => {
+      store.setHandlerGet(key => store.addObservable(key, this))
+    })
+  }
+
+  /** 렌더링이 종료된 후 감지를 제거한다. **/
+  resetGetDescriptor () {
+    this.$getDescriptor = null;
+    Object.values(this.$stores).forEach(store => store.removeHandlerGet())
+  }
+
+  /** 렌더링 후에 발생하는 이벤트 리스너 등록 **/
+  setEvent () { this._setEvent(); }
+  _setEvent () { }
+
+  /**
+   * $data와 $stores의 state에 변화가 생기면, 렌더링 실행
+   * 이 때 setGetDescriptor를 통하여 observable에 등록된 property에 대해서만 렌더링을 실행한다.
+   */
+  observing () {
+    const self = this;
+    const { $data, $getDescriptor } = this;
+
+    /**
+     * setter 실행 시 해당 property가 observable에 있으면 렌더링 실행
+     * @param property {string}
+     */
+    const observer = property => {
+      if (this.$observable.has(property)) this.render();
+    }
+
+    Object.keys($data).forEach(key => {
+      let _value = $data[key];
+      Object.defineProperty($data, key, {
+        get () {
+          if ($getDescriptor) $getDescriptor(key);
+          return _value;
+        },
+        set(value) {
+          _value = value;
+          observer.call(self, key);
+        }
+      });
+    });
+  }
+
+  /**
+   * 이벤트 감지
+   * @param eventName {string} 감지할 이벤트 이름
+   * @param set {Function} 이벤트 발생시 실행될 callback 함수
+   */
+  $on (eventName, set) {
+    Object.defineProperty(this.$eventListener, eventName, { set });
+  }
+
+  /**
+   * 이벤트 발생
+   * @param eventName {string} 발생 시킬 이벤트 명
+   * @param payload {any} 콜백함수의 인자
+   */
+  $emit (eventName, payload) {
+    this.$eventListener[eventName] = payload;
+  }
+
+}
+```
+
+그리고 컴포넌트간에 공유하는 데이터가 존재했기 때문에 `Store`를 구성했다.
+
+```js{26-44}
+export class Store {
+
+  /** @type {Object.<string, Set<Component>>} **/
+  $observable = {};
+
+  /** @type {null|Function} **/
+  $getDescriptor = null;
+
+  /** @type {Object.<string, any>} **/
+  state;
+
+  /**
+   * 스토어 생성
+   * @param state {Object.<string, any>}
+   * @param mutations {Object.<String, Function>}
+   */
+  constructor({ state, mutations }) {
+    this.observing(state);
+    this.registerMutations(mutations);
+  }
+
+  /**
+   * state에 변경이 있을 경우, 등록된 component에 대한 rendering 실행
+   * @param state {Object.<string, any>}
+   */
+  observing (state) {
+    const self = this;
+    Object.keys(state).forEach(key => {
+      let _value = state[key];
+      Object.defineProperty(state, key, {
+        get () {
+          if (self.$getDescriptor) self.$getDescriptor(key);
+          return _value;
+        },
+        set (value) {
+          _value = value;
+          if (self.$observable[key] !== undefined) {
+            self.$observable[key].forEach(component => component.render())
+          }
+        }
+      })
+    })
+    this.state = state;
+  }
+
+  /**
+   * mutations의 메소드를 Store의 메소드로 등록
+   * @param mutations {Object<String, Function>}
+   */
+  registerMutations (mutations) {
+    Object.keys(mutations).forEach(key => {
+      this[key] = mutations[key].bind(this);
+    })
+  }
+
+  /**
+   * proerty에 대한 observer 추가
+   * @param property {string}
+   * @param component {Component}
+   */
+  addObservable (property, component) {
+    const { $observable } = this;
+    $observable[property] = $observable[property] || new Set();
+    $observable[property].add(component);
+  }
+
+  /**
+   * - Component가 렌더링 되기 전에 descriptor함수를 만들어줌
+   * - descriptor에서 렌더링에 사용되는 Property 있을 경우 addObservable 실행 및 등록
+   * @param getter {Function}
+   */
+  setHandlerGet (getter) {
+    this.$getDescriptor = getter;
+  }
+
+  /**
+   * Component의 렌더링이 끝나면 descriptor 제거
+   */
+  removeHandlerGet () {
+    this.$getDescriptor = null;
+  }
+
+}
+```
+
+Store에서 사용하는 데이터에 변경이 발생할 경우, **Store가 붙어있는 컴포넌트를 렌더링 하는 방식**으로 만들었다.
+
+Component와 Store를 이용한 호스트 코드는 다음과 같다.
+
+```js
+import {getDateFormat} from "../utils";
+import {Component} from "../core";
+import {alarmStore} from "../store";
+
+export class Clock extends Component {
+
+  /**
+   * 컴포넌트 생성
+   * @param $target { HTMLElementTagNameMap|HTMLElement }
+   * @param components { Component }
+   */
+  constructor ($target) {
+    super($target);
+    this.clockInterval();
+  }
+
+  /**
+   * 100ms 단위로 시간 변경
+   * @private
+   */
+  clockInterval () {
+    const {$data, updateNow, clockInterval} = this;
+    $data.increment += 100
+    updateNow.call(this);
+    $data.timer = setTimeout(clockInterval.bind(this), 100);
+  }
+
+  /**
+   * $data 초기화
+   * @returns {{timer: number, start: number, increment: number}}
+   * @private
+   */
+  _init () {
+    return {
+      timer: 0,
+      increment: 0,
+      start: Date.now(),
+    };
+  }
+
+  /**
+   * store 초기화
+   * @returns {{alarmStore: Store}}
+   * @private
+   */
+  _initStore () {
+    return {alarmStore};
+  }
+
+  /**
+   * $target에 렌더링
+   * @returns {string}
+   * @private
+   */
+  _render () {
+    return `
+      <section>
+        <h2>현재시각</h2>
+        <p>${getDateFormat(new Date(this.$stores.alarmStore.state.now))}</p>
+      </section>
+    `;
+  }
+
+  /**
+   * - 현재 시간을 업데이트함.
+   * - store에 반영
+   */
+  updateNow () {
+    const {$data, $stores: {alarmStore}} = this;
+    alarmStore.SET_NOW($data.start + $data.increment);
+    this.checkAlarm();
+  }
+
+  /**
+   * 초기 시간과 시간 증가값을 업데이트함
+   * @param datetime {string} 새로운 초기 시간
+   */
+  updateStart (datetime) {
+    const {$data} = this;
+    $data.start = new Date(datetime).getTime();
+    $data.increment = 0;
+  }
+
+  /**
+   * 현재 시간에 대한 알람을 찾은 후 pushing
+   */
+  checkAlarm () {
+    const {queue, now} = this.$stores.alarmStore.state;
+    const nowTime = getDateFormat(new Date(now), 'h:i');
+    queue.filter(({alarmTime, activation}) => activation && alarmTime === nowTime)
+         .forEach(this.pushAlarm.bind(this));
+  }
+
+  /**
+   * 알람에 대한 메시지(알림)를 보냄
+   * @param alarm {Alarm} 알람 정보
+   * @param queueIndex {number} 제거할 alarmQueue의 index number
+   */
+  pushAlarm (alarm, queueIndex) {
+    this.$stores.alarmStore.ADD_PUSH_MESSAGE(alarm, queueIndex);
+  }
+}
+```
+
+어찌 저찌 만들긴 했으나, 퇴근 후에 고작 2일 동안 고민하면서 만든 코드이기 때문에 문제가 좀 많은 편이다.
+
+위의 코드를 요약하자면 다음과 같다.
+
+- Store의 $state에 Component Render Observer 등록
+- Component의 $data에 Render Observer 등록
+- **Component에 등록된 $data와 Store의 State의 property에 변경이 발생하면 render 실행**
+
+이렇게 구축한 코드를 나중에 좀 더 다듬어서 인강으로 만들던가 할 예정이다.
 
 #### (2) 독서
+
+7월 초에 별 생각 없이 회사 복지몰에서 쇼핑을 하다가 **Yes24 북클럽 6개월 정기권**을 발견하였고 바로 결제했다.
+
+여태까지 본 eBook 쇼핑몰 중에서 IT관련 서적이 제일 많이 등록되어 있었다.
+다른 eBook 쇼핑몰의 경우 정기권을 구매했을 때 IT서적을 볼 수 있는 경우는 거의 없었기 때문에 무척 놀랐다.
+
+다만 최신 서적은 거의 볼 수 없었고 출판된지 2~3년 정도 된 서적은 거의다 볼 수 있었다.      
+
+- [코어 자바스크립트](http://m.yes24.com/Goods/Detail/78586788)
+  - 2019년에 출간된 서적임에도 불구하고 Yes24 북클럽에서 볼 수 있었다. 무척 운이 좋았다.
+  - 전반적으로 설명이 구체적이고 이해하기 쉽게 서술되어 있었다.
+  - 특히 메모리와 실행 컨텍스트에 대해 어떤 서적보다도 구체적으로 설명되어 있었다. 이 부분이 제일 도움이 많이 됐다.
+  - 메소드와 함수에 대한 구분도 직관적으로 이해할 수 있게 설명되어 있다.
+  - 프로토타입에 대한 부분도 이렇게 쉽게 서술될 수 있을까? 싶을 정도로 쉽게 되어 있었다.
+  - 그리고 여러가지 용어에 대한 저자의 견해가 마음에 들었다. 특히 클로저에 대해 설명하는 부분이 인상깊었다. 
+- [인사이드 자바스크립트](http://www.yes24.com/Product/Goods/37157296)
+  - 코어 자바스크립트를 먼저 읽고, 이 책을 읽어서 그런지 그렇게 만족스럽진 못했다.
+  - 객체지향 파트의 경우 그저 문법 개선이라는 부분을 보고 그냥 접었다.
+  - 마음에 들었던 부분은 메모이제이션에 대한 설명
+  - 특히 프로토타입에 대한 설명은 코어 자바스크립트와 너무 비교되었기 때문에 매우 실망했다.
+- [프론트엔드 개발 첫걸음](http://www.yes24.com/Product/Goods/66815171)
+  - FE 프레임워크에 탄생에 대한 서술이 인상깊었다.
+  - 각각의 프레임워크(React, Angular, Vue)에 대한 비교를 한 눈에 볼 수 있었다.
+  - 무엇보다 Flux 패턴이 쉽게 설명 되어있었기 때문에 좋았다.
 
 #### (3) 코딩 인터뷰 공부
 
