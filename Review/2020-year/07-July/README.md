@@ -153,7 +153,7 @@ Github 로그인은 일단 **Basic Auth**로 만들었는데, 이걸 **OAuth**�
 
 다만, 카카오 면접 준비 때문에 일시 중단됭 상태다. 8월 부터 다시 만들어야지.. ㅋㅋ
 
-### 2. 카카오 면접
+### 2. 카카오 면접 준비
 
 5월에 재미로 친구들과 같이 [카카오 경력 개발자 영입 - 프론트엔드 개발 챌린지](https://programmers.co.kr/competitions/151/2020-kakao-fe-recruitment)에 지원했다.
 
@@ -696,38 +696,97 @@ export class Clock extends Component {
 
 카카오 면접을 앞두고 꽤 많은 포스트와 인터뷰에 대한 글들을 읽었다.
 
-- 깊이 있는 면접 준비를 위한 자료
-  - [시옷 스터디](https://gitlab.com/siots-study/topics/-/wikis/home)
-    - 개인적으로 인터넷에 나와있는 자료 중에서는 이게 제일 잘 정리되어있는 것 같다.
-    - 모든 자료에 추가적인 레퍼런스가 있기 때문에 특히 도움이 많이 된다.
-  - [프런트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/)
-    - 프런트엔드와 관련된 내용을 전반적으로 훑어볼 수 있어서 좋았다.
-    - 다만 깊이는 기대하기 어렵다.
-  - [TechnicalNote](https://github.com/jobhope/TechnicalNote)
-    - 프런트엔드 뿐만 아니라 개발에 필요한 기초적인 질문들이 포함되어 있어서 보기 좋았따.
-  - [초보자를 위한 코딩 인터뷰 질문 모음](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
-    - 커뮤니티에서 유명한 한재엽님을 필두로 하여 정리된 자료들
-    - 말 그대로 초보자들이 읽기 쉽게 정리되어 있다.
-  - [프런트엔드 성능 최적화](https://ui.toast.com/fe-guide/ko_PERFORMANCE/)
-    - 성능 최적화를 위한 모든 내용이 들어있다.
-    - 사실 성능 최적화와 관련된 내용보단 **브라우저 렌더링**과 관련된 내용이 더 잘 들어온다.   
-- 가볍게 읽기 좋은 것들
-  - [프런트엔드 면접 문제 은행](https://h5bp.org/Front-end-Developer-Interview-Questions/translations/korean/)
-  - [신입 프런트엔드 면접 질문 모음](https://velog.io/@honeysuckle/%EC%8B%A0%EC%9E%85-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EB%AA%A8%EC%9D%8C)
-  - [프런트엔드 개발자 면접 질문 정리](https://sunnykim91.tistory.com/121)
-- 자극이 되고, 뼈가 되고, 살이 되는 글
-  - [OKKY 미니 세미나 - 유명 IT 기업 입사 도전기](https://ict-nroo.tistory.com/72)
-  - [OKKY 미니 세미나 - 비전공 학원출신 SI개발자, 유명스타트업 들어간.ssul](https://jojoldu.tistory.com/247)
-- 난이도 최상의 심화자료
-  - 사실 [비사이드소프트](https://www.bsidesoft.com/)에 존재하는 모든 포스팅이 심오하다.
-  - 그 중에 제일 인상 깊었던 글은 [ES6의 class문은 특별할까?](https://www.bsidesoft.com/5370) 이다.
+::: tip 깊이 있는 면접 준비를 위한 자료
+- [시옷 스터디](https://gitlab.com/siots-study/topics/-/wikis/home)
+  - 개인적으로 인터넷에 나와있는 자료 중에서는 이게 제일 잘 정리되어있는 것 같다.
+  - 모든 자료에 추가적인 레퍼런스가 있기 때문에 특히 도움이 많이 된다.
+- [프런트엔드 인터뷰 핸드북](https://github.com/yangshun/front-end-interview-handbook/)
+  - 프런트엔드와 관련된 내용을 전반적으로 훑어볼 수 있어서 좋았다.
+  - 다만 깊이는 기대하기 어렵다.
+- [TechnicalNote](https://github.com/jobhope/TechnicalNote)
+  - 프런트엔드 뿐만 아니라 개발에 필요한 기초적인 질문들이 포함되어 있어서 보기 좋았따.
+- [초보자를 위한 코딩 인터뷰 질문 모음](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
+  - 커뮤니티에서 유명한 한재엽님을 필두로 하여 정리된 자료들
+  - 말 그대로 초보자들이 읽기 쉽게 정리되어 있다.
+- [프런트엔드 성능 최적화](https://ui.toast.com/fe-guide/ko_PERFORMANCE/)
+  - 성능 최적화를 위한 모든 내용이 들어있다.
+  - 사실 성능 최적화와 관련된 내용보단 **브라우저 렌더링**과 관련된 내용이 더 잘 들어온다.   
+:::
+
+::: tip 가볍게 읽기 좋은 것들
+- [프런트엔드 면접 문제 은행](https://h5bp.org/Front-end-Developer-Interview-Questions/translations/korean/)
+- [신입 프런트엔드 면접 질문 모음](https://velog.io/@honeysuckle/%EC%8B%A0%EC%9E%85-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EB%AA%A8%EC%9D%8C)
+- [프런트엔드 개발자 면접 질문 정리](https://sunnykim91.tistory.com/121)   
+:::
+
+::: tip 자극이 되고, 뼈가 되고, 살이 되는 글
+
+정리하면서 알았는데, 둘 다 OKKY 미니 세미나와 관련된 글이다.
+
+- [OKKY 미니 세미나 - 유명 IT 기업 입사 도전기](https://ict-nroo.tistory.com/72)
+- [OKKY 미니 세미나 - 비전공 학원출신 SI개발자, 유명스타트업 들어간.ssul](https://jojoldu.tistory.com/247)
+
+정말, 읽으면서 두 분의 노력이 존경스러웠으며 _나도 저렇게 할 수 있을까?_ 라는 의문과
+**나도 저렇게 하고 싶다** 라는 소망이 공존했다.
+
+자극이 되는 긁은 언제 읽어도 좋은 것 같다.
+
+:::
+
+::: tip 난이도 최상의 심화자료
+
+사실 [비사이드소프트](https://www.bsidesoft.com/)에 존재하는 모든 포스팅이 심오하다.
+그 중에 제일 인상 깊었던 글은 [ES6의 class문은 특별할까?](https://www.bsidesoft.com/5370) 이다.
+
+:::
 
 ### 3. Java Clean Code 9기 Reviewer
+
+8기에는 수강생으로 참여했는데, 9기에는 리뷰어로 참여하게 되었다.
+~~그런데 대체 언제 PR이 올라오는거지?~~
+
+내가 `잘 할 수 있을까`라는 의문과, `정말 잘 하고 싶다`는 생각을 같이 하게 된다.
+~~일단 리뷰를 올려주세요..~~
+
+어쨌든, 시간적 여유만 충분하다면 앞으로 꾸준히 리뷰어 활동을 하고 싶다.
+
+### 4. Github Contribution 3000개 달성
+
+7월 10일, 문득 현재 몇 개의 잔디가 심어졌나 확인하고 싶어서 Github에 들어갔더니 **딱 3000개의 잔디**가 심어져있었다.
+
+![3000개의 잔디](https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-9/106926405_1011541565964885_8375374465964372512_n.jpg?_nc_cat=103&_nc_sid=730e14&_nc_ohc=Wnq-a0D4l8UAX87nRNp&_nc_ht=scontent-ssn1-1.xx&oh=74282dd9b4e6ef67a2f5cc8b054a1472&oe=5F4C44FE)
+
+**2020년이 끝날 때 까지 5000개**의 잔디를 심는 것이 목표이다.
+
+이 글을 작성하는 시점에(8/2)을 기준으로 3262개의 잔디가 심어진 상태이다.
+
+![3262 잔디](https://user-images.githubusercontent.com/18749057/89124819-d2262980-d514-11ea-9789-e04e715489c8.png)
+
+지난 1년이 아닌, **2020년을 기준**으로 한다면 약 2800개의 잔디가 심어졌다.
+
+![2802 잔디](https://user-images.githubusercontent.com/18749057/89124841-f41fac00-d514-11ea-947b-ae3504b5cbde.png)
+
+사실 최근 일주일 정도는 면접 준비때문에 힘이 빠져서 커밋을 거의 못 했다.
+8월에는 조금 더 열심히 커밋 해야지!
 
 ## 기타
 
 ### 1. 수영
 
+7월에는 수영을 5번도 못한 것 같다.
+
+핑계야 많지만, 면접 준비 때문에 수영까지 할 수 있는 체력이 남질 않았음이 제일 큰 이유다.
+
 ### 2. 오버워치
 
+뜬금없이 ABC 대학 최강자전에 출전하게 되었다. ~~결과는 1차전부터 3:0으로 완패~~
+
+뭐.. 최선을 다했으니 후회는 없다. ~~최선을 다해서 던진건가..?~~
+
 ## Summary
+
+- 회사 일 열심히 했다.
+- 카카오 면접을 준비했다.
+- 책을 많이 읽었다.
+- 자극을 받았다.
+- 수영은 못했다.
