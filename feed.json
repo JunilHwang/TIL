@@ -20,13 +20,6 @@
             "date_modified": "2020-02-18T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
-            "title": "객체지향의 기본 이론",
-            "summary": "객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.",
-            "date_modified": "2020-01-19T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/",
             "title": "MVVM System 만들기",
@@ -42,11 +35,11 @@
             "date_modified": "2020-01-30T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
-            "title": "MVVM System 개선하기 (2)",
-            "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
-            "date_modified": "2020-02-07T14:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
+            "title": "객체지향의 기본 이론",
+            "summary": "객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.",
+            "date_modified": "2020-01-19T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
@@ -54,6 +47,13 @@
             "title": "MVVM System 개선하기 (3)",
             "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
             "date_modified": "2020-02-08T23:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
+            "title": "MVVM System 개선하기 (2)",
+            "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
+            "date_modified": "2020-02-07T14:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
@@ -101,20 +101,12 @@
             "date_modified": "2020-03-31T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
-            "title": "2020년 4월 회고",
-            "summary": "2020년 4월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
-            "date_modified": "2020-05-01T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
-            "title": "2020년 5월 회고",
-            "summary": "2020년 5월 회고 입니다.",
-            "image": "https://junilhwang.github.io/TIL/./2.png",
-            "date_modified": "2020-05-31T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
+            "title": "2020년 7월 회고",
+            "summary": "2020년 7월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/89118668-5a3f0b80-d4e2-11ea-825d-9909b0026de0.png",
+            "date_modified": "2020-08-05T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
@@ -125,12 +117,20 @@
             "date_modified": "2020-07-12T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
-            "title": "2020년 7월 회고",
-            "summary": "2020년 7월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/89118668-5a3f0b80-d4e2-11ea-825d-9909b0026de0.png",
-            "date_modified": "2020-08-02T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
+            "title": "2020년 5월 회고",
+            "summary": "2020년 5월 회고 입니다.",
+            "image": "https://junilhwang.github.io/TIL/./2.png",
+            "date_modified": "2020-05-31T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
+            "title": "2020년 4월 회고",
+            "summary": "2020년 4월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
+            "date_modified": "2020-05-01T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
