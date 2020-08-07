@@ -32,6 +32,7 @@ module.exports = {
       {
         'ga': 'UA-113171398-2'
       }
-    ]
+    ],
+    ['sitemap', { hostname: 'https://junilhwang.github.io/TIL' }]
   ]
 }
