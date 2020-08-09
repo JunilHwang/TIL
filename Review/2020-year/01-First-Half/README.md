@@ -19,6 +19,10 @@ sidebarDepth: 2
 
 ## 4. 코덕
 
+### 코덕 2등
+
+### 코덕 1등
+
 ## 5. DKU-STUDY
 
 ## 6. Java Clean Code TDD 8기 
