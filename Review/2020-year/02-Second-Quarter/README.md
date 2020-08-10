@@ -19,7 +19,8 @@ feed:
 
 ### 1. 일일커밋
 
-![일일커밋](https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png)
+![일일커밋](https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png)\
+_\* 글을 작성하는 시점(8월) 기준의 Github Contributions 이다._
 
 올해의 첫 번째 목표이자 제일 큰 목표는 바로 **일일커밋**이다.
 이전에는 일일커밋이 부질없다고 생각했는데, 그 생각을 고쳐먹었다.
