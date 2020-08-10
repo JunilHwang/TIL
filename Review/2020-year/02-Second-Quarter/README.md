@@ -340,6 +340,116 @@ _즉, 성실성을 겨루는 서비스라고 할 수 있다._
 
 ### 7. Java Clean Code TDD 8기
 
+7기에는 수강신청 시간을 잘못 알고 있어서 마감이 됐었다. _결과적으로 그 때 수강하지 않은건 코로나 때문에 잘 한 일이라고 생각한다._
+
+8기 수강신청은 거의 1등으로 수강신청을 완료하지 않았나 싶다. ~~대학교 수강신청으로 단련된 매크로급 수강신청 기술을 활용했다.~~
+
+현재 회사에서 java를 사용하고 있긴 하지만, java의 코어를 잘 모르기 때문에 이번 기회에 제대로 익혀두자 싶어서 수강신청을 했다.
+결과는 ~~죽을 맛 그 자체!~~ 매우 만족스러웠다.
+
+코드 리뷰의 범위는 `객체지향 생활체조`의 범위에서 진행된다.
+
+::: tip 객체지향 생활체조
+- 한 메서드에 오직 한 단계의 들여쓰기(indent)만 한다.
+- else 예약어를 쓰지 않는다.
+- 모든 원시값과 문자열을 포장한다.
+- 한 줄에 점을 하나만 찍는다.
+- 줄여쓰지 않는다(축약 금지).
+- 모든 엔티티를 작게 유지한다.
+- 3개 이상의 인스턴스 변수를 가진 클래스를 쓰지 않는다.
+- 일급 콜렉션을 쓴다.
+- Getter/Setter Property를 쓰지 않는다.
+:::
+
+위의 규칙들을 지키면서 프로그램을 만드는 것 자체가 굉장히 어렵고 고민이 많이 된다.
+하지만 그만큼 코드 자체는 극한의 아름다움을 보이게 된다.
+
+덕분에 Stream과 Enum 등을 포함하여 Java에서 사용하기 좋은 API와 설계 기술을 배울 수 있었다.
+
+각설하고, 내가 과연 이 과정을 무사히 수료할 수 있을까 고민했는데,\
+운이 좋게 제일 먼저 수료할 수 있었다. ~~사실 노렸다~~
+
+::: tip 해당 과정을 진행하면서 올린 PR(코드리뷰) 모음
+
+- Racingcar
+  - [step1: String 클래스에 대한 학습](https://github.com/next-step/java-racingcar/pull/716)
+  - [step2: 문자열 계산기](https://github.com/next-step/java-racingcar/pull/761)
+  - [step3: 자동차 경주](https://github.com/next-step/java-racingcar/pull/826)
+  - [step4: 자동차 경주 우승자](https://github.com/next-step/java-racingcar/pull/870)
+  - [step5: 자동차 경주 리팩토링](https://github.com/next-step/java-racingcar/pull/984)
+- Lotto
+  - [step1: 문자열 덧셈 계산](https://github.com/next-step/java-lotto/pull/495)
+  - [step2: 로또 (1)](https://github.com/next-step/java-lotto/pull/509)
+  - [step2: 로또 (2)](https://github.com/next-step/java-lotto/pull/527)
+  - [step3: 로또 2등 (2)](https://github.com/next-step/java-lotto/pull/532)
+  - [step3: 로또 2등 (2)](https://github.com/next-step/java-lotto/pull/541)
+  - [step4: 로또 수동](https://github.com/next-step/java-lotto/pull/550)
+- Ladder
+  - [step1: Stream, Lambda, Optional](https://github.com/next-step/java-ladder/pull/389)
+  - [step2: 사다리 생성](https://github.com/next-step/java-ladder/pull/396)
+  - [step3: 사다리 게임 실행](https://github.com/next-step/java-ladder/pull/399)
+  - [step4: 리팩토링](https://github.com/next-step/java-ladder/pull/407)
+- Ladder
+  - [step1: Stream, Lambda, Optional](https://github.com/next-step/java-ladder/pull/389)
+  - [step2: 사다리 생성](https://github.com/next-step/java-ladder/pull/396)
+  - [step3: 사다리 게임 실행](https://github.com/next-step/java-ladder/pull/399)
+  - [step4: 리팩토링](https://github.com/next-step/java-ladder/pull/407)
+- Bowling
+  - [step1: 질문 삭제하기 기능 리팩토링](https://github.com/next-step/java-bowling/pull/155)
+  - [step2: 볼링 점수판](https://github.com/next-step/java-bowling/pull/157)
+  - [step3: 볼링 점수판 점수 계산](https://github.com/next-step/java-bowling/pull/164)
+  - [step4: 볼링 점수판 n명](https://github.com/next-step/java-bowling/pull/165)
+:::
+
+약간의 소감을 이야기 해보자면, _시작(Racingcar)과 끝(Bowling)이 무척 어려웠다._
+
+시작할 때는 자바 자체에 익숙하지 않다 보니, 말 그대로 _모든 것들이 생소했다._
+일단 사내 프로젝트를 운영하면서 Stream을 어느 정도 사용할 줄 알았기 때문에 
+코드를 짧게 작성한다던가 **if나 while, for 없이 작성하는 것**은 어렵지 않았다.
+
+그런데 **일급 컬렉션**이나 **원시값 포장** 같은 개념은 쉽게 이해되지 않아서 애먹었다.
+이러한 문제점을 보완하기 위해서 _실력이 뛰어난 다른 수강생분들이나 코드리뷰를 해주시는 리뷰어분들이 이 과정을 수행할 때 작성했던 코드를 보면서 많이 참고했다._
+
+> 개인적으로 생각하는 나의 장점 중 하나가 주변에 있는 뛰어난 사람들에게 주눅 들기보단 그 사람들의 노하우나 사고방식, 가치관을 잘 받아들이는 점이다. 
+
+결과적으로 _초반에 애먹은 덕분에_ Lotto와 Ladder는 쉽게 통과할 수 있었다.
+
+마지막 미션인 Bowling은 설계 자체가 정말 어려웠다. _어떻게 설계하지?_ 라는 고민을 일주일 내내 했던 것 같다.
+그래서 step2를 진행할 때, 지웠다가 썼다를 반복하다 보니 무려 _한 step에 45개의 커밋이 발생했다._
+
+- step1을 6월 9일에 완료했다
+- step2를 6월 16일에 완료했다
+- step3, step4는 각각 18일, 20일에 완료했다.
+
+정말 _step2에서 설계에 대한 고민을 일주일 내내_ 한 것이다. 덕분에 step3와 step2는거의 바로 끝낼 수 있었다.   
+
+**어쨌든 결과적으로 해당 과정을 전체 인원 중 첫 번째로 수료할 수 있었다.**
+
+![클린코드 수료](https://user-images.githubusercontent.com/18749057/87239161-d778e280-c446-11ea-808f-2f3e2d8966e4.png)
+
+내가 실력이 좋아서라기보단, _하루도 쉬지 않고 꾸준히 했기 때문에 이런 성과를 낼 수 있었으리라 생각한다._
+
+::: tip 꾸준히 공부하는 습관을 지니자
+
+_5월에는 코덕 1등을 했고, 6월에는 클린코드 1등을 했다._
+
+항상 한계점의 페이스를 유지하기보단, 한 번 한계점까지 도달한 후에 70% ~ 80% 정도를 유지하는 게 좋다고 생각한다.
+그렇지 않으면 _너무 빨리 지치기 때문이다._
+
+나는 줌인터넷에 입사한 다음에 주변 자극을 적극적으로 수용하고 있다.
+그중에 제일 인상 깊었던 것은 우리 팀을 거쳐 간 [우아한형제들에서 근무하고 계신 이동욱 님의 인터뷰](https://www.youtube.com/watch?v=V9AGvwPmnZU&t=174s)이다.
+무언가를 거창하게 하기보단 **그냥 매일 꾸준히 하는 것**이다. 확실히 나에게는 이 사고방식과 가치관이 맞아떨어진다. 
+
+* 근데 이동욱 님은 굉장히 많은 것을 하고 계신다. ~~인간이 아닌 듯~~
+
+:::
+
+전체 과정을 수료한 다음에 미션별로 파편화된 코드를 [한 저장소](https://github.com/junilhwang/java-clean-code)에 모아놨다. ~~사실 깃허브 잔디에 반영하고 싶었다.~~
+
+![java-clean-code-repository](https://user-images.githubusercontent.com/18749057/87239173-f5464780-c446-11ea-9383-9ae7cfcc95d0.png)
+
+모아놓고 보니 _두 달 동안 약 600개의 commit이 발생했다._ 내가 개발 공부를 이렇게 열심히 했던 적이 있었나 싶다. ~~사실 고등학교 3학년 여름방학 때 제일 열심히 했다.~~
+
 ## 개발 외
 
 ### 1. 수영
