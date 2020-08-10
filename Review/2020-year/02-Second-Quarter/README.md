@@ -1,13 +1,13 @@
 ---
 
 title: 2020년 2분기 회고
-description: 2020년 2분기 회고입니다.
-date: 2020-07-01
+description: 개발자 황준일의 2020년 2분기 회고입니다.
+date: 2020-08-11
 sidebarDepth: 2
+feed:
+  enable: true
 
 ---
-
-** 아직 작성이 완료되지 않은 글입니다. **
 
 # 2020년 2분기 회고
 
