@@ -49,19 +49,19 @@
             "date_modified": "2020-02-07T14:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
-            "title": "MVVM System 개선하기 (3)",
-            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
-            "date_modified": "2020-02-08T23:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
             "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
             "title": "Gradle Wrapper",
             "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
             "image": "https://junilhwang.github.io/TIL/./01.jpg",
             "date_modified": "2020-01-14T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
+            "title": "MVVM System 개선하기 (3)",
+            "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
+            "date_modified": "2020-02-08T23:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Javascript/Execution-Context/",
@@ -86,19 +86,19 @@
             "date_modified": "2020-01-31T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
-            "title": "2020년 2분기 회고",
-            "summary": "개발자 황준일의 2020년 2분기 회고입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png",
-            "date_modified": "2020-08-11T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
             "title": "2020년 2월 회고",
             "summary": "2020년 2월 회고 입니다.",
             "date_modified": "2020-02-29T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
+            "title": "2020년 2분기 회고",
+            "summary": "개발자 황준일의 2020년 2분기 회고입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png",
+            "date_modified": "2020-08-11T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
@@ -117,14 +117,6 @@
             "date_modified": "2020-05-01T00:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
-            "title": "2020년 6월 회고",
-            "summary": "2020년 6월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png",
-            "date_modified": "2020-07-12T00:00:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
             "title": "2020년 5월 회고",
@@ -139,6 +131,14 @@
             "summary": "2020년 7월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/89118668-5a3f0b80-d4e2-11ea-825d-9909b0026de0.png",
             "date_modified": "2020-08-05T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
+            "title": "2020년 6월 회고",
+            "summary": "2020년 6월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png",
+            "date_modified": "2020-07-12T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",

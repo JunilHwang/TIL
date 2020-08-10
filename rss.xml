@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Mon, 10 Aug 2020 15:15:04 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 10 Aug 2020 15:22:03 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -53,13 +53,6 @@
             <description><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></description>
         </item>
         <item>
-            <title><![CDATA[MVVM System 개선하기 (3)]]></title>
-            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</link>
-            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</guid>
-            <pubDate>Sat, 08 Feb 2020 23:00:00 GMT</pubDate>
-            <description><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></description>
-        </item>
-        <item>
             <title><![CDATA[Gradle Wrapper]]></title>
             <link>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</link>
             <guid>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</guid>
@@ -67,6 +60,13 @@
             <description><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></description>
             <enclosure url="https://junilhwang.github.io/TIL/./01.jpg">
             </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[MVVM System 개선하기 (3)]]></title>
+            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</link>
+            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</guid>
+            <pubDate>Sat, 08 Feb 2020 23:00:00 GMT</pubDate>
+            <description><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></description>
         </item>
         <item>
             <title><![CDATA[자바스크립트 실행 컨텍스트]]></title>
@@ -92,20 +92,20 @@
             <description><![CDATA[2020년 1월 회고 입니다.]]></description>
         </item>
         <item>
-            <title><![CDATA[2020년 2분기 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</guid>
-            <pubDate>Tue, 11 Aug 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[개발자 황준일의 2020년 2분기 회고입니다.]]></description>
-            <enclosure url="https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png">
-            </enclosure>
-        </item>
-        <item>
             <title><![CDATA[2020년 2월 회고]]></title>
             <link>https://junilhwang.github.io/TIL/Review/2020-year/02-February/</link>
             <guid>https://junilhwang.github.io/TIL/Review/2020-year/02-February/</guid>
             <pubDate>Sat, 29 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[2020년 2월 회고 입니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2020년 2분기 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</guid>
+            <pubDate>Tue, 11 Aug 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[개발자 황준일의 2020년 2분기 회고입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png">
+            </enclosure>
         </item>
         <item>
             <title><![CDATA[2020년 3월 회고]]></title>
@@ -126,15 +126,6 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2020년 6월 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</guid>
-            <pubDate>Sun, 12 Jul 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[2020년 6월 회고 입니다.]]></description>
-            <enclosure url="https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png">
-            </enclosure>
-        </item>
-        <item>
             <title><![CDATA[2020년 5월 회고]]></title>
             <link>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</link>
             <guid>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</guid>
@@ -150,6 +141,15 @@
             <pubDate>Wed, 05 Aug 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[2020년 7월 회고 입니다.]]></description>
             <enclosure url="https://user-images.githubusercontent.com/18749057/89118668-5a3f0b80-d4e2-11ea-825d-9909b0026de0.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[2020년 6월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</guid>
+            <pubDate>Sun, 12 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 6월 회고 입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png">
             </enclosure>
         </item>
         <item>
