@@ -2,7 +2,7 @@
 
 title: 2020년 2분기 회고
 description: 개발자 황준일의 2020년 2분기 회고입니다.
-date: 2020-08-11
+date: 2020-08-11 12:20:00
 sidebarDepth: 2
 feed:
   enable: true
@@ -32,13 +32,16 @@ _무언가를 거창하게 하기보단, 작더라도 꾸준히 하는 것이 �
 그래서 일일커밋이라는 관성에 탑승하기로 했다.
 ~~강제로 꾸준히 공부하다 보면 뭐라도 되어있겠지 하며..~~
 
-너무 피곤해서 못할뻔한 적도 있었지만, 머릿속으로 계속 _'그래도 오늘 커밋을 해야 하는데...'_ 하며 몸을 일으키고 컴퓨터를 고 공부를 했다.
+너무 피곤해서 못할뻔한 적도 있었지만, 머릿속으로 계속 _'그래도 오늘 커밋을 해야 하는데...'_ 하며 몸을 일으켜 공부 했다.
 이렇게까지 해야 하는 건가 싶을 때도 있었지만 어쨌든 결과적으론 나쁘지 않았다.
 
-일일커밋의 양분으로
-- [Today I Learned](https://junilhwang.github.io/TIL/),
-- 학과 수업 자료: [DKU-Software-Engineering-Logging](https://github.com/JunilHwang/DKU-Software-Engineering-Logging),
+2분기에는 일일커밋의 양분으로
+
+- [Today I Learned](https://junilhwang.github.io/TIL/)
 - 사이트 프로젝트: [DKU-Software-Engineering-Logging-service](https://github.com/JunilHwang/DKU-Software-Engineering-Logging-service)
+- [Java Clean Code TDD 8기](https://github.com/JunilHwang/java-clean-code)
+- [DKU-STUDY](https://github.com/DKU-STUDY)
+- [디스코드 깃허브 알림 봇](https://github.com/JunilHwang/discord-study-bot)
 
 등을 이용했다.
 
@@ -120,11 +123,20 @@ _혼자서 사이드 프로젝트를 하는 게 이럴 때 버겁구나 느끼�
 그래서 만족할 때 까지 리팩토링을 하거나, 기술 스택을 최대한 많이 공부하는 등의 목표를 가지고 진행 중이다.
 ~~벌써 리팩토링만 몇 번 한 것인지...~~
 
-사이드 프로젝트를 하면서 제일 큰 성과는 **Open API를 사용하는 방법**을 완전히 터득한 것이다.
+#### 첫 번째 성과, Open API 습득
+
+사이드 프로젝트를 하면서 얻은 첫 번째 성과는 **Open API를 사용하는 방법**을 완전히 터득한 것이다.
 이전에는 API를 연동할 때 문서를 봐도 모르겠고,
 다른 사람들이 작성한 글들을 봐도 감이 오질 않았는데 정말 어떤 API를 사용하더라도 큰 문제가 없을 정도로 이해한 상태다.
 
-그리고 이전에 너무 어려워서 사용하기를 포기했던 [NestJS](https://nestjs.com/)에 대해 진짜 제대로 이해했다.
+사실 사이드 프로젝트 덕분이라기보단 입사 직후에 진행했던 파일럿 프로젝트의 영향이 더 큰 것 같다.
+
+#### 두 번째 성과, NestJS 습득
+
+두 번째 성과로 NestJS에 대한 사용법 습득이다.
+
+재학중에 [NestJS](https://nestjs.com/)가 뭔가 좋아보여서 공부했었는데, 너무 어려워서 포기했다.
+그런데 이번에 무심코 다시 적용을 시도했고, 결과적으로 좋은 선택이 되었다.
 
 ::: tip NestJS 소개
 - NestJS는 **Google**에서 만든 **Server Side Framework**이다.
@@ -155,6 +167,16 @@ NestJS를 이해하는 데 큰 무리가 없는 것 같다.
 그래서 사이드 프로젝트의 제일 큰 수확은 사실 NestJS의 사용 숙지가 아닐까 싶다.
 
 그리고 다음과 같은 것들을 시도해보려고 한다.
+
+#### 세 번째 성과, SSR
+
+사이드 프로젝트를 진행 하면서 제일 삽질을 많이 한 부분이 바로 SSR이다.
+
+일단 SSR 적용 까진 나쁘지 않았다. **문제는 SSR과 CSR을 같이 적용하는 법은 눈씻고 찾아봐도 없었다.**
+
+[Vue의 공식문서](https://ssr.vuejs.org/)를 봐도 딱 SSR에 대해서만 다룰 뿐.. SSR 적용 후에 어떻게 CSR을 적용할 수 있는지 나와 있지 않았다.
+
+
 
 #### Vue Composition API 사용
 - 일단 Composition API로 간단한 서비스를 한 번 만들어봐야 한다.
