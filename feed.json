@@ -10,21 +10,21 @@
             "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/00-Intro/",
             "title": "00 책 소개 | 객체지향의 원리와 이해",
             "summary": "김종민님이 저술한 \"스프링 입문을 위한 (자바) 객체지향의 원리와 이해\"에 대한 소개입니다.",
-            "date_modified": "2020-02-14T00:00:00.000Z"
+            "date_modified": "2020-02-14T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Loved-Human/",
             "url": "https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Loved-Human/",
             "title": "01 사람을 사랑한 기술 | 객체지향의 원리와 이해",
             "summary": "객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.",
-            "date_modified": "2020-02-18T00:00:00.000Z"
+            "date_modified": "2020-02-18T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/",
             "title": "객체지향의 기본 이론",
             "summary": "객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.",
-            "date_modified": "2020-01-19T00:00:00.000Z"
+            "date_modified": "2020-01-19T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/",
@@ -32,14 +32,14 @@
             "title": "MVVM System 만들기",
             "summary": "객체지향을 통해서 MVVM System을 만드는 과정입니다.",
             "image": "https://junilhwang.github.io/TIL/./example.png",
-            "date_modified": "2020-01-21T00:00:00.000Z"
+            "date_modified": "2020-01-21T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/",
             "title": "MVVM System 개선하기 (1)",
             "summary": "다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.",
-            "date_modified": "2020-01-30T00:00:00.000Z"
+            "date_modified": "2020-01-30T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
@@ -61,14 +61,14 @@
             "title": "Gradle Wrapper",
             "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
             "image": "https://junilhwang.github.io/TIL/./01.jpg",
-            "date_modified": "2020-01-14T00:00:00.000Z"
+            "date_modified": "2020-01-14T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Javascript/Execution-Context/",
             "url": "https://junilhwang.github.io/TIL/Javascript/Execution-Context/",
             "title": "자바스크립트 실행 컨텍스트",
             "summary": "자바스크립트 실행 컨텍스트에 대해 다룹니다.",
-            "date_modified": "2020-07-26T00:00:00.000Z"
+            "date_modified": "2020-07-26T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/",
@@ -76,21 +76,21 @@
             "title": "2020년 1분기 회고",
             "summary": "2020년 1분기 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png",
-            "date_modified": "2020-04-01T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
-            "title": "2020년 2월 회고",
-            "summary": "2020년 2월 회고 입니다.",
-            "date_modified": "2020-02-29T00:00:00.000Z"
+            "date_modified": "2020-04-01T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/01-January/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/01-January/",
             "title": "2020년 1월 회고",
             "summary": "2020년 1월 회고 입니다.",
-            "date_modified": "2020-01-31T00:00:00.000Z"
+            "date_modified": "2020-01-31T13:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-February/",
+            "title": "2020년 2월 회고",
+            "summary": "2020년 2월 회고 입니다.",
+            "date_modified": "2020-02-29T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
@@ -106,7 +106,7 @@
             "title": "2020년 3월 회고",
             "summary": "2020년 3월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png",
-            "date_modified": "2020-03-31T00:00:00.000Z"
+            "date_modified": "2020-03-31T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
@@ -114,7 +114,7 @@
             "title": "2020년 4월 회고",
             "summary": "2020년 4월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
-            "date_modified": "2020-05-01T00:00:00.000Z"
+            "date_modified": "2020-05-01T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
@@ -122,7 +122,15 @@
             "title": "2020년 5월 회고",
             "summary": "2020년 5월 회고 입니다.",
             "image": "https://junilhwang.github.io/TIL/./2.png",
-            "date_modified": "2020-05-31T00:00:00.000Z"
+            "date_modified": "2020-05-31T13:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
+            "title": "2020년 6월 회고",
+            "summary": "2020년 6월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png",
+            "date_modified": "2020-07-12T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
@@ -133,12 +141,11 @@
             "date_modified": "2020-08-10T12:21:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
-            "title": "2020년 6월 회고",
-            "summary": "2020년 6월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png",
-            "date_modified": "2020-07-12T00:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
+            "title": "github page에 배포하기",
+            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
+            "date_modified": "2020-01-06T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Vuepress/Plantuml/",
@@ -146,14 +153,7 @@
             "title": "markdown-it-plantuml",
             "summary": "plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.",
             "image": "https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg",
-            "date_modified": "2020-01-06T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
-            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
-            "title": "github page에 배포하기",
-            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
-            "date_modified": "2020-01-06T00:00:00.000Z"
+            "date_modified": "2020-01-06T13:00:00.000Z"
         }
     ]
 }
