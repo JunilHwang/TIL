@@ -600,6 +600,27 @@ _따라서 IoC를 이해하지 못한다면 프레임워크를 사용하고 있�
 각설하고, 여자친구가 혼자서 공부하기 힘들다며 갑자기 4월 말에 [알고리즘 스터디](https://github.com/DKU-STUDY)를 만들었다.
 스터디 구성원은 먼저 에브리타임을 통해서 모집하고, 알고 지내던 후배들 중 같이 하고 싶은 의향이 있는 사람들을 초대했다.
 
+스터디는 다음과 같이 진행했다.
+
+- 먼저 [Github Pull Request 튜토리얼 영상](https://www.youtube.com/watch?v=pR5SNFyzdg8&t=21s)을 본다.
+
+- [pull-request-tutorial 저장소](https://github.com/DKU-STUDY/pull-request-tutorial)에서 tutorial을 진행한다.
+ 
+- 코딜리티/백준/프로그래머스 등 원하는 플랫폼에서 선택하여 알고리즘 문제를 풀이한다.
+ 
+- [원본 저장소](https://github.com/DKU-STUDY/Algorithm)를 fork한다.
+
+- fork한 저장소에 풀이한 알고리즘 문제를 올린다.
+
+- PR을 올린다.
+
+- 코드 리뷰를 진행한다.\
+  ![image](https://user-images.githubusercontent.com/18749057/89857384-e6ce8580-dbd6-11ea-97a8-3e0e94a88a5c.png)
+  
+- 리뷰가 마무리 되면 머지한다.\
+  ![image](https://user-images.githubusercontent.com/18749057/89857507-42007800-dbd7-11ea-8ae2-0a75b0b6a765.png)
+
+
 그리고 _생각보다 잘 진행되고 있는 중이다._
 
 **진행한지 한 달이 조금 넘었을 때(5월 말) 800개의 커밋과 160개의 PR이 올라왔다.**
