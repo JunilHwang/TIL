@@ -2,7 +2,7 @@
 
 title: VuePress 테마 설정
 description: 현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.
-date: 2020-01-02
+date: 2020-01-02 13:00:00
 sidebarDepth: 2
 feed:
   enable: true
