@@ -278,7 +278,26 @@ Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타�
 
 필자 또한 두 가지 모두 사용하기로 결정했다.
 
-`package.json`
+먼저 폴더 구조를 다음과 같이 만들었다.
+
+```
+┌─ /
+├─ package.json
+├─ lerna.json
+├─ front-end/
+│  ├─ package.json
+│  └─ src/
+├─ back-end/
+│  ├─ package.json
+│  └─ src/
+└─ domain/
+   ├─ package.json
+   └─ src/
+```
+
+그리고 각각의 `package.json`을 수정해야 한다.
+
+`/package.json`
 
 ```js
 {
@@ -300,7 +319,7 @@ Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타�
 }
 ```
 
-`lerna.json`
+`/lerna.json`
 
 ```js
 {
@@ -312,7 +331,7 @@ Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타�
 
 그리고 _front-end와 back-end의 package.json에 domain을 불러와야 한다._
 
-`back-end/pacakge.json`
+`/back-end/pacakge.json`
 
 ```js{7,12}
 {
@@ -334,7 +353,7 @@ Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타�
 }
 ```
 
-`front-end/package.json`
+`/front-end/package.json`
 
 ```js{6,11}
 {
@@ -359,7 +378,7 @@ Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타�
 
 결과적으로 다음과 같이 사용 가능했다.
 
-`front-end/src/services/GithubService.ts`
+`/front-end/src/services/GithubService.ts`
 
 ```js{2}
 import $http from 'axios'
@@ -401,7 +420,7 @@ export default Object.freeze({
 })
 ```
 
-`back-end/src/api/githbu/github.service.ts`
+`/back-end/src/api/githbu/github.service.ts`
 
 ```js{2}
 import { Inject, Injectable } from '@nestjs/common'
@@ -492,6 +511,8 @@ export class GithubService {
 - 개인적으로 Jenkins 배포 환경을 구축해보고 싶다.
 
 ***
+
+그리고 이건 꼭 **적용할 필요는 없지만** 한 번 해보고 싶은 것들이다.
 
 #### Optional 01: GraphQL 사용
 - 이건 참 애매하다.
