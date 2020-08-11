@@ -185,7 +185,7 @@ _있다면 누가 좀 알려주길.._
 어쨌든 SSR에 CSR을 연동하기 위해선 다음과 같은 과정이 필요하다. 
 
 - CSR의 Template에 SSR의 Template을 합쳐야 한다.
-- CSR 코드를 번들링(빌드) 한다. 이 때 Template도 Bundling 코드에 포함된다.
+- CSR 코드를 번들링(빌드) 한다. _이 때 Template도 Bundling 코드에 포함된다._
 - CSR에서 Build된 Template를 SSR에서 사용한다.
 
 이와 관련 내용도 추후에 상세하게 정리해서 올릴 예정이다.
@@ -205,36 +205,299 @@ SSR은 CSR의 코드를 Server에서 실행하여 HTML 코드를 만들고 바�
 - 가상의 존재여도 _존재한다는 것_ 자체만으로도 그 가치가 있다.
 :::
 
+```js{26-35}
+import { Injectable } from '@nestjs/common'
+import { join } from 'path'
+import { BundleRenderer, createBundleRenderer } from 'vue-server-renderer'
+import { DOMWindow, JSDOM } from 'jsdom'
+
+const port = process.env.NODE_ENV === 'development' ? 3000 : 8080
+const baseURL = `http://localhost:${port}`
+const bundlePath = join(__dirname, '../../../resources/vue-ssr-server-bundle.json');
+const htmlStr = `<!DOCTYPE html><html><head><title></title></head><body></body></html>`
+
+@Injectable()
+export class SSRService {
+
+  public getRenderer (): BundleRenderer {
+    try {
+      return createBundleRenderer(bundlePath, {
+        runInNewContext: false,
+        template: (result, context) => `${result}${context.renderState()}${context.renderScripts()}`
+      } as any)
+    } catch (e) {
+      console.log(e)
+      throw 'Renderer Error'
+    }
+  }
+
+  public getDom (contextURL: string): [ DOMWindow, Document ] {
+    try {
+      const url: string = `${baseURL}${contextURL}`
+      const {window} = new JSDOM(htmlStr, {url})
+      return [window, window.document]
+    } catch (e) {
+      console.log(e)
+      throw 'JSDOM Error'
+    }
+  }
+}
+```
+
 *세 번째 문제: 제대로된 Tutorial을 찾을 수 없다.*
 
 SSR의 가장 큰 문제점 중 하나가 바로 제대로된 튜토리얼이 없다는 것이다.
 github를 찾아봐도 구글링을 해봐도 _이것만 보면 이해할 수 있다 싶은 튜토리얼은 존재하지 않았다._
 
-그래서 내가 만들었다.
+그래서 내가 만들었다 --> [Vue SSR Tutorial](https://github.com/JunilHwang/vue-ssr-tutorial)
 
-- 
+일단 설명은 없고 소스코드만 존재한다. ~~뭐.. 이해할 사람은 이해하겠지.~~
 
-#### Vue Composition API 사용
+#### 네 번째 성과, Mono Repo 적용
+
+Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타입을 잘 활용할 수 있는 방법이 없을까?_ 였다.
+
+예를들어 Server에서 Github API를 이용하여 `Repository` 정보에 대한 타입을 `GithubRepository`로 정의했다.
+**그런데 이 타입은 Client에서도 필요하다.**
+
+그래서 처음엔 Client가 프로젝트의 코드상으로 Server에 접근할 수 있도록 만들어야 했다.
+만들면서 계속 찜찜했다. _Type이 Server에 종속되어있는게 맞을까?_ 라는 생각 때문이다.
+
+그래서 Mono Repository에 대해 찾아봤고, 두 가지 방법이 존재했다.
+
+- Yarn Workspace
+  - [[Node] yarn workspaces (프로젝트 참조)](https://musma.github.io/2019/04/02/yarn-workspaces.html)
+  - [🌸 모노레포. Lerna? Yarn Worksapce!](https://medium.com/@deptno/monorepo-yarn-workspace-e81e3e078100)
+- Lerna
+  - [Mono Repo 를 위한 Lerna 간단 정리하기](https://medium.com/@pks2974/mono-repo-%EB%A5%BC-%EC%9C%84%ED%95%9C-lerna-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0-65c22029988)
+  - [Lerna 훑어보기](https://www.awesomezero.com/development/lerna/)
+
+권장하는 것은, 두 가지를 같이 사용하는 것이다.
+
+- [yarn workspace와 Lerna.js로 모노레포 만들기 - 심심재](https://simsimjae.tistory.com/384)
+
+필자 또한 두 가지 모두 사용하기로 결정했다.
+
+`package.json`
+
+```js
+{
+  "name": "DKU-Software-Engineering-Logging-Service",
+  "private": true,
+  "workspaces": [
+    "front-end", // front-end 폴더
+    "back-end", // back-end 폴더
+    "domain" // front와 back이 공유하는 타입 혹은 로직
+  ],
+  "devDependencies": {
+    "lerna": "^3.20.2" // learn 사용하기 
+  },
+  "scripts": {
+    // 이 명령을 실행할 경우 front와 back의 dev 명령 실행
+    "lerna:dev:stream": "lerna run lerna:dev --stream", // 직렬 실행(front->back)
+    "lerna:dev:parallel": "lerna run lerna:dev --parallel" // 병렬 실행(front와 back 동시에)
+  }
+}
+```
+
+`lerna.json`
+
+```js
+{
+  "packages": [ "back-end", "front-end" ], // 관리하는 repo 목록
+  "npmClient": "yarn", // yarn 사용
+  "version": "1.0.0" // 공통으로 관리하는 버전
+}
+```
+
+그리고 _front-end와 back-end의 package.json에 domain을 불러와야 한다._
+
+`back-end/pacakge.json`
+
+```js{7,12}
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Dankook University Developer Logging Service",
+  "author": "junil hwang",
+  "license": "MIT",
+  "scripts": {
+    "lerna:dev": "cross-env NODE_ENV=development nest start --watch", // root의 npm script에서 실행
+    /* 생략 */
+  },
+  "dependencies": { /* 생략 */},
+  "devDependencies": {
+    "domain": "^1.0.0", // domain package를 불러와야 사용할 수 있다.
+    /* 생략 */
+  },
+  "jest": { /* 생략 */ }
+}
+```
+
+`front-end/package.json`
+
+```js{6,11}
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lerna:dev": "vue-cli-service serve",
+    /* 생략 */
+  },
+  "dependencies": { /* 생략 */ },
+  "devDependencies": {
+    "domain": "^1.0.0",
+    /* 생략 */
+  },
+  "browserslist": [ /* 생략 */ ],
+  "jest": { /* 생략 */ }
+}
+```
+
+
+
+결과적으로 다음과 같이 사용 가능했다.
+
+`front-end/src/services/GithubService.ts`
+
+```js{2}
+import $http from 'axios'
+import { GithubProfile, GithubRepository, GithubContent, GithubTrees, GithubBlob, ContentVO, GithubHook } from 'domain/src'
+import { responseProcessor } from '@/helper'
+
+const baseURI = '/api/github'
+
+export default Object.freeze({
+
+  async getRepo ({ login }: GithubProfile): Promise<GithubRepository[]> {
+    return await responseProcessor<GithubRepository[]>($http.get(`${baseURI}/repo/${login}`))
+  },
+
+  async getContent (params: ContentVO): Promise<GithubContent> {
+    return await responseProcessor<GithubContent>($http.get(`${baseURI}/content`, { params }))
+  },
+
+  async getTrees (params: ContentVO): Promise<GithubTrees> {
+    return await responseProcessor<GithubTrees>($http.get(`${baseURI}/trees`, { params }))
+  },
+
+  async getBlob (params: ContentVO): Promise<GithubBlob> {
+    return await responseProcessor<GithubBlob>($http.get(`${baseURI}/blob`, { params }))
+  },
+
+  async getHook (): Promise<GithubHook[]> {
+    return await responseProcessor<GithubHook[]>($http.get(`${baseURI}/hook`))
+  },
+
+  async addHook (repo: string): Promise<GithubHook[]> {
+    return await responseProcessor<GithubHook[]>($http.post(`${baseURI}/hook`, { repo }))
+  },
+
+  async removeHook (idx: number): Promise<GithubHook[]> {
+    return await responseProcessor<GithubHook[]>($http.delete(`${baseURI}/hook/${idx}`))
+  }
+
+})
+```
+
+`back-end/src/api/githbu/github.service.ts`
+
+```js{2}
+import { Inject, Injectable } from '@nestjs/common'
+import { GithubRepository, GithubContent, GithubResponseToken, GithubProfile, GithubTrees, GithubBlob } from 'domain/src'
+import { GithubAdapter } from './github.adapter'
+
+@Injectable()
+export class GithubService {
+
+  constructor(@Inject('GithubAdapter') private readonly githubAdapter: GithubAdapter) {}
+
+  public async getRepo (user: string): Promise<Array<GithubRepository>> {
+    try {
+      return await this.githubAdapter.getRepo(user)
+    } catch (e) {
+      console.log('githubService.getRepo', e)
+      throw e
+    }
+  }
+
+  public async getContent (params: { [k: string]: string }): Promise<GithubContent> {
+    try {
+      return await this.githubAdapter.getContent(params)
+    } catch (e) {
+      console.log('githubService.getContent', e)
+      throw e
+    }
+  }
+
+  public async getToken (code: string): Promise<GithubResponseToken> {
+    try {
+      return await this.githubAdapter.getToken(code)
+    } catch (e) {
+      console.log('githubService.getToken', e)
+      throw e
+    }
+  }
+
+  public async getProfile (token: string): Promise<GithubProfile> {
+    try {
+      return await this.githubAdapter.getProfile(token)
+    } catch (e) {
+      console.log('githubService.getProfile', e)
+      throw e
+    }
+  }
+
+  public async getTrees (params: { [k: string]: string }): Promise<GithubTrees> {
+    try {
+      return await this.githubAdapter.getTrees(params)
+    } catch (e) {
+      console.log('githubService.getTrees', e)
+      throw e
+    }
+  }
+
+  public async getBlob (params: { [k: string]: string }): Promise<GithubBlob> {
+    try {
+      return await this.githubAdapter.getBlob(params)
+    } catch (e) {
+      console.log('githubService.getBlob', e)
+      throw e
+    }
+  }
+
+}
+```
+
+***
+
+여기까지는 사이드 프로젝트를 통해서 얻은 성과였고, 이제 **사이드 프로젝트에 꼭 적용해야 하는 것들**을 나열해보자.
+
+#### 첫 번째 과제, Vue Composition API 사용
+- [카카오에 근무하는 친구](https://github.com/choDragon9)가 작성한 [Composition API 문서](https://chodragon9.github.io/blog/composition-api-rfc-migration/#%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8)를 보고 개인적으로 애매한 내용을 [PR로 같이 개선하면서](https://github.com/ChoDragon9/ChoDragon9.github.io/pull/7) 흥미가 생겼다.
 - 일단 Composition API로 간단한 서비스를 한 번 만들어봐야 한다.
 - Vue 3.0이 먼저 배포된다면, 그냥 Vue 3.0으로 마이그레이션 할 예정
 
-#### MongoDB 사용
-- 지금은 MySQL 기반인데, 공부를 하다보니 Non-Blocking I/O의 경우 NoSQL이 어울리다는 것을 알았다.
+#### 두 번째 과제, MongoDB 사용
+- 지금은 MySQL 기반인데, 공부를 하다보니 [Non-Blocking I/O의 경우 NoSQL이 어울리다는 것](https://alwayspr.tistory.com/44)을 알았다.
 - 따라서 MySQL로 작성된 것을 MongoDB로 마이그레이션할 예정이다.
 
-#### GraphQL 사용
-- 이건 참 애매하다.
-- 그냥 개인적으로 공부해도 나쁘지 않을 것 같다.
-
-#### AWS 배포
+#### 세 번째 과제, AWS 배포
 - 아직까지 AWS를 제대로 사용해본적이 없다.
 - AWS 공부만 해도 한참 걸릴 것 같다.
 
-#### Jenkins로 배포 자동화
+#### 네 번째 과제, Jenkins로 배포 자동화
 - 회사에서 Jenkins를 이용하여 배포하는 중이다.
 - 개인적으로 Jenkins 배포 환경을 구축해보고 싶다.
 
-#### Docker Container와 kubernetes 사용
+***
+
+#### Optional 01: GraphQL 사용
+- 이건 참 애매하다.
+- 그냥 개인적으로 공부해도 나쁘지 않을 것 같다.
+
+#### Optional 02: Docker Container와 kubernetes 사용
 - 사실.. 이것 까지 가능할지 의문이다.
 - 일단 가능한 만큼 해보고 싶다.
 
