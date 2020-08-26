@@ -2,7 +2,7 @@
 
 title: MVVM System 만들기
 description: 객체지향을 통해서 MVVM System을 만드는 과정입니다.
-date: 2020-01-21
+date: 2020-01-21 13:00:00
 sidebarDepth: 2
 feed:
   enable: true

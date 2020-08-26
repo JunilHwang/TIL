@@ -2,7 +2,7 @@
 
 title: 2020년 1월 회고
 description: 2020년 1월 회고 입니다.
-date: 2020-01-31
+date: 2020-01-31 13:00:00
 sidebarDepth: 1
 feed:
   enable: true
