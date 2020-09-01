@@ -21,15 +21,12 @@ module.exports = [
           '05-May/',
           '06-June/',
           '07-July/',
+          '08-August/',
         ].map(v => `${Review2020}/${v}`)
       },
       {
         title: '분기 회고',
         children: ['01-First-Quarter/', '02-Second-Quarter/'].map(v => `${Review2020}/${v}`)
-      },
-      {
-        title: '반기 회고',
-        children: ['01-First-Half/'].map(v => `${Review2020}/${v}`)
       },
     ]
   },
