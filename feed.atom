@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-08-11T15:45:35.397Z</updated>
+    <updated>2020-09-23T14:08:34.411Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -152,19 +152,19 @@
         <summary type="html"><![CDATA[2020년 7월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[github page에 배포하기]]></title>
-        <id>https://junilhwang.github.io/TIL/Vuepress/Deploy/</id>
-        <link href="https://junilhwang.github.io/TIL/Vuepress/Deploy/">
+        <title type="html"><![CDATA[2020년 8월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
         </link>
-        <updated>2020-01-06T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.]]></summary>
+        <updated>2020-09-23T14:08:34.408Z</updated>
+        <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[markdown-it-plantuml]]></title>
-        <id>https://junilhwang.github.io/TIL/Vuepress/Plantuml/</id>
-        <link href="https://junilhwang.github.io/TIL/Vuepress/Plantuml/">
+        <title type="html"><![CDATA[2020년 9월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/09-September/">
         </link>
-        <updated>2020-01-06T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.]]></summary>
+        <updated>2020-09-23T14:08:34.408Z</updated>
+        <summary type="html"><![CDATA[2020년 9월 회고 입니다.]]></summary>
     </entry>
 </feed>
