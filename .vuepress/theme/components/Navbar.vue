@@ -1,33 +1,31 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <div class="container">
-      <router-link :to="$localePath" class="home-link">
-        <figure>
-          <img
-            v-if="$site.themeConfig.logo"
-            :src="$withBase($site.themeConfig.logo)"
-            :alt="$siteTitle"
-          >
-        </figure>
-        <div ref="siteName">
-          <strong>개발자 황준일</strong>
-          <em>Today I Learned</em>
-        </div>
-      </router-link>
-      <div
-        class="links"
-        :style="linksWrapMaxWidth ? {
-          'max-width': linksWrapMaxWidth + 'px'
-        } : {}"
-      >
-        <AlgoliaSearchBox
-          v-if="isAlgoliaSearch"
-          :options="algolia"
-        />
-        <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
-        <NavLinks class="can-hide"/>
+    <router-link :to="$localePath" class="home-link">
+      <figure>
+        <img
+          v-if="$site.themeConfig.logo"
+          :src="$withBase($site.themeConfig.logo)"
+          :alt="$siteTitle"
+        >
+      </figure>
+      <div ref="siteName">
+        <strong>개발자 황준일</strong>
+        <em>Today I Learned</em>
       </div>
+    </router-link>
+    <div
+      class="links"
+      :style="linksWrapMaxWidth ? {
+        'max-width': linksWrapMaxWidth + 'px'
+      } : {}"
+    >
+      <AlgoliaSearchBox
+        v-if="isAlgoliaSearch"
+        :options="algolia"
+      />
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      <NavLinks class="can-hide"/>
     </div>
   </header>
 </template>
@@ -101,7 +99,7 @@ $navbar-horizontal-padding = 1.5rem
     color $textColor
     position relative
   .links
-    padding-left 1.5rem
+    height 50px
     box-sizing border-box
     background-color white
     white-space nowrap
@@ -110,6 +108,7 @@ $navbar-horizontal-padding = 1.5rem
     right $navbar-horizontal-padding
     top $navbar-vertical-padding
     display flex
+    align-items center
     .search-box
       flex: 0 0 auto
       vertical-align top
