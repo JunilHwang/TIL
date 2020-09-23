@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-09-23T14:08:34.411Z</updated>
+    <updated>2020-09-23T14:21:59.879Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -14,14 +14,6 @@
         </link>
         <updated>2020-02-14T13:00:00.000Z</updated>
         <summary type="html"><![CDATA[김종민님이 저술한 "스프링 입문을 위한 (자바) 객체지향의 원리와 이해"에 대한 소개입니다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[01 사람을 사랑한 기술 | 객체지향의 원리와 이해]]></title>
-        <id>https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Loved-Human/</id>
-        <link href="https://junilhwang.github.io/TIL/Book/OOP-Principle/01-Loved-Human/">
-        </link>
-        <updated>2020-02-18T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[객체지향이라는 개념이 나오기 까지의 이유와 간략한 역사를 소개합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[객체지향의 기본 이론]]></title>
@@ -56,20 +48,20 @@
         <summary type="html"><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MVVM System 개선하기 (3)]]></title>
-        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</id>
-        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/">
-        </link>
-        <updated>2020-02-08T23:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Gradle Wrapper]]></title>
         <id>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</id>
         <link href="https://junilhwang.github.io/TIL/Gradle/GradleWrapper/">
         </link>
         <updated>2020-01-14T13:00:00.000Z</updated>
         <summary type="html"><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MVVM System 개선하기 (3)]]></title>
+        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</id>
+        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/">
+        </link>
+        <updated>2020-02-08T23:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[자바스크립트 실행 컨텍스트]]></title>
@@ -104,14 +96,6 @@
         <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 2분기 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/">
-        </link>
-        <updated>2020-08-11T13:42:00.000Z</updated>
-        <summary type="html"><![CDATA[개발자 황준일의 2020년 2분기 회고입니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[2020년 3월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/03-March/">
@@ -128,20 +112,44 @@
         <summary type="html"><![CDATA[2020년 4월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 5월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/05-May/">
-        </link>
-        <updated>2020-05-31T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 5월 회고 입니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[2020년 6월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/06-June/">
         </link>
         <updated>2020-07-12T13:00:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 6월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 2분기 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/">
+        </link>
+        <updated>2020-08-11T13:42:00.000Z</updated>
+        <summary type="html"><![CDATA[개발자 황준일의 2020년 2분기 회고입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 8월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
+        </link>
+        <updated>2020-09-23T14:21:59.874Z</updated>
+        <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 9월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/09-September/">
+        </link>
+        <updated>2020-09-23T14:21:59.874Z</updated>
+        <summary type="html"><![CDATA[2020년 9월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 5월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/05-May/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/05-May/">
+        </link>
+        <updated>2020-05-31T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 5월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 7월 회고]]></title>
@@ -152,19 +160,11 @@
         <summary type="html"><![CDATA[2020년 7월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 8월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
+        <title type="html"><![CDATA[Vuepress 시작하기]]></title>
+        <id>https://junilhwang.github.io/TIL/Vuepress/Starter/</id>
+        <link href="https://junilhwang.github.io/TIL/Vuepress/Starter/">
         </link>
-        <updated>2020-09-23T14:08:34.408Z</updated>
-        <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2020년 9월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/09-September/">
-        </link>
-        <updated>2020-09-23T14:08:34.408Z</updated>
-        <summary type="html"><![CDATA[2020년 9월 회고 입니다.]]></summary>
+        <updated>2020-01-02T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.]]></summary>
     </entry>
 </feed>
