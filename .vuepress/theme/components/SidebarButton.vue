@@ -11,11 +11,12 @@
   cursor pointer
   display none
   width 1.25rem
-  height 1.25rem
+  height 50px
   position absolute
   padding 0.6rem
-  top 0.6rem
+  top 0
   left 1rem
+  align-items center
   .icon
     display block
     width 1.25rem
@@ -23,5 +24,5 @@
 
 @media (max-width: 1199px)
   .sidebar-button
-    display block
+    display flex
 </style>

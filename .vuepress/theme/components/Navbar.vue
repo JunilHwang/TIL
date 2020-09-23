@@ -115,7 +115,6 @@ $navbar-horizontal-padding = 1.5rem
 
 @media (max-width: $MQNarrow)
   .navbar
-    padding-left 4rem
     .can-hide
       display none
     .links
