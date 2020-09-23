@@ -22,6 +22,7 @@ module.exports = [
           '06-June/',
           '07-July/',
           '08-August/',
+          '09-September/',
         ].map(v => `${Review2020}/${v}`)
       },
       {
