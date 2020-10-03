@@ -27,7 +27,11 @@ module.exports = [
       },
       {
         title: '분기 회고',
-        children: ['01-First-Quarter/', '02-Second-Quarter/'].map(v => `${Review2020}/${v}`)
+        children: [
+          '01-First-Quarter/',
+          '02-Second-Quarter/',
+          '03-Third-Quarter/',
+        ].map(v => `${Review2020}/${v}`)
       },
     ]
   },
