@@ -65,56 +65,25 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 ### 개발환경
 
-_Gradle_
- 
 - [GradleWrapper](/Gradle/GradleWrapper/)
 
-### Online Lecture Review
+### 2020년 회고
 
-- 함수형 프로그래밍과 ES6(예정)
-- The Java, 코드를 조작하는 다양한 방법(예정)
-- 예제로 배우는 스프링 입문(예정)
+- 월 회고
+  - [1월](/Review/2020-year/01-January/)
+  - [2월](/Review/2020-year/02-February/)
+  - [3월](/Review/2020-year/03-March/)
+  - [4월](/Review/2020-year/04-April/) 
+  - [5월](/Review/2020-year/05-May/) 
+  - [6월](/Review/2020-year/06-June/) 
+  - [7월](/Review/2020-year/07-July/) 
+  - [8월](/Review/2020-year/08-August/) 
+  - [9월](/Review/2020-year/09-September/) 
 
-## 공부해야할 것
-
-### 코어
-
-- V8 Engine
-- JVM
-
-### 개발환경 및 운영
-
-- jenkins
-- docker
-- aws
-- Kubernetes
-- Sentry
-- logging
-- pipeline
-- gradle
-- webpack
-
-### 개발 방법론
-
-- Object-Oriented Programming
-  - Design Pattern
-  - OOP Framework
-- Functional Programming
-  - RxJS
-  - RxJava
-- DDD(Domain-Driven Development)
-- TDD(Test-Driven Development)
-- BDD(Behavior-Driven Development)
-
-### 언어 및 프레임워크
-
-- golang
-- kotlin
-- javascript
-  - React
-- Python
-  - Django
-  - Flask
+- 분기 회고
+  - [1분기](/Review/2020-year/01-First-Quarter/)
+  - [2분기](/Review/2020-year/02-Second-Quarter/)
+  - [3분기](/Review/2020-year/03-Third-Quarter/)
 
 ## 2020 목표
 
@@ -139,6 +108,7 @@ _Gradle_
       - 인사이드 자바스크립트
       - 부의 추월차선
     - ~~8월~~ `실패`
+    - ~~9월~~ `실패`
   - PPP 시리즈 읽어보기
     - 밑바닥 부터 만드는 컴퓨팅 시스템
     - 클린 아키텍쳐
@@ -148,21 +118,3 @@ _Gradle_
     - 테스트 주도 개발
     - 생각하는 프로그래밍
 - [VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)](/Vuepress/Starter/) `완료`
-
-## 2020년 회고
-
-### 월 회고
-
-- [1월](/Review/2020-year/01-January/)
-- [2월](/Review/2020-year/02-February/)
-- [3월](/Review/2020-year/03-March/)
-- [4월](/Review/2020-year/04-April/) 
-- [5월](/Review/2020-year/05-May/) 
-- [6월](/Review/2020-year/06-June/) 
-- [7월](/Review/2020-year/07-July/) 
-- [8월](/Review/2020-year/08-August/) 
-
-### 분기 회고
-
-- [1분기](/Review/2020-year/01-First-Quarter/)
-- [2분기](/Review/2020-year/02-Second-Quarter/)
