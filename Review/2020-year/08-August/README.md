@@ -455,7 +455,7 @@ React를 하든, Vue를 하든, UI를 만들 때 제일 중요한 포인트는 `
 
 
 
-### 4. 단국대 스터디
+### 4. DKU-STUDY
 
 여전히 단국대 스터디는 활발하게 진행중이다.
 
@@ -463,19 +463,54 @@ React를 하든, Vue를 하든, UI를 만들 때 제일 중요한 포인트는 `
 
 `8월 31일`을 기준으로 `1,859`개의 커밋이 발생했다.
 
+그리고 github에서 우연히 [Mirim-Study/Algorithm](https://github.com/Mirim-Study/Algorithm)을 봤다.
+[미림여자정보과학고등학교](https://www.e-mirim.hs.kr/main.do)에 다니고 있는 학생들이 우리 스터디를 모방하여 진행하고 있었다.
 
+우리 스터디가 잘 굴러가고 있다는 증표라고 생각한다.
 
+언제나 그렇듯 [코덕](https://co-duck.com)을 기준으로 DKU-STUDY가 전체 그룹 중 1위를 했다.
 
-### 5. 코덕
+![co-duck](https://user-images.githubusercontent.com/18749057/95019363-e666de00-069f-11eb-86fe-e5faad159579.png)
 
+그리고 나는 스터디 내에서 참여하고 있진 않지만, 몇몇 구성원이 javascript study를 하고 있다.
 
+개인적으로 면접준비를 할 때 [siots-study](https://gitlab.com/siots-study/topics/-/wikis/home)의 내용을 많이 참고했고, 우리 스터디 구성원들에게도 이 자료를 소개해줬다.
+그리고 이 자료를 기준으로 공부하는 중이다.
 
+![js study](https://user-images.githubusercontent.com/18749057/95019430-3cd41c80-06a0-11eb-99ac-8e4b2df696bb.png)
+
+step5 까지는 나도 어느정도 피드백을 했으나, 8월에는 좀 많이 바쁜 관계로 알고리즘 코드리뷰만 하는 중이다.
+
+그런데 스터디 구성원이 아직 한 번도 모인적이 없다. 코로나가 어느 정도 잠잠해지면 시간 내서 식사자리를 마련해야겠다.
+
+### 5. 코덕과 일일커밋
+
+의도치 않게 **8월 코덕 랭킹 1위**가 되었다.
+
+![코덕 1위](https://user-images.githubusercontent.com/18749057/95019632-693c6880-06a1-11eb-9461-c8226e65d7e8.png)
+
+그리고 `Top 5` 안에 필자를 포함하여 3명의 스터디 구성원이 랭킹되었다.
+
+커밋을 많이 하진 않았는데, 만든 저장소가 많아서 그런게 아닐까?
+
+![8월 통계](https://user-images.githubusercontent.com/18749057/95019686-cafcd280-06a1-11eb-8ffd-3d3c2b62c61f.png)
+
+- 7월의 경우 **8개의 Repository에서 357개의 commit**이 발생했다.
+- 8월의 경우 **19개의 Repository에서 393개의 commit**이 발생했다.
+
+이번에 서울디지텍고등학교의 기능반을 지도하면서 만든 저장소 때문이 아닌가 싶다.
+
+ 
 
 ### 6. TIL
 
 
 
 
+
 ### 7. 서울 디지텍고등학교 기능반
+
+
+### 8. 프로그래머스 프론트엔드 챌린지
 
 ## Summary
