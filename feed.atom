@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-09-26T11:22:47.037Z</updated>
+    <updated>2020-10-04T16:28:11.974Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -152,19 +152,19 @@
         <summary type="html"><![CDATA[2020년 7월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 8월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
-        </link>
-        <updated>2020-09-26T11:22:47.032Z</updated>
-        <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[2020년 9월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/09-September/">
         </link>
-        <updated>2020-09-26T11:22:47.032Z</updated>
+        <updated>2020-10-04T16:28:11.969Z</updated>
         <summary type="html"><![CDATA[2020년 9월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 8월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
+        </link>
+        <updated>2020-10-05T01:27:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
     </entry>
 </feed>

@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sat, 26 Sep 2020 11:22:47 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 04 Oct 2020 16:28:11 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -153,18 +153,20 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2020년 8월 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</guid>
-            <pubDate>Sat, 26 Sep 2020 11:22:47 GMT</pubDate>
-            <description><![CDATA[2020년 8월 회고 입니다.]]></description>
-        </item>
-        <item>
             <title><![CDATA[2020년 9월 회고]]></title>
             <link>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</link>
             <guid>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</guid>
-            <pubDate>Sat, 26 Sep 2020 11:22:47 GMT</pubDate>
+            <pubDate>Sun, 04 Oct 2020 16:28:11 GMT</pubDate>
             <description><![CDATA[2020년 9월 회고 입니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2020년 8월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</guid>
+            <pubDate>Mon, 05 Oct 2020 01:27:00 GMT</pubDate>
+            <description><![CDATA[2020년 8월 회고 입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/94988755-95c18900-05aa-11eb-9221-f11c86da4d9e.png">
+            </enclosure>
         </item>
     </channel>
 </rss>

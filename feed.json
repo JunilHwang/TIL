@@ -141,18 +141,19 @@
             "date_modified": "2020-08-10T12:21:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
-            "title": "2020년 8월 회고",
-            "summary": "2020년 8월 회고 입니다.",
-            "date_modified": "2020-09-26T11:22:47.032Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
             "title": "2020년 9월 회고",
             "summary": "2020년 9월 회고 입니다.",
-            "date_modified": "2020-09-26T11:22:47.032Z"
+            "date_modified": "2020-10-04T16:28:11.969Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
+            "title": "2020년 8월 회고",
+            "summary": "2020년 8월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/94988755-95c18900-05aa-11eb-9221-f11c86da4d9e.png",
+            "date_modified": "2020-10-05T01:27:00.000Z"
         }
     ]
 }
