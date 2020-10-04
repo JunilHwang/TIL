@@ -423,7 +423,29 @@ CSS-in-JS는 다음과 같은 장점을 가지고 있습니다.
 
 직접 사용해본 결과, 나쁘진 않았다.
 
-#### 후기
+#### (4) 공통 컴포넌트와 Storybook
+
+React를 하든, Vue를 하든, UI를 만들 때 제일 중요한 포인트는 `공통 컴포넌트`를 만드는 것이 아닐까 생각한다.
+재활용할 수 있는 컴포넌트를 만드는 것. 어떤 상황에서든 사용할 수 있는 컴포넌트가 진정한 의미의 컴포넌트가 아닐까?
+
+이러한 생각을 가지고 깃허브를 뒤적뒤적 거리다가 [Storybook](https://hyunseob.github.io/2018/01/08/storybook-beginners-guide/)에 대해 알게 되었다.
+
+::: tip Storybook
+
+- Storybook은 컴포넌트 단위의 개발 환경을 지원하는 도구다.
+- 개발자가 뷰를 개발할 때 고립된 환경을 제공해서 관심사를 의존성과 환경으로부터 분리시켜 준다.
+- 외부 상태에 의존하지 않으면서 고립된 상태로 스스로를 표현하는 컴포넌트를 개발할 수 있도록 도와준다.
+
+:::
+
+관련 예제는 [Velog](https://velog.io/)의 개발자인 [김민준(velopert)](https://github.com/velopert)님의 저장소에서 볼 수 있었다.
+
+- [Repository: react-uikit-sample](https://github.com/velopert/storybook-tutorial-code)
+- [Storybook](https://react-uikit-sample.surge.sh/)
+
+일단 나도 `Storybook`으로 공통 컴포넌트를 띄워볼 생각이었지만, **이 스터디 이외에도 해야할게 너무 많아서 설치까지만 했다.**
+
+#### 짤막한 스터디 후기
 
 일단 스터디 자체는 좋았다. 리액트를 공부할 수 있는 기회도 되었고, 여러가지 정보도 얻을 수 있었다.
 다만 스터디에 참여하는 사람들 대부분이 프런트엔드 자체가 친숙하지 않기 때문에 스터디가 점점 흐지부지 되어가고 있다.
@@ -434,6 +456,12 @@ CSS-in-JS는 다음과 같은 장점을 가지고 있습니다.
 
 
 ### 4. 단국대 스터디
+
+여전히 단국대 스터디는 활발하게 진행중이다.
+
+![DKU-STUDY](https://user-images.githubusercontent.com/18749057/95019254-34c7ad00-069f-11eb-8339-977bade6b500.png)
+
+`8월 31일`을 기준으로 `1,859`개의 커밋이 발생했다.
 
 
 
