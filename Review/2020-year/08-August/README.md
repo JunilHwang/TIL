@@ -214,7 +214,64 @@ _잘 준비 하자!_
 
 ### 1. Next Step Reviewer
 
+[클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nextstep.camp/c/8fWRxNWU/)의 **8기를 좋은 성적으로 수료하게 되어 9기는 리뷰어 활동**을 할 수 있게 되었다.
+이렇게 리뷰어로 활동하는게 처음이다보니 어떻게 해야 좋을지 고민이 많았었는데, 생각보다 수월하게 진행할 수 있었다.
+
+![리뷰이](https://user-images.githubusercontent.com/18749057/95013250-0daab480-067a-11eb-8ae8-f74248a334d1.png)
+
+8월 한 달 동안 10명을 리뷰했으며 그 중에 3명이 미션을 완료했다.
+일단 각 미션당 5명, 전체 미션에 대해 최대 20명을 리뷰해야 한다.
+그런데 생각보다 자동차 미션에서 포기하는 사람이 많은 것 같다.
+아무래도 회사 일과 병해하는 사람이 많다 보니 미션 수행 자체가 굉장히 부담스러울 수 있기 때문이라 생각한다.
+
+![리뷰](https://user-images.githubusercontent.com/18749057/95013428-2c5d7b00-067b-11eb-8ec9-c5b64796f5ad.png)
+
+어쨌든 리뷰를 하면서 스스로도 굉장히 많이 성장할 수 있는 기회가 되었다.
+그리고 리뷰이가 점점 좋은 코드를 만들어내는 과정에 참여할 수 있다는 것도 큰 행운이라고 생각한다.
+
+javascript도 이런 식으로 참여/운영 해보고 싶다는 생각을 많이 하고 있다. 
+
 ### 2. Boost Camp Reviewer
+
+8월 초에 네이버의 커넥트 재단에서 운영하는 부스트 캠프에서 리뷰어를 구한다는 소식을 접했다.
+
+<img src="https://user-images.githubusercontent.com/18749057/95013561-02f11f00-067c-11eb-9b32-e343d5e7c265.png" alt="부스트 캠프 리뷰어 모집 공고(1)" width="400" />
+
+대략적인 내용은 다음과 같았다.
+
+<img src="https://user-images.githubusercontent.com/18749057/95013576-1e5c2a00-067c-11eb-8759-f7cf70cab6c7.png" alt="부스트 캠프 리뷰어 모집 공고(2)" width="700" />
+
+::: tip 부스트캠프 리뷰어
+
+내용에는 6주라고 되어 있는데, 웹 과정의 경우 백엔드/프론트엔드를 격주로 하기 때문에 총 3주 동안 활동하게 된다.
+
+- 리뷰어마다 6명의 캠퍼(리뷰이)를 배정한다.
+- 3주간 주 2회의 리뷰를 한다.
+- 따라서 6명의 캠퍼에게 각각 6회, **총 36회의 리뷰**를 해야한다.
+
+:::
+
+NextStep의 리뷰어 활동은 java에 대한 리뷰이기 때문에 사실 스스로 생각하기에 약간 아쉬운점이 있었다.
+나의 주력 언어는 javascript이고, 당연히 java보다 javascript를 더 좋아하기 때문이다.
+
+그래서 부스트캠프의 리뷰어 모집 공고는 굉장히 반가웠다. 빠르게 지원했다.
+
+단, 지원하기 위해서는 모집공고 저장소에 올라온 코드에 대해 [코드리뷰](https://github.com/connectfoundation/review_2020/pull/3)를 남겨야했다.
+
+<img src="https://user-images.githubusercontent.com/18749057/95013663-beb24e80-067c-11eb-80f1-73e790f76d5e.png" alt="부스트 캠프 리뷰어 모집 공고(3)" width="700" />
+
+일단 코드가 `React`로 작성되어 있어서 조금 당황했다. React는 취업 준비를 할 때 아주 잠깐 공부했고, hooks는 사용해본적도 없기 때문이다.
+그래서 일단 코드 스타일, 변수명, 코딩컨벤션 위주의 리뷰를 했다. 
+
+![image](https://user-images.githubusercontent.com/18749057/95013761-544dde00-067d-11eb-8a72-884238a9281a.png)
+
+며칠 후에 [코드스쿼드](https://codesquad.kr/), [우아한테크코스](https://woowacourse.github.io/), [우아한테크캠프](https://woowabros.github.io/devrel/2020/04/13/techcamp3.html) 등을 운영하고 계시는 [윤지수(크롱)](https://github.com/crongro) 마스터님께서 피드백을 남겨주셨다. 
+
+![image](https://user-images.githubusercontent.com/18749057/95013767-5ca61900-067d-11eb-8128-111df6f0dbaf.png)
+
+그렇게 부스트캠프 리뷰어로 활동하게 되었다.
+
+
 
 ### 3. React Study
 
