@@ -265,15 +265,25 @@ NextStep의 리뷰어 활동은 java에 대한 리뷰이기 때문에 사실 스
 
 ![image](https://user-images.githubusercontent.com/18749057/95013761-544dde00-067d-11eb-8a72-884238a9281a.png)
 
+\* 위의 리뷰에 대한 자세한 내용은 [이 링크](https://github.com/connectfoundation/review_2020/pull/3)를 참고해주세요.
+
 며칠 후에 [코드스쿼드](https://codesquad.kr/), [우아한테크코스](https://woowacourse.github.io/), [우아한테크캠프](https://woowabros.github.io/devrel/2020/04/13/techcamp3.html) 등을 운영하고 계시는 [윤지수(크롱)](https://github.com/crongro) 마스터님께서 피드백을 남겨주셨다. 
 
 ![image](https://user-images.githubusercontent.com/18749057/95013767-5ca61900-067d-11eb-8128-111df6f0dbaf.png)
 
-그렇게 부스트캠프 리뷰어로 활동하게 되었다.
+이렇게 부스트캠프 리뷰어로 활동할 수 있게 되었다. 다만 8월 까지는 모집기간이고, 활동은 9월부터 하기 때문에 이에 대한 기록은 [9월 회고](../09-September/)에 남길 예정이다.
 
+그리고 [개인적인 친분이 있는 사람](https://github.com/minuukang)에게도 이 모집공고를 소개했고 결과적으로 같이 활동할 수 있게 되었다.
+굉장히 존경하는 지인이며 [코드리뷰](https://github.com/connectfoundation/review_2020/pull/22) 또한 감탄이 나올 만큼 잘 작성해주었다.
 
+개인적으로 내 또래의 프런트엔드 개발자 중에서 제일 잘하는 사람이 아닐까 생각한다.
 
 ### 3. React Study
+
+이스트소프트 계열사(이스트소프트, 이스트시큐리티, 이스트게임즈, 줌인터넷 등 4개의 회사)에서 스터디를 할 수 있는 시스템이 만들어졌다.
+이 중에 [리액트 스터디](https://github.com/est-react-study)가 있어서 지원했다.
+
+일단 스터디에 참여하는 사람들 중 대부분이 리액트를 아예 해본적이 없는 경우가 많았기 때문에 간단하게 무엇을 만들어야 좋을지 회의했다.
 
 ### 4. 단국대 스터디
 
