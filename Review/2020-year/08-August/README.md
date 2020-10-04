@@ -15,6 +15,9 @@ feed:
 
 ## 공적
 
+
+
+
 ### 1. Sentry 적용
 
 [Sentry](https://sentry.io/welcome/)는 서비스내에서 오류가 발생했을 때 다양한 방식으로 개발자에게 알려주는 제공해주는 서비스다.
@@ -36,6 +39,9 @@ feed:
 당장 해결하지 못한 부분도 있지만 어느 정도 문제점을 인지할 수 있기 때문에 장애가 발생했을 때 어느 정도 선방이 가능하게 되었다.
       
 
+
+
+
 ### 2. 크롬 확장프로그램
 
 ::: tip
@@ -56,6 +62,9 @@ feed:
 그렇게 검수도 통과 했고, 확장프로그램도 문제 없이 작동하게 되었다.
 
 확장프로그램은 **사내에서 꽤 긍정적인 반응**을 보이고 있고, 조금 더 완성도를 높여 사용자에게 선보일 예정이다.  
+
+
+
 
 ### 3. Mobile API 분리 이전
 
@@ -150,6 +159,9 @@ ZumFront <--up- Ad
 
 어쨌든 조금 더 관리하기가 수월해진 것은 확실하다.
 
+
+
+
 ### 4. CMS 작업 (feat. Legacy)
 
 8월까지 작업하고 있던 CMS 개발을 마무리해야 했다. 사실 7월에 대부분의 기능을 만들어놔서 8월에 내가 할 일은 많지 않았다.
@@ -173,6 +185,9 @@ QA를 진행하고, 해당 사항을 반영하는 과정을 반복했는데 사�
 ## 사적
 
 8월에는 꽤 많은 일을 했다. 그래서 사실 굉장히 힘들었다.
+
+
+
 
 ### 0. 카카오 면접관련
 
@@ -212,6 +227,9 @@ _너무 조급하게 생각하지 말자._
 
 _잘 준비 하자!_   
 
+
+
+
 ### 1. Next Step Reviewer
 
 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nextstep.camp/c/8fWRxNWU/)의 **8기를 좋은 성적으로 수료하게 되어 9기는 리뷰어 활동**을 할 수 있게 되었다.
@@ -230,6 +248,9 @@ _잘 준비 하자!_
 그리고 리뷰이가 점점 좋은 코드를 만들어내는 과정에 참여할 수 있다는 것도 큰 행운이라고 생각한다.
 
 javascript도 이런 식으로 참여/운영 해보고 싶다는 생각을 많이 하고 있다. 
+
+
+
 
 ### 2. Boost Camp Reviewer
 
@@ -278,18 +299,154 @@ NextStep의 리뷰어 활동은 java에 대한 리뷰이기 때문에 사실 스
 
 개인적으로 내 또래의 프런트엔드 개발자 중에서 제일 잘하는 사람이 아닐까 생각한다.
 
+
+
+
 ### 3. React Study
 
 이스트소프트 계열사(이스트소프트, 이스트시큐리티, 이스트게임즈, 줌인터넷 등 4개의 회사)에서 스터디를 할 수 있는 시스템이 만들어졌다.
 이 중에 [리액트 스터디](https://github.com/est-react-study)가 있어서 지원했다.
 
-일단 스터디에 참여하는 사람들 중 대부분이 리액트를 아예 해본적이 없는 경우가 많았기 때문에 간단하게 무엇을 만들어야 좋을지 회의했다.
+일단 스터디에 참여하는 사람들 중 대부분이 리액트를 아예 해본적이 없는 경우가 많았기 때문에 간단하게 무엇을 만들어야 좋을지 회의했고, [Postman](https://www.postman.com/) Clone Coding을 하기로 결정되었다.
+
+- [est-react-study/postman-junil](https://github.com/est-react-study/postman-junil)
+- [데모 확인해보기](https://est-react-study.github.io/postman-junil/)
+
+서버를 사용하지 않았기 때문에 `http reuqest` 요청은 `github api`를 기준으로 테스트 했다. 
+
+#### (1) Recoil
+
+이번에 스터디를 하면서 [Recoil](https://recoiljs.org/) 이라는 상태관리 라이브러리를 사용했다.
+
+::: tip Recoil
+
+Recoil은 React(Facebook) 진영에서 **직접 만든** 상태관리 라이브러리이다.
+
+:::
+
+일단 Redux나 Mobx보단 확실이 편리하다. 무엇보다 Hook으로 쉽게 사용할 수 있다보니 딱히 라이브러리를 사용한다는 느낌을 받질 못했다.
+
+- [공식문서](https://recoiljs.org/)
+- [Recoil 알아보기](https://medium.com/humanscape-tech/recoil-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-285b29135d8e)
+- [Recoil vs Redux | The Ultimate React State Management Face-Off](https://dev.to/chandan/recoil-vs-redux-the-ultimate-react-state-management-face-off-35b)
+- [Recoil - 또 다른 React 상태 관리 라이브러리](https://ui.toast.com/weekly-pick/ko_20200616/)
+- [사용 예제 Repository](https://github.com/chandan-reddy-k/redux-vs-recoil-example)
+
+#### (2) react-app-rewired
+
+`CRA(Create React App)`로 React App을 만들면 기본적으로 웹팩 설정이 내장된 형태로 프로젝트를 구성해준다.
+따라서 웹팩 설정을 변경하기 위해선 `eject` 명령을 이용하여 모든 설정파일을 밖으로 꺼내야한다.
+
+- [CRA eject란?](https://helloinyong.tistory.com/174)
+
+::: tip eject
+
+eject는 해당 프로젝트에 숨겨져 있는 모든 설정을 밖으로 추출해주는 명령어다.
+
+:::
+
+그런데 이렇게 설정파일을 밖으로 꺼낼 경우 신경써야 할게 무척 많아진다. 그리고 CRA가 업그레이드 될 때 마다 설정파일을 번거롭게 직접 수정하거나 아예 건드릴 수 없게 되어버린다.
+이 때 `react-app-rewired`을 사용하면 된다.
+
+::: tip react-app-rewired
+
+- `CRA` 프로젝트를 `eject`하지 않고 **`customizing` 할 수 있게 도와주는 라이브러리**이다.
+- 그러나 이 라이브러리를 사용한다고 해서 절대적으로 `CRA`가 가지는 안정성을 보장해주지 않는다 
+
+:::
+
+- [Create-React-App에서 Eject사용안하기(customize-cra, react-app-rewired)](https://medium.com/@jsh901220/create-react-app%EC%97%90%EC%84%9C-eject%EC%82%AC%EC%9A%A9%EC%95%88%ED%95%98%EA%B8%B0-customize-cra-react-app-rewired-10a83522ace0)
+- [react-app-rewired repository](https://github.com/timarney/react-app-rewired) 
+
+일단 `react-app-rewired`을 사용하기 위해선 `npm scripts`를 수정해야 한다.
+
+```js
+{
+  /* 앞 내용 생략 */
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  /* 뒷 내용 생략 */
+}
+```
+
+그리고 프로젝트 루트에 다음과 같이 `config-overrides.js`를 통하여 웹팩 설정을 덮어씌울 수 있다.
+
+```js
+// config-overrides.js 
+module.exports = function override(config, env) {
+  if (process.env.GH_PAGES === 'true') {
+    config.output.publicPath = './'; // build 경로 변경
+  }
+  return config
+}
+```
+
+필자는 **build 경로를 변경**하기 위해서 이 라이브러리를 사용했다.
+
+#### (3) @emotion
+
+Vue를 사용할 땐 굳이 [CSS-in-JS](https://d0gf00t.tistory.com/22) 관련 라이브러리를 사용하지 않아도 어차피 컴포넌트 파일 안에 Style을 포함시켜 작성할 수 있다.
+
+::: tip CSS-in-JS
+
+CSS-in-JS는 다음과 같은 장점을 가지고 있습니다.
+
+- 더이상 스타일시트의 묶음을 유지보수 할 필요가 없습니다.
+- CSS-in-JS는 CSS 모델을 문서 레벨이 아니라 컴포넌트 레벨로 추상화합니다(모듈성).
+- CSS-in-JS는 JavaScript 환경을 최대한 활용하여 CSS를 향상시킵니다.
+- CSS에는 명시적으로 정의 하지 않은 경우, 부모 요소에서 자동으로 상속되는 속성이 있습니다. CSS-in-JS의 경우 부모 요소의 속성을 상속하지 않습니다.
+- 생성된 CSS 규칙은 자동적으로 벤더 프리픽스가 붙어있으므로 생각할 필요가 없습니다.
+- JavaScript와 CSS사이에 상수와 함수를 쉽게 공유할 수 있습니다.
+- 현재 화면에 사용중인 스타일만 DOM에 있습니다
+
+반대로 새로운 것을 배워야 하는 부담 정도의 단점이 있습니다.
+
+:::
+
+하지만 React의 경우 다양한 선택지가 존재한다. 일단 스터디 리더의 주도로 `@emotion/css`를 사용하기로 합의했다.
+사실 여태까지 CSS-in-JS를 한 번도 사용해본적이 없어서 약간 낯설었다.
+
+- [공식문서](https://emotion.sh/docs/introduction)
+- [CSS 2019 - CSS IN JS](https://2019.stateofcss.com/technologies/css-in-js/)
+  - `@emotion`의 사용자 만족도 비율이 제일 높았다.
+    ![만족도 조사](https://user-images.githubusercontent.com/18749057/95018635-fe3c6300-069b-11eb-96b6-c892988d644e.png)
+  - 그런데 주변 사람들에게 설문해보면 만족도를 떠나서 비교우위는 Styled-Components를 더 높게 평가하고 있다.
+    <img src="https://user-images.githubusercontent.com/18749057/95018860-2aa4af00-069d-11eb-8415-4f975fba7425.png" alt="못생겨서" width=300 />
+- [emotion을 활용한 크몽 프론트엔드 스타일링 시스템](https://brunch.co.kr/@kmongdev/17)
+- [다양한 방식의 리액트 컴포넌트 스타일링 방식](https://velog.io/@velopert/react-component-styling)
+- [Thinking about emotion js vs styled component]()
+  - 개인적으로 이 포스트의 내용이 제일 괜찮았다.
+
+직접 사용해본 결과, 나쁘진 않았다.
+
+#### 후기
+
+일단 스터디 자체는 좋았다. 리액트를 공부할 수 있는 기회도 되었고, 여러가지 정보도 얻을 수 있었다.
+다만 스터디에 참여하는 사람들 대부분이 프런트엔드 자체가 친숙하지 않기 때문에 스터디가 점점 흐지부지 되어가고 있다.
+
+일단 올해 말까지 진행하기로 하였으니 최대한 많은 경험을 할 수 있기를 바랄 뿐이다. 
+
+
+
 
 ### 4. 단국대 스터디
 
+
+
+
 ### 5. 코덕
 
+
+
+
 ### 6. TIL
+
+
+
 
 ### 7. 서울 디지텍고등학교 기능반
 
