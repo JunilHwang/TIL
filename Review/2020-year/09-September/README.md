@@ -45,7 +45,49 @@ feed:
 
 글로 읽는 것 보단 눈으로 보고 직접 체험해 보는게 제일 빠르다.
 
+::: demo [vanilla]
+```html
+<html>
+  <div id="sortable-app">
+    <ul ref="$sortedList">
+      <li v-for="(item, k) in items" :key="k" v-html="item" />
+    </ul>
+  </div>
+</html>
+<script>
+  // 스크립트 동적 로딩
+  ['https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js',
+   'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js'].forEach(src => {
+      const script = document.createElement('script');
+      script.setAttribute('src', src);
+      document.head.appendChild(script);
+  });
 
+  // 스크롤 진입시 앱 초기화
+  let isMounted = false;
+  const lazyIO = new IntersectionObserver(([ entry ]) => {
+    if (!entry.isIntersecting || isMounted) return false;
+    isMounted = true;
+    app();
+  }, { root: null, threshold: 0.1 });
+  lazyIO.observe(document.querySelector('#sortable-app'))
+
+  // app
+  const app = () => {
+    new Vue({
+      el: '#sortable-app',
+      data: {
+        items: ['item01', 'item02', 'item03', 'item04'],
+      },
+      mounted () {
+        console.log(this.$refs);
+        new Sortable(this.$refs.$sortedList);
+      }
+    })
+  }
+</script>
+```
+:::
 
 ### 3. API 관련 이슈 해결
 
