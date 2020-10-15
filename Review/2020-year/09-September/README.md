@@ -9,6 +9,7 @@ feed:
 
 ---
 
+
 # 2020년 9월 회고
 
 9월은 한 달 내내 재택근무를 했다. 회사에 대한 약간의 그리움(?)을 느꼈다.
@@ -45,47 +46,106 @@ feed:
 
 글로 읽는 것 보단 눈으로 보고 직접 체험해 보는게 제일 빠르다.
 
-::: demo [vanilla]
-```html
-<html>
-  <div id="sortable-app">
-    <p>아이템을 드래그앤 드롭으로 섞어주세요</p>
-    <ul ref="$sortedList">
-      <li v-for="(item, k) in items" :key="k" v-html="item" />
-    </ul>
-    <p>실제 Vue Data상의 아이템 순서: {{ items.join(', ') }} ]</p>
-  </div>
-</html>
+일단 다음고 같이 간단하게 Vue에 Sortablejs를 적용할 수 있다.
+
 <script>
-  // 스크립트 동적 로딩
   ['https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js',
    'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js'].forEach(src => {
       const script = document.createElement('script');
       script.setAttribute('src', src);
       document.head.appendChild(script);
   });
+</script>
 
-  // 화면에 진입시 앱 초기화
-  let isMounted = false;
-  const lazyIO = new IntersectionObserver(([ entry ]) => {
-    if (!entry.isIntersecting || isMounted) return false;
-    isMounted = true;
-    app();
-  }, { root: null, threshold: 0.1 });
-  lazyIO.observe(document.querySelector('#sortable-app'))
-
-  // 어플리케이션 코드
-  const app = () => {
-    new Vue({
-      el: '#sortable-app',
-      data: {
-        items: ['item01', 'item02', 'item03', 'item04'],
-      },
-      mounted () {
-        new Sortable(this.$refs.$sortedList);
-      }
-    })
+::: demo [vanilla]
+```html
+<html>
+  <div id="sortable-app1">
+    <p>아이템을 드래그앤 드롭으로 섞어주세요</p>
+    <ul ref="$sortedList">
+      <li v-for="(item, k) in items" :key="k" v-html="item" />
+    </ul>
+    <p>실제 Vue Data상의 아이템 순서: {{ JSON.stringify(items) }}</p>
+  </div>
+</html>
+<script>
+new Vue({
+  el: '#sortable-app1',
+  data: {
+    items: ['item01', 'item02', 'item03', 'item04'],
+  },
+  mounted () {
+    new Sortable(this.$refs.$sortedList);
   }
+})
+</script>
+```
+:::
+
+문제는 Sort를 하여도 데이터의 변화는 없다는 점이다. 그래서 데이터를 직접 조작해야한다.
+
+::: demo [vanilla]
+```html
+<html>
+  <div id="sortable-app2">
+    <p>아이템을 드래그앤 드롭으로 섞어주세요</p>
+    <ul ref="$sortedList">
+      <li v-for="(item, k) in items" :key="k" :data-key="k" v-html="item" />
+    </ul>
+    <p>실제 Vue Data상의 아이템 순서: {{ JSON.stringify(items) }}</p>
+  </div>
+</html>
+<script>
+new Vue({
+  el: '#sortable-app2',
+  data: {
+    items: ['item01', 'item02', 'item03', 'item04'],
+  },
+  mounted () {
+    new Sortable(this.$refs.$sortedList, {
+      onEnd: () => {
+        this.items = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
+      }
+    });
+  }
+})
+</script>
+```
+:::
+
+위의 코드는 다음과 같은 로직을 수행한다.
+- DOM을 섞는다.
+- DOM을 기준으로 items를 다시 만든다.
+- **items를 기준으로 이미 섞인 DOM을 다시 렌더링한다.** (이 부분이 핵심이다.)
+
+따라서 DOM을 기준으로 items를 섞은 다음에, **다시 DOM을 원상복구 해야한다.**
+
+
+::: demo [vanilla]
+```html
+<html>
+  <div id="sortable-app2">
+    <p>아이템을 드래그앤 드롭으로 섞어주세요</p>
+    <ul ref="$sortedList">
+      <li v-for="(item, k) in items" :key="k" :data-key="k" v-html="item" />
+    </ul>
+    <p>실제 Vue Data상의 아이템 순서: {{ JSON.stringify(items) }}</p>
+  </div>
+</html>
+<script>
+new Vue({
+  el: '#sortable-app2',
+  data: {
+    items: ['item01', 'item02', 'item03', 'item04'],
+  },
+  mounted () {
+    new Sortable(this.$refs.$sortedList, {
+      onEnd: () => {
+        this.items = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
+      }
+    });
+  }
+})
 </script>
 ```
 :::
