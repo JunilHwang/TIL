@@ -510,7 +510,74 @@ export class Component<Props = {}, State extends Record<string, any> = {}> {
 
 ```
 
-여기서 주목해야할 부분은 `addEventBubblingListener` 이다.
+위의 컴포넌트 코드는 다음과 같이 사용된다.
+
+```ts
+export const Kanban = class extends Component {
+
+  protected async componentInit() {
+    await todoOfTeamStore.dispatch(FETCH_TEAM, todoRouter.$query.id);
+
+    this.$children = {
+      TodoHeader: { constructor: TodoHeader },
+      TodoListOfTeam: { constructor: TodoListOfTeam },
+      TodoMemberAppendForm: { constructor: TodoMemberAppendForm },
+    }
+  }
+
+  protected template () {
+    return `
+      <h1 data-component="TodoHeader" id="user-title"></h1>
+      <ul data-component="TodoListOfTeam" id="todo-list-of-team" class="todoapp-list-container flex-column-container"></ul>
+      <div data-component="TodoMemberAppendForm" id="member-append-form"></div>
+    `;
+  }
+
+}
+
+export const TeamList = class extends Component {
+
+  protected template () {
+    const { teams } = teamStore.$state;
+
+    return `
+      ${teams.map(({ _id, name }) => `
+        <div class="team-card-container" data-id="${_id}">
+          <a href="#!" class="card" data-ref="view">
+            <div class="card-title">
+              ${name}
+            </div>
+          </a>
+        </div>
+      `).join('')}
+      
+      <div class="add-team-button-container">
+        <button id="add-team-button" class="ripple" data-ref="add">
+          <span class="material-icons">add</span>
+        </button>
+      </div>
+    `;
+  }
+
+  protected setEvent () {
+
+    this.addEvent('view', 'click', event => {
+      event.preventDefault();
+      const id = selectParent('[data-id]', event.target).dataset.id as string;
+      todoRouter.push(`./kanban.html?id=${id}`);
+    })
+
+    this.addEvent( 'add', 'click', () => {
+      teamStore.commit(SET_OPENED_TEAM_APPEND_FORM, true);
+    });
+
+  }
+
+}
+
+```
+
+그리고 컴포넌트 코드에서 주목해야할 부분은 `addEventBubblingListener` 이다.
 컴포넌트가 생성될 때 최초에 한 번만 이벤트를 버블링으로 등록하고 이후에는 이벤트를 따로 등록하지 않고 있다.
 
 ```ts
@@ -581,13 +648,66 @@ addEventBubblingListener<CommonEvent<HTMLInputElement>>('priority', 'change', ({
 - `addEventBubblingListener`에서 `event` 파라미터의 타입을 unkown으로 정의한다.
 - `addEventBubblingListener`의 제네릭으로 받아온 타입을 `event`에 명시적으로 타입 캐스팅을 해준다.
 
-이렇게 약간의 편법을 사용하여 해결할 수 있었다.
-
 ***
 
 다음으로 `Store`에 대해서 살펴보자.
 
+```ts
+import {observable} from "@/_core";
 
+export type Getter<T> = (state: T) => unknown;
+export type Getters<T> = Record<string, Getter<T>>;
+export type Mutations<T> = Record<string, (state: T, payload: any) => void>;
+export interface ActionContext<T> {
+  state: T,
+  commit: (key: string, payload: any) => void,
+  dispatch: (key: string, payload?: any) => Promise<unknown> | void,
+}
+export type Actions<T> = Record<string, (context: ActionContext<T>, payload?: any) => Promise<unknown> | void>;
+export interface StoreProps<T> {
+  state: T
+  getters?: Getters<T>
+  mutations?: Mutations<T>
+  actions?: Actions<T>
+}
+
+export class Store<T> {
+
+  public $state: T;
+  public readonly $getters: Getters<T>;
+  private readonly mutations: Mutations<T>;
+  private readonly actions: Actions<T>;
+
+  constructor({ state, getters = {}, mutations = {}, actions = {} }: StoreProps<T>) {
+    this.$state = observable(state);
+    this.$getters = Object.entries(getters)
+                          .reduce((getters, [key, getter]) => {
+                            Object.defineProperty(getters, key, {
+                              get: () => getter(this.$state)
+                            });
+                            return getters;
+                          }, {});
+    this.mutations = mutations;
+    this.actions = actions;
+  }
+
+  public commit (key: string, payload: any): void {
+    this.mutations[key](this.$state, payload);
+  }
+
+  public dispatch (key: string, payload?: any): Promise<unknown> | void {
+    return this.actions[key]({
+      commit: (key: string, payload: any) => this.commit(key, payload),
+      dispatch: (key: string, payload: any) => this.dispatch(key, payload),
+      state: this.$state,
+    }, payload);
+  }
+
+}
+
+```
+
+`Store`는 `Vuex`를 모방하여 만들었다. 그래서 거의 똑같이 사용했다.
 
 #### (6) 정리
 
