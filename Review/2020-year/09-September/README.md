@@ -301,11 +301,122 @@ new Vue({
 대부분의 사람들이 `Observer Pattern`을 이용해서 컴포넌트를 설계했다.
 `Store`를 구현한 사람도 있었고, 혹은 다른 사람들과 아예 다른 방식으로 설계한 사람도 있었다.
 
+그래서 리뷰를 할 때 고민을 더 많이 했고, 내가 작성한 코드에 맡게 다른 사람이 작성한 코드를 적용했다.
+항상 느끼고 있지만 똑같은 기능을 구현할 때 다른 사람이 작성한 코드를 볼 수 있다는 것은 큰 행운이다.
 
+2주차에 올라온 PR은 전부 리뷰를 완료했다.
+
+- 리뷰 모음
+  - [next-step/js-todo-list-step2#16](https://github.com/next-step/js-todo-list-step2/pull/16)
+  - [next-step/js-todo-list-step2#17](https://github.com/next-step/js-todo-list-step2/pull/17)
+  - [next-step/js-todo-list-step2#18](https://github.com/next-step/js-todo-list-step2/pull/18)
+  - [next-step/js-todo-list-step2#19](https://github.com/next-step/js-todo-list-step2/pull/19)
+  - [next-step/js-todo-list-step2#20](https://github.com/next-step/js-todo-list-step2/pull/20)
+  - [next-step/js-todo-list-step2#22](https://github.com/next-step/js-todo-list-step2/pull/22)
+  - [next-step/js-todo-list-step2#23](https://github.com/next-step/js-todo-list-step2/pull/23)
+  - [next-step/js-todo-list-step2#24](https://github.com/next-step/js-todo-list-step2/pull/24)
+    - `#24`는 자신만의 확고한 신념을 가지고 설계한게 느껴진다. 그래서 마지막으로 PR을 올린게 아닐까 싶다.
 
 ***
 
-#### (5) 
+`3주차`에는 필자를 포함하여 4명의 사람이 PR을 올렸다.
+
+![image09](https://user-images.githubusercontent.com/18749057/96171996-b0a7dc00-0f60-11eb-8348-ca62003836c6.png)
+
+그래서 리뷰 자체는 어렵지 않았다. 대부분 2주차의 설계를 그대로 가져온 모습을 보였다.
+나의 경우 한 분이 `typescript`에 대해 언급해주셔서 스터디장님의 허락을 맡고 `typscript`를 적용했다. ~~괜히 한 것 같다~~
+
+사실 말이 3주차고 대부분 4주차에 코드를 올렸다.
+
+- 리뷰 모음
+  - [next-step/js-todo-list-step3#12](https://github.com/next-step/js-todo-list-step3/pull/12)
+  - [next-step/js-todo-list-step3#13](https://github.com/next-step/js-todo-list-step3/pull/13)
+  - [next-step/js-todo-list-step3#16](https://github.com/next-step/js-todo-list-step3/pull/16) 
+  - [next-step/js-todo-list-step3#17](https://github.com/next-step/js-todo-list-step3/pull/17)
+
+이 때 PR을 올린 사람들은 **1주차와 비교했을 때 굉장히 발전을 많이한게 느껴졌다.** 확실히 스터디의 효과가 느껴지는 코드들이었다. 
+
+#### (5) 내가 작성한 Core 코드
+
+나는 `Step3`를 시점으로 `Observer` `Component` `Router` `Store` `RestClient` 등 5개의 코어를 설계했다.
+
+```ts
+// Observer.ts
+import {debounceOneFrame} from "@/utils";
+
+let currentObserver: Function | null = null;
+
+// observable이 observer에서 사용되었다면 observable이 변경되었을 때 observer가 저절로 실행되도록 만들었다.
+// 이 때 currentObserver가 observable에서 사용된다.
+export const observe = (observer: Function) => {
+  currentObserver = debounceOneFrame(observer);
+  observer();
+  currentObserver = null;
+}
+
+// obj의 key가 변하면 observe를 실행하도록 만들어주는 코드이다.
+// obj에 새로운 key를 할당할 때도 사용할 수 있다.
+export const observableOfKey = (obj: any, key: string, defaultValue: any) => {
+  if (!obj) return;
+  const observers: Set<Function> = new Set();
+  let _value = defaultValue && typeof defaultValue === 'object'
+                ? observable(defaultValue)
+                : defaultValue;
+  Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get() {
+      if (currentObserver) observers.add(currentObserver);
+      return _value;
+    },
+    set(value) {
+      if (JSON.stringify(value) === JSON.stringify(_value)) return;
+      _value = value && typeof value === 'object'
+                  ? observable(value)
+                  : value;
+      observers.forEach(observer => observer());
+    },
+  })
+  return obj;
+}
+
+// target으로 받은 object의 key를 전부 observable로 만들어서 반환한다.
+export const observable = (target: any): any => (
+  Object.entries(target)
+        .reduce(
+          (obj, [key, defaultValue]) => observableOfKey(obj, key, defaultValue),
+          target
+        )
+);
+
+```
+
+위의 코드는 다음과 같이 사용할 수 있다.
+```js
+const state = observable({ a: 10, b: 20, c: 30 });
+observe(() => console.log(`state.a = ${state.a}`));
+observe(() => console.log(`state.b = ${state.b}`));
+observe(() => console.log(`state.c : ${state.c}`));
+observe(() => console.log(`state.a + state.b = ${state.a + state.b}`));
+observe(() => console.log(`state.a + state.b + state.c = ${state.a + state.b + state.c}`));
+
+state.a = 1;
+state.a = 10;
+state.b = 11;
+state.b = 22;
+state.c = 111;
+state.c = 222;
+```
+
+![image10](https://user-images.githubusercontent.com/18749057/96173666-33319b00-0f63-11eb-8f29-bb8063e6433d.png)
+
+마찬가지로 **컴포넌트가 렌더링**에 사용할 수 있다.
+
+```ts
+// Component.ts
+```
+
+#### (6) 정리
 
 ***
 
