@@ -709,6 +709,146 @@ export class Store<T> {
 
 `Store`는 `Vuex`를 모방하여 만들었다. 그래서 거의 똑같이 사용했다.
 
+그래서 다음과 같이 사용할 수 있다.
+
+```ts
+import {Store} from "@/_core";
+import {TodoService} from "@/services";
+
+export const SET_TEAMS = 'SET_TEAMS';
+
+export interface TeamState {
+  teams: TodoTeam[];
+}
+
+export const teamStore = new Store<TeamState>({
+
+  state: {
+    teams: [],
+  },
+
+  mutations: {
+
+    [SET_TEAMS] (state, teams: TodoTeam[]) {
+      state.teams = teams;
+    },
+
+  },
+
+  actions: {
+
+    async [FETCH_TEAMS] ({ commit }) {
+      commit(SET_TEAMS, await TeamService.fetchTeams());
+    },
+
+    async [ADD_TEAM] ({ dispatch }, name: string) {
+      await TeamService.addTeam(name);
+      return dispatch(FETCH_TEAMS);
+    },
+
+  },
+
+});
+
+teamStore.commit(SET_TEAMS, []);
+teamStore.dispatch(FETCH_TEAMS);
+teamStore.dispatch(ADD_TEAMS, { name: 'TEAM A' });
+
+const teams = teamStore.$state.teams;
+
+```
+
+vuex랑 사용방법이 거의 비슷하다.
+
+***
+
+다음으로 RestClient이다.
+
+```ts
+// RestClient
+
+import {HttpMethod} from "@/constants";
+import {RequestBody} from "@/domains";
+
+export class RestClient {
+
+  constructor (private readonly baseURL: string) {}
+
+  private getUrlOf (uri: string): string {
+    const slash = uri.indexOf('/') === 0 ? '' : '/';
+    return `${this.baseURL}${slash}${uri}`;
+  }
+
+  private request (uri: string, method: HttpMethod = HttpMethod.GET): Promise<any> {
+    return fetch(this.getUrlOf(uri), { method })
+            .then(response => response.json());
+  }
+
+  private requestWithBody (uri: string, method: HttpMethod, body?: RequestBody): Promise<any> {
+    const headers = { 'Content-Type': 'application/json' };
+    const requestInit: RequestInit = { method, headers, body: JSON.stringify(body) };
+    return fetch(this.getUrlOf(uri), requestInit).then(response => response.json());
+  }
+
+  public get (uri: string): Promise<any> {
+    return this.request(uri);
+  }
+
+  public delete (uri: string) {
+    return this.request(uri, HttpMethod.DELETE);
+  }
+
+  public post (uri: string, body?: RequestBody) {
+    return this.requestWithBody(uri, HttpMethod.POST, body);
+  }
+
+  public put (uri: string, body?: RequestBody) {
+    return this.requestWithBody(uri, HttpMethod.PUT, body);
+  }
+
+  public patch (uri: string, body?: RequestBody) {
+    return this.requestWithBody(uri, HttpMethod.PATCH, body);
+  }
+
+}
+
+// 다음과 같이 Adapter를 만들수 있다.
+export const todoAdapterURL = 'https://js-todo-list-9ca3a.df.r.appspot.com/api';
+export const todoAdapterClient: RestClient = new RestClient(todoAdapterURL);
+
+// 그리고 adapter를 service 로직에서 사용한다.
+export const todoService = Object.freeze({
+
+ fetchTeams () {
+   return todoAdapterClient.get('/teams');
+ },
+
+ fetchTeam (teamId: string) {
+   return todoAdapterClient.get(`/teams/${teamId}`);
+ },
+
+ addTeam (name: string) {
+   return todoAdapterClient.post(`/teams`, { name });
+ },
+
+ addTeamMember (teamId: string, name: string) {
+   return todoAdapterClient.post(`/teams/${teamId}/members`, { name });
+ },
+
+ deleteTeam (teamId: string) {
+   return todoAdapterClient.delete(`/teams/${teamId}`);
+ },
+
+ deleteTeamMember (teamId: string, memberId: string) {
+   return todoAdapterClient.delete(`/teams/${teamId}/members/${memberId}`);
+ },
+
+})
+
+```
+
+최대한 추상화를 했다.
+
 #### (6) 정리
 
 ***
