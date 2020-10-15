@@ -340,6 +340,10 @@ new Vue({
 
 나는 `Step3`를 시점으로 `Observer` `Component` `Router` `Store` `RestClient` 등 5개의 코어를 설계했다.
 
+***
+
+먼저 `Observer.ts`에 대해 살펴보자.
+
 ```ts
 // Observer.ts
 import {debounceOneFrame} from "@/utils";
@@ -412,9 +416,178 @@ state.c = 222;
 
 마찬가지로 **컴포넌트가 렌더링**에 사용할 수 있다.
 
+주목해야할 점 중에 하나가 `observer`에 `debounce`를 씌운 부분이다. `observable`에 변화가 생겼을 때 한 프레임 단위로 `observer`를 실행하도록 한 것이다.
+
+```ts
+const debounceOneFrame = (callback: Function) => {
+  let timer: number = -1;
+  return (props?: any) => {
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(() => callback(props));
+  }
+}
+```
+
+위의 코드를 이용하면 한 프레임 단위로 함수를 지연시킬 수 있다.
+
+***
+
+다음으로 `Component.ts`에 대해 살펴보자.
+
 ```ts
 // Component.ts
+import {addEventBubblingListener, selectAllElement} from "@/utils";
+import {CommonEvent, ComponentConstructable, PickEvent} from "@/domains";
+import {observe, observable} from "@/_core"; // 컴포넌트에서 앞서 언급한 Observer의 observe, observable을 사용한다. 
+
+export interface ChildrenProp {
+  constructor: ComponentConstructable,
+  props?: any
+}
+
+export type ChildrenProps = Record<string, ChildrenProp>;
+
+export class Component<Props = {}, State extends Record<string, any> = {}> {
+
+  protected $state?: State;
+  protected $children: ChildrenProps = {};
+
+  constructor(
+    protected readonly $target: HTMLElement,
+    protected readonly $props?: Props
+  ) {
+    this.setup();
+  }
+
+  private async setup () {
+    await this.componentInit();
+    // state는 observable로 만들었다.
+    this.$state = observable(this.$state || {});
+    this.setEvent();
+    // render는 observe로 만들었다.
+    observe(this.render);
+    // 따라서 state가 변경되면 자동으로 render가 실행된다.
+  }
+
+  private buildChildren () {
+    selectAllElement('[data-component]', this.$target).forEach(target => {
+      const componentName = target.dataset.component as string;
+      const { constructor, props } = this.$children[componentName];
+      new constructor(target, props);
+    })
+  }
+
+  protected componentInit (): Promise<any> | void {}
+  protected setEvent (): void {}
+  protected componentDidMount (): void {}
+
+  protected template (): string {
+    return ''
+  }
+
+  protected setState (payload: Record<keyof State, any>) {
+    Object.entries(payload)
+          .forEach(([key, value]: [ keyof State, any]) => {
+            this.$state![key] = value;
+          });
+  }
+
+  protected addEvent <T = CommonEvent>(
+    ref: string,
+    eventType: string,
+    callback: (event: PickEvent<T>) => void
+  ) {
+    addEventBubblingListener(this.$target, `[data-ref="${ref}"]`, eventType, callback);
+  }
+
+  public render = () => {
+    this.$target.innerHTML = this.template();
+    this.buildChildren();
+    this.componentDidMount();
+  };
+
+}
+
 ```
+
+여기서 주목해야할 부분은 `addEventBubblingListener` 이다.
+컴포넌트가 생성될 때 최초에 한 번만 이벤트를 버블링으로 등록하고 이후에는 이벤트를 따로 등록하지 않고 있다.
+
+```ts
+export const addEventBubblingListener = <T = CommonEvent>(
+  parent: HTMLElement,
+  childSelector: string,
+  eventType: string,
+  callback: (event: PickEvent<T>) => void
+) => {
+  const isTarget = (target: HTMLElement) => selectAllElement(childSelector).includes(target) ||
+                                            selectParent(childSelector, target);
+  parent.addEventListener(eventType, (event: unknown) => {
+    const e = event as PickEvent<T>;
+    if (!isTarget(e.target)) return;
+    callback(e);
+  })
+}
+```
+
+그런데 이벤트의 type 때문에 굉장히 고생을 많이 했다.
+
+- 일단 event의 type 자체가 애매모호 하다. 제대로 할 수 있는게 정말 하나도 없다.
+- event의 target이 dom을 가르키고 있지 않고 있다. 즉, 아무런 타입 선언 없이 event.target을 가져와서 사용하면 무조건 에러가 발생한다.
+
+즉, 명시적으로 event의 type을 직접 정의해야 하고, event에서 사용되는 target의 type 또한 정의해줘야한다.
+그런데 태그도, 이벤트도 굉장히 많은 유형을 가지고 있다.
+
+그래서 React는 `React.ChangeEvent<HTMLTextAreaElement>` 이런식으로 사용할 수 있도록 **모든 Event와 DOM 타입을 정의**했다.
+
+일단 그냥 `any` 처리할까 고민했지만 그럴꺼면 `ts`를 왜쓰겠냐는 생각 때문에 조금 머리를 굴렸다.
+
+```ts
+interface CommonEvent<T extends HTMLElement = HTMLElement> extends Omit<Event, 'target'> {
+  target: T
+}
+
+interface KeyEvent<T extends HTMLInputElement = HTMLInputElement> extends Omit<KeyboardEvent, 'target'|'key'> {
+  target: T;
+  key: string;
+}
+
+type PickEvent<T> = Extract<CommonEvent | KeyEvent, T>
+
+const addEventBubblingListener = <T = CommonEvent>(
+  parent: HTMLElement,
+  childSelector: string,
+  eventType: string,
+  callback: (event: PickEvent<T>) => void
+) => {
+  const isTarget = (target: HTMLElement) => selectAllElement(childSelector).includes(target) ||
+                                            selectParent(childSelector, target);
+  parent.addEventListener(eventType, (event: unknown) => {
+    const e = event as PickEvent<T>;
+    if (!isTarget(e.target)) return;
+    callback(e);
+  })
+}
+
+
+addEventBubblingListener<CommonEvent<HTMLInputElement>>('priority', 'change', ({ target }) => { /* ... */ });
+
+```
+
+위의 코드를 정리해보자면,
+- 기본 이벤트 타입에서 `Omit`을 이용하여 기존 `target`의 타입을 제거하고, 제네릭으로 받아온 타입을 `target`에 대입한다.
+- 위와 같은 방식으로 앱 내에서 사용중인 이벤트만 커스텀하여 만든다.
+- 커스텀으로 정의한 이벤트 중 하나를 Extract를 통하여 선택할 수 있는 새로운 타입을 정의한다 (`PickEvent`) 
+- `addEventBubblingListener`에서 `event` 파라미터의 타입을 unkown으로 정의한다.
+- `addEventBubblingListener`의 제네릭으로 받아온 타입을 `event`에 명시적으로 타입 캐스팅을 해준다.
+
+이렇게 약간의 편법을 사용하여 해결할 수 있었다.
+
+***
+
+다음으로 `Store`에 대해서 살펴보자.
+
+
 
 #### (6) 정리
 
