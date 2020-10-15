@@ -253,24 +253,84 @@ new Vue({
   - 확실히 같이 공부하는 사람이 많을 수록, 주변에 피드백을 해주는 사람이 많을 수록 빠르게 성정할 수 있는 것 같다.
 - `3주차`
   - 또 다시 지인과 매칭이 되었다.
-  - 이번에는 전체적인 기능 구현이 아닌 옵저버 패턴을 구현하기로 합의하고 진행했다.
-  - 일단 내가 옵저버 패턴을 만들면서 많이 헤맸다.
-  - 단순한 옵저버 패턴 구현이 아니라 만드는게 아니라 `Object.defineProperty`를 이용하여 자동으로 옵저빙 하는 코드를 만들었다.
-  - 이 때 코드가 잘 만들어졌고, 이를 2주차, 3주차 미션에 적용했는데 리팩토링할 부분이 너무 많았다. 거의 처음부터 다시 만들었다. ~~리팩토링의 연속~~
+  - 이번에는 전체적인 기능 구현이 아닌 **옵저버를 구현하기로 합의**하고 진행했다. ~~내가 제안했는데, 내가 많이 헤맸다.~~
+  - 단순한 옵저버 패턴 구현이 아니라 만드는게 아니라 `Object.defineProperty`를 이용하여 **자동으로 옵저빙** 하는 코드를 만들었다.
+  - 이 때 코드가 잘 만들어졌고 이를 2주차 / 3주차 미션에 적용했다. 다만 리팩토링할 부분이 너무 많아서 거의 처음부터 다시 만들었다. ~~리팩토링의 연속~~
 
-결과적으로 페어프로그래밍을 하면서 고민했던 것들을 내 코드에 전부 녹였다.
+결과적으로 **페어프로그래밍을 하면서 고민했던 것들을 내 코드에 전부 녹였다.**
 확실히 다른 사람과 같이 무언가를 만들면 더 고민을 많이 하게 된다.
-당장 서로가 알아볼 수 있게 코드를 만들어야 한다는 점이 매리트라고 생각한다.
-그리고 즉각적인 피드백도 주고받을 수 있기 때문에 잘못된 점을 빠르게 고칠 수 있다.
+**당장 서로가 알아볼 수 있게 코드를 만들어야 한다는 점**이 매리트라고 생각한다.
+그리고 **즉각적인 피드백**을 주고 받기 때문에 잘못된 점을 빠르게 고칠 수 있다.
 
 다만 한 번 하면 3시간 정도 소요되기 때문에 굉장히 피곤했다. ~~그냥 하는 일이 많아서 피곤했다.~~
 
 #### (4) 코드리뷰
 
-블랙 커피 스터디를 진행하는 동안 ~~정말 미친놈처럼~~ 코드리뷰를 굉장히 많이 했다. 
+블랙 커피 스터디를 진행하는 동안 ~~정말 미친놈처럼~~ 코드리뷰를 굉장히 많이 했다.
 
-뒤늦게 알았지만, 스터디를 운영하는 동준님은 우아한 테크코스에서 Front-end 파트를 운영하고 계셨다.
-개인적으로 개발 교육에 관심이 많고, 교육을 부업으로 하고 있기 때문에 현재 직장에서 충분히 경험이 쌓인다면 한 번 우아한 테크코스팀에 지원해볼 생각이다. 
+<img src="https://user-images.githubusercontent.com/18749057/96168601-f1512680-0f5b-11eb-8118-15e2a1a1b680.png" alt="image05" width="500" />
+
+`1주차`에는 마지막에 올라온 5개의 PR을 제외한 모든 PR에 리뷰를 남겼다. 갯수를 세어보니 총 11개의 PR이었다.
+
+![image04](https://user-images.githubusercontent.com/18749057/96168541-dbdbfc80-0f5b-11eb-982a-1cc4737f53dc.png)
+
+하루 날잡고 종일 리뷰만 했는데, JS 코드를 마음껏 볼 수 있어서 좋았다.
+
+![image07](https://user-images.githubusercontent.com/18749057/96169597-56f1e280-0f5d-11eb-92e6-cc2553ea10ed.png)
+
+1주차에 올라온 코드는 대부분 비슷한 스타일로 작성되어 있어서 설계적인 측면보단 문법적인 측면의 리뷰를 많이 했던 것 같다.
+
+- 리뷰 모음
+  - [next-step/js-todo-list-step1#30](https://github.com/next-step/js-todo-list-step1/pull/30)
+  - [next-step/js-todo-list-step1#31](https://github.com/next-step/js-todo-list-step1/pull/31)
+  - [next-step/js-todo-list-step1#33](https://github.com/next-step/js-todo-list-step1/pull/33)
+  - [next-step/js-todo-list-step1#34](https://github.com/next-step/js-todo-list-step1/pull/34)
+  - [next-step/js-todo-list-step1#35](https://github.com/next-step/js-todo-list-step1/pull/35)
+  - [next-step/js-todo-list-step1#36](https://github.com/next-step/js-todo-list-step1/pull/36)
+  - [next-step/js-todo-list-step1#37](https://github.com/next-step/js-todo-list-step1/pull/37)
+  - [next-step/js-todo-list-step1#38](https://github.com/next-step/js-todo-list-step1/pull/38)
+  - [next-step/js-todo-list-step1#40](https://github.com/next-step/js-todo-list-step1/pull/40)
+  - [next-step/js-todo-list-step1#41](https://github.com/next-step/js-todo-list-step1/pull/41)
+
+***
+
+`2주차`에는 PR을 올린 모든 사람이 코드를 굉장히 많이 개선했다.
+
+![image06](https://user-images.githubusercontent.com/18749057/96169303-e5199900-0f5c-11eb-8103-ea57f18594ec.png)
+
+대부분의 사람들이 `Observer Pattern`을 이용해서 컴포넌트를 설계했다.
+`Store`를 구현한 사람도 있었고, 혹은 다른 사람들과 아예 다른 방식으로 설계한 사람도 있었다.
+
+
+
+***
+
+#### (5) 
+
+***
+
+필자가 작성한 코드는 다음 저장소에서 볼 수 있다.
+
+- [JunilHwang/js-todo-list-step1](https://github.com/JunilHwang/js-todo-list-step1)
+- [JunilHwang/js-todo-list-step2](https://github.com/JunilHwang/js-todo-list-step2)
+- [JunilHwang/js-todo-list-step3](https://github.com/JunilHwang/js-todo-list-step3)
+
+그리고 위에 있는 내용을 정리한 저장소가 별개로 존재한다. ~~사실 깃허브 잔디를 만들기 위해서 따로 만들었다.~~
+
+- [JunilHwang/black-coffee-study](https://github.com/JunilHwang/black-coffee-study)
+
+데모는 다음 링크에서 확인할 수 있다.
+
+- [step1 데모](https://junilhwang.github.io/black-coffee-study/step1/)
+- [step2 데모](https://junilhwang.github.io/black-coffee-study/step2/)
+- [step3 데모](https://junilhwang.github.io/black-coffee-study/step3/)
+
+***
+
+뒤늦게 알았지만, _스터디를 운영 중인 동준님이 우아한 테크코스에서 Front-end 파트를 운영하고 계셨다._
+개인적으로 개발 교육에 관심이 많고, 교육을 부업으로 하고 있기 때문에 **현재 직장에서 충분히 경험이 쌓인다면 한 번 우아한 테크코스팀에 지원해볼 생각**이다.
+
+![image08](https://user-images.githubusercontent.com/18749057/96171235-96b9c980-0f5f-11eb-9743-eaf5ad6770fd.png) 
 
 ### 2. 부스트캠프 리뷰어 활동
 
