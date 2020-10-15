@@ -46,7 +46,7 @@ feed:
 
 글로 읽는 것 보단 눈으로 보고 직접 체험해 보는게 제일 빠르다.
 
-일단 다음고 같이 간단하게 Vue에 Sortablejs를 적용할 수 있다.
+일단 다음과 같이 간단하게 Vue에 Sortablejs를 적용할 수 있다.
 
 <script>
   ['https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js',
@@ -124,7 +124,7 @@ new Vue({
 ::: demo [vanilla]
 ```html
 <html>
-  <div id="sortable-app2">
+  <div id="sortable-app3">
     <p>아이템을 드래그앤 드롭으로 섞어주세요</p>
     <ul ref="$sortedList">
       <li v-for="(item, k) in items" :key="k" :data-key="k" v-html="item" />
@@ -134,14 +134,24 @@ new Vue({
 </html>
 <script>
 new Vue({
-  el: '#sortable-app2',
+  el: '#sortable-app3',
   data: {
     items: ['item01', 'item02', 'item03', 'item04'],
   },
   mounted () {
-    new Sortable(this.$refs.$sortedList, {
-      onEnd: () => {
-        this.items = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
+    const { $sortedList } = this.$refs;
+    new Sortable($sortedList, {
+      onEnd: ({ oldIndex, newIndex }) => {
+        const newItems = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
+
+        /* 섞인 DOM을 원상복구 하는 코드 */
+        const isAfter = newIndex < oldIndex;
+        $sortedList.insertBefore(
+          $sortedList.querySelector(`li:nth-child(${newIndex + 1})`),
+          $sortedList.querySelector(`li:nth-child(${oldIndex + 1 + (isAfter)})`)
+        );
+
+        this.items = newItems;
       }
     });
   }
@@ -150,7 +160,16 @@ new Vue({
 ```
 :::
 
+사실 `vue-sortable` 컴포넌트를 사용해도 되지만 생각보다 커스텀 하기가 쉽지 않았다. 그래서 `Sortable`을 그대로 사용해야 했고, 위와 같은 문제들과 맞닥뜨린 것이다.
+굉장한 삽질 끝에 `DOM`을 원상복구 하는 해결 방안을 찾을 수 있었다.
+
+~~그런데 지금 Vuepress에서 예제를 만든다고 더 삽질한 것 같다.~~
+
+이외에도 `Sortable`을 그대로 사용하는게 아니라 `Swap`을 연동하여 사용하는 등의 과정이 있으나 글이 너무 길어질 것 같아서 이만 다음 주제로 넘어가야겠다.
+
 ### 3. API 관련 이슈 해결
+
+
 
 ## 사적
 
