@@ -49,9 +49,11 @@ feed:
 ```html
 <html>
   <div id="sortable-app">
+    <p>아이템을 드래그앤 드롭으로 섞어주세요</p>
     <ul ref="$sortedList">
       <li v-for="(item, k) in items" :key="k" v-html="item" />
     </ul>
+    <p>실제 Vue Data상의 아이템 순서: {{ items.join(', ') }} ]</p>
   </div>
 </html>
 <script>
@@ -63,7 +65,7 @@ feed:
       document.head.appendChild(script);
   });
 
-  // 스크롤 진입시 앱 초기화
+  // 화면에 진입시 앱 초기화
   let isMounted = false;
   const lazyIO = new IntersectionObserver(([ entry ]) => {
     if (!entry.isIntersecting || isMounted) return false;
@@ -72,7 +74,7 @@ feed:
   }, { root: null, threshold: 0.1 });
   lazyIO.observe(document.querySelector('#sortable-app'))
 
-  // app
+  // 어플리케이션 코드
   const app = () => {
     new Vue({
       el: '#sortable-app',
@@ -80,7 +82,6 @@ feed:
         items: ['item01', 'item02', 'item03', 'item04'],
       },
       mounted () {
-        console.log(this.$refs);
         new Sortable(this.$refs.$sortedList);
       }
     })
