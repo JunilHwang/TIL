@@ -202,6 +202,9 @@ new Vue({
 스터디의 미션은 생각보다 간단했다.
 
 - `1주차` Todo App 만들기
+  - [Document Object Model](https://www.youtube.com/watch?v=1yADBI27NCg)
+  - [Browser Object Model](https://www.youtube.com/watch?v=BYRTKmPAr8c)
+  - [Event](https://www.youtube.com/watch?v=u49E4_4hyeI)
 - `2주차` API 연동
 - `3주차` SPA 만들기 (Router 사용하기)
 
@@ -209,6 +212,8 @@ new Vue({
 현재 보다 더 어려웠어도 혹은 더 쉬웠어도 **설계에 집중**하기가 힘들었을 것 같다.
 
 일단 1주차 때 3주차 미션까지 모두 구현했다. 그리고 한 달 동안 계속 리팩토링만 했다.
+
+
 
 #### (2) 스터디 진행 방식
 
@@ -816,7 +821,7 @@ export class RestClient {
 export const todoAdapterURL = 'https://js-todo-list-9ca3a.df.r.appspot.com/api';
 export const todoAdapterClient: RestClient = new RestClient(todoAdapterURL);
 
-// 그리고 adapter를 service 로직에서 사용한다.
+// 그리고 adapter를 service 로직에서 사용한다. 
 export const todoService = Object.freeze({
 
  fetchTeams () {
@@ -847,7 +852,65 @@ export const todoService = Object.freeze({
 
 ```
 
-최대한 추상화를 했다.
+최대한 추상화를 한 코드이다. 아마 axios를 사용한다면 더 단축될 것이다.
+
+***
+
+마지막으로 `Router.ts`를 살펴보자.
+
+```ts
+// Router.ts
+import {parseQuery} from "@/utils";
+import {RequestQuery} from "@/domains";
+
+export const Router = class {
+
+  public $query: RequestQuery = {};
+
+  constructor (
+    private readonly callback: (uri: string) => void
+  ) {
+    window.onpopstate = () => this.load();
+  }
+
+  public load (): void {
+    const uri: string = location.pathname.split('/').pop() || '';
+    this.$query = parseQuery(location.search);
+    this.callback(uri);
+  }
+
+  public push (uri: string): void {
+    const query: RequestQuery = parseQuery(uri);
+    this.$query = query;
+    this.callback(uri);
+    history.pushState(query, '', uri);
+  }
+
+}
+
+// 위의 코드는 다음과 같이 사용된다.
+const $app = selectElement('#app');
+export const todoRouter = new Router((uri: string) => {
+
+  if (uri.includes('kanban')) {
+    return new Kanban($app);
+  }
+
+  return new Team($app);
+
+});
+
+// 현재 주소에 대한 컴포넌트 렌더링
+todoRouter.load();
+```
+
+Router는 uri와 매칭되는 컴포넌트를 렌더링해주는 역할을 수행한다.
+
+***
+
+이렇게 만들어본 코어는 추후에 [네이버 아폴로 챌린지](https://programmers.co.kr/competitions/383/2020-naver-fe-recruitment)에서 프론트엔드 과제를 만들 때 큰 도움이 되었다.
+다만 라우터에 몇 가지 문제가 있어서 다시 개선해야 했다.. 너무 대충만들었달까.. 😅
+
 
 #### (6) 정리
 
@@ -871,10 +934,37 @@ export const todoService = Object.freeze({
 
 ***
 
+#### (7) 짧막한 회고
+
+이렇게 다른 사람들과 `Javascript Study`를 해보는게 처음이었기 때문에 굉장히 재밌었다.
+그리고 주변 사람들에게도 많이 소개했다.
+
+먼저 팀원의 지인 중에 이 스터디에 대해 궁금해하는 사람이 있어서 최대한 자세히 설명해줬고,
+내가 가르치고 있는 학생들에게도 다음 기수에 꼭 신청하라고 신신당부 해놨다.
+
+그리고 같이 신청한 친구 중 한 명이 이 스터디를 신청해놓고 아예 활동을 하지 않았다.
+왜 활동을 안 하냐고 물어보니 [프로그래머스](https://programmers.co.kr/)에서 진행한 [프론트엔드 개발을 위한 자바스크립트 온라인 스터디
+](https://programmers.co.kr/learn/courses/10785)에서 거의 비슷한 커리큘럼의 스터디를 했기 때문이라고..
+
+그래서 스터디 추천사를 보니
+
+![image11](https://user-images.githubusercontent.com/18749057/96236182-a9231a00-0fd6-11eb-9076-d5472c201514.png)
+
+이렇게 블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 같았다. ~~사실 여부는 잘 모르겠음~~
+
+각설하고, 이 스터디를 통해서 많은 사람들과 소통할 수 있었고 스스로에게 자극을 많이 줄 수 있어서 좋았다.
+`Javascript` 공부를 어떻게 시작 해야할지 모르는 사람에게 꼭 추천해주고 싶다. 그리고 혼자서 공부하는 사람에게도!
+
+앞서 언급했지만 개발 공부는 다른 사람들과 같이 해야한다. 개발은 절대 혼자하는게 아니기 때문이다. 
+
+#### (8) 짧막한 목표
+
 뒤늦게 알았지만, _스터디를 운영 중인 동준님이 우아한 테크코스에서 Front-end 파트를 운영하고 계셨다._
 개인적으로 개발 교육에 관심이 많고, 교육을 부업으로 하고 있기 때문에 **현재 직장에서 충분히 경험이 쌓인다면 한 번 우아한 테크코스팀에 지원해볼 생각**이다.
 
-![image08](https://user-images.githubusercontent.com/18749057/96171235-96b9c980-0f5f-11eb-9743-eaf5ad6770fd.png) 
+![image08](https://user-images.githubusercontent.com/18749057/96171235-96b9c980-0f5f-11eb-9743-eaf5ad6770fd.png)
+
+그 때가 언제일진.. 나도 잘 모르겠다 🤪 
 
 ### 2. 부스트캠프 리뷰어 활동
 
