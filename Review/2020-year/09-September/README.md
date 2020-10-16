@@ -1048,7 +1048,7 @@ Router는 uri와 매칭되는 컴포넌트를 렌더링해주는 역할을 수�
 
 ![image15](https://user-images.githubusercontent.com/18749057/96245578-6e26e380-0fe2-11eb-8226-0213e5fa6bd5.jpeg)
 
-어쨌든 필자가 가르친 학생들(서울디지텍고등학교)이 올해에도 입상했다.
+어쨌든 **필자가 가르친 학생들(서울디지텍고등학교)이 올해에도 입상**했다.
 학생 한 명이 제출을 잘못해서 대략 30점 정도를 채점도 못하고 통으로 날려보냈다.
 그래도 입상은 했으니.. 이걸 다행이라고 해야할지.. 이 때 실수한 기억은 경험상 평생 가기 때문에 괜히 안쓰럽다.
 
@@ -1131,7 +1131,7 @@ Component, Router, RestClient, Observer, debounce 등을 포함한 모든 코어
 이번 달에는 약 50개의 PR에 리뷰를 남겼다.
 현재는 나만 꾸준히 리뷰를 남기고 있는데, 다른 사람들도 조금만 의욕을 가지고 서로에게 피드백을 했으면 하는 바람이 있다.
 
-<img width="838" alt="스크린샷 2020-10-17 오전 2 25 54" src="https://user-images.githubusercontent.com/18749057/96289514-28890b80-1020-11eb-99bd-570a22ffc29f.png">
+<img width="838" alt="image31" src="https://user-images.githubusercontent.com/18749057/96289514-28890b80-1020-11eb-99bd-570a22ffc29f.png">
 
 그리고 스터디장이 _돈을 써야 돈이 생긴다면서_ 큰맘먹고 사비를 들여 활발하게 활동하는 사람들에게 상금을 지급했다. 
 
@@ -1165,7 +1165,31 @@ Component, Router, RestClient, Observer, debounce 등을 포함한 모든 코어
 이러한 분량의 [TodayReview](https://github.com/DKU-STUDY/TodayReview/issues)를 거의 매일 남기고 있다.
 이러한 열정이 부럽기도 하고, 존경스럽기도 하고, 같이 스터디를 할 수 있음에 감사함을 느낀다.
 
-### 8. 코덕
+### 8. 일일커밋 및 코덕
+
+이번 달에는 확실히 깃허브에 기록을 많이 남겼다.
+
+<img width="778" alt="image32" src="https://user-images.githubusercontent.com/18749057/96290347-689cbe00-1021-11eb-873c-612efe8ec1d7.png">
+
+핵심적인 내용만 정리하자면
+
+- Commit `770개`
+- Pull Request `15개`
+- Code Review `133개` -> 사실 커밋 갯수보다 이게 더 놀랍다.
+
+그리고 **글을 작성하는 시점을 기준으로 올 해에 4785개의 기여(Contributions)를 했다.**
+
+<img width="934" alt="image33" src="https://user-images.githubusercontent.com/18749057/96290964-625b1180-1022-11eb-9609-078d376126c6.png">
+
+원래 5000개가 목표였는데, 6000개로 늘려야겠다.
+
+이렇게 왕성하게 활동한 덕분에 9월 코덕도 1위를 달성할 수 있었다.
+
+<img width="634" alt="image34" src="https://user-images.githubusercontent.com/18749057/96291283-c8479900-1022-11eb-92c9-f18174124dfc.png">
+
+다만 이번에는 `우아한 테크코스` 그룹에게 1등을 내어주었다. ~~스터디원을 더 모집해야 할까?~~
+
+<img width="535" alt="image35" src="https://user-images.githubusercontent.com/18749057/96291354-e1e8e080-1022-11eb-9b27-27230437b212.png">
 
 ## 이쯤에서 돌아보는 스케쥴 정리
 
@@ -1179,4 +1203,15 @@ Component, Router, RestClient, Observer, debounce 등을 포함한 모든 코어
 - `클린코드를 위한 TDD, 리팩토링 with Java 9기` 리뷰
 - `서울디지텍고등학교 기능반` 학생들이 올리는 코드에 대한 리뷰
 
-## summary
+덕분에 본문에서 언급한 것 처럼 한 달 동안 코드리뷰만 100개 넘게 했다.. 😰   
+
+## Summary
+
+- 확장프로그램 관련 포스팅 완료
+- Sortable.js 때문에 고생했음
+- 블랙커피 스터디 덕분에 공부를 많이 했음
+- 부스트 캠프 리뷰어 활동
+- 넥스트 스텝 리뷰어 활동
+- 프로그래머스 리액트 스터디
+- 기능반 학생들 지도 및 입상
+- 9월 코덕 랭킹 1위
