@@ -1124,18 +1124,20 @@ Component, Router, RestClient, Observer, debounce 등을 포함한 모든 코어
 
 ![image31](https://user-images.githubusercontent.com/18749057/96289265-b1537780-101f-11eb-91ca-d2531e50fa7a.png)
 
-현재 이 글을 작성하는 시점을 기준으로 2,247개의 commit이 존재한다.
+위의 사진 처럼 현재 이 글을 작성하는 시점을 기준으로 2,247개의 commit이 존재한다.
 
 ![image30](https://user-images.githubusercontent.com/18749057/96288817-fcb95600-101e-11eb-862b-eda2980496ea.png)
 
 이번 달에는 약 50개의 PR에 리뷰를 남겼다.
 현재는 나만 꾸준히 리뷰를 남기고 있는데, 다른 사람들도 조금만 의욕을 가지고 서로에게 피드백을 했으면 하는 바람이 있다.
 
- 
+<img width="838" alt="스크린샷 2020-10-17 오전 2 25 54" src="https://user-images.githubusercontent.com/18749057/96289514-28890b80-1020-11eb-99bd-570a22ffc29f.png">
 
-그리고 기분 좋은 이슈가 있었다.
+그리고 스터디장이 _돈을 써야 돈이 생긴다면서_ 큰맘먹고 사비를 들여 활발하게 활동하는 사람들에게 상금을 지급했다. 
 
-8월 리뷰에서 언급했었는데, [미림여자정보과학고등학교](https://www.e-mirim.hs.kr/main.do)에서 우리 스터디를 모방하여 알고리즘 스터디를 진행 중이었다.
+***
+
+이 외에 기분 좋은 이슈가 있었다. 8월 리뷰에 언급했었지만 [미림여자정보과학고등학교](https://www.e-mirim.hs.kr/main.do)에서 우리 스터디를 모방하여 알고리즘 스터디를 진행 중이었다.
 그런데 이 스터디를 운영하는 학생에게 메일이 한 통 왔다.
 
 ![image26](https://user-images.githubusercontent.com/18749057/96286371-3d16d500-101b-11eb-9d68-35a7a1694fd4.png)
@@ -1145,7 +1147,7 @@ Component, Router, RestClient, Observer, debounce 등을 포함한 모든 코어
 ![image27](https://user-images.githubusercontent.com/18749057/96288105-dba43580-101d-11eb-8191-3f7b9d20ed26.png)
 
 그래서 다음과 같이 답변을 하면서 현재 운영하고 있는 방식들을 소개했다.
-그리고 겸사 겸사 리뷰도 간간이 리뷰도 해주게 되었다.
+그리고 겸사 겸사 간간이 리뷰도 해주게 되었다.
 
 <img width="924" alt="image28" src="https://user-images.githubusercontent.com/18749057/96288516-8583c200-101e-11eb-858a-d44da5f2c612.png">
 
@@ -1158,10 +1160,10 @@ Component, Router, RestClient, Observer, debounce 등을 포함한 모든 코어
 ***
 
 그리고 스터디원 중에 굉장히 [성실한 사람](https://github.com/Jaewon0702)이 있다.
+내용이 너무 많아서 이곳에 보여주긴 힘들고, 궁금한 사람만 [이 링크](https://github.com/DKU-STUDY/TodayReview/issues/136#issuecomment-684861911)에서 확인해보길 바란다.
 
-[DKU-STUDY/TodayReview#136](https://github.com/DKU-STUDY/TodayReview/issues/136#issuecomment-684861911)
-
-이러한 [TodayReview](https://github.com/DKU-STUDY/TodayReview/issues)를 거의 매일 남기고 있다.
+이러한 분량의 [TodayReview](https://github.com/DKU-STUDY/TodayReview/issues)를 거의 매일 남기고 있다.
+이러한 열정이 부럽기도 하고, 존경스럽기도 하고, 같이 스터디를 할 수 있음에 감사함을 느낀다.
 
 ### 8. 코덕
 
