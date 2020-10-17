@@ -50,14 +50,25 @@ _`Vue`의 경우 데이터를 기반으로 `DOM`을 그린다. 즉, `DOM`이 변
 
 일단 다음과 같이 간단하게 Vue에 Sortablejs를 적용할 수 있다.
 
+<div style="display: none">
+
+::: demo [vanilla]
+```html
+<html></html>
 <script>
+  window.loadedScript = Promise.all(
   ['https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js',
-   'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js'].forEach(src => {
+   'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js'].map(src => new Promise(resolve => {
       const script = document.createElement('script');
       script.setAttribute('src', src);
       document.head.appendChild(script);
-  });
+      script.onload = () => resolve();
+  })))
 </script>
+```
+:::
+
+</div>
 
 ::: demo [vanilla]
 ```html
@@ -71,15 +82,16 @@ _`Vue`의 경우 데이터를 기반으로 `DOM`을 그린다. 즉, `DOM`이 변
   </div>
 </html>
 <script>
-new Vue({
-  el: '#sortable-app1',
-  data: {
-    items: ['item01', 'item02', 'item03', 'item04'],
-  },
-  mounted () {
-    new Sortable(this.$refs.$sortedList);
-  }
-})
+loadedScript.then(() => 
+  new Vue({
+    el: '#sortable-app1',
+    data: {
+      items: ['item01', 'item02', 'item03', 'item04'],
+    },
+    mounted () {
+      new Sortable(this.$refs.$sortedList);
+    }
+  }))
 </script>
 ```
 :::
@@ -98,19 +110,20 @@ new Vue({
   </div>
 </html>
 <script>
-new Vue({
-  el: '#sortable-app2',
-  data: {
-    items: ['item01', 'item02', 'item03', 'item04'],
-  },
-  mounted () {
-    new Sortable(this.$refs.$sortedList, {
-      onEnd: () => {
-        this.items = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
-      }
-    });
-  }
-})
+loadedScript.then(() => 
+  new Vue({
+    el: '#sortable-app2',
+    data: {
+      items: ['item01', 'item02', 'item03', 'item04'],
+    },
+    mounted () {
+      new Sortable(this.$refs.$sortedList, {
+        onEnd: () => {
+          this.items = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
+        }
+      });
+    }
+  }));
 </script>
 ```
 :::
@@ -135,29 +148,30 @@ new Vue({
   </div>
 </html>
 <script>
-new Vue({
-  el: '#sortable-app3',
-  data: {
-    items: ['item01', 'item02', 'item03', 'item04'],
-  },
-  mounted () {
-    const { $sortedList } = this.$refs;
-    new Sortable($sortedList, {
-      onEnd: ({ oldIndex, newIndex }) => {
-        const newItems = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
-
-        /* 섞인 DOM을 원상복구 하는 코드 */
-        const isAfter = newIndex < oldIndex;
-        $sortedList.insertBefore(
-          $sortedList.querySelector(`li:nth-child(${newIndex + 1})`),
-          $sortedList.querySelector(`li:nth-child(${oldIndex + 1 + (isAfter)})`)
-        );
-
-        this.items = newItems;
+loadedScript.then(() => 
+    new Vue({
+      el: '#sortable-app3',
+      data: {
+        items: ['item01', 'item02', 'item03', 'item04'],
+      },
+      mounted () {
+        const { $sortedList } = this.$refs;
+        new Sortable($sortedList, {
+          onEnd: ({ oldIndex, newIndex }) => {
+            const newItems = [ ...this.$refs.$sortedList.querySelectorAll('li') ].map(el => this.items[el.dataset.key]);
+    
+            /* 섞인 DOM을 원상복구 하는 코드 */
+            const isAfter = newIndex < oldIndex;
+            $sortedList.insertBefore(
+              $sortedList.querySelector(`li:nth-child(${newIndex + 1})`),
+              $sortedList.querySelector(`li:nth-child(${oldIndex + 1 + (isAfter)})`)
+            );
+    
+            this.items = newItems;
+          }
+        });
       }
-    });
-  }
-})
+    }))
 </script>
 ```
 :::
