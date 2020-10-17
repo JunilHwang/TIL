@@ -2,7 +2,7 @@
 
 title: 2020년 9월 회고
 description: 개발자 황준일의 2020년 9월 회고입니다.
-date: 2020-10-17 04:20:00
+date: 2020-10-17 17:40:00
 sidebarDepth: 2
 feed:
   enable: true
@@ -12,9 +12,13 @@ feed:
 
 # 2020년 9월 회고
 
-9월은 한 달 내내 재택근무를 했다. 회사에 대한 약간의 그리움(?)을 느꼈다.
+9월에는 상당히 많은 일을 했다.
+
+<img width="778" alt="image32" src="https://user-images.githubusercontent.com/18749057/96290347-689cbe00-1021-11eb-873c-612efe8ec1d7.png">
 
 ## 공적
+
+한 달 내내 재택근무를 했는데 덕분에 회사에 대한 약간의 그리움(?)을 느꼈다.
 
 ### 1. 크롬 확장프로그램
 
