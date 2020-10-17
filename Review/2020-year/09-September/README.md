@@ -251,11 +251,16 @@ loadedScript.then(() =>
 - `1주차`에는 **미션과 스터디에 대한 내용 위주**로 세션이 진행되었다.
 - `2주차`에는 1주차에 대한 회고와 **좋은 개발자에 대한 덕목**에 대해서 토의 하는 과정이 좋았다.
   - 이 때 대부분의 사람들이 비슷한 이야기를 했고, 마지막 차례였던 나는 조금 다른 이야기를 했다.
-  - 내가 생각하는 좋은 개발자의 덕목은 **좋은 영향력을 행사** 그리고 **같이 일하고 싶은 사람**이 되는 것이다.
-  - 현재 같은 팀 소속인 [체대생 개발자로 알려진 정수 담당님](https://github.com/integerous)이 그렇다.
-  - 그리고 [우리 팀장님](https://beyondj2ee.wordpress.com/) 또한 그렇다.
-    - [이 글](https://beyondj2ee.wordpress.com/2014/05/16/%ec%a0%91%ec%86%8d-%ec%a0%9c%ea%b0%80-%ed%95%9c%eb%b2%88-%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%a5%bc-%eb%a7%8c%eb%82%98-%eb%b4%a4%ec%8a%b5%eb%8b%88%eb%8b%a4-my-story/)은 팀장이 인터뷰한 내용을 정리한 것인데 읽으면서 굉장히 마음에 와닿았다.
-    - 항상 긍정적인 마인드로 주변을 이끌어 가는 사람과 일할 수 있는 것은 큰 행운이라고 생각한다.
+  - 내가 생각하는 좋은 개발자의 덕목은 **좋은 영향력을 행사**하는 것, **같이 일하고 싶은 사람**이 되는 것이다.
+    - 현재 같은 팀 소속의 [체대생 개발자로 알려진 한정수 담당님](https://github.com/integerous)이 그렇다.
+      - [체대 출신 개발자의 2018년 회고](https://ryan-han.com/post/memoirs/memoirs2018/)
+      - [체대 출신 개발자의 2019년 회고](https://ryan-han.com/post/memoirs/memoirs2019/)
+      - [체대생, 개발자가 되다! (한정수ㅣ줌인터넷 포털개발팀)](https://www.edwith.org/sef-2019/lecture/44869/)
+      - [고퀄리티 개발 컨텐츠 모음](https://github.com/Integerous/goQuality-dev-contents)
+      - 이런 분과 **같은 팀에서 일할 수 있다는 것은 큰 행운**이라고 생각한다.
+    - 그리고 [우리 팀장님](https://beyondj2ee.wordpress.com/) 또한 그렇다.
+      - [이 글](https://beyondj2ee.wordpress.com/2014/05/16/%ec%a0%91%ec%86%8d-%ec%a0%9c%ea%b0%80-%ed%95%9c%eb%b2%88-%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%a5%bc-%eb%a7%8c%eb%82%98-%eb%b4%a4%ec%8a%b5%eb%8b%88%eb%8b%a4-my-story/)은 팀장이 인터뷰한 내용을 정리한 것인데 읽으면서 굉장히 마음에 와닿았다.
+      - 항상 긍정적인 마인드로 주변을 이끌어 가는 사람과 일할 수 있는 것은 큰 행운이라고 생각한다.
   - 이 외에도 우리 팀에는 좋은 분들이 너무 많이 있다. **필자 또한 긍정적인 영향력을 가진 구성원이 되는 것이 목표**이다.
 - `3주차`에는 회고 주제가 기억나지 않았다. 기억나는건 공개 코드리뷰를 하면서 `Typescript`에 대해 설명하고 덤으로 **`intellij`를 이용하여 git을 운영하는 방법과 코드리뷰를 하는 방법** 등을 설명했다.
 - `4주차`에는 스터디 자체에 대한 회고와 **앞으로의 계획**, 그리고 그냥 각자에 대한 이야기를 했던걸로 기억한다.
@@ -445,7 +450,7 @@ state.c = 222;
 
 ![image10](https://user-images.githubusercontent.com/18749057/96173666-33319b00-0f63-11eb-8f29-bb8063e6433d.png)
 
-마찬가지로 **컴포넌트가 렌더링**에 사용할 수 있다.
+마찬가지로 **컴포넌트 렌더링**에 사용할 수 있다.
 
 주목해야할 점 중에 하나가 `observer`에 `debounce`를 씌운 부분이다. `observable`에 변화가 생겼을 때 한 프레임 단위로 `observer`를 실행하도록 한 것이다.
 
@@ -492,12 +497,14 @@ export class Component<Props = {}, State extends Record<string, any> = {}> {
 
   private async setup () {
     await this.componentInit();
+
     // state는 observable로 만들었다.
     this.$state = observable(this.$state || {});
     this.setEvent();
+
     // render는 observe로 만들었다.
+    // 따라서 state(observable)가 변경되면 자동으로 render(observe)가 실행된다.
     observe(this.render);
-    // 따라서 state가 변경되면 자동으로 render가 실행된다.
   }
 
   private buildChildren () {
@@ -609,7 +616,8 @@ export const TeamList = class extends Component {
 ```
 
 그리고 컴포넌트 코드에서 주목해야할 부분은 `addEventBubblingListener` 이다.
-컴포넌트가 생성될 때 최초에 한 번만 이벤트를 버블링으로 등록하고 이후에는 이벤트를 따로 등록하지 않고 있다.
+**컴포넌트가 마운트될 때 컴포넌트를 감싸는 DOM에 전체 이벤트를 버블링을 이용하여 등록**한다.
+따라서 이벤트를 조금 더 유연하게 관리할 수 있게 된다.
 
 ```ts
 export const addEventBubblingListener = <T = CommonEvent>(
@@ -628,17 +636,17 @@ export const addEventBubblingListener = <T = CommonEvent>(
 }
 ```
 
-그런데 이벤트의 type 때문에 굉장히 고생을 많이 했다.
+그런데 **이벤트의 type 때문에 무척 고생**했다.
 
-- 일단 event의 type 자체가 애매모호 하다. 제대로 할 수 있는게 정말 하나도 없다.
-- event의 target이 dom을 가르키고 있지 않고 있다. 즉, 아무런 타입 선언 없이 event.target을 가져와서 사용하면 무조건 에러가 발생한다.
+- **기본 event type 자체가 애매모호** 하다. 제대로 할 수 있는게 정말 하나도 없다.
+- **event의 target이 dom을 가르키고 있지 않고 있다.** 그래서 아무런 타입 선언 없이 `event.target`을 가져와서 사용하면 무조건 에러가 발생한다.
 
-즉, 명시적으로 event의 type을 직접 정의해야 하고, event에서 사용되는 target의 type 또한 정의해줘야한다.
-그런데 태그도, 이벤트도 굉장히 많은 유형을 가지고 있다.
+즉, **명시적으로 event의 type을 직접 정의**해야 하고, event에서 사용되는 **target의 type 또한 정의**해야 제대로 사용할 수 있다.
+문제는 태그의 종류도 굉장히 많고, 이벤트의 종류도 굉장히 많이 있다는 것이다.
 
 그래서 React는 `React.ChangeEvent<HTMLTextAreaElement>` 이런식으로 사용할 수 있도록 **모든 Event와 DOM 타입을 정의**했다.
 
-일단 그냥 `any` 처리할까 고민했지만 그럴꺼면 `ts`를 왜쓰겠냐는 생각 때문에 조금 머리를 굴렸다.
+일단 그냥 `any`로 처리할까 고민했지만 그럴꺼면 `ts`를 왜쓰겠냐는 생각 때문에 조금 머리를 굴렸다.
 
 ```ts
 interface CommonEvent<T extends HTMLElement = HTMLElement> extends Omit<Event, 'target'> {
@@ -738,9 +746,7 @@ export class Store<T> {
 
 ```
 
-`Store`는 `Vuex`를 모방하여 만들었다. 그래서 거의 똑같이 사용했다.
-
-그래서 다음과 같이 사용할 수 있다.
+`Store`는 `Vuex`를 모방하여 만들었다. 그래서 거의 똑같이 사용했다. 따라서 위의 코드는 다음과 같이 사용할 수 있다.
 
 ```ts
 import {Store} from "@/_core";
@@ -789,11 +795,9 @@ const teams = teamStore.$state.teams;
 
 ```
 
-vuex랑 사용방법이 거의 비슷하다.
-
 ***
 
-다음으로 RestClient이다.
+다음으로 `RestClient.ts`를 살펴보자.
 
 ```ts
 // RestClient
@@ -843,11 +847,17 @@ export class RestClient {
 
 }
 
-// 다음과 같이 Adapter를 만들수 있다.
+```
+
+아쉬운 부분은 에러처리를 `RestClient`에서 하지 않는다는 점이다. ~~그냥 귀찮아서 안 했다.~~
+어쨌든, 위의 코드는 다음과 같이 사용할 수 있다.
+
+```ts
+// 먼저 Adapter를 만들어야 한다.
 export const todoAdapterURL = 'https://js-todo-list-9ca3a.df.r.appspot.com/api';
 export const todoAdapterClient: RestClient = new RestClient(todoAdapterURL);
 
-// 그리고 adapter를 service 로직에서 사용한다. 
+// 그리고 adapter를 service에서 불러와 사용하면 된다. 
 export const todoService = Object.freeze({
 
  fetchTeams () {
@@ -874,11 +884,11 @@ export const todoService = Object.freeze({
    return todoAdapterClient.delete(`/teams/${teamId}/members/${memberId}`);
  },
 
-})
+});
 
 ```
 
-최대한 추상화를 한 코드이다. 아마 axios를 사용한다면 더 단축될 것이다.
+최대한 추상화를 한 코드이다. 아마 `axios`를 사용한다면 더 단축될 것이다.
 
 ***
 
@@ -896,15 +906,18 @@ export const Router = class {
   constructor (
     private readonly callback: (uri: string) => void
   ) {
+    // 주소의 변경을 감지한다. 주소가 변경되면 load를 실행한다.
     window.onpopstate = () => this.load();
   }
-
+  
+  // load는 현재 주소에 매칭되는 일을 수행한다.
   public load (): void {
     const uri: string = location.pathname.split('/').pop() || '';
     this.$query = parseQuery(location.search);
     this.callback(uri);
   }
 
+  // push는 주소를 변경한 해당 주소에 다음에 매칭되는 일을 수행하낟.
   public push (uri: string): void {
     const query: RequestQuery = parseQuery(uri);
     this.$query = query;
@@ -913,8 +926,16 @@ export const Router = class {
   }
 
 }
+```
+로직은 매우 단순하다.
 
-// 위의 코드는 다음과 같이 사용된다.
+- 주소가 변경되면 `Callback` 함수가 실행된다.
+- `Callback`함수는 주소에 매칭되는 컴포넌트를 최상위 DOM에 렌더링하는 형태의 코드로 만든다.
+- 혹은 `push`를 이용하여 직접 `Callback`을 호출할 수 있다.
+
+그래서 다음과 같이 사용할 수 있다.
+
+```ts
 const $app = selectElement('#app');
 export const todoRouter = new Router((uri: string) => {
 
@@ -928,15 +949,16 @@ export const todoRouter = new Router((uri: string) => {
 
 // 현재 주소에 대한 컴포넌트 렌더링
 todoRouter.load();
-```
 
-Router는 uri와 매칭되는 컴포넌트를 렌더링해주는 역할을 수행한다.
+// 라우터 변경
+todoRouter.push('/kanban'); // Kanban 렌더링
+todoRouter.push('/'); // Team 렌더
+```
 
 ***
 
 이렇게 만들어본 코어는 추후에 [네이버 아폴로 챌린지](https://programmers.co.kr/competitions/383/2020-naver-fe-recruitment)에서 프론트엔드 과제를 만들 때 큰 도움이 되었다.
-다만 라우터에 몇 가지 문제가 있어서 다시 개선해야 했다.. 너무 대충만들었달까.. 😅
-
+다만 라우터에 몇 가지 문제가 있어서 다시 개선해야 했다.. 너무 대충만들었달까.. 😅    
 
 #### (6) 정리
 
@@ -967,11 +989,11 @@ Router는 uri와 매칭되는 컴포넌트를 렌더링해주는 역할을 수�
 
 먼저 팀원의 지인 중에 이 스터디에 대해 궁금해하는 사람이 있어서 최대한 자세히 설명해줬고,
 **내가 가르치고 있는 학생들에게도 다음 기수에 꼭 신청하라고 신신당부** 해놨다.
-_글을 작성하는 시점을 기준을 총 3명의 학생이 신청했다._
+_글을 작성하는 시점을 기준으로 3명의 학생이 4기 스터디를 신청했다._
 
-그리고 같이 신청한 친구 중 한 명이 이 스터디를 신청해놓고 아예 활동을 하지 않았다.
-왜 활동을 안 하냐고 물어보니 [프로그래머스](https://programmers.co.kr/)에서 진행한 [프론트엔드 개발을 위한 자바스크립트 온라인 스터디
-](https://programmers.co.kr/learn/courses/10785)을 참여했었는데, 블랙커피 스터디의 커리큘럼이 이와 매우 유사해서 일부로 하지 않았다고 한다. ~~어디서 핑계를~~
+그리고 같이 신청한 친구 중 한 명이 아예 활동을 안 했다.
+왜 활동을 안 하냐고 물어보니 [프로그래머스](https://programmers.co.kr/)에서 진행한 [프론트엔드 개발을 위한 자바스크립트 스터디(feat. VanillaJS)](https://programmers.co.kr/learn/courses/10785)에 참여했었는데,
+**블랙커피 스터디의 커리큘럼이 이와 매우 유사해서** 일부로 하지 않았다고 한다. ~~어디서 핑계를~~
 
 나도 어떤 스터디인가 궁금해서 추천사를 봤는데,
 
@@ -985,7 +1007,7 @@ _블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 
 앞서 언급했지만 **개발 공부는 다른 사람들과 같이** 해야한다. 개발은 절대 혼자하는게 아니기 때문이다.
 
 아 그리고 현재 스터디는 `Level01`이다.
-[Level02](https://edu.nextstep.camp/c/30DRya3u/)에서는 주로 테스트에 대한 내용을 다루고 있다.
+[Level02](https://edu.nextstep.camp/c/30DRya3u/)에서는 주로 **테스트에 대한 내용**을 다루고 있다.
 
 스터디장님은 최종 레벨을 [클린코드를 위한 TDD, 리팩토링 with Java](https://edu.nextstep.camp/c/8fWRxNWU/)와 유사한 커리큘럼으로 만들어서 운영하는게 목표라고 하셨다.  
 
@@ -1033,13 +1055,13 @@ _블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 
 리뷰어를 하기 전에는 java 자체를 깊게 공부해본적이 없어서 걱정이 많았다.
 그런데 TDD 과정은 **대부분 설계에 대한 내용**이 많았기 때문에 생각보다 수월하게 리뷰할 수 있었다.
  
-지금은 javascript 공부에 집중하고 있는 상태라서 어느 정도 js에 대해 만족할 만한 수준이 된다면, java에 투자좀 해야겠다.
+지금은 javascript 공부에 집중하고 있는 상태라서 어느 정도 만족할 만한 수준이 된다면, java에 투자할 생각이다. ~~그게 대체 언제일까?~~
 
 그냥.. 공부할게 너무 많다... 😭 
 
 ### 4. 기능경기대회 - 전국대회
 
-8월부터 선생님의 부탁으로 기능반 학생들을 지도했고, 이번 달에는 **대회장까지 따라가서 학생들의 훈련을 도왔다.**
+8월부터 선생님의 부탁으로 기능반 학생들을 지도했고, **숙소(전주)까지 따라가서 학생들의 훈련을 도왔다.**
 
 ::: tip 기능경기대회
 
@@ -1048,28 +1070,32 @@ _블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 
 - **지방대회 - 전국대회 - 국가대표 선발전 - 세계대회** 등의 과정이 있다.
 - **지방대회**는 4월에 개최된다. 그런데 올해는 **코로나 때문에 6월**에 개최되었다.
 - **전국대회**는 9월/10월 중에 개최된다. 올해는 **9월 14일 부터 7일간** 대회가 진행되었다.
-- **세계대회**는 2년에 한 번씩 개최된다.
+- **세계대회**는 2년에 한 번씩 개최된다. 세계대회 입상 혜택은 다음과 같다. _올림픽 입상 혜택과 동일하다고 보면 된다._
+  - 병역대체복무
+  - 신축 아파트 분양권 획득
+  - 대기업 연봉급 상금
+  - 대학 진학시 학비 전액 지원
+  - 연금
 - 자세한 내용은 [마이스터넷](https://meister.hrdkorea.or.kr/main/main.do) 참고
   - [지방대회](https://meister.hrdkorea.or.kr/sub/3/2/1/20160512110924569100_view.do)
   - [전국대회](https://meister.hrdkorea.or.kr/sub/3/3/1/20160512111525375100_view.do)
   - [세계대회](https://meister.hrdkorea.or.kr/sub/3/4/1/20160512111859974100_view.do)
 
-필자 또한 2012년도 경기도대회, 전국대회에서 입상을 했고 이를 계기로 본격적인 개발공부를 시작했다.
+필자 또한 **2012년도 경기도대회, 전국대회에서 입상**을 했고 이를 계기로 본격적인 개발공부를 시작했다.
 
 :::
 
 **9월 14일** 부터 대회 시작이었고, 올해는 전북에서 진행되었다.
 
-
 <div style="padding-top: 40%; position: relative;">
     <img style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover;" src="https://user-images.githubusercontent.com/18749057/96245616-7717b500-0fe2-11eb-8e0a-524b36ee50bd.jpeg" alt="image19" />
 </div>
 
-경기장은 `전북 하이텍 고등학교`인데 코로나 때문에 선수들만 입장 가능했다. 
+경기장은 `전북 하이텍 고등학교`인데 코로나 때문에 선수들만 입장 가능했다. ~~덕분에 무척 편했다.~~
 
 ![image14](https://user-images.githubusercontent.com/18749057/96245480-52bbd880-0fe2-11eb-9a33-f2e702a8dc10.png)
 
-그래서 나는 학생들이 경기가 끝나고 숙소에 돌아오면, 문제 풀이를 옆에서 도와주었다.
+나는 학생들이 경기가 끝나고 숙소에 돌아오면, 문제 풀이를 옆에서 도와주었다.
 __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 회사 일도 재택근무로 병행하고 있던 상태라서 **정말 미친듯이 피곤**했다.
 
@@ -1084,11 +1110,11 @@ __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 그리고 이 글을 작성하는 시점을 기준(10/16)으로 **다음 기수의 학생들을 가르치는 중**이다.
 이번 대회는 준비기간이 한 달 정도 밖에 되지 않았기 때문에 이번에 가르치는 학생들은 조금 더 차근차근 준비해서 **역량 자체를 키워줄 생각**이다.
 
-기능대회는 이제 너무 꼰대같은 대회가 되어버렸다. _문제 출제 기준부터 제발 좀 변경했으면... ㅠㅠ_  
+기능대회는 이제 너무 꼰대같은 대회가 되어버렸다. _제발 제발 제발 문제 출제 기준좀 좀 변경했으면... ㅠㅠ_  
 
 ### 5. 프로그래머스 리액트 스터디
 
-앞서 블랙커피 스터디를 다룰 때 언급한 언급한 프로그래머스에 올라온 스터디 목록을 쭉 보다가 **리액트 스터디**가 눈에 보였다.
+앞서 블랙커피 스터디를 다룰 때 언급한 프로그래머스에 올라온 스터디 목록을 쭉 보다가 **리액트 스터디**가 눈에 보였다.
 
 ![image20](https://user-images.githubusercontent.com/18749057/96252260-a7645100-0fec-11eb-89da-129fe0814166.png)
 
@@ -1191,7 +1217,7 @@ __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 내용이 너무 많아서 이곳에 보여주긴 힘들고, 궁금한 사람만 [이 링크](https://github.com/DKU-STUDY/TodayReview/issues/136#issuecomment-684861911)에서 확인해보길 바란다.
 
 이러한 분량의 [TodayReview](https://github.com/DKU-STUDY/TodayReview/issues)를 거의 매일 남기고 있다.
-이러한 열정이 부럽기도 하고, 존경스럽기도 하고, 같이 스터디를 할 수 있음에 감사함을 느낀다.
+이러한 열정이 부럽기도 하고, 존경스럽기도 하고, **같이 스터디를 할 수 있음에 감사함을 느낀다.**
 
 ### 8. 일일커밋 및 코덕
 
