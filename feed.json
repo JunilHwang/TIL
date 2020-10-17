@@ -27,6 +27,13 @@
             "date_modified": "2020-01-19T13:00:00.000Z"
         },
         {
+            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
+            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
+            "title": "MVVM System 개선하기 (2)",
+            "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
+            "date_modified": "2020-02-07T14:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/",
             "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/",
             "title": "MVVM System 만들기",
@@ -42,11 +49,12 @@
             "date_modified": "2020-01-30T13:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
-            "url": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/",
-            "title": "MVVM System 개선하기 (2)",
-            "summary": "ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.",
-            "date_modified": "2020-02-07T14:00:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
+            "title": "Gradle Wrapper",
+            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
+            "image": "https://junilhwang.github.io/TIL/./01.jpg",
+            "date_modified": "2020-01-14T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/",
@@ -54,14 +62,6 @@
             "title": "MVVM System 개선하기 (3)",
             "summary": "MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.",
             "date_modified": "2020-02-08T23:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
-            "url": "https://junilhwang.github.io/TIL/Gradle/GradleWrapper/",
-            "title": "Gradle Wrapper",
-            "summary": "Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.",
-            "image": "https://junilhwang.github.io/TIL/./01.jpg",
-            "date_modified": "2020-01-14T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Javascript/Execution-Context/",
@@ -93,20 +93,20 @@
             "date_modified": "2020-02-29T13:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
-            "title": "2020년 2분기 회고",
-            "summary": "개발자 황준일의 2020년 2분기 회고입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png",
-            "date_modified": "2020-08-11T13:42:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
             "title": "2020년 3월 회고",
             "summary": "2020년 3월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png",
             "date_modified": "2020-03-31T13:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
+            "title": "2020년 2분기 회고",
+            "summary": "개발자 황준일의 2020년 2분기 회고입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png",
+            "date_modified": "2020-08-11T13:42:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
@@ -133,12 +133,12 @@
             "date_modified": "2020-07-12T13:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/07-July/",
-            "title": "2020년 7월 회고",
-            "summary": "2020년 7월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/89118668-5a3f0b80-d4e2-11ea-825d-9909b0026de0.png",
-            "date_modified": "2020-08-10T12:21:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
+            "title": "2020년 9월 회고",
+            "summary": "개발자 황준일의 2020년 9월 회고입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/95010212-7128e800-0662-11eb-918d-da7a31d64d7f.png",
+            "date_modified": "2020-10-17T17:40:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
@@ -149,12 +149,11 @@
             "date_modified": "2020-10-05T01:27:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
-            "title": "2020년 9월 회고",
-            "summary": "개발자 황준일의 2020년 9월 회고입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/95010212-7128e800-0662-11eb-918d-da7a31d64d7f.png",
-            "date_modified": "2020-10-17T17:40:00.000Z"
+            "id": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
+            "url": "https://junilhwang.github.io/TIL/Vuepress/Deploy/",
+            "title": "github page에 배포하기",
+            "summary": "Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.",
+            "date_modified": "2020-01-06T13:00:00.000Z"
         }
     ]
 }
