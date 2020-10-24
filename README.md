@@ -18,7 +18,11 @@ next: false
 
 ### Javascript
 
-- [실행 컨텍스트](/Javascript/Core/Execution-Context/)
+- 코어
+  - [실행 컨텍스트](/Javascript/Core/Execution-Context/)
+  
+- 설계
+  - [Vanilla Javascript로 간단한 Component 만들기](/Javascript/Design/Vanilla-JS-Component/)
 
 ### Vuepress
 

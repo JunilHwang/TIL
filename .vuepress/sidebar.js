@@ -1,5 +1,8 @@
 const vuepress = '/Vuepress'
 const CodeSpitz = '/CodeSpitz'
+const Javascript = '/Javascript';
+const JavascriptDomain = `${Javascript}/Domain`;
+const JavascriptDesign = `${Javascript}/Design`;
 const CodeSpitzNBJS = `${CodeSpitz}/None-Blocking-Javascript`
 const CodeSpitzOOJS = `${CodeSpitz}/Object-Oriented-Javascript`
 const Book = `/Book`
@@ -39,12 +42,12 @@ module.exports = [
     title: 'Javascript',
     children: [
       {
-        title: 'Core에 대해 이해하기',
-        children: ['Execution-Context/'].map(v => `/Javascript/Core/${v}`),
+        title: 'Domain',
+        children: ['Execution-Context/'].map(v => `${JavascriptDomain}/${v}`),
       },
       {
-        title: '앱 설계하기',
-        children: ['Vanilla-JS-Component/'].map(v => `/Javascript/Design/${v}`),
+        title: 'Design',
+        children: ['Vanilla-JS-Component/'].map(v => `${JavascriptDesign}/${v}`),
       }
     ],
   },
