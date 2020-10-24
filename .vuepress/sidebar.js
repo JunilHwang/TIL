@@ -44,7 +44,7 @@ module.exports = [
       },
       {
         title: '앱 설계하기',
-        children: ['Simple-Component/'].map(v => `/Javascript/Design/${v}`),
+        children: ['Vanilla-JS-Component/'].map(v => `/Javascript/Design/${v}`),
       }
     ],
   },
