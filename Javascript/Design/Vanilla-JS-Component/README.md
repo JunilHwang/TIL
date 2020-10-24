@@ -64,13 +64,10 @@ title: Vanilla Javascript로 컴포넌트 만들기
 
 간단한게 `setState` 라는 메소드를 통해서 `state`를 기반으로 `render`를 해주는 코드를 만들어보자.
 
-::: demo [vanilla]
 ```html
-<html>
-  <div id="items1"></div>
-</html>
+<div id="app"></div>
 <script>
-const $items = document.querySelector('#items1');
+const $app = document.querySelector('#app');
 
 let state = {
   items: ['item1', 'item2', 'item3', 'item4']
@@ -78,7 +75,7 @@ let state = {
 
 const render = () => {
   const { items } = state;
-  $items.innerHTML = `
+  $app.innerHTML = `
     <ul>
       ${items.map(item => `<li>${item}</li>`).join('')}
     </ul>
@@ -97,15 +94,13 @@ const setState = (newState) => {
 render();
 </script>
 ```
-:::
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example01/" width="100%"></iframe>
 
 이제 이렇게 작성한 코드를 `class` 문법으로 추상화시켜보자.
 
-::: demo [vanilla]
 ```html
-<html>
-  <div id="items2"></div>
-</html>
+<div id="app"></div>
 <script>
 class Component {
   $target;
@@ -128,7 +123,7 @@ class Component {
   }
 }
 
-class Items extends Component {
+class App extends Component {
   setup () {
     this.$state = { items: ['item1', 'item2'] };
   }
@@ -150,9 +145,10 @@ class Items extends Component {
   }
 }
 
-new Items(document.querySelector('#items2'));
+new App(document.querySelector('#app'));
 </script>
 ```
-:::
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example02/" width="100%"></iframe>
 
 컴포넌트의 코어 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다. 다음과 같이 사용해보자.
