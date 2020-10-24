@@ -24,7 +24,7 @@ title: Vanilla Javascript로 컴포넌트 만들기
 :::
 
 약 3년 동안 `jQuery`만 주구장창 사용하면서 느낀 제일 큰 장점은 `DOM API`라고 생각한다.
-알아서 크로스 브라우징을 해결해주고, `DOM`를 쉽게 조작할 수 있었기 때문이다.
+`jQuery`는 `DOM`을 쉽게 조작할 수 있도록 만들어주는 것에 더해 `크로스 브라우징`과 관련된 이슈를 해결해주었다.
 
 그런데 점점 브라우저와 Javascript가 발전하는 과정에서 아예 브라우저(클라이언트) 단에서 렌더링을 하고,
 서버에서는 렌더링에 필요한 데이터만 제공하는 형태로 기술이 변화했다.
@@ -58,4 +58,67 @@ title: Vanilla Javascript로 컴포넌트 만들기
 어쨌든 중요한 점은 현 시점의 웹 어플리케이션은 컴포넌트 단위로 설계되고 개발된다는 것이다.
 그리고 컴포넌트마다 컴포넌트를 렌더링할 때 필요한 상태를 관리하게 되었으며, `Proxy` 혹은 `Observer Pattern` 등을 이용하여 이를 구현한다.
 
-## (2) 
+**이론에 대해 다루자면 한도 끝도 없기 때문에 이제부터는 코드로 이야기 하겠다.**
+
+## (2) state - setState - render
+
+간단한게 `setState` 라는 메소드를 통해서 `state`를 기반으로 `render`를 해주는 코드를 만들어보자.
+
+```html
+<div id="app"></div>
+<script>
+const $app = document.querySelector('#app');
+
+let state = {
+  items: ['item1', 'item2', 'item3', 'item4']
+}
+
+const render = () => {
+  const { items } = state;
+  $app.innerHTML = `
+    <ul>
+      ${items.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+  `;
+}
+
+const setState = (newState) => {
+  state = { ...state, newState };
+  render();
+}
+
+render();
+</script>
+```
+
+이 코드는 다음과 같이 렌더링 된다.
+::: demo [vanilla]
+```html
+<html>
+  <div id="items"></div>
+</html>
+<script>
+const $items = document.querySelector('#items');
+
+let state = {
+  items: ['item1', 'item2', 'item3', 'item4']
+}
+
+const render = () => {
+  const { items } = state;
+  $items.innerHTML = `
+    <ul>
+      ${items.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+  `;
+}
+
+const setState = (newState) => {
+  state = { ...state, newState };
+  render();
+}
+
+render();
+</script>
+```
+:::
