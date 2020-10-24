@@ -64,41 +64,13 @@ title: Vanilla Javascript로 컴포넌트 만들기
 
 간단한게 `setState` 라는 메소드를 통해서 `state`를 기반으로 `render`를 해주는 코드를 만들어보자.
 
-```html
-<div id="app"></div>
-<script>
-const $app = document.querySelector('#app');
-
-let state = {
-  items: ['item1', 'item2', 'item3', 'item4']
-}
-
-const render = () => {
-  const { items } = state;
-  $app.innerHTML = `
-    <ul>
-      ${items.map(item => `<li>${item}</li>`).join('')}
-    </ul>
-  `;
-}
-
-const setState = (newState) => {
-  state = { ...state, newState };
-  render();
-}
-
-render();
-</script>
-```
-
-이 코드는 다음과 같이 렌더링 된다.
 ::: demo [vanilla]
 ```html
 <html>
-  <div id="items"></div>
+  <div id="items1"></div>
 </html>
 <script>
-const $items = document.querySelector('#items');
+const $items = document.querySelector('#items1');
 
 let state = {
   items: ['item1', 'item2', 'item3', 'item4']
@@ -110,11 +82,15 @@ const render = () => {
     <ul>
       ${items.map(item => `<li>${item}</li>`).join('')}
     </ul>
+    <button id="append">추가</button>
   `;
+  document.querySelector('#append').addEventListener('click', () => {
+    setState({ items: [ ...items, `item${items.length + 1}` ] })
+  })
 }
 
 const setState = (newState) => {
-  state = { ...state, newState };
+  state = { ...state, ...newState };
   render();
 }
 
@@ -122,3 +98,61 @@ render();
 </script>
 ```
 :::
+
+이제 이렇게 작성한 코드를 `class` 문법으로 추상화시켜보자.
+
+::: demo [vanilla]
+```html
+<html>
+  <div id="items2"></div>
+</html>
+<script>
+class Component {
+  $target;
+  $state;
+  constructor ($target) { 
+    this.$target = $target;
+    this.setup();
+    this.render();
+  }
+  setup () {};
+  template () { return ''; }
+  render () {
+    this.$target.innerHTML = this.template();
+    this.setEvent();
+  }
+  setEvent () {}
+  setState (newState) {
+    this.$state = { ...this.$state, ...newState };
+    this.render();
+  }
+}
+
+class Items extends Component {
+  setup () {
+    this.$state = { items: ['item1', 'item2'] };
+  }
+  template () {
+    const { items } = this.$state;
+    return `
+        <ul>
+          ${items.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+        <button>추가</button>
+    `
+  }
+  
+  setEvent () {
+    this.$target.querySelector('button').addEventListener('click', () => {
+      const { items } = this.$state;
+      this.setState({ items: [ ...items, `item${items.length + 1}` ] });
+    }); 
+  }
+}
+
+new Items(document.querySelector('#items2'));
+</script>
+```
+:::
+
+컴포넌트의 코어 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다. 다음과 같이 사용해보자.
