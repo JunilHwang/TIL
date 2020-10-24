@@ -18,7 +18,7 @@ next: false
 
 ### Javascript
 
-- [실행 컨텍스트](/Javascript/Execution-Context/)
+- [실행 컨텍스트](/Javascript/Core/Execution-Context/)
 
 ### Vuepress
 
