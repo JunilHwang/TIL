@@ -151,4 +151,15 @@ new App(document.querySelector('#app'));
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example02/" width="100%"></iframe>
 
-컴포넌트의 코어 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다. 다음과 같이 사용해보자.
+컴포넌트의 코어 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다. 이 상태에서 다음과 같이 모듈화를 할 수 있다.
+
+```sh
+.
+├── index.html
+└── src
+    ├── app.js
+    ├── components
+    │   └── Items.js
+    └── core
+        └── Component.js
+```
