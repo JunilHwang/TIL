@@ -37,7 +37,16 @@ module.exports = [
   },
   {
     title: 'Javascript',
-    children: ['Execution-Context/'].map(v => `/Javascript/${v}`),
+    children: [
+      {
+        title: 'Core에 대해 이해하기',
+        children: ['Execution-Context/'].map(v => `/Javascript/Core/${v}`),
+      },
+      {
+        title: '앱 설계하기',
+        children: ['Simple-Component/'].map(v => `/Javascript/Design/${v}`),
+      }
+    ],
   },
   {
     title: 'Vuepresse',
