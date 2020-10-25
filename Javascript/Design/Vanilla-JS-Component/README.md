@@ -1,6 +1,11 @@
 ---
 
-title: Vanilla Javascript로 컴포넌트 만들기
+title: Vanilla Javascript로 웹 컴포넌트 만들기
+description: Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.
+date: 2020-10-25 22:30:00
+sidebarDepth: 2
+feed:
+  enable: true
 
 ---
 
@@ -346,4 +351,53 @@ export default class Items extends Component {
 
 즉, event를 각각의 하위 요소가 아니라 component의 target 자체에 등록하는 것이다.
 따라서 component가 생성되는 시점에만 이벤트 등록을 해놓으면 추가로 등록할 필요가 없어진다.
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example05/" width="100%"></iframe>
+
+그리고 이벤트 버블링을 통한 등록 과정을 메소드로 만들어서 사용하면 코드가 더 깔끔해진다.
+
+```js
+export default class Component {
+  $target;
+  $state;
+  constructor ($target) { /* 생략 */ }
+  setup () { /* 생략 */ }
+  template () { /* 생략 */ }
+  render () { /* 생략 */ }
+  setEvent () { /* 생략 */ }
+  setState (newState) { /* 생략 */ }
+
+  addEvent (eventType, selector, callback) {
+    const children = [ ...this.$target.querySelectorAll(selector) ]; 
+    // selector에 명시한 것 보다 더 하위 요소가 선택되는 경우가 있을 땐
+    // closest를 이용하여 처리한다.
+    const isTarget = (target) => children.includes(target)
+                                 || target.closest(selector);
+    this.$target.addEventListener(eventType, event => {
+      if (!isTarget(event.target)) return false;
+      callback(event);
+    })
+  }
+
+}
+```
+
+이렇게 작성한 메소드는 다음과 같이 사용하면 된다.
+```js
+export default class Items extends Component {
+  setup () { /* 생략 */ }
+  template () {/* 생략 */ }
+  setEvent () {
+    this.addEvent('click', '.addBtn', ({ target }) => {
+      const { items } = this.$state;
+      this.setState({ items: [ ...items, `item${items.length + 1}` ] });
+    });
+    this.addEvent('click', '.deleteBtn', ({ target }) => {
+      const items = [ ...this.$state.items ];
+      items.splice(target.dataset.index, 1);
+      this.setState({ items });
+    });
+  }
+}
+``` 
 
