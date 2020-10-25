@@ -151,15 +151,97 @@ new App(document.querySelector('#app'));
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example02/" width="100%"></iframe>
 
-컴포넌트의 코어 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다. 이 상태에서 다음과 같이 모듈화를 할 수 있다.
+컴포넌트 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다.
+이 상태에서 다음과 같이 모듈화를 할 수 있다.
 
 ```sh
 .
 ├── index.html
 └── src
-    ├── app.js
-    ├── components
+    ├── app.js              # ES Module의 entry file
+    ├── components          # Component 역할을하는 것들
     │   └── Items.js
-    └── core
+    └── core                # 구현에 필요한 코어들
         └── Component.js
 ```
+
+- index.html
+```html
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Component 2</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="./src/app.js" type="module"></script>
+</body>
+</html>
+```
+
+- src/app.js
+```js
+import Items from "./components/Items.js";
+
+class App {
+  constructor() {
+    const $app = document.querySelector('#app');
+    new Items($app);
+  }
+}
+
+new App();
+```
+
+- src/components/Items.js
+```js
+import Component from "../core/Component.js";
+
+export default class Items extends Component {
+  setup () {
+    this.$state = { items: ['item1', 'item2'] };
+  }
+  template () {
+    const { items } = this.$state;
+    return `
+      <ul>
+        ${items.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+      <button>추가</button>
+    `
+  }
+
+  setEvent () {
+    this.$target.querySelector('button').addEventListener('click', () => {
+      const { items } = this.$state;
+      this.setState({ items: [ ...items, `item${items.length + 1}` ] });
+    });
+  }
+}
+```
+
+- src/core/Component.js
+```js
+export default class Component {
+  $target;
+  $state;
+  constructor ($target) {
+    this.$target = $target;
+    this.setup();
+    this.render();
+  }
+  setup () {};
+  template () { return ''; }
+  render () {
+    this.$target.innerHTML = this.template();
+    this.setEvent();
+  }
+  setEvent () {}
+  setState (newState) {
+    this.$state = { ...this.$state, ...newState };
+    this.render();
+  }
+}
+```
+
