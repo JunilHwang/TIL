@@ -245,3 +245,105 @@ export default class Component {
 }
 ```
 
+## (3) 이벤트 처리
+
+앞서 작성한 코드를 사용하면 `render`를 실행할 때 마다 이벤트가 새로 등록된다.
+뿐만 아니라 반복적인 요소에 대해 각각 이벤트를 등록해야 할 땐 여간 불편한게 아니다.
+
+각각의 아이템에 대한 `삭제` 기능을 추가한다고 하면 다음과 같은 코드가 된다.
+
+```js{14,28-33}
+import Component from "../core/Component.js";
+
+export default class Items extends Component {
+  setup () {
+    this.$state = { items: ['item1', 'item2'] };
+  }
+  template () {
+    const { items } = this.$state;
+    return `
+      <ul>
+        ${items.map((item, key) => `
+          <li>
+            ${item}
+            <button class="deleteBtn" data-index="${key}">삭제</button>
+          </li>
+        `).join('')}
+      </ul>
+      <button class="addBtn">추가</button>
+    `
+  }
+
+  setEvent () {
+    this.$target.querySelector('.addBtn').addEventListener('click', () => {
+      const { items } = this.$state;
+      this.setState({ items: [ ...items, `item${items.length + 1}` ] });
+    });
+
+    this.$target.querySelectorAll('.deleteBtn').forEach(deleteBtn =>
+      deleteBtn.addEventListener('click', ({ target }) => {
+        const items = [ ...this.$state.items ];
+        items.splice(target.dataset.index, 1);
+        this.setState({ items });
+      }))
+  }
+}
+
+
+```
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example04/" width="100%"></iframe>
+
+이 때 다음과 같이 [이벤트 버블링](https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81---event-bubbling)을 사용한다면 훨씬 직관적으로 처리할 수 있다.
+
+```js{4,8}
+export default class Items extends Component {
+  setup () {/* 생략 */}
+  template () { /* 생략 */}
+  setEvent () {
+    this.$target.addEventListener('click', ({ target }) => {
+      const items = [ ...this.$state.items ];
+
+      if (target.classList.contains('addBtn')) {
+        this.setState({ items: [ ...items, `item${items.length + 1}` ] });
+      }
+
+      if (target.classList.contains('deleteBtn')) {
+        items.splice(target.dataset.index, 1);
+        this.setState({ items });
+      }
+
+    });
+  }
+}
+```
+
+다만, 기존의 `setEvent`는 `render`를 할 때 마다 실행하기 때문에, `core/Component.js`에 라이프 사이클을 변경해야 한다.
+
+```diff
+ export default class Component {
+   $target;
+   $state;
+   constructor ($target) {
+     this.$target = $target;
+     this.setup();
++    this.setEvent(); // constructor에서 한 번만 실행한다.
+     this.render();
+   }
+   setup () {};
+   template () { return ''; }
+   render () {
+     this.$target.innerHTML = this.template();
+-    this.setEvent(); 
+   }
+   setEvent () {}
+   setState (newState) {
+     this.$state = { ...this.$state, ...newState };
+     this.render();
+   }
+ }
+```
+
+즉, event를 각각의 하위 요소가 아니라 component의 target 자체에 등록하는 것이다.
+따라서 component가 생성되는 시점에만 이벤트 등록을 해놓으면 추가로 등록할 필요가 없어진다.
+
