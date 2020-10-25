@@ -65,11 +65,11 @@ feed:
 
 ## 2. state - setState - render
 
-state를 기반으로 html을 출력해주는 코드를 만들어보자.
+컴포넌트의 설계의 기반이 되는 코드를 만들어보자.
 
 ### (1) 기능 구현
 
-간단한게 `setState` 라는 메소드를 통해서 `state`를 기반으로 `render`를 해주는 코드를 만들어보자.
+먼저 간단한게 `setState` 라는 메소드를 통해서 `state`를 기반으로 `render`를 해주는 코드를 만들어보자.
 
 ```html
 <div id="app"></div>
@@ -106,7 +106,7 @@ render();
 
 이 코드의 핵심은 다음과 같다.
 
-- `state`가 변경되면 `render`를 실행한다는 것이다.
+- `state`가 변경되면 `render`를 실행한다.
 - `state`는 `setState`로만 변경해야 한다.
 
 이러한 규칙을 지켜가면서 코드를 작성한다면, 브라우저 출력되는 내용은 무조건 `state`에 종속되는 것이다.
