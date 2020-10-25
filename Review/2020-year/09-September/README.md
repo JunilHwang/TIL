@@ -235,7 +235,9 @@ loadedScript.then(() =>
 
 #### (1) 스터디 미션소개
 
-![image02](https://user-images.githubusercontent.com/18749057/96161916-d928d980-0f52-11eb-9138-b75d03d0f442.png)
+<p>
+  <img src="https://user-images.githubusercontent.com/18749057/96161916-d928d980-0f52-11eb-9138-b75d03d0f442.png" alt="image02" width="600" />
+</p>
 
 스터디의 미션은 생각보다 간단했다.
 
@@ -257,7 +259,7 @@ loadedScript.then(() =>
 
 스터디는 다음과 같이 진행되었다.
 
-![image03](https://user-images.githubusercontent.com/18749057/96162462-8996dd80-0f53-11eb-84bc-7bb3db19ed17.png) 
+<img src="https://user-images.githubusercontent.com/18749057/96162462-8996dd80-0f53-11eb-84bc-7bb3db19ed17.png" alt="image03" width="800" />
 
 요약하자면 아래와 같다.
 
@@ -283,7 +285,7 @@ loadedScript.then(() =>
     - 그리고 [우리 팀장님](https://beyondj2ee.wordpress.com/) 또한 그렇다.
       - [이 글](https://beyondj2ee.wordpress.com/2014/05/16/%ec%a0%91%ec%86%8d-%ec%a0%9c%ea%b0%80-%ed%95%9c%eb%b2%88-%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%a5%bc-%eb%a7%8c%eb%82%98-%eb%b4%a4%ec%8a%b5%eb%8b%88%eb%8b%a4-my-story/)은 팀장이 인터뷰한 내용을 정리한 것인데 읽으면서 굉장히 마음에 와닿았다.
       - 항상 긍정적인 마인드로 주변을 이끌어 가는 사람과 일할 수 있는 것은 큰 행운이라고 생각한다.
-      - 제일 인상 깊은 내용이다. ![팀장님의 명언](https://user-images.githubusercontent.com/18749057/96334105-35057680-10a9-11eb-9791-ab828a734df8.png)
+      - 제일 인상 깊은 내용이다. <br> <img src="https://user-images.githubusercontent.com/18749057/96334105-35057680-10a9-11eb-9791-ab828a734df8.png" alt="팀장님의 명언" width="500"  />
   - 이 외에도 우리 팀에는 좋은 분들이 너무 많이 있다. **필자 또한 긍정적인 영향력을 가진 구성원이 되는 것이 목표**이다.
 - `3주차`에는 회고 주제가 기억나지 않았다. 기억나는건 공개 코드리뷰를 하면서 `Typescript`에 대해 설명하고 덤으로 **`intellij`를 이용하여 git을 운영하는 방법과 코드리뷰를 하는 방법** 등을 설명했다.
 - `4주차`에는 스터디 자체에 대한 회고와 **앞으로의 계획**, 그리고 그냥 각자에 대한 이야기를 했던걸로 기억한다.
@@ -331,11 +333,11 @@ _페어프로그래밍이 끝나면 각자 짧게 회고 및 서로에 대한 �
 
 `1주차`에는 마지막에 올라온 5개의 PR을 제외한 모든 PR에 리뷰를 남겼다. 갯수를 세어보니 총 10개의 PR이었다.
 
-![image04](https://user-images.githubusercontent.com/18749057/96168541-dbdbfc80-0f5b-11eb-982a-1cc4737f53dc.png)
+<img src="https://user-images.githubusercontent.com/18749057/96168541-dbdbfc80-0f5b-11eb-982a-1cc4737f53dc.png" alt="image04" width="700" />
 
 하루 날잡고 종일 리뷰만 했는데, JS 코드를 마음껏 볼 수 있어서 좋았다.
 
-![image07](https://user-images.githubusercontent.com/18749057/96169597-56f1e280-0f5d-11eb-92e6-cc2553ea10ed.png)
+<img src="https://user-images.githubusercontent.com/18749057/96169597-56f1e280-0f5d-11eb-92e6-cc2553ea10ed.png" alt="image07" width="700" />
 
 1주차에 올라온 코드는 대부분 비슷한 스타일로 작성되어 있어서 **설계적인 측면보단 문법적인 측면의 리뷰**를 많이 했던 것 같다.
 
@@ -355,7 +357,7 @@ _페어프로그래밍이 끝나면 각자 짧게 회고 및 서로에 대한 �
 
 `2주차`에는 PR을 올린 모든 사람이 코드를 굉장히 많이 개선했다.
 
-![image06](https://user-images.githubusercontent.com/18749057/96169303-e5199900-0f5c-11eb-8103-ea57f18594ec.png)
+<img src="https://user-images.githubusercontent.com/18749057/96169303-e5199900-0f5c-11eb-8103-ea57f18594ec.png" alt="image06" width="700" />
 
 대부분의 사람들이 `Observer Pattern`을 이용해서 컴포넌트를 설계했다.
 `Store`를 구현한 사람도 있었고, 혹은 다른 사람들과 아예 다른 방식으로 설계한 사람도 있었다.
@@ -380,7 +382,7 @@ _페어프로그래밍이 끝나면 각자 짧게 회고 및 서로에 대한 �
 
 `3주차`에는 필자를 포함하여 4명의 사람이 PR을 올렸다.
 
-![image09](https://user-images.githubusercontent.com/18749057/96171996-b0a7dc00-0f60-11eb-8348-ca62003836c6.png)
+<img src="https://user-images.githubusercontent.com/18749057/96171996-b0a7dc00-0f60-11eb-8348-ca62003836c6.png" alt="image09" width="700" />
 
 그래서 리뷰 자체는 어렵지 않았다. 대부분 2주차의 설계를 그대로 가져온 모습을 보였다.
 나의 경우 한 분이 `typescript`에 대해 언급해주셔서 스터디장님의 허락을 맡고 `typscript`를 적용했다. ~~괜히 한 것 같다~~
@@ -471,7 +473,7 @@ state.c = 111;
 state.c = 222;
 ```
 
-![image10](https://user-images.githubusercontent.com/18749057/96173666-33319b00-0f63-11eb-8f29-bb8063e6433d.png)
+<img src="https://user-images.githubusercontent.com/18749057/96173666-33319b00-0f63-11eb-8f29-bb8063e6433d.png" alt="image10" widht="500" />
 
 마찬가지로 **컴포넌트 렌더링**에 사용할 수 있다.
 
@@ -1020,7 +1022,7 @@ _글을 작성하는 시점을 기준으로 3명의 학생이 4기 스터디를 
 
 나도 어떤 스터디인가 궁금해서 추천사를 봤는데,
 
-![image11](https://user-images.githubusercontent.com/18749057/96236182-a9231a00-0fd6-11eb-9076-d5472c201514.png)
+<img src="https://user-images.githubusercontent.com/18749057/96236182-a9231a00-0fd6-11eb-9076-d5472c201514.png" alt="image11" width="600" />
 
 _블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 같았다._ ~~사실 여부는 잘 모르겠음~~
 
@@ -1037,23 +1039,27 @@ _블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 
 #### (8) 짧막한 목표
 
 뒤늦게 알았지만, _스터디를 운영 중인 동준님이 우아한 테크코스에서 Front-end 파트를 운영하고 계셨다._
-개인적으로 개발 교육에 관심이 많고, 교육을 부업으로 하고 있기 때문에 **현재 직장에서 충분히 경험이 쌓인다면 한 번 우아한 테크코스팀에 지원해볼 생각**이다.
+사실 옛날부터 나의 직업적 꿈이 **개발과 교육을 같이 하는 것**이였기 때문에 동준님을 동경하게 되었다.
 
-![image08](https://user-images.githubusercontent.com/18749057/96171235-96b9c980-0f5f-11eb-9743-eaf5ad6770fd.png)
+어쨌든 지금도 주업은 개발을 하고 있고 부업을 교육으로 하는 중이다.
+매주 고등학생들을 지도하기도 하고, 인강을 찍어서 특성화고등학교의 방과후 수업에 활용하기도 하는 중이다.
 
-그 때가 언제일진.. 나도 잘 모르겠다 🤪 
+지금은 주로 고등학생을 대상으로 교육을 하고 있으나, 조금 더 기회가 된다면 더 많은 사람들과 교류하며 나의 지식을 전달하는 일을 하고 싶다.
+그게 꼭 동준님처럼 우아한 테크코스에서 일하는게 아닐지라도 말이다! 
+
+그럴라면 또 열심히 공부해야지! 
 
 ### 2. 부스트캠프 리뷰어 활동
 
 8월에 [부스트캠프 리뷰어](https://github.com/connectfoundation/review_2020)를 신청했다.
 
-![부스트캠프 리뷰어](https://user-images.githubusercontent.com/18749057/95013576-1e5c2a00-067c-11eb-8759-f7cf70cab6c7.png)
+<img src="https://user-images.githubusercontent.com/18749057/95013576-1e5c2a00-067c-11eb-8759-f7cf70cab6c7.png" alt="부스트캠프 리뷰어" width="600" /> <br>
 
 <img width="587" alt="image11" src="https://user-images.githubusercontent.com/18749057/96238793-d3c2a200-0fd9-11eb-983d-f3c5e182edd1.png">
 
 본격적인 활동은 9월부터 시작했으며, **매주 월요일에 온라인 세션에서 회고**를 진행했다. 그런데 **웹 리뷰어의 경우 격주로 리뷰**하기 때문에, 회고 참여 또한 격주로 했다.
 
-![image12](https://user-images.githubusercontent.com/18749057/96239127-49c70900-0fda-11eb-9ff9-b1c649c864ff.png)
+<img src="https://user-images.githubusercontent.com/18749057/96239127-49c70900-0fda-11eb-9ff9-b1c649c864ff.png" alt="image12" width="700" />
 
 **격주**로 **화요일/목요일**에 올라오는 PR에 리뷰를 남기면 됐는데 처음에 리뷰할 때 **캠퍼들에게 대체로 위와 같은 내용의 리뷰**를 남겼다.
 사실 첫 리뷰만 좀 힘들었고, 그 이후의 리뷰는 힘들진 않았다. 다만 **6명을 리뷰하는게 생각보다 시간이 많이 소요**됐다.
@@ -1116,13 +1122,13 @@ _블랙커피 스터디장인 임동준님도 이 스터디를 거쳐오신 것 
 
 경기장은 `전북 하이텍 고등학교`인데 코로나 때문에 선수들만 입장 가능했다. ~~덕분에 무척 편했다.~~
 
-![image14](https://user-images.githubusercontent.com/18749057/96245480-52bbd880-0fe2-11eb-9a33-f2e702a8dc10.png)
+<img src="https://user-images.githubusercontent.com/18749057/96245480-52bbd880-0fe2-11eb-9a33-f2e702a8dc10.png" alt="image14" width="500" />
 
 나는 학생들이 경기가 끝나고 숙소에 돌아오면, 문제 풀이를 옆에서 도와주었다.
 __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 회사 일도 재택근무로 병행하고 있던 상태라서 **정말 미친듯이 피곤**했다.
 
-![image15](https://user-images.githubusercontent.com/18749057/96245578-6e26e380-0fe2-11eb-8226-0213e5fa6bd5.jpeg)
+<img src="https://user-images.githubusercontent.com/18749057/96245578-6e26e380-0fe2-11eb-8226-0213e5fa6bd5.jpeg" alt="image15" width="600" />
 
 어쨌든 **필자가 가르친 학생들(서울디지텍고등학교)이 올해에도 입상**했다.
 학생 한 명이 제출을 잘못해서 대략 30점 정도를 채점도 못하고 통으로 날려보냈다.
@@ -1139,13 +1145,13 @@ __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 
 앞서 블랙커피 스터디를 다룰 때 언급한 프로그래머스에 올라온 스터디 목록을 쭉 보다가 **리액트 스터디**가 눈에 보였다.
 
-![image20](https://user-images.githubusercontent.com/18749057/96252260-a7645100-0fec-11eb-89da-129fe0814166.png)
+<img src="https://user-images.githubusercontent.com/18749057/96252260-a7645100-0fec-11eb-89da-129fe0814166.png" alt="image20" width="700" />
 
 <img width="818" alt="image24" src="https://user-images.githubusercontent.com/18749057/96285184-9120ba00-1019-11eb-9304-5ca917681409.png">
 
 여기서도 **블랙커피 스터디장님의 추천사**를 볼 수 있었다 😮 
 
-![image21](https://user-images.githubusercontent.com/18749057/96252674-4be69300-0fed-11eb-85ec-ef0abaa09e05.png)
+<img src="https://user-images.githubusercontent.com/18749057/96252674-4be69300-0fed-11eb-85ec-ef0abaa09e05.png" alt="image21" width="700" />
 
 그래서 고민하지 않고 바로 신청했다. 이게 바로 **추천사의 중요성** 인가.. 🤔 
 
@@ -1153,9 +1159,9 @@ __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 
 첫 번째 미션을 완수하고 PR을 올렸더니 **스터디 리더를 포함한 3명의 리뷰어 분들이 리뷰**를 남겨주셨다.
 
-![image22](https://user-images.githubusercontent.com/18749057/96283857-c3311c80-1017-11eb-89db-6d9b3710f949.png)
+<img src="https://user-images.githubusercontent.com/18749057/96283857-c3311c80-1017-11eb-89db-6d9b3710f949.png" alt="image22" width="700" /><br>
 
-![image23](https://user-images.githubusercontent.com/18749057/96283876-cb895780-1017-11eb-9b86-1eaef07a9a9a.png)
+<img src="https://user-images.githubusercontent.com/18749057/96283876-cb895780-1017-11eb-9b86-1eaef07a9a9a.png" alt="image23" width="700" />
 
 일단 미션의 내용 자체가 굉장히 유익했기 때문에 재밌었다. 확실히 혼자 공부할 때 보다 빠르게 기술을 익히고 있다는 느낌이 들었다.
 
@@ -1193,17 +1199,19 @@ __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 **한 달 전의 나였으면 불가능했을 일이었다.**
 ~~물론 내가 열심히 했기 때문도 있었지만~~ 이 모든것이 블랙커피 스터디 덕분이었다.
 
-결과는 10월 말에 나오는데, 카카오 챌린지는 상위 10% 였기 때문에 **이번엔 상위 5% 정도는 되리라 예상**해본다. 
+결과는 10월 말에 나오는데, 카카오 챌린지는 상위 10% 였기 때문에 **이번엔 상위 5% 정도는 되리라 예상**해본다.
+
+> 10월 말에 결과가 나왔고, 무려 상위 0%의 점수를 획득했다. ~~아싸가오리~~ 
 
 ### 7. 단국대 개발자 스터디
 
 이번 달도 큰 일 없이 스터디가 진행되었다.
 
-![image31](https://user-images.githubusercontent.com/18749057/96289265-b1537780-101f-11eb-91ca-d2531e50fa7a.png)
+<img width="700" alt="image31" src="https://user-images.githubusercontent.com/18749057/96289265-b1537780-101f-11eb-91ca-d2531e50fa7a.png" />
 
 위의 사진 처럼 현재 이 글을 작성하는 시점을 기준으로 **2,247개의 commit**이 존재한다.
 
-![image30](https://user-images.githubusercontent.com/18749057/96288817-fcb95600-101e-11eb-862b-eda2980496ea.png)
+<img width="700" alt="image30" src="https://user-images.githubusercontent.com/18749057/96288817-fcb95600-101e-11eb-862b-eda2980496ea.png" />
 
 이번 달에는 **약 50개의 PR에 리뷰**를 남겼다.
 현재는 나만 꾸준히 리뷰를 남기고 있는데, 다른 사람들도 조금만 의욕을 가지고 서로에게 피드백을 했으면 하는 바람이 있다.
@@ -1226,11 +1234,11 @@ __며칠 동안 새벽 3시에 자거나 혹은 새벽 5시에 일어났다.__
 그래서 다음과 같이 답변을 하면서 현재 운영하고 있는 방식들을 소개했다.
 그리고 겸사 겸사 간간이 리뷰도 해주게 되었다.
 
-<img width="924" alt="image28" src="https://user-images.githubusercontent.com/18749057/96288516-8583c200-101e-11eb-858a-d44da5f2c612.png">
+<img width="700" alt="image28" src="https://user-images.githubusercontent.com/18749057/96288516-8583c200-101e-11eb-858a-d44da5f2c612.png">
 
 **한 달 동안 대략 25개의 리뷰**를 남겼다.
 
-![image29](https://user-images.githubusercontent.com/18749057/96288752-e4e1d200-101e-11eb-854a-5c21c4f4e00e.png)
+<img width="700" alt="image29" src="https://user-images.githubusercontent.com/18749057/96288752-e4e1d200-101e-11eb-854a-5c21c4f4e00e.png">
 
 고등학교 때 부터 이렇게 준비하는 이 학생들이 내심 부럽기도 하고 또 힘 닿는 만큼 도와주고 싶다는 생각도 든다. ~~지금 내 코가 석자인데 오지랖만 넓어지고 있다.~~
 
