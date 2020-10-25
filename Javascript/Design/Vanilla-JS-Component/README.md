@@ -2,7 +2,7 @@
 
 title: Vanilla Javascript로 웹 컴포넌트 만들기
 description: Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.
-date: 2020-10-25 22:30:00
+date: 2020-10-25 23:20:00
 sidebarDepth: 2
 feed:
   enable: true
@@ -16,9 +16,9 @@ feed:
 
 이 포스트의 내용을 이해하기 위해선 다음과 같은 것들에 대해 미리 숙지해야 한다.
 
-## (1) 컴포넌트와 상태관리
+## 1. 컴포넌트와 상태관리
 
-### 상태관리의 탄생
+### (1) 상태관리의 탄생
 
 필자가 웹 개발을 시작한지 얼마 되지 않았을 때(2012년도)에는 javascript를 공부할 때 제일 중요한게 [jQuery](https://jquery.com/) 였다.
 
@@ -55,7 +55,7 @@ feed:
 
 - [TECH CONCERT: FRONT END 2019 - 데이터 상태 관리. 그것을 알려주마](https://www.youtube.com/watch?v=o4meZ7MRd5o)를 보면 더 자세하게 알 수 있다. 
 
-### 컴포넌트
+### (2) 컴포넌트
 
 `Angular`가 `CSR`의 시작이었다면, `React`는 `컴포넌트 기반 개발`의 시작이었다.
 그리고 `Angular`와 `React`의 장점을 모두 수용한 `Vue`가 나왔다.
@@ -65,7 +65,11 @@ feed:
 
 **이론에 대해 다루자면 한도 끝도 없기 때문에 이제부터는 코드로 이야기 하겠다.**
 
-## (2) state - setState - render
+## 2. state - setState - render
+
+state를 기반으로 html을 출력해주는 코드를 만들어보자.
+
+### (1) 기능 구현
 
 간단한게 `setState` 라는 메소드를 통해서 `state`를 기반으로 `render`를 해주는 코드를 만들어보자.
 
@@ -101,6 +105,8 @@ render();
 ```
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example01/" width="100%"></iframe>
+
+### (2) 코드 분할
 
 이제 이렇게 작성한 코드를 `class` 문법으로 추상화시켜보자.
 
@@ -250,7 +256,9 @@ export default class Component {
 }
 ```
 
-## (3) 이벤트 처리
+## 3. 이벤트 처리
+
+### (1) 불편함을 감지하기
 
 앞서 작성한 코드를 사용하면 `render`를 실행할 때 마다 이벤트가 새로 등록된다.
 뿐만 아니라 반복적인 요소에 대해 각각 이벤트를 등록해야 할 땐 여간 불편한게 아니다.
@@ -298,6 +306,8 @@ export default class Items extends Component {
 ```
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example04/" width="100%"></iframe>
+
+### (2) 이벤트 버블링
 
 이 때 다음과 같이 [이벤트 버블링](https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81---event-bubbling)을 사용한다면 훨씬 직관적으로 처리할 수 있다.
 
@@ -354,6 +364,8 @@ export default class Items extends Component {
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example05/" width="100%"></iframe>
 
+### (3) 이벤트 버블링 추상화
+
 그리고 이벤트 버블링을 통한 등록 과정을 메소드로 만들어서 사용하면 코드가 더 깔끔해진다.
 
 ```js
@@ -401,10 +413,14 @@ export default class Items extends Component {
 }
 ``` 
 
-## (4) 컴포넌트 분할하기
+## 4. 컴포넌트 분할하기
 
 이제 컴포넌트 단위로 구분하는 코드를 작성해보자.
-그 이전에 `Items` 컴포넌트에 `toggle`, `filter` 등의 기능을 추가해보자.
+
+### (1) 기능 추가
+
+현재 까지의 코드에서는 컴포넌트를 분리할 이유가 없는 상태이다.
+그래서 `Items` 컴포넌트에 `toggle`, `filter` 등의 기능을 추가 했을 때 먼저 어떤 문제점이 있는지 알아야한다.
 
 ```js
 export default class Items extends Component {
@@ -499,14 +515,20 @@ export default class Items extends Component {
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example07/" width="100%" height="250"></iframe>
 
 이렇게 Items 컴포넌트가 무언가 많은 일을 하게 되었다.
-이 때 컴포넌트를 분리하여 사용할 수 있다.
+이럴 경우 코드를 관리하기 힘들고, 컴포넌트라는 이름이 무색하게 컴포넌트 단위로 활용할 수 없는 상태가 되어버린다.
+
+기본적으로 컴포넌트 라는 것은 "재활용"이 목적이다. 그러기 위해선 하나의 컴포넌트가 최대한 작은 단위의 일을 하도록 만들어야 한다.
+
+### (2) 폴더 구조
 
 다음과 같이 폴더 및 파일을 구성해보자.
+
 ```sh
 .
 ├── index.html
 └── src
-    ├── app.js
+    ├── App.js               # main에서 App 컴포넌트를 마운트한다.
+    ├── main.js              # js의 entry 포인트
     ├── components
     │   ├── ItemAppender.js
     │   ├── ItemFilter.js
@@ -514,3 +536,262 @@ export default class Items extends Component {
     └── core
         └── Component.js
 ```
+
+- 기존의 `entry point`가 `app.js`에서 `main.js`가 되었다. 그리고 `App` 이라는 Component를 추가했다.
+- `Items`에서 `ItemAppender`, `ItemFilter` 등을 분리했다.
+
+### (3) Component Core 변경
+
+그리고 `src/core/Component.js`에 다음과 같이 `$props`와 `mounted`를 추가해야 한다.
+
+```js{3,6,7,17}
+export default class Component {
+  $target;
+  $props;
+  $state;
+  constructor ($target, $props) {
+    this.$target = $target;
+    this.$props = $props; // $props 할당
+    this.setup();
+    this.setEvent();
+    this.render();
+  }
+  setup () {};
+  mounted () {};
+  template () { return ''; }
+  render () {
+    this.$target.innerHTML = this.template();
+    this.mounted(); // render 후에 mounted가 실행 된다.
+  }
+  setEvent () {}
+  setState (newState) { /* 생략 */ }
+  addEvent (eventType, selector, callback) { /* 생략 */ }
+}
+```
+
+- `mounted`를 추가한 이유는 render 이후에 추가적인 기능을 수행하기 위해서이다.
+- `$props`는 부모 컴포넌트가 자식 컴포넌트에게 상태 혹은 메소드를 넘겨주기 위해서이다.
+
+### (4) Entry Point 변경
+
+- `index.html` : 기존에 app.js가 아닌 main.js를 가져온다.
+```diff
+ <!doctype html>
+ <html lang="ko">
+ <head>
+   <meta charset="UTF-8">
+   <title>Simple Component 8</title>
+ </head>
+ <body>
+ <h1>Example #8</h1>
+ <div id="app"></div>
+-<script src="src/app.js" type="module"></script>
++<script src="src/main.js" type="module"></script>
+ </body>
+ </html>
+```
+
+- `src/main.js` : App Component 마운트한다.
+```js
+import App from './App.js';
+
+new App(document.querySelector('#app'));
+```
+
+### (5) 컴포넌트 분할
+
+기존의 `Items`에 존재하던 로직을 `App.js`에 넘겨주고, `Items`, `ItemAppender`, `ItemFilter` 등은 `App.js`에서 넘겨주는 로직을 사용하도록 만들어야 한다.
+
+- `src/App.js`
+```js
+import Component from "./core/Component.js";
+import Items from "./components/Items.js";
+import ItemAppender from "./components/ItemAppender.js";
+import ItemFilter from "./components/ItemFilter.js";
+
+export default class App extends Component {
+
+  setup () {
+    this.$state = {
+      isFilter: 0,
+      items: [
+        {
+          seq: 1,
+          contents: 'item1',
+          active: false,
+        },
+        {
+          seq: 2,
+          contents: 'item2',
+          active: true,
+        }
+      ]
+    };
+  }
+
+  template () {
+    return `
+      <header data-component="item-appender"></header>
+      <main data-component="items"></main>
+      <footer data-component="item-filter"></footer>
+    `;
+  }
+
+  // mounted에서 자식 컴포넌트를 마운트 해줘야 한다.
+  mounted () {
+    const { filteredItems, addItem, deleteItem, toggleItem, filterItem } = this;
+    const $itemAppender = this.$target.querySelector('[data-component="item-appender"]');
+    const $items = this.$target.querySelector('[data-component="items"]');
+    const $itemFilter = this.$target.querySelector('[data-component="item-filter"]');
+
+    // 하나의 객체에서 사용하는 메소드를 넘겨줄 bind를 사용하여 this를 변경하거나,
+    // 다음과 같이 새로운 함수를 만들어줘야 한다.
+    // ex) { addItem: contents => addItem(contents) }
+    new ItemAppender($itemAppender, {
+      addItem: addItem.bind(this)
+    });
+    new Items($items, {
+      filteredItems,
+      deleteItem: deleteItem.bind(this),
+      toggleItem: toggleItem.bind(this),
+    });
+    new ItemFilter($itemFilter, {
+      filterItem: filterItem.bind(this)
+    });
+  }
+
+  get filteredItems () {
+    const { isFilter, items } = this.$state;
+    return items.filter(({ active }) => (isFilter === 1 && active) ||
+      (isFilter === 2 && !active) ||
+      isFilter === 0);
+  }
+
+  addItem (contents) {
+    const {items} = this.$state;
+    const seq = Math.max(0, ...items.map(v => v.seq)) + 1;
+    const active = false;
+    this.setState({
+      items: [
+        ...items,
+        {seq, contents, active}
+      ]
+    });
+  }
+
+  deleteItem (seq) {
+    const items = [ ...this.$state.items ];;
+    items.splice(items.findIndex(v => v.seq === seq), 1);
+    this.setState({items});
+  }
+
+  toggleItem (seq) {
+    const items = [ ...this.$state.items ];
+    const index = items.findIndex(v => v.seq === seq);
+    items[index].active = !items[index].active;
+    this.setState({items});
+  }
+
+  filterItem (isFilter) {
+    this.setState({ isFilter });
+  }
+
+}
+```
+
+- `src/components/ItemAppender.js`
+```js
+import Component from "../core/Component.js";
+
+export default class ItemAppender extends Component {
+
+  template() {
+    return `<input type="text" class="appender" placeholder="아이템 내용 입력" />`;
+  }
+
+  setEvent() {
+    const { addItem } = this.$props;
+    this.addEvent('keyup', '.appender', ({ key, target }) => {
+      if (key !== 'Enter') return;
+      addItem(target.value);
+    });
+  }
+}
+
+```
+
+- `src/components/Items.js`
+```js
+import Component from "../core/Component.js";
+
+export default class Items extends Component {
+
+  template() {
+    const { filteredItems } = this.$props;
+    return `
+      <ul>
+        ${filteredItems.map(({contents, active, seq}) => `
+          <li data-seq="${seq}">
+            ${contents}
+            <button class="toggleBtn" style="color: ${active ? '#09F' : '#F09'}">
+              ${active ? '활성' : '비활성'}
+            </button>
+            <button class="deleteBtn">삭제</button>
+          </li>
+        `).join('')}
+      </ul>
+    `
+  }
+
+  setEvent() {
+    const { deleteItem, toggleItem } = this.$props;
+
+    this.addEvent('click', '.deleteBtn', ({target}) => {
+      deleteItem(Number(target.closest('[data-seq]').dataset.seq));
+    });
+
+    this.addEvent('click', '.toggleBtn', ({target}) => {
+      toggleItem(Number(target.closest('[data-seq]').dataset.seq));
+    });
+
+  }
+
+}
+
+```
+
+- `src/components/ItemFilter.js`
+```js
+import Component from "../core/Component.js";
+
+export default class ItemFilter extends Component {
+
+  template() {
+    return `
+      <button class="filterBtn" data-is-filter="0">전체 보기</button>
+      <button class="filterBtn" data-is-filter="1">활성 보기</button>
+      <button class="filterBtn" data-is-filter="2">비활성 보기</button>
+    `
+  }
+
+  setEvent() {
+    const { filterItem } = this.$props;
+    this.addEvent('click', '.filterBtn', ({ target }) => {
+      filterItem(Number(target.dataset.isFilter));
+    });
+  }
+}
+
+```
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example08/" width="100%" height="250"></iframe>
+
+***
+
+## 마치며
+
+굉장히 핵심적인 내용만 간추려서 작성했다.
+이외에도 여러가지 기법이 많이 이용되지만, 이 정도만 알고 있어도 어느 정도 역할에 맞게 컴포넌트 단위로 개발할 수 있을 것이다.
+
+다음에는 `Observer Pattern`이나 `Proxy` 혹은 `Object.defineProperty` 등을 이용하여 외부의 상태변화에 대한 대응을 할 수 있는지 다뤄볼 예정이다. 
+
