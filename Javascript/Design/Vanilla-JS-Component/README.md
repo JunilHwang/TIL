@@ -14,8 +14,6 @@ feed:
 9월에 [넥스트 스텝](https://edu.nextstep.camp/)에서 진행하는 [블랙커피 스터디](https://edu.nextstep.camp/s/tUzCRWul)에 참여했다.
 이 포스트는 스터디 기간동안 계속 고민하며 만들었던 컴포넌트를 차근 차근 구현해보는 내용이다.
 
-이 포스트의 내용을 이해하기 위해선 다음과 같은 것들에 대해 미리 숙지해야 한다.
-
 ## 1. 컴포넌트와 상태관리
 
 ### (1) 상태관리의 탄생
@@ -31,10 +29,10 @@ feed:
 약 3년 동안 `jQuery`만 주구장창 사용하면서 느낀 제일 큰 장점은 `DOM API`라고 생각한다.
 `jQuery`는 `DOM`을 쉽게 조작할 수 있도록 만들어주는 것에 더해 `크로스 브라우징`과 관련된 이슈를 해결해주었다.
 
-그런데 점점 브라우저와 Javascript가 발전하는 과정에서 아예 브라우저(클라이언트) 단에서 렌더링을 하고,
-서버에서는 렌더링에 필요한 데이터만 제공하는 형태로 기술이 변화했다.
+그런데 점점 브라우저와 Javascript가 발전하는 과정에서 아예 **브라우저(클라이언트) 단에서 렌더링**을 하고,
+**서버에서는 `REST API` 혹은 `GraphQL` 같이 브라우저 렌더링에 필요한 데이터만 제공하는 형태**로 기술이 변화했다.
 
-이제는 직접적으로 `DOM`을 다루는 행위가 급격하게 감소했고, `상태(State)`를 기준으로 `DOM`을 렌더링 하는 형태로 발전한 것이다.
+이제는 직접적으로 `DOM`을 다루는 행위가 급격하게 감소했고, **`상태(State)`를 기준으로 `DOM`을 렌더링 하는 형태로 발전**한 것이다.
 `DOM`이 변하는 경우가 `State`에 종속 되어버린 것이다. 반대로 말하면, `State`가 변하지 않을 경우 `DOM`이 변하면 안 되는 것이다. 
 
 그리고 이러한 과정 속에서 `Client-Side Rendering` 이라는 개념과 `상태관리`라는 개념이 생기게 되었다.
@@ -60,7 +58,7 @@ feed:
 `Angular`가 `CSR`의 시작이었다면, `React`는 `컴포넌트 기반 개발`의 시작이었다.
 그리고 `Angular`와 `React`의 장점을 모두 수용한 `Vue`가 나왔다.
 
-어쨌든 중요한 점은 현 시점의 웹 어플리케이션은 컴포넌트 단위로 설계되고 개발된다는 것이다.
+어쨌든 중요한 점은 **현 시점의 웹 어플리케이션은 컴포넌트 단위로 설계되고 개발된다**는 것이다.
 그리고 컴포넌트마다 컴포넌트를 렌더링할 때 필요한 상태를 관리하게 되었으며, `Proxy` 혹은 `Observer Pattern` 등을 이용하여 이를 구현한다.
 
 **이론에 대해 다루자면 한도 끝도 없기 때문에 이제부터는 코드로 이야기 하겠다.**
@@ -106,9 +104,17 @@ render();
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example01/" width="100%"></iframe>
 
-### (2) 코드 분할
+이 코드의 핵심은 다음과 같다.
 
-이제 이렇게 작성한 코드를 `class` 문법으로 추상화시켜보자.
+- `state`가 변경되면 `render`를 실행한다는 것이다.
+- `state`는 `setState`로만 변경해야 한다.
+
+이러한 규칙을 지켜가면서 코드를 작성한다면, 브라우저 출력되는 내용은 무조건 `state`에 종속되는 것이다.
+즉, `DOM`을 직접적으로 다룰 필요가 없어진다.
+
+### (2) 추상화
+
+앞서 작성한 코드를 `class` 문법으로 추상화시켜보자.
 
 ```html
 <div id="app"></div>
@@ -163,7 +169,11 @@ new App(document.querySelector('#app'));
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example02/" width="100%"></iframe>
 
 컴포넌트 클래스를 작성해놨더니 조금 더 유연하게 만들 수 있게 되었다.
-이 상태에서 다음과 같이 모듈화를 할 수 있다.
+무엇보다 컴포넌트 코드의 사용 방법을 강제할 수 있기 때문에 코드를 유지보수하고 관리할 때 매우 이롭다. 
+
+### (3) 모듈화
+
+보통 한 파일안에 모든 기능을 작성하는 경우는 없을 것이므로 앞서 작성한 코드를 다음과 같이 분할해보자.
 
 ```sh
 .
@@ -175,6 +185,8 @@ new App(document.querySelector('#app'));
     └── core                # 구현에 필요한 코어들
         └── Component.js
 ```
+
+이 때 [브라우저 모듈](https://eyabc.github.io/Doc/dev/core-javascript/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EB%AA%A8%EB%93%88.html)을 사용할 것이다.
 
 - index.html
 ```html
@@ -311,11 +323,12 @@ export default class Items extends Component {
 
 이 때 다음과 같이 [이벤트 버블링](https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%B2%84%EB%B8%94%EB%A7%81---event-bubbling)을 사용한다면 훨씬 직관적으로 처리할 수 있다.
 
-```js{4,8}
+```js{5-6,9,13}
 export default class Items extends Component {
   setup () {/* 생략 */}
   template () { /* 생략 */}
   setEvent () {
+    // 모든 이벤트를 this.$target에 등록하여 사용하면 된다.
     this.$target.addEventListener('click', ({ target }) => {
       const items = [ ...this.$state.items ];
 
@@ -333,7 +346,7 @@ export default class Items extends Component {
 }
 ```
 
-다만, 기존의 `setEvent`는 `render`를 할 때 마다 실행하기 때문에, `core/Component.js`에 라이프 사이클을 변경해야 한다.
+다만, 기존의 `setEvent`는 `render`를 할 때 마다 실행하기 때문에, `core/Component.js`에 `라이프 사이클`을 변경해야 한다.
 
 ```diff
  export default class Component {
@@ -359,14 +372,14 @@ export default class Items extends Component {
  }
 ```
 
-즉, event를 각각의 하위 요소가 아니라 component의 target 자체에 등록하는 것이다.
-따라서 component가 생성되는 시점에만 이벤트 등록을 해놓으면 추가로 등록할 필요가 없어진다.
+- event를 각각의 하위 요소가 아니라 **component의 target 자체에 등록하는 것**이다.
+- 따라서 component가 생성되는 시점에만 이벤트 등록을 해놓으면 **추가로 등록할 필요가 없어진다.**
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-component/example05/" width="100%"></iframe>
 
 ### (3) 이벤트 버블링 추상화
 
-그리고 이벤트 버블링을 통한 등록 과정을 메소드로 만들어서 사용하면 코드가 더 깔끔해진다.
+그리고 이벤트 버블링을 통한 등록 과정을 **메소드로 만들어서 사용**하면 코드가 더 깔끔해진다.
 
 ```js
 export default class Component {
@@ -395,7 +408,7 @@ export default class Component {
 ```
 
 이렇게 작성한 메소드는 다음과 같이 사용하면 된다.
-```js
+```js{5,9}
 export default class Items extends Component {
   setup () { /* 생략 */ }
   template () {/* 생략 */ }
@@ -537,14 +550,15 @@ export default class Items extends Component {
         └── Component.js
 ```
 
-- 기존의 `entry point`가 `app.js`에서 `main.js`가 되었다. 그리고 `App` 이라는 Component를 추가했다.
+- 기존의 **entry point가 app.js에서 main.js**가 되었다
+- `App Component`를 추가했다.
 - `Items`에서 `ItemAppender`, `ItemFilter` 등을 분리했다.
 
 ### (3) Component Core 변경
 
 그리고 `src/core/Component.js`에 다음과 같이 `$props`와 `mounted`를 추가해야 한다.
 
-```js{3,6,7,17}
+```js{3,7,13,17}
 export default class Component {
   $target;
   $props;
@@ -591,7 +605,7 @@ export default class Component {
  </html>
 ```
 
-- `src/main.js` : App Component 마운트한다.
+- `src/main.js`
 ```js
 import App from './App.js';
 
@@ -795,3 +809,12 @@ export default class ItemFilter extends Component {
 
 다음에는 `Observer Pattern`이나 `Proxy` 혹은 `Object.defineProperty` 등을 이용하여 외부의 상태변화에 대한 대응을 할 수 있는지 다뤄볼 예정이다. 
 
+전체 코드는 [여기](https://github.com/JunilHwang/simple-component)에서 볼 수 있다.
+
+## 부록: 같이 보면 좋은 내용
+
+- [MakerJun - DOM](https://www.youtube.com/watch?v=1yADBI27NCg)
+- [MakerJun - Event](https://www.youtube.com/watch?v=u49E4_4hyeI)
+- [eyabc - 클래스](https://eyabc.github.io/Doc/dev/core-javascript/%ED%81%B4%EB%9E%98%EC%8A%A4.html)
+- [eyabc - 화살표함수](https://eyabc.github.io/Doc/dev/core-javascript/%ED%99%94%EC%82%B4%ED%91%9C%ED%95%A8%EC%88%98.html)
+- [eyabc - 브라우저 모듈](https://eyabc.github.io/Doc/dev/core-javascript/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EB%AA%A8%EB%93%88.html)
