@@ -503,5 +503,14 @@ export default class Items extends Component {
 
 다음과 같이 폴더 및 파일을 구성해보자.
 ```sh
-
+.
+├── index.html
+└── src
+    ├── app.js
+    ├── components
+    │   ├── ItemAppender.js
+    │   ├── ItemFilter.js
+    │   └── Items.js
+    └── core
+        └── Component.js
 ```
