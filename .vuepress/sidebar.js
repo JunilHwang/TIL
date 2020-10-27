@@ -1,6 +1,7 @@
 const vuepress = '/Vuepress'
 const CodeSpitz = '/CodeSpitz'
 const Javascript = '/Javascript';
+const Life = '/Life';
 const JavascriptDomain = `${Javascript}/Domain`;
 const JavascriptDesign = `${Javascript}/Design`;
 const CodeSpitzNBJS = `${CodeSpitz}/None-Blocking-Javascript`
@@ -96,6 +97,7 @@ module.exports = [
     ]
   },
   {
-    title: 'SpringFramework',
+    title: '일상',
+    children: [''].map(v => `${Life}/${v}`)
   }
 ]
