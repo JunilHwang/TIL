@@ -122,3 +122,7 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
     - 테스트 주도 개발
     - 생각하는 프로그래밍
 - [VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)](/Vuepress/Starter/) `완료`
+
+## 일상
+
+- [일상적인 이야기](/Life/)
