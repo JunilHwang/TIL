@@ -813,8 +813,8 @@ export default class ItemFilter extends Component {
 
 ## 부록: 같이 보면 좋은 내용
 
-- [MakerJun - DOM](https://www.youtube.com/watch?v=1yADBI27NCg)
-- [MakerJun - Event](https://www.youtube.com/watch?v=u49E4_4hyeI)
+- [MakerJun - DOM](https://youtu.be/y4U0EtxAtHI)
+- [MakerJun - Event](https://youtu.be/exziAmVQ7iA)
 - [eyabc - 클래스](https://eyabc.github.io/Doc/dev/core-javascript/%ED%81%B4%EB%9E%98%EC%8A%A4.html)
 - [eyabc - 화살표함수](https://eyabc.github.io/Doc/dev/core-javascript/%ED%99%94%EC%82%B4%ED%91%9C%ED%95%A8%EC%88%98.html)
 - [eyabc - 브라우저 모듈](https://eyabc.github.io/Doc/dev/core-javascript/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EB%AA%A8%EB%93%88.html)
