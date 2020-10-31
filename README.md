@@ -125,4 +125,4 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 ## 일상
 
-- [일상적인 이야기](/Life/)
+- [개발자의 글쓰기](/Writing/)
