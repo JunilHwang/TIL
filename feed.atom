@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-11-01T17:28:38.504Z</updated>
+    <updated>2020-11-01T17:34:19.104Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
