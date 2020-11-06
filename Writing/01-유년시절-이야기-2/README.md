@@ -79,6 +79,235 @@ feed:
 어림 잡아도 책 한권 분량의 코드였기 때문에(100줄이 넘는 코드가 약 50개의 파일에 뿔뿔이 흩어져 있었다)
 지금 생각해보면 별거 아니지만 그 당시에는 정말 이걸 어떻게 공부해야하나 싶었다.
 
+이게 약 10년전에 내가 처음으로 프로그래밍을 공부하면서 봤던 코드이다.
+
+```php
+<?
+	//세션 시작
+	session_start();
+	
+	//엔코딩
+	function encode($str){
+		$str = base64_encode($str);
+		$str = str_replace('/', '^2', $str);
+		$str = str_replace('+', '$4', $str);
+		return $str;
+	}
+	
+	//디코딩
+	function decode($str){
+		$str = str_replace('$4', '+', $str);
+		$str = str_replace('^2', '/', $str);
+		$str = base64_decode($str);
+		return $str;
+	}
+	
+	//주소값 저장
+	$var_array = explode('/', $_SERVER['PATH_INFO']);
+	$page_mode = $var_array[1];
+	$midx = $var_array[2];
+	$sidx = $var_array[3];
+	$action = $var_array[4];
+	$idx = $var_array[5];
+	$parent = $var_array[6];
+	$page_num = $var_array[6] ? $var_array[6] : 1;
+	$search_type = isset($var_array[7]) ? $var_array[7] : NULL;
+	$search_key = isset($var_array[8]) ? urldecode($var_array[8]) : NULL;
+	$search_date = 	$var_array[9];
+	$search_date2 = $var_array[10];
+	
+	$current = $page_mode && $midx && $sidx ? 'sub' : 'main';
+	$get_page = "/index.php/{$page_mode}/{$midx}/{$sidx}/";
+	
+	//메시지 출력
+	function alert($msg){
+		echo "<script type=\"text/javascript\">alert('{$msg}');</script>";		
+	}
+	
+	//페이지 이동
+	function move($url = false){
+		echo '<script type="text/javascript">';
+			echo $url ? "document.location.replace('{$url}');" : 'history.back();';
+		echo '</script>';
+		exit();
+	}
+	
+	//페이지 액세스
+	function access($bool, $msg = '해당 페이지를 액세스 할 수 없습니다.', $url = false){
+		if(!$bool){
+			alert($msg);
+			move($url);
+		}
+	}
+	
+	//사용권한 검사
+	function lv_chk($lv){
+		$cur_lv = $_SESSION['lv'] ? $_SESSION['lv'] : 3;
+		if($lv == 2){
+			$msg = '로그인 후 이용하실 수 있습니다.';
+			$url = '/index.php/page/member/login/';
+		} else {
+			$msg = '사이트 관리자만 접근 할 수 있습니다.';
+		}
+		access($cur_lv <= $lv, $msg, $url);
+	}
+	
+	//이메일 부호화
+	function hex($str){
+		$strlen = strlen($str);
+		for($i = 0; $i < $strlen; $i++) $hex .= '&#x'.bin2hex(substr($str, $i, 1)).';';
+		return $hex;
+	}
+	
+	//html 엔티티
+	function safe_html($arr){
+		if(is_array($arr)){
+			foreach($arr as $key=>$val) $arr[$key] = htmlspecialchars($val);
+			return $arr;
+		}
+	}
+	
+	//글자 수 제한
+	function cut_str($str, $len){
+		$str = html_entity_decode($str);
+		$strlen = strlen($str);		
+		if($strlen > $len)$str = substr($str, 0, $len).'..';
+		return htmlspecialchars($str);
+	}
+	
+	//하이라이팅
+	function hit($str, $keyword){
+		$str = str_replace($keyword, "<span class=\"search_txt\">{$keyword}</span>", $str);
+		return $str;
+	}
+	
+	//파일 다운로드
+	function down($file, $file_name, $dir){
+		$file = urlencode($file);
+		$file_name = urlencode($file_name);
+		$dir = "/page/down.php?dir={$dir}&amp;file={$file}&amp;file_name={$file_name}";
+		return $dir;
+	}
+	
+	//컬럼값 추출
+	function get_column($arr, $cancel){
+		$cancel = explode('/', $cancel);
+		foreach($arr as $key=>$val){
+			if(!in_array($key, $cancel)){
+				$entity_val = mysql_real_escape_string($val);
+				$column .= ", {$key}='{$val}'";
+			}
+		}
+		$column = substr($column, 2);
+		return $column;
+	}
+	
+	
+	//쿼리
+	function query($type, $table, $column){
+		global $connect;
+		
+		switch($type){
+			case 'insert' :
+				$query[] = "insert into {$table} set ";
+			break;
+			case 'update' :
+				$query[] = "update {$table} set ";
+			break;
+			case 'delete' :
+				$query[] = "delete from {$table} ";
+				if($column) $query[] = ' where ';
+			break;
+		}				
+		$query[] = $column;
+		$query = implode('', $query);
+		
+		mysql_query($query, $connect) or die($query.mysql_error());
+	}
+	
+	//파일 업로드
+	function file_upload($file, $dir, $type = 'img'){
+		if(is_uploaded_file($file['tmp_name'])){
+			$ex_name = array_pop(explode('.', strtolower($file['name'])));
+			if($type == 'img'){
+				$ex_name_chk = array('gif', 'jpg', 'png');
+				access(in_array($ex_name, $ex_name_chk), '이미지 파일만 업로드 할 수 있습니다.');
+			} else {
+				$ex_name_chk = array('html', 'htm', 'php', 'asp', 'jsp', 'exe', 'js');
+				access(!in_array($ex_name, $ex_name_chk), '업로드가 제한된 확장자 파일입니다.');
+			}
+			
+			$date = date('ymdhis');
+			$rand = rand();
+			$upload_name = "{$date}_{$_SESSION['id']}_{$rand}.{$ex_name}";
+			
+			move_uploaded_file($file['tmp_name'], "{$_SERVER['DOCUMENT_ROOT']}/data/{$dir}/{$upload_name}");
+			return $upload_name;
+		}
+	}
+	
+	//페이지 나누기
+	function paginate($cur_page, $line, $total, $url, $add_class = ''){
+		if($total){
+			$url = explode('&&', $url);
+			$first_page = 1;
+			$last_page = ceil($total/$line);
+			$prev_page = $cur_page - 1;
+			$next_page = $cur_page + 1;
+			
+			$paginate  = "<p class=\"paginate {$add_class}\">";
+			$paginate .= $cur_page == $first_page ? '<span title="처음">처음</span>' : "<a href=\"{$url[0]}{$first_page}{$url[1]}\" title=\"처음\">처음</a>";
+			$paginate .= $cur_page == $first_page ? '<span title="이전">이전</span>' : "<a href=\"{$url[0]}{$prev_page}{$url[1]}\" title=\"이전\">이전</a>";
+			for($i = 1; $i <= $last_page; $i++){
+				$paginate .= $cur_page == $i ? "<strong title=\"{$i}\">{$i}</strong>" : "<a href=\"{$url[0]}{$i}{$url[1]}\" title=\"{$i}\">{$i}</a>";
+			}
+			$paginate .= $cur_page == $last_page ? '<span title="다음">다음</span>' : "<a href=\"{$url[0]}{$next_page}{$url[1]}\" title=\"다음\">다음</a>";
+			$paginate .= $cur_page == $last_page ? '<span title="맨뒤">맨뒤</span>' : "<a href=\"{$url[0]}{$last_page}{$url[1]}\" title=\"맨뒤\">맨뒤</a>";
+			$paginate .= '</p>';
+			return $paginate;
+		}
+	}
+?>
+```
+
+`lib.php`라는 파일의 내용인데, 이 코드들을 이해하지 못하면 다른 코드는 보나 마나했었다.
+그런데 이해를 할 수가 없었다. 이해를 하고 싶어도 도저희 저건 프로그래밍을 제대로 해본적도 없는 내 머리로 감당할 수 있는 양의 내용이 아니었다.
+
+그래서 거짓말을 보태지 않고, 위의 코드의 모든 내용을 그대로 외워버렸다.
+여백, 스페이스바, 따옴표를 포함하여 모든 내용을 외워버렸다.
+그렇게 하지 않으면 어디서 에러가 왜 발생하는지 몰랐기 때문에 진짜 그대로 외우는 방법 밖에 없었다.
+이 당시에는 구글 검색도 제대로 할 줄 몰랐으며, 나에게 프로그래밍을 가르쳐줄 선배나 선생님도 없었다.
+모든 것을 혼자 해야 했다. 그래서 절망했었고, 내가 할 수 있는 일은 그냥 코드를 외우는 방법 밖에 없었던 것이다.
+
+그런데 코드를 외워도, 이 코드를 옳바르게 사용하는 방법을 몰랐다.
+사실 그냥 튜토리얼 수준의 php 코드부터 접했다면 좋아겠지만 내가 받은건 견고하게 짜여진 솔루션 코드였다.
+그리고 이 솔루션에는 clean url 이라는 기법이 적용된 상태였는데
+`/board/view.php?idx=1` 이러한 형태의 주소를 
+`/board/view/1` 처럼 보일 수 있도록 작업해주는 것이었다.
+
+프레임워크를 사용한다면 무척 간단하지만, 프레임워크를 사용하지 않고 하드 코딩으로 위의 내용을 구현하려면 여간 복잡한게 아니였다.
+
+- 모든 페이지를 index.php에서 보여줘야한다.
+- DB접속과 라이브러리를 포함한 모든 내용을 index.php에서 가져온다.
+- `/index.php`로 접근하면 메인페이지를 보여줘야 한다. 
+- `/index.php/sub/1/1`로 접근하면 DB에서 `메인메뉴 1`에 대한 `서브메뉴 1`의 페이지 정보를 가져와서 보여줘야 한다.
+- `/index.php/sub/1`로 접근하면 DB에서 `메인메뉴 1`의 `첫 번째 서브메뉴`를 가져와서 보여준다.
+- 이 때 메뉴의 타입(컨텐츠, 검색, 게시판, 회원 및 기타 커스텀 페이지)에 따라 보여지는 내용이 달라진다.
+- 각각의 메뉴에는 접근 가능한 레벨이 존재한다. 회원 가입할 때에도 레벨이 존재한다.
+- 메뉴의 레벨이 회원의 레벨보다 높을 경우 접근할 수 없다.
+- `/index.php/member/join`은 DB에 접근하지 않고 바로 회원가입 페이지를 보여준다.
+- `/index.php/member/login`은 DB에 접근하지 않고 바로 로그인 페이지를 보여준다.
+- `/index.php/admin/6/1`로 접근하면 관리자 수준의 레벨을 가진게 아니라면 접근을 방지한다.
+  - 관리자일 경우고 해당 메뉴의 정보와 페이지를 조립하여 사용자에게 보여줘야 한다.
+
+이러한 내용의 의미하는 것은 솔루션 코드를 통해서 실제로 페이지를 보기위해선 DB 설계까지 뿐만 아니라 이 코드를 작성한 사람의 의도를 전체적으로 이해해야 한다는 의미이다.
+
+이게 프로그래밍을 제대로 배워본적도 없는, 웹의 개념도 제대로 모르고 Request와 Response도 제대로 모르는 학생에게 주어진 코드였다.
+앞서 언급한 것 처럼 전체 코드가 거의 책 한권 분량이었고, 프로그래밍도 접해본적이 없는 내가 저 코드들을 일일이 분석할 시간은 충분하지 않았다.
+
+4개월만에 기획(PPT), 디자인(포토샵,일러스트), 플래시, HTML/CSS, Javascript, PHP 등을 모두 공부해야 했는데
+PHP는 고사하고 HTML/CSS도 제대로 할 수 있는 수준이 아니었다. 
+
 2010년 12월 부터 주말을 모두 반납하고 2011년 4월까지 기능반에 매진했다.
 
 커밋을 합시다.
