@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-11-01T17:34:19.104Z</updated>
+    <updated>2020-11-09T13:16:36.865Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -112,28 +112,12 @@
         <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 2분기 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/">
-        </link>
-        <updated>2020-08-11T13:42:00.000Z</updated>
-        <summary type="html"><![CDATA[개발자 황준일의 2020년 2분기 회고입니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[2020년 3월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/03-March/">
         </link>
         <updated>2020-03-31T13:00:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 3월 회고 입니다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2020년 4월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/04-April/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/04-April/">
-        </link>
-        <updated>2020-05-01T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 4월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 5월 회고]]></title>
@@ -160,11 +144,27 @@
         <summary type="html"><![CDATA[2020년 7월 회고 입니다.]]></summary>
     </entry>
     <entry>
+        <title type="html"><![CDATA[2020년 4월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/04-April/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/04-April/">
+        </link>
+        <updated>2020-05-01T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 4월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[2020년 8월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
         </link>
         <updated>2020-10-05T01:27:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 9월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/09-September/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/09-September/">
+        </link>
+        <updated>2020-10-17T17:40:00.000Z</updated>
+        <summary type="html"><![CDATA[개발자 황준일의 2020년 9월 회고입니다.]]></summary>
     </entry>
 </feed>

@@ -100,28 +100,12 @@
             "date_modified": "2020-02-29T13:00:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/",
-            "title": "2020년 2분기 회고",
-            "summary": "개발자 황준일의 2020년 2분기 회고입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png",
-            "date_modified": "2020-08-11T13:42:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
             "title": "2020년 3월 회고",
             "summary": "2020년 3월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png",
             "date_modified": "2020-03-31T13:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
-            "title": "2020년 4월 회고",
-            "summary": "2020년 4월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
-            "date_modified": "2020-05-01T13:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/05-May/",
@@ -148,12 +132,28 @@
             "date_modified": "2020-08-10T12:21:00.000Z"
         },
         {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
+            "title": "2020년 4월 회고",
+            "summary": "2020년 4월 회고 입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
+            "date_modified": "2020-05-01T13:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
             "url": "https://junilhwang.github.io/TIL/Review/2020-year/08-August/",
             "title": "2020년 8월 회고",
             "summary": "2020년 8월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/94988755-95c18900-05aa-11eb-9221-f11c86da4d9e.png",
             "date_modified": "2020-10-05T01:27:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
+            "url": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
+            "title": "2020년 9월 회고",
+            "summary": "개발자 황준일의 2020년 9월 회고입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/95010212-7128e800-0662-11eb-918d-da7a31d64d7f.png",
+            "date_modified": "2020-10-17T17:40:00.000Z"
         }
     ]
 }
