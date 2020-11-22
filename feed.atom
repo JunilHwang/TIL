@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2020-11-22T15:59:09.428Z</updated>
+    <updated>2020-11-22T16:02:29.689Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -40,14 +40,6 @@
         <summary type="html"><![CDATA[객체지향을 통해서 MVVM System을 만드는 과정입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MVVM System 개선하기 (1)]]></title>
-        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
-        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/">
-        </link>
-        <updated>2020-01-30T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[MVVM System 개선하기 (2)]]></title>
         <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</id>
         <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/">
@@ -56,12 +48,12 @@
         <summary type="html"><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Gradle Wrapper]]></title>
-        <id>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</id>
-        <link href="https://junilhwang.github.io/TIL/Gradle/GradleWrapper/">
+        <title type="html"><![CDATA[MVVM System 개선하기 (1)]]></title>
+        <id>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
+        <link href="https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/">
         </link>
-        <updated>2020-01-14T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></summary>
+        <updated>2020-01-30T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[MVVM System 개선하기 (3)]]></title>
@@ -72,12 +64,12 @@
         <summary type="html"><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Vanilla Javascript로 웹 컴포넌트 만들기]]></title>
-        <id>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</id>
-        <link href="https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/">
+        <title type="html"><![CDATA[Gradle Wrapper]]></title>
+        <id>https://junilhwang.github.io/TIL/Gradle/GradleWrapper/</id>
+        <link href="https://junilhwang.github.io/TIL/Gradle/GradleWrapper/">
         </link>
-        <updated>2020-10-25T23:20:00.000Z</updated>
-        <summary type="html"><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></summary>
+        <updated>2020-01-14T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[자바스크립트 실행 컨텍스트]]></title>
@@ -88,12 +80,12 @@
         <summary type="html"><![CDATA[자바스크립트 실행 컨텍스트에 대해 다룹니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 1분기 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/">
+        <title type="html"><![CDATA[Vanilla Javascript로 웹 컴포넌트 만들기]]></title>
+        <id>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</id>
+        <link href="https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/">
         </link>
-        <updated>2020-04-01T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 1분기 회고 입니다.]]></summary>
+        <updated>2020-10-25T23:20:00.000Z</updated>
+        <summary type="html"><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 1월 회고]]></title>
@@ -104,20 +96,20 @@
         <summary type="html"><![CDATA[2020년 1월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 2월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-February/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-February/">
-        </link>
-        <updated>2020-02-29T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[2020년 3월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/03-March/">
         </link>
         <updated>2020-03-31T13:00:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 3월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 2월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/02-February/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/02-February/">
+        </link>
+        <updated>2020-02-29T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 2월 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 2분기 회고]]></title>
@@ -128,12 +120,12 @@
         <summary type="html"><![CDATA[개발자 황준일의 2020년 2분기 회고입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 6월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/06-June/">
+        <title type="html"><![CDATA[2020년 1분기 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/">
         </link>
-        <updated>2020-07-12T13:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 6월 회고 입니다.]]></summary>
+        <updated>2020-04-01T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 1분기 회고 입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[2020년 4월 회고]]></title>
@@ -152,6 +144,14 @@
         <summary type="html"><![CDATA[2020년 5월 회고 입니다.]]></summary>
     </entry>
     <entry>
+        <title type="html"><![CDATA[2020년 6월 회고]]></title>
+        <id>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</id>
+        <link href="https://junilhwang.github.io/TIL/Review/2020-year/06-June/">
+        </link>
+        <updated>2020-07-12T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 6월 회고 입니다.]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[2020년 7월 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2020-year/07-July/</id>
         <link href="https://junilhwang.github.io/TIL/Review/2020-year/07-July/">
@@ -160,11 +160,11 @@
         <summary type="html"><![CDATA[2020년 7월 회고 입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2020년 8월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/08-August/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/08-August/">
+        <title type="html"><![CDATA[github page에 배포하기]]></title>
+        <id>https://junilhwang.github.io/TIL/Vuepress/Deploy/</id>
+        <link href="https://junilhwang.github.io/TIL/Vuepress/Deploy/">
         </link>
-        <updated>2020-10-05T01:27:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 8월 회고 입니다.]]></summary>
+        <updated>2020-01-06T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.]]></summary>
     </entry>
 </feed>
