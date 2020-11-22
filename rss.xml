@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sun, 22 Nov 2020 15:54:09 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 22 Nov 2020 15:59:09 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -39,13 +39,6 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[MVVM System 개선하기 (2)]]></title>
-            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</link>
-            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</guid>
-            <pubDate>Fri, 07 Feb 2020 14:00:00 GMT</pubDate>
-            <description><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></description>
-        </item>
-        <item>
             <title><![CDATA[MVVM System 개선하기 (1)]]></title>
             <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</link>
             <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</guid>
@@ -53,11 +46,11 @@
             <description><![CDATA[다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.]]></description>
         </item>
         <item>
-            <title><![CDATA[MVVM System 개선하기 (3)]]></title>
-            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</link>
-            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</guid>
-            <pubDate>Sat, 08 Feb 2020 23:00:00 GMT</pubDate>
-            <description><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></description>
+            <title><![CDATA[MVVM System 개선하기 (2)]]></title>
+            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</link>
+            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</guid>
+            <pubDate>Fri, 07 Feb 2020 14:00:00 GMT</pubDate>
+            <description><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></description>
         </item>
         <item>
             <title><![CDATA[Gradle Wrapper]]></title>
@@ -69,11 +62,11 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[자바스크립트 실행 컨텍스트]]></title>
-            <link>https://junilhwang.github.io/TIL/Javascript/Domain/Execution-Context/</link>
-            <guid>https://junilhwang.github.io/TIL/Javascript/Domain/Execution-Context/</guid>
-            <pubDate>Sun, 26 Jul 2020 13:00:00 GMT</pubDate>
-            <description><![CDATA[자바스크립트 실행 컨텍스트에 대해 다룹니다.]]></description>
+            <title><![CDATA[MVVM System 개선하기 (3)]]></title>
+            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</link>
+            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</guid>
+            <pubDate>Sat, 08 Feb 2020 23:00:00 GMT</pubDate>
+            <description><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></description>
         </item>
         <item>
             <title><![CDATA[Vanilla Javascript로 웹 컴포넌트 만들기]]></title>
@@ -81,6 +74,13 @@
             <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</guid>
             <pubDate>Sun, 25 Oct 2020 23:20:00 GMT</pubDate>
             <description><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[자바스크립트 실행 컨텍스트]]></title>
+            <link>https://junilhwang.github.io/TIL/Javascript/Domain/Execution-Context/</link>
+            <guid>https://junilhwang.github.io/TIL/Javascript/Domain/Execution-Context/</guid>
+            <pubDate>Sun, 26 Jul 2020 13:00:00 GMT</pubDate>
+            <description><![CDATA[자바스크립트 실행 컨텍스트에 대해 다룹니다.]]></description>
         </item>
         <item>
             <title><![CDATA[2020년 1분기 회고]]></title>
@@ -106,6 +106,15 @@
             <description><![CDATA[2020년 2월 회고 입니다.]]></description>
         </item>
         <item>
+            <title><![CDATA[2020년 3월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</guid>
+            <pubDate>Tue, 31 Mar 2020 13:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 3월 회고 입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png">
+            </enclosure>
+        </item>
+        <item>
             <title><![CDATA[2020년 2분기 회고]]></title>
             <link>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</link>
             <guid>https://junilhwang.github.io/TIL/Review/2020-year/02-Second-Quarter/</guid>
@@ -115,12 +124,12 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[2020년 3월 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</guid>
-            <pubDate>Tue, 31 Mar 2020 13:00:00 GMT</pubDate>
-            <description><![CDATA[2020년 3월 회고 입니다.]]></description>
-            <enclosure url="https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png">
+            <title><![CDATA[2020년 6월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</guid>
+            <pubDate>Sun, 12 Jul 2020 13:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 6월 회고 입니다.]]></description>
+            <enclosure url="https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png">
             </enclosure>
         </item>
         <item>
@@ -139,15 +148,6 @@
             <pubDate>Sun, 31 May 2020 13:00:00 GMT</pubDate>
             <description><![CDATA[2020년 5월 회고 입니다.]]></description>
             <enclosure url="https://junilhwang.github.io/TIL/./2.png">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[2020년 6월 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/06-June/</guid>
-            <pubDate>Sun, 12 Jul 2020 13:00:00 GMT</pubDate>
-            <description><![CDATA[2020년 6월 회고 입니다.]]></description>
-            <enclosure url="https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png">
             </enclosure>
         </item>
         <item>
