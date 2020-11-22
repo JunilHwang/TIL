@@ -96,6 +96,51 @@ MPV는 역대 선수들 중 최고성적(세계신기록)을 의미한다.
 ## 디자인
 
 개발이야 그렇다치고, 디자인은 정말 무척 힘들었다.
+제일 못한 디자인을 소개하고 싶은데.. 자료가 없다.
+
+
+### 도서관
+
+![도서관1](https://user-images.githubusercontent.com/18749057/99899454-c9887780-2cec-11eb-96ee-6459fb84fd2e.png)
+
+![도서관2](https://user-images.githubusercontent.com/18749057/99899458-cd1bfe80-2cec-11eb-9830-acb1065f6779.png)
+
+2011년도 지방대회의 주제는 `도서관`이었다.
+전국대회를 준비할 때 디자인 했던건데 지금보니까 정말 촌스럽다.
+사실 이 당시의 디자인들은 대부분 촌스러웠다.
+
+
+### 성곡마을
+
+![성곡마을1](https://user-images.githubusercontent.com/18749057/99899431-b5447a80-2cec-11eb-9c2c-1315310405be.png)
+
+![성곡마을2](https://user-images.githubusercontent.com/18749057/99899445-becde280-2cec-11eb-90ec-2d790c4ae59c.png)
+
+2011년도 전국대회의 주제는 `정보화마을` 이었는데, 쇼핑몰 + 달력 기능이 있던걸로 기억한다.
+이 디자인은 나름의 고심 끝에 로고를 이용했었는데 생각보다 많은 사람들에게 칭찬을 들었던 기억이 난다.
+내 머리에서 나온 것 치곤 괜찮은 아이디어였던 것 같다.
+
+### 가구
+
+![가구1-1](https://user-images.githubusercontent.com/18749057/99899532-6a773280-2ced-11eb-8651-7301797a4a0a.png)
+
+![가구1-2](https://user-images.githubusercontent.com/18749057/99899533-6d722300-2ced-11eb-988b-3724d8c316bb.png)
+
+2012년도 전국대회의 주제는 "가구"였다. 문제의 주제는 대회 2주전에 공개되기 때문에 부랴부랴 디자인을 했었는데, 첫 번째로 만든 디자인은 정말.. 별로였다.
+별로라고 밖에 설명할 길이 없네.. 허허
+
+![가구2-1](https://user-images.githubusercontent.com/18749057/99899477-ef158100-2cec-11eb-902f-1b0d08fd5aa1.png)
+
+![가구2-2](https://user-images.githubusercontent.com/18749057/99899480-f2a90800-2cec-11eb-9b90-72c17b8fd815.png)
+
+두 번째로 만든 디자인은, 첫 번째 디자인에서 색감과 레이아웃을 변경했다.
+
+내가 디자인을 무척 잘했던게 아니기 때문에 디자인에 대한 소개는 여기까지만!
+
+## 플래시
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b3hBODVJmYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 
