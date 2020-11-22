@@ -126,3 +126,6 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 ## 일상
 
 - [개발자의 글쓰기](/Writing/)
+  - [유년시절 이야기 - Part 01](/Writing/01-유년시절-이야기-1/)
+  - [유년시절 이야기 - Part 02](/Writing/01-유년시절-이야기-2/)
+  - [유년시절 이야기 - Part 03](/Writing/01-유년시절-이야기-3/)

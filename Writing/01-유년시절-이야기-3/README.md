@@ -1,8 +1,8 @@
 ---
 
-title: 유년시절 이야기 (2)
-description: 본격적으로 개발을 시작하게 되는 이야기입니다.
-date: 2020-11-09 22:20:00
+title: 유년시절 이야기 (3)
+description: 짧았지만 강렬했던, 그리운 시절의 이야기입니다.
+date: 2020-11-23 01:00:00
 sidebar: false
 feed:
   enable: true
