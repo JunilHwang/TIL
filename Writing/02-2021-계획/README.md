@@ -110,7 +110,8 @@ feed:
   - 나를 위한 서비스를 만들기.
   - 타인을 위한 서비스를 만들기.
 - 구체적인 계획
-  - 
+  - [단쿠키](https://programmers.co.kr/competitions/779/2021-kakaocommerce-fe-recruitment) 리쿠르트에 참여했다.
+    - 
 
 ## 5. 스터디 운영
 
