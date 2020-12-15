@@ -3,7 +3,7 @@
 title: 유년시절 이야기 (3)
 description: 짧았지만 강렬했던, 그리운 시절의 이야기입니다.
 sidebar: false
-
+date: 2020-12-16 00:10:00
 
 feed:
   enable: true
