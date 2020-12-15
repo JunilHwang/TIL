@@ -2,7 +2,6 @@
 
 title: 유년시절 이야기 (1)
 description: 개발에 입문하기 이전의 유년시절 이야기입니다.
-date: 2020-11-02 02:10:00
 sidebar: false
 feed:
   enable: true

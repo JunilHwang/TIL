@@ -2,10 +2,7 @@
 
 title: 00 책 소개 | 객체지향의 원리와 이해
 description: 김종민님이 저술한 "스프링 입문을 위한 (자바) 객체지향의 원리와 이해"에 대한 소개입니다.
-date: 2020-02-14 13:00:00
 sidebarDepth: 2
-feed:
-  enable: true
 
 ---
 

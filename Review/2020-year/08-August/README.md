@@ -2,10 +2,7 @@
 
 title: 2020년 8월 회고
 description: 2020년 8월 회고 입니다.
-date: 2020-10-05 01:27:00
 sidebarDepth: 2
-feed:
-  enable: true
 
 ---
 

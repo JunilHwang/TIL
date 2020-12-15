@@ -2,10 +2,7 @@
 
 title: Gradle Wrapper
 description: Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.
-date: 2020-01-14 13:00:00
 sidebarDepth: 2
-feed:
-  enable: true
 
 ---
 

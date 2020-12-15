@@ -2,10 +2,7 @@
 
 title: 2020년 9월 회고
 description: 개발자 황준일의 2020년 9월 회고입니다.
-date: 2020-10-17 17:40:00
 sidebarDepth: 2
-feed:
-  enable: true
 
 ---
 

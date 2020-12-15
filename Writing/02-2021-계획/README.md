@@ -2,10 +2,7 @@
 
 title: 2021 새해 계획
 description: 다가오는 2021년에 대한 계획입니다.
-date: 2020-12-07 19:00:00
 sidebar: false
-feed:
-  enable: true
 
 ---
 
