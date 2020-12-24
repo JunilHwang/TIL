@@ -3,6 +3,7 @@
 title: 2020년 4월 회고
 description: 2020년 4월 회고 입니다.
 sidebarDepth: 2
+date: 2020-04-30
 
 ---
 
