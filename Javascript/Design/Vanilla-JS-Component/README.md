@@ -3,6 +3,7 @@
 title: Vanilla Javascript로 웹 컴포넌트 만들기
 description: Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.
 sidebarDepth: 2
+date: 2020-10-25
 
 ---
 

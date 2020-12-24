@@ -3,6 +3,7 @@
 title: 객체지향의 기본 이론
 description: 객체지향의 원칙과 객체지향을 사용하는 궁극적인 목표에 대해 기술합니다.
 sidebarDepth: 1
+date: 2020-02-01
 
 ---
 

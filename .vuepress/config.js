@@ -33,7 +33,7 @@ module.exports = {
         email: "junil.h@kakao.com",
         link: "https://junilhwang.github.io/"
       },
-      posts_directories: ["/Writing/", "/Review/", "/Book/", "/Javascript/", "/CodeSpitz/"],
+      posts_directories: ["/Writing/", "/Review/", "/Javascript/", "/CodeSpitz/"],
       sort: entries => entries.sort((a, b) => new Date(b.date) - new Date(a.date))
     }],
     [
