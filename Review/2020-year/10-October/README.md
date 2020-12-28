@@ -57,6 +57,8 @@ feed:
 
 어쨌든 이 스터디가 더 많이 알려졌으면 하는 바람으로 상세하게 소개해 보도록 하겠다.
 
+***
+
 #### (1) Facebook 클론 코딩
 
 React로 Facebook의 뉴스피드와 로그인/회원가입 등을 만드는 과정이다.
@@ -68,6 +70,8 @@ React로 Facebook의 뉴스피드와 로그인/회원가입 등을 만드는 과
 ![image 4](./4.png)
 
 로그인과 회원가입 페이지도 만들어야 한다.
+
+***
 
 #### (2) CRA(Create React App)을 사용하지 않고 개발환경 구성하기
 
@@ -155,6 +159,8 @@ webpack보다 훨씬 단순하고 이해하기도 쉽다.
 그래도 다양한 실습을 위해 `redux` `react-redux` `redux-thunk` `redux-saga` `react-router-dom` `connected-react-router` `styled-jsx` 등을 설치했고,
 각종 `babel plugin`과  `eslint` `prettier` 등을 설치했다.
 
+***
+
 #### (3) React Router
 
 react-router-dom에 나와있는 내용와 보편적으로 사용하는 Router의 경우 다음과 같은 형태이다.
@@ -183,13 +189,14 @@ export default function App() {
 }
 ```
 
-그런데 특정 라우터마다 공통적으로 표현하는 레이아웃이 존재할 수 있다.
-예를 들자면
-- 로그인/회원가입 페이지의 경우 회원은 접근할 수 없어야 하고 비슷한 레이아웃을 가질 것이다.
-- 헤더와 푸터를 가지고 있는 페이지가 있을 것이다. 반대로, 헤더와 푸터가 없는 페이지도 있을 수 있다.
-- 이 외에도 공통분모를 가진 여러가지 페이지 레이아웃이 있을 수 있다.
+그런데 각각의 라우터가 독립된 레이아웃을 가지는 것이 아니라 분명히 **공통분모**가 존재할 것이다.
 
-이 때 다음과 같은 형태로 Router Component를 표현할 수 있다.
+예를 들자면
+- 로그인/회원가입 페이지의 경우 회원은 접근할 수 없어야 하고 **비슷한 레이아웃**을 가질 것이다.
+- 헤더와 푸터를 가지고 있는 페이지가 있을 것이다. 반대로, 헤더와 푸터가 없는 페이지도 있을 수 있다.
+- 이 외에도 **공통분모**를 가진 여러가지 페이지 레이아웃이 있을 수 있다.
+
+이 때 다음과 같은 형태로 Router를 표현할 수 있다. 정확히는 재사용이랄까?
 
 ```jsx
 export default function App() {
@@ -205,16 +212,114 @@ export default function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path="/about"><About /></Route>
-          <Route path="/login"><Login /></Route>
-          <Route path="/join"><Join /></Route>
-          <Route path="/"><Home /></Route>
+          <PublicLayout path="/login" component={Login} />
+          <PublicLayout path="/join" component={Join} />
+          <DefaultLayout path="/about" component={About} />
+          <DefaultLayout path="/" component={Home} />
         </Switch>
       </div>
     </Router>
   );
 }
 ```
+
+구현 방법은 [이 링크](https://simonsmith.io/reusing-layouts-in-react-router-4)를 참고하면 된다.
+여기에서 다루기엔 양이 너무 많다.
+
+***
+
+#### (4) 원리 부터 깨우친다.
+
+단순하게 React로 무언가를 만드는 과정이 아니라
+
+- 어쩌다가 이러한 프레임워크가 등장했는지
+- React의 철학은 무엇인지
+- 타 프레임워크와 비교했을 때 React의 장점이 무엇인지
+- 옳바르게 React를 사용하는 방법
+- React를 공부하는데 필요한 기초 지식
+
+등을 먼저 설명하고 그 다음에 구현에 필요한 API를 공부할 수 있도록 방향이 잡혀있다.
+
+예를 들자면 다음과 같은 것들(도메인 지식이랄까?)에 대해 먼저 공부한다.
+
+- `spread 연산자`와 `rest 연산자`의 차이점/공통점
+- `Arrow Function`과 `this`
+- `module loader` vs `module bundler`
+- `ES Module`
+- `Virtual DOM`
+- `Element` vs `Component`
+- `props`
+- `propTypes`
+- `state`
+- `Component Life Cycle`
+- `Controlled Component`
+- `Uncontrolled Component`
+- `Pure Component`
+- `Memoization`
+- `SPA(Single Page Application)`
+- `Hook Motivation`
+- `상태관리`
+- Javascript의 `실행 컨텍스트`
+  - Outer Environment
+  - Lexical Environment
+- 함수 생성과 호출규칙, 그리고 `클로저`
+- `Currying`과 Middleware
+- `StateLess` 아키텍쳐와 `JWT(Json Web Token)`
+- `Iterator`, `Iterable`, `Generator`
+- `promise` 그리고 `async/await`
+- `Saga Pattern`
+
+이러한 개념들 이외에도 무척 많은 것들을 배웠으나, 사실 기억 나는게 많지 않다.. 😂
+어쨌든 중요한 점은 단순하게 React에 대해 공부하는 것이 아니라 어떤 과정을 통해서 React가 현재의 모습을 갖추게 되었고,
+어떤 Motivatino을 통해서 디자인 되었는지 알 수 있었기 때문에 **스터디를 통해서 React에 대한 전반적인 이해도**가 좋아졌다.
+
+***
+
+#### (5) 스터디 리더가 작성한 코드 공유
+
+미션이 종료된 후에 리더가 작성한 코드를 공유해주기 때문에 내가 작성한 코드와 비교하며 부족한 부분을 채울 수 있다는 점도 큰 매리트라고 생각한다.
+코드에 정답은 없지만 그래도 내가 작성한 것 보단 정답에 가까운 코드를 보는 것 만으로도 굉장히 큰 도움이 된다.
+
+그리고 내가 현업에서 접하지 못했던 유용한 라이브러리를 많이 볼 수 있었다.
+무엇보다 Redux를 정말 제대로, 그리고 잘 사용할 수 있는 방법을 접할 수 있는 점도 좋았다.
+
+***
+
+#### (6) 유쾌한 운영진
+
+스터디 리더와는 별개로, 스터디를 개설하고 관리하는 운영진 덕분에 매 스터디가 즐거웠다. 
+
+크리시님 혹시 이 글을 읽고 계신가요? **당근 상모돌리기** 무척 인상 깊었습니다 😁
+
+***
+
+#### (7) 기술 외적 동기 부여
+
+그리고 스터디 리더인 Harry의 경우 싱가포르 소재의 핀테크 회사에서 팀장급 Full-Stack 개발자로 근무 중이며, 
+전 회사인 카카오 뱅크에서는 데이터 엔지니어로 근무했다.
+
+여담으로, Harry는 프로그래머스에서 React Study 뿐만 아니라 다음과 같은 스터디 리더로 활동하고 있다.
+
+- [단순 CRUD는 그만! 웹 백엔드 시스템 구현(Spring Boot)](https://programmers.co.kr/learn/courses/11186)
+- [씹고 뜯고 맛보는 Node.js with REST&GraphQL](https://programmers.co.kr/learn/courses/10617)
+
+굉장히 화려한 이력을 가지고 있지만 Harry는 비전공자이다.
+
+이렇게 다방면의 기술을 깊게 공부하고 전파할 수 있었던 이유 중 하나가 바로 `영어`라고 했다.
+`영어`는 **모든 지식의 도메인 지식**이라고 할 수 있다.
+특히 **개발자의 경우 영어로된 문서를 항상 마주봐야 하기 때문에** 어찌보면 개발자가 제일 먼저 공부해야 하는 것이 영어라고 할 수 있다.
+
+`Harry`가 특히 영어를 강조했고, 무척 설득력 있게 다가왔다.
+그래서 내년에는 일일커밋 대신 `일일영어`를 하기로 다짐했다.
+
+***
+
+#### 정리
+
+결국 내가 하고 싶은 이야기는 한 가지이다.
+React를 학습 하고 싶다면 꼭 이 스터디에 참여해보길 권한다.
+
+***
 
 ### 2. Blog Study
 
