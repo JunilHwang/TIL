@@ -83,11 +83,22 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
   - [7월](/Review/2020-year/07-July/) 
   - [8월](/Review/2020-year/08-August/) 
   - [9월](/Review/2020-year/09-September/) 
+  - [10월](/Review/2020-year/10-October/) 
+  - [11월](/Review/2020-year/11-November/) 
+  - [12월](/Review/2020-year/12-December/) 
 
 - 분기 회고
   - [1분기](/Review/2020-year/01-First-Quarter/)
   - [2분기](/Review/2020-year/02-Second-Quarter/)
   - [3분기](/Review/2020-year/03-Third-Quarter/)
+
+## 일상
+
+- [개발자의 글쓰기](/Writing/)
+  - [유년시절 이야기 - Part 01](/Writing/01-유년시절-이야기-1/)
+  - [유년시절 이야기 - Part 02](/Writing/01-유년시절-이야기-2/)
+  - [유년시절 이야기 - Part 03](/Writing/01-유년시절-이야기-3/)
+  - [2021 새해 계획](/Writing/02-2021-계획/)
 
 ## 2020 목표
 
@@ -113,6 +124,12 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
       - 부의 추월차선
     - ~~8월~~ `실패`
     - ~~9월~~ `실패`
+    - ~~10월~~ `실패`
+    - ~~11월~~ `실패`
+    - 12월
+      - 함께 자라기
+      - 그림으로 배우는 Http & Network Basic
+      - 이펙티브 자바 2판
   - PPP 시리즈 읽어보기
     - 밑바닥 부터 만드는 컴퓨팅 시스템
     - 클린 아키텍쳐
@@ -122,11 +139,3 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
     - 테스트 주도 개발
     - 생각하는 프로그래밍
 - [VuePress 이쁘게 Custom 하기 (나의 것으로 만들자!)](/Vuepress/Starter/) `완료`
-
-## 일상
-
-- [개발자의 글쓰기](/Writing/)
-  - [유년시절 이야기 - Part 01](/Writing/01-유년시절-이야기-1/)
-  - [유년시절 이야기 - Part 02](/Writing/01-유년시절-이야기-2/)
-  - [유년시절 이야기 - Part 03](/Writing/01-유년시절-이야기-3/)
-  - [2021 새해 계획](/Writing/02-2021-계획/)
