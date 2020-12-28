@@ -71,26 +71,25 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 - [GradleWrapper](/Gradle/GradleWrapper/)
 
-### 2020년 회고
+### 회고
 
-- 월 회고
-  - [1월](/Review/2020-year/01-January/)
-  - [2월](/Review/2020-year/02-February/)
-  - [3월](/Review/2020-year/03-March/)
-  - [4월](/Review/2020-year/04-April/) 
-  - [5월](/Review/2020-year/05-May/) 
-  - [6월](/Review/2020-year/06-June/) 
-  - [7월](/Review/2020-year/07-July/) 
-  - [8월](/Review/2020-year/08-August/) 
-  - [9월](/Review/2020-year/09-September/) 
-  - [10월](/Review/2020-year/10-October/) 
-  - [11월](/Review/2020-year/11-November/) 
-  - [12월](/Review/2020-year/12-December/) 
-
-- 분기 회고
-  - [1분기](/Review/2020-year/01-First-Quarter/)
-  - [2분기](/Review/2020-year/02-Second-Quarter/)
-  - [3분기](/Review/2020-year/03-Third-Quarter/)
+- 2020년
+  - [1분기 회고](/Review/2020-year/01-First-Quarter/)
+    - [1월](/Review/2020-year/01-January/)
+    - [2월](/Review/2020-year/02-February/)
+    - [3월](/Review/2020-year/03-March/)
+  - [2분기 회고](/Review/2020-year/02-Second-Quarter/)
+    - [4월](/Review/2020-year/04-April/) 
+    - [5월](/Review/2020-year/05-May/) 
+    - [6월](/Review/2020-year/06-June/)
+  - 3분기 회고
+    - [7월](/Review/2020-year/07-July/)
+    - [8월](/Review/2020-year/08-August/) 
+    - [9월](/Review/2020-year/09-September/)
+  - 4분기 회고
+    - [10월](/Review/2020-year/10-October/) 
+    - [11월](/Review/2020-year/11-November/) 
+    - [12월](/Review/2020-year/12-December/)
 
 ## 일상
 

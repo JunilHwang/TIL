@@ -7,34 +7,51 @@ const CodeSpitzNBJS = `${CodeSpitz}/None-Blocking-Javascript`
 const CodeSpitzOOJS = `${CodeSpitz}/Object-Oriented-Javascript`
 const Book = `/Book`
 const OOPPrinciple = `${Book}/OOP-Principle`
-const Review2020 = `Review/2020-year`
+const Review2020 = `/Review/2020-year`
 
 module.exports = [
   { title: 'Home', path: '/' },
   {
-    title: '2020년 회고',
+    title: '회고',
     children: [
       {
-        title: '월 회고',
+        title: '2020년',
         children: [
-          '01-January/',
-          '02-February/',
-          '03-March/',
-          '04-April/',
-          '05-May/',
-          '06-June/',
-          '07-July/',
-          '08-August/',
-          '09-September/',
-        ].map(v => `${Review2020}/${v}`)
-      },
-      {
-        title: '분기 회고',
-        children: [
-          '01-First-Quarter/',
-          '02-Second-Quarter/',
-          '03-Third-Quarter/',
-        ].map(v => `${Review2020}/${v}`)
+          {
+            title: '1분기',
+            children: [
+              '01-January/',
+              '02-February/',
+              '03-March/',
+              '01-First-Quarter/',
+            ].map(v => `${Review2020}/${v}`)
+          },
+          {
+            title: '2분기',
+            children: [
+              '04-April/',
+              '05-May/',
+              '06-June/',
+              '02-Second-Quarter/',
+            ].map(v => `${Review2020}/${v}`)
+          },
+          {
+            title: '3분기',
+            children: [
+              '07-July/',
+              '08-August/',
+              '09-September/',
+            ].map(v => `${Review2020}/${v}`)
+          },
+          {
+            title: '4분기',
+            children: [
+              '10-October/',
+              '11-November/',
+              '12-December/',
+            ].map(v => `${Review2020}/${v}`)
+          },
+        ]
       },
     ]
   },
