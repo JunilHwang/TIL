@@ -308,23 +308,139 @@ export default function useTodo() {
 
 ### 6. 기능대회용 PHP Tutorial
 
-기능대회 전용으로 만든 [PHP Step By Step Tutorial](https://github.com/sdhs-webskills/php-architecture-step-by-step)이다.
-요즘에 PHP를 하다 보면 내가 PHP라는 언어를 다뤄봤다는게 낯설다.
-옛날에는 Server-side 언어로 할줄 아는거라곤 PHP 밖에 없었는데 언제 이렇게 낯설어진걸까?
+기능대회 전용으로 [PHP Step By Step Tutorial](https://github.com/sdhs-webskills/php-architecture-step-by-step)을 만들었다.
+데모는 [이 링크](https://stormy-coast-06452.herokuapp.com/)에서 확인할 수 있으며 따로 문서는 없고 코드만 작성해놓은 상태이다.
 
 ![13](./13.jpg)
 
-아직은 코드만 작성해놓은 상태이다.
+요즘에 PHP를 하다 보면 내가 PHP라는 언어를 다뤄봤다는게 낯설다.
+옛날에는 Server-side 언어로 할줄 아는거라곤 PHP 밖에 없었는데 언제 이렇게 낯설어진걸까?
+
 이 튜토리얼을 작성하면서 [heroku](https://dashboard.heroku.com/)를 처음 사용해봤다.
 그리고 [Getting Started on Heroku with PHP](https://devcenter.heroku.com/articles/getting-started-with-php)를 따라해보면서 [composer](https://getcomposer.org/doc/00-intro.md)를 처음 사용해봤다.
 
 이제 [PHP 8.0](https://www.php.net/releases/8.0/en.php)이 나오면서 한 층 더 성숙해진 언어가 된 것 같다.
 여유 있을 때(대체 언제?) [Laravel](https://laravel.com/)로 토이 프로젝트를 진행해봐도 괜찮을 것 같다.
 
-여튼 데모는 [이 링크](https://stormy-coast-06452.herokuapp.com/)에서 확인할 수 있다.
+***
 
+이대로 마무리하기는 아쉬워서 마지막 스텝에서 작성한 `Router`에 대해 소개해본다.
+[express.js](https://expressjs.com/ko/)의 [router](https://expressjs.com/ko/starter/basic-routing.html)를 따라해보려고 했는데 URI Pattern을 파싱하고 매칭시키는게 귀찮아서 그냥 정규식으로 처리했다.
+
+```php
+
+namespace src\core;
+
+class Router {
+    private array $routes = [];
+    private String $requestUri;
+
+    function __construct($baseUri) {
+        $path = preg_replace("/\?.+/", "", $_SERVER['REQUEST_URI'] ?? "/");
+        $this->requestUri = str_replace($baseUri, "", $path);
+    }
+
+    public function get($uri, $callback) { $this->routes[] = ["get", $uri, $callback]; }
+    public function post($uri, $callback) { $this->routes[] = ["post", $uri, $callback]; }
+    public function delete($uri, $callback) { $this->routes[] = ["delete", $uri, $callback]; }
+    public function put($uri, $callback) { $this->routes[] = ["put", $uri, $callback]; }
+
+    public function run() {
+        $routes = array_reduce($this->routes, function ($routes, $route) {
+            [$method, $uri, $callback] = $route;
+            $uri = '/^'. str_replace("/", "\/", $uri) .'$/';
+
+            if (
+                $method !== strtolower($_SERVER['REQUEST_METHOD']) ||
+                !preg_match($uri, $this->requestUri)
+            ) return $routes;
+
+            preg_match_all($uri, $this->requestUri, $params, 2, 0);
+            $routes[] = [$callback, $params[0]];
+
+            return $routes;
+        }, []);
+
+        if (count($routes) === 0) {
+            echo 'Not Found ' . $this->requestUri;
+            return;
+        }
+        [$callback, $params] = current($routes);
+        $callback($params);
+    }
+}
+```
+
+위의 코드는 다음과 같이 사용할 수 있다.
+
+```php
+class UserController {
+    private Router $router;
+    function __construct(Router $router) {
+        $router->get('/api/users', fn($params) => $this->getUsers($params));
+        $router->get('/api/user/([0-9]+)', fn($params) => $this->getUser($params));
+        $router->get('/api/user', fn($params) => $this->getUserByEmail($params));
+        $router->post('/api/user', fn($params) => $this->setUser($params));
+    }
+    private function getUsers($params) {}
+    private function getUser($params) {}
+    private function getUserByEmail($params) {}
+    private function setUser($params) {}
+}
+
+$router = new Router(BASE_URI);
+$router->get('/', function ($param) {
+    include_once(VIEW . '/main.php');
+});
+
+new UserController($router);
+$router->run();
+```
+
+다만 `PUT`과 `DELETE` method의 경우 `$_GET`, `$_POST` 처럼 읽어올 수 없기 때문에 귀찮아서 생략했다. ~~이정도만 있어도 하드코딩 하는데 큰 문제는 없겠지?~~
+
+***
+
+국제대회 금메달을 받았고 지금은 카카오에서 근무중인 친구와 함께 위키를 조금씩 만들다가 현타가 와서 포기했었는데,
+그 당시에 만들었던 자료도 같이 첨부한다.
+
+- [기능경기대회 Wiki](https://github.com/ChoDragon9/skills/wiki)
+- [MySQL 기본 CRUD 명령어](https://github.com/ChoDragon9/skills/wiki/MySQL-%EA%B8%B0%EB%B3%B8-CRUD-%EB%AA%85%EB%A0%B9%EC%96%B4)
+- [PHP+MySQL CRUD Tutorial](https://github.com/ChoDragon9/skills/wiki/PHP-MySQL-CRUD-Tutorial)
+- PHP MySQL로 게시판 만들기 without MVC
+  - Part 01
+    - [문서](https://github.com/ChoDragon9/skills/wiki/PHP-MySQL%EB%A1%9C-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-without-mvc-01)
+    - [유튜브 영상](https://www.youtube.com/watch?v=lv5mxcGXnaU)
+  - Part 02
+    - [문서](https://github.com/ChoDragon9/skills/wiki/PHP-MySQL%EB%A1%9C-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-without-mvc-02)
+    - [유튜브 영상](https://www.youtube.com/watch?v=t0Q9U2VS0gQ)
+
+***
 
 ### 7. 모각코
+
+어쩌다보니 10월에 참여했던 [프로그래머스 리액트 스터디](http://localhost:8080/TIL/Review/2020-year/10-October/#_1-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%85%E1%85%B5%E1%84%8B%E1%85%A2%E1%86%A8%E1%84%90%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%83%E1%85%B5)의 몇몇 스터디원과 `모각코(모여서 각자 코딩)`을 하기로 했다.
+
+![14](./14.jpg)
+
+이렇게 먼저 제안을 주셨고, 둘 다 성남에 살다보니 첫 주에는 우리 집 근처에서 보기로 했다.
+
+![15](./15.jpg)
+
+그 다음 모임에는 한 분이 더 껴서 만났다.
+
+태의님과 태현님은 [부스트캠프](https://boostcamp.connect.or.kr/)를 통해서 이미 서로 알고 있던 사이라고 했다.
+태의님의 경우 10월 말에 [부스트캠프 옥토버페스트](https://m.blog.naver.com/boostcamp_official/222140296542)에서 나와 똑같은 주제(나와 찰떡인 회사)로 발표했었다.
+
+![16](./16.jpg)
+
+이 때 언젠가 기회가 되면 뵈었으면 좋겠다고 말했었는데, 실제로 뵙게 되니까 반가웠다.
+태의님과 태현님 두 분 모두 정말 좋은 분들이고, 열심히 공부하고 살아가는 분들이라서 유독 반가웠다.
+이러한 인연을 맺게 해준 [프로그래머스 리액트 스터디](https://programmers.co.kr/learn/courses/10658)에 다시 한 번 감사를 전한다.
+
+그러나 갑자기 코로나 확진자가 많아지면서 모각코는 3회만 진행되었다. 빨리 코로나가 잠잠해지길 바랄 뿐이다 😂
+
+***
 
 ### 8. 네이버 면접
 
