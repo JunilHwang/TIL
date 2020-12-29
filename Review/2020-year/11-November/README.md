@@ -306,6 +306,8 @@ export default function useTodo() {
 이번에는 인상 깊었던 글들을 소개하기보단 그냥 [PR 링크](https://github.com/next-step/blog/pull/55)만 달아놓겠다.
 사실 글을 읽을 여유도 거의 없었다..
 
+***
+
 ### 6. 기능대회용 PHP Tutorial
 
 기능대회 전용으로 [PHP Step By Step Tutorial](https://github.com/sdhs-webskills/php-architecture-step-by-step)을 만들었다.
@@ -415,6 +417,8 @@ $router->run();
     - [문서](https://github.com/ChoDragon9/skills/wiki/PHP-MySQL%EB%A1%9C-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0-without-mvc-02)
     - [유튜브 영상](https://www.youtube.com/watch?v=t0Q9U2VS0gQ)
 
+이제보니 `PHP 게시판` 이라는 키워드로 유튜브에 검색하면 내가 올린 동영상이 첫 번째로 나온다. 뭐지..? 이제와서..?
+
 ***
 
 ### 7. 모각코
@@ -442,6 +446,55 @@ $router->run();
 
 ***
 
-### 8. 네이버 면접
+### 8. 네이버 아폴로 면접
+
+![17](./17.jpg)
+
+9월에 프로그래머스 네이버 아폴로 챌린지에 접수했고, 알고리즘 테스트와 프론트엔드 과제 테스트를 진행했다.
+그런데 생각보다 결과가 잘 나왔다.
+
+![18](./18.jpg)
+
+이어서 11월 중에 1차 면접을 진행했는데, 이것 저것 하는게 많다보니 너무 바빠서 면접 준비를 아예 하질 못했다.
+그나마 살펴본게 `이벤트 루프` 부분인데 이게 딱 면접 질문으로 나왔다.
+
+::: tip 이벤트 루프
+
+여기서 설명하긴 귀찮아서 링크로 대체하겠다.
+
+- [Toast Meetup - 자바스크립트와 이벤트 루프](https://meetup.toast.com/posts/89)
+- [Velog - Event Loop (이벤트 루프)](https://velog.io/@thms200/Event-Loop-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84)
+- [Zerocho - 호출 스택과 이벤트루프](https://www.zerocho.com/category/JavaScript/post/597f34bbb428530018e8e6e2)
+- [MDN - 동시성 모델과 이벤트 루프](https://developer.mozilla.org/ko/docs/Web/JavaScript/EventLoop)
+- [자바스크립트는 어떻게 작동하는가: 이벤트 루프와 비동기 프로그래밍의 부상, async/await을 이용한 코딩 팁 다섯 가지](https://engineering.huiseoul.com/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94%EA%B0%80-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84%EC%99%80-%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EC%9D%98-%EB%B6%80%EC%83%81-async-await%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%BD%94%EB%94%A9-%ED%8C%81-%EB%8B%A4%EC%84%AF-%EA%B0%80%EC%A7%80-df65ffb4e7e)
+- [Javascript.info - 이벤트 루프와 매크로·마이크로태스크](https://ko.javascript.info/event-loop)
+
+:::
+
+카카오를 준비했던 경험 때문인지 생각보다 면접은 잘 본 것 같았다.
+모르는 부분은 모른다고 답했고, 아는 것들은 최대한 상세하게 설명했다.
+혹은 자세하게 이해하진 못하지만 이러저러하게 추측할 수 있을 것 같다는 식으로 설명한 부분도 있었다.
+대체로 매우 솔직하게 답변한 것 같다.
+
+![19](./19.jpg)
+
+사실 그렇게 기대하진 않았지만 1차 합격이 되었다.
+이어서 2차 면접을 진행했는데, 2차 면접은 인성면접과 조금 더 심화적인 기술면접으로 진행되었다.
+면접 질문에서 지원동기나 지원한 조직에 대해 얼만큼 알고 있는지에 물어보는 질문이 어려웠다. 사실 아폴로에 관심이 있어서 지원했다기 보단, 아폴로 챌린지 때문에 지원한 이유가 더 크기 때문이다.
+그래서 지원동기를 정말 솔직하게 말하기가 어려웠고, 이러한 이유 때문에 2차 면접은 반 쯤 포기하고 봤다.
+면접관 분들께 죄송한 마음만 한 가득이다.
+그래도 언젠간 제대로 이직을 준비하는 순간을 위한 경험이랄까?
+지금은 현재 회사에 머무르고 싶은 마음이 훨씬 크다.
+
+무엇보다 면접관 한 분이 해준 말씀이 계속 기억에 남는다.
+
+**"정말로 현재 회사에서 최선을 다했다고 말할 수 있을 만큼 무언가를 해보았는가?"**
+
+아직 이런 경험은 없는 것 같다.
+그래서 해보고 싶은 것도 많고, 아직 나는 많이 부족하다고 생각한다.
+
+어쨌든 결과는 12월에 나올 예정이다.
+
+### 9. Devears
 
 ## Summary
