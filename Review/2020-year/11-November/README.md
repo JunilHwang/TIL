@@ -245,8 +245,8 @@ export default function useTodo() {
 }
 ```
 
-그러나 IDE에서 추적이 쉽지 않고 직접 문자열로 매칭해야 하기 때문에 이 또한 불편하긴 마찬가지이다.
-제일 좋은 방법은 부디 Vuex 측에서 만들어서 제공하는건데.. 과연 언제쯤 가능할까?
+그러나 state나 method를 직접 문자열로 매칭해야 하기 때문에 **IDE에서 코드 추적이 쉽지 않기 때문에** 불편하긴 마찬가지이다.
+제일 좋은 방법은 Vuex 측에서 만들어서 제공하는건데.. 과연 언제쯤 가능할까?
 
 ***
 
@@ -268,14 +268,64 @@ export default function useTodo() {
 
 ### 4. 블랙커피 스터디 레벨 2
 
+[블랙커피 스터디 레벨 1 3기](https://edu.nextstep.camp/s/tUzCRWul)를 9월에 들었고, 이번 달에 [레벨 2](https://edu.nextstep.camp/s/mnUCGXab)가 열렸다.
+이번 과정은 Javascript로 Unit Test와 E2E Test를 작성하는 방법에 대해 다루고 있다.
+
+![12](./12.jpg)
+
+월말에 시작했기 때문에 **1주차 미션** 까지만 완료한 상태이다.
+과연.. 이번 과정을 잘 마무리 할 수 있을지 걱정이다.
+아무래도 리뷰어 활동과 겹치기 때문에 쉽지 않으리라 생각한다.
+
+미션과 관련된 코드는 [이 저장소](https://github.com/JunilHwang/black-coffee-study-lv2)에 올려놨다.
+레벨 1을 할 때 보다 의욕이 많이 사라진 느낌이다.
+
+***
+
 ### 5. 블로그 스터디 2기
+
+지난 달에 이어서 [블로그 스터디](https://edu.nextstep.camp/s/4dBdkika)를 참여했다.
+이번에는 [넥스트 스텝](https://edu.nextstep.camp)에 정식으로 수강모집을 올려서 그런지 참여하는 사람이 훨씬 많았다.
+
+원래 일정대로면 이번 달에 두 개의 글을 썼어야 했는데, 한 개의 글만 썼다.
+
+- [유년시절 이야기 Part 03](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/)
+
+::: tip 유년 시절 이야기 모음
+- [Part 01](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/)
+- [Part 02](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/)
+- [Part 03](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/)
+:::
+
+해당 글을 작성하면서 2012년도에 공부했던 것들을 다시 들여다봤다. 그 때는 잘 만들었다 싶었는데 역시 과거의 코드는 보는 게 아니다. ~~나는 똥을 만들었다.~~
+2012년도에 [전국대회](https://meister.hrdkorea.or.kr/sub/3/3/1/20160512111525375100_view.do)를 준비하면서 만든 [결과물 코드](https://github.com/JunilHwang/webskills-2012-national-furniture)이다.
+자세한 내용은 앞서 소개한 링크를 타고 들어가면 볼 수 있다.
+
+사실 아직 작성하지 않은 **Part 04**가 개발과 동떨어진 정말 진지한 나의 이야기일 것 같은데, 언제 쯤 작성할 수 있을지 모르겠다. ~~사실 쓰기 귀찮다.~~
+
+이번에는 인상 깊었던 글들을 소개하기보단 그냥 [PR 링크](https://github.com/next-step/blog/pull/55)만 달아놓겠다.
+사실 글을 읽을 여유도 거의 없었다..
 
 ### 6. 기능대회용 PHP Tutorial
 
-### 7. 2012년도 자료 복원
+기능대회 전용으로 만든 [PHP Step By Step Tutorial](https://github.com/sdhs-webskills/php-architecture-step-by-step)이다.
+요즘에 PHP를 하다 보면 내가 PHP라는 언어를 다뤄봤다는게 낯설다.
+옛날에는 Server-side 언어로 할줄 아는거라곤 PHP 밖에 없었는데 언제 이렇게 낯설어진걸까?
 
-### 8. 모각코
+![13](./13.jpg)
 
-### 9. 네이버 면접
+아직은 코드만 작성해놓은 상태이다.
+이 튜토리얼을 작성하면서 [heroku](https://dashboard.heroku.com/)를 처음 사용해봤다.
+그리고 [Getting Started on Heroku with PHP](https://devcenter.heroku.com/articles/getting-started-with-php)를 따라해보면서 [composer](https://getcomposer.org/doc/00-intro.md)를 처음 사용해봤다.
+
+이제 [PHP 8.0](https://www.php.net/releases/8.0/en.php)이 나오면서 한 층 더 성숙해진 언어가 된 것 같다.
+여유 있을 때(대체 언제?) [Laravel](https://laravel.com/)로 토이 프로젝트를 진행해봐도 괜찮을 것 같다.
+
+여튼 데모는 [이 링크](https://stormy-coast-06452.herokuapp.com/)에서 확인할 수 있다.
+
+
+### 7. 모각코
+
+### 8. 네이버 면접
 
 ## Summary
