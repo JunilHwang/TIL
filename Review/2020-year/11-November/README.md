@@ -27,13 +27,13 @@ feed:
 정확히 말하면 Container의 역할을 하는 Component라서 하위 컴포넌트에 불필요한 로직을 전부 상위 컴포넌트에 구현해놨는데,
 기능 자체가 많은 것도 있지만, 어려운 로직도 있고 여러모로 잠재적 위험을 가진 컴포넌트가 되어버렸다.
 
-추후에 Vue Composition API로 리팩토링 할 예정이다.
-그래서 Composition API를 개인적으로 학습했는데, 이건 뒤에서 더 상세히 다루도록 하겠다.
+추후에 **Vue Composition API로 리팩토링** 할 예정이다.
+그래서 Composition API를 개인적으로 학습했는데, 이건 [Composition API 학습 섹션](#_3-composition-api-학습)에서 상세히 다루도록 하겠다.
 
 ### 2. 신규 프로젝트
 
 이것도 대외비라서 어떤 프로젝트인지 구체적으로 언급하긴 어렵지만,
-핵심적인 내용은 크롬 브라우저(혹은 최신 브라우저)를 전용으로 서비스하는 프로젝트를 담당하여 진행중이다.
+핵심적인 내용은 **크롬 브라우저(혹은 최신 브라우저)를 전용으로 서비스하는 프로젝트**를 담당하여 진행중이다.
 
 올 해의 마지막 프로젝트이며 입사 이후에 처음으로 신규 서비스를 처음부터 만드는 것이기 때문에 무척 재밌다.
 이 프로젝트도 서비스가 런칭 되면 자세히 다뤄야겠다.
@@ -113,7 +113,7 @@ NextStep과 관련된 PR 갯수만 60개인데 대체로 한 PR 당 2번 이상�
 
 ***
 
-### 2. 단쿠키
+### 2. 단쿠키 리쿠르트 지원
 
 나는 [에브리타임](https://everytime.kr/)이라는 대학교 커뮤니티를 자주 사용하는 편이다.
 개발과 관련된 정보를 공유하기도 하고, 진로에 대해 고민하는 후배들과 이야기를 나누는 등의 소통 창구로 사용하고 있다.
@@ -139,20 +139,132 @@ NextStep과 관련된 PR 갯수만 60개인데 대체로 한 PR 당 2번 이상�
 내가 당황했던건 대체로 보안과 관련된 질문이었고, 내가 보안과 관련된 도메인에 약하다는 것을 인지했다.
 덕분에 공부할 것들이 늘었다 😅
 
-***
-
 여담으로, 학부시절에 같이 단쿠키측에서 함께 하고 싶은 의향 있으면 연락 달라고 했었는데 그 당시에는 정말 미친듯이 바빠서 아예 연락을 하지 않았다.
 당시에 작은 에이전시 회사에서 원격근무도 하고 있었고, 학부 연구생도 하고 있었고, 같은 학부 연구생들과 정부 과제도 하고 있었고, 고등학교 강사도 하고 있었다.
 거기에 수업에 시험에 과제에 이것 저것 다 포함하면.. 거기서 무언가를 더 할 엄두가 나질 않았다.
-
-***
 
 ![10](./10.jpg)
 
 어쨌든 12월에 대면 면접을 거치면 결과를 알 수 있겠지 싶다.
 내년엔 또 얼마나 바쁘려나 🤣
 
+***
+
 ### 3. Composition API 학습
+
+회사 프로젝트에 [Composition API](https://composition-api.vuejs.org/)를 사용할 일이 생겼다.
+아직 **Composition API**를 제대로 사용해본적이 없어서 어떤 방식으로 공부해야 고민하다가,
+[Black Coffee Study](https://edu.nextstep.camp/c/L1Ma1gyX/) 할 때 만들었던 **TodoList를 Composition API로** 다시 만들어보자고 생각했다.
+
+![11](./11.jpg)
+
+Composition API를 사용하면서 느낀 것은 React Hook과 굉장히 유사하다는 점이다.
+그래서 처음에는 Store 없이 오직 Composition API만 이용해서 구현했는데, 문제가 굉장히 많았다.
+
+```js
+import { reative, toRefs } from "vue";
+
+const useTodo = () => {
+  const state = reactive({
+    todoItems: []
+  });
+  
+  const addItem = (item) => {
+    state.todoItems = [ ...state.todoItems, item ];
+  }
+  
+  return {
+    ...toRefs(state),
+    addItem
+  }
+}
+
+const { todoItems, addItem } = useTodo();
+addItem("test");
+console.log(todoItems); // ["test"];
+```
+
+위와 같이 useTodo를 `Composition API`의 `reative` `todRefs` 등을 이용하여 만들었다.
+이 때 문제점은 `useTodo`는 `함수`라는 것이다.
+즉, 여러번 실행할 수 있다.
+
+```js
+const todo1 = useTodo();
+const todo2 = useTodo();
+
+todo1.addItem("test1");
+console.log(todo1.todoItems); // ["test1"];
+
+todo2.addItem("test2");
+console.log(todo2.todoItems); // ["test2"];
+```
+
+그래서 composition api만 이용하여 전역 상태를 관리하는 것은 무척 힘들다. 하고자 한다면 못할 건 없으나.. 추천하진 않는다.
+무엇보다 store(vuex)를 쓰면 좋은 이유 중 하나가 VueDevtool을 이용하여 mutation이나 dispatch가 실행 한 시점의 데이터를 조회할 수 있다는 점이다.
+뿐만아니라 현재 state도 바로바로 조회할 수 있으니 이를 포기하기란 쉽지 않은 선택이다.
+
+다만 Composition API와 같이 사용할 때 힘든 점은 store에 대한 유틸성 라이브러리가 없다는 점이다.
+기본적으로 Vuex로 구성한 것들은 `createNamespaceHelper` `mapState` `mapGetters` `mapMutations` `mapActions` 등을 통해 컴포넌트에 쉽게 매핑할 수 있다. 
+그러나 Composition API에 Vuex를 매핑하는 라이브러리는 존재하지 않는다.
+
+그래서 이를 직접 만들어 사용해야 했다.
+
+```js
+import { computed } from "@vue/reactivity";
+import { useStore } from "vuex";
+
+export default function useStoreModuleMapper(namespace) {
+  const store = useStore();
+
+  const mapState = keys => keys.map(key => computed(() => store.state[namespace][key]));
+  const mapMutations = keys => keys.map(key => (...payload) => store.commit(`${namespace}/${key}`, ...payload));
+  const mapActions = keys => keys.map(key => (...payload) => store.dispatch(`${namespace}/${key}`, ...payload));
+  const mapGetters = keys => keys.map(key => computed(() => store.getters[`${namespace}/${key}`]));
+
+  return { mapState, mapMutations, mapActions, mapGetters };
+}
+```
+
+짧게 구성했지만, 기존의 mapper와 유사하게 사용할 수 있게 만들었다.
+
+```js
+export default function useTodo() {
+  const { mapState, mapGetters, mapActions, mapMutations } = useStoreModuleMapper("todo");
+  const [listLoading, appendLoading] = mapState(["listLoading", "appendLoading"]);
+  const [filteredTodoItems] = mapGetters(["filteredTodoItems"]);
+  const [setTodoItems, setUser] = mapMutations([SET_TODO_ITEMS, SET_USER]);
+  const [fetchItems, addItem, updateItem, toggleItem, removeItem, removeAllItem, updatePriority] = mapActions([
+    FETCH_ITEMS,
+    ADD_ITEM,
+    UPDATE_ITEM,
+    TOGGLE_ITEM,
+    REMOVE_ITEM,
+    REMOVE_ALL_ITEM,
+    UPDATE_PRIORITY
+  ]);
+}
+```
+
+그러나 IDE에서 추적이 쉽지 않고 직접 문자열로 매칭해야 하기 때문에 이 또한 불편하긴 마찬가지이다.
+제일 좋은 방법은 부디 Vuex 측에서 만들어서 제공하는건데.. 과연 언제쯤 가능할까?
+
+***
+
+결과물은 코드는 [이 저장소](https://github.com/JunilHwang/vue-composition-todoapp)에서 확인해볼 수 있다.
+데모는 아래의 링크에서 확인할 수 있다.
+
+- [TodoList - Step1 : localStorage](https://junilhwang.github.io/vue-composition-todoapp/#/step1)
+- [TodoList - Step2 : Rest API](https://junilhwang.github.io/vue-composition-todoapp/#/step2)
+- [TodoList - Step3 : Team/Member](https://junilhwang.github.io/vue-composition-todoapp/#/step3)
+
+그리고 다음과 같은 문서와 저장소를 참고했다.
+
+- [Composition API RFC](https://composition-api.vuejs.org/)
+- [Vue 3 공식문서 - Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html#why-composition-api)
+- [Composition API 경험 정리](https://chodragon9.github.io/blog/composition-api-rfc-migration/)
+- [devjang/nuxt-realworld](https://github.com/devJang/nuxt-realworld)
+
+***
 
 ### 4. 블랙커피 스터디 레벨 2
 
