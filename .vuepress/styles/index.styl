@@ -85,16 +85,25 @@ em
     min-height 600px
     +only-pc()
       margin 0 280px
+
   code
     color #ff3860
     background #f9f1f3
     padding: 4px
+
   strong
     color #06F
+
   s
     color #aaa
+
   img:not([alt="uml diagram"])
-    box-shadow 0 0 5px fade-out(#ddd, 0.3)
+    // box-shadow 0 0 5px fade-out(#ddd, 0.3)
+    border 1px solid #ddd
+
+  hr
+    width 200px
+    margin 40px auto 20px
 
   .custom-block.tip {
     border-color: #09F
