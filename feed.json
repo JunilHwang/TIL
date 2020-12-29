@@ -11,7 +11,7 @@
             "title": "2020년 10월 회고",
             "summary": "개발자 황준일의 2020년 10월 회고입니다.",
             "image": "https://junilhwang.github.io/TIL/./2.jpg",
-            "date_modified": "2020-12-28T00:00:00.000Z"
+            "date_modified": "2020-12-28T23:30:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Writing/02-2021-%EA%B3%84%ED%9A%8D/",
@@ -21,19 +21,19 @@
             "date_modified": "2020-12-24T00:16:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "title": "유년시절 이야기 (1)",
-            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
-            "date_modified": "2020-12-16T00:10:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/",
             "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/",
             "title": "유년시절 이야기 (2)",
             "summary": "본격적으로 개발을 시작하게 되는 이야기입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/98433517-0c522900-210b-11eb-941f-d1075ce66a43.png",
+            "date_modified": "2020-12-16T00:10:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "title": "유년시절 이야기 (1)",
+            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
             "date_modified": "2020-12-16T00:10:00.000Z"
         },
         {
