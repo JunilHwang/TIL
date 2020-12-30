@@ -419,17 +419,42 @@ cypress를 이용하면서 든 생각이, 이건 꼭 테스트를 할 때만 필
 프론트엔드 테스트가 어렵긴 하지만 그래도 백엔드 테스트보다 재밌었다.
 눈에 보이는 것들을 코드로 정의하여 테스트하는 것 자체가 큰 매력라고 생각한다.
 
+![매력](https://item.kakaocdn.net/do/8f3c5af3fa1ca1557ad6cc0ef75d98c98b566dca82634c93f811198148a26065)
+
 다음과 같은 글과 영상을 같이 봐도 좋을 것 같다.
 
 - [Youtube - 프론트엔드에서 TDD가 가능하다는 것을 보여드립니다.](https://www.youtube.com/watch?v=L1dtkLeIz-M)
 - [FeConf2020 리뷰🖊: 프론트엔드에서 TDD가 가능하다는 것을 보여드립니다.](https://velog.io/@muchogusto/FeConf2020-%EB%A6%AC%EB%B7%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%97%90%EC%84%9C-TDD%EA%B0%80-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4%EB%8A%94-%EA%B2%83%EC%9D%84-%EB%B3%B4%EC%97%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4)
 - [FEConf2020 프론트엔드 TDD 발표 후기](https://microprotect.github.io/2020/12/16/frontend-tdd-feconf2020/)
 
-그리고 전체 미션 코드는 [여기](https://github.com/JunilHwang/black-coffee-study-lv2)에 모아놨다.
+그리고 전체 미션 코드는 [여기서](https://github.com/JunilHwang/black-coffee-study-lv2) 확인할 수 있다.
 
 ***
 
 ### 5. 블로그 스터디 2기
+
+11월 말에 시작했던 [블로그 스터디 2기](https://edu.nextstep.camp/s/4dBdkika)가 이번 달 중순에 종료되었다.
+원래 한 달 동안 3개 이상의 글을 쓰는 것이 스터디의 목표인데, 이번에는 바쁘기도 했고 ~~귀찮기도 해서~~ 여러가지 핑계(?)로 두 개의 글만 작성했다.
+
+- [유년시절 이야기 Part 03](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/)
+- [2021년 새해 계획](https://junilhwang.github.io/TIL/Writing/02-2021-%EA%B3%84%ED%9A%8D/)
+
+::: tip 유년 시절 이야기 모음
+- [Part 01](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/)
+- [Part 02](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/)
+- [Part 03](https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/)
+:::
+
+사실상.. 거의 참여를 하지 않았다고 봐도 무방한 것 같다.
+
+다른 스터디 참가자가 올린 글은 [여기서](https://github.com/next-step/blog/pulls) 확인할 수 있다.
+
+그런데 스터디가 종료된 이후에 무언가를 계속 작성 중이다.
+음.. 내가 좀 변덕스러운 것 같기도 하고.
+
+![하기 싫다](https://item.kakaocdn.net/do/f7833fcaf0a85fd066bd7d90ba61a634d0bbab1214a29e381afae56101ded106)
+
+***
 
 ### 6. 2021년 계획 세우기
 
