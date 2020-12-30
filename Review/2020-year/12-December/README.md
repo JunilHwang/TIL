@@ -303,10 +303,10 @@ export default function useTodo() {
 
 #### (1) UI 테스트
 
-먼저 UI 테스트는 [Testing Library](https://testing-library.com/)를 이용했다.
+UI 테스트는 [Testing Library](https://testing-library.com/)를 이용하여 진행했다.
 [Queries](https://testing-library.com/docs/dom-testing-library/api-queries) 문서와 [Async Utilites](https://testing-library.com/docs/dom-testing-library/api-async)문서를 보면서 삽질을 많이 했다.
 
-특히, `wait` `waitFor` `waitForDomChange` 등을 사용하는 방법이 무척 헷갈렸고,
+특히, `wait` `waitFor` `waitForDomChange` 등의 API를 사용하는 방법이 무척 헷갈렸고,
 `waitFor`의 경우 IDE 자동완성을 사용하면 `babel`을 불러와서 당황스러웠다.
 
 그리고 비동기 테스트(API 테스트)의 경우 [axios mock adapter](https://github.com/ctimmerm/axios-mock-adapter) 혹은 [fetch mock](https://github.com/wheresrhys/fetch-mock) 등을 이용했는데 처음에 사용 방법을 착각해서 삽질을 많이 했다.
@@ -349,6 +349,46 @@ mockAxios
 - [Only UI Counter](https://github.com/JunilHwang/js-test-basic-step2/blob/main/step2/test/uiCounter/dom.spec.js)
 - [API + Ui Counter](https://github.com/JunilHwang/js-test-basic-step2/blob/main/step2/test/serverCounter.spec.js)
 - [API + TodoApp](https://github.com/JunilHwang/js-test-basic-step2/blob/main/step2/test/todoapp/todoapp.spec.js)
+
+***
+
+#### (2) E2E 테스트
+
+**E2E 테스트**는 [Cypress](https://www.cypress.io/)를 이용하여 진행했다.
+
+::: tip cypress
+
+핵심적인 내용은 다음과 같다.
+
+- 브라우저를 다룰 수 있는 별도의 드라이버를 만들어서 사용
+- E2E 뿐만 아니라, 통합, 단위 테스트까지 사용 가능
+- GUI 도구를 지원. 스펙 관리 및 디버깅이 편리함.
+- 브라우저 내부에서 테스트
+- DashBoard: 모든 테스트 과정과 결과를 저장하고, 한 눈에 분석/관리할 수 있는 서비스 (유료)
+
+상세한 내용은 [여기](https://docs.cypress.io/guides/overview/key-differences.html)서 확인할 수 있다.
+
+:::
+
+cypress를 이용하여 테스트를 진행하면 다음과 같은 처음에 다음과 같은 대시보드가 나온다.
+
+![대시보드](https://nextstep-storage.s3.ap-northeast-2.amazonaws.com/37e4a2bdb4564fd996fd8c1235057d59)
+
+그리고 대시보드에서 특정 테스트를 선택하여 실행하면 다음과 같이 브라우저내에서 차례대로 UI 테스트를 진행한다.
+
+![UI테스트](https://nextstep-storage.s3.ap-northeast-2.amazonaws.com/751848b6474941669abf18146b2e6a33)
+
+그런데 이렇게 테스트를 진행하기 위해선 먼저 앱 자체를 정상적으로 실행할 수 있도록 만들어야한다.
+문제는 기존에 Level 1에서 만들었던 결과물을 가지고 테스트를 해야 하는데, 귀찮아서 그냥 건너뛴 오류들 때문에 테스트 자체를 실행할 수 없었다.
+
+![빡침](https://item.kakaocdn.net/do/8f3c5af3fa1ca1557ad6cc0ef75d98c9f604e7b0e6900f9ac53a43965300eb9a)
+
+~~과거의 나는 대체 무슨 생각이었던걸까~~
+
+어쨌든 테스트 코드를 정상적으로 실행하기 위해 3개월 전에 만든 코드를 뜯어고치고, 모든 오류를 없애버렸다.
+이 과정에 반절 이상의 시간을 쓴 것 같다 😇
+
+
 
 ### 5. 블로그 스터디 2기
 
