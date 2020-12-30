@@ -4,10 +4,19 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Wed, 30 Dec 2020 02:30:35 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 30 Dec 2020 09:17:08 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[2020년 12월 회고]]></title>
+            <link>https://junilhwang.github.io/TIL/Review/2020-year/12-December/</link>
+            <guid>https://junilhwang.github.io/TIL/Review/2020-year/12-December/</guid>
+            <pubDate>Wed, 30 Dec 2020 18:20:00 GMT</pubDate>
+            <description><![CDATA[개발자 황준일의 2020년 12월 회고입니다.]]></description>
+            <enclosure url="https://junilhwang.github.io/TIL/../11-November/21.png">
+            </enclosure>
+        </item>
         <item>
             <title><![CDATA[2020년 11월 회고]]></title>
             <link>https://junilhwang.github.io/TIL/Review/2020-year/11-November/</link>
@@ -168,13 +177,6 @@
             <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</guid>
             <pubDate>Fri, 28 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[MVVM System 개선하기 (2)]]></title>
-            <link>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</link>
-            <guid>https://junilhwang.github.io/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</guid>
-            <pubDate>Sat, 22 Feb 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[ISP 원칙, Visitor Pattern 등을 적용하여 MVVM System을 더욱 개선합니다.]]></description>
         </item>
     </channel>
 </rss>
