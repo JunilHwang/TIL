@@ -506,8 +506,67 @@ cypress를 이용하면서 든 생각이, 이건 꼭 테스트를 할 때만 필
 
 ### 7. Devears
 
+저번 달에 [Devears](https://github.com/dku-study/devears/)라는 사이드 프로젝트를 시작했다.
 
+::: tip Devears
 
-### 8. 아이패드와 아이폰 구매
+단국대의 상징이 곰(Bear)이다.
+
+- Developer(개발자) + Bear(곰) = Devears
+
+즉, **단국대 개발자들**이라는 뜻을 가졌다고 볼 수 있다.
+
+:::
+
+이번 달에는 대충(정말 대충..) [요구사항 문서](https://dku-study.github.io/Devears/)를 작성했고, Front-end 위주의 작업을 진행했다.
+
+![15](./15.jpg)
+
+로고는 [logogenie](https://www.logogenie.net/)에서 로고의 키워드를 검색하고,
+여기서 나온 결과물 중에 마음에 드는 것을 참고하여 대충 급하게 만들었다.
+실제로 서비스 하기 전에 외주를 맡기던가 할 생각이다.
+
+사실 프론트가 어렵다기 보단 UI 구성이 어렵다. **어떻게 만들어도 이상하게 보이는 마법**이랄까..?
+일단 죽이 되든, 밥이 되든 만들어 보고자 한다.
+
+::: tip 프론트엔드 TIP 정리
+
+- Create React App Custom
+  - [CRA로 만든 리액트 프로젝트에서 eject하지 않고 optional chaining 사용하기](https://sustainable-dev.tistory.com/126)
+    - customize-cra
+    - react-app-rewired
+
+- React Router Layout
+  - [React Router](https://reactrouter.com/web/guides/quick-start)
+  - [Reusing layouts in React Router 4](https://simonsmith.io/reusing-layouts-in-react-router-4)
+  - [React Router v4 with multiple layouts](https://stackoverflow.com/a/46201798)
+
+- Mock API
+  - [json-mockServer - 벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/redux-middleware/08-json-mockServer.html)
+  - [github/json-mockServer](https://github.com/typicode/json-mockServer)
+
+- Proxy
+  - [CRA - Proxying API Requests in Development](https://create-react-app.dev/docs/proxying-api-requests-in-development)
+  - [Create-react-app V2 릴리즈! 무슨 변경 사항이 있을까?](https://velog.io/@velopert/create-react-app-v2#5-proxy-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95-%EA%B0%80%EB%8A%A5)
+:::
+    
+현재까지 진행하면서 사용한 프론트엔드 기술 스택은 다음과 같다.
+
+- typescript
+- Create React App
+- react
+- redux
+- redux-saga
+- react-router-dom
+- connected-react-router
+- antd
+- styled-jsx
+- sass
+- json-server
+
+그리고 [프로그래머스 리액트 스터디](https://programmers.co.kr/learn/courses/10658) 과정에서 만든 [리액트 페이스북 클론 프로젝트](https://github.com/junilhwang/react-facebook-clone)를 참고하여 개발 중이다.
+
+***
 
 ## Summary
+
