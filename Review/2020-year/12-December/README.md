@@ -30,7 +30,7 @@ date: 2020-12-30 18:00:00
 이렇게 간소화됐다. 각각의 로직을 `useMenus`, `useSchedule`, `useTemplateItem`, `usePreview` 처럼 **카테고리별로 묶어서** 유지보수 할 수 있게 작업했다.
 다만 아쉬운 점은 변수와 메소드를 구분할 수 있는 방법이 이름 밖에 없다는 점과 직접 만든 mapper 라이브러리의 경우 IDE 추적을 지원하지 않는 다는 점이다.
 
-지난 회고에서도 언급했지만, Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 기도할 뿐이다.. 😇
+Vuex에 **Composition API 전용의 유틸성 라이브러리가 추가 되길** 기도할 뿐이다.. 😇
 
 ::: tip 작성 규칙
 
@@ -148,7 +148,148 @@ _그래서 다음 기수에는 리뷰어로 활동하지 않고 스스로의 역
 
 ### 3. Composition API 학습
 
+11월에 **Composition API로 TodoList 만들기**를 시작했고, 이번 달 초에 마무리 했다.
 
+![9](./9.jpg)
+
+![10](./10.jpg)
+
+![11](./11.jpg)
+
+![12](./12.jpg)
+
+Composition API를 사용하면서 느낀 것은 [React Hook](https://ko.reactjs.org/docs/hooks-intro.html)과 굉장히 유사하다는 점이다.
+그래서 처음에는 Store 없이 오직 Composition API만 이용해서 전역 상태를 관리하도록 구현했다.
+
+```js
+import { reative, toRefs } from "vue";
+
+const useTodo = () => {
+  const state = reactive({
+    todoItems: []
+  });
+  
+  const addItem = (item) => {
+    state.todoItems = [ ...state.todoItems, item ];
+  }
+  
+  return {
+    ...toRefs(state),
+    addItem
+  }
+}
+
+const { todoItems, addItem } = useTodo();
+addItem("test");
+console.log(todoItems); // ["test"];
+```
+
+위와 같이 useTodo를 `Composition API`의 `reative` `todRefs` 등을 이용하여 만들었다.
+
+그런데 이러한 방식으로 전역 상태를 관리하면 문제가 발생 가능성이 매우 높다.
+이 때 문제점은 `useTodo`가 `함수`라는 것이다.
+즉, **여러번 실행**할 수 있다는 것이다.
+
+```js
+const todo1 = useTodo();
+const todo2 = useTodo();
+
+todo1.addItem("test1");
+console.log(todo1.todoItems); // ["test1"];
+
+todo2.addItem("test2");
+console.log(todo2.todoItems); // ["test2"];
+```
+
+이를 해결하기 위해선 다음과 같은 방식으로 작성하거나
+
+```js
+import { reative, toRefs } from "vue";
+
+const state = reactive({
+  todoItems: []
+});
+
+const addItem = (item) => {
+  state.todoItems = [ ...state.todoItems, item ];
+}
+
+const useTodo = () => ({ ...toRefs(state), addItem });
+export default useTodo;
+```
+
+아예 **처음부터 Store(Vuex)를 사용**하는 것이다.
+
+결론적으로 composition api만 이용하여 전역 상태를 관리하는 것은 무척 힘들다.
+하고자 한다면 못할 건 없으나.. 굳이 그렇게 해야할까 싶기도 하다.
+
+무엇보다 store(vuex)를 쓰면 좋은 이유 중 하나가 [VueDevtools](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)을 이용하여 mutation이나 dispatch가 실행 한 시점의 데이터를 조회할 수 있다는 점이다.
+뿐만아니라 현재의 state도 바로바로 조회할 수 있으니 이를 포기하기란 쉽지 않은 선택이다.
+
+![13](./13.jpg)
+
+다만 Composition API와 같이 사용할 때 힘든 점은 store에 대한 **유틸성 라이브러리가 없다는 점**이다.
+기본적으로 Vuex로 구성한 것들은 `createNamespaceHelper` `mapState` `mapGetters` `mapMutations` `mapActions` 등을 통해 컴포넌트에 쉽게 매핑할 수 있다.
+_그러나 Composition API에 Vuex를 매핑하는 라이브러리는 존재하지 않는다._
+
+그래서 이를 **직접 만들어 사용**해야 했다.
+
+```js
+import { computed } from "@vue/reactivity";
+import { useStore } from "vuex";
+
+export default function useStoreModuleMapper(namespace) {
+  const store = useStore();
+
+  const mapState = keys => keys.map(key => computed(() => store.state[namespace][key]));
+  const mapMutations = keys => keys.map(key => (...payload) => store.commit(`${namespace}/${key}`, ...payload));
+  const mapActions = keys => keys.map(key => (...payload) => store.dispatch(`${namespace}/${key}`, ...payload));
+  const mapGetters = keys => keys.map(key => computed(() => store.getters[`${namespace}/${key}`]));
+
+  return { mapState, mapMutations, mapActions, mapGetters };
+}
+```
+
+짧게 구성했지만, 기존의 mapper와 유사하게 사용할 수 있게 만들었다.
+
+```js
+export default function useTodo() {
+  const { mapState, mapGetters, mapActions, mapMutations } = useStoreModuleMapper("todo");
+  const [listLoading, appendLoading] = mapState(["listLoading", "appendLoading"]);
+  const [filteredTodoItems] = mapGetters(["filteredTodoItems"]);
+  const [setTodoItems, setUser] = mapMutations([SET_TODO_ITEMS, SET_USER]);
+  const [fetchItems, addItem, updateItem, toggleItem, removeItem, removeAllItem, updatePriority] = mapActions([
+    FETCH_ITEMS,
+    ADD_ITEM,
+    UPDATE_ITEM,
+    TOGGLE_ITEM,
+    REMOVE_ITEM,
+    REMOVE_ALL_ITEM,
+    UPDATE_PRIORITY
+  ]);
+}
+```
+
+그러나 state나 method를 직접 문자열로 매칭해야 하기 때문에 **IDE에서 코드 추적이 쉽지 않기 때문에** 불편하긴 마찬가지이다.
+제일 좋은 방법은 Vuex 측에서 만들어서 제공하는건데.. 과연 언제쯤 가능할까?
+
+***
+
+결과물은 코드는 [이 저장소](https://github.com/JunilHwang/vue-composition-todoapp)에서 확인해볼 수 있다.
+데모는 아래의 링크에서 확인할 수 있다.
+
+- [TodoList - Step1 : localStorage](https://junilhwang.github.io/vue-composition-todoapp/#/step1)
+- [TodoList - Step2 : Rest API](https://junilhwang.github.io/vue-composition-todoapp/#/step2)
+- [TodoList - Step3 : Team/Member](https://junilhwang.github.io/vue-composition-todoapp/#/step3)
+
+그리고 다음과 같은 문서와 저장소를 참고했다.
+
+- [Composition API RFC](https://composition-api.vuejs.org/)
+- [Vue 3 공식문서 - Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html#why-composition-api)
+- [Composition API 경험 정리](https://chodragon9.github.io/blog/composition-api-rfc-migration/)
+- [devjang/nuxt-realworld](https://github.com/devJang/nuxt-realworld)
+
+***
 
 ### 4. 블랙커피 스터디 레벨 2
 
