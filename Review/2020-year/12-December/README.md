@@ -388,7 +388,46 @@ cypress를 이용하여 테스트를 진행하면 다음과 같은 처음에 다
 어쨌든 테스트 코드를 정상적으로 실행하기 위해 3개월 전에 만든 코드를 뜯어고치고, 모든 오류를 없애버렸다.
 이 과정에 반절 이상의 시간을 쓴 것 같다 😇
 
+::: tip 고찰
 
+cypress를 이용하면서 든 생각이, 이건 꼭 테스트를 할 때만 필요한게 아니라 무언가 브라우저의 매크로랄까?
+그런걸 만들 때 사용해도 재밌을 것 같았다.
+
+실제로 이런 도구를 이용해서 공연 예매를 하거나, 항공사 티켓을 조회하거나, 아니면 SNS에 좋아요 매크로를 만들거나 하는 등에 쓴 사람이 많다고 한다.
+나의 지인 중 한 명은 [playwright](https://github.com/microsoft/playwright)를 이용하여 [육군훈련소 실시간 검색어 뉴스 전송 봇](https://github.com/minuukang/army-letter-bot/)을 만들었다.
+[후기](https://medium.com/@minukang/%EC%9C%A1%EA%B5%B0%ED%9B%88%EB%A0%A8%EC%86%8C-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EA%B2%80%EC%83%89%EC%96%B4-%EB%89%B4%EC%8A%A4-%EC%A0%84%EC%86%A1-%EB%B4%87-%EA%B0%9C%EB%B0%9C%ED%9B%84%EA%B8%B0-f0c178a4e4dc)도 읽어보길 권한다.
+
+:::
+
+우여곡절 끝에 테스트 코드를 작성했는데
+
+![14](./14.gif)
+
+위와 같이 특정 테스트 하나를 통과하지 못했다.
+`dblclick` 이벤트와 관련된 문제 같은데 아무리 구글링을 해봐도 원인을 찾을 수가 없었다.
+
+![빡침](https://item.kakaocdn.net/do/8f3c5af3fa1ca1557ad6cc0ef75d98c9f604e7b0e6900f9ac53a43965300eb9a)
+
+아무래도 API를 호출하고 다시 렌더링을 하는 과정에서 문제가 있는 것 같은데.. 시간이 너무 지체되어서 그냥 포기했다 😇
+
+전체 코드는 [여기서](https://github.com/JunilHwang/js-test-basic-step3/blob/main/step3/cypress/integration/todolist.spec.js) 확인할 수 있다.
+
+***
+
+#### (3) 후기
+
+프론트엔드 테스트가 어렵긴 하지만 그래도 백엔드 테스트보다 재밌었다.
+눈에 보이는 것들을 코드로 정의하여 테스트하는 것 자체가 큰 매력라고 생각한다.
+
+다음과 같은 글과 영상을 같이 봐도 좋을 것 같다.
+
+- [Youtube - 프론트엔드에서 TDD가 가능하다는 것을 보여드립니다.](https://www.youtube.com/watch?v=L1dtkLeIz-M)
+- [FeConf2020 리뷰🖊: 프론트엔드에서 TDD가 가능하다는 것을 보여드립니다.](https://velog.io/@muchogusto/FeConf2020-%EB%A6%AC%EB%B7%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%97%90%EC%84%9C-TDD%EA%B0%80-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8B%A4%EB%8A%94-%EA%B2%83%EC%9D%84-%EB%B3%B4%EC%97%AC%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4)
+- [FEConf2020 프론트엔드 TDD 발표 후기](https://microprotect.github.io/2020/12/16/frontend-tdd-feconf2020/)
+
+그리고 전체 미션 코드는 [여기](https://github.com/JunilHwang/black-coffee-study-lv2)에 모아놨다.
+
+***
 
 ### 5. 블로그 스터디 2기
 
