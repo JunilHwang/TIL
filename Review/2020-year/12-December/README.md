@@ -273,6 +273,8 @@ export default function useTodo() {
 그러나 state나 method를 직접 문자열로 매칭해야 하기 때문에 **IDE에서 코드 추적이 쉽지 않기 때문에** 불편하긴 마찬가지이다.
 제일 좋은 방법은 Vuex 측에서 만들어서 제공하는건데.. 과연 언제쯤 가능할까?
 
+![when?](https://item.kakaocdn.net/do/e0506743e351cfe94dbe9e6f63973f26a88f7b2cbb72be0bdfff91ad65b168ab)
+
 ***
 
 결과물은 코드는 [이 저장소](https://github.com/JunilHwang/vue-composition-todoapp)에서 확인해볼 수 있다.
@@ -292,6 +294,61 @@ export default function useTodo() {
 ***
 
 ### 4. 블랙커피 스터디 레벨 2
+
+지난 달에 시작했던 [블랙커피 스터디 레벨 2](https://edu.nextstep.camp/s/mnUCGXab)를 이번 달에 마무리했다.
+
+![블랙커피 Level2 계획](../11-November/12.jpg) 
+
+2주차는 버퍼기간으로 건너 뛰고, **3주차에 UI 테스트 미션**을 진행했고, **4주차에 E2E 테스트 미션**을 진행했다.
+
+#### (1) UI 테스트
+
+먼저 UI 테스트는 [Testing Library](https://testing-library.com/)를 이용했다.
+[Queries](https://testing-library.com/docs/dom-testing-library/api-queries) 문서와 [Async Utilites](https://testing-library.com/docs/dom-testing-library/api-async)문서를 보면서 삽질을 많이 했다.
+
+특히, `wait` `waitFor` `waitForDomChange` 등을 사용하는 방법이 무척 헷갈렸고,
+`waitFor`의 경우 IDE 자동완성을 사용하면 `babel`을 불러와서 당황스러웠다.
+
+그리고 비동기 테스트(API 테스트)의 경우 [axios mock adapter](https://github.com/ctimmerm/axios-mock-adapter) 혹은 [fetch mock](https://github.com/wheresrhys/fetch-mock) 등을 이용했는데 처음에 사용 방법을 착각해서 삽질을 많이 했다.
+
+미션 자체가 삽질의 연속이었달까.. 무척 힘든 작업이었다.
+
+mockAxios의 경우 다음과 같이 사용할 수 있다.
+
+```js
+// mockAxios 초기화
+const mockAxios = new MockAdapter(axios);
+
+// Mock Request와 Response 정의
+mockAxios.onGet('/users').reply(200, {
+  users: [{ id: 1, name: 'John Smith' }]
+});
+
+// API 요청시 Mock Response 를 반환함
+axios.get("/users")
+     .then(({ data }) => console.log(data)); // { id: 1, name: 'John Smith' }
+```
+
+그리고 다음과 같이 한 번에 표현할 수도 있다.
+```js
+const counter = createCounter({ min: 8, max: 12, initVal: 10 });
+const response = () => ({
+  value: counter.val(),
+  isMax: counter.isMax(),
+  isMin: counter.isMin()
+});
+ 
+mockAxios
+  .onGet('/counter').reply(() => [200, response()])
+  .onPut('/counter/inc').reply(() => (counter.inc(), [200, response()]))
+  .onPut('/counter/dec').reply(() => (counter.dec(), [200, response()]))
+```
+
+전체적인 UI Test Code는 다음 링크에서 확인할 수 있다.
+
+- [Only UI Counter](https://github.com/JunilHwang/js-test-basic-step2/blob/main/step2/test/uiCounter/dom.spec.js)
+- [API + Ui Counter](https://github.com/JunilHwang/js-test-basic-step2/blob/main/step2/test/serverCounter.spec.js)
+- [API + TodoApp](https://github.com/JunilHwang/js-test-basic-step2/blob/main/step2/test/todoapp/todoapp.spec.js)
 
 ### 5. 블로그 스터디 2기
 
