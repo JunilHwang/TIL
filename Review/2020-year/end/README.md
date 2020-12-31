@@ -532,18 +532,49 @@ NestJS를 이해하는 데 큰 무리가 없는 것 같다.
 
 #### (2) 디스코드 봇
 
-[프로젝트 레포지토리 바로가기](https://github.com/JunilHwang/discord-study-bot)
+![9](./9.png)
 
+6월에 [DKU-STUDY](https://github.com/DKU-STUDY/) 채팅방을 디스코드로 옮기면서 [디스코드 봇](https://github.com/JunilHwang/discord-study-bot)을 만들었다.
 
+_Pull Request, Push, Issue, Review 등이 발생하면 디스코드 봇이 디스코드 채널에 메시지를 보내도록_ 만들어놨다.
+
+처음에는 `express.js`로 만들었고, 추후에 `nest.js`로 리팩토링했다.
+
+- 기술스택
+  - node.js
+  - nestjs
+  - vue.js => CMS를 만들려고 추가했는데 만들다 말았다.
+  - [Discord API](https://discord.com/developers/docs/intro)
+  - [Discord Bot](https://discord.com/developers/docs/topics/oauth2#bots)
+  - [Github Webhooks](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/about-webhooks)
+
+봇을 만든 후에 다음과 같은 추가 기능을 CMS 페이지를 통해 구축하려고 했다.
+
+- **Github 관련**
+  - Github 로그인
+  - Github Repository 불러오기
+  - Github Repository를 선택하면 관련된 Hooks 불러오기
+  - Hooks를 추가/수정/삭제하기
+  - Hooks와 관련된 템플릿 작성하기
+- **Discord 관련**
+  - Discord 로그인
+  - Discord 채널 목록 불러오기
+  - Discord의 채널 ID 복사하기
+- **Discord와 Github 연동 관련**
+  - Github Hooks에 Discord Channel ID 연결하기
+
+그런데 곰곰이 생각해보니 굳이 만들 필요가 없었고, 추후에 **channel ID만 parmeter를 받아오는 형태로 수정**했다.
+
+몇 개월 동안 유용하게 잘 사용 중이다.
 
 ***
 
-#### (2) Devears
+#### (3) Devears
 
-앞서 소개한 프로젝트를 방치하게 된 원인 중 하나가 바로 스터디와 강의 때문이다.
+Discrod Bot을 만든 후에 블랙커피 스터디와 리액트 스터디, 그리고 넥스트 스텝 리뷰어 활동 때문에 따로 사이드 프로젝트를 수행할 틈이 없었다.
+그렇게 연말이 되었고, 기존에 이어서 하기보단 아예 새로 사이드 프로젝트를 진행하고 싶었다.
 
-
-Spring + React로 사이드 프로젝트를 해보고 싶었는데,
+기술 스택은 Spring과 React을 사용하기로 결정했고,
 어떤 주제로 할까 고민하다가 현재 [운영중인 스터디](https://github.com/dku-study)를 관리할 수 있는 서비스를 만들어보기로 했다.
 
 ::: tip Devears
@@ -552,10 +583,130 @@ Spring + React로 사이드 프로젝트를 해보고 싶었는데,
 - 즉, 단국대 개발자들이라는 뜻을 가졌다고 볼 수 있다.
 :::
 
-11월에는 Back-end 위주로 작업 했는데 사실 정확히 어떤 기능을 추가할지 정해놓질 않아서 갈팡 질팡 하는 중이다. 현재 까지 구현한 기능은 Github 로그인과 토큰 발급, 그리고 로그아웃이 전부이다. 안 한 것과 다름 없다
+11월에는 Back-end 위주로 작업 했는데 사실 정확히 어떤 기능을 추가할지 정해놓질 않아서 갈팡 질팡 하는 중이다.
+현재 까지 구현한 기능은 Github 로그인과 토큰 발급, 그리고 로그아웃이 전부이다.
+뭐.. 거의 안 한 것과 다름 없다
 
-사이드 프로젝트 코드는 여기 (opens new window)에서 확인할 수 있다.
+12월에는 대충(정말 대충..) [요구사항 문서](https://dku-study.github.io/Devears/)를 작성했고, Front-end 위주의 작업을 진행했다.
 
+![10](./10.png)
+
+로고는 [logogenie](https://www.logogenie.net/)에서 검색하여 나온 결과물 중에 마음에 드는 것을 참고하여 대충 급하게 만들었다.
+실제로 서비스 하기 전에 외주를 맡기던가 할 생각이다.
+
+이렇게 혼자서 무언가를 만들 때면 항상 UI 구성이 때문에 고민이다.
+어떻게 만들어도 이상하게 보이는 마법이랄까..?
+일단 죽이 되든, 밥이 되든 만들어 보고자 한다.
+
+::: tip Front-end 기술 스택
+현재까지 진행하면서 사용한 **프론트엔드 기술 스택**은 다음과 같다.
+
+- typescript
+- Create React App
+- react
+- redux
+- redux-saga
+- react-router-dom
+- connected-react-router
+- antd
+- styled-jsx
+- sass
+- json-server
+:::
+
+::: tip  위의 기술을 사용하면 정리한 팁들이다.
+
+- Create React App Custom
+  - [CRA로 만든 리액트 프로젝트에서 eject하지 않고 optional chaining 사용하기](https://sustainable-dev.tistory.com/126)
+    - customize-cra
+    - react-app-rewired
+
+- React Router Layout
+  - [React Router](https://reactrouter.com/web/guides/quick-start)
+  - [Reusing layouts in React Router 4](https://simonsmith.io/reusing-layouts-in-react-router-4)
+  - [React Router v4 with multiple layouts](https://stackoverflow.com/a/46201798)
+
+- Mock API
+  - [json-mockServer - 벨로퍼트와 함께하는 모던 리액트](https://react.vlpt.us/redux-middleware/08-json-mockServer.html)
+  - [github/json-mockServer](https://github.com/typicode/json-mockServer)
+
+- Proxy
+  - [CRA - Proxying API Requests in Development](https://create-react-app.dev/docs/proxying-api-requests-in-development)
+  - [Create-react-app V2 릴리즈! 무슨 변경 사항이 있을까?](https://velog.io/@velopert/create-react-app-v2#5-proxy-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%BB%A4%EC%8A%A4%ED%84%B0%EB%A7%88%EC%9D%B4%EC%A7%95-%EA%B0%80%EB%8A%A5)
+
+:::
+
+이번에는 사용한 기술에 대해서 제대로 정리해볼 생각이다.
+
+***
+
+#### (4) 단쿠키 개발팀 합류
+
+::: tip 단쿠키
+
+- [단쿠키](https://www.dankookie.com/)는 나의 모교인 단국대학교 커뮤니티 사이트이다.
+- [에브리타임](https://everytime.kr/)이 등장하기 전까진 굉장히 활성화된 커뮤니티였는데, _에브리타임 덕분에 이용자수가 대폭 감소했다._
+
+:::
+
+나는 **에브리타임**이라는 대학교 커뮤니티를 자주 사용하는 편이다.
+개발과 관련된 정보를 공유하기도 하고, 진로에 대해 고민하는 후배들과 이야기를 나누는 등의 소통 창구로 사용하고 있다.
+
+그러던 중 눈에 띄는 글을 하나 발견했다.
+> 글을 캡쳐해서 올릴라 했는데.. 지금 찾아보니 삭제됐다. 아쉬운대로 단쿠키에 올라온 글을 캡쳐해서 올린다.
+
+![7](../11-November/7.jpg)
+
+보자마자 지원하고 싶다는 생각을 했다.
+그런데 나는 졸업생이다보니 이걸 지원해야하나 말아야하나 고민하다가 졸업생도 지원 가능한지 물어보는 댓글을 남겼고, 가능하다는 답변을 받았다.
+
+![8](../11-November/8.jpg)
+
+그래서 고민 끝에 지원했다.
+
+![9](../11-November/9.jpg)
+
+이렇게 코딩 테스트 및 온라인 면접 일정을 잡고 진행했다.
+코딩 테스트 문제 자체는 어렵지 않았으나, 내가 너무 어렵게 생각해서 조금 헤맸다.
+
+이 외에도 다양한 면접 질문을 받았는데 내가 생각하지도 못했던 부분들이 있어서 조금 당황했다.
+_당황했던 질문들은 대체로 보안과 관련된 질문이었고, 내가 보안과 관련된 도메인에 약하다는 것을 인지했다._
+덕분에 공부할 것들이 늘었다 😅
+
+여담으로, 학부시절에 같이 단쿠키측에서 함께 하고 싶은 의향 있으면 연락 달라고 했었는데 그 당시에는 정말 미친듯이 바빠서 아예 연락을 하지 않았다.
+당시에 작은 에이전시 회사에서 원격근무도 하고 있었고, 학부 연구생도 하고 있었고, 같은 학부 연구생들과 정부 과제도 하고 있었고, 고등학교 강사도 하고 있었다.
+거기에 수업에 시험에 과제에 이것 저것 다 포함하면.. 거기서 무언가를 더 할 엄두가 나질 않았다.
+
+![10](../11-November/10.jpg)
+
+어쨌든 12월에 대면 면접을 거치면 결과를 알 수 있겠지 싶다.
+
+그렇게 12월 초에 일정을 잡고 대면 면접을 진행했다.
+면접 장소는 학교 근처였는데 오랜만에 학교 구경좀 하려고 아침 일찍 갔다.
+
+![6](../12-December/6.jpg)
+![5](../12-December/5.jpg)
+
+교내에 있는 세미나실에서 근무시간 동안 일도 하고, 오랜만에 학교 근처 맛집에서 점심도 먹었다.
+그토록 졸업하고 싶었고, 벗어나고 싶었던 곳인데 그래도 학교 다닐 때가 지금 보단 더 마음 편하고 즐거웠던 것 같다.
+
+이러 저러한 할 일을 처리하고 나의 근무 시간이 끝난 후에 대면 면접을 진행했다. 
+면접 분위기는 무척 좋았고, 단쿠키라는 서비스에 대한 여러가지 사정을 들을 수 있었다.
+여태까지 학생 신분으로 보상도 없이 서비스를 유지하느라 많이 힘들었던 것 같고,
+운영진이 얼마나 이 서비스에 애정을 가지고 있는지 느껴졌다.
+
+![7](../12-December/7.jpg)
+
+이렇게 나도 단쿠키 개발팀에 합류하게 되었다.
+일정이 조금 촉박한 것 같아서 걱정이지만 **걱정보단 기대가 더 앞선다.**
+
+그렇게 월말이 되었고 다시 단쿠키에서 메일이 왔다.
+슬랙 채널을 통해 커뮤니케이션이 진행되는 것 같다.
+
+![8](../12-December/8.jpg)
+
+글을 작성하는 시점을 기준으로 어제(12/30) 회의를 진행했다.
+아직 결정된게 많진 않지만 재밌을 것 같다.
 
 ***
 
