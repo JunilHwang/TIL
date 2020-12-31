@@ -118,15 +118,65 @@ image: /Review/2020-year/end/thumbnail.jpg
 특히 거의 모든 로직은 백엔드(Internal API)에서 관리하고, 프론트엔드는 백엔드에서 만들어준 데이터를 공용 컴포넌트로 출력 하는 형태였다.
 그래서 약 1년 동안 백엔드는 수십 번 배포했으나, 프론트엔드는 10회 안팎으로 배포했다.
 
-사수 분과 이야기하여 모바일줌의 컴포넌트를 완전히 Nuxes
+그래서 모바일줌의 컴포넌트를 사내 넥서스 레포에 올려놓고 사용해도 되지 않을까 논의하기도 했다.
+다만 완전히 공용 컴포넌트로 사용하기엔 위험 요소가 많아서 고려 중이라고 했다.
+나중에 시간적 여유가 있을 때 완전히 코어로 사용해도 좋을 것 같다.
+
+이 외에도 내가 작업한건 아니지만, [모바일줌에 SSR을 적용](https://zuminternet.github.io/ZUM-Mobile-NodeJS/)하는 등의 공사가 있었고
+기존에 API 프로젝트에서 Mobile API를 따로 떼어나는 작업도 있었다.
+
+::: tip 현재 모바일 줌의 기술 스택은 다음과 같다.
+
+- Front Server
+  - Server: typescript + Node.js + Express.js + Zum Core + SSR
+    - 원래 Spring Boot를 사용했으나, SSR 때문에 node.js로 전환했다.
+    - [모바일 줌 SpringBoot → NodeJS 전환기 (feat. VueJS SSR)](https://zuminternet.github.io/ZUM-Mobile-NodeJS/)
+  - Front: typescript + javascript + Vue.js
+    - 프론트 개발 환경의 경우 다음 링크에 대부분의 내용이 담겨있다.
+      - [Webpack dev server를 이용한 개발 환경 구성 Part 01](https://zuminternet.github.io/ZUM-Webpack-dev-proxy-part1/)
+      - [Webpack dev server를 이용한 개발 환경 구성 Part 02](https://zuminternet.github.io/ZUM-Webpack-dev-proxy-part2/)
+
+- API Server
+  - Java
+  - Spring Boot
+
+Front Server를 Node.js로 구성하여 대용량 트래픽을 더 적은 자원으로 관리할 수 있게 되었다.
+심지어 SSR을 적용하기 전보다 응답 시간이 더 줄어들었다.
+
+:::
+
+모바일줌에 대해서 하고 싶은 이야기가 더 많지만,
+이 이상은 대외비라서 언급하기가 꺼려진다.
+확실한건 이 프로젝트 덕분의 자시감도 많이 생겼고,
+설계에 대한 안목도 넓힐 수 있었다.
+
+![Good](https://item.kakaocdn.net/do/f7833fcaf0a85fd066bd7d90ba61a6342df16ed7012359e344d47930e49e9310)
 
 ***
 
 ### 3. Open API CMS
 
+줌인터넷에서 제공하는 [Open API](https://dev.zum.com/search/cse_intro)가 있는데,
+기존에는 이를 사용하는 벤더사의 정보를 application.yml 내에서 관리하고 있었다.
+벤더사가 점점 많아졌고, CMS Service로 떼어날 필요성을 느끼게 되어 진행한 프로젝트다.
+
+이 때 [Element UI](https://element.eleme.io/#/en-US)와 [Vue-Element-Admin](https://panjiachen.github.io/vue-element-admin/#/login?redirect=%2Fdashboard)을 이용해서 만들었다.
+
+그런데 `element-admin`에는 불필요한 컴포넌트와 기능이 많아서 정말 필요한 부분만 따로 떼어내서 사내 프로젝트에 올려놓고 사용 중이다.
+
+이 프로젝트를 통해서 다른 팀원들과 처음으로 협업(정확히는 분업이랄까..?)을 해볼 수 있었다.
+그리고 이 프로젝트에서 [AWS DynamoDB](https://aws.amazon.com/ko/dynamodb/)를 사용했는데,
+다른 프로젝트에도 적용할까 하다가 흐지부지 됐다. 사용하기가 조금 애매하달까?
+
+학습은 했는데 언제 써먹을 수 있을지..
+
+![의문](https://item.kakaocdn.net/do/1eb7b0fd47d19247cac42daa7547feab616b58f7bf017e58d417ccb3283deeb3)
+
 ***
 
 ### 4. 크롬 확장프로그램
+
+
 
 ***
 
