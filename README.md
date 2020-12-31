@@ -73,7 +73,7 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 ### 회고
 
-- 2020년
+- [2020년 회고](/Review/2020-year/end/)
   - [1분기 회고](/Review/2020-year/01-First-Quarter/)
     - [1월](/Review/2020-year/01-January/)
     - [2월](/Review/2020-year/02-February/)

@@ -15,7 +15,8 @@ module.exports = [
     title: '회고',
     children: [
       {
-        title: '2020년',
+        title: '2020년 회고',
+        path: `${Review2020}/end/`,
         children: [
           {
             title: '1분기',
