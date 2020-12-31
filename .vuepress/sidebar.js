@@ -15,8 +15,7 @@ module.exports = [
     title: '회고',
     children: [
       {
-        title: '2020년 회고',
-        path: `${Review2020}/end/`,
+        title: '2020년',
         children: [
           {
             title: '1분기',
@@ -52,6 +51,10 @@ module.exports = [
               '12-December/',
             ].map(v => `${Review2020}/${v}`)
           },
+          {
+            title: '2020년 회고',
+            path: `${Review2020}/end/`
+          }
         ]
       },
     ]
