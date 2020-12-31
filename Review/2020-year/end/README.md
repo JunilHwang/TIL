@@ -10,7 +10,7 @@ image: /Review/2020-year/end/thumbnail.jpg
 
 # 주니어 개발자의 2020년 회고
 
-![썸네일](./thumbnail.jpg)
+![썸네일 bn](./thumbnail.jpg)
 
 > 6000개 Contributions을 목표로 했는데.. 아쉽게 다 채우진 못했다. 앞으로도 불가능 할 것 같다.
 
@@ -305,39 +305,106 @@ _Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 �
 그리고 현재 나의 사수이자 대부분의 업무를 같이 수행 중이며 **항상 나에게 큰 가르침을 선사해 주시는 효준 선임님이 아직 계시기 때문에** 든든하다!
 이분 까지 가시면.. 😱.. 그래도 천천히 마음의 준비를 해야지 싶다. 그럴라면 지금 보다 더 깊은 수준의 지식을 쌓아야겠지만, 이게 이 업계의 숙명이 아닐까?
 
+***
+
 ## 개발 역량 강화
+
+이제부터가 본격적인 회고라고 할 수 있다. 쓰는 나도 지루한데, 읽는 사람도 지루하지 않을까 싶은 걱정이 앞서고 있다.
 
 *** 
 
-### 1. 일일커밋 관련
+### 1. 일일커밋
+
+올 해의 제일 큰 목표중 하나이자 착실하게 이뤄낸 목표가 바로 **일일커밋**이다.
+
+![일일커밋 bn](http://localhost:8080/TIL/assets/img/thumbnail.95076c90.jpg)
+
+처음에는 그냥 매일 매일 꾸준히만 하자고 생각했었는데, 하다보니 너무 많이 해버렸다..
+
+![통계 bn](https://camo.githubusercontent.com/6cd4946662de5fc82b62058f0b9993eb1a7bde6fa9c2fb5d551f7add09acd0d9/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d6a756e696c6877616e67)
+
+- 1분기
+   - `1월` **7개의 Repository**에서 **357개의 Commit**을 남겼다.
+   - `2월` **4개의 Repository**에서 **152개의 Commit**을 남겼다.
+   - `3월` **3개의 Repository**에서 **168개의 Commit**을 남겼다.
+  
+- 2분기
+   - `4월` **20개의 Repository**에서 **475개의 Commit**을 남겼다.
+   - `5월` **11개의 Repository**에서 **665개의 Commit**을 남겼다.
+   - `6월` **12개의 Repository**에서 **436개의 Commit**을 남겼다.
+  
+- 3분기
+  - `7월` **8개의 Repository**에서 **357개의 Commit**을 남겼다.
+  - `8월` **19개의 Repository**에서 **397개의 Commit**을 남겼다.
+  - `9월` **18개의 Repository**에서 **770개의 Commit**을 남겼다.
+  
+- 4분기
+  - `10월` **13개의 Repository**에서 **503개의 Commit**을 남겼다.
+  - `11월` **10개의 Repository**에서 **198개의 Commit**을 남겼다.
+  - `12월` **8개의 Repository**에서 **326개의 Commit**을 남겼다.
+  
+그리고 이에 대한 양분으로 사용된 주된 Repository 들이다.
+
+- [TIL](https://github.com/junilhwang/TIL)
+  - 매일매일 공부한 것들을 기록하기 위해서 만든 저장소인데, 월간 회고 때만 사용 중이다. ~~이럴꺼면 왜 만들었냐~~
+- [java-clean-code](https://github.com/junilhwang/java-clean-code)
+  - NextStep의 Java TDD CC 8기 과정에서 산출된 코드를 모아놨다. 
+- [black-coffee-study](https://github.com/junilhwang/black-coffee-study)
+  - NextStep의 블랙커피 스터디 미션 수행 과정에서 산출된 코드를 모아놨다.
+- [DKU-Software-Logggin-Service](https://github.com/junilhwang/DKU-Software-Engineering-Logging-Service)
+  - 올해 초에 진행했던 사이드 프로젝트인데, 미완성으로 남겨둔 상태이다. 언제 다시 시작해야 할까..? 이제 내가 뭘 하려고 했는지도 가물가물 하다.
+- [react-facebook-clone](https://github.com/junilhwang/DKU-Software-Engineering-Logging-Service)
+  - 프로그래머스 리액트 스터디를 진행하면서 산출된 코드를 모아놨다.
+- [postman-clone](https://github.com/est-react-study/postman-junil)
+  - 사내 리액트 스터디에서 산출된 코드를 모아놨다.
+- [Algorithm](https://github.com/DKU-STUDY/Algorithm)
+  - 단국대 알고리즘 스터디인데 사실 내가 기여한 부분이 어느 정도인지 잘 모르겠다. 아마 별로 없을 것 같다.
+- [discord-study-bot](https://github.com/JunilHwang/discord-study-bot)
+  - github DKU-STUDY 그룹에서 이벤트가 발생하면 디스코드로 알림을 보내주는 프로젝트이다.
+- [pilot](https://github.com/JunilHwang/zum_pilot)
+  - 파일럿 프로젝트 코드와 문서를 모아놨다.
+
+그리고 겸사겸사 [코딩덕후](https://co-duck.com) 서비스를 이용하면서 의욕을 불태웠다.
+
+![7](./7.jpg)
+
+6월, 7월 집계는 무슨 문제인지는 모르겠으나 각각 하루씩 커밋에 대한 집계가 되지 않았다 😂
+
+어쨌든 **1위를 세 번**, 2위와 3위는 각각 한 번씩 했다.
+아직 12월이 마무리되지 않아서 12월 뱃지는 없는 상태이다.
+
+![8](./8.jpg)
+
+아마 12월 일일커미터 뱃지와 TOP 10 뱃지를 받지 않을까 싶다.
+
+일일커밋을 하면서 느낀 것은, 배보다 배꼽이 더 커져버린 다는 것이다.
+내년에는 커밋에 집착하기 보단 실제로 지식을 쌓는 것에 집중할 예정이다.
+
+막상 잔디밭이 전부 채워진 것을 보고 있으니 많이는 하지 않더라도 한 개 씩은 하는 게 좋지 않을까? 하는 생각도 든다.
 
 ***
 
-### 2. 도메인 지식 학습
+### 2. 사이드 프로젝트
 
 ***
 
-### 3. 사이드 프로젝트
+### 3. 인터넷 강의
 
 ***
 
-### 4. 인터넷 강의
+### 4. 스터디
 
 ***
 
-### 5. 스터디
+### 5. 리뷰어 활동
 
 ***
 
-### 6. 리뷰어 활동
+### 6. 강사
 
 ***
 
-### 7. 강사
-
-***
-
-### 8. 프로그래머스 챌린지
+### 7. 프로그래머스 챌린지
 
 ## 일상
 
