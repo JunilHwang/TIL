@@ -351,7 +351,7 @@ _Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 �
   - NextStep의 Java TDD CC 8기 과정에서 산출된 코드를 모아놨다. 
 - [black-coffee-study](https://github.com/junilhwang/black-coffee-study)
   - NextStep의 블랙커피 스터디 미션 수행 과정에서 산출된 코드를 모아놨다.
-- [DKU-Software-Logggin-Service](https://github.com/junilhwang/DKU-Software-Engineering-Logging-Service)
+- [DKU-Software-Engineering-Logging-Service](https://github.com/junilhwang/DKU-Software-Engineering-Logging-Service)
   - 올해 초에 진행했던 사이드 프로젝트인데, 미완성으로 남겨둔 상태이다. 언제 다시 시작해야 할까..? 이제 내가 뭘 하려고 했는지도 가물가물 하다.
 - [react-facebook-clone](https://github.com/junilhwang/DKU-Software-Engineering-Logging-Service)
   - 프로그래머스 리액트 스터디를 진행하면서 산출된 코드를 모아놨다.
@@ -385,6 +385,177 @@ _Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 �
 ***
 
 ### 2. 사이드 프로젝트
+
+개인적으로 진행한 사이드 프로젝트에 대해 정리해본다.
+덕분에 공부는 많이 했으나 제대로 마무리 하질 않아서 아쉬움이 많이 남는다.
+
+#### (1) DKU-Software-Loggging-Service
+
+[프로젝트 레포지토리 바로가기](https://github.com/junilhwang/DKU-Software-Engineering-Logging-Service)
+
+파일럿 프로젝트가 끝난 후에 사이드 프로젝트를 진행 해보고 싶어서 뭘 만들까 고민하다가 **Github와 관련된 서비스**를 만들기로 했다. 
+자신의 Github에 올린 **Markdown 파일**을 읽어올 수 있고,
+**Webhooks**를 이용하여 자동으로 포스트가 업데이트되도록 만들었다.
+물론 수동으로 갱신할 수도 있다.
+
+일단 위에 언급한 기능을 만드는 것은 어렵지 않았으나 **디자인도 구리고 퀄리티가 낮았다.**
+그래서 이것저것 서브 기능을 넣어야 하는데 그것마저 쉽지가 않았다.
+_혼자서 사이드 프로젝트를 하는 게 이럴 때 버겁구나 느꼈다._
+
+그래서 만족할 때 까지 리팩토링을 하거나 ~~벌써 리팩토링만 몇 번 한 것인지...~~
+기술 스택을 최대한 많이 공부하는 등의 목표를 가지고 진행 했는데 사실 그 마저도 쉽지 않았다.
+
+기술이 워낙 다양하기도 하고, 그 중에 무엇을 골라서 얼만큼 공부해야 좋을지 감이 잡히지 않았기 때문이다.
+
+- *첫 번째 성과: Open API 습득* 
+  - 사이드 프로젝트를 하면서 얻은 첫 번째 성과는 **Open API를 사용하는 방법**을 완전히 터득한 것이다.
+이전에는 API를 연동할 때 문서를 봐도 모르겠고,
+다른 사람들이 작성한 글들을 봐도 감이 오질 않았는데 정말 어떤 API를 사용하더라도 큰 문제가 없을 정도로 이해한 상태다. 
+  - 사실 사이드 프로젝트 덕분이라기보단 입사 직후에 진행했던 파일럿 프로젝트의 영향이 더 큰 것 같다.
+
+- *두 번째 성과, NestJS 습득*
+  - 대학교 재학 중에 [NestJS](https://nestjs.com/)가 뭔가 좋아보여서 공부했었는데, 너무 어려워서 포기했다.
+    ::: tip NestJS 소개
+    - NestJS는 **Google**에서 만든 **Server Side Framework**이다.
+    - **Java의 Spring과 매우 비슷한 방식**으로 작동한다.
+    - **DI(Dependency Injection)** 방식으로 구성한다.
+    - **DDD** 형태의 프로젝트 구조를 권장한다.
+    - **Typescript**를 사용한다.
+    - **express** 기반이다.
+    :::
+    ::: tip NestJS의 철학
+    NestJS는 Angular의 영향을 받아 다음과 같은 철학 기반을 만들어졌습니다.
+    - 고도의 테스트 지원
+    - 효율적인 확장
+    - 느슨한 결합
+    - 유지 관리가 용이한 애플리케이션
+    :::
+  - 그런데 이번에 무심코 다시 적용을 시도했고, 결과적으로 좋은 선택이 되었다.
+  - 이건 **객체지향 공부의 영향**이 컸다.
+    국내 자료를 아무리 찾아봐도 NestJS에 대한 내용은 거의 볼 수 없었다.
+    대부분 해외에서 사용하고 있는데, 영어에 너무 취약하다 보니.. 이해가 너무 어려웠다. 
+  - 하지만 Spring을 많이 사용해봤고 **Spring에 사용된 기본적은 디자인패턴이나 철학을 이해하고 있다면**,
+NestJS를 이해하는 데 큰 무리가 없는 것 같다. 
+  - 그래서 사이드 프로젝트의 제일 큰 수확은 사실 **NestJS 사용법 숙지**가 아닐까 싶다.
+
+- *세 번째 성과: Server Side Rendering*
+  - 진짜 SSR 때문에 한 동안 고생을 너무 많이 했다.
+  - _Vue에서 제공하는 가이드라인이 너무 빈약하다.
+  - API 문서도 잘못 되었거나 반영되지 않은 것들이 많았다.
+  - 각설하고 문제점과 약간의 해결과정을 나열해보자면 다음과 같다.
+    - `첫 번째 문제` SSR과 CSR을 같이 하기 위한 가이드라인이 없다.
+      - [Vue의 공식문서](https://ssr.vuejs.org/), 각종 커뮤니티 사이트, 
+        기술 블로그 등을 폼하여 눈씻고 찾아봐도 SSR과 CSR을 같이 사용하는 방법에 대한 가이드라인은 없었다.
+        _있다면 누가 좀 알려주길.._
+      - 어쨌든 SSR에 CSR을 연동하기 위해선 다음과 같은 과정이 필요하다.
+      - CSR의 Template에 SSR의 Template을 합쳐야 한다.
+      - CSR 코드를 번들링(빌드) 한다. _이 때 Template도 Bundling 코드에 포함된다._
+      - CSR에서 Build된 Template를 SSR에서 사용한다.
+      - 이와 관련 내용도 추후에 상세하게 정리해서 올릴 예정이다.
+      
+    - `두 번째 문제` window와 document를 사용하는 코드들*
+      - SSR은 CSR의 코드를 Server에서 실행하여 HTML 코드를 만들고 바로 렌더링한다. 
+      - 이 때 발생하는 문제가 _window와 document는 Server Side에서 사용할 수 없다는 것이다._
+      - 그래서 직접 window와 document를 만들어주거나 Render와 관련된 코드에는 window와 document를 사용하지 않는 것이다.
+      - **그런데 이게 말이 쉽지 직접 해보면 욕나온다.**
+      - 어쨌든 어떤 방법이 제일 좋을까 고민하다가 찾아난 해결책이 JSDOM을 사용하는 것이다.
+        ::: tip JSDOM
+        - JSDOM은 말 그대로 가상의 window와 document를 만들어주는 것이다.
+        - 가상의 존재여도 _존재한다는 것_ 자체만으로도 그 가치가 있다.
+        :::
+        ```js{26-35}
+        import { Injectable } from '@nestjs/common'
+        import { join } from 'path'
+        import { BundleRenderer, createBundleRenderer } from 'vue-server-renderer'
+        import { DOMWindow, JSDOM } from 'jsdom'
+        
+        const port = process.env.NODE_ENV === 'development' ? 3000 : 8080
+        const baseURL = `http://localhost:${port}`
+        const bundlePath = join(__dirname, '../../../resources/vue-ssr-server-bundle.json');
+        const htmlStr = `<!DOCTYPE html><html><head><title></title></head><body></body></html>`
+        
+        @Injectable()
+        export class SSRService {
+        
+          public getRenderer (): BundleRenderer {
+            try {
+              return createBundleRenderer(bundlePath, {
+                runInNewContext: false,
+                template: (result, context) => `${result}${context.renderState()}${context.renderScripts()}`
+              } as any)
+            } catch (e) {
+              console.log(e)
+              throw 'Renderer Error'
+            }
+          }
+        
+          public getDom (contextURL: string): [ DOMWindow, Document ] {
+            try {
+              const url: string = `${baseURL}${contextURL}`
+              const {window} = new JSDOM(htmlStr, {url})
+              return [window, window.document]
+            } catch (e) {
+              console.log(e)
+              throw 'JSDOM Error'
+            }
+          }
+        }
+        ```
+        
+    - `세 번째 문제` 제대로된 Tutorial을 찾을 수 없다. 
+      - SSR의 가장 큰 문제점 중 하나가 바로 제대로된 튜토리얼이 없다는 것이다. 
+      - github를 찾아봐도 구글링을 해봐도 _이것만 보면 이해할 수 있다 싶은 튜토리얼은 존재하지 않았다._
+      - 그래서 내가 만들었다 --> [Vue SSR Tutorial](https://github.com/JunilHwang/vue-ssr-tutorial)
+      - 일단 설명은 없고 소스코드만 존재한다. ~~뭐.. 이해할 사람은 이해하겠지.~~
+
+- *네 번째 성과: Mono Repo 적용*
+  - Client와 Server에 Typescript를 적용하면서 생긴 고민이 _공통 타입을 잘 활용할 수 있는 방법이 없을까?_ 였다. 
+  - 예를들어 Server에서 Github API를 이용하여 `Repository` 정보에 대한 타입을 `GithubRepository`로 정의했다.
+    **그런데 이 타입은 Client에서도 필요하다.**
+  - 그래서 처음엔 Client가 프로젝트의 코드상으로 Server에 접근할 수 있도록 만들어야 했다. 
+    만들면서 계속 찜찜했다. _Type이 Server에 종속되어있는게 맞을까?_ 라는 생각 때문이다. 
+    그래서 Mono Repository에 대해 찾아봤고, 두 가지 방법이 존재했다.
+    - Yarn Workspace
+      - [[Node] yarn workspaces (프로젝트 참조)](https://musma.github.io/2019/04/02/yarn-workspaces.html)
+      - [🌸 모노레포. Lerna? Yarn Worksapce!](https://medium.com/@deptno/monorepo-yarn-workspace-e81e3e078100)
+      
+    - Lerna
+      - [Mono Repo 를 위한 Lerna 간단 정리하기](https://medium.com/@pks2974/mono-repo-%EB%A5%BC-%EC%9C%84%ED%95%9C-lerna-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0-65c22029988)
+      - [Lerna 훑어보기](https://www.awesomezero.com/development/lerna/)
+    
+  - 권장하는 것은, 두 가지를 같이 사용하는 것이다. 그래서 나도 두 가지 모두 사용했다.
+    - [yarn workspace와 Lerna.js로 모노레포 만들기 - 심심재](https://simsimjae.tistory.com/384)
+
+이렇게 일을 벌려놨는데, 5월에 넥스트 스텝 Java TDD CC 8기 과정을 신청했고 그렇게 6월까지 해당 과정에만 집중해야 했다.
+
+***
+
+#### (2) 디스코드 봇
+
+[프로젝트 레포지토리 바로가기](https://github.com/JunilHwang/discord-study-bot)
+
+
+
+***
+
+#### (2) Devears
+
+앞서 소개한 프로젝트를 방치하게 된 원인 중 하나가 바로 스터디와 강의 때문이다.
+
+
+Spring + React로 사이드 프로젝트를 해보고 싶었는데,
+어떤 주제로 할까 고민하다가 현재 [운영중인 스터디](https://github.com/dku-study)를 관리할 수 있는 서비스를 만들어보기로 했다.
+
+::: tip Devears
+- 단국대의 상징이 곰(Bear)이다.
+- Developer(개발자) + Bear(곰) = Devears
+- 즉, 단국대 개발자들이라는 뜻을 가졌다고 볼 수 있다.
+:::
+
+11월에는 Back-end 위주로 작업 했는데 사실 정확히 어떤 기능을 추가할지 정해놓질 않아서 갈팡 질팡 하는 중이다. 현재 까지 구현한 기능은 Github 로그인과 토큰 발급, 그리고 로그아웃이 전부이다. 안 한 것과 다름 없다
+
+사이드 프로젝트 코드는 여기 (opens new window)에서 확인할 수 있다.
+
 
 ***
 
