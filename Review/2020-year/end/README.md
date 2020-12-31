@@ -712,17 +712,67 @@ _당황했던 질문들은 대체로 보안과 관련된 질문이었고, 내가
 
 ### 3. 인터넷 강의
 
+나는 인터넷 강의를 좋아하는 편이 아니다.
+사실 강의의 필요성을 크게 느끼지 못했달까?
+그런데 입사 후에는 부족한 부분이 많다고 생각해서 꽤 많은 강의를 들었다.
+
+아니 사실 많이 듣진 않았지만, 여태까지의 내 모습을 봤을 때 이전에 비해서 올 해는 많이 본 편이다.
+
+- [코드스피츠](https://www.youtube.com/channel/UCKXBpFPbho1tp-Ntlfc25kA)
+  - [85기 - 거침없는 자바스크립트](https://www.youtube.com/watch?v=0NsJsBdYVHI&t=2900s)
+  - [86기 - 객체지향 자바스크립트](https://www.youtube.com/watch?v=E9NZ0YEZrYU&t=4031s)
+  - [88기 - async/await](https://www.youtube.com/watch?v=H_Hb9IF7sfc)
+  
+- [인프런](https://www.inflearn.com/)
+  - [예제로 배우는 스프링 입문 (개정판)](https://www.inflearn.com/course/spring_revised_edition/dashboard)
+  - [스프링 부트 개념과 활용](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/dashboard)
+  - [더 자바, 코드를 조작하는 다양한 방법](https://www.inflearn.com/course/the-java-code-manipulation/dashboard)
+  - [함수형 프로그래밍과 javascript ES6+](https://www.inflearn.com/course/functional-es6/dashboard)
+
+- [패스트 캠퍼스](https://auth.fastcampus.co.kr/sign-in?client_id=fc%3Aclient%3Awww&response_type=token&redirect_uri=https%3A%2F%2Fwww.fastcampus.co.kr%2Fonline_category%2F%3Fgclid%3DCjwKCAiA57D_BRAZEiwAZcfCxaJChqY6DQLK2hwE1ZOTg-kZ-OJe3mPLbEU81L5O4yLUQbpA8EceCBoCNMgQAvD_BwE&scope=www)
+  - [React와 Redux로 구현하는 아키텍쳐와 리스크 관리](https://www.fastcampus.co.kr/dev_red_kmt)
+
+제일 유용했던 강의는 [더 자바, 코드를 조작하는 다양한 방법](https://www.inflearn.com/course/the-java-code-manipulation/dashboard)와 [코드스피츠](https://www.youtube.com/channel/UCKXBpFPbho1tp-Ntlfc25kA) 시리즈다.
+
+강의 내용을 보고 정리를 하고 싶었는데, 일단 코드스피츠의 내용의 일부만 정리했다.
+
+_86기 객체지향 자바스크립트(Object Oriented Javascript)_
+
+- [1회차 - 객체지향 프로그래밍의 목적과 원칙](/CodeSpitz/Object-Oriented-Javascript/01-Intro/)
+- [2회차 - MVVM System 구축](/CodeSpitz/Object-Oriented-Javascript/02-MVVM/)
+- [3회차 - MVVM System 개선 (1)](/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/)
+- [4회차 - MVVM System 개선 (2)](/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/)
+- [5회차 - MVVM System 개선 (3)](/CodeSpitz/Object-Oriented-Javascript/05-Extension/)
+
 ***
 
 ### 4. 스터디
+
+#### (1) DKU-STUDY
+
+#### (2) 블랙커피 스터디
+
+#### (3) 블로그 스터디
+
+#### (4) 프로그래머스 리액트 스터디
+
+#### (5) 사내 리액트 스터디
 
 ***
 
 ### 5. 리뷰어 활동
 
+#### (1) 넥스트 스텝
+
+#### (2) 부스트 캠프
+
 ***
 
 ### 6. 강사
+
+#### (1) 서울디지텍고등학교
+
+#### (2) 인천금융고등학교
 
 ***
 
