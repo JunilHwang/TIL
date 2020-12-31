@@ -122,8 +122,11 @@ image: /Review/2020-year/end/thumbnail.jpg
 다만 완전히 공용 컴포넌트로 사용하기엔 위험 요소가 많아서 고려 중이라고 했다.
 나중에 시간적 여유가 있을 때 완전히 코어로 사용해도 좋을 것 같다.
 
-이 외에도 내가 작업한건 아니지만, [모바일줌에 SSR을 적용](https://zuminternet.github.io/ZUM-Mobile-NodeJS/)하는 등의 공사가 있었고
-기존에 API 프로젝트에서 Mobile API를 따로 떼어나는 작업도 있었다.
+이 외에도 내가 작업한건 아니지만, [모바일줌에 SSR을 적용](https://zuminternet.github.io/ZUM-Mobile-NodeJS/)하는 등의 공사가 있었다.
+
+그리고 기존에 API 프로젝트에서 Mobile API를 따로 떼어나는 작업도 있었다.
+
+![API 분리 bn](https://www.plantuml.com/plantuml/svg/ZLFBQiCm4BpxAvRSzGUXn6bSsaCXq1v2ReebYDj8Ch9C0o7_thKUrYD9gK-QdV7iIreDXcepYbCb5UEms8y2NhIIPW5q04GM9EIxEdGd7bY74hhkUwYtRvR7CnwhqXdMjFrk98EjLb-ynKoN2l1pil2pbIBuy6nKl8w7EGMU2xPcCJ-pt3MwrupsXklext0KhAbfZwbUT3B2ZH8KyRMwcSV_UdBQkqqz7xKI79gpuNBeb9oRQ7QVXTHdp4rBEoL4OkBW7zFmbVbnO8DP00XXwaUI9rlD0yhNyO3r5QHJZ-IqnViChj0DFHVRlUGXkxb2PUyVB0aPUnBgouE-h3muDJdVxUBtcxXt22ybXAVyPGoRMN79yB7z0W00)
 
 ::: tip 현재 모바일 줌의 기술 스택은 다음과 같다.
 
@@ -176,11 +179,36 @@ Front Server를 Node.js로 구성하여 대용량 트래픽을 더 적은 자원
 
 ### 4. 크롬 확장프로그램
 
+![크롬 확장프로그램 Zum Newtab bn](./4.png)
+
+5월부터 8월까지 [크롬 확장프로그램 - Zum Newtab](https://chrome.google.com/webstore/detail/zum-newtab/bghgeookcfdmkoocalbclnhofnenmhlf?hl=ko&authuser=2)을 만들었다.
+실제 프로젝트를 진행하기에 앞서 간단하게 [튜토리얼](https://github.com/JunilHwang/chrome-extension-tutorial)을 진행했다.
+
+![튜토리얼](./2.png)
+
+생각보다 어렵지 않았고, 자신감이 차오른 상태에서 개발을 진행했다.
+개발은 딱 한 달 정도 소요되었는데, 검수 과정에서 다양한 반려 사유가 존재했고 _완벽하게 통과하기 까지 3개월이 걸린 것이다._
+
+![반려](./3.png)
+
+확실히 확장프로그램을 만들면서 기술적으로 많은 생각을 하는 계기가 되었다.
+일반적인 웹 서비스가 아니기 때문에 고려해야할 것도 많았고,
+완성도에 대한 중요성 또한 다시 한 번 깨우칠 수 있었다.
+
+![전체 구조 bn](https://zuminternet.github.io/images/portal/post/2020-09-11-Zum-Chrome-Extension/12-architecture_01.png)
+
+~~그런데 또 하고 싶다는 생각이 들진 않는다.~~
+
+언젠간 ~~죽기 전에~~ 확장프로그램으로 재미난 일들을 해보고 싶다.
+
+확장프로그램에 대한 자세한 내용은 [줌인터넷 기술블로그 - 크롬 확장프로그램 개발⛏ 회고](https://zuminternet.github.io/Zum-Chrome-Extension/)에서 확인할 수 있다.
 
 
 ***
 
 ### 5. 핫이슈 CMS
+
+
 
 ***
 

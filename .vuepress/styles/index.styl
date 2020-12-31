@@ -97,9 +97,15 @@ em
   s
     color #aaa
 
-  img:not([alt="uml diagram"])
+  img
     // box-shadow 0 0 5px fade-out(#ddd, 0.3)
     border 1px solid #bebebe
+
+  img[alt="uml diagram"]
+    border none
+
+  img[alt*="bn"]
+    border none
 
   hr
     width 200px
