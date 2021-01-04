@@ -240,13 +240,16 @@ Front Server를 Node.js로 구성하여 대용량 트래픽을 더 적은 자원
 
 그렇게 성공적으로 배포를 진행했고, 뒤탈없이 마무리 되는 듯 싶었다.
 사실 아직까지 큰 문제는 없는 상태인데, 코드가 너무 복잡해졌다.
-더 정확히는 한 개의 컴포넌트에 너무 많은 기능이 들어가있다.
+정확히는 한 개의 컴포넌트에 너무 많은 기능이 들어가있다.
 
 보통 API 관련 로직이나 Store를 다루는 로직은 컨테이너 컴포넌트에서 처리하고,
-하위 컴포넌트가 Props나 Custom Event로 처리하도록 만드는 편이다.
+하위 컴포넌트가 Props를 전달하거나 혹은 Custom Event로 처리하도록 만드는 편이다.
 이와 같은 방식으로 만들다 보니, 특정 컴포넌트 하나가 폭탄이 되었다.
 
 ![폭탄](https://junilhwang.github.io/TIL/assets/img/21.e5feae0d.png)
+
+> 고작 몇 백줄 정도의 코드지만, 팀 내에서 적극적으로 프론트엔드를 공부하는 사람이 나를 포함하여 두 명이다.
+그래서 다른 팀원이 이 코드를 보게 될 경우 무척 혼란스러울 수 있다. 
 
 그래서 이걸 어떻게 해결할까 고민하다가 최근에 [Vue 3](https://v3.vuejs.org/)에 도입된 [Composition API](https://composition-api.vuejs.org/)를 사용하기로 했다.
 이를 위해 [Vue3 + Composition API + TodoList](https://github.com/JunilHwang/vue-composition-todoapp)을 먼저 만들었고,
@@ -255,10 +258,50 @@ Front Server를 Node.js로 구성하여 대용량 트래픽을 더 적은 자원
 ![리팩토링](https://junilhwang.github.io/TIL/assets/img/1.0b4185b2.png)
 
 각각의 로직을 `useMenus`, `useSchedule`, `useTemplateItem`, `usePreview` 처럼 **카테고리별로 묶어서** 유지보수 할 수 있게 작업했다.
-다만 아쉬운 점은 변수와 메소드를 구분할 수 있는 방법이 이름 밖에 없다는 점과,
-직접 만든 mapper 라이브러리의 경우 IDE 추적을 지원하지 않는 다는 점이다.
+그리고 `mapState`, `mapGetters`, `mapMutations`, `mapActions`, `craeteNamespaceHelper` 같은 API를 이용하여 컴포넌트에 Vuex를 결합하여 사용했는데, Composition API에는 이런게 없다.
+그래서 직접 만들어서 사용했다.
 
+```js
+import { computed } from "vue";
+import { useStore } from "vuex";
+
+export default function useStoreModuleMapper(namespace) {
+  const store = useStore();
+
+  const mapState = keys => keys.map(key => computed(() => store.state[namespace][key]));
+  const mapMutations = keys => keys.map(key => (...payload) => store.commit(`${namespace}/${key}`, ...payload));
+  const mapActions = keys => keys.map(key => (...payload) => store.dispatch(`${namespace}/${key}`, ...payload));
+  const mapGetters = keys => keys.map(key => computed(() => store.getters[`${namespace}/${key}`]));
+
+  return { mapState, mapMutations, mapActions, mapGetters };
+}
+```
+
+위의 코드는 다음과 같이 사용할 수 있다.
+
+```js
+export default function useTodo() {
+  const { mapState, mapGetters, mapActions, mapMutations } = useStoreModuleMapper("todo");
+  const [listLoading, appendLoading] = mapState(["listLoading", "appendLoading"]);
+  const [filteredTodoItems] = mapGetters(["filteredTodoItems"]);
+  const [setTodoItems, setUser] = mapMutations([SET_TODO_ITEMS, SET_USER]);
+  const [fetchItems, addItem, updateItem, toggleItem, removeItem, removeAllItem, updatePriority] = mapActions([
+    FETCH_ITEMS,
+    ADD_ITEM,
+    UPDATE_ITEM,
+    TOGGLE_ITEM,
+    REMOVE_ITEM,
+    REMOVE_ALL_ITEM,
+    UPDATE_PRIORITY
+  ]);
+}
+```
+
+사용하는데 큰 무리는 없으나, _IDE 추적을 지원하지 않기 때문에_ 오히려 코드를 유지보수할 때 힘들 수 있다.
 _Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 기도할 뿐이다.. 😇_
+
+그리고 Composition API를 사용하면 변수와 메소드를 구분할 수 있는 방법이 변수명 밖에 없기 때문에 네이밍을 더 잘 해야 하거나 혹은 사내 전용 컨벤션을 만들어야 한다.
+그래서 더 많이 고민해봐야 할 것 같다.
 
 ***
 
@@ -317,7 +360,7 @@ _Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 �
 
 올 해의 제일 큰 목표중 하나이자 착실하게 이뤄낸 목표가 바로 **일일커밋**이다.
 
-![일일커밋 bn](http://localhost:8080/TIL/assets/img/thumbnail.95076c90.jpg)
+![일일커밋 bn](./thumbnail.jpg)
 
 처음에는 그냥 매일 매일 꾸준히만 하자고 생각했었는데, 하다보니 너무 많이 해버렸다..
 
@@ -713,10 +756,10 @@ _당황했던 질문들은 대체로 보안과 관련된 질문이었고, 내가
 ### 3. 인터넷 강의
 
 나는 인터넷 강의를 좋아하는 편이 아니다.
-사실 강의의 필요성을 크게 느끼지 못했달까?
-그런데 입사 후에는 부족한 부분이 많다고 생각해서 꽤 많은 강의를 들었다.
+사실 여태까지 인터넷 강의의 필요성을 크게 느끼지 못했달까?
+그런데 입사 후에는 아무리 생각해도 혼자서 공부하기엔 벅찬 부분이 많아서 꽤 많은 인터넷 강의를 들었다.
 
-아니 사실 많이 듣진 않았지만, 여태까지의 내 모습을 봤을 때 이전에 비해서 올 해는 많이 본 편이다.
+사실 다른 사람들에 비하면 많이 듣진 않았으나 그냥 내 기준으로 올 해는 많이 본 편이다.
 
 - [코드스피츠](https://www.youtube.com/channel/UCKXBpFPbho1tp-Ntlfc25kA)
   - [85기 - 거침없는 자바스크립트](https://www.youtube.com/watch?v=0NsJsBdYVHI&t=2900s)
@@ -744,6 +787,8 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 - [4회차 - MVVM System 개선 (2)](/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/)
 - [5회차 - MVVM System 개선 (3)](/CodeSpitz/Object-Oriented-Javascript/05-Extension/)
 
+코드스피츠는 유튜브에서 무료로 볼 수 있으며, 내용 또한 쉽지 않다. 더불어 [Bsidesoft 블로그](https://www.bsidesoft.com/)에 올라온 글을 같이 보면 더욱 도움이 많이 된다.
+
 ***
 
 ### 4. 스터디
@@ -752,28 +797,56 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 ![11](./11.jpg)
 
-4월 말에 취업 준비 중이던 [여자친구](https://github.com/eyabc)가 뜬금없이 [알고리즘 스터디](https://dku-study.github.io)를 같이 하자고 했다.
+4월 말에 취업 준비 중이던 [여자친구(같은과 후배)](https://github.com/eyabc)가 뜬금없이 [알고리즘 스터디](https://dku-study.github.io)를 같이 하자고 했다.
 스터디 구성원은 먼저 에브리타임을 통해서 모집하고, 추가로 알고 지내던 후배들 중 같이 하고 싶은 의향이 있는 사람들을 초대했다.
 
-스터디를 하면서 느낀점은, 일단 다른 사람들의 생각을 직접적이든 간접적이든 어떤 형태로든 알 수 있다는 것 자체가 큰 도움이 된다는 것이다.
-사고방식이나 문제풀이 과정 등 정말 기상천외(?)한 방법으로 문제를 해결한다.
+![15](./15.png)
 
-그리고 알려주는 것들을 스폰지처럼 잘 흡수하는 사람이 있기 때문에 가르침에 대한 보람과 즐거움도 느낄 수 있다.
+> 이렇게 무척 대충(?) 모집 공고를 올렸는데 지원해준 사람이 있어서 신기했다.
 
-4월에 시작해서 지금까지 잘 유지 중인데, 어딘가에 스터디 모집을 하고 있다는 글을 올려놓진 않았지만 이메일이나 깃허브 등을 통해서 지속적으로 스터디원이 유입중이다.
+스터디를 하면서 느낀점은,
+
+- 알고리즘을 풀이할 때 다른 사람들의 생각을 직간접적으로 알 수 있다는 것 자체가 큰 도움이 된다.
+- 보편적인 솔루션을 만드는 사람도 있고, 기상천외(?)한 방법으로 문제를 해결하는 사람도 있다.
+- 같이 하는 공부라서 생각보다 외롭지 않고 의지를 갖게 해준다.
+- 같이할 수 있는 다양한 것들을 시도해볼 수 있다.
+- 다양한 정보를 빠르게 모을 수도 있고, 전파할 수도 있다.
+
+그렇게 3개월 정도 운영을 하다가 인원이 더 있어도 좋을 것 같아서 스터디원을 더 모집했다.
+
+![16](./16.png)
+
+그리고 알고리즘 이외에도 javascript 면접 스터디가 한 학기 정도 진행했다.
+사실 내가 주도한 것도, 참여한건 아니지만 _구성원들간에 규칙을 세우고 꾸준히 하는 모습이 무척 인상깊었다._ 
+
+![17](./17.jpg)
+![18](./18.jpg)
+
+- 한 주에 한 개의 주제에 대해 정리하고 공유하며 피드백을 남기도록 했다.
+- 7월에 시작했고, 12월까지 계속 진행 중이다.
+
+7월 이후에 스터디 모집을 하고 있다는 글을 올려놓진 않았지만 _이메일, 깃허브, 그리고 구성원의 소개 등으로 계속 유입 중이다._
+
+![19](./19.png)
 
 ![12](./12.png)
 
-그리고 타 학교 사람들과 스터디 운영에 대해서 메일을 주고 받기도 했다.
+그렇게 8개월 동안 약 20명 이상의 사람들이 모였다.
+내년에 잘 굴려보면 최소 50명에서 최대 100명 정도의 사람이 모일 수 있지 않을까?
+
+***
+
+그리고 타 학교 사람들과 스터디 운영에 대해서 궁금한 점을 메일로 주고 받기도 했다. 
 
 ![13](./13.png)
 
-![14](./13.png)
+![14](./14.png)
 
-결론적으로 우리 스터디가 잘 진행되고 있어서 다행이기도 하고, 더 열심히 해야겠다는 자극이 되기도 한다.
+이렇게 연락을 주시는 분들 덕분에 더 열심히 잘 운영해야겠다는 생각이 든다.
+
 올해는 이제 다 지나갔으니, 내년에는 스터디를 조금 더 체계적으로 관리할 생각이다.
 
-지금은 알고리즘 위주의 스터디를 진행하고 있지만, 취업이나 면접 스터디 혹은 Java나 Javascript 스터디 처럼 영역을 조금씩 넓혀갈 예정이다.
+지금은 알고리즘 위주의 스터디를 진행하고 있지만, 취업이나 면접 스터디 혹은 Java나 Javascript, 혹은 영어 스터디 등으로 영역을 조금씩 넓혀갈 예정이다.
 
 ***
 
@@ -783,29 +856,86 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 ![image01](https://user-images.githubusercontent.com/18749057/96161643-80594100-0f52-11eb-8254-76e542afff4c.png)
 
-**처음으로 Javascript Study가 진행되고 있다는 내용**이다. **무료로 신청**할 수 있었기 때문에 고민 없이 바로 신청했다.
+**처음으로 Javascript Study가 진행되고 있다는 내용**이다.
+**무료로 신청**할 수 있었기 때문에 고민 없이 바로 신청했다.
 
 ::: tip 블랙 커피 스터디
 
-- 스터디 이름은 `훌륭한 의사소통은 블랙커피처럼 자극적이며, 후에 잠들기가 어렵다.` 라는 문장에 감명 받아 `블랙 커피 스터디`라고 짓게 되었다고 한다.
-- 이름의 유래에서 유추할 수 있듯 `함께 좋은 커뮤니케이션으로 통찰을 이끌어내고, 그 통찰과 함께 성장하고, 소프트웨어 장인으로 거듭나기`가 목표인 스터디이다.
+- **훌륭한 의사소통은 블랙커피처럼 자극적이며, 후에 잠들기가 어렵다** 라는 문장에 감명 받아 `블랙 커피 스터디`라고 짓게 되었다고 한다.
+- 이름의 유래에서 유추할 수 있듯 함께 좋은 커뮤니케이션으로 통찰을 이끌어내고, 그 통찰과 함께 성장하고, **소프트웨어 장인으로 거듭나기가 목표**인 스터디이다.
+  
+  - 소프트웨어 장인이란?
+    - 동작하는 소프트웨어를 정교하고 솜씨있게 만들 수 있는 것
+    - 변화에 대응하는것 뿐만이 아니라, 계속해서 가치를 더하는 것
+    - 개별적으로 협력하는 것 뿐만이 아니라, 프로페셔널 커뮤니티를 조성하는 것
+    - 고객과 협업하는 것 뿐만 아니라, 생산적인 동반자 관계를 추구하는 것
+  
 - 이 스터디는 위와 같은 목표를 달성하기 위해서 `페어 프로그래밍`과 `코드리뷰`라는 수단을 이용한다.
 
 :::
 
-::: tip 소프트웨어 장인이란?
+#### 1) Level 01 - TodoList
 
-1. 동작하는 소프트웨어 뿐만 아니라 정교하고 솜씨있게 만들어직 작품을
-1. 변화에 대한 대응하는것 뿐만이 아니라, 계속해서 가치를 더하는 것을
-1. 개별적으로 협력하는 것 뿐만이 아니라, 프로페셔널 커뮤니티를 조성하는 것을
-1. 고객과 협업하는 것 뿐만 아니라, 생산적인 동반자 관계를 추구한다.
+9월에 블랙커피 스터디의 존재를 인지하고 `Level 01`을 신청했다.
+
+![21](./21.png)
+
+스터디 진행은 다음과 같이 진행 된다.
+
+![22](./22.png)
+
+요약하자면 다음과 같다.
+
+::: tip 미션 요약
+
+- 주 1회 온라인 세션을 통한 미션 소개 및 회고
+- 주 2회 페어프로그래밍
+- 코드리뷰
 
 :::
 
-음.. 블랙커피 스터디에 대해서는 다룰 내용이 너무 많아서 이전 회고의 링크를 대신하겠다.
+미션이 어렵진 않았고, 시간적 여유도 충분히 있었기 때문에 첫 주에 1~3주 미션을 모두 수행했다.
 
-- [9월 회고 - 블랙커피 스터디 Level 1](https://junilhwang.github.io/TIL/Review/2020-year/09-September/#_1-black-coffee-study)
-- [12월 회고 - 블랙커피 스터디 Level 2](https://junilhwang.github.io/TIL/Review/2020-year/12-December/#_4-%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%86%A8%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%83%E1%85%B5-%E1%84%85%E1%85%A6%E1%84%87%E1%85%A6%E1%86%AF-2)
+- `1주차` Todo App 만들기
+  - [Document Object Model](https://www.youtube.com/watch?v=1yADBI27NCg)
+  - [Browser Object Model](https://www.youtube.com/watch?v=BYRTKmPAr8c)
+  - [Event](https://www.youtube.com/watch?v=u49E4_4hyeI)
+- `2주차` API 연동
+- `3주차` SPA 만들기 (Router 사용하기)
+
+이 정도의 난이도가 수준 높은 코드를 만들기 위한 적합한 미션이라고 생각한다.
+현재 보다 더 어렵거나 쉬웠다면 설계에 집중하기가 힘들었을 것 같다.
+
+그리고 페어 프로그래밍은 총 3회를 참여했으며 같이 미션을 구현하거나, 혹은 미션 진행에 필요한 라이브러리를 구현하는 방향으로 페어 프로그래밍을 진행했다.
+이러한 과정을 통해서 혼자 고민하던 것들에 대해 즉각적으로 피드백을 주고 받으며 잘못된 점이나 개선 점을 찾아낼 수 있었고,
+고스란히 내 코드에 녹였다.
+
+다만 페어와의 실력차이가 심할 경우에는 페어프로그래밍 보단 실시간 강의(?)가 될 수 있으니 어느 정도 운도 따라야한다.
+
+이 과정에서 도출한 코드는 다음 링크에서 확인해볼 수 있다.
+
+- [전체 내용 정리](https://github.com/junilhwang/black-coffee-study)
+- Step 01
+  - [소스코드](https://github.com/junilhwang/js-todo-list-step1)
+  - [데모](https://junilhwang.github.io/black-coffee-study/step1)
+- Step 02
+  - [소스코드](https://github.com/junilhwang/js-todo-list-step2)
+  - [데모](https://junilhwang.github.io/black-coffee-study/step2)
+- Step 02
+  - [소스코드](https://github.com/junilhwang/js-todo-list-step3)
+  - [데모](https://junilhwang.github.io/black-coffee-study/step3)
+  
+더 상세한 내용은 [9월 회고](https://junilhwang.github.io/TIL/Review/2020-year/09-September/#_1-black-coffee-study)에서 확인할 수 있다.
+
+***
+
+#### 2) Level 02 - TodoList Test
+
+
+
+https://junilhwang.github.io/TIL/assets/img/12.92812b58.jpg
+
+더 상세한 내용은 [12월 회고](https://junilhwang.github.io/TIL/Review/2020-year/12-December/#_4-%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%86%A8%E1%84%8F%E1%85%A5%E1%84%91%E1%85%B5-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5%E1%84%83%E1%85%B5-%E1%84%85%E1%85%A6%E1%84%87%E1%85%A6%E1%86%AF-2)에서 확인할 수 있다.
 
 #### (3) 블로그 스터디
 
