@@ -1041,13 +1041,13 @@ _86기 객체지향 자바스크립트(Object Oriented Javascript)_
 
 그리고 인상 깊었던 글들을 소개해본다.
 
-- `김종완`님 의 글
-  - [개발자를 위한 세금 시리즈 - 1](https://wani-coding.tistory.com/112?category=927131)
-  - [개발자들이 알아야하는 세금 꿀팁 - 중소기업 취업자 소득세 감면](https://wani-coding.tistory.com/118?category=927131)
-
 - `메이커준`님 의 글
   - [0. 프롤로그: 새로운 출발을 향한 우아한형제들 입사 기록](https://makerjun.com/career/woowabros/programmer-story/)
   - [1. 프로그래밍을 시작한 경위와 본격적으로 투신하고 생업으로 삼기로 결정한 이야기](https://makerjun.com/career/woowabros/why-programmer/)
+  - [2. 좋은 개발자가 되기 위해 갖추어야 한다고 생각하는 덕목 셋을 고르고 그 이유를 말해주세요.](https://makerjun.com/career/woowabros/good-programmer/)
+  - [3. 지금까지 읽었던 개발서 중 가장 중요하다고 생각하는 책 3 권을 골라 선정한 이유를 말해주세요.](https://makerjun.com/career/woowabros/best-books/)
+  - [4. 기술 경향을 파악하고 업무 역량을 강화하기 위한 본인의 학습 방법을 구체적으로 설명해주세요.](https://makerjun.com/career/woowabros/learning-method/)
+  - [5. '좋아하는 시나 소설, 노래 중심으로' 자신을 자유롭게 소개해 주세요. (지원동기/이직사유, 장/단점 등)](https://makerjun.com/career/woowabros/my-story/)
 
 - `eyabc`님 의 글
   - [내 글 써보기](https://eyabc.github.io/Doc/)
