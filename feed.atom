@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2021-01-07T02:09:09.544Z</updated>
+    <updated>2021-01-07T11:17:54.067Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
@@ -48,20 +48,20 @@
         <summary type="html"><![CDATA[다가오는 2021년에 대한 계획입니다.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[유년시절 이야기 (1)]]></title>
-        <id>https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/</id>
-        <link href="https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/">
-        </link>
-        <updated>2020-12-16T00:10:00.000Z</updated>
-        <summary type="html"><![CDATA[개발에 입문하기 이전의 유년시절 이야기입니다.]]></summary>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[유년시절 이야기 (2)]]></title>
         <id>https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/</id>
         <link href="https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/">
         </link>
         <updated>2020-12-16T00:10:00.000Z</updated>
         <summary type="html"><![CDATA[본격적으로 개발을 시작하게 되는 이야기입니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[유년시절 이야기 (1)]]></title>
+        <id>https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/</id>
+        <link href="https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/">
+        </link>
+        <updated>2020-12-16T00:10:00.000Z</updated>
+        <summary type="html"><![CDATA[개발에 입문하기 이전의 유년시절 이야기입니다.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[유년시절 이야기 (3)]]></title>
