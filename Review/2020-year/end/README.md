@@ -336,11 +336,6 @@ _Vuex에 Composition API 전용의 유틸성 라이브러리가 추가 되길 �
 ![훌쩍 bn](https://item.kakaocdn.net/do/b888ef9aeedc7e048b34a7856ea2ce94ac8e738cb631e72fdb9a96b36413984e)
 
 특히 내가 입사했을 때 **무척 존경하고 자극이 되어주시던 분들**이 가셔서 참 아쉽기도 하고, 더 좋은 곳으로 가셨으니 기쁘기도 하다.
-
-- [희정님](https://github.com/gmlwjd9405) => 카카오페이
-- [남준님](https://github.com/namjunemy) => 우아한형제들
-- [정수님](https://github.com/integerous) => 토스 페이먼츠
-
 이제 다른 회사로 가셨지만, 이 분들과 인연을 맺었음에 감사할 따름이다.
 나도 누군가에게 **긍정적인 영향**을 줄 수 있는 사람이 되기 위해서 부단히 노력해야겠다 😁
 
