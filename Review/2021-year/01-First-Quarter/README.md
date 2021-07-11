@@ -8,6 +8,16 @@ image: /Review/2020-year/end/thumbnail.jpg
 
 ---
 
+# 주니어 개발자의 2021년 상반기 회고
+
+<div style="text-align: right">
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FReview%2F2021-year%2F01-First-Quarter%2F&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true" alt="Hits bn" />
+</div>
+
+
+
+![썸네일](./thumbnail.png)
+
 `와.. 벌써 2021년이구나, 시간 참 빠르다` 라고 말한지 얼마 안 된 것 같은데 벌써 2021년의 반이 지났다. 작년에는 한 달 마다 회고를 작성했는데, ~~너무 귀찮아서~~ 올 해는 상반기, 하반기 회고만 작성해야겠다.
 
 ## 1. 2021년 목표에 대한 회고
@@ -54,7 +64,7 @@ image: /Review/2020-year/end/thumbnail.jpg
 
 ### (1) 스타트줌
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3175dd9b-d16e-4a74-a601-93d404dfaad6/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3175dd9b-d16e-4a74-a601-93d404dfaad6/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3175dd9b-d16e-4a74-a601-93d404dfaad6/Untitled.png](./1.png)
 
 작년 말 [스타트줌](https://start.zum.com)이 기획되어 개발을 시작했고, 올해 초에 오픈했다. 트래픽은 어느정도 있는데 광고도 없고 **서버 유지비만 소모되고 있어서 계륵 같은 서비스**가 되어 버렸다. API도 직접 만들고, 프론트도 직접 만들었지만.. 사실 애정하는 서비스는 아니다. 다만 크롬 전용으로 기획된 서비스라서 IE를 신경쓰지 않아도 된다는 점!
 
@@ -64,7 +74,7 @@ image: /Review/2020-year/end/thumbnail.jpg
 
 > 확장프로그램 개발 과정은 [이 링크](https://zuminternet.github.io/Zum-Chrome-Extension/)에서 확인할 수 있습니다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/117840f7-67f7-498a-ab6e-7c72feaba3c2/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/117840f7-67f7-498a-ab6e-7c72feaba3c2/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/117840f7-67f7-498a-ab6e-7c72feaba3c2/Untitled.png](./2.png)
 
 사실 스타트줌이 기획된 이유가 확장프로그램 퀄리티가 나쁘지 않아서(?) 였다고 하는데.. 나는 확장프로그램이 더 좋다. 나름 잘 사용하고 있기도 하고. 기획에서 마음만 먹으면 이것 저것 기능을 붙일 수 있을텐데 지금 기획자 분들도 너무 정신없어서 확장프로그램도 기억 저 편으로 사라진 것 같다.
 
@@ -96,7 +106,7 @@ image: /Review/2020-year/end/thumbnail.jpg
 
 ### (3) 줌닷컴 개편
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73f5602e-fa5f-4db4-af74-2ccc0e74f08d/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73f5602e-fa5f-4db4-af74-2ccc0e74f08d/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73f5602e-fa5f-4db4-af74-2ccc0e74f08d/Untitled.png](./3.png)
 
 이런 날이 올 줄 몰랐는데, [줌 닷컴](http://zum.com)의 레거시 코드를 청산하고 `NodeJS + Vue.js`로 다시 만들었다. 내 사수가 프론트를 담당했고, **나는 프론트에서 사용되는 API와 Admin을 만들었다.** 3월 초에 개발을 시작하여 5월 1일에 배포했고, 약 한 달 정도 자잘한 버그를 수정하며 유지보수를 진행했다.
 
@@ -207,13 +217,13 @@ ATDD와 거의 동시에 [Java CC 11기](https://edu.nextstep.camp/s/ApJ4Ca71)�
 
 그래서 본의 아니게 [코덕](https://co-duck.com) 에서 3월에 1등을 달성했다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1cd9f2c6-62a0-42ec-8631-93aad8586fea/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1cd9f2c6-62a0-42ec-8631-93aad8586fea/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1cd9f2c6-62a0-42ec-8631-93aad8586fea/Untitled.png](./4.png)
 
 어쨌든 이렇게 매번 리뷰어로 신청하다보니 이제 리뷰어 활동이 크게 부담 되진 않고 있다.
 
 ### (5) 우아한 테크코스 Pro2 리뷰어
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3c2d54c-dc68-42d1-98ef-99609882715b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3c2d54c-dc68-42d1-98ef-99609882715b/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c3c2d54c-dc68-42d1-98ef-99609882715b/Untitled.png](./5.png)
 
 ATDD까지 수강을 완료한 덕분인지 [우하한 테크코스 Pro 2기](https://edu.nextstep.camp/s/ffeVDScX) 리뷰어로 활동할 수 있는 기회를 얻을 수 있었다. 사실 내가 리뷰어로 활동하는게 맞는건가? 싶은 의문을 지금도 가지고 있다.
 
@@ -302,29 +312,29 @@ ATDD까지 수강을 완료한 덕분인지 [우하한 테크코스 Pro 2기](ht
 
 이사를 오면서 제일 아쉬운 점은.. 옥상 풍경이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c8fd875b-3b8f-41a3-b3ef-d923232cb794/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c8fd875b-3b8f-41a3-b3ef-d923232cb794/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c8fd875b-3b8f-41a3-b3ef-d923232cb794/Untitled.png](./6.png)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c73ddfdf-0176-489e-8d76-8069f213a344/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c73ddfdf-0176-489e-8d76-8069f213a344/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c73ddfdf-0176-489e-8d76-8069f213a344/Untitled.png](./7.png)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f1c1ad1e-802f-43ec-a6ce-949a82645074/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f1c1ad1e-802f-43ec-a6ce-949a82645074/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f1c1ad1e-802f-43ec-a6ce-949a82645074/Untitled.png](./8.png)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b91de95-adf6-48f7-b4ac-f6b027983a89/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b91de95-adf6-48f7-b4ac-f6b027983a89/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5b91de95-adf6-48f7-b4ac-f6b027983a89/Untitled.png](./9.png)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62a83722-ddb0-4f60-bbd7-209f358acf41/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62a83722-ddb0-4f60-bbd7-209f358acf41/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62a83722-ddb0-4f60-bbd7-209f358acf41/Untitled.png](./10.png)
 
 이런 풍경을 매일 볼 수 있었는데.. 그럴 수 없다는 점이 참 아쉽다. 이 동네에서 만난 고양이들도 좋았는데, 지금 키우고 있는 포동이의 어미도 이제 볼 수 없다는 점도 아쉽다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/90374524-491d-424c-b7fa-37ff7213693e/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/90374524-491d-424c-b7fa-37ff7213693e/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/90374524-491d-424c-b7fa-37ff7213693e/Untitled.png](./11.png)
 
 이렇게 작은 고양이였는데!
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b47c2d5c-57cd-4c51-8232-08b39bc1208c/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b47c2d5c-57cd-4c51-8232-08b39bc1208c/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b47c2d5c-57cd-4c51-8232-08b39bc1208c/Untitled.png](./12.png)
 
 지금은 어엿한 성묘가 되었다.
 
 어쨌든 이제 이사를 왔고, 이사를 온 날 바로 걸어서 한강에 갔다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01946d46-5baf-4d96-839f-2b652a9b7b8f/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01946d46-5baf-4d96-839f-2b652a9b7b8f/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01946d46-5baf-4d96-839f-2b652a9b7b8f/Untitled.png](./13.png)
 
 걸어서 2km 정도면 갈 수 있어서 가볍게 산책하는 겸 갔다오기 좋은 거리다.
 
@@ -332,7 +342,7 @@ ATDD까지 수강을 완료한 덕분인지 [우하한 테크코스 Pro 2기](ht
 
 이제 대중교통을 이용하지 않아서 그런지 회사를 갔다 왔을 때 피곤하지 않아서 좋다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/12b8eaa9-60e2-4bd7-a2f2-ad2008d0d3e3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/12b8eaa9-60e2-4bd7-a2f2-ad2008d0d3e3/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/12b8eaa9-60e2-4bd7-a2f2-ad2008d0d3e3/Untitled.png](./14.png)
 
 마지막은 최근에 찍은 사진으로 마무리!
 

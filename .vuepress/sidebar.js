@@ -8,6 +8,7 @@ const CodeSpitzOOJS = `${CodeSpitz}/Object-Oriented-Javascript`
 const Book = `/Book`
 const OOPPrinciple = `${Book}/OOP-Principle`
 const Review2020 = `/Review/2020-year`
+const Review2021 = `/Review/2021-year`
 
 module.exports = [
   { title: 'Home', path: '/' },
@@ -57,6 +58,15 @@ module.exports = [
           }
         ]
       },
+      {
+        title: '2021년',
+        children: [
+          {
+            title: '상반기 회고',
+            path: `${Review2021}/01-First-Quarter/`
+          }
+        ]
+      }
     ]
   },
   {
