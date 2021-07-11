@@ -9,6 +9,10 @@ date: 2020-10-25
 
 # Vanilla Javascript로 컴포넌트 만들기
 
+<div style="text-align: right">
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FJavascript%2FDesign%2FVanilla-JS-Component%2F&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true" alt="Hits bn" />
+</div>
+
 9월에 [넥스트 스텝](https://edu.nextstep.camp/)에서 진행하는 [블랙커피 스터디](https://edu.nextstep.camp/s/tUzCRWul)에 참여했다.
 이 포스트는 스터디 기간동안 계속 고민하며 만들었던 컴포넌트를 차근 차근 구현해보는 내용이다.
 

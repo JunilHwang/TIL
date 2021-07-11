@@ -13,6 +13,54 @@ next: false
 
 매일 매일 꾸준히만 하자!
 
+## 정리
+
+- 자바스크립트
+
+  - [Vanilla Javascript로 컴포넌트 만들기](./Javascript/Design/Vanilla-JS-Component/)
+  - [자바스크립트 실행 컨텍스트](./Javascript/Domain/Execution-Context/)
+
+- Vuepress
+
+  - [Vuepress 시작하기](./Vuepress/Starter/)  
+  - [VuePress 테마 설정](./Vuepress/Theme/)  
+  - [github page에 배포하기](./Vuepress/Deploy/)  
+  - [markdown-it-plantuml](./Vuepress/Plantuml/)  
+  - [Vuepress + Utterances](./Vuepress/Utterances/)  
+
+## 회고
+
+- 2021년 회고
+  
+  - [2021년 상반기 회고](/Review/2021-year/01-First-Quarter/)
+  
+- [2020년 회고](/Review/2020-year/end/)
+  
+  - [1분기 회고](/Review/2020-year/01-First-Quarter/)
+    
+    - [1월](/Review/2020-year/01-January/)
+    - [2월](/Review/2020-year/02-February/)
+    - [3월](/Review/2020-year/03-March/)
+    
+  - [2분기 회고](/Review/2020-year/02-Second-Quarter/)
+    
+    - [4월](/Review/2020-year/04-April/)
+    - [5월](/Review/2020-year/05-May/)
+    - [6월](/Review/2020-year/06-June/)
+    
+  - 3분기 회고
+    
+    - [7월](/Review/2020-year/07-July/)
+    - [8월](/Review/2020-year/08-August/)
+    - [9월](/Review/2020-year/09-September/)
+    
+  - 4분기 회고
+    
+    - [10월](/Review/2020-year/10-October/)
+    - [11월](/Review/2020-year/11-November/)
+    - [12월](/Review/2020-year/12-December/)
+
+
 
 ## 일상
 
@@ -21,28 +69,7 @@ next: false
   - [유년시절 이야기 - Part 02](/Writing/01-유년시절-이야기-2/)
   - [유년시절 이야기 - Part 03](/Writing/01-유년시절-이야기-3/)
   - [2021 새해 계획](/Writing/02-2021-계획/)
-
-
-## 회고
-
-- [2020년 회고](/Review/2020-year/end/)
-  - [1분기 회고](/Review/2020-year/01-First-Quarter/)
-    - [1월](/Review/2020-year/01-January/)
-    - [2월](/Review/2020-year/02-February/)
-    - [3월](/Review/2020-year/03-March/)
-  - [2분기 회고](/Review/2020-year/02-Second-Quarter/)
-    - [4월](/Review/2020-year/04-April/)
-    - [5월](/Review/2020-year/05-May/)
-    - [6월](/Review/2020-year/06-June/)
-  - 3분기 회고
-    - [7월](/Review/2020-year/07-July/)
-    - [8월](/Review/2020-year/08-August/)
-    - [9월](/Review/2020-year/09-September/)
-  - 4분기 회고
-    - [10월](/Review/2020-year/10-October/)
-    - [11월](/Review/2020-year/11-November/)
-    - [12월](/Review/2020-year/12-December/)
-
+  
 ## About
 
 ![junilhwang's github stats bn](https://github-readme-stats.vercel.app/api?username=junilhwang)
