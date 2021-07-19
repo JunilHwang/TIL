@@ -10,6 +10,7 @@
             "url": "https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/",
             "title": "생각정리",
             "summary": "가끔은 나의 개인적인 생각을 정리해보자.",
+            "image": "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FWriting%2F03-%25EC%2583%259D%25EA%25B0%2581%25EC%25A0%2595%25EB%25A6%25AC%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false",
             "date_modified": "2021-07-19T16:00:00.000Z"
         },
         {
@@ -60,19 +61,19 @@
             "date_modified": "2020-12-24T00:16:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "title": "유년시절 이야기 (1)",
-            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
-            "date_modified": "2020-12-16T00:10:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/",
             "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/",
             "title": "유년시절 이야기 (2)",
             "summary": "본격적으로 개발을 시작하게 되는 이야기입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/98433517-0c522900-210b-11eb-941f-d1075ce66a43.png",
+            "date_modified": "2020-12-16T00:10:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "title": "유년시절 이야기 (1)",
+            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
             "date_modified": "2020-12-16T00:10:00.000Z"
         },
         {
