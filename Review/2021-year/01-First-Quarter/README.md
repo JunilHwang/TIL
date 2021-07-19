@@ -6,6 +6,9 @@ sidebarDepth: 3
 date: 2021-07-12 02:30:00
 image: /Review/2020-year/end/thumbnail.jpg
 
+feed:
+  enable: true
+
 ---
 
 # 주니어 개발자의 2021년 상반기 회고
