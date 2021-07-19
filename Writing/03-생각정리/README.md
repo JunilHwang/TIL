@@ -1,6 +1,5 @@
 ---
 
-
 title: 생각정리
 description: 가끔은 나의 개인적인 생각을 정리해보자.
 sidebar: false
