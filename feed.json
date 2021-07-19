@@ -6,6 +6,13 @@
     "description": "Today I leanred",
     "items": [
         {
+            "id": "https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/",
+            "url": "https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/",
+            "title": "생각정리",
+            "summary": "가끔은 나의 개인적인 생각을 정리해보자.",
+            "date_modified": "2021-07-19T16:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/",
             "url": "https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/",
             "title": "주니어 개발자의 2021년 상반기 회고",
@@ -154,14 +161,6 @@
             "summary": "2020년 1분기 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png",
             "date_modified": "2020-04-01T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/03-March/",
-            "title": "2020년 3월 회고",
-            "summary": "2020년 3월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png",
-            "date_modified": "2020-03-31T00:00:00.000Z"
         }
     ]
 }

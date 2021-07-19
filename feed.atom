@@ -2,11 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://junilhwang.github.io/TIL/</id>
     <title>개발자 황준일</title>
-    <updated>2021-07-12T00:50:19.988Z</updated>
+    <updated>2021-07-19T07:12:11.738Z</updated>
     <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
     <link rel="alternate" href="https://junilhwang.github.io/TIL/"/>
     <link rel="self" href="https://junilhwang.github.io/TIL/feed.atom"/>
     <subtitle>Today I leanred</subtitle>
+    <entry>
+        <title type="html"><![CDATA[생각정리]]></title>
+        <id>https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/</id>
+        <link href="https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/">
+        </link>
+        <updated>2021-07-19T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[가끔은 나의 개인적인 생각을 정리해보자.]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[주니어 개발자의 2021년 상반기 회고]]></title>
         <id>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</id>
@@ -158,13 +166,5 @@
         </link>
         <updated>2020-04-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[2020년 1분기 회고 입니다.]]></summary>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2020년 3월 회고]]></title>
-        <id>https://junilhwang.github.io/TIL/Review/2020-year/03-March/</id>
-        <link href="https://junilhwang.github.io/TIL/Review/2020-year/03-March/">
-        </link>
-        <updated>2020-03-31T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2020년 3월 회고 입니다.]]></summary>
     </entry>
 </feed>
