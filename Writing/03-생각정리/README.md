@@ -12,6 +12,10 @@ feed:
 
 # 생각정리
 
+<div style="text-align: right">
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FWriting%2F03-%25EC%2583%259D%25EA%25B0%2581%25EC%25A0%2595%25EB%25A6%25AC%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" alt="Hits bn" />
+</div>
+
 > 원래 이번 주에는 회고 성격의 글을 쓰기 보단 기술적인 글을 쓰고자 했는데, 지금 내 상태로는 그러한 성격의 글을 쓰기 힘들 것 같다. 그래서 머릿속에 맴도는 것들을 정리하고자 이렇게 글을 쓴다.
 
 약 1년만에 주말을 오롯이 나만의 시간으로 사용할 수 있게 되었다. 그냥 평소처럼 게임을 하거나, 공부를하거나 할까 하다가 만나기로 해놓고 못 만나고 있었던 지인들과 약속을 잡았다. 1~2년 동안 못 보던 사람들이고, 시국이 시국인지라 1:1 약속을 잡아야해서 많은 사람들과 만나긴 힘들었다. 오랜만에 만나서 그런지 서로 할 이야기가 많았고, 생각을 정리하면서 다시 생각이 많아졌다.
