@@ -10,8 +10,6 @@ image: /Review/2020-year/end/thumbnail.jpg
 
 # 주니어 개발자의 2020년 회고
 
-![Hits bn](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhwang.github.io/TIL/Review/2020-year/end/)
-
 ![썸네일 bn](./thumbnail.jpg)
 
 > 6000개 Contributions을 목표로 했는데.. 아쉽게 다 채우진 못했다. 앞으로도 불가능 할 것 같다.

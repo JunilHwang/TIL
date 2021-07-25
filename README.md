@@ -9,8 +9,6 @@ next: false
 
 # Today I Learned
 
-![Hits bn](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhwang.github.io/TIL/)
-
 매일 매일 꾸준히만 하자!
 
 ## 정리

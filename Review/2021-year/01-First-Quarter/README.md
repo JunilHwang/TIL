@@ -13,12 +13,6 @@ feed:
 
 # 주니어 개발자의 2021년 상반기 회고
 
-<div style="text-align: right">
-  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FReview%2F2021-year%2F01-First-Quarter%2F&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true" alt="Hits bn" />
-</div>
-
-
-
 ![썸네일](./thumbnail.png)
 
 `와.. 벌써 2021년이구나, 시간 참 빠르다` 라고 말한지 얼마 안 된 것 같은데 벌써 2021년의 반이 지났다. 작년에는 한 달 마다 회고를 작성했는데, ~~너무 귀찮아서~~ 올 해는 상반기, 하반기 회고만 작성해야겠다.
