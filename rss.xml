@@ -4,7 +4,7 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sun, 25 Jul 2021 13:05:49 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Jul 2021 13:11:36 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
@@ -14,6 +14,8 @@
             <guid>https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/</guid>
             <pubDate>Mon, 19 Jul 2021 16:00:00 GMT</pubDate>
             <description><![CDATA[가끔은 나의 개인적인 생각을 정리해보자.]]></description>
+            <enclosure url="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FWriting%2F03-%25EC%2583%259D%25EA%25B0%2581%25EC%25A0%2595%25EB%25A6%25AC%2F&amp;count_bg=%2379C83D&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false">
+            </enclosure>
         </item>
         <item>
             <title><![CDATA[주니어 개발자의 2021년 상반기 회고]]></title>
@@ -100,6 +102,8 @@
             <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</guid>
             <pubDate>Sun, 25 Oct 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></description>
+            <enclosure url="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FJavascript%2FDesign%2FVanilla-JS-Component%2F&amp;count_bg=%230099FF&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=%EC%A1%B0%ED%9A%8C%EC%88%98&amp;edge_flat=true">
+            </enclosure>
         </item>
         <item>
             <title><![CDATA[2020년 9월 회고]]></title>
