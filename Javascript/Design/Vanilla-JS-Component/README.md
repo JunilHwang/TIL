@@ -4,6 +4,7 @@ title: Vanilla Javascript로 웹 컴포넌트 만들기
 description: Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.
 sidebarDepth: 2
 date: 2020-10-25
+hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FJavascript%2FDesign%2FVanilla-JS-Component%2F&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true
 
 ---
 

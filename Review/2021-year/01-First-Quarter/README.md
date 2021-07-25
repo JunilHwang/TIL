@@ -5,6 +5,7 @@ description: 주니어 개발자의 2021년 상반기 회고
 sidebarDepth: 3
 date: 2021-07-12 02:30:00
 image: /Review/2020-year/end/thumbnail.jpg
+hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FReview%2F2021-year%2F01-First-Quarter%2F&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true
 
 feed:
   enable: true

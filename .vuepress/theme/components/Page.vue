@@ -23,23 +23,26 @@ import PageEdit from '@theme/components/PageEdit.vue'
 import PageNav from '@theme/components/PageNav.vue'
 import Comment from '@theme/components/Comment.vue'
 
-let host = '';
+const baseURL = `https://junilhwang.github.io/TIL`
 
 export default {
   components: { PageEdit, PageNav, Comment },
 
   props: ['sidebarItems'],
 
-  computed: {
-    hitUrl () {
-      const fullPath = encodeURIComponent(`${host}${this.$route.path}`);
-      return `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${fullPath}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`
+  data () {
+
+    return {
+      hitUrl: `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${baseURL}${this.$route.path}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`
     }
+
   },
 
-  mounted () {
-    host = location.origin;
-  }
+  watch: {
+    ['$route.path'] () {
+      this.hitUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${baseURL}${this.$route.path}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`;
+    }
+  },
 
 }
 </script>

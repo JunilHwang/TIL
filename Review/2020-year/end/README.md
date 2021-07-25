@@ -5,6 +5,7 @@ description: 주니어 개발자의 2020년 12월 회고입니다.
 sidebarDepth: 3
 date: 2021-01-07 11:00:00
 image: /Review/2020-year/end/thumbnail.jpg
+hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhwang.github.io/TIL/Review/2020-year/end/
 
 ---
 
