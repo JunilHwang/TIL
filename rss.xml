@@ -4,10 +4,19 @@
         <title>개발자 황준일</title>
         <link>https://junilhwang.github.io/TIL/</link>
         <description>Today I leanred</description>
-        <lastBuildDate>Sun, 25 Jul 2021 13:35:32 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 Jul 2021 13:02:43 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
         <atom:link href="https://junilhwang.github.io/TIL/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Vanilla Javascript로 상태관리 시스템 만들기]]></title>
+            <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/</link>
+            <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/</guid>
+            <pubDate>Mon, 26 Jul 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.]]></description>
+            <enclosure url="https://junilhwang.github.io/TIL/./1.png">
+            </enclosure>
+        </item>
         <item>
             <title><![CDATA[생각정리]]></title>
             <link>https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/</link>
@@ -169,15 +178,6 @@
             <pubDate>Thu, 30 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[2020년 4월 회고 입니다.]]></description>
             <enclosure url="https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[2020년 1분기 회고]]></title>
-            <link>https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/</link>
-            <guid>https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/</guid>
-            <pubDate>Wed, 01 Apr 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[2020년 1분기 회고 입니다.]]></description>
-            <enclosure url="https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png">
             </enclosure>
         </item>
     </channel>

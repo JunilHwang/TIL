@@ -6,6 +6,14 @@
     "description": "Today I leanred",
     "items": [
         {
+            "id": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/",
+            "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/",
+            "title": "Vanilla Javascript로 상태관리 시스템 만들기",
+            "summary": "Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.",
+            "image": "https://junilhwang.github.io/TIL/./1.png",
+            "date_modified": "2021-07-26T00:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/",
             "url": "https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/",
             "title": "생각정리",
@@ -152,14 +160,6 @@
             "summary": "2020년 4월 회고 입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
             "date_modified": "2020-04-30T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/01-First-Quarter/",
-            "title": "2020년 1분기 회고",
-            "summary": "2020년 1분기 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png",
-            "date_modified": "2020-04-01T00:00:00.000Z"
         }
     ]
 }
