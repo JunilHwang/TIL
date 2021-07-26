@@ -16,7 +16,8 @@ hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhw
 
 - 자바스크립트
 
-  - [Vanilla Javascript로 컴포넌트 만들기](./Javascript/Design/Vanilla-JS-Component/)
+  - [Vanilla Javascript로 웹 컴포넌트 만들기](./Javascript/Design/Vanilla-JS-Component/)
+  - [Vanilla Javascript로 상태관리 시스템 만들기](./Javascript/Design/Vanilla-JS-Store/)
   - [자바스크립트 실행 컨텍스트](./Javascript/Domain/Execution-Context/)
 
 - Vuepress

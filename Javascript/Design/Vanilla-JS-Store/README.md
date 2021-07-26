@@ -20,7 +20,7 @@ date: 2021-07-26
 
 그런데 엔터프라이즈급 어플리케이션을 만든다고 생각하면 이야기가 달라진다. 상태관리가 복잡해지고 컴포넌트의 Depth가 무척 깊어지기 때문이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ea24d26a-1eda-4777-99b7-040d2823e387/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ea24d26a-1eda-4777-99b7-040d2823e387/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ea24d26a-1eda-4777-99b7-040d2823e387/Untitled.png](./1.png)
 
 Vuepress의 컴포넌트 구조
 
@@ -163,7 +163,7 @@ store.notify();
 
   - 이에 대한 결과는 다음과 같다.
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b38545e4-9c87-45a5-acde-20c8ef714646/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b38545e4-9c87-45a5-acde-20c8ef714646/Untitled.png)
+    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b38545e4-9c87-45a5-acde-20c8ef714646/Untitled.png](./2.png)
 
 그런데 이 코드의 문제점이 있다.
 
@@ -191,7 +191,7 @@ observe(() => console.log(`a - b = ${상태.a} + ${상태.b}`));
 
 위의 코드는 다음과 같은 결과를 보일 것이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac5b83d0-6c2e-4e85-98d4-65f08a80285c/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac5b83d0-6c2e-4e85-98d4-65f08a80285c/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac5b83d0-6c2e-4e85-98d4-65f08a80285c/Untitled.png](./3.png)
 
 ### (1) Object.defineProperty 이해하기
 
@@ -221,7 +221,7 @@ console.log(`state.a = ${state.a}`);
 state.a = 100;
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/056a896b-cc40-4b46-9ca2-0bdce3358db5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/056a896b-cc40-4b46-9ca2-0bdce3358db5/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/056a896b-cc40-4b46-9ca2-0bdce3358db5/Untitled.png](./4.png)
 
 - `Object.defineProperty(object, prop, descriptor)`
   - `object` 속성을 정의할 객체
@@ -264,7 +264,7 @@ state.b = 200;
 
 결과는 다음과 같다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca5e5696-ac79-49dd-bd32-cc12e79bf3ee/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca5e5696-ac79-49dd-bd32-cc12e79bf3ee/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca5e5696-ac79-49dd-bd32-cc12e79bf3ee/Untitled.png](./5.png)
 
 여기서 `console.log` 부분을 `observer` 함수로 바꿔보자.
 
@@ -296,7 +296,7 @@ state.a = 100;
 state.b = 200;
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42b0cb5a-8a78-4665-86cd-6baa0c28fad1/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42b0cb5a-8a78-4665-86cd-6baa0c28fad1/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42b0cb5a-8a78-4665-86cd-6baa0c28fad1/Untitled.png](./6.png)
 
 ### (3) 여러 개의 Observer 관리하기
 
@@ -352,7 +352,7 @@ state.b = 2;
 - `**state`의 `property`가 `변경`될 때(=`set` 메소드가 실행될 때)** observers에 등록된 모든 observer를 실행한다.
 - 결과는 다음과 같다.
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e1bc392-e496-46b2-8259-8808747b9376/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e1bc392-e496-46b2-8259-8808747b9376/Untitled.png)
+  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e1bc392-e496-46b2-8259-8808747b9376/Untitled.png](./7.png)
 
 ### (4) 함수화
 
@@ -404,7 +404,7 @@ state.b = 2;
 
 - 결과는 다음과 같다.
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a51674e-2737-4889-a6cc-74673f71038e/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a51674e-2737-4889-a6cc-74673f71038e/Untitled.png)
+  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a51674e-2737-4889-a6cc-74673f71038e/Untitled.png](./8.png)
 
 ## 4. DOM에 적용하기
 
@@ -651,7 +651,7 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
 
 앞서 Observer Pattern에 대해 알아본 것 처럼, Vuex나 Redux에서 사용되는 Flux Pattern에 대해서 알아보자.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7145258-f0a0-4743-81a1-850a8ab1ab5c/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7145258-f0a0-4743-81a1-850a8ab1ab5c/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7145258-f0a0-4743-81a1-850a8ab1ab5c/Untitled.png](./9.png)
 
 - Flux의 가장 큰 특징은 단방향 데이터 흐름이다.
 - 데이터 흐름은 당므과 같다
@@ -663,7 +663,7 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
 
 Vue는 이를 조금 변형하여 다음과 같은 형태로 사용한다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4357f11a-1db2-4543-b51b-1ea4022cd148/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4357f11a-1db2-4543-b51b-1ea4022cd148/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4357f11a-1db2-4543-b51b-1ea4022cd148/Untitled.png](./10.png)
 
 - actions, mutations, state를 묶어서 store라고 보면 된다.
 - state를 변화시킬 수 있는 것은 오직 mutations다.

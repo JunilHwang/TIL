@@ -78,7 +78,7 @@ module.exports = [
       },
       {
         title: 'Design',
-        children: ['Vanilla-JS-Component/'].map(v => `${JavascriptDesign}/${v}`),
+        children: ['Vanilla-JS-Component/', 'Vanilla-JS-Store/'].map(v => `${JavascriptDesign}/${v}`),
       }
     ],
   },
