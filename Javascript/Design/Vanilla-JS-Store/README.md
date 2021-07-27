@@ -1120,7 +1120,7 @@ state.a = 1;
 
 이럴 때는 다시 렌더링 되지 않도록 방어로직을 작성하면 된다.
 
-```js{21-22}
+```js{13-14}
 export const observable = obj => {
   Object.keys(obj).forEach(key => {
     let _value = obj[key];
