@@ -549,6 +549,13 @@ input의 값을 변경할 경우 바로 rendering이 실행될 것이다.
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-store/03-with-component/01-just-implement/" width="100%"></iframe>
 
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/03-with-component/01-just-implement/)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/03-with-component/01-just-implement/)
+
+:::
+
 ### (2) Component로 추상화하기
 
 - 먼저 [웹 컴포넌트 만들기](https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/#_2-%E1%84%8E%E1%85%AE%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AA)의 코드를 참고하여 Component 코드를 구성해보자.
@@ -629,6 +636,14 @@ input의 값을 변경할 경우 바로 rendering이 실행될 것이다.
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-store/03-with-component/02-component/" width="100%"></iframe>
 
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/03-with-component/02-component/)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/03-with-component/02-component/)
+
+:::
+
 결과물은 똑같다. 다만 구조화를 했을 뿐!
 
 ### (3) 고민해보기
@@ -655,71 +670,78 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
 
 - `src/store.js`
 
-    ```jsx{5-8,13}
-    import { observable } from './core/observer.js'
+```jsx{5-8,13}
+import { observable } from './core/observer.js'
 
-    export const store = {
-  
-      state: observable({
-    	  a: 10,
-    	  b: 20,
-    	}),
+export const store = {
 
-      setState (newState) {
-        for (const [key, value] of Object.entries(newState)) {
-          if (!this.state[key]) continue;
-          this.state[key] = value;
-        }
-      }
+  state: observable({
+    a: 10,
+    b: 20,
+  }),
+
+  setState (newState) {
+    for (const [key, value] of Object.entries(newState)) {
+      if (!this.state[key]) continue;
+      this.state[key] = value;
     }
-    ```
+  }
+}
+```
 
 - `src/App.js`
 
-    ```jsx{5,9,13,29,33}
-    import { Component } from "./core/Component.js";
-    import { store } from './store.js';
-    
-    const InputA = () => `
-      <input id="stateA" value="${store.state.a}" size="5" />
+```jsx{5,9,13,29,33}
+import { Component } from "./core/Component.js";
+import { store } from './store.js';
+
+const InputA = () => `
+  <input id="stateA" value="${store.state.a}" size="5" />
+`;
+
+const InputB = () => `
+  <input id="stateB" value="${store.state.b}" size="5" />
+`
+
+const Calculator = () => `
+  <p>a + b = ${store.state.a + store.state.b}</p>
+`
+
+export class App extends Component {
+  template () {
+    return `
+      ${InputA()}
+      ${InputB()}
+      ${Calculator()}
     `;
-    
-    const InputB = () => `
-      <input id="stateB" value="${store.state.b}" size="5" />
-    `
-    
-    const Calculator = () => `
-      <p>a + b = ${store.state.a + store.state.b}</p>
-    `
-    
-    export class App extends Component {
-      template () {
-        return `
-          ${InputA()}
-          ${InputB()}
-          ${Calculator()}
-        `;
-      }
-    
-      setEvent () {
-        const { $el} = this;
-    
-        $el.querySelector('#stateA').addEventListener('change', ({ target }) => {
-          store.setState({ a: Number(target.value) });
-        })
-    
-        $el.querySelector('#stateB').addEventListener('change', ({ target }) => {
-          store.setState({ b: Number(target.value) });
-        })
-      }
-    }
-    ```
+  }
+
+  setEvent () {
+    const { $el} = this;
+
+    $el.querySelector('#stateA').addEventListener('change', ({ target }) => {
+      store.setState({ a: Number(target.value) });
+    })
+
+    $el.querySelector('#stateB').addEventListener('change', ({ target }) => {
+      store.setState({ b: Number(target.value) });
+    })
+  }
+}
+```
 
 - 여기서 InputA, InputB, Calculator를 무척 단순하게 구현했는데, 이게 전부 복잡한 컴포넌트라고 생각해보자.
   **세 개의 컴포넌트가 store를 참조**하고 있고, **store가 변경되었을 때 컴포넌트가 자동으로 렌더링** 되는 형태로 만든 것이다.
 - 여기에 **Flux 패턴**을 붙이면 **Redux**나 **Vuex**가 되는 것이다.
 
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-store/03-with-component/03-store/" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/03-with-component/03-store/)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/03-with-component/03-store/)
+
+:::
 
 ## 5. Flux Pattern
 
@@ -746,22 +768,49 @@ Vue는 이를 조금 변형하여 다음과 같은 형태로 사용한다.
 
 ## 6. Vuex 같은 Store 만들기
 
-이제 본격적으로 Vuex를 모방하여 Store를 만들어보자.
+일단 vuex를 만들기 이전에, vuex가 어떤 interface를 가지고 있는지 살펴보자.
+[공식문서](https://vuex.vuejs.org/kr/guide/)에서 보여주고 있는 코드는 다음과 같다.
+
+```js
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+});
+```
+
+`state`가 있고, state를 변경시킬 수 있는 `mutations`가 존재하는 것을 확인할 수 있다.
+
+그리고 이렇게 선언된 store는 다음과 같이 사용된다.
+```js
+store.commit('increment')
+
+console.log(store.state.count) // -> 1
+```
+
+`commit`으로 `mutations`에 선언된 메소드를 실행하는 구조이다.
+
+이러한 형태로 사용할 수 있도록 한 번 `Store` 클래스를 구성해보자.
 
 - `src/core/Store.js`
 
-    ```jsx
-    import { observable } from './observer';
+    ```jsx{9,13-20,24-25}
+    import { observable } from './observer.js';
 
     export class Store {
 
-      #state; #mutations; #actions;
+      #state; #mutations; #actions; // private으로 지정하여 외부에서는 접근이 안 되도록 한다.
+      state = {};
 
       constructor ({ state, mutations, actions }) {
         this.#state = observable(state);
         this.#mutations = mutations;
         this.#actions = actions;
-        this.state = {};
         
         // state를 직접적으로 수정하지 못하도록 다음과 같이 정의한다.
         Object.keys(state).forEach(key => {
@@ -773,15 +822,16 @@ Vue는 이를 조금 변형하여 다음과 같은 형태로 사용한다.
         })
       }
 
-      getState () {
-        return Object.freeze(this.#state);
-      }
-
       commit (action, payload) {
+        // state는 오직 commit을 통해서 수정 할 수 있다.
         this.#mutations[action](this.#state, payload);
       }
 
       dispatch (action, payload) {
+        /**
+         * 예제에서 dispatch는 사용되고 있진 않진 않지만 아마 vuex를 써본 사람이라면 익숙할 것이다.
+         * @see {https://vuex.vuejs.org/kr/api/#actions}
+         */
         return this.#actions[action]({
           state: this.#state,
           commit: this.commit.bind(this),
@@ -791,11 +841,13 @@ Vue는 이를 조금 변형하여 다음과 같은 형태로 사용한다.
 
     }
     ```
-
-  - `actions`의 첫 번째 인자인 `context` 의 요소는 [이 문서](https://vuex.vuejs.org/kr/api/#actions)에서 확인할 수 있다.
+  - `dispatch`에서 실행해주는 `action`의 첫 번째 인자인 `context` 의 요소는 [이 문서](https://vuex.vuejs.org/kr/api/#actions)에서 확인할 수 있다.
+  - `store.state`는 Object.defineProperty로 get만 사용할 수 있도록 선언했다. 즉, 직접적으로 할당할 수 없는 형태이다.
+  - `store.state`의 값을 변경하고 싶다면 무조건 `commit` method를 사용해야 한다.
+  
 - `src/store.js`
 
-    ```jsx
+    ```jsx{12,16}
     import { Store } from './core/Store.js';
 
     export const store = new Store({
@@ -821,20 +873,15 @@ Vue는 이를 조금 변형하여 다음과 같은 형태로 사용한다.
 
 - `src/App.js`
 
-    ```jsx
-    const InputA = () => `
-      <input id="stateA" value="${store.state.a}" size="5" />
-    `;
-
-    const InputB = () => `
-      <input id="stateB" value="${store.state.b}" size="5" />
-    `
-
-    const Calculator = () => `
-      <p>a + b = ${store.state.a + store.state.b}</p>
-    `
-
-    class App extends Component {
+    ```jsx{4-6,22,27}
+    import { Component } from "./core/Component.js";
+    import { store } from './store.js';
+    
+    const InputA = () => `<input id="stateA" value="${store.state.a}" size="5" />`;
+    const InputB = () => `<input id="stateB" value="${store.state.b}" size="5" />`;
+    const Calculator = () => `<p>a + b = ${store.state.a + store.state.b}</p>`;
+    
+    export class App extends Component {
       template () {
         return `
           ${InputA()}
@@ -842,28 +889,372 @@ Vue는 이를 조금 변형하여 다음과 같은 형태로 사용한다.
           ${Calculator()}
         `;
       }
-
+    
       setEvent () {
         const { $el} = this;
-
+    
         $el.querySelector('#stateA').addEventListener('change', ({ target }) => {
           // commit을 통해서 값을 변경시킨다.
           store.commit('SET_A', Number(target.value));
         })
-
+    
         $el.querySelector('#stateB').addEventListener('change', ({ target }) => {
           // commit을 통해서 값을 변경시킨다.
           store.commit('SET_B', Number(target.value));
         })
       }
     }
-
-    new App(document.querySelector('#app'));
     ```
+
+이렇게 vuex를 정의해 사용할 수 있다. 원리만 알고 있다면 크게 어렵지 않을 것이다.
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-store/04-simple-vuex/" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/04-simple-vuex)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/04-simple-vuex/)
+
+:::
+
 
 ## 7. Redux 만들기
 
-준비중입니다.
+앞선 과정 처럼 Redux를 만들기 전에, Redux가 사용되는 형태를 일단 살펴보자.
+[공식 문서](https://ko.redux.js.org/introduction/getting-started/)에 나와있는 코드이다.
+
+```js
+import { createStore } from 'redux'
+
+/**
+ * 이것이 (state, action) => state 형태의 순수 함수인 리듀서입니다.
+ * 리듀서는 액션이 어떻게 상태를 다음 상태로 변경하는지 서술합니다.
+ *
+ * 상태의 모양은 당신 마음대로입니다: 기본형(primitive)일수도, 배열일수도, 객체일수도,
+ * 심지어 Immutable.js 자료구조일수도 있습니다.  오직 중요한 점은 상태 객체를 변경해서는 안되며,
+ * 상태가 바뀐다면 새로운 객체를 반환해야 한다는 것입니다.
+ *
+ * 이 예제에서 우리는 `switch` 구문과 문자열을 썼지만,
+ * 여러분의 프로젝트에 맞게
+ * (함수 맵 같은) 다른 컨벤션을 따르셔도 좋습니다.
+ */
+function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}
+
+// 앱의 상태를 보관하는 Redux 저장소를 만듭니다.
+// API로는 { subscribe, dispatch, getState }가 있습니다.
+let store = createStore(counter)
+
+// subscribe()를 이용해 상태 변화에 따라 UI가 변경되게 할 수 있습니다.
+// 보통은 subscribe()를 직접 사용하기보다는 뷰 바인딩 라이브러리(예를 들어 React Redux)를 사용합니다.
+// 하지만 현재 상태를 localStorage에 영속적으로 저장할 때도 편리합니다.
+
+store.subscribe(() => console.log(store.getState()))
+
+// 내부 상태를 변경하는 유일한 방법은 액션을 보내는 것뿐입니다.
+// 액션은 직렬화할수도, 로깅할수도, 저장할수도 있으며 나중에 재실행할수도 있습니다.
+store.dispatch({ type: 'INCREMENT' })
+// 1
+store.dispatch({ type: 'INCREMENT' })
+// 2
+store.dispatch({ type: 'DECREMENT' })
+// 1
+```
+
+::: tip
+
+사실 redux는 `불변성` 이라는 개념을 사용하고 있기 때문에 `observable`과 `observe`를 이용하는 것이 부자연스러울 수 있다.
+
+:::
+
+코드를 살펴보니 `createStore`가 `subscribe, dispatch, getState` 등의 메소드를 가진 객체를 반환하는 것을 알 수 있다.
+```js
+const createStore = (reducer) => {
+  /* 내부 구현 */
+  return { subscribe, dispatch, getState };
+}
+```
+
+이렇게 interface만 알고 있어도 구현은 어렵지 않다. 한 번 구현해보자.
+
+- `src/core/Store.js`
+```js{6,23,27}
+import { observable } from './observer.js';
+
+export const createStore = (reducer) => {
+  
+  // reducer가 실행될 때 반환하는 객체(state)를 observable로 만들어야 한다.
+  const state = observable(reducer());
+  
+  // getState가 실제 state를 반환하는 것이 아니라 frozenState를 반환하도록 만들어야 한다.
+  const frozenState = {};
+  Object.keys(state).forEach(key => {
+    Object.defineProperty(frozenState, key, {
+      get: () => state[key], // get만 정의하여 set을 하지 못하도록 만드는 것이다.
+    })
+  });
+  
+  // dispatch로만 state의 값을 변경할 수 있다.
+  const dispatch = (action) => {
+    const newState = reducer(state, action);
+
+    for (const [key, value] of Object.entries(newState)) {
+      // state의 key가 아닐 경우 변경을 생략한다.
+      if (!state[key]) continue;
+      state[key] = value;
+    }
+  }
+
+  const getState = () => frozenState;
+  
+  // subscribe는 observe로 대체한다.
+  return { getState, dispatch };
+
+}
+```
+
+이제 createStore를 이용하여 store를 만들어보자.
+
+- `src/store.js`
+```js
+import {createStore} from './core/Store.js';
+
+// 초기 state의 값을 정의해준다.
+const initState = {
+  a: 10,
+  b: 20,
+};
+
+// dispatch에서 사용될 type들을 정의해준다.
+export const SET_A = 'SET_A';
+export const SET_B = 'SET_B';
+
+// reducer를 정의하여 store에 넘겨준다.
+export const store = createStore((state = initState, action = {}) => {
+  switch (action.type) {
+    case 'SET_A' :
+      return { ...state, a: action.payload }
+    case 'SET_B' :
+      return { ...state, b: action.payload }
+    default:
+      return state;
+  }
+});
+
+// reducer에서 사용될 action을 정의해준다.
+export const setA = (payload) => ({ type: SET_A, payload });
+export const setB = (payload) => ({ type: SET_B, payload });
+
+```
+
+이제 App에서 Store를 사용하도록 작업해줘야 한다.
+
+- `src/App.js`
+```js{4-6,21-22,26-27}
+import { Component } from "./core/Component.js";
+import {setA, setB, store} from './store.js';
+
+const InputA = () => `<input id="stateA" value="${store.getState().a}" size="5" />`;
+const InputB = () => `<input id="stateB" value="${store.getState().b}" size="5" />`;
+const Calculator = () => `<p>a + b = ${store.getState().a + store.getState().b}</p>`;
+
+export class App extends Component {
+  template () {
+    return `
+      ${InputA()}
+      ${InputB()}
+      ${Calculator()}
+    `;
+  }
+
+  setEvent () {
+    const { $el} = this;
+
+    $el.querySelector('#stateA').addEventListener('change', ({ target }) => {
+      // commit을 통해서 값을 변경시킨다.
+      store.dispatch(setA(Number(target.value)));
+    })
+
+    $el.querySelector('#stateB').addEventListener('change', ({ target }) => {
+      // commit을 통해서 값을 변경시킨다.
+      store.dispatch(setB(Number(target.value)));
+    })
+  }
+}
+```
+
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-store/05-simple-redux/" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/05-simple-redux)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/05-simple-redux/)
+
+:::
+
+이렇게 간단한 `redux`를 만들 수 있다.
+
+## 8. 심화학습
+
+`observable`과 `observer`를 사용할 때 고려해야 할 것들이 몇 가지 더 있다.
+
+### (1) 최적화
+
+상태가 변경되어 render를 해야하는데, 만약에 변경된 상태가 이전 상태와 값이 똑같을 경우에는 어떻게 해야할까?
+
+```js
+state.a = 1;
+state.a = 1;
+state.a = 1;
+state.a = 1;
+```
+
+이럴 때는 다시 렌더링 되지 않도록 방어로직을 작성하면 된다.
+
+```js{21-22}
+export const observable = obj => {
+  Object.keys(obj).forEach(key => {
+    let _value = obj[key];
+    const observers = new Set();
+
+    Object.defineProperty(obj, key, {
+      get () {
+        if (currentObserver) observers.add(currentObserver);
+        return _value;
+      },
+
+      set (value) {
+        if (_value === value) return;
+        if (JSON.stringify(_value) === JSON.stringify(value)) return;
+        _value = value;
+        observers.forEach(fn => fn());
+      }
+    })
+  })
+  return obj;
+}
+```
+
+- 숫자, 문자열, null, undefined 등의 원시타입은 `_value === value` 처럼 검사하면 된다.
+- 배열이나 객체의 경우 `JSON.stringify(_value) === JSON.stringify(value)`를 사용하면 된다.
+- Set, Map, WeekSet, WeekMap 같은 것들은 `JSON.stringify`로 변환되지 않는다. 이런 경우에는 추가적인 검사 로직이 필요하다.
+  - 시간이 된다면 직접 구현해보길!
+  - 내용이 너무 길어지고 있어서 다시 구현하기는 귀찮다..
+
+그리고 상태가 연속으로 변경되는 경우에는 어떻게 해야 좋을까?
+
+```js
+state.a = 1;
+state.b = 2;
+```
+
+단순하게 console.log를 찍는 경우라면 상관없지만, 브라우저에 DOM으로 렌더링 되는 경우라면 이야기가 다르다.
+이럴 때는 `requestAnimationFrame`과 `debounce`를 이용하여 한 프레임에 한 번만 렌더링 되도록 만들어줘야한다.
+
+::: tip requestAnimationFrame
+[MDN 문서](https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame)에 나와있는 내용은 다음과 같다.
+- 브라우저에게 수행하기를 원하는 애니메이션을 알리고 다음 리페인트가 진행되기 전에 해당 애니메이션을 업데이트하는 함수를 호출하게 합니다.
+   이 메소드는 **리페인트 이전에 실행할 콜백**을 인자로 받습니다.
+- 화면에 새로운 애니메이션을 업데이트할 준비가 될때마다 이 메소드를 호출하는것이 좋습니다.
+  **콜백의 수는 보통 1초에 60회**지만,
+  일반적으로 대부분의 브라우저에서는 W3C 권장사항에 따라 그 수가 **디스플레이 주사율과 일치**하게됩니다.
+
+쉽게 말해서 requestAnimationFrame은 1프레임에 1회 호출된다. 보통 `1초에 60프레임`이고, 1프레임은 약 `16ms` 정도 된다.
+:::
+
+
+```js
+const debounceFrame = (callback) => {
+  let currentCallback = -1;
+  return () => {
+    cancelAnimationFrame(currentCallback); // 현재 등록된 callback이 있을 경우 취소한다.
+    currentCallback = requestAnimationFrame(callback); // 1프레임 뒤에 실행되도록 한다.
+  }
+};
+
+debounceFrame(() => console.log(1));
+debounceFrame(() => console.log(2));
+debounceFrame(() => console.log(3));
+debounceFrame(() => console.log(4));
+debounceFrame(() => console.log(5)); // 이것만 실행된다.
+```
+
+![결과11](./11.png)
+
+이렇게 구성한 debounceFrame을 `observe`에 씌워주면 된다. 그런데 debounce된 함수를 넘겨야해서, 즉시실행 부분은 제거해야줘야 한다.
+
+```js
+const debounceFrame = (callback) => {
+  let currentCallback = -1;
+  return () => {
+    cancelAnimationFrame(currentCallback);
+    currentCallback = requestAnimationFrame(callback);
+  }
+};
+
+export const observe = fn => {
+  currentObserver = debounceFrame(fn);
+  fn();
+  currentObserver = null;
+}
+
+```
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/06-optimization/src/core/observer.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/06-optimization/)
+
+:::
+
+### (2) Proxy
+
+사실 `Object.defineProperty`는 `IE`를 지원하기 위해 사용하는 `API`이다.
+최신 브라우저에서는 [Proxy](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy)를 이용한다면 더 쉽게 `Observable`을 만들 수 있다.
+
+```js
+export const observable = obj => {
+  
+  const observerMap = {};
+
+  return new Proxy(obj, {
+    get (target, name) {
+      observerMap[name] = observerMap[name] || new Set();
+      if (currentObserver) observerMap[name].add(currentObserver)
+      return target[name];
+    },
+    set (target, name, value) {
+      if (target[name] === value) return true;
+      if (JSON.stringify(target[name]) === JSON.stringify(value)) return true;
+      target[name] = value;
+      observerMap[name].forEach(fn => fn());
+      return true;
+    },
+  });
+
+}
+```
+
+맥락은 크게 다르지 않지만, Proxy를 사용하는 코드가 더 짧은 것을 알 수 있다.
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-store/tree/master/07-proxy/src/core/observer.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-store/07-proxy/)
+
+:::
+
+## 저장소
+- 이 아티클에 사용된 모든 코드는 [여기](https://github.com/JunilHwang/simple-store)에서 확인할 수 있습니다.
 
 ## Summary
 
