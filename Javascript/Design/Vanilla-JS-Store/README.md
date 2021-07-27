@@ -22,8 +22,6 @@ date: 2021-07-26
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ea24d26a-1eda-4777-99b7-040d2823e387/Untitled.png](./1.png)
 
-Vuepress의 컴포넌트 구조
-
 이 때 `중앙 집중식 저장소 역할을 하며 예측 가능한 방식으로 상태를 변경` 할 수 있다면 편하지 않을까? 사실 이에 대한 자료는 이미 시중에 많이 있기 때문에 본 포스트에서는 자세하게 다루진 않겠다.
 
 대신 다음 아티클을 참고하면 될 것이다.
