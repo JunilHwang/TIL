@@ -39,7 +39,7 @@ Vuepress의 컴포넌트 구조
 - Store는 여러 개의 컴포넌트에서 사용될 수 있다..
 - Store가 변경될 때, Store가 사용되고 있는 Component도 변경되어야 한다.
 
-필자를 포함하여 이 글을 읽고 있는 우리는 개발자입니다. 때문에 코드로 이를 표현해보자.
+이를 코드로 표현해보자.
 
 ```jsx
 // Store를 생성한다.
@@ -79,96 +79,108 @@ store.notify();
 
 아마 한 번에 이해하기는 어려울 것이다. 우리는 개발자이므로 조금 더 구체적인 코드를 통해 이해해보자.
 
-1. 제일 먼저 `발행기관(Publish)`를 만들어보자.
+### (1) Publish
 
-    ```jsx
-    class 발행기관 {
-      #state;
-      #observers = new Set();
+제일 먼저 `발행기관(Publish)`를 만들어보자.
 
-      constructor (state) {
-        this.#state = state;
-        Object.keys(state).forEach(key => Object.defineProperty(this, key, {
-          get: () => this.#state[key]
-        }));
-      }
+```jsx
+class 발행기관 {
+  #state;
+  #observers = new Set();
 
-      내부에_변화가_생김 (newState) {
-        this.#state = { ...this.#state, ...newState };
-        this.구독자에게_알림();
-      }
+  constructor (state) {
+    this.#state = state;
+    Object.keys(state).forEach(key => Object.defineProperty(this, key, {
+      get: () => this.#state[key]
+    }));
+  }
 
-      구독자_등록 (subscriber) {
-        this.#observers.add(subscriber);
-      }
+  내부에_변화가_생김 (newState) {
+    this.#state = { ...this.#state, ...newState };
+    this.구독자에게_알림();
+  }
 
-      구독자에게_알림 () {
-        this.#observers.forEach(fn => fn());
-      }
-    }
-    ```
+  구독자_등록 (subscriber) {
+    this.#observers.add(subscriber);
+  }
 
-  - 음.. 어색하지만 일단 최대한의 이해를 돕기 위해 한글로 메소드를 작성했는데, 무척 어색하하다 😅
-  - 메소드의 내용 그대로 이해하면 될 것이다.
-  - 위에서 핵심적인 내용은 `내부에 변화가 생길 경우 구독자에게 알리는 것` 이다.
+  구독자에게_알림 () {
+    this.#observers.forEach(fn => fn());
+  }
+}
+```
+- 음.. 어색하지만 일단 최대한의 이해를 돕기 위해 한글로 메소드를 작성했는데, 무척 어색하하다 😅
+- 메소드의 내용 그대로 이해하면 될 것이다.
+- 위에서 핵심적인 내용은 `내부에 변화가 생길 경우 구독자에게 알리는 것` 이다.
+```jsx
+내부에_변화가_생김 (newState) {
+  this.#state = { ...this.#state, ...newState };
+  this.구독자에게_알림();
+}
+```
 
-      ```jsx
-        내부에_변화가_생김 (newState) {
-          this.#state = { ...this.#state, ...newState };
-          this.구독자에게_알림();
-        }
-      ```
+### (2) Subscriber
 
-2. 이제 `구독자(Subscriber)`를 만들어보자.
+이제 `구독자(Subscriber)`를 만들어보자.
 
-    ```jsx
-    class 구독자 {
-      #fn;
+```jsx
+class 구독자 {
+  #fn;
 
-      constructor (발행기관에_변화가_생길_때_하는_일) {
-        this.#fn = 발행기관에_변화가_생길_때_하는_일;
-      }
+  constructor (발행기관에_변화가_생길_때_하는_일) {
+    this.#fn = 발행기관에_변화가_생길_때_하는_일;
+  }
 
-      구독 (publisher) {
-        publisher.구독자_등록(this.#fn);
-      }
-    }
+  구독 (publisher) {
+    publisher.구독자_등록(this.#fn);
+  }
+}
 
-    ```
+```
 
-  - 구독자는 `발행기관에서 변화가 생겼을 때 하는 일`을 정의해야 한다.
-  - 그리고 `발행기관을 구독` 한다.
-3. 이제 작성된 코드를 사용해보자.
+- 구독자는 `발행기관에서 변화가 생겼을 때 하는 일`을 정의해야 한다.
+- 그리고 `발행기관을 구독` 한다.
 
-    ```jsx
-    const 상태 = new 발행기관({
-      a: 10,
-      b: 20,
-    });
+### (3) 적용하기
 
-    const 덧셈계산기 = new 구독자(() => console.log(`a + b = ${상태.a + 상태.b}`));
-    const 곱셈계산기 = new 구독자(() => console.log(`a * b = ${상태.a * 상태.b}`));
+이제 작성된 코드를 사용해보자.
 
-    덧셈계산기.구독(상태);
-    곱셈계산기.구독(상태);
+```jsx
+const 상태 = new 발행기관({
+  a: 10,
+  b: 20,
+});
 
-    상태.구독자에게_알림();
-    // a + b = 30
-    // a * b = 200
+const 덧셈계산기 = new 구독자(() => console.log(`a + b = ${상태.a + 상태.b}`));
+const 곱셈계산기 = new 구독자(() => console.log(`a * b = ${상태.a * 상태.b}`));
 
-    상태.내부에_변화가_생김({ a: 100, b: 200 });
-    // a + b = 300
-    // a * b = 20000
-    ```
+덧셈계산기.구독(상태);
+곱셈계산기.구독(상태);
 
-  - 이에 대한 결과는 다음과 같다.
+상태.구독자에게_알림();
+// a + b = 30
+// a * b = 200
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b38545e4-9c87-45a5-acde-20c8ef714646/Untitled.png](./2.png)
+상태.내부에_변화가_생김({ a: 100, b: 200 });
+// a + b = 300
+// a * b = 20000
+```
+
+이에 대한 결과는 다음과 같다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b38545e4-9c87-45a5-acde-20c8ef714646/Untitled.png](./2.png)
 
 그런데 이 코드의 문제점이 있다.
 
 - 지금 작성한 코드는 쉽게 말해서 `2명의 구독자`가 `1개의 신문사(혹은 잡지)`를 구독하고 있는 상황이다.
 - 그런데 만약에 `10명의 구독자`가 `100개의 신문사(혹은 잡지)`를 구독한다고 했을 경우, 구독 관련 코드가 기하급수적으로 늘어날 것이다.
+
+::: tip
+
+- [전체 코드 보기](https://github.com/JunilHwang/simple-store/blob/master/01-pubsub/index.html)
+- [결과 확인](https://junilhwang.github.io/simple-store/01-pubsub/)
+
+:::
 
 ## 3. 리팩토링
 
@@ -223,6 +235,13 @@ state.a = 100;
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/056a896b-cc40-4b46-9ca2-0bdce3358db5/Untitled.png](./4.png)
 
+::: tip
+
+- [코드 확인](https://github.com/JunilHwang/simple-store/blob/master/02-object-define-property/01-example.html)
+- [결과 확인](https://junilhwang.github.io/simple-store/02-object-define-property/01-example.html)
+
+:::
+
 - `Object.defineProperty(object, prop, descriptor)`
   - `object` 속성을 정의할 객체
   - `prop` 새로 정의하거나 수정하려는 속성의 이름 또는 Symbol
@@ -266,6 +285,14 @@ state.b = 200;
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca5e5696-ac79-49dd-bd32-cc12e79bf3ee/Untitled.png](./5.png)
 
+
+::: tip
+
+- [코드 확인](https://github.com/JunilHwang/simple-store/blob/master/02-object-define-property/02-multiple-key.html)
+- [결과 확인](https://junilhwang.github.io/simple-store/02-object-define-property/02-multiple-key.html)
+
+:::
+
 여기서 `console.log` 부분을 `observer` 함수로 바꿔보자.
 
 ```jsx
@@ -297,6 +324,14 @@ state.b = 200;
 ```
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/42b0cb5a-8a78-4665-86cd-6baa0c28fad1/Untitled.png](./6.png)
+
+
+::: tip
+
+- [코드 확인](https://github.com/JunilHwang/simple-store/blob/master/02-object-define-property/03-multiple-key-refactor.html)
+- [결과 확인](https://junilhwang.github.io/simple-store/02-object-define-property/03-multiple-key-refactor.html)
+
+:::
 
 ### (3) 여러 개의 Observer 관리하기
 
@@ -347,70 +382,89 @@ state.a = 1;
 state.b = 2;
 ```
 
-- 이 코드에서 핵심은, 함수가 실행될 때 `currentObsever가 실행중인 함수를 참조하도록 만드는 것` 이다.
-- `**state`의 `property`가 `사용`될 때(=`get` 메소드가 실행될 때)** currentObserver를 observers에 등록한다.
-- `**state`의 `property`가 `변경`될 때(=`set` 메소드가 실행될 때)** observers에 등록된 모든 observer를 실행한다.
-- 결과는 다음과 같다.
+이 코드에서 핵심은, 함수가 실행될 때 `currentObsever가 실행중인 함수를 참조하도록 만드는 것` 이다.
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e1bc392-e496-46b2-8259-8808747b9376/Untitled.png](./7.png)
+- `state`의 `property`가 **사용**될 때(=`get` 메소드가 실행될 때) currentObserver를 observers에 등록한다.
+- `state`의 `property`가 **변경**될 때(=`set` 메소드가 실행될 때) observers에 등록된 모든 observer를 실행한다.
+
+결과는 다음과 같다.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e1bc392-e496-46b2-8259-8808747b9376/Untitled.png](./7.png)
+
+::: tip
+
+- [코드 확인](https://github.com/JunilHwang/simple-store/blob/master/02-object-define-property/04-multiple-observer.html)
+- [결과 확인](https://junilhwang.github.io/simple-store/02-object-define-property/04-multiple-observer.html)
+
+:::
 
 ### (4) 함수화
 
-- 앞서 작성한 코드를 재사용하기 위해서 `observe`와 `observable` 함수로 만들어야 한다.
+앞서 작성한 코드를 재사용하기 위해서 `observe`와 `observable` 함수로 만들어야 한다.
 
-    ```jsx
-    let currentObserver = null;
+```jsx
+let currentObserver = null;
 
-    const observe = fn => {
-      currentObserver = fn;
-      fn();
-      currentObserver = null;
-    }
+const observe = fn => {
+  currentObserver = fn;
+  fn();
+  currentObserver = null;
+}
 
-    const observable = obj => {
-      Object.keys(obj).forEach(key => {
-        let _value = obj[key];
-        const observers = new Set();
+const observable = obj => {
+  Object.keys(obj).forEach(key => {
+    let _value = obj[key];
+    const observers = new Set();
 
-        Object.defineProperty(obj, key, {
-          get () {
-            if (currentObserver) observers.add(currentObserver);
-            return _value;
-          },
+    Object.defineProperty(obj, key, {
+      get () {
+        if (currentObserver) observers.add(currentObserver);
+        return _value;
+      },
 
-          set (value) {
-            _value = value;
-            observers.forEach(fn => fn());
-          }
-        })
-      })
-      return obj;
-    }
-    ```
+      set (value) {
+        _value = value;
+        observers.forEach(fn => fn());
+      }
+    })
+  })
+  return obj;
+}
+```
 
-- 다음과 같이 사용할 수 있다.
+다음과 같이 사용할 수 있다.
 
-    ```jsx
-    const 상태 = observable({ a: 10, b: 20 });
-    observe(() => console.log(`a = ${상태.a}`));
-    observe(() => console.log(`b = ${상태.b}`));
-    observe(() => console.log(`a + b = ${상태.a} + ${상태.b}`));
-    observe(() => console.log(`a * b = ${상태.a} + ${상태.b}`));
-    observe(() => console.log(`a - b = ${상태.a} + ${상태.b}`));
+```jsx
+const 상태 = observable({ a: 10, b: 20 });
+observe(() => console.log(`a = ${상태.a}`));
+observe(() => console.log(`b = ${상태.b}`));
+observe(() => console.log(`a + b = ${상태.a} + ${상태.b}`));
+observe(() => console.log(`a * b = ${상태.a} + ${상태.b}`));
+observe(() => console.log(`a - b = ${상태.a} + ${상태.b}`));
 
-    상태.a = 100;
-    상태.b = 200;
-    ```
+상태.a = 100;
+상태.b = 200;
+```
 
-- 결과는 다음과 같다.
+결과는 다음과 같다.
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a51674e-2737-4889-a6cc-74673f71038e/Untitled.png](./8.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6a51674e-2737-4889-a6cc-74673f71038e/Untitled.png](./8.png)
+
+
+::: tip
+
+- [코드 확인](https://github.com/JunilHwang/simple-store/blob/master/02-object-define-property/05-functionalized.html)
+- [결과 확인](https://junilhwang.github.io/simple-store/02-object-define-property/05-functionalized.html)
+
+:::
 
 ## 4. DOM에 적용하기
 
 이제 DOM(Component)에 직접 적용해보자.
 
 ### (1) 일단 구현해보기
+
+일단 구조적인 부분은 생각하지말고, 기능만 구현해보자.
 
 - `index.html`
 
@@ -423,12 +477,12 @@ state.b = 2;
     </head>
     <body>
     	<div id="app"></div>
-      <script type="module" src="./src/App.js"></script>
+      <script type="module" src="./src/main.js"></script>
     </body>
     </html>
     ```
 
-- `src/App.js`
+- `src/main.js`
 
     ```jsx
     import { observable, observe } from "./core/observer.js";
@@ -491,51 +545,58 @@ state.b = 2;
     }
     ```
 
+input의 값을 변경할 경우 바로 rendering이 실행될 것이다. 
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-store/03-with-component/01-just-implement/" width="100%"></iframe>
+
 ### (2) Component로 추상화하기
 
 - 먼저 [웹 컴포넌트 만들기](https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/#_2-%E1%84%8E%E1%85%AE%E1%84%89%E1%85%A1%E1%86%BC%E1%84%92%E1%85%AA)의 코드를 참고하여 Component 코드를 구성해보자.
 - `src/core/Component.js`
 
-    ```jsx
+    ```jsx{12-19}
     import { observable, observe } from './observer.js';
-
+    
     export class Component {
-      state; props; target; 
-
-      constructor (target, props) {
-        this.target = target;
+      state; props; $el;
+    
+      constructor ($el, props) {
+        this.$el = $el;
         this.props = props;
         this.setup();
       }
-
+    
       setup() {
-        this.state = observable(this.initState());
-        observe(() => {
+        this.state = observable(this.initState()); // state를 관찰한다.
+        observe(() => { // state가 변경될 경우, 함수가 실행된다.
           this.render();
           this.setEvent();
           this.mounted();
         });
       }
-
+    
       initState() { return {} }
       template () { return ''; }
-      render () { this.target.innerHTML = template(); }
+      render () { this.$el.innerHTML = this.template(); }
       setEvent () {}
       mounted () {}
     }
+    
     ```
 
-- 그 다음 `App.js` 에 `Component`를 적용해보자.
+- 그 다음 `src/App.js` 에 `Component`를 적용해보자.
 
     ```jsx
-    class App extends Component {
+    import {Component} from "./core/Component.js";
+    
+    export class App extends Component {
       initState () {
         return {
           a: 10,
           b: 20,
         }
       }
-
+    
       template () {
         const { a, b } = this.state;
         return `
@@ -544,28 +605,38 @@ state.b = 2;
           <p>a + b = ${a + b}</p>
         `;
       }
-
+    
       setEvent () {
         const { $el, state } = this;
-
+    
         $el.querySelector('#stateA').addEventListener('change', ({ target }) => {
           state.a = Number(target.value);
         })
-
+    
         $el.querySelector('#stateB').addEventListener('change', ({ target }) => {
           state.b = Number(target.value);
         })
       }
     }
+    ```
+  
+- 그 다음 `src/main.js` 에서 `App`을 불러와서 실행시켜야한다.
+    ```jsx
+    import { App } from "./App.js";
 
     new App(document.querySelector('#app'));
     ```
 
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-store/03-with-component/02-component/" width="100%"></iframe>
+
+결과물은 똑같다. 다만 구조화를 했을 뿐!
+
 ### (3) 고민해보기
 
-사실 이렇게 Component 내부에서 관리되는 State에 observable을 씌워 사용할 경우 만들 경우 `setState`를 사용하는 방식이랑 크게 다르지 않다고 느낄 수 있다. setState 또한 state가 변경될 때 마다 render를 실행하는 방식이기 때문이다.
+사실 이렇게 Component 내부에서 관리되는 State에 observable을 씌워 사용할 경우 만들 경우 `setState`를 사용하는 방식이랑 크게 다르지 않다고 느낄 수 있다.
+**setState 또한 state가 변경될 때 마다 render를 실행하는 방식**이기 때문이다.
 
-```jsx
+```jsx{3}
 setState(newState) {
   this.state = { ...this.state, ...newState }
   this.render();
@@ -584,10 +655,11 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
 
 - `src/store.js`
 
-    ```jsx
+    ```jsx{5-8,13}
     import { observable } from './core/observer.js'
 
     export const store = {
+  
       state: observable({
     	  a: 10,
     	  b: 20,
@@ -602,24 +674,25 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
     }
     ```
 
-- `App.js`
+- `src/App.js`
 
-    ```jsx
+    ```jsx{5,9,13,29,33}
+    import { Component } from "./core/Component.js";
     import { store } from './store.js';
-
+    
     const InputA = () => `
       <input id="stateA" value="${store.state.a}" size="5" />
     `;
-
+    
     const InputB = () => `
       <input id="stateB" value="${store.state.b}" size="5" />
     `
-
+    
     const Calculator = () => `
       <p>a + b = ${store.state.a + store.state.b}</p>
     `
-
-    class App extends Component {
+    
+    export class App extends Component {
       template () {
         return `
           ${InputA()}
@@ -627,25 +700,26 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
           ${Calculator()}
         `;
       }
-
+    
       setEvent () {
         const { $el} = this;
-
+    
         $el.querySelector('#stateA').addEventListener('change', ({ target }) => {
           store.setState({ a: Number(target.value) });
         })
-
+    
         $el.querySelector('#stateB').addEventListener('change', ({ target }) => {
           store.setState({ b: Number(target.value) });
         })
       }
     }
-
-    new App(document.querySelector('#app'));
     ```
 
-- 여기서 InputA, InputB, Calculator를 무척 단순하게 구현했는데, 이게 전부 복잡한 컴포넌트라고 생각해보자. 세 개의 컴포넌트가 store를 참조하고 있고, store가 변경되었을 때 컴포넌트가 자동으로 렌더링 되는 형태로 만든 것이다.
-- 여기에 Flux 패턴을 붙이면 Redux나 Vuex가 되는 것이다.
+- 여기서 InputA, InputB, Calculator를 무척 단순하게 구현했는데, 이게 전부 복잡한 컴포넌트라고 생각해보자.
+  **세 개의 컴포넌트가 store를 참조**하고 있고, **store가 변경되었을 때 컴포넌트가 자동으로 렌더링** 되는 형태로 만든 것이다.
+- 여기에 **Flux 패턴**을 붙이면 **Redux**나 **Vuex**가 되는 것이다.
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-store/03-with-component/03-store/" width="100%"></iframe>
 
 ## 5. Flux Pattern
 
@@ -653,8 +727,8 @@ Vuex나 Redux 같은 프레임워크를 사용하기 이전에, 일단 **매우 
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7145258-f0a0-4743-81a1-850a8ab1ab5c/Untitled.png](./9.png)
 
-- Flux의 가장 큰 특징은 단방향 데이터 흐름이다.
-- 데이터 흐름은 당므과 같다
+- Flux의 가장 큰 특징은 **단방향 데이터 흐름**이다.
+- 데이터 흐름은 다음과 같다
   - Dispatcher → Store
   - Store → View
   - View → Action
