@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/JunilHwang/TIL",
-  "author": "junil-hwang <tjsdlf4261@naver.com>",
+  "author": "junil-hwang <junil.h@kakao.com>",
   "scripts": {
     "docs:dev": "vuepress dev",
     "docs:build": "vuepress build",
@@ -11,10 +11,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.3.0",
-    "vuepress": "^1.5.4",
+    "@vuepress/plugin-google-analytics": "^1.8.2",
+    "vuepress": "^1.8.2",
     "vuepress-plugin-demo-block": "^0.7.2",
-    "vuepress-plugin-feed": "^0.1.8"
+    "vuepress-plugin-feed": "^0.1.9"
   },
   "dependencies": {
     "markdown-it-plantuml": "^1.4.1",

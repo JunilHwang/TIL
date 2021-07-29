@@ -96,7 +96,7 @@ yarn add -D vuepress
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/JunilHwang/TIL", // github repository 정보. 굳이 없어도 됨.
-  "author": "junil-hwang <tjsdlf4261@naver.com>", // github author 정보. 굳이 없어도 됨.
+  "author": "junil-hwang <junil.h@kakao.com>", // github author 정보. 굳이 없어도 됨.
   "scripts": {
     "docs:dev": "vuepress dev --port 8000",
     "docs:build": "vuepress build"
