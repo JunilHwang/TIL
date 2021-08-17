@@ -19,7 +19,7 @@ date: 2021-08-18
 
 Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간략하게~~ 알아보자.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b336c065-a70c-4e16-bf92-87aef2923bbc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b336c065-a70c-4e16-bf92-87aef2923bbc/Untitled.png)
+![1.png](./1.png)
 
 브라우저는 `파싱` → `스타일` → `레이아웃` → `페인트` → `합성` → `렌더` 등의 과정을 거친다. 그 후에 JS나 CSS를 통해 DOM이나 CSS에 변화가 생길 경우 reflow 혹은 repaint 등의 과정을 수행한다.
 
@@ -49,7 +49,7 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
   - HTML을 통해 DOM 객체 트리를 구성한다.
   - 위의 코드는 다음과 같이 해석된다.
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/992b8fdd-04ae-4fe6-bff3-d1327b29f650/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/992b8fdd-04ae-4fe6-bff3-d1327b29f650/Untitled.png)
+![2.png](./2.png)
 
   - 나중에 시간이 되면 HTML을 직접 파싱하는 작업을 해보길 권유한다.
     - ~~무척 재밌다~~
@@ -66,13 +66,13 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
 
   - 외부/내부의 스타일시트의 CSS를 해석해 CSSOM 트리를 구성한다.
 
-    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aee02eb6-441d-400a-9a51-4e9f2400970a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aee02eb6-441d-400a-9a51-4e9f2400970a/Untitled.png)
+![3.png](./3.png)
 
   - body, p, span 등 선택자가 노드로 생성되고 각 노드는 스타일을 참조한다.
 
 ### (2) 스타일
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/455ad4a9-358b-41a2-810d-624e5b45fa6e/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/455ad4a9-358b-41a2-810d-624e5b45fa6e/Untitled.png)
+![4.png](./4.png)
 
 - DOM Tree, CSSOM Tree가 생선되면 스타일을 매칭시켜주는 과정을 거쳐 렌더 트리를 구성한다.
 - 렌더링 트리에는 **페이지를 렌더링하는 데 필요한 노드만 포함**된다.
@@ -89,7 +89,7 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
 
 - 기기의 뷰포트 내에서 노드의 정확한 위치와 크기를 계산하는 과정
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cde2482e-4031-4040-b7ee-0433cc892788/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cde2482e-4031-4040-b7ee-0433cc892788/Untitled.png)
+![5.png](./5.png)
 
 - 경우에 따라 `리플로우`라고도 함
 - 레이아웃 단계에서는 노드의 정확한 위치와 크기를 계산한다.
@@ -99,7 +99,7 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
 
 - 렌더링 트리의 각 노드를 화면의 실제 픽셀로 변환하는 마지막 단계
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a8521dd9-ac69-4440-8503-7bf5cfd941bf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a8521dd9-ac69-4440-8503-7bf5cfd941bf/Untitled.png)
+![6.png](./6.png)
 
 - 레이아웃이 완료될 때 브라우저가 'Paint Setup' 및 'Paint' 이벤트를 발생
 - 렌더링 트리를 화면의 픽셀로 변환
@@ -112,7 +112,7 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
 - 화면에 표시하기 위해 페이지에서 페인트된 부분을 합치는 과정
 - 쉽게 이야기 하자면, `tranform` `opacity` `will-change` 등을 사용했을 때 합성 과정을 거친다.
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc4ac70d-773b-4041-a98b-6c3dcaec4fb9/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc4ac70d-773b-4041-a98b-6c3dcaec4fb9/Untitled.png)
+![7.png](./7.png)
 
 - 지금 당장 깊게 이해할 필요는 없다.
 
@@ -133,7 +133,7 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
 - 브라우저는 `렌더링 과정`에서 성능을 제일 많이 잡아먹는다.
 - 특히 `Reflow`가 순간적으로 많이 발생할 경우 치명적이다.
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/83908c5a-47c5-412e-b4eb-0302dfda94e8/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/83908c5a-47c5-412e-b4eb-0302dfda94e8/Untitled.png)
+![8.png](./8.png)
 
 ## 4. 가상돔
 
@@ -143,7 +143,7 @@ Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간
 
 더 쉽게 말하자면 변화를 모아서 한 번에 처리하는 **일종의 Batch 작업**이다.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e4a1d17-a1d3-403a-a0d5-0a9f8167eb6a/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e4a1d17-a1d3-403a-a0d5-0a9f8167eb6a/Untitled.png)
+![9.png](./9.png)
 
 그리고 가상돔을 사용할 경우, Real DOM이 아니기 때문에, 즉, 추상화 되었기 때문에 `브라우저의 종속적이지 않다`는 점도 매력적이다. 그래서 `React Native` 처럼 React를 이용하여 네이티브 앱을 만들 수 있는 프레임워크도 만들어졌으며 테스트하기도 용이하다.
 
@@ -451,7 +451,7 @@ console.log(realDom);
 
 결과물은 다음과 같다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b7ddf1c4-bf88-4259-bf6a-9d84c4880ded/Untitled.png)
+![10.png](./10.png)
 
 ## 7. Diff 알고리즘 적용
 
@@ -503,7 +503,7 @@ setTimeout(() =>
 ); // 1초 뒤에 DOM 변경
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b7e768b-ccb6-4aec-8682-f560cf315a77/Untitled.png)
+![11.png](./11.png)
 
 위의 코드를 보고 `updateElement(parennt, newNode, oldNode)` 함수의 내용을 요약해보자면 다음과 같다.
 
@@ -723,7 +723,7 @@ setTimeout(() =>
 ); // 1초 뒤에 DOM 변경
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b7ef0c05-44cb-4639-a59a-15772ddba3d0/Untitled.png)
+![12.png](./12.png)
 
 ## 8. VirtualDOM이 가지는 문제
 
