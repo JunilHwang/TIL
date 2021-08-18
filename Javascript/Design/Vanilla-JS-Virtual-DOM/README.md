@@ -216,7 +216,7 @@ virtualDom('div', { id: 'app' },
 
 - 보통 `virtualDom` 대신 `h` 로 표현한다.
 
-```jsx
+```jsx{1-3}
 function h(type, props, ...children) {
   return { type, props, children: children.flat() }
 }
@@ -344,7 +344,7 @@ const state = [
 createElement(
   h('div', { id: 'app' },
     h('ul', null,
-      ...state.map(({ completed, content }) => 
+      state.map(({ completed, content }) => 
         h('li', completed ? { completed: true } : null,
           h('input', { type: 'checkbox', class: 'toggle', checked: completed }),
           content,
@@ -502,7 +502,6 @@ const realDom = createElement(
 console.log(realDom);
 ```
 
-
 <iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/04-create-element/index.html" width="100%"></iframe>
 
 ::: tip
@@ -512,10 +511,6 @@ console.log(realDom);
 - [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/04-create-element/index.html)
 
 :::
-
-결과물은 다음과 같다.
-
-![10.png](./10.png)
 
 ### (4) Diff 알고리즘 적용
 
@@ -623,7 +618,7 @@ function updateAttributes(target, newProps, oldProps) {}
 
 이제 비어있는 코드를 채워보자.
 
-```jsx
+```jsx{37-48}
 function updateElement (parent, newNode, oldNode, index = 0) {
   // 1. oldNode만 있는 경우
   if (!newNode && oldNode) {
@@ -695,17 +690,8 @@ function updateAttributes(target, newProps, oldProps) {
 어쨌든 위의 코드가 정상적으로 작동하는지 확인해보자.
 
 ```jsx
-const oldState = [
-  { id: 1, completed: false, content: 'todo list item 1' },
-  { id: 2, completed: true, content: 'todo list item 2' },
-];
-
-const newState = [
-  { id: 1, completed: true, content: 'todo list item 1 update' },
-  { id: 2, completed: true, content: 'todo list item 2' },
-  { id: 3, completed: false, content: 'todo list item 3' },
-];
-
+/** @jsx h */
+function h(type, props, ...children) { /* 중간 생략 */ }
 function createElement(node) { /* 생략 */ };
 
 function updateElement (parent, newNode, oldNode, index = 0) {
@@ -755,6 +741,17 @@ function updateAttributes(target, newProps, oldProps) {
   }
 }
 
+const oldState = [
+  { id: 1, completed: false, content: 'todo list item 1' },
+  { id: 2, completed: true, content: 'todo list item 2' },
+];
+
+const newState = [
+  { id: 1, completed: true, content: 'todo list item 1 update' },
+  { id: 2, completed: true, content: 'todo list item 2' },
+  { id: 3, completed: false, content: 'todo list item 3' },
+];
+
 const render = (state) => (
   <div id="app">
     <ul>
@@ -786,7 +783,18 @@ setTimeout(() =>
 ); // 1초 뒤에 DOM 변경
 ```
 
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/05-diff/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/05-diff/)
+- [핵심 코드](https://github.com/JunilHwang/simple-virtual-dom/blob/master/05-diff/src/main.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/05-diff/index.html)
+
+:::
+
 ![12.png](./12.png)
+<br>*개발자 도구에서 확인해보면 변경된 내역에 대해서만 반영 되는 것을 확인할 수 있다.*
 
 ## 4. VirtualDOM에 대한 고찰
 
@@ -800,7 +808,7 @@ Babel이나 Webpack과 함께 VirtualDOM을 사용한다면 사실 특별한 문
 
 그래서 필자는 **RealDOM을 VirtualDOM 처럼 사용해보면 어떨까** 생각해봤다.
 
-```jsx
+```jsx{4,26}
 // text를 node로 변환하는 작업이다.
 const render = (state) => {
   // 빈 태그를 하나 만든다.
@@ -832,7 +840,7 @@ const render = (state) => {
 
 혹은 이런 방법도 가능하다.
 
-```jsx
+```jsx{23}
 const render = (state) => `
   <div id="app">
     <ul>
@@ -935,18 +943,7 @@ function updateAttributes(oldNode, newNode) {
 
 전체 코드를 종합해보면 다음과 같다.
 
-```jsx
-const oldState = [
-  { id: 1, completed: false, content: 'todo list item 1' },
-  { id: 2, completed: true, content: 'todo list item 2' },
-];
-
-const newState = [
-  { id: 1, completed: true, content: 'todo list item 1 update' },
-  { id: 2, completed: true, content: 'todo list item 2' },
-  { id: 3, completed: false, content: 'todo list item 3' },
-];
-
+```jsx{47-68}
 function updateElement (parent, newNode, oldNode) {
   if (!newNode && oldNode) return oldNode.remove();
   if (newNode && !oldNode) return parent.appendChild(newNode);
@@ -962,7 +959,7 @@ function updateElement (parent, newNode, oldNode) {
     return;
   }
   updateAttributes(oldNode, newNode);
-  
+
   const newChildren = [ ...newNode.childNodes ];
   const oldChildren = [ ...oldNode.childNodes ];
   const maxLength = Math.max(newChildren.length, oldChildren.length);
@@ -972,15 +969,26 @@ function updateElement (parent, newNode, oldNode) {
 }
 
 function updateAttributes(oldNode, newNode) {
-	for (const {name, value} of [ ...newNode.attributes ]) {
-	  if (value === oldNode.getAttribute(name)) continue;
-	  oldNode.setAttribute(name, value);
-	}
-	for (const {name} of [ ...oldNode.attributes ]) {
-	  if (newNode.getAttribute(name) !== undefined) continue;
-	  oldNode.removeAttribute(name);
-	}
+  for (const {name, value} of [ ...newNode.attributes ]) {
+    if (value === oldNode.getAttribute(name)) continue;
+    oldNode.setAttribute(name, value);
+  }
+  for (const {name} of [ ...oldNode.attributes ]) {
+    if (newNode.getAttribute(name) !== undefined) continue;
+    oldNode.removeAttribute(name);
+  }
 }
+
+const oldState = [
+  { id: 1, completed: false, content: 'todo list item 1' },
+  { id: 2, completed: true, content: 'todo list item 2' },
+];
+
+const newState = [
+  { id: 1, completed: true, content: 'todo list item 1 update' },
+  { id: 2, completed: true, content: 'todo list item 2' },
+  { id: 3, completed: false, content: 'todo list item 3' },
+];
 
 const render = (state) => {
   const el = document.createElement('div');
@@ -1017,6 +1025,16 @@ setTimeout(() =>
   1000
 ); // 1초 뒤에 DOM 변경
 ```
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/06-without-vm/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/06-without-vm/)
+- [핵심 코드](https://github.com/JunilHwang/simple-virtual-dom/blob/master/06-without-vm/src/main.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/06-without-vm/index.html)
+
+:::
 
 이렇게만 사용해도 충분할 것이다.
 
