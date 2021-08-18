@@ -8,8 +8,8 @@
         {
             "id": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/",
             "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/",
-            "title": "Vanilla Javascript로 가상돔(Virtual DOM) 만들기",
-            "summary": "React와 Vue에서 사용되고 있는 가상돔(Virtual DOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.",
+            "title": "Vanilla Javascript로 가상돔(VirtualDOM) 만들기",
+            "summary": "React와 Vue에서 사용되고 있는 가상돔(VirtualDOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.",
             "image": "https://junilhwang.github.io/TIL/./1.png",
             "date_modified": "2021-08-18T00:00:00.000Z"
         },
@@ -91,19 +91,19 @@
             "date_modified": "2020-12-16T00:10:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "title": "유년시절 이야기 (1)",
-            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
-            "date_modified": "2020-12-16T00:10:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/",
             "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/",
             "title": "유년시절 이야기 (3)",
             "summary": "짧았지만 강렬했던, 그리운 시절의 이야기입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/98538828-b4641f80-22ce-11eb-894d-660bd494ae5d.png",
+            "date_modified": "2020-12-16T00:10:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "title": "유년시절 이야기 (1)",
+            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
             "date_modified": "2020-12-16T00:10:00.000Z"
         },
         {
