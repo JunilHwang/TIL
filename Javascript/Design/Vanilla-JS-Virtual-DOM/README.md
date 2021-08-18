@@ -1111,8 +1111,18 @@ class App extends Component {
 }
 
 // 컴포넌트 생성
-new App(document.querySelector('#app'));
+new App(document.querySelector('#root'));
 ```
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/07-component-with-diff/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/07-component-with-diff/)
+- [핵심 코드](https://github.com/JunilHwang/simple-virtual-dom/blob/master/07-component-with-diff/src/core/Component.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/07-component-with-diff/index.html)
+
+:::
 
 ### (2) 이벤트 중복등록 해결
 
@@ -1150,7 +1160,7 @@ class App extends Component {
 
 주석에도 언급했지만, `requestAnimationFrame`을 사용하는 이유는 `this`가 binding 되는 시점 때문이다. 이 부분은 Component에 추상화해서 관리하는 것이 좋다.
 
-```jsx
+```jsx{9,19-24}
 class Component {
   constructor ($target) { /*생략*/}
   setup () {};
@@ -1177,8 +1187,19 @@ class App extends Component {
   }
 }
 
-new App(document.querySelector('#app'));
+new App(document.querySelector('#root'));
 ```
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/08-refactoring-component-event/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/08-refactoring-component-event/)
+- [Component](https://github.com/JunilHwang/simple-virtual-dom/blob/master/08-refactoring-component-event/src/core/Component.js)
+- [App](https://github.com/JunilHwang/simple-virtual-dom/blob/master/08-refactoring-component-event/src/App.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/08-refactoring-component-event/index.html)
+
+:::
 
 사실 고도화 하고자 한다면 더욱 더 복잡해질 것이다. 다른 것 보다 이벤트를 관리하는게 무척 복잡하기 때문이다. 그래서 이 포스팅은 여기까지만 다루도록 하겠다.
 
