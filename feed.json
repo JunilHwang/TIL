@@ -6,12 +6,27 @@
     "description": "Today I leanred",
     "items": [
         {
+            "id": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/",
+            "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/",
+            "title": "Vanilla Javascript로 가상돔(Virtual DOM) 만들기",
+            "summary": "React와 Vue에서 사용되고 있는 가상돔(Virtual DOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.",
+            "image": "https://junilhwang.github.io/TIL/./1.png",
+            "date_modified": "2021-08-18T00:00:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/",
             "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/",
             "title": "Vanilla Javascript로 상태관리 시스템 만들기",
             "summary": "Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.",
             "image": "https://junilhwang.github.io/TIL/./1.png",
             "date_modified": "2021-07-26T00:00:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/",
+            "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/",
+            "title": "Vanilla Javascript로 웹 컴포넌트 만들기",
+            "summary": "Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.",
+            "date_modified": "2021-07-25T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/",
@@ -68,19 +83,19 @@
             "date_modified": "2020-12-24T00:16:00.000Z"
         },
         {
-            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
-            "title": "유년시절 이야기 (1)",
-            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
-            "date_modified": "2020-12-16T00:10:00.000Z"
-        },
-        {
             "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/",
             "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/",
             "title": "유년시절 이야기 (2)",
             "summary": "본격적으로 개발을 시작하게 되는 이야기입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/98433517-0c522900-210b-11eb-941f-d1075ce66a43.png",
+            "date_modified": "2020-12-16T00:10:00.000Z"
+        },
+        {
+            "id": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "url": "https://junilhwang.github.io/TIL/Writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/",
+            "title": "유년시절 이야기 (1)",
+            "summary": "개발에 입문하기 이전의 유년시절 이야기입니다.",
+            "image": "https://user-images.githubusercontent.com/18749057/97804779-54012c80-1c95-11eb-8c14-067c7506d93e.png",
             "date_modified": "2020-12-16T00:10:00.000Z"
         },
         {
@@ -90,13 +105,6 @@
             "summary": "짧았지만 강렬했던, 그리운 시절의 이야기입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/98538828-b4641f80-22ce-11eb-894d-660bd494ae5d.png",
             "date_modified": "2020-12-16T00:10:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/",
-            "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/",
-            "title": "Vanilla Javascript로 웹 컴포넌트 만들기",
-            "summary": "Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.",
-            "date_modified": "2020-10-25T00:00:00.000Z"
         },
         {
             "id": "https://junilhwang.github.io/TIL/Review/2020-year/09-September/",
@@ -152,14 +160,6 @@
             "summary": "2020년 5월 회고 입니다.",
             "image": "https://junilhwang.github.io/TIL/./2.png",
             "date_modified": "2020-05-31T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/04-April/",
-            "title": "2020년 4월 회고",
-            "summary": "2020년 4월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/80866090-dea5a680-8cc7-11ea-88c2-a3bca2e2dd35.png",
-            "date_modified": "2020-04-30T00:00:00.000Z"
         }
     ]
 }
