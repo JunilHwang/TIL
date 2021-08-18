@@ -1,24 +1,24 @@
 ---
 
-title: Vanilla Javascript로 가상돔(Virtual DOM) 만들기
-description: React와 Vue에서 사용되고 있는 가상돔(Virtual DOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.
+title: Vanilla Javascript로 가상돔(VirtualDOM) 만들기
+description: React와 Vue에서 사용되고 있는 가상돔(VirtualDOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.
 sidebarDepth: 2
 date: 2021-08-18
 
 ---
 
-# Vanilla Javascript로 가상돔(Virtual DOM) 만들기
+# Vanilla Javascript로 가상돔(VirtualDOM) 만들기
 
-> 본 포스트는 React와 Vue에서 사용되고 있는 가상돔(Virtual DOM) 직접 만들어보는 내용이다.
+> 본 포스트는 React와 Vue에서 사용되고 있는 가상돔(VirtualDOM) 직접 만들어보는 내용이다.
 > 그리고 이 포스트를 읽기 전에 [Vanilla Javascript로 웹 컴포넌트 만들기](../Vanilla-JS-Component/)와 [Vanilla Javascript로 상태관리 시스템 만들기](../Vanilla-JS-Store/)를 먼저 정독해야 이해하기가 수월하다.
 
-아마 이 글을 읽는 사람들 대부분은 가상돔(Virtual DOM)의 개념에 대해 이해하고 있으리라 생각한다. 그러니까 어떻게 구현하는지 궁금해서 찾아온게 아닐까?
+아마 이 글을 읽는 사람들 대부분은 가상돔(VirtualDOM)의 개념에 대해 이해하고 있으리라 생각한다. 그러니까 어떻게 구현하는지 궁금해서 찾아온게 아닐까?
 
 그래도 ~~너무 귀찮지만~~ 개념을 한 번 짚고 넘어가야 한다.
 
 ## 1. 브라우저 로딩 과정
 
-Virtual DOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간략하게~~ 알아보자.
+VirtualDOM을 이해하기 위해 브라우저의 로딩 과정에 대해 ~~간략하게~~ 알아보자.
 
 ![1.png](./1.png)
 
@@ -117,7 +117,9 @@ img { float: right }
 
 - 지금 당장 깊게 이해할 필요는 없다.
 
-## 2. Reflow, Repaint
+## 2. 성능
+
+### (1) Reflow, Repaint
 
 - 앞서 소개한 `스타일 → 레이아웃 → 페인트 → 합성`을 **렌더링**이라고 한다.
 - 이 렌더링 과정은 **상황에 따라 반복하여 발생**할 수 있다.
@@ -129,14 +131,16 @@ img { float: right }
   - CSS 속성 변경이 **기하학적 변화가 발생하지 않았을 경우**
   - ex) color, background, transform, box-shadow, ...
 
-## 3. 브라우저에서 제일 성능을 많이 잡아먹는 것
+### (2) 브라우저에서 제일 성능을 많이 잡아먹는 것
 
 - 브라우저는 `렌더링 과정`에서 성능을 제일 많이 잡아먹는다.
 - 특히 `Reflow`가 순간적으로 많이 발생할 경우 치명적이다.
 
 <img src="./8.png" alt="8" style="max-width: 600px" />
 
-## 4. 가상돔(Virtual DOM)
+## 3. 가상돔(VirtualDOM)
+
+### (1) 가상돔(VirtualDOM) 만들기
 
 이전에 다뤘던 포스트들은 **State**와 **Component**에 대해 소개했다.
 이러한 개념이 등장한 이유는 **DOM의 조작에 대한 복잡도**가 날이 갈수록 증가하고 있기 때문이다.
@@ -146,22 +150,21 @@ img { float: right }
 DOM에 변경이 있을 경우 **렌더트리를 재생성**하고(모든 요소들의 스타일이 다시 계산됨) **레이아웃**을 만들고 **페인팅을 하는 과정**이 다시 **반복**되는 것을 알 수 있었다.
 즉, **브라우저가 연산을 많이 해야한다**는 이야기이며, 전체적인 프로세스를 **비효율적**으로 만든다는 것이다.
 
-_그래서 등장한 개념이 가상돔(Virtual DOM) 이다._
+_그래서 등장한 개념이 가상돔(VirtualDOM) 이다._
 
-뷰(HTML)에 변화가 있을 때, 가상의 DOM 에 먼저 적용하고, 마지막에 가상돔(Virtual DOM)의 내용을 Real DOM에 적용한다.
-
+뷰(HTML)에 변화가 있을 때, 구 가상돔(Old Node)과 새 가상돔(New Node)을 비교하여 **변경된 내용만 DOM에 적용**한다.
 이를 통해 **브라우저 내에서 발생하는 연산의 양(정확히는 렌더링 과정)을 줄이면서 성능이 개선**되는 것 이다.
 
 더 쉽게 말하자면 변화를 모아서 한 번에 처리하는 **일종의 Batch 작업**이다.
 
 <img src="./9.png" alt="9" style="max-width: 600px" />
 
-그리고 가상돔(Virtual DOM)을 사용할 경우 Real DOM이 아니기 때문에, 즉, **추상화 되었기 때문에 브라우저의 종속적이지 않다는 점**도 매력적이다.
+그리고 가상돔(VirtualDOM)은 순수 객체로 추상화 되었기 때문에 **브라우저의 종속적이지 않다는 점**도 매력적이다.
 그래서 _React Native 처럼 React를 이용하여 네이티브 앱을 만들 수 있는_ 프레임워크도 만들어졌으며 _테스트하기도 용이하다._
 
-가상돔(Virtual DOM)의 개념에 대해 알아봤으니, 이제 가상돔(Virtual DOM)을 어떻게 사용할 수 있는지 살펴보자.
+가상돔(VirtualDOM)의 개념에 대해 알아봤으니, 이를 **어떻게 사용할 수 있는지** 살펴보자.
 
-- 먼저 `Real DOM`이 다음과 같이 구성되어 있다고 하자.
+- 먼저 `RealDOM`이 다음과 같이 구성되어 있다고 하자.
 
 ```html
 <div id="app">
@@ -184,7 +187,7 @@ _그래서 등장한 개념이 가상돔(Virtual DOM) 이다._
 </div>
 ```
 
-- 이에 대한 `Virtual DOM`은 다음과 같이 구성되어 있을 것이다
+- 이에 대한 `VirtualDOM`은 다음과 같이 구성되어 있을 것이다
 
 ```jsx
 function virtualDom(type, props, ...children) {
@@ -238,18 +241,18 @@ h('div', { id: 'app' },
 );
 ```
 
-코드를 보면 알겠지만, 가상돔(Virtual DOM)은 거창한게 아니라 **DOM의 형태를 본따 만든 객체 덩어리**다.
+코드를 보면 알겠지만, 가상돔(VirtualDOM)은 거창한게 아니라 **DOM의 형태를 본따 만든 객체 덩어리**다.
 
-_사실 가상돔(Virtual DOM)만 쓴다고해서 드라마틱한 변화가 생기는 것은 아니다._
-딱 하나 좋은 점은 Real DOM을 사용하지 않기 때문에 테스트 하기가 용이하다는 점 정도이다.
+_사실 가상돔(VirtualDOM)만 쓴다고해서 드라마틱한 변화가 생기는 것은 아니다._
+딱 하나 좋은 점은 RealDOM을 사용하지 않기 때문에 테스트 하기가 용이하다는 점 정도이다.
 가령, DOM API는 브라우저에만 존재하는데,
-_Virtual DOM의 경우 굳이 브라우저 환경이 아니더라도 사용할 수 있는 것이다._
+_VirtualDOM의 경우 굳이 브라우저 환경이 아니더라도 사용할 수 있는 것이다._
 
-## 5. JSX
+### (2) JSX
 
-앞서 다룬 가상돔(Virtual DOM)의 문제는 바로 `가독성`이다. 이를 해결하기 위해 `jsx`라는 것이 등장했다.
+앞서 다룬 가상돔(VirtualDOM)의 문제는 바로 `가독성`이다. 이를 해결하기 위해 `jsx`라는 것이 등장했다.
 
-먼저 다음과 같은 가상돔(Virtual DOM)을 돔으로 변환하는 `createElement` 라는 함수가 있다고 가정해보자. 이를 표현해보면 다음과 같다.
+먼저 다음과 같은 가상돔(VirtualDOM)을 돔으로 변환하는 `createElement` 라는 함수가 있다고 가정해보자. 이를 표현해보면 다음과 같다.
 
 ```jsx
 function createElement(node) { /* 중간 생략 */ }
@@ -369,9 +372,9 @@ createElement(
 
 `jsx`로 표현하니까 훨씬 보기 좋아졌다.
 
-## 6. Virtual DOM → DOM
+### (3) VirtualDOM → RealDOM
 
-이제 가상돔(Virtual DOM)을 돔(DOM)으로 변환하는 과정이 필요하다. 즉, `createElement`의 내용을 채워야한다.
+이제 **VirtualDOM을 RealDOM으로 변환하는 과정**이 필요하다. 즉, `createElement`의 내용을 채워야한다.
 
 ```jsx
 function createElement(node) {}
@@ -408,7 +411,7 @@ function createElement(node) {
   }
   
   // node의 children virtual dom을 dom으로 변환한다.
-  // 즉, 모든 Virtual DOM을 순회한다.
+  // 즉, 모든 VirtualDOM을 순회한다.
   const children = node.children.map(createElement);
   
   // $el에 변환된 children dom을 추가한다.
@@ -419,7 +422,7 @@ function createElement(node) {
 }
 ```
 
-이렇게 작성된 `createElement`를 이용하여 VirtaulDom을 RealDom으로 만들어보자.
+이렇게 작성된 `createElement`를 이용하여 Virtaul DOM을 RealDOM으로 만들어보자.
 
 ```jsx
 const state = [
@@ -468,9 +471,10 @@ console.log(realDom);
 
 ![10.png](./10.png)
 
-## 7. Diff 알고리즘 적용
+### (4) Diff 알고리즘 적용
 
-여태까지 기술한 내용의 경우 가상돔(Virtual DOM)을 RealDom으로 변경하는 과정이고, 가성돔으로 성능상의 이점을 가져오기 위해선 `Diff 알고리즘` 을 통해서 변경된 속성이나 태그에 대해 업데이트 하는 과정이 필요하다.
+여태까지 기술한 내용의 경우 VirtualDOM을 RealDOM으로 변경하는 과정이고,
+성능상의 이점을 가져오기 위해선 `Diff 알고리즘` 을 통해서 변경된 속성이나 태그에 대해 업데이트 하는 과정이 필요하다.
 
 ```jsx
 const oldState = [
@@ -537,7 +541,7 @@ setTimeout(() =>
     - newNode와 oldNode의 attribute를 비교하여 변경된 부분만 반영한다.
         - oldNode의 attribute 중 newNode에 없는 것은 모두 제거한다.
         - newNode의 attribute에서 변경된 내용만 oldNode의 attribute에 반영한다.
-6. newNode와 oldNode의 모든 자식 태그를 순회하며 1 ~ 5의 내용을 반복한다.
+6. _newNode와 oldNode의 모든 자식 태그를 순회하며 1 ~ 5의 내용을 반복한다._
 
 위의 내용을 다시 코드로 간략하게 표현해보자.
 
@@ -736,13 +740,17 @@ setTimeout(() =>
 
 ![12.png](./12.png)
 
-## 8. VirtualDOM이 가지는 문제
+## 4. VirtualDOM에 대한 고찰
 
-Babel이나 Webpack과 함께 VirtualDOM을 사용한다면 사실 특별한 문제는 없다. 그런데 필자가 작성하고 있는 `Vanilla Javascript` 의 경우, 문제가 된다. 특별한 도구 없이 순수한 JS로 작성할 때 VirtualDOM의 가독성은 무척 좋지 않기 때문이다.
+### (1) VirtualDOM이 꼭 필요한가?
 
-그리고 사실 `diff 알고리즘`만 잘 작성한다면 성능상의 문제는 없을 것이다.
+Babel이나 Webpack과 함께 VirtualDOM을 사용한다면 사실 특별한 문제는 없다.
+그런데 필자가 작성하고 있는 `Vanilla Javascript` 의 경우, 문제가 된다.
+특별한 도구 없이 순수한 JS로 작성할 때 **VirtualDOM의 가독성은 무척 좋지 않기 때문**이다.
 
-그래서 필자는 RealDOM을 VirtualDOM 처럼 사용해보면 어떨까 생각해봤다.
+그리고 사실 `Diff 알고리즘`만 잘 작성한다면 성능상의 문제는 없을 것이다.
+
+그래서 필자는 **RealDOM을 VirtualDOM 처럼 사용해보면 어떨까** 생각해봤다.
 
 ```jsx
 // text를 node로 변환하는 작업이다.
@@ -803,9 +811,13 @@ const realNode = oldNode.cloneNode(true); // 복제
 realNode.innerHTML = render(newState); // 복제된 노드의 내용 변경
 ```
 
-둘 중에 한 가지 방법을 사용하면 되고, 중요한 점은 DOM을 메모리상에만 올려놓고 값을 변경하는 작업을 하는 것이다. 이렇게 할 경우 렌더링이 발생하지 않고 메모리에 참조중인 값만 변경하기 때문에 가상돔(Virtual DOM)을 사용하는 것과 별  차이 없다.
+둘 중에 한 가지 방법을 사용하면 되고,
+중요한 점은 *8DOM을 메모리상에만 올려놓고 값을 변경하는 작업을 하는 것**이다.
+이렇게 할 경우 렌더링이 발생하지 않고 메모리에 참조중인 값만 변경하기 때문에 가상돔(VirtualDOM)을 사용하는 것과 별 차이 없다.
 
-그리고 **diff 알고리즘의 내용을 조금 수정**해야한다.
+### (2) Diff 알고리즘 수정
+
+그리고 이제 RealDOM API를 다루기 때문에 **Diff 알고리즘의 내용을 조금 수정**해야한다.
 
 ```jsx
 function updateElement (parent, newNode, oldNode) {
@@ -842,7 +854,7 @@ function updateElement (parent, newNode, oldNode) {
   }
 
   // 5. oldNode와 newNode의 태그 이름(type)이 같을 경우
-  // 가상돔(Virtual DOM)의 props를 넘기는게 아니기 때문에 oldNode와 newNode를 직접 넘긴다.
+  // 가상돔(VirtualDOM)의 props를 넘기는게 아니기 때문에 oldNode와 newNode를 직접 넘긴다.
   updateAttributes(oldNode, newNode);
   
   // 6. newNode와 oldNode의 모든 자식 태그를 순회하며 1 ~ 5의 내용을 반복한다.
@@ -960,7 +972,9 @@ setTimeout(() =>
 
 이렇게만 사용해도 충분할 것이다.
 
-## 9. DIFF 알고리즘 +  컴포넌트
+## 5. Diff 알고리즘 + 컴포넌트
+
+### (1) 컴포넌트 구성
 
 앞서 작성한 DIFF 알고리즘을 이용해서 [Vanilla Javascript로 웹 컴포넌트 만들기](https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/)를 다시 구성해보자.
 
@@ -1034,9 +1048,14 @@ class App extends Component {
 new App(document.querySelector('#app'));
 ```
 
-실행은 잘 되지만 문제는 `렌더링을 할 때 마다 이벤트가 다시 등록`된다는 점이다.
+### (2) 이벤트 중복등록 해결
 
-기존에는 template의 모든 코드를 다시 그렸다. 그런데 이제 변경된 부분에 대해서만 반영하기 때문에 기존 태그에 등록된 이벤트가 있을 경우 이벤트를 해제하고 다시 등록하는 과정이 필요하다.
+앞서 작성한 컴포넌트 코드의 경우 실행은 잘 되지만 문제는 `렌더링을 할 때 마다 이벤트가 다시 등록`된다는 점이다.
+기존에는 **렌더링을 할 때 마다 모든 DOM 객체를 제거 한 다음에 다시 렌더링**했다.
+그래서 Reflow가 무척 많이 발생하는 것이다.
+
+그런데 **이제 변경된 부분에 대해서만 반영**하기 때문에,
+기존 태그에 등록된 이벤트가 있을 경우 **이벤트를 해제하고 다시 등록하는 과정**이 필요하다.
 
 ```jsx
 class App extends Component {
@@ -1101,7 +1120,7 @@ new App(document.querySelector('#app'));
 
 - 브라우저 렌더링 과정에 대해서 이해해야 한다.
 - 태그가 변경되면서 기하학적인 변화가 있을 경우에 reflow가 발생하고, reflow는 비용이 매우 크다.
-- reflow를 최소화하기 위해서 가상돔(Virtual DOM)(VirtualDOM)이 등장했다.
+- reflow를 최소화하기 위해서 가상돔(VirtualDOM)(VirtualDOM)이 등장했다.
 - VirtualDOM의 가독성이 좋지 않기 때문에 JSX라는 것을 사용한다.
 - VirtualDOM 보다 더 중요한 것은 DIFF 알고리즘이다.
 - 굳이 VirtualDOM을 사용하지 않아도 된다.
@@ -1111,5 +1130,5 @@ new App(document.querySelector('#app'));
 - [성능 최적화 | Toast UI](https://ui.toast.com/fe-guide/ko_PERFORMANCE#%EC%84%B1%EB%8A%A5-%EC%B5%9C%EC%A0%81%ED%99%94)
 - [렌더링 성능 | Google Developers](https://developers.google.com/web/fundamentals/performance/rendering?hl=ko)
 - [객체 모델 생성 | Google Developers](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko)
-- [[번역] 리액트에 대해서 그 누구도 제대로 설명하기 어려운 것 – 왜 Virtual DOM 인가?](https://velopert.com/3236)
-- [How to write your own Virtual DOM](https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060)
+- [[번역] 리액트에 대해서 그 누구도 제대로 설명하기 어려운 것 – 왜 VirtualDOM 인가?](https://velopert.com/3236)
+- [How to write your own VirtualDOM](https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060)
