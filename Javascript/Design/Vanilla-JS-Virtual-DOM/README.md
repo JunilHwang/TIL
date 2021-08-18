@@ -1204,6 +1204,10 @@ new App(document.querySelector('#root'));
 
 사실 고도화 하고자 한다면 더욱 더 복잡해질 것이다. 다른 것 보다 이벤트를 관리하는게 무척 복잡하기 때문이다. 그래서 이 포스팅은 여기까지만 다루도록 하겠다.
 
+## 저장소
+
+- 이 아티클에 사용된 모든 코드는 [여기](https://github.com/JunilHwang/simple-virtual-dom)에서 확인할 수 있습니다.
+
 ## Summary
 
 - 브라우저 렌더링 과정에 대해서 이해해야 한다.
