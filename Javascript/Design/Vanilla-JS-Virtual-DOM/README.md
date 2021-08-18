@@ -189,9 +189,9 @@ _그래서 등장한 개념이 가상돔(VirtualDOM) 이다._
 
 - 이에 대한 `VirtualDOM`은 다음과 같이 구성되어 있을 것이다
 
-```jsx
+```jsx{1-3}
 function virtualDom(type, props, ...children) {
-  return { type, props, children }
+  return { type, props, children: children.flat() }
 }
 
 virtualDom('div', { id: 'app' },
@@ -218,7 +218,7 @@ virtualDom('div', { id: 'app' },
 
 ```jsx
 function h(type, props, ...children) {
-  return { type, props, children }
+  return { type, props, children: children.flat() }
 }
 
 h('div', { id: 'app' },
@@ -241,6 +241,15 @@ h('div', { id: 'app' },
 );
 ```
 
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/01-virtual-dom/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/01-virtual-dom/index.html)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/01-virtual-dom/index.html)
+
+:::
+
 코드를 보면 알겠지만, 가상돔(VirtualDOM)은 거창한게 아니라 **DOM의 형태를 본따 만든 객체 덩어리**다.
 
 _사실 가상돔(VirtualDOM)만 쓴다고해서 드라마틱한 변화가 생기는 것은 아니다._
@@ -255,6 +264,7 @@ _VirtualDOM의 경우 굳이 브라우저 환경이 아니더라도 사용할 �
 먼저 다음과 같은 가상돔(VirtualDOM)을 돔으로 변환하는 `createElement` 라는 함수가 있다고 가정해보자. 이를 표현해보면 다음과 같다.
 
 ```jsx
+function h(type, props, ...children) { /* 중간 생략 */ }
 function createElement(node) { /* 중간 생략 */ }
 
 createElement(
@@ -283,9 +293,9 @@ babel의 [jsx](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx)를 �
 
 > jsx를 적용하기 위해선 babel 관련 패키지를 설치해야하며, 실제 프로덕션 코드로 사용하기 위해서는 다시 es5 코드로 변환하는 `트랜스파일링(transfilling)` 과정이 필요합니다.
 
-```jsx
+```jsx{1-2,6-23}
 /** @jsx h */
-
+function h(type, props, ...children) { /* 중간 생략 */ }
 function createElement(node) { /* 중간 생략 */ }
 
 createElement(
@@ -310,15 +320,26 @@ createElement(
 );
 ```
 
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/02-jsx/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/02-jsx/)
+- [핵심코드](https://github.com/JunilHwang/simple-virtual-dom/blob/master/02-jsx/src/main.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/02-jsx/index.html)
+
+:::
+
 여기에 `state` 까지 적용해보자.
 
-```jsx
+```jsx{4-7,12-18}
+function h(type, props, ...children) { /* 중간 생략 */ }
+function createElement(node) { /* 중간 생략 */ }
+
 const state = [
   { id: 1, completed: false, content: 'todo list item 1' },
   { id: 2, completed: true, content: 'todo list item 2' },
 ];
-
-function createElement(node) { /* 중간 생략 */ }
 
 createElement(
   h('div', { id: 'app' },
@@ -335,21 +356,21 @@ createElement(
       h('input', { type: 'text' }),
       h('button', { type: 'submit' }, '추가'),
     )
-  );
+  )
 );
 ```
 
 딱 봐도 가독성이 무척 좋지 않다. 그런데 jsx를 적용하면 다음과 같이 표현할 수 있다.
 
-```jsx
+```jsx{13-19}
 /** @jsx h */
+function h(type, props, ...children) { /* 중간 생략 */ }
+function createElement(node) { /* 중간 생략 */ }
 
 const state = [
   { id: 1, completed: false, content: 'todo list item 1' },
   { id: 2, completed: true, content: 'todo list item 2' },
 ];
-
-function createElement(node) { /* 중간 생략 */ }
 
 createElement(
   <div id="app">
@@ -369,6 +390,16 @@ createElement(
   </div>
 );
 ```
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/03-with-state/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/03-with-state/)
+- [핵심코드](https://github.com/JunilHwang/simple-virtual-dom/blob/master/03-with-state/src/main.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/03-with-state/index.html)
+
+:::
 
 `jsx`로 표현하니까 훨씬 보기 좋아졌다.
 
@@ -404,11 +435,11 @@ function createElement(node) {
   const $el = document.createElement(node.type);
 
   // 정의한 속성을 삽입한다.
-  if (node.props) {
-    Object.entries(node.props).forEach(([attr, value]) => {
-      $el.setAttribute(attr, value);
-    });
-  }
+  Object.entries(node.props || {})
+        .filter(([attr, value]) => value)
+        .forEach(([attr, value]) => (
+          $el.setAttribute(attr, value)
+        ));
   
   // node의 children virtual dom을 dom으로 변환한다.
   // 즉, 모든 VirtualDOM을 순회한다.
@@ -422,29 +453,33 @@ function createElement(node) {
 }
 ```
 
-이렇게 작성된 `createElement`를 이용하여 Virtaul DOM을 RealDOM으로 만들어보자.
+이렇게 작성된 `createElement`를 이용하여 VirtaulDOM을 RealDOM으로 만들어보자.
 
-```jsx
-const state = [
-  { id: 1, completed: false, content: 'todo list item 1' },
-  { id: 2, completed: true, content: 'todo list item 2' },
-];
+```jsx{6-19}
+/** @jsx h */
+function h(type, props, ...children) {
+  return { type, props, children: children.flat() };
+}
 
 function createElement(node) {
   if (typeof node === 'string') {
     return document.createTextNode(node);
   }
-  if (node.props) {
-    Object.entries(node.props)
-          .forEach(([attr, value]) => (
-            $el.setAttribute(attr, value)
-          ));
-  }
+  Object.entries(node.props || {})
+        .filter(([attr, value]) => value)
+        .forEach(([attr, value]) => (
+          $el.setAttribute(attr, value)
+        ));
   const $el = document.createElement(node.type);
-  const children = node.children.map(createElement);
-  children.forEach(child => $el.appendChild(child));
+  node.childre.map(createElement)
+              .forEach(child => $el.appendChild(child));
   return $el;
 }
+
+const state = [
+  { id: 1, completed: false, content: 'todo list item 1' },
+  { id: 2, completed: true, content: 'todo list item 2' },
+];
 
 const realDom = createElement(
   <div id="app">
@@ -467,6 +502,17 @@ const realDom = createElement(
 console.log(realDom);
 ```
 
+
+<iframe class="example-frame" src="https://junilhwang.github.io/simple-virtual-dom/04-create-element/index.html" width="100%"></iframe>
+
+::: tip
+
+- [전체코드](https://github.com/JunilHwang/simple-virtual-dom/tree/master/04-create-element/)
+- [핵심 코드](https://github.com/JunilHwang/simple-virtual-dom/blob/master/04-create-element/src/main.js)
+- [브라우저에서 확인](https://junilhwang.github.io/simple-virtual-dom/04-create-element/index.html)
+
+:::
+
 결과물은 다음과 같다.
 
 ![10.png](./10.png)
@@ -476,7 +522,12 @@ console.log(realDom);
 여태까지 기술한 내용의 경우 VirtualDOM을 RealDOM으로 변경하는 과정이고,
 성능상의 이점을 가져오기 위해선 `Diff 알고리즘` 을 통해서 변경된 속성이나 태그에 대해 업데이트 하는 과정이 필요하다.
 
-```jsx
+```jsx{35-36,41}
+/** @jsx h */
+function h(type, props, ...children) { /* 중간 생략 */ }
+function createElement(node) { /* 생략 */ };
+function updateElement(parent, newNode, oldNode) { /* 구현부 */ }
+
 const oldState = [
   { id: 1, completed: false, content: 'todo list item 1' },
   { id: 2, completed: true, content: 'todo list item 2' },
@@ -487,9 +538,6 @@ const newState = [
   { id: 2, completed: true, content: 'todo list item 2' },
   { id: 3, completed: false, content: 'todo list item 3' },
 ];
-
-function createElement(node) { /* 생략 */ };
-function updateElement(parent, newNode, oldNode) { /* 구현부 */ }
 
 const render = (state) => (
   <div id="app">
