@@ -137,7 +137,7 @@ img { float: right }
 - 브라우저는 `렌더링 과정`에서 성능을 제일 많이 잡아먹는다.
 - 특히 `Reflow`가 순간적으로 많이 발생할 경우 치명적이다.
 
-<img src="./8.png" alt="8" style="max-width: 600px" />
+<img src="./8.png" alt="8" style="width: 600px; max-width: 100%" />
 
 ## 3. 가상돔(VirtualDOM)
 
@@ -158,7 +158,7 @@ _그래서 등장한 개념이 가상돔(VirtualDOM) 이다._
 
 더 쉽게 말하자면 변화를 모아서 한 번에 처리하는 **일종의 Batch 작업**이다.
 
-<img src="./9.png" alt="9" style="max-width: 600px" />
+<img src="./9.png" alt="9" style="width: 600px; max-width: 100%" />
 
 그리고 가상돔(VirtualDOM)은 순수 객체로 추상화 되었기 때문에 **브라우저의 종속적이지 않다는 점**도 매력적이다.
 그래서 _React Native 처럼 React를 이용하여 네이티브 앱을 만들 수 있는_ 프레임워크도 만들어졌으며 _테스트하기도 용이하다._
