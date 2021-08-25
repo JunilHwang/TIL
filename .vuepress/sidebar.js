@@ -82,6 +82,7 @@ module.exports = [
           'Vanilla-JS-Component/',
           'Vanilla-JS-Store/',
           'Vanilla-JS-Virtual-DOM/',
+          'Vanilla-JS-Make-useSate-hook/',
         ].map(v => `${JavascriptDesign}/${v}`),
       }
     ],

@@ -114,7 +114,7 @@ img { float: right }
 - 화면에 표시하기 위해 페이지에서 페인트된 부분을 합치는 과정
 - 쉽게 이야기 하자면, `tranform` `opacity` `will-change` 등을 사용했을 때 합성 과정을 거친다.
 
-<img src="./7.png" alt="7" style="max-width: 400px" />
+<img src="./7.png" alt="7" style="width: 400px; max-width: 100%;" />
 
 - 지금 당장 깊게 이해할 필요는 없다.
 
