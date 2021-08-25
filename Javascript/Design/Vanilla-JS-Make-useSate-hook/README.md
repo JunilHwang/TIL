@@ -9,11 +9,7 @@ date: 2021-08-25
 
 # Vanilla Javascript로 React UseState Hook 만들기
 
-::: tip 목표 
-
 본 포스트는 React의 UseState Hook의 작동방식에 대해 고민해보고, 구현해보고, 최적화하는 내용을 다룹니다.
-
-:::
 
 ::: tip 선행학습
 구현부 코드는 아래 포스트의 내용을 모르면 이해하기가 힘들 수 있습니다.
@@ -116,7 +112,7 @@ function useState(initState) {
 const [count, setCount] = useState(1); // state에는 항상 1이 들어간다.
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/01-make-state-frame/index.html"></iframe>
 
 결과물에서도 확인할 수 있듯이, state에는 항상 1이 들어간다.
 
@@ -142,7 +138,7 @@ function render () { /*생략*/ }
 render();
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/02-only-one-state/index.html"></iframe>
 
 잘 실행되고 있다.
 
@@ -185,7 +181,7 @@ function render () {
 }
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/03-multi-state-bug/index.html"></iframe>
 
 한 개의 state 변수로 두 개의 state를 관리하기 때문에 count와 cat이 똑같은 값을 보여주게 된다.
 
@@ -227,7 +223,7 @@ const render = () => {
 }
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/04-multi-state-success/index.html"></iframe>
 
 여기까지가 `useState`의 핵심 원리이다. 생각보다 간단하지 않은가?
 
@@ -265,7 +261,7 @@ const render = () => {
 }
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/05-no-state-change/index.html"></iframe>
 
 값은 똑같은데 render는 계속 실행하고 있다.
 
@@ -299,7 +295,7 @@ function useState(initState) {
 }
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/06-dont-render-no-change/index.html"></iframe>
 
 이제 값이 똑같을 경우에는 렌더링이 되지 않는다.
 
@@ -343,7 +339,7 @@ const render = () => {
 }
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/07-unnecessary-render/index.html"></iframe>
 
 `countMeow` 를 실행할 때 마다 `render`는 2번 실행된다. 즉, 비효율적이다.
 
@@ -458,7 +454,7 @@ const render = debounceFrame(() => {
 
 사실 `debounce`는  `useState`에 적용하기보단 `render`에 적용하는게 더 쉽고 직관적이다.
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/08-refactor-rendering-by-debounce/index.html"></iframe>
 
 일단 이정도만 적용해도 `useState`를 이용하는데 큰 어려움은 없으리라 생각한다.
 
@@ -690,7 +686,7 @@ const App = () => `
 render(App, document.querySelector('#app'));
 ```
 
-[iframe 영역]
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/09-abstract-render/index.html"></iframe>
 
 위와 같이 잘 작동하는 것을 확인할 수 있다.
 
@@ -836,6 +832,8 @@ export function CounterAndMeow () {
   `;
 }
 ```
+
+<iframe class="example-frame" width="100%" src="https://junilhwang.github.io/simple-use-state/10-modularity/index.html"></iframe>
 
 코드에 대한 설명은 생략하겠다. 이미 앞선 과정에서 많이 다뤘기 때문이다.
 
