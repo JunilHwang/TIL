@@ -64,7 +64,11 @@ module.exports = [
           {
             title: '상반기 회고',
             path: `${Review2021}/01-First-Quarter/`
-          }
+          },
+          {
+            title: '2021년 회고',
+            path: `${Review2021}/end/`
+          },
         ]
       }
     ]
