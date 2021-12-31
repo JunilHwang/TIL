@@ -44,6 +44,14 @@
             "date_modified": "2021-07-19T16:00:00.000Z"
         },
         {
+            "id": "https://junilhwang.github.io/TIL/Review/2021-year/end/",
+            "url": "https://junilhwang.github.io/TIL/Review/2021-year/end/",
+            "title": "주니어 개발자의 2021년 상반기 회고",
+            "summary": "주니어 개발자의 2021년 상반기 회고",
+            "image": "https://junilhwang.github.io/TIL/Review/2021-year/end/thumbnail.jpg",
+            "date_modified": "2021-07-12T02:30:00.000Z"
+        },
+        {
             "id": "https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/",
             "url": "https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/",
             "title": "주니어 개발자의 2021년 상반기 회고",
@@ -152,14 +160,6 @@
             "summary": "개발자 황준일의 2020년 2분기 회고입니다.",
             "image": "https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png",
             "date_modified": "2020-07-01T00:00:00.000Z"
-        },
-        {
-            "id": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
-            "url": "https://junilhwang.github.io/TIL/Review/2020-year/06-June/",
-            "title": "2020년 6월 회고",
-            "summary": "2020년 6월 회고 입니다.",
-            "image": "https://user-images.githubusercontent.com/18749057/86334105-bb778300-bc87-11ea-804c-1abf82170b6b.png",
-            "date_modified": "2020-06-30T00:00:00.000Z"
         }
     ]
 }
