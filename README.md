@@ -14,6 +14,10 @@ hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhw
 
 ## 정리
 
+- 사이드 프로젝트
+
+  - [단국대학교 시간표 만들기](./side-project/dku-schedule-manager/)
+
 - 자바스크립트
 
   - [Vanilla Javascript로 웹 컴포넌트 만들기](./Javascript/Design/Vanilla-JS-Component/)

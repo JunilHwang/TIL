@@ -13,6 +13,17 @@ const Review2021 = `/Review/2021-year`
 module.exports = [
   { title: 'Home', path: '/' },
   {
+    title: '사이드 프로젝트',
+    children: [
+      {
+        title: '단국대 시간표 만들기',
+        children: [
+          'dku-schedule-manager/'
+        ].map(v => `/side-project/${v}`)
+      }
+    ]
+  },
+  {
     title: '회고',
     children: [
       {
