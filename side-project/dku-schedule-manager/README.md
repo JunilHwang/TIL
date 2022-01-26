@@ -868,4 +868,3 @@ export async function getAllSchedules(
 
 - 소스코드는 [여기](https://github.com/JunilHwang/dku-schedule-manager)에서 확인할 수 있다.
 - 코드가 좀 더럽다.
-- 
