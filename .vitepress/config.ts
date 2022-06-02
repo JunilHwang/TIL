@@ -18,7 +18,11 @@ const config = defineConfig({
       { icon: 'facebook', link: 'https://www.facebook.com/profile.php?id=100013271537671' },
       { icon: 'instagram', link: 'https://www.instagram.com/hwang_junil/' },
       { icon: 'linkedin', link: 'https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/' },
-    ]
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2019-present Evan You'
+    }
   },
   base: '/TIL/',
   head: [

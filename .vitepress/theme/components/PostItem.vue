@@ -33,13 +33,13 @@ const createdAt = computed(() => {
 
 <style lang="scss" scoped>
 article {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--vp-c-divider-light);
   padding-bottom: 40px;
   margin-bottom: 40px;
 }
 
 h3 {
-  color: #353535;
+  color: var(--vp-c-text-1);
   font-family: "Noto Sans KR",sans-serif;
   font-size: 2rem;
   font-weight: 500;
@@ -56,13 +56,13 @@ h3 {
 p {
   margin: 16px 0;
   padding: 0;
-  color: #555;
+  color: var(--vp-c-text-2);
   line-height: 1.8;
   font-family: -apple-system, Nanum Gothic, Malgun Gothic, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
 }
 
 time {
-  color: #aaa;
+  color: var(--vp-c-text-3);
   font-weight: normal;
   font-size: 14px;
 }
