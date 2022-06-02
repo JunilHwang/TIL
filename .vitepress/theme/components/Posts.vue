@@ -13,4 +13,10 @@ const { theme  } = useData();
 </template>
 
 <style lang="scss" scoped>
+main {
+  display: block;
+  margin: 50px auto;
+  max-width: 800px;
+  width: 100%;
+}
 </style>

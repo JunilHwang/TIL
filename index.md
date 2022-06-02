@@ -1,5 +1,6 @@
 ---
 
+layout: page
 title: Today I Learned
 date: 2020-01-01 13:00:00
 sidebar: false

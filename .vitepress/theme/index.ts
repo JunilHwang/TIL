@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme';
 import Posts from './components/Posts.vue';
+import './styles/index.scss';
 
 export default {
   ...DefaultTheme,
