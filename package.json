@@ -7,11 +7,15 @@
   "scripts": {
     "docs:dev": "vuepress dev",
     "docs:build": "vuepress build",
-    "docs:eject": "vuepress eject"
+    "docs:eject": "vuepress eject",
+    "vite:docs:dev": "vitepress dev",
+    "vite:docs:build": "vitepress build",
+    "vite:docs:eject": "vitepress eject"
   },
   "license": "MIT",
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.8.2",
+    "vitepress": "^1.0.0-alpha.1",
     "vuepress": "^1.8.2",
     "vuepress-plugin-demo-block": "^0.7.2",
     "vuepress-plugin-feed": "^0.1.9"
