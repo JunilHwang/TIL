@@ -21,7 +21,8 @@
     "vitepress": "^1.0.0-alpha.1",
     "vuepress": "^1.8.2",
     "vuepress-plugin-demo-block": "^0.7.2",
-    "vuepress-plugin-feed": "^0.1.9"
+    "vuepress-plugin-feed": "^0.1.9",
+    "webfontloader": "^1.6.28"
   },
   "dependencies": {
     "markdown-it-plantuml": "^1.4.1",

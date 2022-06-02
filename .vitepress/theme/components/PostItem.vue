@@ -20,22 +20,27 @@ const createdAt = computed(() => {
 </script>
 
 <template>
-  <a
-    :href="post.path.replace('.md', '.html')"
-  >
-    <article>
+  <article>
+    <a :href="post.path.replace('.md', '.html')">
       <h3>{{ post.title }}</h3>
       <p>{{ post.description }}</p>
       <time :datetime="createdAt">{{ createdAt }}</time>
-    </article>
-  </a>
+    </a>
+  </article>
 </template>
 
 <style lang="scss" scoped>
 article {
-  border-bottom: 1px solid var(--vp-c-divider-light);
-  padding-bottom: 40px;
-  margin-bottom: 40px;
+  padding-top: 40px;
+  margin-top: 40px;
+
+  + article {
+    border-top: 1px solid var(--vp-c-divider-light);
+  }
+
+  > a {
+    display: block;
+  }
 }
 
 h3 {

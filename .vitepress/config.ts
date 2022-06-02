@@ -25,24 +25,6 @@ const config = defineConfig({
     }
   },
   base: '/TIL/',
-  head: [
-    ['script', { src: "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" }],
-    ['script', {}, `
-      WebFont.load({
-        google: {
-          families: ['Nanum Gothic', 'Noto Sans KR', 'Nanum Gothic Coding', 'Nanum Myeongjo']
-        },
-        active() {
-          var tid = setInterval(function() {
-            if (document.body) {
-              document.body.classList.remove("hidden");
-              clearInterval(tid);
-            }
-          }, 500);
-        }
-      });
-  `.trim()]
-  ]
 });
 
 const getProperty = (data, property) => {
