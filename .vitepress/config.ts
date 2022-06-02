@@ -12,20 +12,31 @@ const config = defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/About/' },
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/JunilHwang' },
+      { icon: 'facebook', link: 'https://www.facebook.com/profile.php?id=100013271537671' },
+      { icon: 'instagram', link: 'https://www.instagram.com/hwang_junil/' },
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/' },
     ]
   },
   base: '/TIL/',
 });
 
+const getProperty = (data, property) => {
+  const reg = new RegExp(`${property}:(.*)`);
+  return data.match(reg)?.[1].trim();
+}
 
 const posts = glob.sync('!(node_modules)/**/*.md')
-  .map(f => {
-    const data = fs.readFileSync(f, "utf8");
+  .map(path => {
+    const data = fs.readFileSync(path, "utf8");
     if (data.match(/disabledPost: true/)?.[1].trim()) return;
     return {
-      title: data.match(/title:(.*)/)?.[1].trim(),
-      description: data.match(/description:(.*)/)?.[1].trim(),
-      createdAt: new Date(data.match(/date:(.*)/)?.[1].trim() || fs.statSync(f).birthtime).getTime(),
+      path: `/TIL/${path}`,
+      title: getProperty(data, 'title'),
+      description: getProperty(data, 'description'),
+      createdAt: new Date(getProperty(data, 'date') || fs.statSync(path).birthtime).getTime(),
     }
   })
   .filter(v => Boolean(v?.title))
