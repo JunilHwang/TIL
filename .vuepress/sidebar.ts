@@ -10,7 +10,7 @@ const OOPPrinciple = `${Book}/OOP-Principle`
 const Review2020 = `/Review/2020-year`
 const Review2021 = `/Review/2021-year`
 
-module.exports = [
+export const sidebar = [
   { title: 'Home', path: '/' },
   {
     title: '사이드 프로젝트',
