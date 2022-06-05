@@ -423,7 +423,7 @@ export default class Items extends Component {
     });
   }
 }
-``` 
+```
 
 ## 4. 컴포넌트 분할하기
 

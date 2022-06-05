@@ -39,7 +39,7 @@ Strategy <|-- "구현체2" StrategyImplementer02
 앞서 작성한 MVVM System의 `Binder`를 분해해보면 다음과 같다.
 
 - 먼저 Binder에 대한 `Structure(자료구조)` 부분이다.
-  ``` js{2-6}
+  ```js{2-6}
   const Binder = class {
     #items = new Set()
     add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
@@ -56,7 +56,7 @@ Strategy <|-- "구현체2" StrategyImplementer02
   ```
 
 - `자료구조`를 `Control(제어)`하는 부분이다.
-  ``` js{7-10}
+  ```js{7-10}
   const Binder = class {
     #items = new Set()
     add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
@@ -73,7 +73,7 @@ Strategy <|-- "구현체2" StrategyImplementer02
   ```
 
 - 마지막으로 Binder의 핵심인 `Strategy(전략,알고리즘)`에 해당하는 부분이다.
-  ``` js{8,11,14,17}
+  ```js{8,11,14,17}
   const Binder = class {
     #items = new Set()
     add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
@@ -119,7 +119,7 @@ Sub Type 사용시 계속에서 code를 수정 하게 되기 때문에 code에�
 이제 Binder의 Strategy가 무엇인지 알았으니 이것을 **추출하여 위임** 해야 한다.
 **이러한 행위를 `Composition`이라고 한다.**
 
-``` js
+```js
 // Binder의 Strategy가 될 Class
 const Processor = class {
   category;
@@ -161,7 +161,7 @@ const Processor = class {
 
  `Processor`를 작성했으면, `Binder`를 수정해야 한다.
 
-``` js{3,4,8,9,16-20}
+```js{3,4,8,9,16-20}
 const Binder = class {
   #item = new Set
   #processors = {}  // category당 한 개의 processor를 사용하게 하기 위함
@@ -199,7 +199,7 @@ const Binder = class {
 
 그리고 Strategy를 주입하는 Client Code는 다음과 같다.
 
-``` js{2,5,8,11}
+```js{2,5,8,11}
 binder.addProcessor(new class extends Processor {
   _process (vm, el, k, v) { el.style[k] = v }
 }('styles'))
@@ -277,7 +277,7 @@ Javascript는 변화의 감지를 위해 사용하는 다음과 같은 API가 �
 
 일단 변화의 감지에 대한 내용을 수신하는 객체가 필요하다.
 
-``` js
+```js
 const ViewModelListener = class {
   viewmodelUpdated(updated){throw 'override'}
 }
@@ -285,7 +285,7 @@ const ViewModelListener = class {
 
 Listener는 Binder와 ViewModel이 상속 받아 사용할 것이다.
 
-``` js
+```js
 const Binder = class extends ViewModelListner {
   // .. 생략
   viewmodelUpdated (updated) {}
@@ -313,7 +313,7 @@ ViewModel에서 notify는
   - `get` prop에 대한 getter
   - `set` prop에 대한 setter
 
-``` js{6-10,27,29}
+```js{6-10,27,29}
 const ViewModel = class extends ViewModelListener {
   static get = data => new ViewModel(data)
   static descriptor = (vm, category, k, v) => ({
@@ -361,7 +361,7 @@ Composite Pattern은 **위임을 반복**하여 취합한다 = **동적위임**
 
 이것을 ViewModel에 적용해야 한다.
 
-``` js{2-3,12-17,25,34-39,42-43,47-48}
+```js{2-3,12-17,25,34-39,42-43,47-48}
 const ViewModel = class extends ViewModelListener {
   static #subjects = new Set
   static #inited = false
@@ -429,7 +429,7 @@ const ViewModelValue = class {
 이제 Observer 역할을 하는 Binder의 입장을 살펴봐야 한다.
 Binder는  ViewModel이 보내는 **notify를 감지**하여 *ViewModel의 값을 View에 Rendering* 한다.
 
-``` js{7-8,13-25}
+```js{7-8,13-25}
 const Binder = class extends ViewModelListener {
   #items = new Set; #processors = {}
   add (v, _ = type(v, BinderItem)) { this.#items.add(v) }
@@ -483,7 +483,7 @@ Binder --> View : Rendering
 
 위에서 작성한 코드를 직접 사용해보자.
 
-``` js
+```js
 // HTML에 정의된 viewmodel을 scan한다.
 const scanner = new Scanner()
 const binder = scanner.scan(document.querySelector('#target'))

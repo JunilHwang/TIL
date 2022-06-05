@@ -67,7 +67,7 @@ Server <<- MySQL : Data
 
 본격적으로 Vuepress에서 plantuml을 사용할 수 있도록 플러그인을 설치해보자. vuepress는 기본적으로 `markdown-it`을 사용하고 있기 때문에 `markdown-it-plantuml`을 markdown-it에 extend 하면 된다.  
 
-``` sh
+```sh
 # yarn을 사용할 경우
 yarn add markdown-it-plantuml
 
@@ -77,7 +77,7 @@ npm install markdown-it-plantuml
 
 설치가 완료 되었다면, **`.vuepress/config.js`에서 markdown에 plantuml을 extend** 해보자.
 
-``` js {5}
+```js {5}
 module.exports = {
   ... // 앞 내용 생략
   markdown: {

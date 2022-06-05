@@ -1,4 +1,4 @@
-import {defaultTheme, defineUserConfig} from 'vuepress';
+import {defaultTheme, defineUserConfig, viteBundler} from 'vuepress';
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
 import MarkdownItTaskLists from 'markdown-it-task-lists';
@@ -20,7 +20,7 @@ export default defineUserConfig({
     ],
     sidebar,
     lastUpdated: true,
-    smoothScroll: true
+    bundler: viteBundler(),
   }),
   base: '/TIL/',
   head: [
@@ -49,7 +49,7 @@ export default defineUserConfig({
       hostname: 'https://junilhwang.github.io/TIL/',
     }),
     googleAnalyticsPlugin({
-      'ga': 'UA-113171398-2'
+      id: 'UA-113171398-2'
     }),
     sitemap({hostname: 'https://junilhwang.github.io/TIL'}),
     // demoBlock({}),

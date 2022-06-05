@@ -3578,7 +3578,7 @@ vuepress-plugin-sitemap2@^2.0.0-beta.24:
     "@vuepress/utils" "2.0.0-beta.35"
     sitemap "^7.1.1"
 
-vuepress-vite@2.0.0-beta.46:
+vuepress-vite@2.0.0-beta.46, vuepress-vite@^2.0.0-beta.46:
   version "2.0.0-beta.46"
   resolved "https://registry.yarnpkg.com/vuepress-vite/-/vuepress-vite-2.0.0-beta.46.tgz#4f9d82881d54a032a0fe022cbbb9b1fbac7b4ea1"
   integrity sha512-ewXbzX1zG9WR48E98v8nsTd07QypbLWkonzjTrLPO6Kqye4KRrSs77LN4xHRQ4lDs/NSqCH7nw6gUT+KJOwByw==

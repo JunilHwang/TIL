@@ -67,7 +67,7 @@ VuePress를 시작하기 위해선 Npm이나 Yarn 같은 Pacakge Manager 가 필
 ### install
 필자는 yarn을 기준으로 설명할 것이다.
 
-``` sh
+```sh
 # project directory 만들기
 mkdir vuepress-stater
 cd vuepress-starter
@@ -89,7 +89,7 @@ yarn add -D vuepress
 
 ::: 
 
-``` json {8,9,10,11}
+```json {8,9,10,11}
 // pacakge.json
 {
   "name": "TIL",
@@ -112,7 +112,7 @@ yarn add -D vuepress
 
 만약 진행중인 프로젝트가 존재하고, root에 `docs라는 하위 폴더`를 만들고 docs에 문서를 생성할 것이라면 다음과 같이 수정하면 된다.
 
-``` json
+```json
 // package.json
 {
   // ... 앞 내용 생략
@@ -125,7 +125,7 @@ yarn add -D vuepress
 ```
 
 `scripts` 작성이 완료 후에 이제 `README.md`를 만들어야 한다.
-``` md
+```md
 # VuePress Starter
 
 index page 입니다.
@@ -142,7 +142,7 @@ index page 입니다.
 
 이제 작성한 `README.md` 를 vuepress로 확인해보자.
 
-``` sh
+```sh
 # pacakge.json에서 작성한 scripts 명령어를 실행하면 된다.
 yarn docs:dev
 ```
@@ -154,16 +154,16 @@ yarn docs:dev
 ## config
 이제 config를 이용하여 문서를 꾸며보자. 먼저 다음과 같이 `.vuepress` 폴더와 `config.js` 파일을 만들어야 한다.
 
-``` {3,4}
+```{3,4}
 . (vuepress-starter)
   ├─ node_modules
   ├─ .vuepress
   │  └─ config.js
   ├─ README.md
   └─ package.json
-``` 
+```
 
-``` js
+```js
 // config.js
 module.exports = {
   title: 'vuepress-stater', // 사이트 타이틀
@@ -182,7 +182,7 @@ __\* config.js의 내용은 [Config Reference](https://vuepress.vuejs.org/config
 
 `README.md` 에 대한 내용도 약간 보충해보자.
 
-``` md
+```md
 # 문서 제목
 주제 내용
 

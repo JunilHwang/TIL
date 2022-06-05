@@ -26,7 +26,7 @@ Utterances를 사용하는 방법은 매우 간단하다. 사실 공식 사이�
 
 그 다음에 이 `script tag`를 적용할 page에 붙이면 된다.
 
-``` html{3,5,6}
+```html{3,5,6}
 <script
   src="https://utteranc.es/client.js"
   repo="junilhwang/blog-comment" <!-- 댓글(Comment)로 사용할 Repository -->
@@ -49,7 +49,7 @@ Utterances를 사용하는 방법은 매우 간단하다. 사실 공식 사이�
 
 일단 `.vuepress/theme/Comment.vue` 파일을 만들고, 다음과 같이 입력하자.
 
-``` html{14,15,16}
+```html{14,15,16}
 <template>
   <div ref="comment"></div>
 </template>
@@ -72,7 +72,7 @@ export default {
   }
 }
 </script>
-```  
+```
 
 그런데 `global-components`는 **theme에서 사용하는 기능**이기 때문에 theme에 따라 적용 방법이 다르다.
 
@@ -83,17 +83,17 @@ theme를 custom 하지 않았다면, 즉, default theme를 그대로 사용중�
 
 먼저 `.vuepress/theme/index.js` 파일을 만들어야 한다.
 
-``` js
+```js
 // .vuepress/theme/index.js
 module.exports = {
   extend: '@vuepress/theme-default',
   globalLayout: '/layouts/GlobalLayout'
 }
-``` 
+```
 
 그리고 `.vuepress/layouts/GlobalLayout.vue` 에 다음과 같이 입력하면 된다.
 
-``` html
+```html
 <template>
   <div id="global-layout">
     <component :is="$page.path ? 'Layout' : 'NotFound'" />
@@ -114,7 +114,7 @@ Theme를 직접 만들었다면 `.vuepress/theme/layouts/Layout.vue`에서 원�
 
 필자의 경우엔 다음과 같이 했다.
 
-``` html{5}
+```html{5}
 <template>
   <div ...>
     <Home v-if="$page.frontmatter.home"/>
@@ -140,7 +140,7 @@ VuePress에서는 `*.md` 파일에 있는 `VueComponent`를 **html로 변환**�
 그래서 그냥 markdown에 `<Comment />`를 그대로 사용해도 된다.
 
 
-``` md
+```md
 # Utterances
 
 github issue를 comment로 사용하기

@@ -41,7 +41,7 @@ Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록
 
 일단 `package.json`의 `npm scripts`는 아래 처럼 작성해야 한다.
 
-``` json{4,5}
+```json{4,5}
 {
   ... // 앞 내용 생략
   "scripts": {
@@ -54,7 +54,7 @@ Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록
 
 `deploy.sh`는 이렇게 작성해야 한다.
 
-``` sh{10}
+```sh{10}
 #!/usr/bin/env sh
 
 # 오류 발생시 중단한다.
@@ -81,7 +81,7 @@ git commit -m 'deploy'
 git push -f https://github.com/JunilHwang/TIL.git master:gh-pages
 
 cd -
-```  
+```
 
 ## 3. vuepress가 root/docs 기준일 때
 
@@ -98,7 +98,7 @@ cd -
 
 package.json에서 `vuepress cli`에 `docs`를 붙여야한다.
 
-``` json{4,5}
+```json{4,5}
 {
   ... // 앞 내용 생략
   "scripts": {
@@ -111,7 +111,7 @@ package.json에서 `vuepress cli`에 `docs`를 붙여야한다.
 
 `deploy.sh`는 이렇게 작성해야 한다.
 
-``` sh{10}
+```sh{10}
 #!/usr/bin/env sh
 
 # 오류 발생시 중단한다.
@@ -150,7 +150,7 @@ cd -
 
 그건 나의 희망사항 이였고, `deploy.sh는 직접 실행`해야 한다.
 
-``` sh
+```sh
 sh deploy.sh
 ```
 
@@ -174,7 +174,7 @@ sh deploy.sh
 
 배포를 성공하는 것 까진 좋았다. 그런데 gh-pages에는 항상 commit 기록이 1개만 남아있는 상태가 유지된다. 이 때 `deploy.sh`의 내용을 조금 손보면 된다.
 
-``` sh
+```sh
 #!/usr/bin/env sh
 
 # 오류 발생시 중단한다.
@@ -214,7 +214,7 @@ cd -
 
 이렇게 작성된 `deploy.sh`은 다음과 같이 사용하면 된다.
 
-``` sh
+```sh
 sh deploy.sh "커밋 메세지"
 ```
 
@@ -222,7 +222,7 @@ sh deploy.sh "커밋 메세지"
 
 파일명은 대충 `commit.sh` 이라고 지었다. 
 
-``` sh
+```sh
 #!/usr/bin/env sh
 
 # abort on errors
@@ -237,7 +237,7 @@ sh deploy.sh "$1"
 
 사용 방법은 다음과 같다.
 
-``` sh
+```sh
 sh commit.sh "커밋 메세지"
 ```
 

@@ -109,7 +109,7 @@ const ViewModel = class extends ViewModelSubject {
   // ... 생략
   get notifyTarget () { return this } // notifyTarget을 호출하면 ViewModel을 보낸다.
 }
-``` 
+```
 
 이렇게 ViewModelSubject에서 `notifyTarget`이라는 getter method를 통해 ViewModel에게 위임을 할 수 있다.
 

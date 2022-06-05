@@ -131,7 +131,7 @@ _개발망과 인터넷망이 완벽하게 분리된 상태에서 겪는 번거�
 
 :::
 
-``` js
+```js
 {
   // 버전 명시.
   "manifest_version": 2, 
@@ -207,7 +207,7 @@ _개발망과 인터넷망이 완벽하게 분리된 상태에서 겪는 번거�
 
 [Storage API](https://developer.chrome.com/extensions/storage)는 다음과 같이 사용할 수 있다.
 
-``` js
+```js
 import { Store } from './Store.js';
 
 export const ChromeStore = class extends Store {

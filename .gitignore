@@ -1,5 +1,7 @@
 node_modules
 .vuepress/dist
 /.idea/
+.cache
+.temp
 TIL.iml
 yarn-error.log

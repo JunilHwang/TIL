@@ -49,7 +49,7 @@ config.js에 theme를 지정하지 않으면, default는 `@vuepress/theme-defaul
 
 그리고 `Layout.vue` 에 `<Content />` 라는 component를 사용하면, `*.md` 파일의 내용이 보여지게 된다.  
 
-``` html
+```html
 <template>
   <div class="theme-container">
     <Content/>
@@ -58,7 +58,7 @@ config.js에 theme를 지정하지 않으면, default는 `@vuepress/theme-defaul
 ```
 
 `README.md`에 있는 내용이 다음과 같다고 했을 때
-``` md
+```md
 # Custom Theme
 md 파일의 내용은 `<Content />` Component 를 통하여 보여지게 됩니다. 
 ```
@@ -112,7 +112,7 @@ VuePress에는 default theme 또는 custom theme에 사용하기 위해 `global 
 
 site의 `title` `description` `base` `pages` 등을 가져온다.
 
-``` json
+```json
 {
   "title": "VuePress",
   "description": "Vue-powered static site generator",
@@ -133,7 +133,7 @@ site의 `title` `description` `base` `pages` 등을 가져온다.
 
 현재 페이지에 대한 정보를 가져온다.
 
-``` json
+```json
 {
   "title": "Global Computed",
   "frontmatter": {},
@@ -165,7 +165,7 @@ md 파일의 내용은 `<Content />` Component 를 통하여 보여지게 됩니
 
 ## code block
 
-``` js
+```js
 const a = 10;
 ```
 ~~~
@@ -175,7 +175,7 @@ const a = 10;
 이에 대한 방안 중 하나는 **default-theme의 style을 가져다 사용하는 것**이다.
 
 
-``` html{3,6}
+```html{3,6}
 <template>
   <div class="theme-container">
     <Content class="theme-default-content" />
@@ -202,7 +202,7 @@ module.exports = {
 
 `GlobalLayout.vue` 도 만들어줘야 한다.
 
-``` html{3}
+```html{3}
 <template>
   <div id="global-layout">
     <component :is="$page.path ? 'Layout' : 'NotFound'" />
@@ -237,7 +237,7 @@ module.exports = {
 
 다음은 `default`로 입력되어있는 pallete.styl 의 내용이다.
 
-``` stylus
+```stylus
 // showing default values
 $accentColor = #3eaf7c
 $textColor = #2c3e50
@@ -270,7 +270,7 @@ $badgeErrorColor = #DA5961
 
 **.vuepress/config.js**
 
-``` js
+```js
 module.exports = {
   title: 'VuePresesThemeCustom',
   description: '테마 커스텀하기',
@@ -290,7 +290,7 @@ config에 대한 내용은 [공식문서](https://vuepress.vuejs.org/theme/defau
 
 **.vuepress/styles/index.styl**
 
-``` stylus
+```stylus
 // font는 noto serif kr 을 기본으로 사용하도록 한다.
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap');
 body
@@ -323,7 +323,7 @@ h1
 
 **.vuepress/styles/palette.styl**
 
-``` stylus
+```stylus
 $accentColor = #1b52eb
 ```
 
@@ -341,7 +341,7 @@ accentColor는 기본 point 이다. 기본에는 초록색이였음.
 
 `package.json` 에서 npm scripts로 eject 명령을 추가해보자.
 
-``` json{10}
+```json{10}
 // pacakge.json
 {
   "name": "vuepress-stater",
@@ -361,7 +361,7 @@ accentColor는 기본 point 이다. 기본에는 초록색이였음.
 
 그 다음에 terminal에서 `yarn docs:eject` 를 실행하면 된다.
 
-``` sh
+```sh
 yarn docs:eject
 ```
 

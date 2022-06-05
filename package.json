@@ -5,9 +5,9 @@
   "repository": "https://github.com/JunilHwang/TIL",
   "author": "junil-hwang <junil.h@kakao.com>",
   "scripts": {
-    "docs:dev": "vuepress dev",
-    "docs:build": "vuepress build",
-    "docs:eject": "vuepress eject"
+    "docs:dev": "vuepress-vite dev",
+    "docs:build": "vuepress-vite build",
+    "docs:eject": "vuepress-vite eject"
   },
   "license": "MIT",
   "devDependencies": {
@@ -16,7 +16,8 @@
     "vuepress": "^2.0.0-beta.46",
     "vuepress-plugin-demo-block": "^0.7.2",
     "vuepress-plugin-feed2": "^2.0.0-alpha.33",
-    "vuepress-plugin-sitemap2": "^2.0.0-beta.24"
+    "vuepress-plugin-sitemap2": "^2.0.0-beta.24",
+    "vuepress-vite": "^2.0.0-beta.46"
   },
   "dependencies": {
     "markdown-it-plantuml": "^1.4.1",

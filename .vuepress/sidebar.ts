@@ -11,12 +11,12 @@ const Review2020 = `/Review/2020-year`
 const Review2021 = `/Review/2021-year`
 
 export const sidebar = [
-  { title: 'Home', path: '/' },
+  { text: 'Home', link: '/' },
   {
-    title: '사이드 프로젝트',
+    text: '사이드 프로젝트',
     children: [
       {
-        title: '단국대 시간표 만들기',
+        text: '단국대 시간표 만들기',
         children: [
           'dku-schedule-manager/'
         ].map(v => `/side-project/${v}`)
@@ -24,13 +24,13 @@ export const sidebar = [
     ]
   },
   {
-    title: '회고',
+    text: '회고',
     children: [
       {
-        title: '2020년',
+        text: '2020년',
         children: [
           {
-            title: '1분기',
+            text: '1분기',
             children: [
               '01-January/',
               '02-February/',
@@ -39,7 +39,7 @@ export const sidebar = [
             ].map(v => `${Review2020}/${v}`)
           },
           {
-            title: '2분기',
+            text: '2분기',
             children: [
               '04-April/',
               '05-May/',
@@ -48,7 +48,7 @@ export const sidebar = [
             ].map(v => `${Review2020}/${v}`)
           },
           {
-            title: '3분기',
+            text: '3분기',
             children: [
               '07-July/',
               '08-August/',
@@ -56,7 +56,7 @@ export const sidebar = [
             ].map(v => `${Review2020}/${v}`)
           },
           {
-            title: '4분기',
+            text: '4분기',
             children: [
               '10-October/',
               '11-November/',
@@ -64,35 +64,35 @@ export const sidebar = [
             ].map(v => `${Review2020}/${v}`)
           },
           {
-            title: '2020년 회고',
-            path: `${Review2020}/end/`
+            text: '2020년 회고',
+            link: `${Review2020}/end/`
           }
         ]
       },
       {
-        title: '2021년',
+        text: '2021년',
         children: [
           {
-            title: '상반기 회고',
-            path: `${Review2021}/01-First-Quarter/`
+            text: '상반기 회고',
+            link: `${Review2021}/01-First-Quarter/`
           },
           {
-            title: '2021년 회고',
-            path: `${Review2021}/end/`
+            text: '2021년 회고',
+            link: `${Review2021}/end/`
           },
         ]
       }
     ]
   },
   {
-    title: 'Javascript',
+    text: 'Javascript',
     children: [
       {
-        title: 'Domain',
+        text: 'Domain',
         children: ['Execution-Context/'].map(v => `${JavascriptDomain}/${v}`),
       },
       {
-        title: 'Design',
+        text: 'Design',
         children: [
           'Vanilla-JS-Component/',
           'Vanilla-JS-Store/',
@@ -103,45 +103,45 @@ export const sidebar = [
     ],
   },
   {
-    title: 'Vuepresse',
+    text: 'Vuepresse',
     children: ['Starter/', 'Theme/', 'Deploy/', 'Plantuml/', 'Utterances/'].map(v => `${vuepress}/${v}`)
   },
   {
-    title: 'Book Review',
+    text: 'Book Review',
     children: [
       {
-        title: '객체지향의 원리와 이해',
+        text: '객체지향의 원리와 이해',
         children: [
-          { title: '책 소개', path: `${OOPPrinciple}/00-Intro/` },
-          { title: '사람을 사랑한 기술', path: `${OOPPrinciple}/01-Loved-Human/` },
-          { title: '언어로서의 자바', path: `${OOPPrinciple}/02-Java-As-PL/` },
-          { title: '자바와 객체지향', path: `${OOPPrinciple}/03-Java-As-OOP/` },
-          { title: '확장된 객체지향', path: `${OOPPrinciple}/04-Extended-By-Java/` },
-          { title: 'SOLID 원칙', path: `${OOPPrinciple}/05-SOLID/` },
-          { title: '디자인 패턴', path: `${OOPPrinciple}/06-Design-Pattern/` },
-          { title: 'Spring Triangle', path: `${OOPPrinciple}/07-Spring-Triangle/` },
+          { text: '책 소개', link: `${OOPPrinciple}/00-Intro/` },
+          { text: '사람을 사랑한 기술', link: `${OOPPrinciple}/01-Loved-Human/` },
+          { text: '언어로서의 자바', link: `${OOPPrinciple}/02-Java-As-PL/` },
+          { text: '자바와 객체지향', link: `${OOPPrinciple}/03-Java-As-OOP/` },
+          { text: '확장된 객체지향', link: `${OOPPrinciple}/04-Extended-By-Java/` },
+          { text: 'SOLID 원칙', link: `${OOPPrinciple}/05-SOLID/` },
+          { text: '디자인 패턴', link: `${OOPPrinciple}/06-Design-Pattern/` },
+          { text: 'Spring Triangle', link: `${OOPPrinciple}/07-Spring-Triangle/` },
         ]
       },
     ]
   },
   {
-    title: '코드스피츠',
+    text: '코드스피츠',
     children: [
       {
-        title: '거침없는 자바스크립트',
+        text: '거침없는 자바스크립트',
         children: ['Intro/'].map(v => `${CodeSpitzNBJS}/${v}`)
       },
       {
-        title: '객체지향 자바스크립트',
+        text: '객체지향 자바스크립트',
         children: ['01-Intro/', '02-MVVM/', '03-Strategy-Observer/', '04-ISP-Visitor/', '05-Extension/'].map(v => `${CodeSpitzOOJS}/${v}`)
       }
     ]
   },
   {
-    title: '개발환경',
+    text: '개발환경',
     children: [
       {
-        title: 'Gradle',
+        text: 'Gradle',
         children: ['GradleWrapper/'].map(v => `/Gradle/${v}`)
       }
     ]

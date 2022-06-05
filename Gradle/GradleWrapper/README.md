@@ -24,7 +24,7 @@ Gradle을 시작하기 이전에, Gradle을 [다운로드](https://gradle.org/re
 
 ### Linux & MacOS
 
-``` sh {3}
+```sh {3}
 $ mkdir /opt/gradle # gradle 폴더 생성
 $ unzip -d /opt/gradle gradle-6.0.1-bin.zip # 압축 해제
 $ export PATH=$PATH:/opt/gradle/gradle-6.0.1/bin # 환경변수 설정
@@ -44,7 +44,7 @@ $ export PATH=$PATH:/opt/gradle/gradle-6.0.1/bin # 환경변수 설정
 
 환경변수까지 설정이 완료되었으면 `gradle -v` 명령을 통해 정상적으로 설치 되었는지 확인한다.
 
-``` sh
+```sh
 $ gradle -v
 ```
 
@@ -54,7 +54,7 @@ $ gradle -v
 
 프로젝트 폴더에서 다음과 같이 `gradle wrapper` 명령을 실행하면 `gradlew` 파일이 생성된다.
 
-``` sh
+```sh
 # 그냥 실행
 gradle wrapper
 
@@ -73,7 +73,7 @@ gradle wrapper --gradle-version 6.0.1 --distribution-type all
 
 다음은 SpringBoot를 gradle.build에 추가하는 내용이다.
 
-``` groovy
+```groovy
 plugins {
     id 'org.springframework.boot' version '2.2.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'

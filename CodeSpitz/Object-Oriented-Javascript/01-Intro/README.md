@@ -73,7 +73,7 @@ Polymorphism(다형성) = 대체가능성 + 내적일관성
 
 위에 대한 예는 다음과 같다.
 
-``` js
+```js
 const Worker = class {
   run() { console.log('working') }
   print() { this.run() }
@@ -105,7 +105,7 @@ worker.print() // HardWorker의 print. 내적일관성
 
 ::: tip Polymorphism of Prototype
 javascript는 `prototype`을 이용해서 대체가능성과 내적일관성을 유지한다.
-``` js
+```js
 console.log(worker.__proto__ === HardWorker.prototype); // true
 console.log(HardWorker.prototype.__proto__ === Worker.prototype); // true
 console.log(Worker.prototype.__proto__ === Object.prototype); // true
@@ -131,7 +131,7 @@ console.log(worker.__proto__.__proto__.__proto__ === Object.prototype); // true
 
 :::
 
-``` js
+```js
 const EssentialObject = class {
   // hide state: 내부의 상태를 감춘다 = 데이터 은닉
   #name = ''
@@ -402,7 +402,7 @@ _즉, SRP를 통해 문제를 해결하게 되는 과정에 OCP가 만들어진�
 - [DIP(다운캐스팅금지)](#d-ip-dependency-inversion-다운캐스팅금지-원칙)
 - [Polymorphism(추상인터페이스 사용)](#polymorphism)
 
-``` js{16,17,18}
+```js{16,17,18}
 const Worker = class {
   run() { console.log('working') }
   print() { this.run() }
@@ -473,7 +473,7 @@ _대안_
   - 현상으로 부터 원리를 알고 원리를 적용한다.
 - 개별 제어의 차이점만 외부에서 주입 받는다.
 
-``` js{20,21,22}
+```js{20,21,22}
 const renderer = class {
   #view = null
   #base = null
