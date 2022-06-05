@@ -4,6 +4,7 @@ title: Vuepress 시작하기
 description: 현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.
 prev: false
 sidebarDepth: 2
+date: 2020-01-04
 
 ---
 

@@ -3,6 +3,7 @@
 title: 개발자의 글쓰기
 description: 개발자 황준일의 개발 외 글쓰기 시리즈입니다.
 sidebarDepth: 2
+disabledPost: true
 
 ---
 

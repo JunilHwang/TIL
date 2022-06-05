@@ -3,6 +3,7 @@
 title: github page에 배포하기
 description: Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.
 sidebarDepth: 2
+date: 2020-01-06
 
 ---
 
