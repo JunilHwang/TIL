@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap");
+
+body {
+  font-family: 'Noto Serif KR', serif, Nanum Gothic, Malgun Gothic, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+}
+
+:root {
+  scroll-behavior: smooth;
+
+  // brand colors
+  --c-brand: #09F;
+  --c-brand-light: #06F;
+}
+
+@mixin only-pc {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+em {
+  color: #00a;
+}
+
+@include only-pc {
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.navbar {
+  height: auto !important;
+
+  .logo {
+    border-radius: 100%;
+  }
+}
+
+.siteFooter {
+
+  @include only-pc {
+    min-width: 1200px;
+    padding: 20px 0;
+  }
+
+  background: #242729;
+  padding: 20px;
+  font-size: 13px;
+  color: #848d95;
+  position: relative;
+  z-index: 30;
+
+  p {
+    margin: 0;
+  }
+
+  &Copyright {
+    text-transform: uppercase;
+    color: #bbc0c4;
+
+    em {
+      color: inherit;
+    }
+  }
+
+  &Contact {
+    padding-top: 10px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      text-transform: none;
+    }
+  }
+}
+
+.hit {
+  @include only-pc {
+    left: 280px;
+    right: 280px;
+  }
+
+  text-align: right;
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  right: 10px;
+}
+
+.theme-default-content {
+  &.content__default {
+    padding: 50px 20px 0;
+    width: auto;
+    max-width: inherit;
+    min-height: 600px;
+
+    @include only-pc {
+      margin: 0 280px
+    }
+  }
+
+  code {
+    color: #ff3860;
+    background: #f9f1f3;
+    padding: 4px;
+  }
+
+  strong {
+    color: #06f;
+  }
+
+  s {
+    color: #aaa;
+  }
+
+  img {
+    border: 1px solid #bebebe;
+
+    &[alt="uml diagram"], &[alt*="bn"] {
+      border: none;
+    }
+  }
+
+  hr {
+    width: 200px;
+    margin: 40px auto 20px;
+
+    + p {
+      padding-top: 20px;
+    }
+  }
+
+  .custom-block.tip {
+    border-color: #09f;
+  }
+}
+
+.sidebar {
+  @include only-pc {
+    left: 0;
+    border-right-style: dotted;
+    width: 240px;
+    padding-bottom: 100px;
+
+    .sidebar-group-items > li > .sidebar-sub-headers {
+      padding-left: 0;
+      position: fixed;
+      top: 100px;
+      right: 0;
+      width: 270px;
+
+      ul, li {
+        list-style: none;
+      }
+
+      a {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.example-frame {
+  border: 1px solid #06f;
+}

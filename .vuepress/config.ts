@@ -1,27 +1,38 @@
-import {defaultTheme, defineUserConfig, viteBundler} from 'vuepress';
-import MarkdownItPlantuml from 'markdown-it-plantuml';
-import MarkdownItUnderline from 'markdown-it-underline';
-import MarkdownItTaskLists from 'markdown-it-task-lists';
+import {defaultTheme, defineUserConfig, viteBundler, DefaultThemeOptions, Theme} from 'vuepress-vite';
 import {pwaPlugin} from '@vuepress/plugin-pwa';
 import {googleAnalyticsPlugin} from '@vuepress/plugin-google-analytics';
 import {feed} from 'vuepress-plugin-feed2';
 // import demoBlock from 'vuepress-plugin-demo-block';
 import {sitemap} from 'vuepress-plugin-sitemap2';
+import {searchPlugin} from "@vuepress/plugin-search";
+import MarkdownItPlantuml from 'markdown-it-plantuml';
+import MarkdownItUnderline from 'markdown-it-underline';
+import MarkdownItTaskLists from 'markdown-it-task-lists';
+import * as path from "path";
+
 import {sidebar} from "./sidebar";
+
+const localTheme = (options: DefaultThemeOptions): Theme => ({
+  name: 'vuepress-theme-junilhwang',
+  extends: defaultTheme(options),
+  layouts: {
+    Layout: path.resolve(__dirname, 'theme/layouts/Layout.vue'),
+  },
+})
 
 export default defineUserConfig({
   title: '개발자 황준일',
   description: 'Today I leanred',
-  theme: defaultTheme({
+  theme: localTheme({
     logo: 'https://avatars1.githubusercontent.com/u/18749057?s=460&v=4',
-    nav: [
+    navbar: [
       {text: 'Home', link: '/'},
-      {text: 'Repository', link: 'https://github.com/junilhwang/TIL/'},
     ],
     sidebar,
     lastUpdated: true,
-    bundler: viteBundler(),
+    contributors: false,
   }),
+  bundler: viteBundler(),
   base: '/TIL/',
   head: [
     ['meta', {name: "google-site-verification", content: "sHfBWIoCUOYFXJ3b0ulN8jp9jpD8SEW5Wpxvlk-UABA"}],
@@ -52,6 +63,7 @@ export default defineUserConfig({
       id: 'UA-113171398-2'
     }),
     sitemap({hostname: 'https://junilhwang.github.io/TIL'}),
+    searchPlugin({}),
     // demoBlock({}),
   ]
 });
