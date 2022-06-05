@@ -10,7 +10,7 @@ image: /side-project/dku-schedule-manager/11.jpg
 
 # 단국대학교 강의 시간표를 제공하는 서비스를 만들자
 
-<img src="./11.jpg" alt="11" style="max-width: 1000px" />
+<img src="./11.jpg" alt="11" style="max-width: 1000px; width: 100%;" />
 
 > 본 게시물은 이 사이드 프로젝트를 시작하게 된 계기와 어떤 부분에 대해서 고민했는지 다루고 있습니다.
 - [단국대학교 강의 시간표 만들기](https://junilhwang.github.io/dku-schedule-manager/)

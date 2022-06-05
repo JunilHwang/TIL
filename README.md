@@ -38,44 +38,44 @@ hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhw
 
 - 2021년 회고
   
-  - [2021년 회고](/Review/2021-year/end/)
-  - [2021년 상반기 회고](/Review/2021-year/01-First-Quarter/)
+  - [2021년 회고](./Review/2021-year/end/)
+  - [2021년 상반기 회고](./Review/2021-year/01-First-Quarter/)
   
-- [2020년 회고](/Review/2020-year/end/)
+- [2020년 회고](./Review/2020-year/end/)
   
-  - [1분기 회고](/Review/2020-year/01-First-Quarter/)
+  - [1분기 회고](./Review/2020-year/01-First-Quarter/)
     
-    - [1월](/Review/2020-year/01-January/)
-    - [2월](/Review/2020-year/02-February/)
-    - [3월](/Review/2020-year/03-March/)
+    - [1월](./Review/2020-year/01-January/)
+    - [2월](./Review/2020-year/02-February/)
+    - [3월](./Review/2020-year/03-March/)
     
-  - [2분기 회고](/Review/2020-year/02-Second-Quarter/)
+  - [2분기 회고](./Review/2020-year/02-Second-Quarter/)
     
-    - [4월](/Review/2020-year/04-April/)
-    - [5월](/Review/2020-year/05-May/)
-    - [6월](/Review/2020-year/06-June/)
+    - [4월](./Review/2020-year/04-April/)
+    - [5월](./Review/2020-year/05-May/)
+    - [6월](./Review/2020-year/06-June/)
     
   - 3분기 회고
     
-    - [7월](/Review/2020-year/07-July/)
-    - [8월](/Review/2020-year/08-August/)
-    - [9월](/Review/2020-year/09-September/)
+    - [7월](./Review/2020-year/07-July/)
+    - [8월](./Review/2020-year/08-August/)
+    - [9월](./Review/2020-year/09-September/)
     
   - 4분기 회고
     
-    - [10월](/Review/2020-year/10-October/)
-    - [11월](/Review/2020-year/11-November/)
-    - [12월](/Review/2020-year/12-December/)
+    - [10월](./Review/2020-year/10-October/)
+    - [11월](./Review/2020-year/11-November/)
+    - [12월](./Review/2020-year/12-December/)
 
 
 
 ## 일상
 
-- [유년시절 이야기 - Part 01](/Writing/01-유년시절-이야기-1/)
-- [유년시절 이야기 - Part 02](/Writing/01-유년시절-이야기-2/)
-- [유년시절 이야기 - Part 03](/Writing/01-유년시절-이야기-3/)
-- [2021 새해 계획](/Writing/02-2021-계획/)
-- [생각 정리](/Writing/03-생각정리/)
+- [유년시절 이야기 - Part 01](./Writing/01-유년시절-이야기-1/)
+- [유년시절 이야기 - Part 02](./Writing/01-유년시절-이야기-2/)
+- [유년시절 이야기 - Part 03](./Writing/01-유년시절-이야기-3/)
+- [2021 새해 계획](./Writing/02-2021-계획/)
+- [생각 정리](./Writing/03-생각정리/)
   
 ## About
 

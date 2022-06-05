@@ -12,6 +12,11 @@ body {
   --c-brand-light: #06F;
 }
 
+html.dark {
+  --c-brand: #09F;
+  --c-brand-light: #06F;
+}
+
 @mixin only-pc {
   @media (min-width: 1200px) {
     @content;
@@ -38,7 +43,6 @@ em {
 }
 
 .siteFooter {
-
   @include only-pc {
     min-width: 1200px;
     padding: 20px 0;
@@ -88,16 +92,21 @@ em {
   right: 10px;
 }
 
-.theme-default-content {
-  &.content__default {
-    padding: 50px 20px 0;
-    width: auto;
-    max-width: inherit;
-    min-height: 600px;
+.theme-container {
+  .page {
+    padding-left: 0;
+    padding-top: 0;
+  }
+}
 
-    @include only-pc {
-      margin: 0 280px
-    }
+.theme-default-content:not(.custom) {
+  padding: 50px 20px 0;
+  width: auto;
+  max-width: 800px;
+  min-height: 600px;
+
+  @include only-pc {
+    margin: 0 auto;
   }
 
   code {
@@ -131,31 +140,33 @@ em {
     }
   }
 
-  .custom-block.tip {
-    border-color: #09f;
+  .custom-container.tip {
+    border-color: var(--c-brand);
   }
 }
 
 .sidebar {
   @include only-pc {
-    left: 0;
-    border-right-style: dotted;
-    width: 240px;
-    padding-bottom: 100px;
+    left: calc(50% + 440px);
+    border-right: none;
 
-    .sidebar-group-items > li > .sidebar-sub-headers {
-      padding-left: 0;
-      position: fixed;
-      top: 100px;
-      right: 0;
-      width: 270px;
+    > .sidebar-items {
+      border-left: 1px dotted #ddd;
+      padding: 0.5rem 0 0.5rem 1rem;
+      margin: 1.5rem 0;
+    }
 
-      ul, li {
-        list-style: none;
-      }
+    &-heading {
+      display: none;
+    }
 
-      a {
-        font-size: 13px;
+    &-item:not(&-heading) {
+      font-size: 0.95em;
+      padding: 0.35rem 1rem 0.35rem 0;
+      border: none;
+
+      .sidebar-item-children .sidebar-item-children & {
+        padding-left: 0;
       }
     }
   }

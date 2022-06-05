@@ -1,15 +1,17 @@
 <script setup>
 import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue';
 
-import { Footer } from "../components";
+import { Footer, Comment } from "../components";
 </script>
 
 <template>
   <ParentLayout>
     <template #page-bottom>
-      <Footer />
+      <Comment />
     </template>
   </ParentLayout>
+
+  <Footer />
 </template>
 
 <style lang="css">

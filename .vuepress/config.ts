@@ -28,7 +28,7 @@ export default defineUserConfig({
     navbar: [
       {text: 'Home', link: '/'},
     ],
-    sidebar,
+    sidebar: 'auto',
     lastUpdated: true,
     contributors: false,
   }),
