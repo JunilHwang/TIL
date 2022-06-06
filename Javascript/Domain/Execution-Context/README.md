@@ -4,6 +4,7 @@ title: 자바스크립트 실행 컨텍스트
 description: 자바스크립트 실행 컨텍스트에 대해 다룹니다.
 sidebarDepth: 2
 date: 2020-08-01
+tag: javascript, domain
 
 ---
 

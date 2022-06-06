@@ -4,6 +4,7 @@ title: 2020년 1월 회고
 description: 2020년 1월 회고 입니다.
 sidebarDepth: 1
 date: 2020-01-31
+tag: 회고
 
 ---
 

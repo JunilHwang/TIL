@@ -4,6 +4,7 @@ title: MVVM System 개선하기 (1)
 description: 다양한 Design Pattern을 이용하여 MVVM System을 개선하는 방법에 대해 소개합니다.
 sidebarDepth: 2
 date: 2020-02-15
+tag: 코드스피츠, javascript, oop
 
 ---
 

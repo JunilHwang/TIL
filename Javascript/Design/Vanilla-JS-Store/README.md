@@ -4,6 +4,7 @@ title: Vanilla Javascript로 상태관리 시스템 만들기
 description: Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.
 sidebarDepth: 2
 date: 2021-07-26
+tag: javascript, vanilla
 
 ---
 

@@ -4,6 +4,7 @@ title: 유년시절 이야기 (2)
 description: 본격적으로 개발을 시작하게 되는 이야기입니다.
 sidebar: false
 date: 2020-12-16 00:10:00
+tag: 일상
 
 feed:
   enable: true

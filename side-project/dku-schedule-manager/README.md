@@ -4,6 +4,7 @@ title: 단국대학교 강의 시간표를 제공하는 서비스를 만들자
 description: 단국대학교 재학생들을 타겟팅하는 간단한 사이드 프로젝트를 진행했다. 이에 대한 내용을 정리하는 글이다. 
 sidebarDepth: 2
 date: 2022-01-26 11:00:00
+tag: project
 image: /side-project/dku-schedule-manager/11.jpg
 
 ---

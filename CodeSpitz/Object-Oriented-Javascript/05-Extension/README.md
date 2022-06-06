@@ -4,6 +4,7 @@ title: MVVM System 개선하기 (3)
 description: MVVM System을 최종적으로 어떻게 개선하였는지 설명합니다.
 sidebarDepth: 2
 date: 2020-02-28
+tag: 코드스피츠, javascript, oop
 
 ---
 

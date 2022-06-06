@@ -4,6 +4,7 @@ title: None Blocking Javascript 소개
 description: 거침없는(None Blocking) 자바스크립트의 특징들에 대해 소개합니다.
 date: 2020-01-31 13:00:00
 sidebarDepth: 2
+tag: 코드스피츠, javascript, domain
 
 ---
 

@@ -5,6 +5,7 @@ description: 개발자 황준일의 2020년 12월 회고입니다.
 sidebarDepth: 2
 date: 2020-12-30 18:20:00
 hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhwang.github.io/TIL/Review/2020-year/end/
+tag: 회고
 
 ---
 

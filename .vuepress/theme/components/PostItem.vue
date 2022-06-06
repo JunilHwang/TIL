@@ -7,6 +7,8 @@ const props = defineProps<{
   item: IPostItem
 }>();
 
+const emit = defineEmits(['select-tag']);
+
 const thumbnailUri = computed(() => {
   if (props.item.thumbnail) {
     return withBase(props.item.thumbnail);
@@ -16,7 +18,42 @@ const thumbnailUri = computed(() => {
   return withBase(`/assets/no-image-${num}.jpg`);
 });
 
-const createdAt = computed(() => new Date(props.item.createdAt).toDateString())
+const tags = computed(() => {
+  return props.item.tag.split(",").map(v => v.trim());
+});
+
+function fromNow(timestamp: number) {
+  const ms = Date.now() - timestamp;
+  const 초 = 1000;
+  const 분 = 초 * 60;
+  const 시 = 분 * 60;
+  const 일 = 시 * 24;
+  const 주 = 일 * 7;
+
+  if (ms < 분) {
+    return Math.ceil(ms / 초) + '초 전';
+  }
+
+  if (ms < 시) {
+    return Math.ceil(ms / 분) + '분 전';
+  }
+
+  if (ms < 일) {
+    return Math.ceil(ms / 시) + '시 전';
+  }
+
+  if (ms < 주) {
+    return Math.ceil(ms / 일) + '일 전';
+  }
+
+  const date = new Date(timestamp);
+  const y = date.getFullYear();
+  const m = `0${date.getMonth() + 1}`.substr(-2);
+  const d = `0${date.getDate()}`.substr(-2);
+  const h = `0${date.getHours()}`.substr(-2);
+  const i = `0${date.getMinutes()}`.substr(-2);
+  return `${y}-${m}-${d} ${h}:${i}`;
+}
 </script>
 
 <template>
@@ -25,15 +62,28 @@ const createdAt = computed(() => new Date(props.item.createdAt).toDateString())
       <img :src="thumbnailUri" alt="no-image" />
     </router-link>
 
-    <router-link :to="item.path" class="info">
+    <div>
+      <p class="tags">
+        <a
+          v-for="(tag, key) in tags"
+          :key="key"
+          href="#"
+          @click.prevent="emit('select-tag', tag)"
+        >
+          #{{tag}}
+        </a>
+      </p>
 
-      <h4 v-html="item.title" />
+      <router-link :to="item.path" class="info">
 
-      <p v-html="item.description" />
+        <h4 v-html="item.title" />
 
-    </router-link>
+        <p v-html="item.description" />
 
-    <time v-html="createdAt" />
+      </router-link>
+
+      <time v-html="fromNow(item.createdAt)" />
+    </div>
   </article>
 </template>
 
@@ -65,9 +115,30 @@ article {
     }
   }
 
+  > div {
+    padding: 10px;
+  }
+
+  .tags {
+    margin: 0 0 5px;
+
+    a {
+      color: var(--c-text-lighter);
+      font-family: var(--font-family-tag);
+
+      + a {
+        margin-left: 3px;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
   .info {
     display: block;
-    margin: 10px;
+    margin-bottom: 10px;
     letter-spacing: -0.5px;
     height: 120px;
 
@@ -90,7 +161,6 @@ article {
 
   time {
     display: block;
-    margin: 0 10px 10px;
     font-size: 13px;
     color: var(--c-text-quote);
   }

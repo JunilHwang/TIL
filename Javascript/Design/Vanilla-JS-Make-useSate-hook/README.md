@@ -4,6 +4,7 @@ title: Vanilla Javascript로 React UseState Hook 만들기
 description: React의 UseState Hook의 작동방식에 대해 고민해보고, 구현해보고, 최적화하는 내용을 다룹니다.
 sidebarDepth: 2
 date: 2021-08-25
+tag: javascript, vanilla
 
 ---
 

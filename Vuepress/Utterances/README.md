@@ -4,6 +4,7 @@ title: Vuepress + Utterances
 description: Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.
 sidebarDepth: 2
 date: 2020-01-07
+tag: vuepress
 
 ---
 

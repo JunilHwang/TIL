@@ -4,6 +4,7 @@ title: MVVM System 만들기
 description: 객체지향을 통해서 MVVM System을 만드는 과정입니다.
 sidebarDepth: 2
 date: 2020-02-08
+tag: 코드스피츠, javascript, oop
 
 ---
 

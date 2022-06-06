@@ -4,6 +4,7 @@ title: markdown-it-plantuml
 description: plantuml은 markdown에서 uml을 사용할 수 있게 해주는 플러그인이다.
 sidebarDepth: 2
 date: 2020-01-07
+tag: vuepress
 
 ---
 

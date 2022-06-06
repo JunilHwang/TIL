@@ -33,7 +33,7 @@ const posts = glob.sync('!(node_modules)/**/*.md')
     return {
       path: '/' + path.replace('README.md', ''),
       title: getProperty(data, 'title'),
-      tag: getProperty(data, 'tag')?.split(",").map(v => v.trim()),
+      tag: getProperty(data, 'tag'),
       description: getProperty(data, 'description'),
       thumbnail: getProperty(data, 'thumbnail'),
       createdAt: new Date(getProperty(data, 'date') || fs.statSync(path).birthtime).getTime(),
