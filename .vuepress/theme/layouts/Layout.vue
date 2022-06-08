@@ -1,15 +1,26 @@
-<script setup>
+<script lang="ts" setup>
 import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue';
 import {usePageData} from "@vuepress/client";
-import {computed, watch} from "vue";
+import {computed} from "vue";
 
-import {Footer, Comment} from "../components";
+import {Footer, Comment, Posts} from "../components";
+import {IPostItem} from "../../type";
 
 const pageData = usePageData();
 
 const baseURL = `https://junilhwang.github.io/TIL`;
 
-const hitUrl = computed(() => `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${baseURL}${pageData.value.path}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`)
+const hitUrl = computed(() => `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${baseURL}${pageData.value.path}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`);
+
+const { __GLOBAL_POSTS__ } = window as { __GLOBAL_POSTS__: IPostItem[] };
+
+const relationPosts = computed(() => {
+  const { tag } = pageData.value.frontmatter;
+  const lists = __GLOBAL_POSTS__.filter(v => v.tag.includes(tag as string));
+  const current = lists.find(v => v.path === pageData.value.path);
+  const index = lists.indexOf(current);
+  return lists.slice(Math.max(index - 3, 0), index + 3).filter(v => v !== current);
+})
 </script>
 
 <template>
@@ -21,6 +32,11 @@ const hitUrl = computed(() => `https://hits.seeyoufarm.com/api/count/incr/badge.
     </template>
     <template #page-bottom>
       <Comment/>
+
+      <section class="relations" v-if="relationPosts.length > 0">
+        <h2>관련글</h2>
+        <Posts :items="relationPosts" />
+      </section>
     </template>
   </ParentLayout>
 
@@ -37,6 +53,21 @@ const hitUrl = computed(() => `https://hits.seeyoufarm.com/api/count/incr/badge.
   position: absolute;
   top: 80px;
   right: 10px;
+}
+
+.relations {
+  @include only-pc {
+    width: 800px;
+    margin: 50px auto;
+  }
+
+  margin: 50px 0;
+
+  h2 {
+    margin: 0 10px;
+    border: none;
+    font-size: 19px;
+  }
 }
 
 </style>

@@ -197,7 +197,7 @@ Front Server를 Node.js로 구성하여 대용량 트래픽을 더 적은 자원
 일반적인 웹 서비스가 아니기 때문에 고려해야할 것도 많았고,
 완성도에 대한 중요성 또한 다시 한 번 깨우칠 수 있었다.
 
-![전체 구조 bn](https://zuminternet.github.io/images/portal/post/2020-09-11-Zum-Chrome-Extension/12-architecture_01.png)
+![전체 구조 bn](https://zuminternet.github.io/images/front/post/2020-09-11-Zum-Chrome-Extension/12-architecture_01.png)
 
 ~~그런데 또 하고 싶다는 생각이 들진 않는다.~~
 

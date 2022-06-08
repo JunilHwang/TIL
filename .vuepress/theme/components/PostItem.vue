@@ -27,7 +27,7 @@ const thumbnailUri = computed(() => {
 });
 
 const tags = computed(() => {
-  return props.item.tag.split(",").map(v => v.trim());
+  return props.item.tag?.split(",").map(v => v.trim());
 });
 
 function fromNow(timestamp: number) {
@@ -71,7 +71,7 @@ function fromNow(timestamp: number) {
     </router-link>
 
     <div>
-      <p class="tags">
+      <p class="tags" v-if="tags">
         <a
           v-for="(tag, key) in tags"
           :key="key"
