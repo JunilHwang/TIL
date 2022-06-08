@@ -42,6 +42,8 @@ const posts = glob.sync('!(node_modules)/**/*.md')
   .filter(v => Boolean(v?.title))
   .sort((a, b) => b.createdAt - a.createdAt);
 
+fs.writeFileSync(path.join(__dirname, "/public/posts.json"), JSON.stringify(posts));
+
 export default defineUserConfig({
   title: '개발자 황준일',
   description: 'Today I leanred',
@@ -56,9 +58,6 @@ export default defineUserConfig({
     contributors: false,
   }),
   bundler: viteBundler(),
-  define: {
-    __GLOBAL_POSTS__: posts,
-  },
   base: '/TIL/',
   head: [
     ['meta', {name: "google-site-verification", content: "sHfBWIoCUOYFXJ3b0ulN8jp9jpD8SEW5Wpxvlk-UABA"}],
@@ -72,7 +71,6 @@ export default defineUserConfig({
     ['meta', {name: "msapplication-TileColor", content: "#3a0839"}],
     ['meta', {name: "msapplication-config", content: "/TIL/browserconfig.xml"}],
     ['meta', {name: "theme-color", content: "#ffffff"}],
-    ['script', {}, `const __GLOBAL_POSTS__ = ${JSON.stringify(posts)}`]
   ],
   extendsMarkdown: md => {
     md.use(MarkdownItPlantuml);

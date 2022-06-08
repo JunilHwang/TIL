@@ -3,29 +3,30 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 import {computed, onMounted, reactive} from "vue";
 
 import {Footer, Posts} from "../components";
-import {IPostItem} from "../../type";
+import {usePosts} from "../hooks";
 
 const PAGE_SIZE = 9;
 const PAGE_KEY = '__CURRENT_PAGE__';
 
 const state = reactive({
-  posts: (globalThis as { __GLOBAL_POSTS__: IPostItem[] }).__GLOBAL_POSTS__  || [],
   currentPage: 1,
   selectedTag: '전체',
-})
+});
+
+const posts = usePosts();
 
 const tagsAndCount = computed(() =>
-  state.posts.reduce((acc, item) => {
+  posts.value.reduce((acc, item) => {
     const tags = item.tag.split(",").map(v => v.trim());
     for (const tag of tags) {
       acc[tag] = (acc[tag] || 0) + 1;
     }
     return acc;
-  }, {['전체']: state.posts.length} as Record<string, number>));
+  }, {['전체']: posts.value.length} as Record<string, number>));
 
 const selectedTagItems = computed(() => {
-  const { selectedTag } = state;
-  return selectedTag === '전체' ? state.posts : state.posts.filter(v => v.tag.includes(selectedTag));
+  const {selectedTag} = state;
+  return selectedTag === '전체' ? posts.value : posts.value.filter(v => v.tag.includes(selectedTag));
 })
 
 const currentItems = computed(() => {
@@ -46,7 +47,7 @@ function selectTag(tag: string) {
   selectPage(1);
 }
 
-onMounted(() => {
+onMounted(async () => {
   state.currentPage = Number(sessionStorage.getItem(PAGE_KEY) || 1);
 })
 </script>
@@ -63,11 +64,11 @@ onMounted(() => {
             :class="{ active: tag === state.selectedTag }"
             @click.prevent="selectTag(tag)"
           >
-            #{{ tag.toUpperCase() }} <strong v-html="count" />
+            #{{ tag.toUpperCase() }} <strong v-html="count"/>
           </a>
         </div>
 
-        <Posts :items="currentItems" @select-tag="selectTag" />
+        <Posts :items="currentItems" @select-tag="selectTag"/>
 
         <div class="pagination">
           <button
@@ -82,7 +83,7 @@ onMounted(() => {
     </template>
   </ParentLayout>
 
-  <Footer />
+  <Footer/>
 </template>
 
 <style lang="scss" scoped>

@@ -3,9 +3,10 @@ import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
 import {usePageData} from "@vuepress/client";
 import {computed} from "vue";
 
-import {Footer, Comment, Posts} from "../components";
-import {IPostItem} from "../../type";
+import {Comment, Footer, Posts} from "../components";
+import {usePosts} from "../hooks";
 
+const posts = usePosts();
 const pageData = usePageData();
 
 const baseURL = `https://junilhwang.github.io/TIL`;
@@ -13,10 +14,9 @@ const baseURL = `https://junilhwang.github.io/TIL`;
 const hitUrl = computed(() => `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${baseURL}${pageData.value.path}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`);
 
 const relationPosts = computed(() => {
-  const { __GLOBAL_POSTS__ = [] } = globalThis as { __GLOBAL_POSTS__: IPostItem[] };
   const { tag } = pageData.value.frontmatter;
   if (!tag) return [];
-  const lists = __GLOBAL_POSTS__.filter(v => v.tag.includes(tag as string));
+  const lists = posts.value.filter(v => v.tag.includes(tag as string));
   const current = lists.find(v => v.path === pageData.value.path);
   const index = lists.indexOf(current);
   return lists.slice(Math.max(index - 3, 0), index + 3).filter(v => v !== current);
