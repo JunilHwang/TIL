@@ -45,6 +45,7 @@ function selectPage(page: number) {
 
 function selectTag(tag: string) {
   state.selectedTag = tag.trim();
+  selectPage(1);
 }
 </script>
 

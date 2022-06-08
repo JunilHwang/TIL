@@ -103,18 +103,23 @@ em {
     color: #ff3860;
     background: #f9f1f3;
     padding: 4px;
+
+    .dark & {
+      color: var(--c-text-lighter);
+      background-color: var(--c-bg-light);
+    }
   }
 
   strong {
-    color: #06f;
+    color: var(--c-brand-light);
   }
 
   s {
-    color: #aaa;
+    color: var(--c-text-quote);
   }
 
   img {
-    border: 1px solid #bebebe;
+    border: 1px solid var(--c-border-dark);
 
     &[alt="uml diagram"],
     &[alt*="bn"] {
@@ -142,7 +147,7 @@ em {
     border-right: none;
 
     > .sidebar-items {
-      border-left: 1px dotted #ddd;
+      border-left: 1px solid #ddd;
       padding: 0.5rem 0 0.5rem 1rem;
       margin: 1.5rem 0;
     }

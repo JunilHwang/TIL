@@ -2,6 +2,7 @@
 import {defineProps, computed} from "vue";
 import {IPostItem} from "../../type";
 import {withBase} from "@vuepress/client";
+import {TimeIcon} from "./icons";
 
 const props = defineProps<{
   item: IPostItem
@@ -17,7 +18,10 @@ const thumbnailUri = computed(() => {
   }
 
   if (thumbnail.startsWith("~")) {
-    return "";
+    return new URL(
+      thumbnail.replace("~", "."),
+      import.meta.url.replace(".vuepress/theme/components/PostItem.vue", "")
+    ).href;
   }
   return thumbnail;
 });
@@ -86,7 +90,10 @@ function fromNow(timestamp: number) {
 
       </router-link>
 
-      <time v-html="fromNow(item.createdAt)" />
+      <time>
+        <TimeIcon />
+        {{ fromNow(item.createdAt) }}
+      </time>
     </div>
   </article>
 </template>
@@ -165,9 +172,15 @@ article {
   }
 
   time {
-    display: block;
+    display: flex;
+    align-items: center;
     font-size: 13px;
     color: var(--c-text-quote);
+
+    svg {
+      width: 18px;
+      margin-right: 3px;
+    }
   }
 }
 </style>

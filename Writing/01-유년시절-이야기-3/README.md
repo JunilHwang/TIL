@@ -3,8 +3,9 @@
 title: 유년시절 이야기 (3)
 description: 짧았지만 강렬했던, 그리운 시절의 이야기입니다.
 sidebar: false
-date: 2020-12-16 00:10:00
+date: 2020-11-23 01:18:00
 tag: 일상
+thumbnail: https://user-images.githubusercontent.com/18749057/99907933-ef307380-2d22-11eb-9058-638754596cf8.jpg
 
 feed:
   enable: true

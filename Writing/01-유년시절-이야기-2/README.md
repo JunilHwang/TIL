@@ -3,8 +3,9 @@
 title: 유년시절 이야기 (2)
 description: 본격적으로 개발을 시작하게 되는 이야기입니다.
 sidebar: false
-date: 2020-12-16 00:10:00
+date: 2020-11-09 10:16:00
 tag: 일상
+thumbnail: https://user-images.githubusercontent.com/18749057/98434003-2130bb80-210f-11eb-80da-f1120f2cea2e.png
 
 feed:
   enable: true
