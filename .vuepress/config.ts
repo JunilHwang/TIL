@@ -66,11 +66,11 @@ export default defineUserConfig({
     ['link', {rel: "apple-touch-icon", sizes: "180x180", href: "/TIL/assets/favicons/apple-touch-icon.png"}],
     ['link', {rel: "icon", type: "image/png", sizes: "32x32", href: "/TIL/assets/favicons/favicon-32x32.png"}],
     ['link', {rel: "icon", type: "image/png", sizes: "16x16", href: "/TIL/assets/favicons/favicon-16x16.png"}],
-    ['link', {rel: "manifest", href: "/manifest.webmanifest"}],
+    ['link', {rel: "manifest", href: "/TIL/manifest.webmanifest"}],
     ['link', {rel: "mask-icon", href: "/TIL/assets/favicons/safari-pinned-tab.svg", color: "#3a0839"}],
     ['link', {rel: "shortcut icon", href: "/TIL/assets/favicons/favicon.ico"}],
     ['meta', {name: "msapplication-TileColor", content: "#3a0839"}],
-    ['meta', {name: "msapplication-config", content: "/browserconfig.xml"}],
+    ['meta', {name: "msapplication-config", content: "/TIL/browserconfig.xml"}],
     ['meta', {name: "theme-color", content: "#ffffff"}],
   ],
   extendsMarkdown: md => {
@@ -79,10 +79,6 @@ export default defineUserConfig({
     md.use(MarkdownItTaskLists);
   },
   plugins: [
-    pwaPlugin({
-      serviceWorker: true,
-      updatePopup: true
-    }),
     feed({
       hostname: 'https://junilhwang.github.io/TIL/',
     }),

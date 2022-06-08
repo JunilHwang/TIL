@@ -12,10 +12,10 @@ const baseURL = `https://junilhwang.github.io/TIL`;
 
 const hitUrl = computed(() => `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${baseURL}${pageData.value.path}&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true`);
 
-const { __GLOBAL_POSTS__ } = window as { __GLOBAL_POSTS__: IPostItem[] };
-
 const relationPosts = computed(() => {
+  const { __GLOBAL_POSTS__ = [] } = globalThis as { __GLOBAL_POSTS__: IPostItem[] };
   const { tag } = pageData.value.frontmatter;
+  if (!tag) return [];
   const lists = __GLOBAL_POSTS__.filter(v => v.tag.includes(tag as string));
   const current = lists.find(v => v.path === pageData.value.path);
   const index = lists.indexOf(current);

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue';
-import {computed, reactive} from "vue";
+import {computed, onMounted, reactive} from "vue";
 
 import {Footer, Posts} from "../components";
 import {IPostItem} from "../../type";
@@ -9,8 +9,8 @@ const PAGE_SIZE = 9;
 const PAGE_KEY = '__CURRENT_PAGE__';
 
 const state = reactive({
-  posts: (window as { __GLOBAL_POSTS__ }).__GLOBAL_POSTS__ as IPostItem[],
-  currentPage: Number(sessionStorage.getItem(PAGE_KEY) || 1),
+  posts: (globalThis as { __GLOBAL_POSTS__: IPostItem[] }).__GLOBAL_POSTS__  || [],
+  currentPage: 1,
   selectedTag: '전체',
 })
 
@@ -45,6 +45,10 @@ function selectTag(tag: string) {
   state.selectedTag = tag.trim();
   selectPage(1);
 }
+
+onMounted(() => {
+  state.currentPage = Number(sessionStorage.getItem(PAGE_KEY) || 1);
+})
 </script>
 
 <template>
