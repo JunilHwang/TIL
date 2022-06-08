@@ -5,6 +5,7 @@ description: Gradle Wrapper는 Gradle을 각 개발자나 CI 서버에 깔지 �
 sidebarDepth: 2
 date: 2020-01-14
 tag: 개발환경
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/c/cb/Gradle_logo.png
 
 ---
 

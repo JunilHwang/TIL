@@ -5,6 +5,7 @@ description: 개발자 황준일의 2020년 2분기 회고입니다.
 sidebarDepth: 2
 date: 2020-07-01
 tag: 회고
+thumbnail: https://user-images.githubusercontent.com/18749057/89799319-4772a980-db68-11ea-8c89-02751f863561.png
 
 ---
 

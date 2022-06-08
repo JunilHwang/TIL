@@ -5,6 +5,7 @@ description: 김종민님이 저술한 "스프링 입문을 위한 (자바) 객�
 sidebarDepth: 2
 date: 2020-02-17 13:00:00
 tag: 책
+thumbnail: http://image.kyobobook.co.kr/images/book/xlarge/940/x9788998139940.jpg
 
 ---
 

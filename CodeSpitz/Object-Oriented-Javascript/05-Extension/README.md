@@ -5,6 +5,7 @@ description: MVVM System을 최종적으로 어떻게 개선하였는지 설명�
 sidebarDepth: 2
 date: 2020-02-28
 tag: 코드스피츠, javascript, oop
+thumbnail: https://cphinf.pstatic.net/mooc/20171016_5/15081473670537g5Dm_PNG/title.png?type=w760
 
 ---
 

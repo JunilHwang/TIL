@@ -5,6 +5,7 @@ description: 객체지향이라는 개념이 나오기 까지의 이유와 간�
 date: 2020-02-18 13:00:00
 sidebarDepth: 2
 tag: 책
+thumbnail: http://image.kyobobook.co.kr/images/book/xlarge/940/x9788998139940.jpg
 
 ---
 

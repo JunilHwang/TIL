@@ -5,6 +5,7 @@ description: 개발자 황준일의 2020년 10월 회고입니다.
 sidebarDepth: 2
 date: 2020-12-28 23:30:00
 tag: 회고
+thumbnail: https://junilhwang.github.io/TIL/assets/img/2.bd224dd3.jpg
 
 ---
 

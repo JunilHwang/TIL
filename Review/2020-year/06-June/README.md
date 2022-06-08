@@ -5,6 +5,7 @@ description: 2020년 6월 회고 입니다.
 sidebarDepth: 2
 date: 2020-06-30
 tag: 회고
+thumbnail: https://user-images.githubusercontent.com/18749057/87239161-d778e280-c446-11ea-808f-2f3e2d8966e4.png
 
 ---
 

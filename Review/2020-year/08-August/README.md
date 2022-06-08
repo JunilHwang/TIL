@@ -5,6 +5,7 @@ description: 2020년 8월 회고 입니다.
 sidebarDepth: 2
 date: 2020-08-31
 tag: 회고
+thumbnail: https://user-images.githubusercontent.com/18749057/95019363-e666de00-069f-11eb-86fe-e5faad159579.png
 
 ---
 

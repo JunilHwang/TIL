@@ -5,6 +5,7 @@ description: 2020년 1분기 회고 입니다.
 sidebarDepth: 2
 date: 2020-04-01
 tag: 회고
+thumbnail: https://user-images.githubusercontent.com/18749057/80858428-2ca0b700-8c94-11ea-8478-a0b8c665243d.png
 
 ---
 

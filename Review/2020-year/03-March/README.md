@@ -5,6 +5,7 @@ description: 2020년 3월 회고 입니다.
 sidebarDepth: 2
 date: 2020-03-31
 tag: 회고
+thumbnail: https://user-images.githubusercontent.com/18749057/80858554-d54f1680-8c94-11ea-9227-39d1c34e6196.png
 
 ---
 

@@ -5,6 +5,7 @@ description: 개발자 황준일의 2020년 11월 회고입니다.
 sidebarDepth: 2
 date: 2020-12-29 23:00:00
 tag: 회고
+thumbnail: ~/Review/2020-year/11-November/20.jpg
 
 ---
 

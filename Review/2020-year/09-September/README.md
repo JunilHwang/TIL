@@ -5,6 +5,7 @@ description: 개발자 황준일의 2020년 9월 회고입니다.
 sidebarDepth: 2
 date: 2020-09-30
 tag: 회고
+thumbnail: https://user-images.githubusercontent.com/18749057/96290347-689cbe00-1021-11eb-873c-612efe8ec1d7.png
 
 ---
 

@@ -5,6 +5,7 @@ description: 프로그래밍 언어로서의 Java가 가지고 있는 여러 가
 date: 2020-02-19 13:00:00
 sidebarDepth: 2
 tag: 책
+thumbnail: http://image.kyobobook.co.kr/images/book/xlarge/940/x9788998139940.jpg
 
 ---
 

@@ -10,12 +10,16 @@ const props = defineProps<{
 const emit = defineEmits(['select-tag']);
 
 const thumbnailUri = computed(() => {
-  if (props.item.thumbnail) {
-    return withBase(props.item.thumbnail);
+  const { thumbnail } = props.item;
+  if (!thumbnail) {
+    const num = [1, 2, 3].sort(() => Math.random() - 0.5).pop();
+    return withBase(`/assets/no-image-${num}.jpg`);
   }
 
-  const num = [1, 2, 3].sort(() => Math.random() - 0.5).pop();
-  return withBase(`/assets/no-image-${num}.jpg`);
+  if (thumbnail.startsWith("~")) {
+    return "";
+  }
+  return thumbnail;
 });
 
 const tags = computed(() => {
@@ -112,6 +116,7 @@ article {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border: none;
     }
   }
 
