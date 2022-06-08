@@ -81,6 +81,9 @@ export default defineUserConfig({
   plugins: [
     feed({
       hostname: 'https://junilhwang.github.io/TIL/',
+      rss: true,
+      atom: true,
+      json: true,
     }),
     googleAnalyticsPlugin({
       id: 'UA-113171398-2'
