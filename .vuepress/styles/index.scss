@@ -61,20 +61,6 @@ em {
     }
   }
 }
-
-.hit {
-  @include only-pc {
-    left: 280px;
-    right: 280px;
-  }
-
-  text-align: right;
-  position: absolute;
-  top: 80px;
-  left: 10px;
-  right: 10px;
-}
-
 .theme-container {
   .page {
     padding-left: 0;
@@ -161,6 +147,16 @@ em {
           bottom: 0;
           width: 1px;
           background: var(--c-text);
+        }
+
+        & + .sidebar-item-children {
+          .sidebar-item:not(p.sidebar-heading) {
+            &.active {
+              &::before {
+                left: calc(-2rem - 1px);
+              }
+            }
+          }
         }
       }
     }
