@@ -54,7 +54,6 @@ export default defineUserConfig({
     sidebar: 'auto',
     lastUpdated: true,
     contributors: false,
-    posts,
   }),
   bundler: viteBundler(),
   define: {
@@ -69,9 +68,11 @@ export default defineUserConfig({
     ['link', {rel: "manifest", href: "/TIL/manifest.webmanifest"}],
     ['link', {rel: "mask-icon", href: "/TIL/assets/favicons/safari-pinned-tab.svg", color: "#3a0839"}],
     ['link', {rel: "shortcut icon", href: "/TIL/assets/favicons/favicon.ico"}],
+    ['link', {rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap"}],
     ['meta', {name: "msapplication-TileColor", content: "#3a0839"}],
     ['meta', {name: "msapplication-config", content: "/TIL/browserconfig.xml"}],
     ['meta', {name: "theme-color", content: "#ffffff"}],
+    ['script', {}, `const __GLOBAL_POSTS__ = ${JSON.stringify(posts)}`]
   ],
   extendsMarkdown: md => {
     md.use(MarkdownItPlantuml);

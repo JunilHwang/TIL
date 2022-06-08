@@ -7,7 +7,7 @@
   "scripts": {
     "docs:dev": "vuepress-vite dev",
     "docs:build": "vuepress-vite build",
-    "docs:eject": "vuepress-vite eject"
+    "docs:serve": "vuepress-vite serve"
   },
   "license": "MIT",
   "devDependencies": {
