@@ -4,7 +4,7 @@ title: 주니어 개발자의 2021년 회고
 description: 주니어 개발자의 2021년 회고
 sidebarDepth: 1
 date: 2021-12-31 23:40:00
-thumbnail: ~/Review/2021-year/end/thumbnail.jpg
+thumbnail: https://user-images.githubusercontent.com/18749057/172793231-f0ddc40c-1309-4c64-a74a-4522a4ef4ef2.png
 hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjunilhwang.github.io%2FTIL%2FReview%2F2021-year%2Fend%2F&count_bg=%230099FF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=true
 tag: 회고
 

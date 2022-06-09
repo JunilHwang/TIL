@@ -6,7 +6,7 @@ sidebarDepth: 3
 date: 2021-01-07 11:00:00
 hitUrl: https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://junilhwang.github.io/TIL/Review/2020-year/end/
 tag: 회고
-thumbnail: ~/Review/2020-year/end/thumbnail.jpg
+thumbnail: https://user-images.githubusercontent.com/18749057/172793727-c9a2ab28-1038-4531-b74e-26ca75d3c6da.png
 
 ---
 

@@ -4,7 +4,7 @@ title: Vanilla Javascript로 가상돔(VirtualDOM) 만들기
 description: React와 Vue에서 사용되고 있는 가상돔(VirtualDOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.
 sidebarDepth: 2
 date: 2021-08-18
-thumbnail: ~/Javascript/Design/Vanilla-JS-Virtual-DOM/9.png
+thumbnail: https://user-images.githubusercontent.com/18749057/172793454-927322f5-e7e7-48f4-8aa6-a79350b219e3.png
 tag: javascript, vanilla
 
 ---

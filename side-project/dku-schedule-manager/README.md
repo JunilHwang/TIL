@@ -5,7 +5,7 @@ description: 단국대학교 재학생들을 타겟팅하는 간단한 사이드
 sidebarDepth: 2
 date: 2022-01-26 11:00:00
 tag: project
-thumbnail: ~/side-project/dku-schedule-manager/11.jpg
+thumbnail: https://user-images.githubusercontent.com/18749057/172793209-17b5d1e9-a196-4019-8e36-b7024d533bf2.png
 
 ---
 

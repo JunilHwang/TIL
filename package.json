@@ -6,8 +6,7 @@
   "author": "junil-hwang <junil.h@kakao.com>",
   "scripts": {
     "docs:dev": "vuepress-vite dev",
-    "docs:build": "vuepress-vite build",
-    "docs:serve": "vuepress-vite serve"
+    "docs:build": "vuepress-vite build"
   },
   "license": "MIT",
   "devDependencies": {
