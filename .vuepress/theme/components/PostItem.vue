@@ -99,15 +99,40 @@ function fromNow(timestamp: number) {
 </template>
 
 <style lang="scss" scoped>
-article {
-  border-radius: 3px;
-  overflow: hidden;
-  background: var(--c-bg);
-  box-shadow: 0 4px 16px 0 var(--c-bg-box-shadow);
-  transition: transform 0.3s;
+@import "../../styles/mixins";
 
-  &:hover {
-    transform: translateY(-5px);
+article {
+  position: relative;
+  transition: 0.3s;
+  box-shadow: 0 4px 16px 0 var(--c-bg-box-shadow);
+  border: 1px solid transparent;
+  border-radius: 3px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.3s;
+    background: #000;
+    z-index: -1;
+    border-radius: 3px;
+  }
+
+  @include only-pc {
+    $size: 7px;
+    &:hover {
+      border-color: #000;
+      transform: translateY(-$size) translateX($size);
+
+      &::before {
+        opacity: 1;
+        transform: translateY($size) translateX(-$size);
+      }
+    }
   }
 
   .figure {
@@ -115,6 +140,8 @@ article {
     margin: 0;
     position: relative;
     padding-top: 60%;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
 
     img {
       position: absolute;
@@ -129,6 +156,8 @@ article {
 
   > div {
     padding: 10px;
+    background: var(--c-bg);
+    border-radius: 0 0 3px 3px;
   }
 
   .tags {
