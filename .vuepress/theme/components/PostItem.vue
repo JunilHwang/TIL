@@ -47,7 +47,7 @@ function fromNow(timestamp: number) {
   }
 
   if (ms < 일) {
-    return Math.ceil(ms / 시) + '시 전';
+    return Math.ceil(ms / 시) + '시간 전';
   }
 
   if (ms < 주) {
