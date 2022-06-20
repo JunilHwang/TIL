@@ -1,7 +1,7 @@
 ---
 
 title: 인프런 심야 FE 네트워킹 후기
-description: 개발에 입문하기 이전의 유년시절 이야기입니다.
+description: 인프런의 심야 FE 네트워킹에 참여했습니다. 발표를 보면서 생각했던 내용과 네트워킹에 대한 내용을 다룹니다.
 date: 2022-06-19 21:45:00
 tag: 일상
 thumbnail: https://user-images.githubusercontent.com/18749057/174490151-0aa33935-a28c-4157-a7ae-07ec3f506d62.jpg
