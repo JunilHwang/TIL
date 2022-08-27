@@ -2,6 +2,14 @@
   text-align: left;
 }
 
+.reveal h1 {
+  color: #025bfd;
+}
+
+.reveal h4 {
+  font-size: 1.4em;
+}
+
 .reveal p {
   text-align: left;
 }
@@ -12,6 +20,36 @@
 
 .reveal ol {
   display: block;
+}
+
+.reveal li {
+  line-height: 2;
+}
+
+.reveal a {
+  color: #09F;
+}
+
+.reveal a:hover {
+  color: #09F;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.reveal strong {
+  color: #06F;
+}
+
+.reveal :not(.code-wrapper) > code {
+  color: #ff3860;
+  background: #f9f1f3;
+  padding: 4px;
+  border: 1px solid #ff3860;
+  border-radius: 5px;
+}
+
+.reveal pre code {
+  max-height: inherit;
 }
 
 .reveal .controls {
@@ -47,7 +85,9 @@
   display: block;
   position: absolute;
   font-size: 0.85em;
-  right: 2em;
+  left: calc(50% - 150px);
+  width: 300px;
+  text-align: center;
   bottom: 0;
   opacity: 0.5;
 }

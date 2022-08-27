@@ -3,6 +3,7 @@ import RevealMarkdown from '../node_modules/reveal.js/plugin/markdown/markdown.e
 import RevealHighlight from '../node_modules/reveal.js/plugin/highlight/highlight.esm.js';
 
 const reveal = new Reveal({
+  plugins: [RevealMarkdown, RevealHighlight],
   width: 1800,
   height: 1100,
   controls: true,
@@ -10,6 +11,9 @@ const reveal = new Reveal({
   history: true,
   center: true,
   slideNumber: true,
-  plugins: [RevealMarkdown, RevealHighlight]
 })
-reveal.initialize();
+reveal.initialize({
+  markdown:{
+
+  }
+});
