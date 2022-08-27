@@ -1,0 +1,53 @@
+.reveal * {
+  text-align: left;
+}
+
+.reveal p {
+  text-align: left;
+}
+
+.reveal ul {
+  display: block;
+}
+
+.reveal ol {
+  display: block;
+}
+
+.reveal .controls {
+  bottom: 60px;
+}
+
+.reveal .slide-number {
+  padding: 0;
+  left: 1em;
+  right: 1em;
+  bottom: 1em;
+  font-size: 0.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: right;
+  background: none;
+  color: var(--r-main-color)
+}
+
+.reveal .slide-number::before {
+  content: "";
+  display: block;
+  width: 246px;
+  height: 42px;
+  background: url(assets/logo.png) no-repeat center / cover;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.reveal .slide-number::after {
+  content: "ⓒ  NAVER Connect Foundation";
+  display: block;
+  position: absolute;
+  font-size: 0.85em;
+  right: 2em;
+  bottom: 0;
+  opacity: 0.5;
+}
