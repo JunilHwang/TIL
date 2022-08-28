@@ -321,14 +321,12 @@ req.end();
 ![스크린샷 2022-08-22 오후 11.37.29.png](../images/01-node-js/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2022-08-22_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_11.37.29.png)
 
 
-#### process.argv
-#### process.argv0
+#### process.argv<br />process.argv0
 
 ![Untitled](../images/01-node-js/Untitled%2011.png)
 
 
-#### process.cwd()
-#### process.env.PWD
+#### process.cwd()<br />process.env.PWD
 
   ![Untitled](../images/01-node-js/Untitled%2012.png)
 
@@ -342,17 +340,17 @@ req.end();
 - **stdout** 표준 출력
 
 
-#### `process.stdin.*`
+#### process.stdin.*
 
 ![Untitled](../images/01-node-js/Untitled%2014.png)
 
 
-#### `process.stdout.*`
+#### process.stdout.*
 
 ![Untitled](../images/01-node-js/Untitled%2015.png)
 
 
-#### 번외: `readline`
+#### 번외: readline
 [https://nodejs.org/dist/latest-v16.x/docs/api/readline.html#readline](https://nodejs.org/dist/latest-v16.x/docs/api/readline.html#readline)
 
 ![Untitled](../images/01-node-js/Untitled%2016.png)
@@ -369,6 +367,22 @@ const rl = readline.createInterface({
 rl.question('당신의 이름을 입력해주세요: ', (answer) => {
   console.log(`당신의 이름을 거꾸로 하면: ${[ ...answer ].reverse().join('')}`);
   rl.close();
+});
+```
+
+
+```js[|1|3|6|8-12]
+const readline = require('readline');
+
+readline.emitKeypressEvents(process.stdin);
+
+if (process.stdin.isTTY)
+  process.stdin.setRawMode(true);
+
+process.stdin.on('keypress', (chunk, key) => {
+  console.log(key.name);
+  if (key && key.name === 'q')
+    process.exit();
 });
 ```
 
@@ -459,194 +473,310 @@ main();
 <img alt="Untitled" height="700" src="../images/01-node-js/Untitled%2022.png"/>
 
 
-### (9) command
+### (9) command <!-- .element style="margin: -100px 0 100px;" -->
 
-```bash
+```Shell Session[1|2]
 $ node -p "1 + 2"
 3
 ```
+<!-- .element class="fragment" -->
 
-```bash
+```Shell Session[1|2|3]
 $ COMPUTED = $(node -p "1 + 2")
 $ echo $COMPUTED
 3
 ```
+<!-- .element class="fragment" -->
 
-```bash
+```Shell Session[1|2]
 $ echo "node process properties: $(node -p "Object.keys(process).length")"
 node process properties: 74
 ```
+<!-- .element class="fragment" -->
 
-```bash
+```Shell Session
 $ echo "timestamp: $(node -p "Date.now()")"
-$ echo "random: $(node -p "Math.round(Math.random() * 1000000000)")"
 ```
+<!-- .element class="fragment" -->
+
+```Shell Session
+$ echo "random: $(node -p "Math.random().toString().slice(2)")"
+```
+<!-- .element class="fragment" -->
+
 
 
 ## 3. NodeJS Package Manager
+
 
 ### (1) 소개
 
 [https://docs.npmjs.com/about-npm](https://docs.npmjs.com/about-npm)
 
+<div class="r-stack">
+
 > npm is the world's largest software registry. Open source developers from every continent use npm to share and borrow packages, and many organizations use npm to manage private development as well.
->
+<!-- .element class="fragment fade-out" data-fragment-index="0" -->
 
 > npm은 세계 최대의 소프트웨어 레지스트리입니다. 모든 대륙의 오픈 소스 개발자는 npm을 사용하여 패키지를 공유하고 차용하며 많은 조직에서 npm을 사용하여 비공개 개발도 관리합니다.
->
+<!-- .element class="fragment fade-in" data-fragment-index="0" -->
+
+</div>
+
 
 ### (2) commands (feat. package.json)
 
 [https://docs.npmjs.com/cli/v8/commands](https://docs.npmjs.com/cli/v8/commands)
 
-- 초기화
-
-    ```bash
-    $ npm init -y
-    ```
-
-  ![Untitled](../images/01-node-js/Untitled%2023.png)
+<img alt="Untitled" height="700" src="../images/01-node-js/Untitled%2023.png"/>
 
 
-- package.json
+#### package.json
+<!-- .element style="margin: -100px 0 0" -->
 
-  [https://docs.npmjs.com/cli/v8/configuring-npm/package-json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
+[https://docs.npmjs.com/cli/v8/configuring-npm/package-json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
 
-    ```json
-    {
-      "name": "desktop",
-      "version": "1.0.0",
-      "description": "",
-      "main": "index.js",
-      "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC"
-    }
-    ```
-
-
-- npm scripts
-
-    ```bash
-    $ npm run test
-    ```
-
-  ![Untitled](../images/01-node-js/Untitled%2024.png)
-
-    ```bash
-    $ echo "console.log(Math.max(...process.argv.slice(2).map(Number)))" > index.js
-    ```
-
-    ```json
-    {
-      "name": "desktop",
-      "version": "1.0.0",
-      "description": "",
-      "main": "index.js",
-      "scripts": {
-        "max:1-2": "node index.js 1 2",
-        "max:10-20-30": "node index.js 10 20 30"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC"
-    }
-    ```
-
-    ```bash
-    $ npm run max:1-2
-    2
-    
-    $ npm run max:10-20-30
-    30
-    ```
-
-  ![Untitled](../images/01-node-js/Untitled%2025.png)
+```json[2|3|4|5|6-8|9|10|11]
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+<!-- .element style="margin: 50px 0 0 0" -->
 
 
-- install
+#### npm scripts
 
-    ```bash
-    > npm install express
-    > npm install axios
-    > npm install -D jest
-    > npm install -D typescript
-    ```
+![Untitled](../images/01-node-js/Untitled%2024.png)
 
-  ![Untitled](../images/01-node-js/Untitled%2026.png)
 
-  ![Untitled](../images/01-node-js/Untitled%2027.png)
+```bash
+$ echo "console.log(Math.max(...process.argv.slice(2).map(Number)))" > index.js
+```
+<!-- .element class="fragment" -->
 
-    ```json
-    {
-      "name": "desktop",
-      "version": "1.0.0",
-      "description": "",
-      "main": "index.js",
-      "scripts": {
-        "max:1-2": "node index.js 1 2",
-        "max:10-20-30": "node index.js 10 20 30"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "dependencies": {
-        "axios": "^0.27.2",
-        "express": "^4.18.1"
-      },
-      "devDependencies": {
-        "jest": "^28.1.3",
-        "typescript": "^4.7.4"
-      }
-    }
-    ```
+```json[|6-9]
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "max:1-2": "node index.js 1 2",
+    "max:10-20-30": "node index.js 10 20 30"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+<!-- .element class="fragment" -->
 
-  - [dependencies](https://www.notion.so/1-14964ec2c15a4078a16d008f79e347bd)
-    - 프로덕션에 필요함
-  - [devDependencies](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#devdependencies)
-    - 개발에 필요함
+```bash[1-2|4-5]
+$ npm run max:1-2
+2
 
-- uninstall
+$ npm run max:10-20-30
+30
+```
+<!-- .element class="fragment" -->
 
-    ```bash
-    $ npm uninstall express axios jest typescript
-    ```
 
-  ![Untitled](../images/01-node-js/Untitled%2028.png)
+![Untitled](../images/01-node-js/Untitled%2025.png)
+
+
+#### install
+
+<div class="r-stack">
+
+```bash
+> npm install express
+> npm install axios
+```
+<!-- .element class="fragment fade-in-then-out" -->
+
+![Untitled](../images/01-node-js/Untitled%2026.png)
+<!-- .element class="fragment fade-in-then-out" -->
+
+<div class="fragment fade-in-then-out">
+
+[dependencies](https://www.notion.so/1-14964ec2c15a4078a16d008f79e347bd) => 프로덕션에 필요함
+
+```json[13-16]
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "max:1-2": "node index.js 1 2",
+    "max:10-20-30": "node index.js 10 20 30"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "typescript": "^4.7.4"
+  }
+}
+```
+
+</div>
+
+```bash
+> npm install -D jest
+> npm install -D typescript
+```
+<!-- .element class="fragment fade-in-then-out" style="margin: 50px 0 0" -->
+
+![Untitled](../images/01-node-js/Untitled%2027.png)
+<!-- .element class="fragment fade-in-then-out" -->
+
+<div class="fragment fade-in-then-out">
+
+[devDependencies](https://docs.npmjs.com/cli/v8/configuring-npm/package-json#devdependencies) => 개발에 필요함
+
+```json[17-20]
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "max:1-2": "node index.js 1 2",
+    "max:10-20-30": "node index.js 10 20 30"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "typescript": "^4.7.4"
+  }
+}
+```
+
+</div>
+
+</div>
+
+
+#### uninstall
+
+![Untitled](../images/01-node-js/Untitled%2028.png)
+<!-- .element class="fragment" -->
+
+```json[|13|14]
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "max:1-2": "node index.js 1 2",
+    "max:10-20-30": "node index.js 10 20 30"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}
+```
+<!-- .element class="fragment" style="margin: 0" -->
+
 
 
 ## 4. REST API
 
-[https://meetup.toast.com/posts/92](https://meetup.toast.com/posts/92)
+- [https://meetup.toast.com/posts/92](https://meetup.toast.com/posts/92)
+- [https://ko.wikipedia.org/wiki/REST](https://ko.wikipedia.org/wiki/REST)
+
 
 ### REST
 
 - **RE**presentational **S**tate **T**ransfer
 - HTTP를 제대로 사용하기 위해 설계된 **아키텍쳐 (≠ protocal)**
-  - 지키면 좋지만, 안 지켜도 상관 없음
-- 구성
-  - **행위(Verb)** - HTTP METHOD
-  - **자원(RESOURCE)** - URI
-  - **표현(Representations)**
-- 원칙
+- 지키면 좋지만, <u>안 지켜도 상관 없음</u>
 
 
-    | METHOD | 역할 |
-    | --- | --- |
-    | POST | POST를 통해 해당 URI를 요청하면 리소스를 생성합니다. |
-    | GET | GET를 통해 해당 리소스를 조회합니다.
-    리소스를 조회하고 해당 도큐먼트에 대한 자세한 정보를 가져온다. |
-    | PUT | PUT를 통해 해당 리소스를 수정합니다. |
-    | DELETE | DELETE를 통해 리소스를 삭제합니다. |
-    - URI ⇒ 정보의 자원 표현
-    - 자원에 대한 행위 ⇒ HTTP Method(GET, POST, PUT, DELETE)로 표현
+<div class="r-stack">
+
+<div class="fragment fade-in-then-out">
+
+#### 1) Uniform (유니폼 인터페이스)
+- URI로 지정한 리소스에 대한 조작을 통일 (`GET` `POST` `PUT` `DELETE` ...)
+
+#### 2) Stateless (무상태성)
+- 작업을 위한 상태정보를 따로 저장하고 관리하지 않음
+- 세션/쿠키 등 저장 X → API Server는 **들어오는 요청만을 단순히 처리**
+- 서비스의 자유도가 높아지고 서버에서 불필요한 정보를 관리하지 않음 → **구현이 단순**해짐
+
+#### 3) Cacheable (캐시 가능)
+- HTTP를 그대로 사용 → 웹에서 사용하는 기존 인프라를 그대로 활용 가능 → **HTTP 캐싱 사용** 
+  - [Last-Modified](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Last-Modified)
+  - [ETag](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/ETag)
+
+</div>
+
+<div class="fragment fade-in-then-out">
+
+#### 4) Self-descriptiveness (자체 표현 구조)
+- REST API 메시지만 보고도 이를 쉽게 이해 할 수 있는 자체 표현 구조로 되어 있음
+
+#### 5) Client - Server 구조
+- 각각의 역할이 있음 → 서로간의 **의존성 감소**
+  - **Server:** API 제공
+  - **Client:** 사용자 인증이나 컨텍스트(세션, 로그인 정보)등을 직접 관리
+
+#### 6) 계층형 구조
+- 다중 계층으로 구성될 수 있음
+- 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있음
+- Proxy, Gateway 같은 네트워크 기반의 중간매체를 사용할 수 있음
+
+</div>
+
+</div>
+
+
+### 구성
+
+- **행위(Verb)** - HTTP METHOD
+- **자원(RESOURCE)** - URI
+- **표현(Representations)**
+
+
+### REST API 중심 규칙
+
+- **URI** → 정보의 자원(리소스) 표현
+- **HTTP Method** → 자원에 대한 행위
+  - `GET` 리소스 조회 
+  - `POST` 리소스 생성
+  - `PUT` 리소스 완전 교체
+  - `PATCH` 리소스 일부 수정
+  - `DELETE` 리소스 삭제
+
 
 ### GET
 
-```js
+```bash[1-3|5-6|8-10|12-14]
 GET /users
 GET /users/1
 GET /users/6cd9cf7c-fe62-409a-aa8e-30541a41b87f
@@ -663,93 +793,129 @@ GET /users/1/comments
 GET /posts/2/comments
 ```
 
+
 ### POST
 
-```js
+```bash[1|3|5|7-9]
 POST /users
+
 POST /comments
+
 POST /posts/1/comments
+
 POST /users/2/posts
 POST /users/2/comments
 POST /users/2/posts/1/comments
 ```
 
-### PUT
 
-```js
+### PUT / PATCH / DELETE
+
+```bash[|1-4|6-9|11-14]
+# PUT
 PUT /users/1
 PUT /comments/2
 PUT /posts/3
-```
 
-### PATCH
-
-```js
+# PATCH
 PATCH /users/1
 PATCH /comments/2
 PATCH /posts/3
-```
 
-### DELETE
-
-```js
+# DELETE
 DELETE /users/1
 DELETE /comments/2
 DELETE /posts/3
 ```
 
+
 ### Status (상태코드)
 
 [https://developer.mozilla.org/ko/docs/Web/HTTP/Status](https://developer.mozilla.org/ko/docs/Web/HTTP/Status)
 
-- 1XX: 정보 제공 응답
+
+#### 1XX: 정보 제공 응답
+
+- `100` **Continue**
+  - 지금까지의 상태가 괜찮으며 클라이언트가 계속해서 요청을 하거나 이미 요청을 완료한 경우에는 무시해도 됨
+
+- `101` **Switching Protocol**
+  - 클라이언트가 보낸 Upgrade 요청 헤더에 대한 응답에 들어감
+  - 서버에서 프로토콜을 변경할 것임을 알림
+
+- `102` **Processing**
+  - 서버가 요청을 수신하였으며 이를 처리하고 있지만, 아직 제대로 된 응답을 알려줄 수 없음을 알림
+
+- `103` **Early Hints**
+  - 주로 Link 헤더와 함께 사용됨
+  - 서버가 응답을 준비하는 동안 user agent가 preloading을 시작할 수 있도록 함
 
 
-    | 상태코드 |  |
-    | --- | --- |
-    | 100 Continue | 이 임시적인 응답은 지금까지의 상태가 괜찮으며 클라이언트가 계속해서 요청을 하거나 이미 요청을 완료한 경우에는 무시해도 되는 것을 알 |
-    | 101 Switching Protocol | 이 코드는 클라이언트가 보낸 Upgrade (en-US) 요청 헤더에 대한 응답에 들어가며 서버에서 프로토콜을 변경할 것임을 알림 |
-    | 102 Processing | 이 코드는 서버가 요청을 수신하였으며 이를 처리하고 있지만, 아직 제대로 된 응답을 알려줄 수 없음을 알림 |
-    | 103 Early Hints | 이 상태 코드는 주로 Link (en-US) 헤더와 함께 사용되어 서버가 응답을 준비하는 동안 사용자 에이전트가(user agent) 사전 로딩(preloading)을 시작할 수 있도록 함 |
-- 2XX: 성공적인 응답
+#### 2XX: 성공적인 응답
+
+- `200` **OK**
+  - 클라이언트의 요청을 정상적으로 수행
+
+- `201` **Created**
+  - 리소스가 성공적으로 생성됨
+
+- `204` **No Content**
+  - 요청에 대해서 보내줄 수 있는 콘텐츠가 없음
+  - 캐시된 리소스를 새로운 것으로 업데이트 가능
 
 
-    | 상태코드 |  |
-    | --- | --- |
-    | 200 OK | 클라이언트의 요청을 정상적으로 수행 |
-    | 201 Created | 클라이언트가 어떠한 리소스 생성을 요청, 해당 리소스가 성공적으로 생성됨 |
-    | 204 No Content | 요청에 대해서 보내줄 수 있는 콘텐츠가 없지만, 헤더는 의미있을 수 있습니다. 사용자-에이전트는 리소스가 캐시된 헤더를 새로운 것으로 업데이트 할 수 있습니다. |
-- 3XX: Redirect 응답
+#### 3XX: Redirect 응답
+
+- `301` **Moved Permanently**
+  - 이 응답 코드는 요청한 리소스의 URI가 변경되었음을 의미(응답 시 Location header에 변경된 URI를 적어줌)
+
+- `304` **Not Modified**
+  - 이것은 캐시를 목적으로 사용됩니다. 이것은 클라이언트에게 응답이 수정되지 않았음을 알려주며, 클라이언트는 계속해서 응답의 캐시된 버전을 사용
 
 
-    | 상태코드 |  |
-    | --- | --- |
-    | 301 | 이 응답 코드는 요청한 리소스의 URI가 변경되었음을 의미
-    (응답 시 Location header에 변경된 URI를 적어줌) |
-    | 304 Not Modified | 이것은 캐시를 목적으로 사용됩니다. 이것은 클라이언트에게 응답이 수정되지 않았음을 알려주며, 클라이언트는 계속해서 응답의 캐시된 버전을 사용 |
-- 4XX: client 에러
+#### 4XX: client 에러
+
+<div class="r-stack">
+
+<div class="fragment fade-in-then-out">
+
+- `400` **Bad Request**
+  - 클라이언트의 요청이 부적절 함
+
+- `401` **Unauthorized**
+  - 클라이언트가 인증되지 않은 상태에서 보호된 리소스를 요청
+  - 예시) 로그인 X
+
+- `403` **Forbidden**
+  - 유저 인증상태와 관계 없이 응답하고 싶지 않은 리소스를 클라이언트가 요청했을 때 사용
+  - 예시) 로그인은 했으나 권한이 없음 (관리자 페이지에 일반 사용자가 접근)
+
+</div>
+
+<div class="fragment fade-in-then-out">
+
+- `404` **Not Found**
+  - 클라이언트의 요청에 대한 리소스가 없음
+
+- `405` **Method Not Allowed**
+  - 요청한 메소드는 서버에서 알고 있지만, 제거되었고 사용할 수 없음
+  - GET과 HEAD는 제거될 수 없으며 이 에러 코드를 리턴할 수 없음
+
+</div>
+
+</div>
 
 
-    | 상태코드 |  |
-    | --- | --- |
-    | 400 Bad Request | 클라이언트의 요청이 부적절 할 경우 사용하는 응답 코드 |
-    | 401 Unauthorized | 클라이언트가 인증되지 않은 상태에서 보호된 리소스를 요청했을 때 사용하는 응답 코드 |
-    | 403 Forbidden | 유저 인증상태와 관계 없이 응답하고 싶지 않은 리소스를 클라이언트가 요청했을 때 사용하는 응답 코드 |
-    | 404 Not Found | - 서버: 요청받은 리소스를 찾을 수 없음
-    - 브라우저: 알려지지 않은 URL
-    - endpoint는 있으나 적절하지만 리소스 자체는 존재하지 않음 |
-    | 405 Method Not Allowed | 클라이언트가 요청한 리소스에서는 사용 불가능한 Method를 이용했을 경우 사용하는 응답 코드 |
-    - 401: 로그인 X
-    - 403: 로그인은 했으나 권한이 없음 (관리자 페이지에 일반 사용자가 접근)
-- 5XX: server 에러
+#### 5XX: server 에러
 
+- `500` **Internal Server Error**
+  - 서버에 문제가 있음
+- `502` **Bad Gateway**
+  - 서버가 요청을 처리하는 데 필요한 응답을 얻기 위해 게이트웨이로 작업하는 동안 잘못된 응답을 수신했음
+- `503` **Service Unavailable**
+  - 서버가 요청을 처리할 준비가 되지 않았음
+  - 예시) 유지보수를 위해 작동이 중단되거나 과부하가 걸렸을 때
 
-    | 상태코드 |  |
-    | --- | --- |
-    | 500 Internal Server Error | 서버에 문제가 있을 경우 사용하는 응답 코드 |
-    | 502 Bad Gateway | 이 오류 응답은 서버가 요청을 처리하는 데 필요한 응답을 얻기 위해 게이트웨이로 작업하는 동안 잘못된 응답을 수신했음을 의미 |
-    | 503 Service Unavailable | - 서버가 요청을 처리할 준비가 되지 않았음
-    - 유지보수를 위해 작동이 중단되거나 과부하가 걸렸을 때 |
 
 ### RESTful
 
@@ -760,72 +926,88 @@ DELETE /posts/3
 
 - RESTful 하게 만들어진 API
 
+
 ### REST API의 장점
 
-`독립성`
+---
+
+#### 독립성
 
 - REST API는 사용되는 기술과 독립적
-  - Java
-  - Go
-  - Python
-  - NodeJS
-  - .NET
-  - etc
+  - `Java` `Go` `Python` `NodeJS` `.NET` ...
 - API 설계에 영향을 주지 않고 다양한 프로그래밍 언어로 클라이언트 및 서버 애플리케이션을 모두 작성
-- 통신에 영향을 주지 않고 양쪽의 기본 기술을 변경할 수 있습니다.
+- 통신에 영향을 주지 않고 양쪽의 기본 기술을 변경
 
-`확장성`
 
-- 클라이언트-서버 상호 작용을 최적화 ⇒ 확장이 용이함
-  - 과거의 PHP, JSP로 만들던 사이트(MPA) ⇒ 현대의 사이트 (SPA + REST API)
+#### 확장성
+
+- 클라이언트-서버 상호 작용을 최적화 → 확장이 용이함
+  - 과거의 PHP, JSP로 만들던 사이트 (SSR + MPA) → 현대의 사이트 (CSR + SPA + REST API)
+    > `SSR` Server Side Rendering
+    > 
+    > `CSR` Client Side Rendering
+    > 
+    > `MPA` Multi Page Application
+    > 
+    > `SPA` Single Page Application
+
   - 잘 만들어진 REST API를 이용하여 서비스 확장 가능
-  - 오픈 API 처럼 사용 가능 ⇒ 확장성
+  - Open API 처럼 오픈하여 사용 가능 → 내가 만든 서비스를 다른 서비스에서 사용
 - Stateless한 특징으로 서버가 과거 클라이언트 요청 정보를 유지할 필요가 없기 때문에 서버 로드를 제거
 
-`유연성`
+
+#### 유연성
 
 - 완전한 클라이언트-서버 분리를 지원
 - 각 부분이 독립적으로 발전할 수 있도록 다양한 서버 구성 요소를 단순화하고 분리
-- 서버 애플리케이션의 플랫폼 또는 기술 변경은 클라이언트 애플리케이션에 영향을 주지 않도록 할 수 있음
+- **서버 애플리케이션의 플랫폼 또는 기술 변경은 클라이언트 애플리케이션에 영향을 주지 않도록 할 수 있음**
 
-!Stop!
 
-- 독립적이기 때문에 확장할 수 있고,
-- 확장할 수 있기 때문에 유연할 수 있다.
-- 코드에도 적용가능
+## **생각해볼 것**
 
-- 하나의 코드가 하나의 역할만
-- 확장 가능하다 = 인터페이스를 잘 정의한다 = 주입할 수 있다.
-  - USB
-  - 콘센트
+- 독립성/확장성/유연성 → **코드에도 적용가능**
+- 하나의 함수(메소드)가 하나의 역할만 수행 → **확장성/유연성/독립성** 증가
+- 확장 가능하다 → 인터페이스를 잘 정의한다 → **주입할 수 있다**
+  - USB, 콘센트, 충전기
   - 컴퓨터 부품
-    - CPU
-    - RAM
-    - SSD, HDD
+    - CPU, RAM, SSD, HDD
+    - 모니터, 키보드, 마우스, 스피커
+
+
 
 ## 4. ExpressJS
 
 [https://expressjs.com/ko/](https://expressjs.com/ko/)
 
+
 ### (1) 소개
 
-![Untitled](../images/01-node-js/Untitled%2029.png)
+<img alt="Untitled" height="300" src="../images/01-node-js/Untitled%2029.png"/>
 
-- **웹 애플리케이션**
-  웹 및 모바일 애플리케이션을 위한 일련의 강력한 기능을 제공하는 간결하고 유연한 Node.js 웹 애플리케이션 프레임워크입니다.
-- **API**
-  자유롭게 활용할 수 있는 수많은 HTTP 유틸리티 메소드 및 미들웨어를 통해 쉽고 빠르게 강력한 API를 작성할 수 있습니다.
-- **성능**
-  Express는 기본적인 웹 애플리케이션 기능으로 구성된 얇은 계층을 제공하여, 여러분이 알고 있고 선호하는 Node.js 기능을 모호하게 만들지 않습니다.
-- **Frameworks**
-  많은 유명한 프레임워크들이 Express를 기반으로 하고 있습니다.
+- 간결하고 유연한 **NodeJS 웹 애플리케이션 프레임워크**
+- 기본적인 웹 애플리케이션 기능으로 구성된 얇은 계층을 제공
+- NodeJS 진영의 여러 웹 프레임워크들이 Express 기반
+  - https://expressjs.com/en/resources/frameworks.html
+
 
 ### (2) 실행
 
-```js
-const express = require('express')
-const app = express()
-const port = 3000
+#### 설치
+
+```bash
+$ mkdir boostcamp-express-tutorial
+$ cd boostcamp-express-tutorial
+$ npm init -y
+$ npm install express 
+```
+
+
+#### 샘플 코드 작성
+
+```js[1|2|3|5-7|9-11|13-15|17-19|21-23]
+const express = require('express');
+const app = express();
+const port = 3000;
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
@@ -845,12 +1027,12 @@ app.delete('/user', function (req, res) {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
 ```
+
 
 ## 5. (실습) 간단한 CRUD 만들기
 
-- 로컬 변수 사용
 - CRUD 정의
 - index.html 만들기
 - 로컬 변수 ⇒ json file 로 변경
@@ -858,6 +1040,15 @@ app.listen(port, () => {
 - css를 파일로 분리
 - static에 대한 이해
 
+
 ## 부록. 고민해볼 것
 
-- express를 http, https 등으로 직접 구현해보기
+### **express를 http 패키지로 직접 구현해본다면?**
+- use
+- route method
+- request
+- response
+- listen
+
+
+# 감사합니다.

@@ -1,3 +1,7 @@
+.reveal{
+  letter-spacing: -1px;
+}
+
 .reveal * {
   text-align: left;
 }
@@ -7,7 +11,16 @@
 }
 
 .reveal h4 {
-  font-size: 1.4em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.reveal * + h3 {
+  margin-top: 1.7em;
+}
+
+.reveal * + h4 {
+  margin-top: 1.4em;
 }
 
 .reveal p {
@@ -24,6 +37,7 @@
 
 .reveal li {
   line-height: 2;
+  font-size: 35px;
 }
 
 .reveal a {
@@ -48,8 +62,28 @@
   border-radius: 5px;
 }
 
+.reveal pre {
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 1.5;
+}
+
 .reveal pre code {
   max-height: inherit;
+}
+
+.reveal blockquote {
+  width: auto;
+  padding: 0.3em 1em;
+  background: #f3f4f5;
+  box-shadow: inherit;
+  border-left: 10px solid #09F;
+  font-style: normal;
+}
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: block;
 }
 
 .reveal .controls {
