@@ -10,7 +10,7 @@ yarn docs:build
 cd .vuepress/dist
 
 # gh-pages clone
-git clone -b gh-pages https://github.com/JunilHwang/TIL/
+git clone -b gh-pages2 https://github.com/JunilHwang/TIL/
 cp -rf TIL/.git ./.git
 rm -rf TIL
 
