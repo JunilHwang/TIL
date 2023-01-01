@@ -24,6 +24,6 @@ git commit -m "$*"
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push origin gh-pages
+git push origin gh-pages2
 
 cd -
