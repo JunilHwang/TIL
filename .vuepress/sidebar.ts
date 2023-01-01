@@ -9,6 +9,7 @@ const Book = `/Book`
 const OOPPrinciple = `${Book}/OOP-Principle`
 const Review2020 = `/Review/2020-year`
 const Review2021 = `/Review/2021-year`
+const Review2022 = `/Review/2022-year`
 
 export const sidebar = [
   { text: 'Home', link: '/' },
@@ -79,6 +80,15 @@ export const sidebar = [
           {
             text: '2021년 회고',
             link: `${Review2021}/end/`
+          },
+        ]
+      },
+      {
+        text: '2022년',
+        children: [
+          {
+            text: '2022년 회고',
+            link: `${Review2022}/end/`
           },
         ]
       }
