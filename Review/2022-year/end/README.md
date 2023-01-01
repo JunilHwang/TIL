@@ -69,7 +69,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
 
 ## 2. 안녕, 네이버
 
-<img alt="2" src="./2.png" style="max-width: 500px" />
+<img alt="2" src="./2.png" style="max-width: 100%; width: 400px" />
 
 우여곡절 끝에 네이버라는, 나에게 참 과분한 기업에 그리고 [뛰어난 동료들이 있는 팀(HomeBuilder)](https://smartstudio.tech/homebuilder/)에 합류하게 되었다.
 
@@ -216,7 +216,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
 다만 강사로서의 내 모습은… 만족스럽지 못했다.
 ~~재능이 없는 것 같기도~~
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/t40dyHxJVPY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="max-width: 100%" src="https://www.youtube.com/embed/t40dyHxJVPY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 **어떤 서비스는 고객이 좋은 가치를 제공해주기도 한다.**
 나는 넥스트스텝이라는 교육 플랫폼이 이에 해당한다고 생각한다.
