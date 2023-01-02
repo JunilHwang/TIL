@@ -1,0 +1,25 @@
+name: deploy document
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  deploy-document:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: |
+          git config --global user.email "junil.h@kakao.com"
+          git config --global user.name "JunilHwang"
+
+      - run: |
+          sh deploy.sh "deploy"
+          
