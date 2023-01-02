@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_TOKEN }}
 
       - uses: actions/setup-node@v3
         with:
@@ -20,8 +22,11 @@ jobs:
           git config --global user.email "junil.h@kakao.com"
           git config --global user.name "JunilHwang"
 
-      - run: |
+      - name: 배포
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+        run: |
           npm install -g yarn
           yarn install
-          sh deploy.sh "deploy"
+          sh deploy-by-workflow.sh "deploy"
           
