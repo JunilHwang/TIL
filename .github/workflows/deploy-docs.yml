@@ -21,5 +21,7 @@ jobs:
           git config --global user.name "JunilHwang"
 
       - run: |
+          npm install -g yarn
+          yarn install
           sh deploy.sh "deploy"
           
