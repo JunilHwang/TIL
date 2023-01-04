@@ -1,0 +1,33 @@
+name: deploy document
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  deploy-document:
+    if: contains(github.event.head_commit.message, 'deploy') == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_TOKEN }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: |
+          git config --global user.email "junil.h@kakao.com"
+          git config --global user.name "JunilHwang"
+
+      - name: 배포
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+        run: |
+          npm install -g yarn
+          yarn install
+          sh deploy-by-workflow.sh "deploy"
+          

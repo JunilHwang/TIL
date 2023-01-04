@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+GITHUB_TOKEN=$GITHUB_TOKEN
+
 # abort on errors
 set -e
 
@@ -24,6 +26,6 @@ git commit -m "$*"
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push origin gh-pages2
+git push https://${GITHUB_TOKEN}@github.com/JunilHwang/TIL/ gh-pages2
 
 cd -

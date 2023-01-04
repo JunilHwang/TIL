@@ -5,3 +5,4 @@ node_modules
 .temp
 TIL.iml
 yarn-error.log
+.DS_Store
