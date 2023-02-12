@@ -282,7 +282,7 @@ MVVM은 `Model` - `View` - `ViewModel` 이라는 관심사로 이루어진 패�
 
 <br />
 
-### 1) Mdoel
+### 1) Model
 
 ![image 12 bn](./12.png)
 
