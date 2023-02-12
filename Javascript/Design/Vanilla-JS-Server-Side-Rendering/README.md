@@ -3,7 +3,7 @@
 title: 프레임워크 없이 만드는 SSR
 description: 프레임워크를 사용하지 않고 SSR과 CSR을 적용해보면서 프론트엔드에서의 SSR에 대해 학습합니다.
 sidebarDepth: 2
-date: 2023-02-12 22:00:00
+date: 2023-02-12
 tag: javascript, vanilla, ssr
 thumbnail: https://user-images.githubusercontent.com/18749057/218312378-4a6d1e60-813b-4dab-a1aa-a07dcba82411.png
 
