@@ -108,6 +108,7 @@ export const sidebar = [
           'Vanilla-JS-Store/',
           'Vanilla-JS-Virtual-DOM/',
           'Vanilla-JS-Make-useSate-hook/',
+          'Vanilla-JS-Vanilla-JS-Server-Side-Rendering/',
         ].map(v => `${JavascriptDesign}/${v}`),
       }
     ],
