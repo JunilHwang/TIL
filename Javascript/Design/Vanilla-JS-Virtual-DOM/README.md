@@ -77,7 +77,7 @@ img { float: right }
 
 ![4.png](./4.png)
 
-- DOM Tree, CSSOM Tree가 생선되면 스타일을 매칭시켜주는 과정을 거쳐 렌더 트리를 구성한다.
+- DOM Tree, CSSOM Tree가 생성되면 스타일을 매칭시켜주는 과정을 거쳐 렌더 트리를 구성한다.
 - 렌더링 트리에는 **페이지를 렌더링하는 데 필요한 노드만 포함**된다.
 - 참고
   - `visibility: hidden`
