@@ -122,7 +122,7 @@ render();
 <script>
 class Component {
   $target;
-  $state;
+  state;
   constructor ($target) { 
     this.$target = $target;
     this.setup();
@@ -136,17 +136,17 @@ class Component {
   }
   setEvent () {}
   setState (newState) {
-    this.$state = { ...this.$state, ...newState };
+    this.state = { ...this.state, ...newState };
     this.render();
   }
 }
 
 class App extends Component {
   setup () {
-    this.$state = { items: ['item1', 'item2'] };
+    this.state = { items: ['item1', 'item2'] };
   }
   template () {
-    const { items } = this.$state;
+    const { items } = this.state;
     return `
         <ul>
           ${items.map(item => `<li>${item}</li>`).join('')}
@@ -157,7 +157,7 @@ class App extends Component {
   
   setEvent () {
     this.$target.querySelector('button').addEventListener('click', () => {
-      const { items } = this.$state;
+      const { items } = this.state;
       this.setState({ items: [ ...items, `item${items.length + 1}` ] });
     }); 
   }
@@ -224,10 +224,10 @@ import Component from "../core/Component.js";
 
 export default class Items extends Component {
   setup () {
-    this.$state = { items: ['item1', 'item2'] };
+    this.state = { items: ['item1', 'item2'] };
   }
   template () {
-    const { items } = this.$state;
+    const { items } = this.state;
     return `
       <ul>
         ${items.map(item => `<li>${item}</li>`).join('')}
@@ -238,7 +238,7 @@ export default class Items extends Component {
 
   setEvent () {
     this.$target.querySelector('button').addEventListener('click', () => {
-      const { items } = this.$state;
+      const { items } = this.state;
       this.setState({ items: [ ...items, `item${items.length + 1}` ] });
     });
   }
@@ -249,7 +249,7 @@ export default class Items extends Component {
 ```js
 export default class Component {
   $target;
-  $state;
+  state;
   constructor ($target) {
     this.$target = $target;
     this.setup();
@@ -263,7 +263,7 @@ export default class Component {
   }
   setEvent () {}
   setState (newState) {
-    this.$state = { ...this.$state, ...newState };
+    this.state = { ...this.state, ...newState };
     this.render();
   }
 }
@@ -283,10 +283,10 @@ import Component from "../core/Component.js";
 
 export default class Items extends Component {
   setup () {
-    this.$state = { items: ['item1', 'item2'] };
+    this.state = { items: ['item1', 'item2'] };
   }
   template () {
-    const { items } = this.$state;
+    const { items } = this.state;
     return `
       <ul>
         ${items.map((item, key) => `
@@ -302,13 +302,13 @@ export default class Items extends Component {
 
   setEvent () {
     this.$target.querySelector('.addBtn').addEventListener('click', () => {
-      const { items } = this.$state;
+      const { items } = this.state;
       this.setState({ items: [ ...items, `item${items.length + 1}` ] });
     });
 
     this.$target.querySelectorAll('.deleteBtn').forEach(deleteBtn =>
       deleteBtn.addEventListener('click', ({ target }) => {
-        const items = [ ...this.$state.items ];
+        const items = [ ...this.state.items ];
         items.splice(target.dataset.index, 1);
         this.setState({ items });
       }))
@@ -331,7 +331,7 @@ export default class Items extends Component {
   setEvent () {
     // 모든 이벤트를 this.$target에 등록하여 사용하면 된다.
     this.$target.addEventListener('click', ({ target }) => {
-      const items = [ ...this.$state.items ];
+      const items = [ ...this.state.items ];
 
       if (target.classList.contains('addBtn')) {
         this.setState({ items: [ ...items, `item${items.length + 1}` ] });
@@ -352,7 +352,7 @@ export default class Items extends Component {
 ```diff
  export default class Component {
    $target;
-   $state;
+   state;
    constructor ($target) {
      this.$target = $target;
      this.setup();
@@ -367,7 +367,7 @@ export default class Items extends Component {
    }
    setEvent () {}
    setState (newState) {
-     this.$state = { ...this.$state, ...newState };
+     this.state = { ...this.state, ...newState };
      this.render();
    }
  }
@@ -385,7 +385,7 @@ export default class Items extends Component {
 ```js
 export default class Component {
   $target;
-  $state;
+  state;
   constructor ($target) { /* 생략 */ }
   setup () { /* 생략 */ }
   template () { /* 생략 */ }
@@ -394,13 +394,9 @@ export default class Component {
   setState (newState) { /* 생략 */ }
 
   addEvent (eventType, selector, callback) {
-    const children = [ ...this.$target.querySelectorAll(selector) ]; 
-    // selector에 명시한 것 보다 더 하위 요소가 선택되는 경우가 있을 땐
-    // closest를 이용하여 처리한다.
-    const isTarget = (target) => children.includes(target)
-                                 || target.closest(selector);
+    const children = [ ...this.$target.querySelectorAll(selector) ];
     this.$target.addEventListener(eventType, event => {
-      if (!isTarget(event.target)) return false;
+      if (!event.target.closest(selector)) return false;
       callback(event);
     })
   }
@@ -415,11 +411,11 @@ export default class Items extends Component {
   template () {/* 생략 */ }
   setEvent () {
     this.addEvent('click', '.addBtn', ({ target }) => {
-      const { items } = this.$state;
+      const { items } = this.state;
       this.setState({ items: [ ...items, `item${items.length + 1}` ] });
     });
     this.addEvent('click', '.deleteBtn', ({ target }) => {
-      const items = [ ...this.$state.items ];
+      const items = [ ...this.state.items ];
       items.splice(target.dataset.index, 1);
       this.setState({ items });
     });
@@ -439,14 +435,14 @@ export default class Items extends Component {
 ```js
 export default class Items extends Component {
   get filteredItems () {
-    const { isFilter, items } = this.$state;
+    const { isFilter, items } = this.state;
     return items.filter(({ active }) => (isFilter === 1 && active) ||
                                         (isFilter === 2 && !active) ||
                                         isFilter === 0);
   }
 
   setup() {
-    this.$state = {
+    this.state = {
       isFilter: 0,
       items: [
         {
@@ -492,7 +488,7 @@ export default class Items extends Component {
   setEvent() {
     this.addEvent('keyup', '.appender', ({ key, target }) => {
       if (key !== 'Enter') return;
-      const {items} = this.$state;
+      const {items} = this.state;
       const seq = Math.max(0, ...items.map(v => v.seq)) + 1;
       const contents = target.value;
       const active = false;
@@ -505,14 +501,14 @@ export default class Items extends Component {
     });
 
     this.addEvent('click', '.deleteBtn', ({target}) => {
-      const items = [ ...this.$state.items ];;
+      const items = [ ...this.state.items ];;
       const seq = Number(target.closest('[data-seq]').dataset.seq);
       items.splice(items.findIndex(v => v.seq === seq), 1);
       this.setState({items});
     });
 
     this.addEvent('click', '.toggleBtn', ({target}) => {
-      const items = [ ...this.$state.items ];
+      const items = [ ...this.state.items ];
       const seq = Number(target.closest('[data-seq]').dataset.seq);
       const index = items.findIndex(v => v.seq === seq);
       items[index].active = !items[index].active;
@@ -557,16 +553,16 @@ export default class Items extends Component {
 
 ### (3) Component Core 변경
 
-그리고 `src/core/Component.js`에 다음과 같이 `$props`와 `mounted`를 추가해야 한다.
+그리고 `src/core/Component.js`에 다음과 같이 `props`와 `mounted`를 추가해야 한다.
 
 ```js{3,7,13,17}
 export default class Component {
   $target;
-  $props;
-  $state;
-  constructor ($target, $props) {
+  props;
+  state;
+  constructor ($target, props) {
     this.$target = $target;
-    this.$props = $props; // $props 할당
+    this.props = props; // props 할당
     this.setup();
     this.setEvent();
     this.render();
@@ -585,7 +581,7 @@ export default class Component {
 ```
 
 - `mounted`를 추가한 이유는 render 이후에 추가적인 기능을 수행하기 위해서이다.
-- `$props`는 부모 컴포넌트가 자식 컴포넌트에게 상태 혹은 메소드를 넘겨주기 위해서이다.
+- `props`는 부모 컴포넌트가 자식 컴포넌트에게 상태 혹은 메소드를 넘겨주기 위해서이다.
 
 ### (4) Entry Point 변경
 
@@ -627,7 +623,7 @@ import ItemFilter from "./components/ItemFilter.js";
 export default class App extends Component {
 
   setup () {
-    this.$state = {
+    this.state = {
       isFilter: 0,
       items: [
         {
@@ -676,14 +672,14 @@ export default class App extends Component {
   }
 
   get filteredItems () {
-    const { isFilter, items } = this.$state;
+    const { isFilter, items } = this.state;
     return items.filter(({ active }) => (isFilter === 1 && active) ||
       (isFilter === 2 && !active) ||
       isFilter === 0);
   }
 
   addItem (contents) {
-    const {items} = this.$state;
+    const {items} = this.state;
     const seq = Math.max(0, ...items.map(v => v.seq)) + 1;
     const active = false;
     this.setState({
@@ -695,13 +691,13 @@ export default class App extends Component {
   }
 
   deleteItem (seq) {
-    const items = [ ...this.$state.items ];;
+    const items = [ ...this.state.items ];;
     items.splice(items.findIndex(v => v.seq === seq), 1);
     this.setState({items});
   }
 
   toggleItem (seq) {
-    const items = [ ...this.$state.items ];
+    const items = [ ...this.state.items ];
     const index = items.findIndex(v => v.seq === seq);
     items[index].active = !items[index].active;
     this.setState({items});
@@ -725,7 +721,7 @@ export default class ItemAppender extends Component {
   }
 
   setEvent() {
-    const { addItem } = this.$props;
+    const { addItem } = this.props;
     this.addEvent('keyup', '.appender', ({ key, target }) => {
       if (key !== 'Enter') return;
       addItem(target.value);
@@ -742,7 +738,7 @@ import Component from "../core/Component.js";
 export default class Items extends Component {
 
   template() {
-    const { filteredItems } = this.$props;
+    const { filteredItems } = this.props;
     return `
       <ul>
         ${filteredItems.map(({contents, active, seq}) => `
@@ -759,7 +755,7 @@ export default class Items extends Component {
   }
 
   setEvent() {
-    const { deleteItem, toggleItem } = this.$props;
+    const { deleteItem, toggleItem } = this.props;
 
     this.addEvent('click', '.deleteBtn', ({target}) => {
       deleteItem(Number(target.closest('[data-seq]').dataset.seq));
@@ -790,7 +786,7 @@ export default class ItemFilter extends Component {
   }
 
   setEvent() {
-    const { filterItem } = this.$props;
+    const { filterItem } = this.props;
     this.addEvent('click', '.filterBtn', ({ target }) => {
       filterItem(Number(target.dataset.isFilter));
     });
