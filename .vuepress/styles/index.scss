@@ -60,6 +60,7 @@ em {
     }
   }
 }
+
 .theme-container {
   .page {
     padding-left: 0;
@@ -178,4 +179,29 @@ em {
 
 .example-frame {
   border: 1px solid #06f;
+}
+
+
+.ogog-gallery {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+
+  & > div {
+    flex-flow: column;
+    display: flex;
+    gap: 15px;
+  }
+
+  @include only-pc {
+
+    & > div {
+      flex-flow: row;
+      align-items: flex-start;
+    }
+
+    img {
+      width: calc(100% / 3);
+    }
+  }
 }
