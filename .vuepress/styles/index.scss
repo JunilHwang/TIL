@@ -198,10 +198,16 @@ em {
     & > div {
       flex-flow: row;
       align-items: flex-start;
-    }
 
-    img {
-      width: calc(100% / 3);
+      img {
+        width: calc(100% / 3 - 10px);
+      }
+
+      &.half {
+        img {
+          width: calc(50% - 10px);
+        }
+      }
     }
   }
 }
