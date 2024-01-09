@@ -4,7 +4,7 @@ title: 2023년 회고
 description: 나 자신에 대해 참 많은 것들을 알 수 있었던 1년
 sidebarDepth: 2
 date: 2024-01-09 10:00:00
-thumbnail: ~/Review/2023-year/end/thumbnail.jpg
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/master/Review/2023-year/end/thumbnail.jpg
 tag: 회고
 
 feed:
