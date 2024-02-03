@@ -46,17 +46,7 @@ feed:
 ### 2) 문서 작업
 
 - 팀에서 관리하는 문서들이 꽤 오랫동안 방치되어서 모듈화 관련 문서를 작성하면서 어느 정도 업데이트를 했는데 해도 해도 끝이 없다.
-- 이 때 리더님이 문서화에 대한 가이드를 해주셨는데 내용이 좋았다.
-
-  [Introduction - Documentation System](https://documentation.divio.com/introduction.html)
-
-  | - | [tutorial](https://documentation.divio.com/tutorials.html#tutorials) | [How to](https://documentation.divio.com/how-to-guides.html#how-to) | [Reference](https://documentation.divio.com/reference.html#reference) | [Explanation](https://documentation.divio.com/explanation.html#explanation) |
-  | --- |----------------------------------------------------------------------|---------------------------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------|
-  | oriented to | learning                                                             | a goal                                                              | information                                                       | understanding                                                               |
-  | must | allow the newcomer to get started                                    | show how to solve a specific problem                                | describe the machinery                                            | explain                                                                     |
-  | its form | a lesson                                                             | a series of steps                                                   | dry description                                                   | discursive explanation                                                      |
-  | analogy | teaching a small child how to cook                                   | a recipe in a cookery book                                          | a reference encyclopedia article                                  | an article on culinary social history                                       |
-- 처음에는 한 문서에 모든 내용을 담았는데, 크게 혼나고(?) 다음과 같이 분류해서 만들었다.
+- 처음에는 한 문서에 모든 내용을 담았는데 크게 혼나고(?) 리더님이 소개해주신 [문서화 가이드](https://documentation.divio.com/introduction.html)를 기반으로 개선했다.
   - 미디어 모듈을 사용에 대한 튜토리얼 (특정 미디어 모듈로 목표를 달성하기 위해 해야되는 과정들)
   - 미디어 모듈을 사용할 때 필요한 레퍼런스 (팀 내 위키로 이관)
   - 미디어 모듈의 목적과 설명 (핵심개념)
