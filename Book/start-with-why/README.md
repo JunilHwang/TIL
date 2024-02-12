@@ -1,7 +1,7 @@
 ---
 
 title: Start with why 서평
-description: 사람들은 
+description: 특히 요즘들어 많이 느끼는 감정(생각?)이랄까. 어떤 결정이나 판단을 할 때 논리적인 여러가지 이유가 있지만, 이보다 더 우선순위가 높은 말로 표현할 수 없는 감정이나 가치가 뒤따라온다.
 sidebarDepth: 2
 date: 2024-02-12 00:00:00
 thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/master/Book/start-with-why/thumbnail.png
