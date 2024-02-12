@@ -4,7 +4,7 @@ title: Start with why 서평
 description: 사람들은 
 sidebarDepth: 2
 date: 2024-02-12 18:30:00
-thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/Book/start-with-why/thumbnail.png
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/master/Book/start-with-why/thumbnail.png
 tag: 회고
 
 feed:
