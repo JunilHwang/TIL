@@ -1,6 +1,6 @@
 ---
 
-title: Typescript A to Z
+title: Typescript A 부터 Z 까지
 description: typescript와 관련된 내용을 AI와 함께 정리한 내용입니다.
 sidebarDepth: 2
 date: 2024-7-23
@@ -8,7 +8,7 @@ tag: typescript
 
 ---
 
-# Typescript A to Z
+# Typescript A 부터 Z 까지
 
 ## 참고자료
 
