@@ -907,8 +907,8 @@ function updateElement (parent, newNode, oldNode) {
     const index = [ ...parent.childNodes ].indexOf(oldNode);
     return (
 			oldNode.remove(),
-	    parent.appendChild(newNode, index)
-		); // undefined를 반환할 것이다.
+      parent.insertBefore(newNode, parent.children[index] || null)
+    ); // undefined를 반환할 것이다.
   }
 
   // 5. oldNode와 newNode의 태그 이름(type)이 같을 경우
@@ -957,7 +957,7 @@ function updateElement (parent, newNode, oldNode) {
   if (newNode.nodeName !== oldNode.nodeName) {
     const index = [ ...parent.childNodes ].indexOf(oldNode);
     oldNode.remove();
-    parent.appendChild(newNode, index);
+    parent.insertBefore(newNode, parent.children[index] || null);
     return;
   }
   updateAttributes(oldNode, newNode);
