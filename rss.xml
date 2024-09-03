@@ -6,8 +6,8 @@
     <link>https://junilhwang.github.io/TIL/TIL/</link>
     <description>Today I leanred</description>
     <language>en-US</language>
-    <pubDate>Tue, 03 Sep 2024 10:23:54 GMT</pubDate>
-    <lastBuildDate>Tue, 03 Sep 2024 10:23:54 GMT</lastBuildDate>
+    <pubDate>Tue, 03 Sep 2024 10:28:03 GMT</pubDate>
+    <lastBuildDate>Tue, 03 Sep 2024 10:28:03 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -7219,8 +7219,8 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
 <span class="line">    <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token operator">...</span>parent<span class="token punctuation">.</span>childNodes <span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>oldNode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
 <span class="line">			oldNode<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
-<span class="line">	    parent<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newNode<span class="token punctuation">,</span> index<span class="token punctuation">)</span></span>
-<span class="line">		<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined를 반환할 것이다.</span></span>
+<span class="line">      parent<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>newNode<span class="token punctuation">,</span> parent<span class="token punctuation">.</span>children<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token keyword">null</span><span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined를 반환할 것이다.</span></span>
 <span class="line">  <span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line">  <span class="token comment">// 5. oldNode와 newNode의 태그 이름(type)이 같을 경우</span></span>
@@ -7266,7 +7266,7 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
 <span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>newNode<span class="token punctuation">.</span>nodeName <span class="token operator">!==</span> oldNode<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">    <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token operator">...</span>parent<span class="token punctuation">.</span>childNodes <span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>oldNode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line">    oldNode<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
-<span class="line">    parent<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newNode<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    parent<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>newNode<span class="token punctuation">,</span> parent<span class="token punctuation">.</span>children<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line">    <span class="token keyword">return</span><span class="token punctuation">;</span></span>
 <span class="line">  <span class="token punctuation">}</span></span>
 <span class="line">  <span class="token function">updateAttributes</span><span class="token punctuation">(</span>oldNode<span class="token punctuation">,</span> newNode<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
