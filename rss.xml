@@ -6,8 +6,8 @@
     <link>https://junilhwang.github.io/TIL/TIL/</link>
     <description>Today I leanred</description>
     <language>en-US</language>
-    <pubDate>Tue, 03 Sep 2024 10:28:03 GMT</pubDate>
-    <lastBuildDate>Tue, 03 Sep 2024 10:28:03 GMT</lastBuildDate>
+    <pubDate>Tue, 03 Sep 2024 10:33:13 GMT</pubDate>
+    <lastBuildDate>Tue, 03 Sep 2024 10:33:13 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -41,60 +41,56 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>Why (왜 타입스크립트를 사용해야 하는가?)</h3>
 <ol>
-<li>향상된 개발자 경험:</li>
-</ol>
+<li>향상된 개발자 경험:
 <ul>
 <li>코드 자동 완성 및 IntelliSense 지원</li>
 <li>리팩토링 시 더 안전하고 효율적인 작업 가능</li>
 </ul>
-<ol start="2">
-<li>오류 조기 발견:</li>
-</ol>
+</li>
+<li>오류 조기 발견:
 <ul>
 <li>컴파일 시점에 타입 관련 오류 감지</li>
 <li>런타임 오류 감소</li>
 </ul>
-<ol start="3">
-<li>더 나은 코드 문서화:</li>
-</ol>
+</li>
+<li>더 나은 코드 문서화:
 <ul>
 <li>타입 정의를 통한 자체 문서화</li>
 <li>코드 가독성 및 유지보수성 향상</li>
 </ul>
-<ol start="4">
-<li>대규모 애플리케이션 개발에 적합:</li>
-</ol>
+</li>
+<li>대규모 애플리케이션 개발에 적합:
 <ul>
 <li>복잡한 시스템 설계에 유용한 타입 시스템</li>
 <li>팀 협업 시 코드 품질 유지 용이</li>
 </ul>
+</li>
+</ol>
 <h3>Don't (언제 타입스크립트를 사용하지 말아야 하는가?)</h3>
 <ol>
-<li>소규모 또는 간단한 프로젝트:</li>
-</ol>
+<li>소규모 또는 간단한 프로젝트:
 <ul>
 <li>설정 및 컴파일 과정이 오버헤드가 될 수 있음</li>
 <li>빠른 프로토타이핑이 필요한 경우</li>
 </ul>
-<ol start="2">
-<li>팀이 TypeScript에 익숙하지 않은 경우:</li>
-</ol>
+</li>
+<li>팀이 TypeScript에 익숙하지 않은 경우:
 <ul>
 <li>학습 곡선으로 인한 초기 생산성 저하 가능성</li>
 </ul>
-<ol start="3">
-<li>런타임 성능이 극도로 중요한 경우:</li>
-</ol>
+</li>
+<li>런타임 성능이 극도로 중요한 경우:
 <ul>
 <li>컴파일된 JavaScript가 약간의 오버헤드를 가질 수 있음</li>
 <li>단, 대부분의 경우 성능 차이는 무시할 만한 수준</li>
 </ul>
-<ol start="4">
-<li>특정 JavaScript 라이브러리와의 호환성 문제:</li>
-</ol>
+</li>
+<li>특정 JavaScript 라이브러리와의 호환성 문제:
 <ul>
 <li>타입 정의 파일이 없거나 불완전한 경우 사용이 어려울 수 있음</li>
 </ul>
+</li>
+</ol>
 <h2>2. 기본기</h2>
 <h3>기본 타입</h3>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token comment">// 기본 타입 예제</span></span>
@@ -206,7 +202,7 @@
 <p>TypeScript는 복잡한 타입을 쉽게 조작할 수 있는 여러 유틸리티 타입을 제공합니다. 이들은 실제 개발 상황에서 매우 유용하게 사용됩니다. 주요 유틸리티 타입과 그 사용 예를 살펴보겠습니다.</p>
 <h3><code>Partial&lt;T&gt;</code></h3>
 <p>모든 속성을 선택적으로 만듭니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span></span>
 <span class="line">  id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span></span>
 <span class="line">  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span></span>
@@ -218,7 +214,7 @@
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span></span>
 <span class="line">  id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span></span>
 <span class="line">  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span></span>
@@ -234,14 +230,14 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>Required&lt;T&gt;</code></h3>
 <p>모든 속성을 필수로 만듭니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">Config</span> <span class="token punctuation">{</span></span>
 <span class="line">  debug<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span></span>
 <span class="line">  timeout<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">RequiredConfig</span> <span class="token operator">=</span> Required<span class="token operator">&lt;</span>Config<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token comment">// 결과: { debug: boolean; timeout: number; }</span></span>
 <span class="line"></span>
@@ -253,7 +249,7 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>Pick&lt;T, K&gt;</code></h3>
 <p>특정 속성만 선택합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">Product</span> <span class="token punctuation">{</span></span>
 <span class="line">  id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span></span>
 <span class="line">  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span></span>
@@ -262,7 +258,7 @@
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">ProductPreview</span> <span class="token operator">=</span> Pick<span class="token operator">&lt;</span>Product<span class="token punctuation">,</span> <span class="token string">'name'</span> <span class="token operator">|</span> <span class="token string">'price'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token comment">// 결과: { name: string; price: number; }</span></span>
 <span class="line"></span>
@@ -274,7 +270,7 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>Omit&lt;T, K&gt;</code></h3>
 <p>특정 속성을 제외합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span></span>
 <span class="line">  id<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span></span>
 <span class="line">  username<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span></span>
@@ -282,7 +278,7 @@
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">PublicUser</span> <span class="token operator">=</span> Omit<span class="token operator">&lt;</span>User<span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token comment">// 결과: { id: number; username: string; }</span></span>
 <span class="line"></span>
@@ -294,7 +290,7 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>Record&lt;K, T&gt;</code></h3>
 <p>키-값 쌍의 타입을 정의합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">const</span> fruitInventory <span class="token operator">=</span> <span class="token punctuation">{</span></span>
 <span class="line">  apple<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span></span>
 <span class="line">  banana<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span></span>
@@ -302,7 +298,7 @@
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">Fruit</span> <span class="token operator">=</span> <span class="token string">'apple'</span> <span class="token operator">|</span> <span class="token string">'banana'</span> <span class="token operator">|</span> <span class="token string">'orange'</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token keyword">type</span> <span class="token class-name">Stock</span> <span class="token operator">=</span> Record<span class="token operator">&lt;</span>Fruit<span class="token punctuation">,</span> <span class="token builtin">number</span><span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
@@ -315,14 +311,14 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>Readonly&lt;T&gt;</code></h3>
 <p>모든 속성을 읽기 전용으로 만듭니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">interface</span> <span class="token class-name">Config</span> <span class="token punctuation">{</span></span>
 <span class="line">  apiKey<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span></span>
 <span class="line">  timeout<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">ReadonlyConfig</span> <span class="token operator">=</span> Readonly<span class="token operator">&lt;</span>Config<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">const</span> config<span class="token operator">:</span> ReadonlyConfig <span class="token operator">=</span> <span class="token punctuation">{</span></span>
@@ -335,13 +331,13 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>ReturnType&lt;T&gt;</code></h3>
 <p>함수의 반환 타입을 추출합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">function</span> <span class="token function">fetchUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">User</span> <span class="token operator">=</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> fetchUser<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token comment">// 결과: { id: number; name: string; age: number; }</span></span>
 <span class="line"></span>
@@ -354,13 +350,13 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>Parameters&lt;T&gt;</code></h3>
 <p>함수의 매개변수 타입을 튜플로 추출합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> age<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">! You are </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>age<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> years old.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">GreetParams</span> <span class="token operator">=</span> Parameters<span class="token operator">&lt;</span><span class="token keyword">typeof</span> greet<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token comment">// 결과: [string, number]</span></span>
 <span class="line"></span>
@@ -639,7 +635,7 @@
 <p>React와 TypeScript를 함께 사용할 때 특히 유용한 타입 유틸리티들을 소개합니다. 이들은 컴포넌트와 props를 더 정확하고 유연하게 타입화하는 데 도움을 줍니다.</p>
 <h3><code>ComponentProps&lt;T&gt;</code></h3>
 <p>컴포넌트의 props 타입을 추출합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'some-ui-library'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">type</span> <span class="token class-name">ButtonProps</span> <span class="token operator">=</span> <span class="token punctuation">{</span></span>
@@ -649,7 +645,7 @@
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'some-ui-library'</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ComponentProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
@@ -658,14 +654,14 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3><code>PropsWithChildren&lt;P&gt;</code></h3>
 <p>props 타입에 children을 추가합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">type</span> <span class="token class-name">CardProps</span> <span class="token operator">=</span> <span class="token punctuation">{</span></span>
 <span class="line">  title<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span></span>
 <span class="line">  children<span class="token operator">?</span><span class="token operator">:</span> React<span class="token punctuation">.</span>ReactNode<span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> PropsWithChildren <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">type</span> <span class="token class-name">CardProps</span> <span class="token operator">=</span> PropsWithChildren<span class="token operator">&lt;</span><span class="token punctuation">{</span></span>
@@ -675,13 +671,13 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>CSSProperties</h3>
 <p>인라인 스타일 객체의 타입을 정의합니다.</p>
-<p>AS-IS:</p>
+<p><strong>AS-IS:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">function</span> <span class="token function">StyledDiv</span><span class="token punctuation">(</span><span class="token punctuation">{</span> style <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> style<span class="token operator">:</span> <span class="token builtin">any</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>style<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>TO-BE:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>TO-BE:</strong></p>
 <div class="language-tsx line-numbers-mode" data-highlighter="prismjs" data-ext="tsx" data-title="tsx"><pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CSSProperties <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">StyledDiv</span><span class="token punctuation">(</span><span class="token punctuation">{</span> style <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> style<span class="token operator">:</span> CSSProperties <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
