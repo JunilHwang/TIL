@@ -37,13 +37,13 @@ ul {
 }
 
 li {
-  @include only-pc {
-    width: calc(100% / 3);
-  }
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  @include only-pc {
+    width: calc(100% / 3);
+  }
 }
 </style>

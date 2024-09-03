@@ -78,14 +78,24 @@ em {
     margin: 0 auto;
   }
 
-  code {
-    color: #ff3860;
-    background: #f9f1f3;
-    padding: 4px;
+  [class*="language-"] {
+    font-size: 1rem;
 
-    .dark & {
-      color: var(--c-text-lighter);
-      background-color: var(--c-bg-light);
+    &.line-numbers-mode .line-numbers {
+      font-size: 1rem;
+    }
+
+    pre {
+      font-size: 1rem;
+    }
+
+    code {
+      background: #f9f1f3;
+      padding: 0;
+
+      .dark & {
+        background-color: var(--c-bg-light);
+      }
     }
   }
 

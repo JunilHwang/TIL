@@ -186,15 +186,19 @@ article {
     &:hover {
       text-decoration: none;
     }
-  }
 
-  h4 {
-    color: var(--c-text);
-    margin: 0;
+    h4 {
+      color: var(--c-text);
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      margin: 10px 0 0;
+    }
   }
 
   p {
-    margin: 10px 0 0;
     font-size: 14px;
     line-height: 1.4;
     color: var(--c-text-lightest);
