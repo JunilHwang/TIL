@@ -70,4 +70,14 @@ const relationPosts = computed(() => {
   }
 }
 
+.theme-default-content {
+  h1, h2, h3, h4 {
+    font-weight: 600;
+
+    a {
+      font-weight: inherit;
+    }
+  }
+}
+
 </style>
