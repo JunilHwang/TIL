@@ -3,7 +3,7 @@
   <id>https://junilhwang.github.io/TIL/TIL/</id>
   <title>개발자 황준일</title>
   <subtitle>Today I leanred</subtitle>
-  <updated>2025-02-16T19:38:21.767Z</updated>
+  <updated>2025-02-16T19:42:12.719Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://junilhwang.github.io/TIL/TIL/atom.xml"/>
   <link rel="alternate" href="https://junilhwang.github.io/TIL/TIL/"/>
@@ -11,7 +11,7 @@
     <title type="text">2024년 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2024-year/end/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2024-year/end/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>24년은 의도치 않게  개발자보단 <strong>교육자의 정체성</strong>이 더 돋보이는 1년이었다.
 덕분에 내가 가진 가치관의 해상도를 높일 수 있었다.
@@ -511,13 +511,13 @@
 <p>| Web01 | <a href="https://github.com/boostcampwm-2024/web01-youQuiz" target="_blank" rel="noopener noreferrer">https://github.com/boostcampwm-2024/web01-youQuiz</a> | <a href="http://www.you-quiz.site/" target="_blank" rel="noopener noreferrer">https://www.you-quiz.site</a> |
 |</p>
 ]]></content>
-    <published>2025-02-17T04:30:00.000Z</published>
+    <published>2025-02-16T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="text">Typescript A 부터 Z 까지</title>
     <id>https://junilhwang.github.io/TIL/TIL/with-ai/typescript-a-to-z/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/with-ai/typescript-a-to-z/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">TIP</p>
 <p>본 게시물은 AI(Claude)와 함께 작성하였습니다.</p>
@@ -1363,7 +1363,7 @@
     <title type="text">Start with why 서평</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/start-with-why/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/start-with-why/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[<p></p>
 <p><a href="https://www.yes24.com/Product/Goods/104263930" target="_blank" rel="noopener noreferrer">스타트 위드 와이 (START WITH WHY) 30만부 기념 블랙에디션 - 예스24</a></p>
 <p>2024년에 읽은 첫 번째 도서다. <s>인생경영클럽이 아니였으면 시도하지 못했을...</s></p>
@@ -1878,7 +1878,7 @@
     <title type="text">2024년 1월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2024-year/01/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2024-year/01/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <blockquote>
 <p>나름 만족스러운 한 달이었다.</p>
@@ -1999,7 +1999,7 @@
     <title type="text">2023년을 돌아보며 생각한 개발자로 취업하기</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%B7%A8%EC%A4%80/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%B7%A8%EC%A4%80/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>2023년 말에 휴가를 몰아썼습니다.
 푹 쉬면서 올해 있었던 일들을 곱씹어봤는데 저와 상담했던 수많은 취준생과 후배들이 생각났습니다.
@@ -2345,7 +2345,7 @@
     <title type="text">2023년 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2023-year/end/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2023-year/end/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>2022년 회고를 쓴게 정말 엊그제 같은데 벌써 1년이 지났다. 더닝크루거 곡선이 생각나는 일년이었달까?</p>
 <p>올해는 개발자로서의 성장 폭이 크지 않았던 것 같다.
@@ -2640,7 +2640,7 @@
     <title type="text">프레임워크 없이 만드는 SSR</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Server-Side-Rendering/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Server-Side-Rendering/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">TIP</p>
 <p>✒️ 본 게시물은 줌인터넷에 재직할 때 작성한 <a href="https://zuminternet.github.io/vue-ssr/" target="_blank" rel="noopener noreferrer">Vue SSR 제대로 적용하기 (feat. Vanilla SSR)</a>의 <strong>프레임워크 없이 적용해보기(Vanilla SSR)</strong> 파트를 조금 더 고도화한 것입니다.</p>
@@ -3842,7 +3842,7 @@ SSR이 가능해지지 않을까?</p>
     <title type="text">주니어 개발자의 2022년 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2022-year/end/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2022-year/end/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>벌써 2022년이 저물었다.
 올해는 생각보다 많이 버거웠다고 느끼는 중이다.
@@ -4235,7 +4235,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
     <title type="text">인프런 심야 FE 네트워킹 후기</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%8B%AC%EC%95%BC-FE-%ED%9B%84%EA%B8%B0/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%8B%AC%EC%95%BC-FE-%ED%9B%84%EA%B8%B0/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p><img src="https://user-images.githubusercontent.com/18749057/174490151-0aa33935-a28c-4157-a7ae-07ec3f506d62.jpg" alt="썸네일"></p>
 <p>본 포스트는 <a href="https://www.inflearn.com/pages/midnight-fe-2205" target="_blank" rel="noopener noreferrer">인프런 심야 FE 네트워킹</a>에 대한 후기이다.
@@ -4643,7 +4643,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
     <title type="text">주니어 개발자의 이직 후기</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/Turnover/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/Turnover/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 ]]></summary>
     <content type="html"><![CDATA[
@@ -4654,7 +4654,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
     <title type="text">단국대학교 강의 시간표를 제공하는 서비스를 만들자</title>
     <id>https://junilhwang.github.io/TIL/TIL/side-project/dku-schedule-manager/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/side-project/dku-schedule-manager/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 
 <blockquote>
@@ -5427,7 +5427,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
     <title type="text">주니어 개발자의 2021년 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2021-year/end/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2021-year/end/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 
 <p>끝날 것 같지 않던 2021년이 끝났다. 보인다.
@@ -6451,7 +6451,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
     <title type="text">Vanilla Javascript로 React UseState Hook 만들기</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>본 포스트는 React의 <code>useState</code> Hook의 작동방식에 대해 <strong>고민해보고, 구현해보고, 최적화</strong>하는 내용을 다룹니다.</p>
 <div class="custom-container tip"><p class="custom-container-title">선행학습</p>
@@ -7205,7 +7205,7 @@ CI/CD, 정적분석, 테스트 및 기타 등등 리스크를 관리할 수 있�
     <title type="text">Vanilla Javascript로 가상돔(VirtualDOM) 만들기</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <blockquote>
 <p>본 포스트는 React와 Vue에서 사용되고 있는 가상돔(VirtualDOM) 직접 만들어보는 내용이다.
@@ -8348,7 +8348,7 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
     <title type="text">Vanilla Javascript로 상태관리 시스템 만들기</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Store/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Store/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <blockquote>
 <p>본 포스트는 Vuex나 Redux 같은 상태관리 프레임워크를 직접 만들어보는 내용이다.
@@ -9490,7 +9490,7 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
     <title type="text">Vanilla Javascript로 웹 컴포넌트 만들기</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Component/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Design/Vanilla-JS-Component/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>9월에 <a href="https://edu.nextstep.camp/" target="_blank" rel="noopener noreferrer">넥스트 스텝</a>에서 진행하는 <a href="https://edu.nextstep.camp/s/tUzCRWul" target="_blank" rel="noopener noreferrer">블랙커피 스터디</a>에 참여했다.
 이 포스트는 스터디 기간동안 계속 고민하며 만들었던 컴포넌트를 차근 차근 구현해보는 내용이다.</p>
@@ -9778,7 +9778,7 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
     <title type="text">생각정리</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/03-%EC%83%9D%EA%B0%81%EC%A0%95%EB%A6%AC/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <blockquote>
 <p>원래 이번 주에는 회고 성격의 글을 쓰기 보단 기술적인 글을 쓰고자 했는데, 지금 내 상태로는 그러한 성격의 글을 쓰기 힘들 것 같다. 그래서 머릿속에 맴도는 것들을 정리하고자 이렇게 글을 쓴다.</p>
@@ -9973,7 +9973,7 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
     <title type="text">주니어 개발자의 2021년 상반기 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2021-year/01-First-Quarter/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2021-year/01-First-Quarter/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p></p>
 <p><code>와.. 벌써 2021년이구나, 시간 참 빠르다</code> 라고 말한지 얼마 안 된 것 같은데 벌써 2021년의 반이 지났다. 작년에는 한 달 마다 회고를 작성했는데, <s>너무 귀찮아서</s> 올 해는 상반기, 하반기 회고만 작성해야겠다.</p>
@@ -10326,7 +10326,7 @@ DOM에 변경이 있을 경우 <strong>렌더트리를 재생성</strong>하고(
     <title type="text">주니어 개발자의 2020년 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/end/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/end/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p></p>
 <blockquote>
@@ -12102,7 +12102,7 @@ React는 취업 준비를 할 때 잠깐 공부했고 Hooks도 제대로 사용�
     <title type="text">2020년 12월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/12-December/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/12-December/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>벌써 올 해의 마지막 월 회고를 쓰게 되었다.
 아.. 2020년 회고는 언제 써야하나.. 불행인지 다행인지 쓸 내용이 너무 많다 😂</p>
@@ -12566,7 +12566,7 @@ React는 취업 준비를 할 때 잠깐 공부했고 Hooks도 제대로 사용�
     <title type="text">2020년 11월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/11-November/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/11-November/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>이번 달은 어떻게 지나갔는지 잘 모르겠다. 그래도 한 번 정리해보자.</p>
 <h2>공적</h2>
@@ -12903,7 +12903,7 @@ React는 취업 준비를 할 때 잠깐 공부했고 Hooks도 제대로 사용�
     <title type="text">2020년 10월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/10-October/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/10-October/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>10월에는 바쁜듯 한가하게 살았다.</p>
 <h2>공적</h2>
@@ -13453,7 +13453,7 @@ React를 학습 하고 싶다면 꼭 이 스터디에 참여해보길 권한다.
     <title type="text">2021 새해 계획</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/02-2021-%EA%B3%84%ED%9A%8D/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/02-2021-%EA%B3%84%ED%9A%8D/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>1. 일일 커밋 대신 일일 영어</h2>
 <h3>계기</h3>
@@ -13642,7 +13642,7 @@ React를 학습 하고 싶다면 꼭 이 스터디에 참여해보길 권한다.
     <title type="text">유년시절 이야기 (3)</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-3/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>2부로 만들려고 했는데, 3부까지 와버렸다... 분량조절실패!</p>
 <ul>
@@ -14058,7 +14058,7 @@ JS는 PHP보다 디버깅하기가 더 어려웠고, JS의 역할을 정확하�
     <title type="text">유년시절 이야기 (2)</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-2/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>이제 부터가 본격적으로 개발에 입문하게 된 이야기이다.</p>
 <ul>
@@ -14445,7 +14445,7 @@ PHP는 고사하고 HTML/CSS도 제대로 할 수 있는 수준이 아니었다.
     <title type="text">유년시절 이야기 (1)</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/01-%EC%9C%A0%EB%85%84%EC%8B%9C%EC%A0%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-1/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>첫 번째 글쓰기는 가볍게 성인이 되기 전 기억에 대해 쓰고자 한다.</p>
 <ul>
@@ -14656,7 +14656,7 @@ PHP는 고사하고 HTML/CSS도 제대로 할 수 있는 수준이 아니었다.
     <title type="text">2020년 9월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/09-September/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/09-September/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <img width="778" alt="image32" src="https://user-images.githubusercontent.com/18749057/96290347-689cbe00-1021-11eb-873c-612efe8ec1d7.png">
 <p>9월은 정신 없이 시간이 흘러갔다. 사실 왜 벌써 10월인지, <strong>왜 벌써 여름이 저물었고 가을이 왔는지 혼란스럽다.</strong>
@@ -15768,7 +15768,7 @@ PHP는 고사하고 HTML/CSS도 제대로 할 수 있는 수준이 아니었다.
     <title type="text">2020년 8월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/08-August/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/08-August/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>7월 못지 않게 8월도 꽤나 바쁘게 지낸 것 같다.</p>
 <h2>공적</h2>
@@ -16208,7 +16208,7 @@ QA를 진행하고, 해당 사항을 반영하는 과정을 반복했는데 사�
     <title type="text">Javascript 한글 초성검색</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Hangul-Consonants-Search/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Hangul-Consonants-Search/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <blockquote>
 <p>본 게시물은 초성 검색 구현에 대한 여러 게시물을 보다가 이해하기가 힘든 경우가 많아서 어떻게 할까 고민하다가 작성하는 글입니다.</p>
@@ -16423,7 +16423,7 @@ QA를 진행하고, 해당 사항을 반영하는 과정을 반복했는데 사�
     <title type="text">자바스크립트 실행 컨텍스트</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Execution-Context/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Execution-Context/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>실행 컨텍스트는 자바스크립트에서 가장 중요한 핵심 개념 중에 하나다.
 이를 정확히 이해하는 것은 자바스크립트 개발자에게 매우 중요하다.</p>
@@ -16746,7 +16746,7 @@ this는 여기에 다루기에 복잡한 내용이 많기 때문에 따로 작�
     <title type="text">2020년 7월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/07-July/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/07-July/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>7월은 개발 서적, 특히 javascript의 core에 대한 서적을 많이 읽었다.</p>
 <h2>공적</h2>
@@ -17513,7 +17513,7 @@ CMS 하나 때문에 최초 배포에 필요한 프로젝트만 3개인 것이�
     <title type="text">2020년 2분기 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/02-Second-Quarter/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/02-Second-Quarter/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>정신을 차리고 보니 벌써 2020년의 7월이 되었다.</p>
 <p>그래서 다시 정신을 가다듬고, 2020년의 2분기는 얼마나 알차게 보냈는지 정리해보고자 한다.</p>
@@ -18260,7 +18260,7 @@ github를 찾아봐도 구글링을 해봐도 <u>이것만 보면 이해할 수 
     <title type="text">2020년 6월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/06-June/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/06-June/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>이번 달은 <a href="https://chrome.google.com/webstore/detail/zum-newtab/bghgeookcfdmkoocalbclnhofnenmhlf?hl=ko&amp;authuser=2" target="_blank" rel="noopener noreferrer">크롬 확장프로그램</a>과 싸웠고,
 <strong>NextStep</strong>의 <a href="https://edu.nextstep.camp/c/8fWRxNWU" target="_blank" rel="noopener noreferrer">클린코드를 위한 TDD, 리팩토링 with Java</a> 과정을 무사히 수료했다.</p>]]></summary>
@@ -18471,7 +18471,7 @@ github를 찾아봐도 구글링을 해봐도 <u>이것만 보면 이해할 수 
     <title type="text">2020년 5월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/05-May/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/05-May/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>이번 달은 성인이 된 이후로 제일 열심히 공부하며 지낸 것 같다.</p>
 <h2>공적</h2>
@@ -18905,7 +18905,7 @@ github를 찾아봐도 구글링을 해봐도 <u>이것만 보면 이해할 수 
     <title type="text">2020년 4월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/04-April/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/04-April/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>이번 달은 꽤 열심히 보낸 것 같다.</p>
 <h2>공적</h2>
@@ -19050,7 +19050,7 @@ PR 사용량도 늘어나고 있고, 무엇보다 구성원이 눈에 띄게 성
     <title type="text">2020년 1분기 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/01-First-Quarter/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/01-First-Quarter/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>벌써 2020년의 1/4이 지나갔다.
 한 분기 동안 어떤 일들을 목표로 했고, 얼마만큼 완수했나 자신에게 피드백을 해보자.</p>
@@ -19162,7 +19162,7 @@ Vuepress의 디자인이 깔끔하기도 했고, 무엇보다 다른 정적사�
     <title type="text">2020년 3월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/03-March/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/03-March/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>나는 3월 한 달을 어떻게 지냈나? 에 대한 고찰이다.</p>
 <h2>공적</h2>
@@ -19281,7 +19281,7 @@ Github는 참 활용 방안이 무궁무진한 서비스라고 느끼는 중이�
     <title type="text">2020년 2월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/02-February/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/02-February/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>나는 2월 한 달을 어떻게 지냈나? 에 대한 고찰이다.</p>
 <h2>공적</h2>
@@ -19484,7 +19484,7 @@ Github에 markdown 파일을 올리고, 그걸 이 서비스에 포스트로 등
     <title type="text">MVVM System 개선하기 (3)</title>
     <id>https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/05-Extension/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>객체지향 자바스크립트 마지막 포스팅입니다.</p>
 <div class="custom-container tip"><p class="custom-container-title">해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.</p>
@@ -19555,7 +19555,7 @@ Github에 markdown 파일을 올리고, 그걸 이 서비스에 포스트로 등
     <title type="text">MVVM System 개선하기 (2)</title>
     <id>https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/04-ISP-Visitor/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.</p>
 <p><a href="https://www.youtube.com/watch?v=r4vOF7WpxgM&amp;t=868s" target="_blank" rel="noopener noreferrer">코드스피츠 86기 4회차 동영상</a></p>
@@ -20061,7 +20061,7 @@ Native는 구현 클래스(DomScanner, DomVisitor)에게 위임한다.</p>
     <title type="text">03 자바와 객체지향 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/03-Java-As-OOP/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/03-Java-As-OOP/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>작성 예정입니다.</p>
 ]]></summary>
@@ -20074,7 +20074,7 @@ Native는 구현 클래스(DomScanner, DomVisitor)에게 위임한다.</p>
     <title type="text">02 프로그래밍 언어로서의 자바 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/02-Java-As-PL/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/02-Java-As-PL/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>자바는 근본적으로 프로그래밍 언어다.
 자바가 어떻게 작동하는지,
@@ -20126,7 +20126,7 @@ Native는 구현 클래스(DomScanner, DomVisitor)에게 위임한다.</p>
     <title type="text">01 사람을 사랑한 기술 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/01-Loved-Human/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/01-Loved-Human/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">신 기술은 이전 기술의 어깨를 딛고</p>
 <p>이미 있던 것이 후에 다시 있겠고, 이미 한 일을 후에 다시 할지라.<br>
@@ -20192,7 +20192,7 @@ C 언어로 작성된 소스코드를 컴파일러가 알아서 각각의 컴퓨
     <title type="text">00 책 소개 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/00-Intro/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/00-Intro/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>본 포스트는 <a href="https://wikibook.co.kr/java-oop-for-spring/" target="_blank" rel="noopener noreferrer">스프링 입문을 위한 자바 객체지향의 원리와 이해</a>라는 책에 대한 소개입니다.</p>
 <h2>책을 구매하게 된 계기</h2>
@@ -20288,7 +20288,7 @@ OOP의 개념을 더욱 확고하게 정립할 수 있었고 Spring을 사용하
     <title type="text">MVVM System 개선하기 (1)</title>
     <id>https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/03-Strategy-Observer/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.</p>
 <p><a href="https://www.youtube.com/watch?v=D450fPGffTg" target="_blank" rel="noopener noreferrer">코드스피츠 86기 3회차 동영상</a></p>
@@ -20757,7 +20757,7 @@ Binder는  ViewModel이 보내는 <strong>notify를 감지</strong>하여 <em>Vi
     <title type="text">MVVM System 만들기</title>
     <id>https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/02-MVVM/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.</p>
 <p><a href="https://www.youtube.com/watch?v=RT38Za1pkdI" target="_blank" rel="noopener noreferrer">코드스피츠 86기 2회차 동영상</a></p>
@@ -20814,7 +20814,7 @@ Binder는  ViewModel이 보내는 <strong>notify를 감지</strong>하여 <em>Vi
     <title type="text">객체지향의 기본 이론</title>
     <id>https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/CodeSpitz/Object-Oriented-Javascript/01-Intro/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">해당 포스트는 아래의 내용들을 토대로 정리한 것입니다.</p>
 <p><a href="https://www.youtube.com/watch?v=E9NZ0YEZrYU&amp;t=3914s" target="_blank" rel="noopener noreferrer">코드스피츠 86기 1회차 동영상</a></p>
@@ -21041,7 +21041,7 @@ Binder는  ViewModel이 보내는 <strong>notify를 감지</strong>하여 <em>Vi
     <title type="text">None Blocking Javascript 소개</title>
     <id>https://junilhwang.github.io/TIL/TIL/CodeSpitz/None-Blocking-Javascript/Intro/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/CodeSpitz/None-Blocking-Javascript/Intro/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <div class="custom-container tip"><p class="custom-container-title">해당 포스트는 아래의 내용을 토대로 정리한 것입니다.</p>
 <ul>
@@ -21208,7 +21208,7 @@ Binder는  ViewModel이 보내는 <strong>notify를 감지</strong>하여 <em>Vi
     <title type="text">2020년 1월 회고</title>
     <id>https://junilhwang.github.io/TIL/TIL/Review/2020-year/01-January/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Review/2020-year/01-January/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>나는 1월 한 달을 어떻게 지냈나? 에 대한 고찰이다.</p>
 <h2>공적</h2>
@@ -21324,7 +21324,7 @@ Vue, React 뿐만 아니라 Spring Framework에 담긴 원리들도 깨우칠 �
     <title type="text">Gradle Wrapper</title>
     <id>https://junilhwang.github.io/TIL/TIL/Gradle/GradleWrapper/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Gradle/GradleWrapper/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p><code>Gradle Wrapper</code>는 Gradle을 각 개발자나 CI 서버에 깔지 않고, 프로젝트에 함께 포함시켜 배포할 수 있는 방법을 제공해준다.</p>
 <div class="custom-container tip"><p class="custom-container-title">Wrapper를 사용하는 이유</p>
@@ -21423,7 +21423,7 @@ Wrapper는 선언 된 버전의 Gradle을 호출하여 필요한 경우 미리 �
     <title type="text">markdown-it-plantuml</title>
     <id>https://junilhwang.github.io/TIL/TIL/vuepress/Plantuml/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/vuepress/Plantuml/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>최근에 사내 입문교육에서 <code>plantuml</code>을 접했고 관심이 생겨서 정리한 내용이다.</p>
 <h2>1. Plantuml 소개</h2>
@@ -21547,7 +21547,7 @@ Wrapper는 선언 된 버전의 Gradle을 호출하여 필요한 경우 미리 �
     <title type="text">Vuepress + Utterances</title>
     <id>https://junilhwang.github.io/TIL/TIL/vuepress/Utterances/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/vuepress/Utterances/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>Vuepress에 Utterances(GitHub Issue를 이용한 댓글)를 적용하는 방법에 대해 기술합니다.</p>
 <h2>1. Utterances Install</h2>
@@ -21666,7 +21666,7 @@ Wrapper는 선언 된 버전의 Gradle을 호출하여 필요한 경우 미리 �
     <title type="text">github page에 배포하기</title>
     <id>https://junilhwang.github.io/TIL/TIL/vuepress/Deploy/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/vuepress/Deploy/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>Vuepress로 만든 문서를 github page에 배포하는 방법에 대해 기록한 문서이다.</p>
 <h2>1. 배포 과정 이해하기</h2>
@@ -21904,7 +21904,7 @@ Wrapper는 선언 된 버전의 Gradle을 호출하여 필요한 경우 미리 �
     <title type="text">VuePress 테마 설정</title>
     <id>https://junilhwang.github.io/TIL/TIL/vuepress/Theme/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/vuepress/Theme/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>현재 페이지는 VuePress에서 Theme를 다루는 방법에 대해 기술한 내용이다.</p>
 <h2>Using Theme</h2>
@@ -22212,7 +22212,7 @@ Wrapper는 선언 된 버전의 Gradle을 호출하여 필요한 경우 미리 �
     <title type="text">Vuepress 시작하기</title>
     <id>https://junilhwang.github.io/TIL/TIL/vuepress/Starter/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/vuepress/Starter/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>현재 페이지에서 다루고 있는 내용은 vuepress로 TIL 문서를 만들면서 알게된 내용들을 정리한 것이다.</p>
 <h2>Static Site Generator</h2>
@@ -22383,7 +22383,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">Today I Learned</title>
     <id>https://junilhwang.github.io/TIL/TIL/About/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/About/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p><img src="https://github-readme-stats.vercel.app/api?username=junilhwang" alt="junilhwang's github stats bn"></p>
 <h3>이력</h3>
@@ -22415,7 +22415,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">개발자의 글쓰기</title>
     <id>https://junilhwang.github.io/TIL/TIL/writing/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/writing/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>개발은 생각보다 심오한 작업이다.
 소프트웨어 그 자체에 대한 지식과 공학적인 지식도 물론 중요하지만 최근들어 이러한 역량보다 중요하다고 느끼고 있는 게 바로
@@ -22446,7 +22446,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">04 자바가 확장한 객체지향 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/04-Extended-By-Java/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/04-Extended-By-Java/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>작성 예정입니다.</p>
 ]]></summary>
@@ -22458,7 +22458,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">05 객체 지향 설계를 위한 SOLID 원칙 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/05-SOLID/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/05-SOLID/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>작성 예정입니다.</p>
 ]]></summary>
@@ -22470,7 +22470,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">06 스프링이 사랑한 디자인패턴 | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/06-Design-Pattern/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/06-Design-Pattern/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>작성 예정입니다.</p>
 ]]></summary>
@@ -22482,7 +22482,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">07 Spring Triangle | 객체지향의 원리와 이해</title>
     <id>https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/07-Spring-Triangle/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Book/OOP-Principle/07-Spring-Triangle/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[
 <p>작성 예정입니다.</p>
 ]]></summary>
@@ -22494,7 +22494,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">자바스크립트의 동시성과 병렬성</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Concurrency-Parallel/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Concurrency-Parallel/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[<p>** 아직 작성이 완료되지 않은 글입니다. **</p>
 <h1>자바스크립트트의 동시성과 병렬성</h1>
 ]]></summary>
@@ -22506,7 +22506,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">자바스크립트 이벤트 루프</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Event-Loop/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Event-Loop/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[<p>** 아직 작성이 완료되지 않은 글입니다. **</p>
 <h1>자바스크립트 이벤트 루프</h1>
 ]]></summary>
@@ -22518,7 +22518,7 @@ Server Side 에서 DB를 처리하거나 Request로 Data를 받아서 처리하�
     <title type="text">Non-Blocking Loop 만들기</title>
     <id>https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Non-Blocking-Loop/</id>
     <link href="https://junilhwang.github.io/TIL/TIL/Javascript/Domain/Non-Blocking-Loop/"/>
-    <updated>2025-02-16T19:37:42.000Z</updated>
+    <updated>2025-02-16T19:41:24.000Z</updated>
     <summary type="html"><![CDATA[<p>** 아직 작성이 완료되지 않은 글입니다. **</p>
 <h1>Non-Blocking Loop 만들기</h1>
 ]]></summary>
