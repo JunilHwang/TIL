@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Noto Serif KR', serif, Nanum Gothic, Malgun Gothic, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+  font-size: 16px;
 }
 
 em {
@@ -80,15 +81,15 @@ em {
   }
 
   [class*="language-"] {
-    font-size: inherit;
+    font-size: 1rem;
     overflow: hidden;
 
     &.line-numbers-mode .line-numbers {
-      font-size: inherit;
+      font-size: 1rem;
     }
 
     pre {
-      font-size: inherit;
+      font-size: 1rem;
     }
 
     code {
