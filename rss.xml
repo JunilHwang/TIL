@@ -6,8 +6,8 @@
     <link>https://junilhwang.github.io/TIL/TIL/</link>
     <description>Today I leanred</description>
     <language>en-US</language>
-    <pubDate>Sun, 16 Feb 2025 19:42:12 GMT</pubDate>
-    <lastBuildDate>Sun, 16 Feb 2025 19:42:12 GMT</lastBuildDate>
+    <pubDate>Mon, 17 Feb 2025 06:27:41 GMT</pubDate>
+    <lastBuildDate>Mon, 17 Feb 2025 06:27:41 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <item>
@@ -16,9 +16,9 @@
       <guid>https://junilhwang.github.io/TIL/TIL/Review/2024-year/end/</guid>
       <source url="https://junilhwang.github.io/TIL/TIL/rss.xml">2024년 회고</source>
       <description>개발자 그리고 교육자로서 지낸 1년의 이야기</description>
-      <pubDate>Sun, 16 Feb 2025 00:00:00 GMT</pubDate>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[
-<p>24년은 의도치 않게  개발자보단 <strong>교육자의 정체성</strong>이 더 돋보이는 1년이었다.
+<p>24년은 의도치 않게 개발자보단 <strong>교육자의 정체성</strong>이 더 돋보였던 1년이다.
 덕분에 내가 가진 가치관의 해상도를 높일 수 있었다.
 무수히 많은 input이 있었으나 이를 제대로 소화하지 못했고, 이렇게 회고로 배설하게 되었다. <s>(다 쓰고나니 변비가 해소된 이 느낌!!)</s></p>
 <h2>2024 목표 달성 점검</h2>
@@ -102,11 +102,15 @@
 </li>
 </ul>
 <h2>1. nBilly</h2>
-<p>
-24년에는 팀에서 나름 재밌는 일들을 많이 할 수 있었다. 그리고 이와는 별개로 내가 이곳에서 일을 하는 의미에 대해 다방면으로 고민하는 시간이 많았다. 팀에 합류한 이후에 많이 다방면으로 성장할 수 있어서 좋았으나… 너무나 아쉬운 점은 다른 사람에게 nBilly를 소개할 때 굉장히 난해했다.</p>
-<p>우리 팀이 하는 일이 무엇인지, 어떤 문제를 해결하고자 하는지, 그래서 내가 하는 일을 다른 사람들에게 어떤식으로 보여줄 수 있는지를 표현하는게 힘들었다.</p>
-<p>일반 사용자가 우리 팀의 제품을 사용하는 것은 불가능하고, 사내에서도 일부 인원에게만 사용권한을 허용하고 있다. SDK로 만들었으나 SDK로 쓰이는 곳이 없다.</p>
-<p>그래도 nBilly로 만들어진 페이지가 은근히 많고 각 페이지로 유입되는 사용자가 적진 않은 편이다. 앱 메인의 광고로 등장한적도 있고, 각종 SNS를 통해 연결된 적도 꽤 있다. 다른 방면으로 생각하면 “나쁘지 않은데?” 라고 할 수 있으나… 그래도 참 아쉽다.</p>
+<p></p>
+<p>24년에는 팀에서 나름 재밌는 일들을 많이 할 수 있었다.
+그리고 이와는 별개로 내가 이곳에서 일을 하는 의미에 대해 다방면으로 고민하는 시간이 많았다.
+팀에 합류한 후 다방면으로 성장할 수 있어서 좋았지만, 너무나 아쉬운 점은 다른 사람에게 nBilly를 소개할 때 굉장히 난해했다는 것.</p>
+<p>우리 팀이 하는 일이 무엇인지, 어떤 문제를 해결하고자 하는지, 그래서 내가 하는 일을 다른 사람들에게 어떤식으로 보여줄 수 있는지를 표현하는게 힘들었다.
+일반 사용자가 우리 팀의 제품을 사용하는 것은 불가능하고, 사내에서도 일부 인원에게만 사용권한을 허용하고 있다. SDK로 만들었으나 SDK로 쓰이는 곳이 없다.
+그래도 <a href="https://campaign.nbilly.naver.com/nbilly-portfolio" target="_blank" rel="noopener noreferrer">nBilly로 만들어진 페이지</a>가 은근히 많고, 각 페이지로 유입되는 사용자가 적진 않은 편이다.
+앱 메인의 광고로 등장한 적도 있고, 각종 SNS를 통해 연결된 적도 꽤 있다.
+다른 방면으로 생각하면 “나쁘지 않은데?” 라고 할 수 있으나… 그래도 아쉬운 마음아 한 구석에 자리잡고 있다.</p>
 <h3>(1) 제품</h3>
 <h4>1) 디바이스 모드 전환시 렌더링 최적화</h4>
 <p></p>
@@ -120,7 +124,8 @@
 <p></p>
 </li>
 </ul>
-<p>편집 페이지에서 Desktop 모드에서 Tablet 혹은 Mobile로 전환할 때 렌더링 비용이 미친듯이 늘어나는 현상이 있었다. 사실 렌더링 자체가 오래걸리는 이슈는 아니고, 렌더링을 위해 좌표를 계산하는 로직에서 불필요하게 많은 개체를 가져오고 있어서 이를 살짝 손봤더니 드라마틱(?)한 개선이 되었다.</p>
+<p>편집 페이지에서 Desktop 모드에서 Tablet 혹은 Mobile로 전환할 때 렌더링 비용이 미친듯이 늘어나는 현상이 있었다.
+사실 렌더링 자체가 오래걸리는 이슈는 아니고, 렌더링을 위해 좌표를 계산하는 로직에서 불필요하게 많은 개체를 가져오고 있어서 이를 살짝 손봤더니 드라마틱(?)한 개선이 되었다.</p>
 <p>큰 데이터를 다루는 로직을 다룰 때 발생하는 문제였달까… 생각보다 쉽게 해결한 문제였다.</p>
 <h4>2) FlexLayout</h4>
 <p>Figma의 AutoLayout과 거의 똑같이 만들었다.</p>
