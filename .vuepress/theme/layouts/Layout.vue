@@ -25,11 +25,6 @@ const relationPosts = computed(() => {
 
 <template>
   <ParentLayout>
-    <template #page-content-top>
-      <div class="hit">
-        <img :src="hitUrl" alt="Hits bn" />
-      </div>
-    </template>
     <template #page-bottom>
       <Comment/>
 
