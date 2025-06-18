@@ -5,7 +5,7 @@ description: 우아한 테크코스 리뷰어로 참여하면서 남긴 피드�
 sidebarDepth: 1
 date: 2025-04-08
 tag: 클린코드, 피드백 정리, with-ai
-thumbnail: 
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/master/with-ai/code-review/woowacourse/racing-car/1.png
 
 ---
 
