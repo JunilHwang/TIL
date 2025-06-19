@@ -2,17 +2,23 @@
 
 title: Typescript A 부터 Z 까지
 description: typescript와 관련된 내용을 AI와 함께 정리한 내용입니다.
-sidebarDepth: 2
+sidebarDepth: 1
 date: 2024-7-23
-tag: typescript
+tag: typescript, with-ai
 
 ---
 
-# Typescript A 부터 Z 까지
+# [With AI] Typescript A 부터 Z 까지
+
+::: tip
+
+본 게시물은 AI(Claude)와 함께 작성하였습니다.
+
+:::
 
 ## 참고자료
 
-[《이펙티브 타입스크립트: 동작 원리의 이해와 구체적인 조언 62가지》](https://blog.insightbook.co.kr/2021/06/10/《이펙티브-타입스크립트-동작-원리의-이해와-구체/)
+[이펙티브 타입스크립트: 동작 원리의 이해와 구체적인 조언 62가지](https://blog.insightbook.co.kr/2021/06/10/《이펙티브-타입스크립트-동작-원리의-이해와-구체/)
 
 [[8월 우아한테크세미나] 우아한 타입스크립트](https://www.youtube.com/watch?v=ViS8DLd6o-E)
 
@@ -42,30 +48,30 @@ console.log(greeting);
 ### Why (왜 타입스크립트를 사용해야 하는가?)
 
 1. 향상된 개발자 경험:
-  - 코드 자동 완성 및 IntelliSense 지원
-  - 리팩토링 시 더 안전하고 효율적인 작업 가능
+- 코드 자동 완성 및 IntelliSense 지원
+- 리팩토링 시 더 안전하고 효율적인 작업 가능
 2. 오류 조기 발견:
-  - 컴파일 시점에 타입 관련 오류 감지
-  - 런타임 오류 감소
+- 컴파일 시점에 타입 관련 오류 감지
+- 런타임 오류 감소
 3. 더 나은 코드 문서화:
-  - 타입 정의를 통한 자체 문서화
-  - 코드 가독성 및 유지보수성 향상
+- 타입 정의를 통한 자체 문서화
+- 코드 가독성 및 유지보수성 향상
 4. 대규모 애플리케이션 개발에 적합:
-  - 복잡한 시스템 설계에 유용한 타입 시스템
-  - 팀 협업 시 코드 품질 유지 용이
+- 복잡한 시스템 설계에 유용한 타입 시스템
+- 팀 협업 시 코드 품질 유지 용이
 
 ### Don't (언제 타입스크립트를 사용하지 말아야 하는가?)
 
 1. 소규모 또는 간단한 프로젝트:
-  - 설정 및 컴파일 과정이 오버헤드가 될 수 있음
-  - 빠른 프로토타이핑이 필요한 경우
+- 설정 및 컴파일 과정이 오버헤드가 될 수 있음
+- 빠른 프로토타이핑이 필요한 경우
 2. 팀이 TypeScript에 익숙하지 않은 경우:
-  - 학습 곡선으로 인한 초기 생산성 저하 가능성
+- 학습 곡선으로 인한 초기 생산성 저하 가능성
 3. 런타임 성능이 극도로 중요한 경우:
-  - 컴파일된 JavaScript가 약간의 오버헤드를 가질 수 있음
-  - 단, 대부분의 경우 성능 차이는 무시할 만한 수준
+- 컴파일된 JavaScript가 약간의 오버헤드를 가질 수 있음
+- 단, 대부분의 경우 성능 차이는 무시할 만한 수준
 4. 특정 JavaScript 라이브러리와의 호환성 문제:
-  - 타입 정의 파일이 없거나 불완전한 경우 사용이 어려울 수 있음
+- 타입 정의 파일이 없거나 불완전한 경우 사용이 어려울 수 있음
 
 ## 2. 기본기
 
@@ -194,7 +200,7 @@ let strLength: number = (someValue as string).length;
 
 TypeScript는 복잡한 타입을 쉽게 조작할 수 있는 여러 유틸리티 타입을 제공합니다. 이들은 실제 개발 상황에서 매우 유용하게 사용됩니다. 주요 유틸리티 타입과 그 사용 예를 살펴보겠습니다.
 
-### 1. Partial<T>
+### `Partial<T>`
 
 모든 속성을 선택적으로 만듭니다.
 
@@ -230,7 +236,7 @@ updateUser({ name: "John" }); // 유효
 
 ```
 
-### 2. Required<T>
+### `Required<T>`
 
 모든 속성을 필수로 만듭니다.
 
@@ -257,7 +263,7 @@ const config: RequiredConfig = {
 
 ```
 
-### 3. Pick<T, K>
+### `Pick<T, K>`
 
 특정 속성만 선택합니다.
 
@@ -286,7 +292,7 @@ const preview: ProductPreview = {
 
 ```
 
-### 4. Omit<T, K>
+### `Omit<T, K>`
 
 특정 속성을 제외합니다.
 
@@ -314,7 +320,7 @@ const publicInfo: PublicUser = {
 
 ```
 
-### 5. Record<K, T>
+### `Record<K, T>`
 
 키-값 쌍의 타입을 정의합니다.
 
@@ -343,7 +349,7 @@ const fruitInventory: Stock = {
 
 ```
 
-### 6. Readonly<T>
+### `Readonly<T>`
 
 모든 속성을 읽기 전용으로 만듭니다.
 
@@ -371,7 +377,7 @@ const config: ReadonlyConfig = {
 
 ```
 
-### 7. ReturnType<T>
+### `ReturnType<T>`
 
 함수의 반환 타입을 추출합니다.
 
@@ -398,7 +404,7 @@ const user: User = {
 
 ```
 
-### 8. Parameters<T>
+### `Parameters<T>`
 
 함수의 매개변수 타입을 튜플로 추출합니다.
 
@@ -750,7 +756,7 @@ console.log(userStateManager.getState());  // { name: "John", age: 30, isLoggedI
 
 React와 TypeScript를 함께 사용할 때 특히 유용한 타입 유틸리티들을 소개합니다. 이들은 컴포넌트와 props를 더 정확하고 유연하게 타입화하는 데 도움을 줍니다.
 
-### ComponentProps<T>
+### `ComponentProps<T>`
 
 컴포넌트의 props 타입을 추출합니다.
 
@@ -777,7 +783,7 @@ type ButtonProps = ComponentProps<typeof Button>;
 
 ```
 
-### PropsWithChildren<P>
+### `PropsWithChildren<P>`
 
 props 타입에 children을 추가합니다.
 
@@ -900,9 +906,9 @@ console.log(dateProperties); // { birthDate: Date }
 ```tsx
 type DeepReadonly<T> =
   T extends (infer R)[] ? DeepReadonlyArray<R> :
-  T extends Function ? T :
-  T extends object ? DeepReadonlyObject<T> :
-  T;
+    T extends Function ? T :
+      T extends object ? DeepReadonlyObject<T> :
+        T;
 
 interface DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
 
