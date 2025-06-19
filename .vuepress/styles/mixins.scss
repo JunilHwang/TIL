@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin tablet {
+  @media (max-width: 1119px) {
+    @content;
+  }
+}

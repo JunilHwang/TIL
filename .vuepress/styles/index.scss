@@ -22,6 +22,10 @@ em {
   .logo {
     border-radius: 100%;
   }
+
+  @include tablet {
+    padding-left: 4rem;
+  }
 }
 
 .siteFooter {
@@ -121,6 +125,13 @@ em {
 }
 
 .sidebar {
+  @include tablet {
+    transform: translateX(-100%);
+
+    .theme-container.sidebar-open & {
+      transform: translateX(0);
+    }
+  }
   @include only-pc {
     left: calc(50% + 440px);
     border-right: none;
@@ -174,6 +185,12 @@ em {
         padding-left: 0;
       }
     }
+  }
+}
+
+.toggle-sidebar-button {
+  @include tablet {
+    display: block;
   }
 }
 
