@@ -17,6 +17,7 @@ disabledPost: true
 - 블로그: https://junilhwang.github.io/TIL
 - GitHub: https://github.com/JunilHwang
 - LinkedIn: [https://www.linkedin.com/in/준일-황-3053911ba/](https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/)
+- 오픈카톡: https://open.kakao.com/me/junilhwang
 
 ## Introduction
 
@@ -38,7 +39,7 @@ disabledPost: true
 
 다양한 인공지능(Claude, ChatGPT 등)과 워크플로우 자동화 도구(n8n)를 접목하여 현실세계에서 반복적으로 접하는 문제를 발견하고 정의하여 해결하는 과정을 좋아합니다.
 
-## 4. 이력
+##  이력
 
 - :office: 2022.06 ~ 현재 / 네이버 SmartStudio nBilly / 프론트엔드 엔지니어
 - :office: 2019.11 ~ 2022.05 / 줌인터넷(이스트에이드) 포털개발팀 / 프론트엔드 파트리더
@@ -74,17 +75,17 @@ disabledPost: true
 - 기능경기대회 강사 매년 전국대회 입상자 배출 (2014 ~ 현재)
 - 프로그래머스 데브코스 4기 멘토 (2023)
 
-## 6. 학력
+## 학력
 
 - `2013. 03 ~ 2020. 02` 단국대학교 소프트웨어학과 (죽전) 졸업
 - `2010. 03 ~ 2013. 02` 삼일공업고등학교 멀티미디어학과 (수원) 졸업
 
-## 7. 수상기록
+## 수상기록
 
 - `2012-09` 전국기능대회 웹 디자인 및 개발 동메달
 - `2012-04` 경기도기능대회 웹 디자인 및 개발 금메달
 
-## 8. 아티클
+## 아티클
 
 ### (1) 기술 아티클
 
@@ -113,4 +114,5 @@ disabledPost: true
 
 - [2023년을 돌아보며 생각한 개발자로 취업하기](https://junilhwang.github.io/TIL/writing/%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%B7%A8%EC%A4%80/)
 - [[글또 8기] 삶의 지도](https://www.notion.so/4f845ae31c7d4b46b5120ccee3690693?pvs=21)
+
 
