@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1050 550" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .layer-box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 8; }
+      .layer-title { font-family: 'Arial', sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+      .layer-content { font-family: 'Arial', sans-serif; font-size: 12px; fill: #475569; }
+      .dependency-arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .change-highlight { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .new-feature { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; }
+      .requirement-box { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; }
+      .step-title { font-family: 'Arial', sans-serif; font-size: 20px; font-weight: bold; fill: #1e293b; }
+      .arrow-label { font-family: 'Arial', sans-serif; font-size: 11px; fill: #6b7280; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a" />
+    </marker>
+  </defs>
+
+  <!-- Step 2: 리팩토링 완료 상태 -->
+  <text x="50" y="30" class="step-title">Step 2: 관심사 분리 완료</text>
+  
+  <!-- Domains Layer -->
+  <rect x="50" y="50" width="200" height="120" class="layer-box"/>
+  <text x="150" y="75" text-anchor="middle" class="layer-title">domains.ts</text>
+  <text x="60" y="95" class="layer-content">• Product, Cart 타입</text>
+  <text x="60" y="110" class="layer-content">• createStore()</text>
+  <text x="60" y="125" class="layer-content">• 비즈니스 로직</text>
+  <text x="60" y="140" class="layer-content">• 상태 관리</text>
+  <text x="60" y="155" class="layer-content">• 순수 함수들</text>
+
+  <!-- Components Layer -->
+  <rect x="300" y="50" width="200" height="120" class="layer-box"/>
+  <text x="400" y="75" text-anchor="middle" class="layer-title">components.ts</text>
+  <text x="310" y="95" class="layer-content">• ProductItem()</text>
+  <text x="310" y="110" class="layer-content">• CartItem()</text>
+  <text x="310" y="125" class="layer-content">• CartSummary()</text>
+  <text x="310" y="140" class="layer-content">• App()</text>
+  <text x="310" y="155" class="layer-content">• Template Literal</text>
+
+  <!-- Apps Layer -->
+  <rect x="550" y="50" width="200" height="120" class="layer-box"/>
+  <text x="650" y="75" text-anchor="middle" class="layer-title">apps.ts</text>
+  <text x="560" y="95" class="layer-content">• addEvent()</text>
+  <text x="560" y="110" class="layer-content">• setupEvents()</text>
+  <text x="560" y="125" class="layer-content">• 이벤트 유틸리티</text>
+  <text x="560" y="140" class="layer-content">• 이벤트 위임</text>
+
+  <!-- Main Layer -->
+  <rect x="800" y="50" width="200" height="120" class="layer-box"/>
+  <text x="900" y="75" text-anchor="middle" class="layer-title">main.ts</text>
+  <text x="810" y="95" class="layer-content">• render()</text>
+  <text x="810" y="110" class="layer-content">• 이벤트 핸들러</text>
+  <text x="810" y="125" class="layer-content">• 모든 것을 연결</text>
+  <text x="810" y="140" class="layer-content">• 애플리케이션 진입점</text>
+
+  <!-- 의존성 화살표 -->
+  <path d="M 250 110 L 300 110" class="dependency-arrow"/>
+  <text x="275" y="105" text-anchor="middle" class="arrow-label">의존</text>
+  
+  <path d="M 500 110 L 550 110" class="dependency-arrow"/>
+  <text x="525" y="105" text-anchor="middle" class="arrow-label">의존</text>
+  
+  <path d="M 750 110 L 800 110" class="dependency-arrow"/>
+  <text x="775" y="105" text-anchor="middle" class="arrow-label">의존</text>
+
+  <!-- 새로운 요구사항 -->
+  <text x="50" y="220" class="step-title">새로운 요구사항 등장!</text>
+  
+  <rect x="50" y="230" width="950" height="80" class="requirement-box"/>
+  <text x="60" y="250" class="layer-content">1. 상품 검색/정렬 기능</text>
+  <text x="60" y="265" class="layer-content">2. 재고 관리 (품절 상태 표시)</text>
+  <text x="60" y="280" class="layer-content">3. 장바구니 다중 선택/삭제</text>
+  <text x="60" y="295" class="layer-content">각 요구사항이 어떤 레이어에 영향을 주는지 확인해보자!</text>
+
+  <!-- Step 3: 요구사항 대응 -->
+  <text x="50" y="350" class="step-title">Step 3: 체계적인 요구사항 대응</text>
+
+  <!-- 변경된 Domains Layer -->
+  <rect x="50" y="370" width="200" height="150" class="change-highlight"/>
+  <text x="150" y="395" text-anchor="middle" class="layer-title">domains.ts ⚡</text>
+  <text x="60" y="415" class="layer-content">• Product + quantity</text>
+  <text x="60" y="430" class="layer-content">• Cart + selected</text>
+  <text x="60" y="445" class="layer-content">• search() 메서드</text>
+  <text x="60" y="460" class="layer-content">• sort() 메서드</text>
+  <text x="60" y="475" class="layer-content">• addToCart() 재고체크</text>
+  <text x="60" y="490" class="layer-content">• 선택 관리 로직</text>
+  <text x="60" y="505" class="layer-content">• isOutOfStock()</text>
+
+  <!-- 변경된 Components Layer -->
+  <rect x="300" y="370" width="200" height="150" class="change-highlight"/>
+  <text x="400" y="395" text-anchor="middle" class="layer-title">components.ts ⚡</text>
+  <text x="310" y="415" class="layer-content">• ProductControls() 추가</text>
+  <text x="310" y="430" class="layer-content">• ProductItem 재고표시</text>
+  <text x="310" y="445" class="layer-content">• CartItem 체크박스</text>
+  <text x="310" y="460" class="layer-content">• CartSummary 선택삭제</text>
+  <text x="310" y="475" class="layer-content">• 품절 상태 UI</text>
+  <text x="310" y="490" class="layer-content">• 검색/정렬 UI</text>
+
+  <!-- 변경된 Apps Layer -->
+  <rect x="550" y="370" width="200" height="150" class="layer-box"/>
+  <text x="650" y="395" text-anchor="middle" class="layer-title">apps.ts</text>
+  <text x="560" y="415" class="layer-content">• addEvent() (동일)</text>
+  <text x="560" y="430" class="layer-content">• setupEvents() (동일)</text>
+  <text x="560" y="445" class="layer-content">• 타입 개선</text>
+  <text x="560" y="460" class="layer-content" fill="#16a34a">변경 없음!</text>
+
+  <!-- 변경된 Main Layer -->
+  <rect x="800" y="370" width="200" height="150" class="change-highlight"/>
+  <text x="900" y="395" text-anchor="middle" class="layer-title">main.ts ⚡</text>
+  <text x="810" y="415" class="layer-content">• 검색 이벤트</text>
+  <text x="810" y="430" class="layer-content">• 정렬 이벤트</text>
+  <text x="810" y="445" class="layer-content">• 선택 이벤트</text>
+  <text x="810" y="460" class="layer-content">• 전체선택 이벤트</text>
+  <text x="810" y="475" class="layer-content">• 선택삭제 이벤트</text>
+  <text x="810" y="490" class="layer-content">• filteredItems 사용</text>
+
+  <!-- 변경 흐름 화살표 -->
+  <path d="M 250 445 L 300 445" class="dependency-arrow"/>
+  <path d="M 500 445 L 550 445" class="dependency-arrow"/>
+  <path d="M 750 445 L 800 445" class="dependency-arrow"/>
+
+  <!-- 개발 순서 표시 -->
+  <circle cx="150" cy="360" r="15" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+  <text x="150" y="365" text-anchor="middle" fill="white" font-weight="bold">1</text>
+
+  <circle cx="400" cy="360" r="15" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+  <text x="400" y="365" text-anchor="middle" fill="white" font-weight="bold">2</text>
+
+  <circle cx="900" cy="360" r="15" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+  <text x="900" y="365" text-anchor="middle" fill="white" font-weight="bold">3</text>
+</svg>
