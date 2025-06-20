@@ -1,7 +1,6 @@
 import { defaultTheme, DefaultThemeOptions, defineUserConfig, Theme, viteBundler } from 'vuepress-vite';
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { feed } from 'vuepress-plugin-feed2';
-import { sitemap } from 'vuepress-plugin-sitemap2';
 import { searchPlugin } from "@vuepress/plugin-search";
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
@@ -45,6 +44,42 @@ const posts = glob.sync('!(node_modules)/**/*.md')
   .sort((a, b) => b.createdAt - a.createdAt);
 
 fs.writeFileSync(path.join(__dirname, "/public/posts.json"), JSON.stringify(posts));
+
+// sitemap.xml 생성
+const generateSitemap = () => {
+  const baseUrl = 'https://junilhwang.github.io/TIL';
+  const currentDate = new Date().toISOString();
+  
+  const urls = [
+    `  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>`,
+    `  <url>
+    <loc>${baseUrl}/About/</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`,
+    ...posts.map(post => `  <url>
+    <loc>${baseUrl}${post.path}</loc>
+    <lastmod>${new Date(post.createdAt).toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`)
+  ];
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>`;
+
+  fs.writeFileSync(path.join(__dirname, "/public/sitemap.xml"), sitemap);
+};
+
+generateSitemap();
 
 export default defineUserConfig({
   title: '개발자 황준일',
@@ -139,7 +174,6 @@ export default defineUserConfig({
     googleAnalyticsPlugin({
       id: 'UA-113171398-2'
     }),
-    sitemap({ hostname: 'https://junilhwang.github.io/TIL' }),
     searchPlugin({}),
     // demoBlock({}),
   ],
