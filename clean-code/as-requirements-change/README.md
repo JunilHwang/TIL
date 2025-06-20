@@ -386,7 +386,8 @@ main();
 
 ### (3) 1단계 데모 
 
-링크: [https://junilhwang.github.io/simple-clean-code-project/step1.html](https://junilhwang.github.io/simple-clean-code-project/step1.html)
+- 링크: [https://junilhwang.github.io/simple-clean-code-project/step1.html](https://junilhwang.github.io/simple-clean-code-project/step1.html)
+- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step1.html"></iframe>
@@ -2359,7 +2360,8 @@ $ pnpm run test:coverage --coverage.include=src/step3
 
 ### (8) 2단계 데모
 
-링크: [https://junilhwang.github.io/simple-clean-code-project/step2.html](https://junilhwang.github.io/simple-clean-code-project/step2.html)
+- 링크: [https://junilhwang.github.io/simple-clean-code-project/step2.html](https://junilhwang.github.io/simple-clean-code-project/step2.html)
+- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step2.html"></iframe>
@@ -2875,7 +2877,8 @@ test('상품 목록을 조회할 수 있으며, 이름/가격/상품이미지 �
 
 ### (5) 3단계 데모
 
-링크: [https://junilhwang.github.io/simple-clean-code-project/step3.html](https://junilhwang.github.io/simple-clean-code-project/step3.html)
+- 링크: [https://junilhwang.github.io/simple-clean-code-project/step3.html](https://junilhwang.github.io/simple-clean-code-project/step3.html)
+- 전체코드: - 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step3.html"></iframe>
@@ -3937,7 +3940,8 @@ $ pnpm run test:coverage --coverage.include=src/step4
 
 ### (5) 4단계 데모
 
-링크: [https://junilhwang.github.io/simple-clean-code-project/step4.html](https://junilhwang.github.io/simple-clean-code-project/step4.html)
+- 링크: [https://junilhwang.github.io/simple-clean-code-project/step4.html](https://junilhwang.github.io/simple-clean-code-project/step4.html)
+- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step4.html"></iframe>
@@ -5110,7 +5114,8 @@ end note
 
 ### (5) 5단계 데모
 
-링크: [https://junilhwang.github.io/simple-clean-code-project/step5.html](https://junilhwang.github.io/simple-clean-code-project/step5.html)
+- 링크: [https://junilhwang.github.io/simple-clean-code-project/step5.html](https://junilhwang.github.io/simple-clean-code-project/step5.html)
+- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step5.html"></iframe>
