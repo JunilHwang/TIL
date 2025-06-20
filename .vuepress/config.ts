@@ -1,6 +1,5 @@
 import { defaultTheme, DefaultThemeOptions, defineUserConfig, Theme, viteBundler } from 'vuepress-vite';
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
-import { feed } from 'vuepress-plugin-feed2';
 import { searchPlugin } from "@vuepress/plugin-search";
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
@@ -80,6 +79,40 @@ ${urls.join('\n')}
 };
 
 generateSitemap();
+
+// RSS feed 생성
+const generateRSS = () => {
+  const baseUrl = 'https://junilhwang.github.io/TIL';
+  const currentDate = new Date().toISOString();
+  const recentPosts = posts.slice(0, 20); // 최근 20개 포스트만
+  
+  const items = recentPosts.map(post => `    <item>
+      <title><![CDATA[${post.title}]]></title>
+      <link>${baseUrl}${post.path}</link>
+      <guid>${baseUrl}${post.path}</guid>
+      <pubDate>${new Date(post.createdAt).toUTCString()}</pubDate>
+      ${post.description ? `<description><![CDATA[${post.description}]]></description>` : ''}
+      ${post.tag ? `<category>${post.tag}</category>` : ''}
+    </item>`).join('\n');
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>개발자 황준일</title>
+    <link>${baseUrl}</link>
+    <description>Today I learned</description>
+    <language>ko-KR</language>
+    <lastBuildDate>${currentDate}</lastBuildDate>
+    <pubDate>${currentDate}</pubDate>
+    <ttl>60</ttl>
+${items}
+  </channel>
+</rss>`;
+
+  fs.writeFileSync(path.join(__dirname, "/public/rss.xml"), rss);
+};
+
+generateRSS();
 
 export default defineUserConfig({
   title: '개발자 황준일',
@@ -165,12 +198,6 @@ export default defineUserConfig({
     }
   },
   plugins: [
-    feed({
-      hostname: 'https://junilhwang.github.io/TIL/',
-      rss: true,
-      atom: true,
-      json: true,
-    }),
     googleAnalyticsPlugin({
       id: 'UA-113171398-2'
     }),
