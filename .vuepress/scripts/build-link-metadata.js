@@ -84,15 +84,30 @@ async function fetchMetadata(url) {
 
 // 마크다운 파일에서 링크 미리보기 URL 추출
 function extractLinkPreviewUrls(content) {
-  const regex = /::: link-preview\s+(https?:\/\/[^\s]+)/g;
   const urls = [];
+  
+  // 1. 컨테이너 방식: ::: link-preview URL
+  const containerRegex = /::: link-preview\s+(https?:\/\/[^\s]+)/g;
   let match;
   
-  while ((match = regex.exec(content)) !== null) {
+  while ((match = containerRegex.exec(content)) !== null) {
     urls.push(match[1]);
   }
   
-  return urls;
+  // 2. 인라인 링크 방식: [텍스트 link-preview](URL)
+  const inlineLinkRegex = /\[([^\]]*link-preview[^\]]*)\]\((https?:\/\/[^)]+)\)/g;
+  
+  while ((match = inlineLinkRegex.exec(content)) !== null) {
+    const linkText = match[1]; // [안의 텍스트]
+    const url = match[2]; // (안의 URL)
+    
+    // "link-preview"가 포함된 링크 텍스트인 경우만 수집
+    if (linkText.includes('link-preview')) {
+      urls.push(url);
+    }
+  }
+  
+  return [...new Set(urls)]; // 중복 제거
 }
 
 // 메인 실행 함수

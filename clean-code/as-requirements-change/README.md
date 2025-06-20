@@ -75,33 +75,33 @@ CMS 와 연결하기도 좋고, 유지보수를 하는 상황도 무척 많이 �
     $ npm exec husky init
     ```
     
-  - eslint 설정
+- eslint 설정
+  
+    ```tsx
+    import js from "@eslint/js";
+    import globals from "globals";
+    import tseslint from "typescript-eslint";
+    import { defineConfig } from "eslint/config";
+  
+    // eslint config가 추가되어야한다.
+    import eslintConfigPrettier from "eslint-config-prettier/flat";
+  
+    export default defineConfig([
+      {
+        files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
+        plugins: { js },
+        extends: ["js/recommended"],
+      },
+      {
+        files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
+        languageOptions: { globals: globals.browser },
+      },
+      tseslint.configs.recommended,
     
-      ```tsx
-      import js from "@eslint/js";
-      import globals from "globals";
-      import tseslint from "typescript-eslint";
-      import { defineConfig } from "eslint/config";
-    
-      // eslint config가 추가되어야한다.
-      import eslintConfigPrettier from "eslint-config-prettier/flat";
-    
-      export default defineConfig([
-        {
-          files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-          plugins: { js },
-          extends: ["js/recommended"],
-        },
-        {
-          files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-          languageOptions: { globals: globals.browser },
-        },
-        tseslint.configs.recommended,
-      
-        // config 배열 맨 뒤에 추가해주면 된다.
-        eslintConfigPrettier,
-      ]);
-      ```
+      // config 배열 맨 뒤에 추가해주면 된다.
+      eslintConfigPrettier,
+    ]);
+    ```
     
 - package.json에 npm scripts를 추가하자.
     
@@ -386,8 +386,8 @@ main();
 
 ### (3) 1단계 데모 
 
-- 링크: [https://junilhwang.github.io/simple-clean-code-project/step1.html](https://junilhwang.github.io/simple-clean-code-project/step1.html)
-- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1)
+- 링크: [link-preview https://junilhwang.github.io/simple-clean-code-project/step1.html](https://junilhwang.github.io/simple-clean-code-project/step1.html)
+- 전체코드: [link-preview https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step1.html"></iframe>
@@ -920,7 +920,7 @@ function ProductList({ products, onAddToCart }) {
 
 ### (1) 테스트 작성
 
-[https://playwright.dev/docs/intro](https://playwright.dev/docs/intro)
+[link-preview https://playwright.dev/docs/intro](https://playwright.dev/docs/intro)
 
 playwright을 이용하면 간단하게 e2e 테스트를 작성할 수 있다.
 
@@ -2360,8 +2360,8 @@ $ pnpm run test:coverage --coverage.include=src/step3
 
 ### (8) 2단계 데모
 
-- 링크: [https://junilhwang.github.io/simple-clean-code-project/step2.html](https://junilhwang.github.io/simple-clean-code-project/step2.html)
-- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2)
+- 링크: [link-preview https://junilhwang.github.io/simple-clean-code-project/step2.html](https://junilhwang.github.io/simple-clean-code-project/step2.html)
+- 전체코드: [link-preview https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step2.html"></iframe>
@@ -2817,9 +2817,9 @@ function render() {
 
 작성된 테스트는 아래의 링크로 대체하겠다.
 
-- 도메인 테스트 추가: [https://github.com/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb](https://github.com/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb)
-- 컴포넌트 테스트 추가: [https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9](https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9)
-- e2e 테스트 추가 및 개선: [https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be](https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be)
+- 도메인 테스트 추가: [link-preview https://github.com/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb](https://github.com/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb)
+- 컴포넌트 테스트 추가: [link-preview https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9](https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9)
+- e2e 테스트 추가 및 개선: [link-preview https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be](https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be)
 
 그리고 테스트 케이스 추가가 아닌 **테스트 코드 개선에 대한 변경**도 있다. 기존에는 하나의 테스트 파일에서 더미 데이터를 정의해서 사용하였으나, 아예 별도의 파일로 분리해서 사용하였다. 이럴 경우의 장점은 다음과 같다.
 
@@ -2877,8 +2877,8 @@ test('상품 목록을 조회할 수 있으며, 이름/가격/상품이미지 �
 
 ### (5) 3단계 데모
 
-- 링크: [https://junilhwang.github.io/simple-clean-code-project/step3.html](https://junilhwang.github.io/simple-clean-code-project/step3.html)
-- 전체코드: - 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3)
+- 링크: [link-preview https://junilhwang.github.io/simple-clean-code-project/step3.html](https://junilhwang.github.io/simple-clean-code-project/step3.html)
+- 전체코드: - 전체코드: [link-preview https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step3.html"></iframe>
@@ -3906,6 +3906,8 @@ e2e 가 통과 되도록 테스트를 만들었으면, 이제 단위테스트를
 
 단위 테스트는 [이 커밋](https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa)을 참고해주면 될 것 같다.
 
+[link-preview](https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa)
+
 ```bash
 ./src/step4
 ├── domains
@@ -3940,8 +3942,8 @@ $ pnpm run test:coverage --coverage.include=src/step4
 
 ### (5) 4단계 데모
 
-- 링크: [https://junilhwang.github.io/simple-clean-code-project/step4.html](https://junilhwang.github.io/simple-clean-code-project/step4.html)
-- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4)
+- 링크: [link-preview https://junilhwang.github.io/simple-clean-code-project/step4.html](https://junilhwang.github.io/simple-clean-code-project/step4.html)
+- 전체코드: [link-preview https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step4.html"></iframe>
@@ -5114,8 +5116,8 @@ end note
 
 ### (5) 5단계 데모
 
-- 링크: [https://junilhwang.github.io/simple-clean-code-project/step5.html](https://junilhwang.github.io/simple-clean-code-project/step5.html)
-- 전체코드: [https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5)
+- 링크: [link-preview https://junilhwang.github.io/simple-clean-code-project/step5.html](https://junilhwang.github.io/simple-clean-code-project/step5.html)
+- 전체코드: [link-preview https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5](https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5)
 
 <div class="iframe-container">
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step5.html"></iframe>
@@ -5427,7 +5429,9 @@ end note
 ### (4) 전체 데모 및 코드
 
 - 전체 데모는 [여기](https://junilhwang.github.io/simple-clean-code-project/)에서 확인할 수 있다.
+  [link-preview](https://junilhwang.github.io/simple-clean-code-project/)
 - 전체 코드는 [GitHub](https://github.com/junilhwang/simple-clean-code-project)에서 확인할 수 있다.
+  [link-preview](https://github.com/junilhwang/simple-clean-code-project)
 
 
 ## AI로 클린코드 규칙을 만들어가기
@@ -5438,7 +5442,7 @@ end note
 
 여태까지 작성된 내용을 기반으로, cursor rule 을 claude를 통해 만들 수 있다.
 
-[Claude](https://claude.ai/share/25598d1f-072b-4782-8ad1-3fde884f6930)
+[link-preview Claude](https://claude.ai/share/25598d1f-072b-4782-8ad1-3fde884f6930)
 
 ```markdown
 `본문.md` 의 내용을 실무에서도 활용할 수 있는 코딩 컨벤션을 만들고 싶어.
@@ -5462,7 +5466,7 @@ end note
 이를 기반으로 rule을 만들어달라고 요청했다.
 대략 7번 정도 프롬프트를 edit 하면서 개선했다.
 
-이를 통해 산출된 룰(clean-code.mdc)은 다음과 같다.
+::: details 이를 통해 산출된 룰(clean-code.mdc)은 다음과 같다.
 
 ```markdown
 # Clean Code Rules: Requirements-Driven Development
@@ -5773,6 +5777,8 @@ const getAvailableProducts = (products: Product[]) =>
 💡 **핵심 원칙**: 요구사항 변화에 유연하게 대응할 수 있는 코드가 클린코드입니다. 현재 동작하는 코드가 아닌, 미래에도 쉽게 변경할 수 있는 코드를 작성하세요.
 ```
 
+:::
+
 이 rule을 기반으로 리팩토링을 어떻게 해주는지 테스트해봤다.
 model 성능에 따라 다르긴 하지만, 기본적인 원칙들을 잘 지켜가면서 만들어준다.
 **한 번에 리팩토링을 해달라고 요청하기 보단 작은 단위로 시작**하는게 좋을 것이다.
@@ -5783,7 +5789,7 @@ model 성능에 따라 다르긴 하지만, 기본적인 원칙들을 잘 지켜
 
 이어서 claude에게 system prompt 를 구성하도록 요청했다.
 
-[Claude](https://claude.ai/share/6e4fcf4a-c13a-466e-bb29-ba9a06b98d57)
+[link-preview Claude](https://claude.ai/share/6e4fcf4a-c13a-466e-bb29-ba9a06b98d57)
 
 ```markdown
 `본문.md` 의 내용을 기반으로 LLM이 리팩토링을 수행하기 적합한 system prompt 를 만들고 싶어.
@@ -5803,7 +5809,7 @@ model 성능에 따라 다르긴 하지만, 기본적인 원칙들을 잘 지켜
 ```
     
 
-이를 통해 산출된 시스템 프롬프트는 다음과 같다.
+::: details  이를 통해 산출된 시스템 프롬프트는 다음과 같다.
 
 ```markdown
 당신은 유지보수성과 확장성을 고려한 리팩토링 전문가입니다. 주어진 코드는 학습을 위해 작성된 실습용 코드이며, **요구사항의 변화에 유연하게 대응할 수 있는 구조**로 리팩토링되어야 합니다.
@@ -6115,16 +6121,18 @@ src/
 ...
 ```
 
+:::
+
 #### 1) GPTs로 만들어서 사용하기
 
 그리고 다시 이렇게 만들어진 시스템 프롬프트를 GPTs 로 만들었다.
 
-[ChatGPT - 요구사항 기반의 리팩토링 도우미](https://chatgpt.com/g/g-685048fd1bb48191a58f91f32063c670-yogusahang-gibanyi-ripaegtoring-doumi)
+[link-preview ChatGPT - 요구사항 기반의 리팩토링 도우미](https://chatgpt.com/g/g-685048fd1bb48191a58f91f32063c670-yogusahang-gibanyi-ripaegtoring-doumi)
 
 
 코드를 업로드하거나 붙여넣고 리팩토링을 해달라고 요청할 수 있다.
 
-[ChatGPT - 코드 리팩토링 제안](https://chatgpt.com/share/68505684-b1bc-8001-934e-b6a9f5b8a599)
+[link-preview ChatGPT - 코드 리팩토링 제안](https://chatgpt.com/share/68505684-b1bc-8001-934e-b6a9f5b8a599)
 
 #### 2) Claude Project로 만들어서 활용하기
 
@@ -6146,7 +6154,12 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 ## 99. 항해플러스
 
-사실 이 글은 [항해플러스 프론트엔드 교육과정](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=google&utm_medium=bs&utm_campaign=hhplus&utm_content=brand&utm_term=%ED%95%AD%ED%95%B4%20%ED%94%8C%EB%9F%AC%EC%8A%A4&gcl_keyword=%ED%95%AD%ED%95%B4%20%ED%94%8C%EB%9F%AC%EC%8A%A4&gcl_network=g&gad_source=1&gad_campaignid=20285590253)에서 다루는 **내용 중 일부분을 압축해서 설명한 것**이다. 프론트엔드 교육과정이 생긴지 이제 1년이 조금 넘었고, 교육 콘텐츠를 만들면서 그리고 멘토링과 무수히 많은 피드백을 하면서 쌓아온 내용을 담았다. 사실 더 많은 이야기를 하고 싶었지만, 한 포스트에 모든 내용을 담는 게… 꽤 어렵다.
+사실 이 글은 [항해플러스 프론트엔드 교육과정](https://bit.ly/43OaDNK)에서 다루는 **내용 중 일부분을 압축해서 설명한 것**이다.
+
+[link-preview](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
+
+프론트엔드 교육과정이 생긴지 이제 1년이 조금 넘었고, 교육 콘텐츠를 만들면서 그리고 멘토링과 무수히 많은 피드백을 하면서 쌓아온 내용을 담았다.
+사실 더 많은 이야기를 하고 싶었지만, 한 포스트에 모든 내용을 담는 게… 꽤 어렵다.
 
 어쩌다보니 2기 때 커리큘럼에 직접적으로 관여하게 되었고, 다른 코치분들과 함께 내용을 많이 수정하여 지금의 모습이 되었다. 그리고 6기를 준비하는 지금, 조금 더 좋은 교육 콘텐츠를 만들기 위해 꽤 깊이 있는 고민을 하는 중이다.
 
@@ -6172,27 +6185,27 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 - 2기
     
-    - 김초원님: [[항해플러스 프론트엔드 2기] 과제만 매주 제출하자고 다짐했던 사람의 10주 회고_정말 힘들었나요_네](https://kimfield.tistory.com/entry/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%EC%88%98%EB%A3%8C-%EA%B3%BC%EC%A0%9C%EB%A7%8C-%EB%A7%A4%EC%A3%BC-%EC%A0%9C%EC%B6%9C%ED%95%98%EC%9E%90%EA%B3%A0-%EB%8B%A4%EC%A7%90%ED%96%88%EB%8D%98-%EC%82%AC%EB%9E%8C%EC%9D%98-10%EC%A3%BC-%ED%9A%8C%EA%B3%A0-%EC%A0%95%EB%A7%90-%ED%9E%98%EB%93%A4%EC%97%88%EB%82%98%EC%9A%94-%EB%84%A4-%EB%B6%80%EC%A0%9C-%EB%8F%88-%EB%82%B4%EA%B3%A0-%EA%B5%90%EC%9C%A1-%EB%93%A3%EB%8A%94-%ED%98%84%EC%97%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%97%AC%EA%B8%B0-%EB%A7%8E%EC%95%84%EC%9A%94)
-    - 박지한님: [항해 플러스 프론트엔드 2기 회고: 70일간의 여정을 마치며](https://velog.io/@bbbjihan/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%ED%9A%8C%EA%B3%A0-70%EC%9D%BC%EA%B0%84%EC%9D%98-%EC%97%AC%EC%A0%95%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0)
-    - 유시온님: [10. 항해 플러스 마지막 회고: 한 단계 더 성장한 개발자 되기](https://velog.io/@yoosion030/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A7%88%EC%A7%80%EB%A7%89-%ED%9A%8C%EA%B3%A0-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%8D%94-%EC%84%B1%EC%9E%A5%ED%95%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%90%98%EA%B8%B0)
+    - 김초원님: [link-preview [항해플러스 프론트엔드 2기] 과제만 매주 제출하자고 다짐했던 사람의 10주 회고_정말 힘들었나요_네](https://kimfield.tistory.com/entry/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%EC%88%98%EB%A3%8C-%EA%B3%BC%EC%A0%9C%EB%A7%8C-%EB%A7%A4%EC%A3%BC-%EC%A0%9C%EC%B6%9C%ED%95%98%EC%9E%90%EA%B3%A0-%EB%8B%A4%EC%A7%90%ED%96%88%EB%8D%98-%EC%82%AC%EB%9E%8C%EC%9D%98-10%EC%A3%BC-%ED%9A%8C%EA%B3%A0-%EC%A0%95%EB%A7%90-%ED%9E%98%EB%93%A4%EC%97%88%EB%82%98%EC%9A%94-%EB%84%A4-%EB%B6%80%EC%A0%9C-%EB%8F%88-%EB%82%B4%EA%B3%A0-%EA%B5%90%EC%9C%A1-%EB%93%A3%EB%8A%94-%ED%98%84%EC%97%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%97%AC%EA%B8%B0-%EB%A7%8E%EC%95%84%EC%9A%94)
+    - 박지한님: [link-preview 항해 플러스 프론트엔드 2기 회고: 70일간의 여정을 마치며](https://velog.io/@bbbjihan/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%ED%9A%8C%EA%B3%A0-70%EC%9D%BC%EA%B0%84%EC%9D%98-%EC%97%AC%EC%A0%95%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0)
+    - 유시온님: [link-preview 10. 항해 플러스 마지막 회고: 한 단계 더 성장한 개발자 되기](https://velog.io/@yoosion030/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A7%88%EC%A7%80%EB%A7%89-%ED%9A%8C%EA%B3%A0-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%8D%94-%EC%84%B1%EC%9E%A5%ED%95%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%90%98%EA%B8%B0)
     
 - 3기
     
-    - 오소현님: [더 큰 바다 앞으로 나아갈 수 있게 된,,, 🌊  [항해 플러스 프론트 3기 최종 회고]](https://velog.io/@osohyun0224/%EB%8D%94-%ED%81%B0-%EB%B0%94%EB%8B%A4-%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%98%EC%95%84%EA%B0%88-%EC%88%98-%EC%9E%88%EA%B2%8C-%EB%90%9C-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8-3%EA%B8%B0-%EC%B5%9C%EC%A2%85-%ED%9A%8C%EA%B3%A0)
-    - 정소윤님: [[항해 플러스] 프론트엔드 3기 수료 후기](https://soyoondaily.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-3%EA%B8%B0-%EC%88%98%EB%A3%8C-%ED%9B%84%EA%B8%B0)
-    - 박정우님: [10주간의 항해를 마치며✍️](https://velog.io/@jwberry1113/10%EC%A3%BC%EA%B0%84%EC%9D%98-%ED%95%AD%ED%95%B4%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0)
-    - 장효령님: [항해 플러스 프론트엔드 솔직 후기](https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0)
+    - 오소현님: [link-preview 더 큰 바다 앞으로 나아갈 수 있게 된,,, 🌊  [항해 플러스 프론트 3기 최종 회고]](https://velog.io/@osohyun0224/%EB%8D%94-%ED%81%B0-%EB%B0%94%EB%8B%A4-%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%98%EC%95%84%EA%B0%88-%EC%88%98-%EC%9E%88%EA%B2%8C-%EB%90%9C-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8-3%EA%B8%B0-%EC%B5%9C%EC%A2%85-%ED%9A%8C%EA%B3%A0)
+    - 정소윤님: [link-preview [항해 플러스] 프론트엔드 3기 수료 후기](https://soyoondaily.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-3%EA%B8%B0-%EC%88%98%EB%A3%8C-%ED%9B%84%EA%B8%B0)
+    - 박정우님: [link-preview 10주간의 항해를 마치며✍️](https://velog.io/@jwberry1113/10%EC%A3%BC%EA%B0%84%EC%9D%98-%ED%95%AD%ED%95%B4%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0)
+    - 장효령님: [link-preview 항해 플러스 프론트엔드 솔직 후기](https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0)
     
 - 4기
     
-    - 장원정님: [[항해 플러스 프론트엔드 4기] 나의 항해 원정기](https://velog.io/@jang_expedition/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-4%EA%B8%B0-%EB%82%98%EC%9D%98-%ED%95%AD%ED%95%B4-%EC%9B%90%EC%A0%95%EA%B8%B0)
-    - 김혜연님: [항해 플러스 프론트엔드 후기 (마지막) - 진짜 항해는 지금부터 시작](https://velog.io/@khy2106/31?utm_source=googlereview&utm_medium=search&utm_campaign=review&utm_term=1&utm_content=1&gad_source=1&gad_campaignid=21458524526)
+    - 장원정님: [link-preview [항해 플러스 프론트엔드 4기] 나의 항해 원정기](https://velog.io/@jang_expedition/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-4%EA%B8%B0-%EB%82%98%EC%9D%98-%ED%95%AD%ED%95%B4-%EC%9B%90%EC%A0%95%EA%B8%B0)
+    - 김혜연님: [link-preview 항해 플러스 프론트엔드 후기 (마지막) - 진짜 항해는 지금부터 시작](https://velog.io/@khy2106/31?utm_source=googlereview&utm_medium=search&utm_campaign=review&utm_term=1&utm_content=1&gad_source=1&gad_campaignid=21458524526)
     
 - 5기
     
-    - 유한별님: [항해플러스 프론트엔드 5기 회고](https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0)
-    - 김영웅님: [항해 플러스 프론트엔드 후기 (5기) 드디어 수료](https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C)
-    - 임수민님: [[항해 플러스 프론트엔드] 마무리 회고 - 🌊 여기가 육지인가? ⛵](https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5)
+    - 유한별님: [link-preview 항해플러스 프론트엔드 5기 회고](https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0)
+    - 김영웅님: [link-preview 항해 플러스 프론트엔드 후기 (5기) 드디어 수료](https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C)
+    - 임수민님: [link-preview [항해 플러스 프론트엔드] 마무리 회고 - 🌊 여기가 육지인가? ⛵](https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5)
 
 :::
 
@@ -6226,9 +6239,9 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 ::: tip 학습메이트 회고
 
-- 황태영님: [항해 플러스 프론트엔드 학습메이트 후기](https://velog.io/@osohyun0224/%EB%82%B4-%EC%9E%90%EB%B6%80%EC%8B%AC-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9B%84%EA%B8%B0)
-- 오소현님: [학습메이트 회고](https://velog.io/@hty0525/%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0)
-- 박지수님: [항해 99 프론트엔드 학습메이트 회고 - 마지막](https://until.blog/@susmisc14/%ED%95%AD%ED%95%B4-99-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0---%EB%A7%88%EC%A7%80%EB%A7%89)
+- 황태영님: [link-preview 항해 플러스 프론트엔드 학습메이트 후기](https://velog.io/@osohyun0224/%EB%82%B4-%EC%9E%90%EB%B6%80%EC%8B%AC-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9B%84%EA%B8%B0)
+- 오소현님: [link-preview 학습메이트 회고](https://velog.io/@hty0525/%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0)
+- 박지수님: [link-preview 항해 99 프론트엔드 학습메이트 회고 - 마지막](https://until.blog/@susmisc14/%ED%95%AD%ED%95%B4-99-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0---%EB%A7%88%EC%A7%80%EB%A7%89)
 
 :::
 
@@ -6244,16 +6257,14 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 ::: tip 👉🏻 항해플러스에 지원하고 싶은 분들께
 
-![지원하기](https://hanghae99.spartacodingclub.kr/images/plus/fe-og.jpg)
-- [지원하기](https://bit.ly/43OaDNK)
+- 지원하기: [link-preview](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
 - 추천인코드: `43OaDNK`
 
-위의 추천인 코드를 사용하면 **30만원 할인**을 받을 수 있습니다!
-
-이 외에 교육과정에 대해 궁금한점이 있다면 아래의 연락처로 편하게 문의 주세요!
-
-- 오픈카톡 링크: [https://open.kakao.com/me/junilhwang](https://open.kakao.com/me/junilhwang)
-- 이메일: junil.h@kakao.com
+  위의 추천인 코드를 사용하면 **30만원 할인**을 받을 수 있습니다!
+  이 외에 교육과정에 대해 궁금한점이 있다면 편하게 문의 주세요!
+  
+  [link-preview https://open.kakao.com/me/junilhwang](https://open.kakao.com/me/junilhwang)
+  이메일: junil.h@kakao.com
 
 :::
 

@@ -1,44 +1,240 @@
 {
-  "https://kimfield.tistory.com/entry/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%EC%88%98%EB%A3%8C-%EA%B3%BC%EC%A0%9C%EB%A7%8C-%EB%A7%A4%EC%A3%BC-%EC%A0%9C%EC%B6%9C%ED%95%98%EC%9E%90%EA%B3%A0-%EB%8B%A4%EC%A7%90%ED%96%88%EB%8D%98-%EC%82%AC%EB%9E%8C%EC%9D%98-10%EC%A3%BC-%ED%9A%8C%EA%B3%A0-%EC%A0%95%EB%A7%90-%ED%9E%98%EB%93%A4%EC%97%88%EB%82%98%EC%9A%94-%EB%84%A4-%EB%B6%80%EC%A0%9C-%EB%8F%88-%EB%82%B4%EA%B3%A0-%EA%B5%90%EC%9C%A1-%EB%93%A3%EB%8A%94-%ED%98%84%EC%97%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%97%AC%EA%B8%B0-%EB%A7%8E%EC%95%84%EC%9A%94": {
-    "title": "[항해플러스 프론트엔드 2기] 과제만 매주 제출하자고 다짐했던 사람의 10주 회고_정말 힘들었나요_네",
-    "description": "학습메이트에게 주어지는 20만원이 아닌!무려 30만원 할인코드~~NFmfCM 들어가며안녕하세요 초원입니다. 👩🏻‍💻3주 만에 돌아왔군요 .. 그동안 몇 개의 글을 임시저장 해두고 바쁘게 지내다 보니 어느새 수료를 해버려서, 올리지 못한 글들은 잠시 접어두고 찐_찐_찐막_최종회고 로 과정을 마무리 하려고 합니다. 간단한 자기소개, 그리고 시작하는 마음중국어과 졸업 후 방송국 인턴, 그리고 약국 직원까지 종잡을 수 없는 이력을 만들어가다,드디어 작년 초 '개발자'라는 뚜렷한 직업적 목표가 생겼습니다.KDT 멀티잇 2기 - SW정글사관학교 - 데브캠프 - 스파르타빌더스 외주 프로젝트 참여 등차근 차근 단계를 거쳐 현재는 6개월 차 프론트엔드 개발자가 되었어요 ✌🏻 2024 상반기 회고 중_ 시..",
-    "image": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkIkpb%2FbtsJm45KbKq%2FrKOAWOPav4FNYompkdmA80%2Fimg.jpg",
-    "siteName": "초원Kimfield",
-    "url": "https://kimfield.tistory.com/entry/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%EC%88%98%EB%A3%8C-%EA%B3%BC%EC%A0%9C%EB%A7%8C-%EB%A7%A4%EC%A3%BC-%EC%A0%9C%EC%B6%9C%ED%95%98%EC%9E%90%EA%B3%A0-%EB%8B%A4%EC%A7%90%ED%96%88%EB%8D%98-%EC%82%AC%EB%9E%8C%EC%9D%98-10%EC%A3%BC-%ED%9A%8C%EA%B3%A0-%EC%A0%95%EB%A7%90-%ED%9E%98%EB%93%A4%EC%97%88%EB%82%98%EC%9A%94-%EB%84%A4-%EB%B6%80%EC%A0%9C-%EB%8F%88-%EB%82%B4%EA%B3%A0-%EA%B5%90%EC%9C%A1-%EB%93%A3%EB%8A%94-%ED%98%84%EC%97%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%97%AC%EA%B8%B0-%EB%A7%8E%EC%95%84%EC%9A%94"
+  "https://velog.io/@bbbjihan/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%ED%9A%8C%EA%B3%A0-70%EC%9D%BC%EA%B0%84%EC%9D%98-%EC%97%AC%EC%A0%95%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0": {
+    "title": "항해 플러스 프론트엔드 2기 회고: 70일간의 여정을 마치며",
+    "description": "주니어 개발자는 방황한다.\n\n올해가 시작했을 무렵, 회사에서는 서비스 프로젝트를 새로 개발하려는 소규모 팀을 꾸렸고, 나는 유일한 프론트엔드 개발자로 참여하게 되었다. 기술적으로나 업무적으로나 부족함이 많은 나는, 신규 프로젝트가 시작될 때부터 배포 직전까지 어디 불이",
+    "image": "https://velog.velcdn.com/images/bbbjihan/post/ced69423-cf7d-4e68-a6d3-829a1631c90f/image.jpeg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@bbbjihan/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%ED%9A%8C%EA%B3%A0-70%EC%9D%BC%EA%B0%84%EC%9D%98-%EC%97%AC%EC%A0%95%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0"
   },
-  "https://vuepress.vuejs.org/": {
-    "title": "Home",
-    "description": "Vue-powered Static Site Generator",
+  "https://velog.io/@yoosion030/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A7%88%EC%A7%80%EB%A7%89-%ED%9A%8C%EA%B3%A0-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%8D%94-%EC%84%B1%EC%9E%A5%ED%95%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%90%98%EA%B8%B0": {
+    "title": "10. 항해 플러스 마지막 회고: 한 단계 더 성장한 개발자 되기",
+    "description": "항해 플러스 프론트엔드 코스 10주차 회고",
+    "image": "https://velog.velcdn.com/images/yoosion030/post/5e5f4634-f891-4c53-8150-2ef284e4492a/image.png",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@yoosion030/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A7%88%EC%A7%80%EB%A7%89-%ED%9A%8C%EA%B3%A0-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%8D%94-%EC%84%B1%EC%9E%A5%ED%95%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%90%98%EA%B8%B0"
+  },
+  "https://velog.io/@jwberry1113/10%EC%A3%BC%EA%B0%84%EC%9D%98-%ED%95%AD%ED%95%B4%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0": {
+    "title": "10주간의 항해를 마치며✍️",
+    "description": "드디어 길다면 길고 짧다면 짧았던 10주간의 항해가 끝났다!",
+    "image": "https://images.velog.io/velog.png",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@jwberry1113/10%EC%A3%BC%EA%B0%84%EC%9D%98-%ED%95%AD%ED%95%B4%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0"
+  },
+  "https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0": {
+    "title": "항해 플러스 프론트엔드 솔직 후기",
+    "description": "항해플러스 프론트엔드 진짜 솔~직한 솔직한 후기",
+    "image": "https://velog.velcdn.com/images/ryeong1109/post/7b347823-7004-4814-bf53-1d95e7d311e1/image.jpeg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0"
+  },
+  "https://velog.io/@khy2106/31?utm_source=googlereview&utm_medium=search&utm_campaign=review&utm_term=1&utm_content=1&gad_source=1&gad_campaignid=21458524526": {
+    "title": "항해 플러스 프론트엔드 후기 (마지막) - 진짜 항해는 지금부터 시작",
+    "description": "항해에 대해 궁금한 모든 것을 다 들려드립니다.",
+    "image": "https://velog.velcdn.com/images/khy2106/post/9c5066b9-3466-4a39-ba0d-cbaf2a82602f/image.jpg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@khy2106/31?utm_source=googlereview&utm_medium=search&utm_campaign=review&utm_term=1&utm_content=1&gad_source=1&gad_campaignid=21458524526"
+  },
+  "https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0": {
+    "title": "항해플러스 프론트엔드 5기 회고",
+    "description": "고생 끝! 고생 시작!",
+    "image": "https://velog.velcdn.com/images/hayou/post/0136c172-2745-45fd-b23f-c4c8a45f31c0/image.jpg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0"
+  },
+  "https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C": {
+    "title": "항해 플러스 프론트엔드 후기 (5기) 드디어 수료",
+    "description": "1팀 총원 6명 현재원 5명, 열외 아기원호 + 용병 태영형항해가 시작된지 2달그리고 수료를 했다 그 간 여정을 적어볼까 한다6월 7일 토요일 총 10주 + 1주(방학) = 11주 열심히 달려본거 같다.여태까지 부트캠프는 총 두번 했지만 기간 짧지만 가장 강렬하고 힘",
+    "image": "https://velog.velcdn.com/images/houndhollis/post/bbc34841-4795-42e9-8070-2e0dacb27c28/image.jpeg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C"
+  },
+  "https://velog.io/@osohyun0224/%EB%82%B4-%EC%9E%90%EB%B6%80%EC%8B%AC-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9B%84%EA%B8%B0": {
+    "title": "항해 플러스 프론트엔드 학습메이트 후기",
+    "description": "항해 플러스 프론트엔드 수강생부터 2번의 학습메이트까지! 주니어 개발자의 성장기와 그 생생한 후기를 전합니다 🔥",
+    "image": "https://velog.velcdn.com/images/osohyun0224/post/73172857-d7ef-487f-a47a-a2962cf71099/image.jpeg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@osohyun0224/%EB%82%B4-%EC%9E%90%EB%B6%80%EC%8B%AC-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9B%84%EA%B8%B0"
+  },
+  "https://velog.io/@hty0525/%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0": {
+    "title": "학습메이트 회고",
+    "description": "오지랖 후기",
+    "image": "https://velog.velcdn.com/images/hty0525/post/37f7322a-5eb3-4c59-a50c-31961a0f7c9a/image.jpeg",
+    "siteName": "velog.io",
+    "url": "https://velog.io/@hty0525/%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0"
+  },
+  "https://until.blog/@susmisc14/%ED%95%AD%ED%95%B4-99-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0---%EB%A7%88%EC%A7%80%EB%A7%89": {
+    "title": "항해 99 프론트엔드 학습메이트 회고 - 마지막",
+    "description": "항해 99 프론트엔드 학습메이트 회고",
+    "image": "https://image.until.blog/susmisc14/article/1749386785153.png",
+    "siteName": "until.blog",
+    "url": "https://until.blog/@susmisc14/%ED%95%AD%ED%95%B4-99-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0---%EB%A7%88%EC%A7%80%EB%A7%89"
+  },
+  "https://bit.ly/43OaDNK": {
+    "title": "https://bit.ly/43OaDNK",
+    "description": "",
     "image": "",
-    "siteName": "VuePress",
-    "url": "https://vuepress.vuejs.org/"
+    "siteName": "bit.ly",
+    "url": "https://bit.ly/43OaDNK"
   },
-  "https://www.npmjs.com/package/node-html-parser": {
-    "title": "node-html-parser",
-    "description": "A very fast HTML parser, generating a simplified DOM, with basic element query support.. Latest version: 7.0.1, last published: 6 months ago. Start using node-html-parser in your project by running `npm i node-html-parser`. There are 1673 other projects in the npm registry using node-html-parser.",
-    "image": "https://static-production.npmjs.com/338e4905a2684ca96e08c7780fc68412.png",
-    "siteName": "npm",
-    "url": "https://www.npmjs.com/package/node-html-parser"
+  "https://open.kakao.com/me/junilhwang": {
+    "title": "준일님의 오픈프로필",
+    "description": "",
+    "image": "http://mk.kakaocdn.net/dn/openchat/scrap/og/me/junilhwang_out.jpg?1689310580",
+    "siteName": "open.kakao.com",
+    "url": "https://open.kakao.com/me/junilhwang"
   },
-  "https://www.youtube.com/watch?v=dQw4w9WgXcQ": {
-    "title": "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)",
-    "description": "The official video for “Never Gonna Give You Up” by Rick Astley. Never: The Autobiography 📚 OUT NOW! Follow this link to get your copy and listen to Rick’s ...",
-    "image": "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    "siteName": "YouTube",
-    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1": {
+    "title": "simple-clean-code-project/src/step1 at main · JunilHwang/simple-clean-code-project",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bb1524eef9e2548481e9be9a8941dabea84114c7d59d0edd3d0188c1d8822792/JunilHwang/simple-clean-code-project",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step1"
   },
-  "https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags": {
+  "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2": {
+    "title": "simple-clean-code-project/src/step2 at main · JunilHwang/simple-clean-code-project",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bb1524eef9e2548481e9be9a8941dabea84114c7d59d0edd3d0188c1d8822792/JunilHwang/simple-clean-code-project",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2"
+  },
+  "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3": {
+    "title": "simple-clean-code-project/src/step3 at main · JunilHwang/simple-clean-code-project",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bb1524eef9e2548481e9be9a8941dabea84114c7d59d0edd3d0188c1d8822792/JunilHwang/simple-clean-code-project",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step3"
+  },
+  "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4": {
+    "title": "simple-clean-code-project/src/step4 at main · JunilHwang/simple-clean-code-project",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bb1524eef9e2548481e9be9a8941dabea84114c7d59d0edd3d0188c1d8822792/JunilHwang/simple-clean-code-project",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step4"
+  },
+  "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5": {
+    "title": "simple-clean-code-project/src/step5 at main · JunilHwang/simple-clean-code-project",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bb1524eef9e2548481e9be9a8941dabea84114c7d59d0edd3d0188c1d8822792/JunilHwang/simple-clean-code-project",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step5"
+  },
+  "https://junilhwang.github.io/simple-clean-code-project/step1.html": {
+    "title": "Step1: Vanilla JavaScript | 쇼핑몰",
+    "description": "",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/simple-clean-code-project/step1.html"
+  },
+  "https://junilhwang.github.io/simple-clean-code-project/step2.html": {
+    "title": "Step2: 관심사 분리 | 쇼핑몰",
+    "description": "",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/simple-clean-code-project/step2.html"
+  },
+  "https://junilhwang.github.io/simple-clean-code-project/step3.html": {
+    "title": "Step3: 기능 요구사항 추가 | 쇼핑몰",
+    "description": "",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/simple-clean-code-project/step3.html"
+  },
+  "https://junilhwang.github.io/simple-clean-code-project/step4.html": {
+    "title": "Step4: React 전환 (기술 요구사항 추가) | 쇼핑몰",
+    "description": "",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/simple-clean-code-project/step4.html"
+  },
+  "https://junilhwang.github.io/simple-clean-code-project/step5.html": {
+    "title": "Step5: React 렌더링 최적화 by 상태관리 | 쇼핑몰",
+    "description": "",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/simple-clean-code-project/step5.html"
+  },
+  "https://playwright.dev/docs/intro": {
+    "title": "Installation | Playwright",
+    "description": "Introduction",
+    "image": "https://repository-images.githubusercontent.com/221981891/8c5c6942-c91f-4df1-825f-4cf474056bd7",
+    "siteName": "playwright.dev",
+    "url": "https://playwright.dev/docs/intro"
+  },
+  "https://github.com/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb": {
+    "title": "test: step3 > 새로운 요구사항에 대한 도메인 로직 테스트 추가 · JunilHwang/simple-clean-code-project@d28f6da",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/5a9d62fc5cb1bac5ee24f1c51d4ded17e82f26a683a859c9e4ebba5b258ef3bc/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/commit/d28f6daf11827eec0fc88c6f3b35d52f60f366fb"
+  },
+  "https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9": {
+    "title": "feat: step3 > 새로운 요구사항에 UI 기능 및 테스트 추가 · JunilHwang/simple-clean-code-project@3409663",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/50809b10a441cbf6bb6d0d8bcf767e7667178dc1f13d16a238f0e4ad49a00dbf/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9"
+  },
+  "https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be": {
+    "title": "feat: step3 > e2e 테스트 추가 완료 · JunilHwang/simple-clean-code-project@e368611",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/7a2ddb6345a1d3bf6d843fbeacff1246580572251e3881b719ad0367476459bd/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be"
+  },
+  "https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa": {
+    "title": "feat: step4 > 테스트 코드 작성 완료 · JunilHwang/simple-clean-code-project@797fc42",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/76f80d9609bf4b6b31a22e61fffea0040b3f0643f5bd5e46e17bb51ee0968c34/JunilHwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa",
+    "siteName": "GitHub",
+    "url": "https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa"
+  },
+  "https://junilhwang.github.io/simple-clean-code-project/": {
+    "title": "클린코드 학습 프로젝트",
+    "description": "",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/simple-clean-code-project/"
+  },
+  "https://github.com/junilhwang/simple-clean-code-project": {
+    "title": "GitHub - JunilHwang/simple-clean-code-project",
+    "description": "Contribute to JunilHwang/simple-clean-code-project development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/f377cb0981b78158cf4c865ad8858ddb1ea98123e0e0104da9165a04ddd8c1e8/JunilHwang/simple-clean-code-project",
+    "siteName": "GitHub",
+    "url": "https://github.com/junilhwang/simple-clean-code-project"
+  },
+  "https://claude.ai/share/25598d1f-072b-4782-8ad1-3fde884f6930": {
     "title": "Just a moment...",
     "description": "",
     "image": "",
-    "siteName": "stackoverflow.com",
-    "url": "https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags"
+    "siteName": "claude.ai",
+    "url": "https://claude.ai/share/25598d1f-072b-4782-8ad1-3fde884f6930"
   },
-  "https://developer.mozilla.org/ko/docs/Web/JavaScript": {
-    "title": "JavaScript | MDN",
-    "description": "JavaScript (JS)는 가벼운, 인터프리터 혹은 just-in-time 컴파일 프로그래밍 언어로, 일급 함수를 지원합니다. 웹 페이지를 위한 스크립트 언어로 잘 알려져 있지만, Node.js, Apache CouchDB, Adobe Acrobat처럼 많은 비 브라우저 환경에서도 사용하고 있습니다. JavaScript는 프로토타입 기반, 다중 패러다임, 단일 스레드, 동적 언어로, 객체지향형, 명령형, 선언형(함수형 프로그래밍 등) 스타일을 지원합니다.",
-    "image": "https://developer.mozilla.org/mdn-social-share.d893525a4fb5fb1f67a2.png",
-    "siteName": "MDN Web Docs",
-    "url": "https://developer.mozilla.org/ko/docs/Web/JavaScript"
+  "https://claude.ai/share/6e4fcf4a-c13a-466e-bb29-ba9a06b98d57": {
+    "title": "Just a moment...",
+    "description": "",
+    "image": "",
+    "siteName": "claude.ai",
+    "url": "https://claude.ai/share/6e4fcf4a-c13a-466e-bb29-ba9a06b98d57"
+  },
+  "https://chatgpt.com/g/g-685048fd1bb48191a58f91f32063c670-yogusahang-gibanyi-ripaegtoring-doumi": {
+    "title": "ChatGPT - 요구사항 기반의 리팩토링 도우미",
+    "description": "리팩토링을 할 때 도움을 줄 수 있는 GPT 입니다.",
+    "image": "https://chatgpt.com/backend-api/content?id=file-AugAzgvBbBfvQJDdzmUhq6&gizmo_id=g-685048fd1bb48191a58f91f32063c670&ts=486221&p=gpp&sig=e951d24926604001a9ba28a16a778c13c04fa86ea0680af916adc8032b7efa59&v=0",
+    "siteName": "ChatGPT",
+    "url": "https://chatgpt.com/g/g-685048fd1bb48191a58f91f32063c670-yogusahang-gibanyi-ripaegtoring-doumi"
+  },
+  "https://chatgpt.com/share/68505684-b1bc-8001-934e-b6a9f5b8a599": {
+    "title": "ChatGPT - 코드 리팩토링 제안",
+    "description": "Shared via ChatGPT",
+    "image": "https://cdn.oaistatic.com/assets/chatgpt-share-og-u7j5uyao.webp",
+    "siteName": "ChatGPT",
+    "url": "https://chatgpt.com/share/68505684-b1bc-8001-934e-b6a9f5b8a599"
+  },
+  "https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616": {
+    "title": "항해 플러스, 도전을 넘어 개발자 커리어 도약으로",
+    "description": "프론트엔드 주니어 개발자로서 성장의 한계를 느끼고 있다면, 시니어 코치진과 함께 10주 몰입을 통해 도약하세요",
+    "image": "https://hanghae99.spartacodingclub.kr/images/plus/fe-og.jpg",
+    "siteName": "항해 플러스",
+    "url": "https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616"
   }
 }
