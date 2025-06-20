@@ -1,6 +1,5 @@
 import { defaultTheme, DefaultThemeOptions, defineUserConfig, Theme, viteBundler } from 'vuepress-vite';
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
-import { searchPlugin } from "@vuepress/plugin-search";
+ import { searchPlugin } from "@vuepress/plugin-search";
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
 import MarkdownItTaskLists from 'markdown-it-task-lists';
@@ -48,7 +47,7 @@ fs.writeFileSync(path.join(__dirname, "/public/posts.json"), JSON.stringify(post
 const generateSitemap = () => {
   const baseUrl = 'https://junilhwang.github.io/TIL';
   const currentDate = new Date().toISOString();
-  
+
   const urls = [
     `  <url>
     <loc>${baseUrl}/</loc>
@@ -85,7 +84,7 @@ const generateRSS = () => {
   const baseUrl = 'https://junilhwang.github.io/TIL';
   const currentDate = new Date().toISOString();
   const recentPosts = posts.slice(0, 20); // 최근 20개 포스트만
-  
+
   const items = recentPosts.map(post => `    <item>
       <title><![CDATA[${post.title}]]></title>
       <link>${baseUrl}${post.path}</link>
@@ -114,6 +113,28 @@ ${items}
 
 generateRSS();
 
+const GAScript = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-CJPZ4K06KP');
+
+// 링크 클릭 이벤트 추적
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && link.href) {
+      const isExternal = link.hostname !== window.location.hostname;
+      gtag('event', 'click', {
+        event_category: 'link',
+        event_label: link.href,
+        value: isExternal ? 'external' : 'internal'
+      });
+    }
+  });
+});
+`
+
 export default defineUserConfig({
   title: '개발자 황준일',
   description: 'Today I leanred',
@@ -130,6 +151,8 @@ export default defineUserConfig({
   bundler: viteBundler(),
   base: '/TIL/',
   head: [
+    ['script', { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-CJPZ4K06KP' }],
+    ['script', {}, GAScript],
     ['meta', { name: "google-site-verification", content: "sHfBWIoCUOYFXJ3b0ulN8jp9jpD8SEW5Wpxvlk-UABA" }],
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/TIL/assets/favicons/apple-touch-icon.png" }],
     ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/TIL/assets/favicons/favicon-32x32.png" }],
@@ -198,9 +221,6 @@ export default defineUserConfig({
     }
   },
   plugins: [
-    googleAnalyticsPlugin({
-      id: 'UA-113171398-2'
-    }),
     searchPlugin({}),
     // demoBlock({}),
   ],

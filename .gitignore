@@ -6,3 +6,5 @@ node_modules
 TIL.iml
 yarn-error.log
 .DS_Store
+.vuepress/public/sitemap.xml
+.vuepress/public/rss.xml
