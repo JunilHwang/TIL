@@ -1,7 +1,7 @@
 ---
 
 title: 요구사항의 변화로 알아가는 클린코드
-description: 클린코드를 요구사항을 떼어놓고 클린코드를 이야기할 수 있을까?
+description: 클린코드를 요구사항을 떼어놓고 이야기할 수 있을까?
 sidebarDepth: 2
 date: 2025-06-19
 tag: javascript, 클린코드
