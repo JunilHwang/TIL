@@ -62,12 +62,12 @@ module.exports = function linkPreviewPlugin(md) {
         const nextToken = tokens[idx + 1];
         const closeToken = tokens[idx + 2];
 
-        // 매우 엄격한 조건: 텍스트 토큰이 있고, "link-preview"가 포함되고, 정확히 3개의 토큰으로 구성된 경우만 처리
-        if (nextToken && nextToken.type === 'text' &&
+        // link-preview 처리 조건을 확인
+        const isLinkPreview = nextToken && nextToken.type === 'text' &&
           closeToken && closeToken.type === 'link_close' &&
-          nextToken.content && nextToken.content.includes('link-preview') &&
-          idx + 2 < tokens.length) {
+          nextToken.content && nextToken.content.includes('link-preview');
 
+        if (isLinkPreview && idx + 2 < tokens.length) {
           // 링크 미리보기로 변환
           const metadata = linkMetadata[href] || {
             title: href,

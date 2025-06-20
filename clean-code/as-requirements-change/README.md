@@ -3906,7 +3906,7 @@ e2e 가 통과 되도록 테스트를 만들었으면, 이제 단위테스트를
 
 단위 테스트는 [이 커밋](https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa)을 참고해주면 될 것 같다.
 
-[link-preview](https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa)
+[link-preview 단위테스트 커밋](https://github.com/junilhwang/simple-clean-code-project/commit/797fc4228b1eb0879328af98c9bf392a11bc4baa)
 
 ```bash
 ./src/step4
@@ -5429,9 +5429,9 @@ end note
 ### (4) 전체 데모 및 코드
 
 - 전체 데모는 [여기](https://junilhwang.github.io/simple-clean-code-project/)에서 확인할 수 있다.
-  [link-preview](https://junilhwang.github.io/simple-clean-code-project/)
+  [link-preview 여기](https://junilhwang.github.io/simple-clean-code-project/)
 - 전체 코드는 [GitHub](https://github.com/junilhwang/simple-clean-code-project)에서 확인할 수 있다.
-  [link-preview](https://github.com/junilhwang/simple-clean-code-project)
+  [link-preview github](https://github.com/junilhwang/simple-clean-code-project)
 
 
 ## AI로 클린코드 규칙을 만들어가기
@@ -6156,7 +6156,7 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 사실 이 글은 [항해플러스 프론트엔드 교육과정](https://bit.ly/43OaDNK)에서 다루는 **내용 중 일부분을 압축해서 설명한 것**이다.
 
-[link-preview](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
+[link-preview 항해플러스](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
 
 프론트엔드 교육과정이 생긴지 이제 1년이 조금 넘었고, 교육 콘텐츠를 만들면서 그리고 멘토링과 무수히 많은 피드백을 하면서 쌓아온 내용을 담았다.
 사실 더 많은 이야기를 하고 싶었지만, 한 포스트에 모든 내용을 담는 게… 꽤 어렵다.
@@ -6257,7 +6257,7 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 ::: tip 👉🏻 항해플러스에 지원하고 싶은 분들께
 
-- 지원하기: [link-preview](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
+- 지원하기: [link-preview 지원하기](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
 - 추천인코드: `43OaDNK`
 
   위의 추천인 코드를 사용하면 **30만원 할인**을 받을 수 있습니다!
