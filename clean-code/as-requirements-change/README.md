@@ -511,7 +511,7 @@ main();
 3. **이벤트 처리의 한계**: 현재의 이벤트 위임 구조로는 복잡한 상호작용을 처리하기 어려움
 4. **렌더링 로직 부재**: 데이터 변경 시 UI를 일관되게 업데이트할 체계적인 방법이 없음
 
-### (4) 어떻게 개선할 수 있을까?
+### (5) 어떻게 개선할 수 있을까?
 
 나는 앞에서 언급한 1~4의 문제들이 **명령형 프로그래밍으로 코드로 작성되어 문제가 발생했다**고 생각한다.
 
@@ -2358,7 +2358,7 @@ $ pnpm run test:coverage --coverage.include=src/step3
     테스트 추가 후 다시 실행했더니 커버리지가 채워진 것을 확인할 수 있다.
 
 
-### (8) 2단계 데모
+### (7) 2단계 데모
 
 - 링크: [link-preview: https://junilhwang.github.io/simple-clean-code-project/step2.html]
 - 전체코드: [link-preview: https://github.com/JunilHwang/simple-clean-code-project/tree/main/src/step2]
@@ -2367,7 +2367,7 @@ $ pnpm run test:coverage --coverage.include=src/step3
   <iframe src="https://junilhwang.github.io/simple-clean-code-project/step2.html"></iframe>
 </div>
 
-### (9) Summary
+### (8) Summary
 
 일단 다음 단계로 넘어가기 이전에, 여태까지 작업한 내용을 정리해보자.
 

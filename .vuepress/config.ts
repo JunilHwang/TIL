@@ -169,7 +169,7 @@ export default defineUserConfig({
     md.use(MarkdownItPlantuml);
     md.use(MarkdownItUnderline);
     md.use(MarkdownItTaskLists);
-    // md.use(linkPreviewPlugin);
+    md.use(linkPreviewPlugin);
   },
   extendsPage: (page) => {
     // README.md (홈페이지)에 posts 데이터 주입

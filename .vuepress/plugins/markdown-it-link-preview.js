@@ -33,7 +33,7 @@ function generatePreviewHTML(metadata) {
   const escapedImage = escapeHtml(image);
   const escapedSiteName = escapeHtml(siteName);
 
-  return `<div class="link-preview"><a href="${escapedUrl}" target="_blank" rel="noopener noreferrer">${escapedImage ? `<div class="link-preview-image"><img src="${escapedImage}" alt="${escapedTitle}" /></div>` : ''}<div class="link-preview-content"><div class="link-preview-title">${escapedTitle}</div>${escapedDescription ? `<div class="link-preview-description">${escapedDescription}</div>` : ''}<div class="link-preview-url">${escapedSiteName}</div></div></a></div>`;
+  return `<a href="url">${title}</a>`;
 }
 
 
