@@ -39,6 +39,10 @@ module.exports = function linkPreviewPlugin(md) {
     return renderer.renderToken(tokens, idx, options);
   };
 
+  const defaultLinkCloseRender = md.renderer.rules.link_close || function (tokens, idx, options, env, renderer) {
+    return renderer.renderToken(tokens, idx, options);
+  };
+
   // 링크 렌더링 규칙 오버라이드
   md.renderer.rules.link_open = function (tokens, idx, options, env, renderer) {
     const token = tokens[idx];
@@ -70,7 +74,10 @@ module.exports = function linkPreviewPlugin(md) {
           nextToken.content = generatePreviewHTML(metadata);
           nextToken.type = 'html_inline';
           
-          // link_open과 link_close 토큰을 빈 문자열로 만들어서 무효화
+          // close 토큰에 표시를 남겨둠
+          closeToken.linkPreviewProcessed = true;
+          
+          // link_open 토큰을 무효화
           return '';
         }
       }
@@ -81,15 +88,15 @@ module.exports = function linkPreviewPlugin(md) {
 
   // link_close도 처리
   md.renderer.rules.link_close = function (tokens, idx, options, env, renderer) {
-    const openToken = tokens[idx - 2];
-    if (openToken && openToken.attrGet && openToken.attrGet('href')) {
-      const href = openToken.attrGet('href');
-      if ((href.startsWith('http://') || href.startsWith('https://')) && 
-          tokens[idx - 1] && tokens[idx - 1].type === 'html_inline') {
-        return '';  // 미리보기로 변환된 경우 닫는 태그도 무효화
-      }
+    const token = tokens[idx];
+    
+    // link-preview로 처리된 토큰인지 확인
+    if (token.linkPreviewProcessed) {
+      return '';  // 미리보기로 변환된 경우 닫는 태그도 무효화
     }
-    return '</a>';
+
+    // 기본 렌더링 사용 (내부 링크 등)
+    return defaultLinkCloseRender(tokens, idx, options, env, renderer);
   };
 
   // 사용자 정의 컨테이너도 유지 (기존 사용법 호환성)
