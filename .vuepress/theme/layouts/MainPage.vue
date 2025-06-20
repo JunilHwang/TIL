@@ -5,7 +5,7 @@ import {computed, onMounted, reactive, ref} from "vue";
 import {Footer, Posts} from "../components";
 import {usePosts} from "../hooks";
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 100;
 const PAGE_KEY = '__CURRENT_PAGE__';
 
 const state = reactive({
@@ -82,7 +82,7 @@ onMounted(async () => {
 
         <Posts :items="currentItems" @select-tag="selectTag"/>
 
-        <div class="pagination">
+        <div class="pagination" v-if="lastPage > 1">
           <button
             v-for="i in lastPage"
             :key="i"
