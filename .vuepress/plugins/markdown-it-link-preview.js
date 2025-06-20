@@ -12,24 +12,28 @@ try {
   console.warn('링크 메타데이터 파일을 로드할 수 없습니다:', error.message);
 }
 
-// 링크 미리보기 HTML 생성
+// 링크 미리보기 HTML 생성 (hydration 안전)
 function generatePreviewHTML(metadata) {
   const { title, description, image, siteName, url } = metadata;
+  
+  // HTML 특수문자 이스케이프
+  const escapeHtml = (text) => {
+    if (!text) return '';
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  };
 
-  return `
-    <div class="link-preview">
-      <a href="${url}" target="_blank" rel="noopener noreferrer">
-        ${image ? `<div class="link-preview-image">
-          <img src="${image}" alt="${title}" />
-        </div>` : ''}
-        <div class="link-preview-content">
-          <div class="link-preview-title">${title}</div>
-          ${description ? `<div class="link-preview-description">${description}</div>` : ''}
-          <div class="link-preview-url">${siteName}</div>
-        </div>
-      </a>
-    </div>
-  `;
+  const escapedTitle = escapeHtml(title);
+  const escapedDescription = escapeHtml(description);
+  const escapedUrl = escapeHtml(url);
+  const escapedImage = escapeHtml(image);
+  const escapedSiteName = escapeHtml(siteName);
+
+  return `<div class="link-preview"><a href="${escapedUrl}" target="_blank" rel="noopener noreferrer">${escapedImage ? `<div class="link-preview-image"><img src="${escapedImage}" alt="${escapedTitle}" /></div>` : ''}<div class="link-preview-content"><div class="link-preview-title">${escapedTitle}</div>${escapedDescription ? `<div class="link-preview-description">${escapedDescription}</div>` : ''}<div class="link-preview-url">${escapedSiteName}</div></div></a></div>`;
 }
 
 
@@ -69,11 +73,18 @@ module.exports = function linkPreviewPlugin(md) {
 
         if (isLinkPreview && idx + 2 < tokens.length) {
           // 링크 미리보기로 변환
+          let siteName = '';
+          try {
+            siteName = new URL(href).hostname;
+          } catch (e) {
+            siteName = href;
+          }
+          
           const metadata = linkMetadata[href] || {
             title: href,
             description: '',
             image: '',
-            siteName: new URL(href).hostname,
+            siteName: siteName,
             url: href
           };
 
@@ -119,11 +130,18 @@ module.exports = function linkPreviewPlugin(md) {
         const url = m[1];
 
         // 파일에서 메타데이터 가져오기
+        let siteName = '';
+        try {
+          siteName = new URL(url).hostname;
+        } catch (e) {
+          siteName = url;
+        }
+        
         const metadata = linkMetadata[url] || {
           title: url,
           description: '',
           image: '',
-          siteName: new URL(url).hostname,
+          siteName: siteName,
           url
         };
 
