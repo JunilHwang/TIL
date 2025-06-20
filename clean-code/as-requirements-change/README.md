@@ -2,7 +2,7 @@
 
 title: 요구사항의 변화로 알아가는 클린코드
 description: 클린코드를 요구사항을 떼어놓고 클린코드를 이야기할 수 있을까?
-sidebarDepth: 1
+sidebarDepth: 2
 date: 2025-06-19
 tag: javascript, 클린코드
 thumbnail: 
@@ -36,17 +36,17 @@ CMS 와 연결하기도 좋고, 유지보수를 하는 상황도 무척 많이 �
 학습을 위한 과정이기 때문에 최대한 간단하게 정의해보자.
 
 1. 메인 페이지
-    - [ ]  상품 목록을 조회할 수 있다.
-    - [ ]  장바구니를 확인하고 관리할 수 있다.
+    - 상품 목록을 조회할 수 있다.
+    - 장바구니를 확인하고 관리할 수 있다.
 2. 상품 목록
-    - [ ]  이름, 가격, 상품 이미지 등이 보여진다.
-    - [ ]  장바구니에 담을 수 있다.
+    - 이름, 가격, 상품 이미지 등이 보여진다.
+    - 장바구니에 담을 수 있다.
 3. 장바구니
-    - [ ]  수량 변경 (+/- 버튼)
-    - [ ]  개별 상품 삭제
-    - [ ]  장바구니 비우기
-    - [ ]  개별 상품 소계
-    - [ ]  전체 총합계
+    - 수량 변경 (+/- 버튼)
+    - 개별 상품 삭제
+    - 장바구니 비우기
+    - 개별 상품 소계
+    - 전체 총합계
 
 ## 1단계: Vanilla Javascript 로 구현하기
 
@@ -75,34 +75,33 @@ CMS 와 연결하기도 좋고, 유지보수를 하는 상황도 무척 많이 �
     $ npm exec husky init
     ```
     
-- eslint 설정
+  - eslint 설정
     
-    ```tsx
-    import js from "@eslint/js";
-    import globals from "globals";
-    import tseslint from "typescript-eslint";
-    import { defineConfig } from "eslint/config";
+      ```tsx
+      import js from "@eslint/js";
+      import globals from "globals";
+      import tseslint from "typescript-eslint";
+      import { defineConfig } from "eslint/config";
     
-    // eslint config가 추가되어야한다.
-    import eslintConfigPrettier from "eslint-config-prettier/flat";
+      // eslint config가 추가되어야한다.
+      import eslintConfigPrettier from "eslint-config-prettier/flat";
     
-    export default defineConfig([
-      {
-        files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-        plugins: { js },
-        extends: ["js/recommended"],
-      },
-      {
-        files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-        languageOptions: { globals: globals.browser },
-      },
-      tseslint.configs.recommended,
+      export default defineConfig([
+        {
+          files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
+          plugins: { js },
+          extends: ["js/recommended"],
+        },
+        {
+          files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
+          languageOptions: { globals: globals.browser },
+        },
+        tseslint.configs.recommended,
       
-      // config 배열 맨 뒤에 추가해주면 된다.
-      eslintConfigPrettier,
-    ]);
-    
-    ```
+        // config 배열 맨 뒤에 추가해주면 된다.
+        eslintConfigPrettier,
+      ]);
+      ```
     
 - package.json에 npm scripts를 추가하자.
     
@@ -215,7 +214,6 @@ CMS 와 연결하기도 좋고, 유지보수를 하는 상황도 무척 많이 �
 <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
-
 ```
 
 #### 2) main.ts
@@ -386,18 +384,30 @@ function main() {
 main();
 ```
 
-### (3) 새로운 요구사항을 토대로 문제 분석하기
+### (3) 1단계 데모 
+
+링크: [https://junilhwang.github.io/simple-clean-code-project/step1.html](https://junilhwang.github.io/simple-clean-code-project/step1.html)
+
+<div class="iframe-container">
+  <iframe src="https://junilhwang.github.io/simple-clean-code-project/step1.html"></iframe>
+</div>
+
+### (4) 새로운 요구사항을 토대로 문제 분석하기
 
 현재 요구사항은 굉장히 단순하다. 여기에 아래의 요구사항이 추가된다고 가정해보자.
 
+::: tip 📝 새로운 요구사항
+
 1. 상품목록 UI 변화
-    - [ ]  상품 검색 가능
-    - [ ]  상품 이름과 가격으로 정렬 가능
+    - 상품 검색 가능
+    - 상품 이름과 가격으로 정렬 가능
 2. 상품에 새로운 속성 추가
-    - [ ]  재고가 추가되고, 남은 재고만큼만 장바구니에 추가 가능
-    - [ ]  재고가 0일 때 품절 상태가 되고 이를 UI에 반영
+    - 재고가 추가되고, 남은 재고만큼만 장바구니에 추가 가능
+    - 재고가 0일 때 품절 상태가 되고 이를 UI에 반영
 3. UI 기능 추가
-    - [ ]  상품에서 다중 선택 후 장바구니 추가 가능
+    - 상품에서 다중 선택 후 장바구니 추가 가능
+
+:::
 
 각각의 요구사항을 반영한다고 했을 때 어떤 어려움이 있는지 분석해보자.
 
@@ -423,7 +433,6 @@ main();
       <div class="bg-white p-4 rounded-lg shadow">...</div>
       <div class="bg-white p-4 rounded-lg shadow">...</div>
     </div>
-    
     ```
     
     - DOM 재정렬의 복잡성: 정렬 시 DOM 요소들을 직접 제거했다가 다시 삽입해야 함
@@ -494,70 +503,18 @@ main();
 
 앞에서 분석한 문제들을 종합해서 정리해보면 다음과 같다.
 
-```mermaid
-flowchart LR
-    subgraph "🏪 상품 데이터"
-        A1["h3: 맥북 프로"]
-        A2["p: 2,990,000원"]
-        A3["data-product-id='1'"]
-    end
-    
-    subgraph "🛒 장바구니 데이터"
-        B1["span: quantity=2"]
-        B2["span: 5,980,000원"]
-        B3["data-product-id='1'"]
-    end
-    
-    subgraph "💰 총합계 데이터"
-        C1["span: 8,330,000원"]
-    end
-    
-    subgraph "📊 필요한 연산"
-        D1[검색 🔍]
-        D2[정렬 📈]
-        D3[재고 확인 📦]
-        D4[가격 계산 💵]
-    end
-    
-    D1 -.->|DOM 탐색| A1
-    D1 -.->|텍스트 파싱| A2
-    
-    D2 -.->|모든 요소 순회| A1
-    D2 -.->|문자열→숫자| A2
-    
-    D3 -.->|속성 확인| A3
-    D3 -.->|수량 비교| B1
-    
-    D4 -.->|DOM 순회| B2
-    D4 -.->|문자열 파싱| B2
-    D4 -.->|수동 업데이트| C1
-    
-    style A1 fill:#fff3e0
-    style A2 fill:#fff3e0
-    style A3 fill:#fff3e0
-    style B1 fill:#e8f5e8
-    style B2 fill:#e8f5e8
-    style B3 fill:#e8f5e8
-    style C1 fill:#f3e5f5
-    style D1 fill:#ffebee
-    style D2 fill:#ffebee
-    style D3 fill:#ffebee
-    style D4 fill:#ffebee
-```
+![diagram1.png 400](./diagram1.png)
 
-1. 데이터와 UI의 강결합: 모든 데이터가 DOM에 직접 저장되어 있어 데이터 조작이 어렵다.
-2. 상태 관리 부재: 상품 목록, 장바구니, 선택 상태 등을 추적할 중앙화된 구조가 없다. 
-3. 이벤트 처리의 한계: 현재의 이벤트 위임 구조로는 복잡한 상호작용을 처리하기 어려움
-4. 렌더링 로직 부재: 데이터 변경 시 UI를 일관되게 업데이트할 체계적인 방법이 없음
+1. **데이터와 UI의 강결합**: 모든 데이터가 DOM에 직접 저장되어 있어 데이터 조작이 어렵다.
+2. **상태 관리 부재**: 상품 목록, 장바구니, 선택 상태 등을 추적할 중앙화된 구조가 없다. 
+3. **이벤트 처리의 한계**: 현재의 이벤트 위임 구조로는 복잡한 상호작용을 처리하기 어려움
+4. **렌더링 로직 부재**: 데이터 변경 시 UI를 일관되게 업데이트할 체계적인 방법이 없음
 
 ### (4) 어떻게 개선할 수 있을까?
 
 나는 앞에서 언급한 1~4의 문제들이 **명령형 프로그래밍으로 코드로 작성되어 문제가 발생했다**고 생각한다.
 
-<aside>
-❗
-
-명령형 vs 선언형
+::: tip ❗ 명령형 vs 선언형
 
 **명령형 프로그래밍**
 
@@ -572,7 +529,7 @@ flowchart LR
 - 원하는 결과를 선언
 - 상태에 따른 자동 렌더링
 - 데이터 중심의 UI
-</aside>
+:::
 
 지금 작성된 코드는 "무엇을 보여줄지"가 아니라 "어떻게 업데이트할지"에 초점이 맞춰져있다.
 
@@ -600,7 +557,7 @@ updateTotalPrice();
 
 앞에서 정의한 새로운 요구사항을 추가한다고 가정해보면 이런 모습일 것이다.
 
-```jsx
+```tsx
 // 검색/정렬 기능 >  이런 복잡한 단계가 필요
 function sortProducts(sortBy: 'name' | 'price') {
   // 1. 모든 DOM 요소에서 데이터 추출
@@ -622,9 +579,9 @@ function updateStock(productId: string, newStock: number) {
 
 그렇다면 선언형 프로그래밍은 어떤 모습일까? 아마 이 글을 읽는 대부분의 사람들은 React 혹은 Vue를 사용한 경험이 있을 것이다. (아마도!?)
 
-Vue나 React의 경우 라이브러리 혹은 프레임워크 계층에서 코드를 자연스럽게 “선언형” 기반으로 작성하도록 유도하고 있다.
+**Vue나 React의 경우 라이브러리 혹은 프레임워크 계층에서 코드를 자연스럽게 “선언형” 기반으로 작성하도록 유도하고 있다.**
 
-```jsx
+```tsx
 // 선언형은 "무엇을(What)" 보여줄지만 정의한다.
 function ProductList({ products, onAddToCart }) {
   // 필터링 된 값을 토대로
@@ -648,7 +605,7 @@ function ProductList({ products, onAddToCart }) {
 }
 ```
 
-UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 선언하고 데이터가 변경되면 자연스럽게 UI에 반영되는 구조다.
+위의 코드는 UI를 명령을 토대로 만들어 가는 것이 아닌, **UI의 모습을 선언**하고 데이터가 변경되면 자연스럽게 UI에 반영되는 구조다.
 
 1. 상태를 정의하고, 상태를 변경하는 함수가 있어야 한다.
 2. 상태를 반영한 모습의 UI를 선언한다.
@@ -656,10 +613,7 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
 4. 함수가 실행되면 데이터가 변경되고, 데이터가 변경되면 UI에 반영된다.
 5. 결과적으로 UI와 상태를 깔끔하게 분리할 수 있다.
 
-<aside>
-🤔
-
-프론트엔드 개발자가 접할 수 있는 선언형 프로그래밍으로 작성하도록 유도하는 코드들은 어떤게 있을까?
+::: tip 🤔 프론트엔드 개발자가 접할 수 있는 선언형 프로그래밍으로 작성하도록 유도하는 코드들은 어떤게 있을까?
 
 1. CSS
     
@@ -682,10 +636,9 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
       background: #ccc;
       cursor: not-allowed;
     }
-    
     ```
     
-    ```jsx
+    ```tsx
     // ❌ 명령형이라면 이렇게 했을 것
     function updateProductCardStyle(element, isSoldOut) {
       element.style.display = 'flex';
@@ -702,12 +655,11 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
         button.style.cursor = 'not-allowed';
       }
     }
-    
     ```
     
 2. Array 메서드 (함수형 프로그래밍)
     
-    ```jsx
+    ```tsx
     // ✅ 선언형: "무엇을" 원하는지 선언
     const productData = [
       { id: 1, name: '맥북', price: 2990000, stock: 5 },
@@ -723,10 +675,9 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
         status: product.stock > 0 ? 'available' : 'sold-out'
       }))
       .sort((a, b) => a.price - b.price);
-    
     ```
     
-    ```jsx
+    ```tsx
     // ❌ 명령형이라면 이렇게 했을 것
     function getAvailableProducts(productData) {
       const result = [];
@@ -760,7 +711,6 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
     
       return result;
     }
-    
     ```
     
 3. HTML (선언적 구조)
@@ -778,10 +728,9 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
     <div class="product-grid">
       <!-- 상품들이 표시될 곳 -->
     </div>
-    
     ```
     
-    ```jsx
+    ```tsx
     // ❌ 명령형이라면 이렇게 했을 것
     function createSearchForm() {
       const form = document.createElement('form');
@@ -810,7 +759,6 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
     
       return form;
     }
-    
     ```
     
 4. 📝 SQL (데이터 조회)
@@ -827,10 +775,9 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
     FROM products
     WHERE stock > 0
     ORDER BY price ASC;
-    
     ```
     
-    ```jsx
+    ```tsx
     // ❌ 명령형이라면 이렇게 했을 것
     function getAvailableProductsData(products) {
       const result = [];
@@ -860,23 +807,20 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
       result.sort((a, b) => a.price - b.price);
       return result;
     }
-    
     ```
     
-</aside>
+:::
 
-그리고 프론트엔드에서 어플리케이션을 선언형 방식으로 만들어 가는 대표적인 방법은 MVC 패턴 혹은 MVVM 패턴을 적용하는 것이다. 
+그리고 프론트엔드에서 어플리케이션을 선언형 방식으로 만들어 가는 대표적인 방법은 **MVC 패턴 혹은 MVVM 패턴**을 적용하는 것이다. 
 
 - MVC(Model + View + Controller)
-    - Model: 어플리케이션의 핵심이 되는 데이터와 데이터를 조작하는 함수
-    - View: HTML
-    - Controller: HTML과 Model을 연결해주는 것. 가령, 이벤트 같은게 될 수 있음
-        
-        Controller를 무엇이라고 정의할 수 있을지는 생각하기 나름이기 때문에 헷갈리는 경우가 무척 많다. 그래서 나는 Backend와 비교해보고자 한다.
-        
+    - 개념
+        - **Model**: 어플리케이션의 핵심이 되는 데이터와 데이터를 조작하는 함수
+        - **View**: HTML
+        - **Controller**: HTML과 Model을 연결해주는 것. 가령, 이벤트 같은게 될 수 있음
+    - Controller를 무엇이라고 정의할 수 있을지는 생각하기 나름이기 때문에 헷갈리는 경우가 무척 많다. 그래서 나는 Backend와 비교해보고자 한다. 
         - backend의 MVC
-            
-            ```jsx
+            ```tsx
             // backend에서 사용하는 express.js의 router이다.
             // 사용자의 요청이 오면 이를 핸들링(controller)하고
             // 다양한 비즈니스 로직을 수행(model) 후 응답(view) 한다.
@@ -885,10 +829,8 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
               res.json(data)
             })
             ```
-            
         - frontend의 mvc
-            
-            ```jsx
+            ```tsx
             // 어플리케이션에서 사용되는 model이 정의되어있고
             const counter = {
               value: 1,
@@ -913,68 +855,63 @@ UI를 “명령”을 토대로 만들어 가는 것이 아닌, UI의 모습을 
               document.querySelector('#count').innerHTML = newValue;
             });
             ```
-            
 - MVVM(Model + View + ViewModel): MVC의 Controller 대신 ViewModel 이 유사한 역할을 수행한다.
-    - Model
-        - 어플리케이션의 상태와 이를 변경하는 함수의 묶음.
-        - 가령, 리액트로 따지면 state와 setState 가 될 것이다.
-    - View
-        - MVC와 똑같이 HTML 이다.
-    - ViewModel
-        - View의 형상을 하고 있는 데이터 객체이다.
-        - React나 Vue에서는 이것이 가상돔이다. jsx를 이용하여 html과 유사한 문법으로 사용한다.
-            
-            ```jsx
-            // 보통 이렇게 jsx 문법으로 정의해서 사용한다.
-            function Counter() {
-              const [count, setCount] = useState(1);
-              const increment = () => setCount(count + 1));
-              return (
-                <div>
-                  <span>{count}</span>
-                  <button onClick={increment}>증가</button>
-                </div>
-              )
-            }
-            
-            // 실제로는 이렇게 표현된다.
-            function Counter() {
-              const [count, setCount] = useState(1);
-              const increment = () => setCount(count + 1));
-              
-              return createElement(
-                'div',
-                null, 
-                createElement('span', null, count),
-                createElement('button', { onClick: increment }, "증가")
-              )
-            }
-            
-            // createElement를 통해 만들어진 객체는 이런 모습일 것이다.
-            {
-              type: 'div',
-              props: null,
-              children: [
-                { type: 'span', props: null, children: [count] },
-                { type: 'button', props: { onClick: increment }, children: ['증가'] },
-              ]
-            }
-            ```
-            
-            즉, ViewModel은 View(HTML)의 형태를 유사하게 본따서 만든 데이터(Model)이다.
-            
-        - 그리고 ViewModel을 View로 변환하는 과정이 필요하다.
+    - 개념
+        - **Model**: 어플리케이션의 상태와 이를 변경하는 함수의 묶음. 가령, 리액트로 따지면 state와 setState 가 될 것이다.
+        - **View**: MVC와 똑같이 HTML 이다.
+        - **ViewModel**: View의 형상을 하고 있는 데이터 객체이다. R
+    - React나 Vue에서는 ViewModel 가상돔이다. jsx를 이용하여 html과 유사한 문법으로 사용한다.
+      ```tsx
+      // 보통 이렇게 jsx 문법으로 정의해서 사용한다.
+      function Counter() {
+        const [count, setCount] = useState(1);
+        const increment = () => setCount(count + 1));
+        return (
+          <div>
+            <span>{count}</span>
+            <button onClick={increment}>증가</button>
+          </div>
+        )
+      }
+        
+      // 실제로는 이렇게 표현된다.
+      function Counter() {
+        const [count, setCount] = useState(1);
+        const increment = () => setCount(count + 1));
+          
+        return createElement(
+          'div',
+          null, 
+          createElement('span', null, count),
+          createElement('button', { onClick: increment }, "증가")
+        )
+      }
+        
+      // createElement를 통해 만들어진 객체는 이런 모습일 것이다.
+      {
+        type: 'div',
+        props: null,
+        children: [
+          { type: 'span', props: null, children: [count] },
+          { type: 'button', props: { onClick: increment }, children: ['증가'] },
+        ]
+      }
+      ```
+      즉, ViewModel은 View(HTML)의 형태를 유사하게 본따서 만든 데이터(Model)이다. 그리고 ViewModel을 View로 변환하는 과정이 필요하다.
 
-명령형 프로그래밍에 대한 이야기를 하다가 삼천포를 다녀왔다. 다시 본론으로 돌아오자면, 현재 구현된 내용에서 관심사(UI, Data, Function)를 분리하고 이를 연결하는 과정이 필요하다.
+명령형 프로그래밍에 대한 이야기를 하다가 삼천포를 다녀왔다. 다시 본론으로 돌아오자면, 현재 구현된 내용에서 **관심사(UI, Data, Function)를 분리하고 이를 연결하는 과정이 필요**하다.
 
 리팩토링 과정을 계획해보자.
+
+![diagram2.png](./diagram2.png)
 
 1. 어플리케이션에서 사용되는 데이터(상태)를 정의하기
 2. 상태를 변경하는 함수를 정의하기
 3. 상태를 기반으로 UI를 표현하기 (선언형 UI)
 4. 상태를 변경하는 함수와 UI의 이벤트를 연결하기
 
-사실, 이렇게 리팩토링 이전에 제일 먼저 해야 하는 것은 **테스트 작성** 이다. 지금은 테스트를 할 수 있는 함수가 마땅치 않기 때문에 playwright + codegen 을 통해 간단하게 e2e 테스트를 추가하여 진행할 수 있다.
+사실, 이렇게 리팩토링 이전에 제일 먼저 해야 하는 것은 **테스트 작성** 이다.
+지금은 테스트를 할 수 있는 함수가 마땅치 않기 때문에 playwright + codegen 을 통해 간단하게 e2e 테스트를 추가하여 진행할 수 있다.
 
 ## 2단계: 현재 코드 리팩토링
 
@@ -1030,7 +967,7 @@ playwright을 이용하면 간단하게 e2e 테스트를 작성할 수 있다.
     
 - codegen으로 만들어진 결과물
     
-    ```jsx
+    ```tsx
     import { test, expect } from '@playwright/test';
     
     test('쇼핑몰 장바구니 테스트', async ({ page }) => {
@@ -1162,12 +1099,11 @@ playwright을 이용하면 간단하게 e2e 테스트를 작성할 수 있다.
         - button "장바구니 비우기"
         `);
     });
-    
     ```
     
 - playwright.config.ts 수정
     
-    ```jsx
+    ```tsx
     import { defineConfig, devices } from '@playwright/test';
     
     export default defineConfig({
@@ -1217,12 +1153,36 @@ playwright을 이용하면 간단하게 e2e 테스트를 작성할 수 있다.
 
 ### (2) 상태와 상태를 변경하는 함수 정의하기
 
-기존 main은 main__orgin.ts 로 이름을 변경하고, main.ts 를 새로 추가하여 진행하자.
+기존 main은 step1/main.ts 로 이름을 변경하고, step2/main.ts 를 새로 추가하여 진행하자.
 
 ```bash
 ./src
 ├── ./step1/main.ts  # 기존 코드는 step1 폴더로 분리해서 유지하자.
 └── ./step2/main.ts  # 리팩토링을 위한 코드는 step2 폴더에 새로 만들자.
+```
+
+그리고 기존의 index.html을 step1.html으로 변경하고, step2.html을 새로 만들자.
+```bash
+./
+├── ./step1.html
+└── ./step2.html
+```
+
+`step2.html`은 다음과 같이 작성한다.
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쇼핑몰</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script type="module" src="/src/step2/main.ts"></script>
+</body>
+</html>
 ```
 
 #### 1) 타입 및 상태 정의
@@ -1308,7 +1268,9 @@ const carts = {
 };
 ```
 
-여기서 잠시 고민을 할 필요가 있다. 지금은 carts가 배열로 표현 되는데, 주로 쓰이는 로직을 보면 productId를 기반으로 변경이 발생하는 것을 알 수 있다. 그렇다면 productId에 대한 Map 형태로 상태를 구성해주면 더 편리하게 함수를 구성할 수 있지 않을까?
+여기서 잠시 고민을 할 필요가 있다.
+지금은 carts가 배열로 표현 되는데, 주로 쓰이는 로직을 보면 productId를 기반으로 변경이 발생하는 것을 알 수 있다.
+그렇다면 **productId에 대한 Map 형태로 상태를 구성**해주면 더 편리하게 함수를 구성할 수 있지 않을까?
 
 ```tsx
 const carts = {
@@ -1337,7 +1299,8 @@ const carts = {
 };
 ```
 
-이 때 `this` 라는 키워드가 노출되는게 그닥 보기 좋진 않다. 이럴 때 취할 수 있는 방법이 하나 있다. 리액트의 커스텀훅을 만드는 것 처럼, 함수로 내부 값을 추상화해서 관리하는 것이다.
+이 때 `this` 라는 키워드가 노출되는게 그닥 보기 좋진 않다. 이럴 때 취할 수 있는 방법이 하나 있다.
+리액트의 커스텀훅을 만드는 것 처럼, **함수로 내부 값을 추상화해서 관리**하는 것이다.
 
 ```tsx
 const createCarts = (initValue: Record<Product['id'], CartItem> = {}) => {
@@ -1350,7 +1313,7 @@ const createCarts = (initValue: Record<Product['id'], CartItem> = {}) => {
     // 단, carts.value[1] = 1; 처럼 value 객체의 값은 수정이 가능해서 Object.freeze 로
     // 객체내부의 변화를 방지할 수 있다.
     get value() {
-      return Object.freeze(value);
+      return value;
     },
     get items(): CartItem[] {
       // this.value를 사용하면 getter로 정의된 value를 사용하게 된다. 즉, 변경이 불가능한 value를 사용하게 된다.
@@ -1420,7 +1383,11 @@ const store = {
 };
 ```
 
-이렇게 코드를 작성하면 모든 비즈니스 로직이 store에 응집된다. 이렇게 객체의 덩어리로 만들어서 관리할 수도 있고, 혹은 함수 뭉치의 조합으로 사용할 수도 있다. 개인적으로 지금과 같은 모습을 선호한다. 중요한건 상태와 상태를 변화시키는 함수가 응집되어 있어야 관리하기가 수월하다는 점이다.
+이렇게 코드를 작성하면 모든 비즈니스 로직이 store에 응집된다.
+지금처럼 객체의 덩어리로 만들어서 관리할 수도 있고, 혹은 함수 뭉치의 조합으로 사용할 수도 있다.
+개인적으로 지금과 같은 모습을 선호한다.
+
+**중요한건 상태와 상태를 변화시키는 함수가 응집되어 있어야 관리하기가 수월하다는 점이다.**
 
 이런걸 reducer 같은걸로 정의할 수도 있을 것이다.
 
@@ -1678,30 +1645,7 @@ render();
 ├── components.ts   # ProductItem, CartItem, CartSummary 등 UI 선언 로직
 ├── domains.ts      # carts, products 와 관련된 도메인 로직
 └── main.ts         # components, apps, domains 등을 엮어서 어플리케이션을 실행
-
-./step1.html        # 기존 index.html을 step1.html 로 변경하자
-./step2.html        # 새로 작성할 html은 step2.html 에 추가하자.
 ```
-
-- step2.html
-    
-    ```tsx
-    <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>쇼핑몰</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-gray-100">
-      <div id="root"></div>
-      <!-- step2 코드를 참조해야 한다. -->
-      <script type="module" src="/src/step2/main.ts"></script>
-    </body>
-    </html>
-    
-    ```
     
 - domains.ts
     
@@ -1860,9 +1804,54 @@ render();
     components 가 직접적으로 store 의존하고 있었는데 이걸 간접적으로 의존하게 하여 더 유연한 상태로 만들었다.
     
 
-현재 구조에서 주목해야할 부분은 의존성의 흐름이다.
+현재 구조에서 주목해야할 부분은 **의존성의 흐름**이다.
 
-domains → components → apps → main
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+left to right direction
+
+rectangle domains {
+  rectangle Product
+  rectangle Cart
+  rectangle CartWithProduct
+  rectangle createStore
+
+  Product -[hidden]> Cart
+  Cart -[hidden]> CartWithProduct
+  CartWithProduct -[hidden]> createStore
+}
+
+rectangle components {
+  rectangle ProductItem
+  rectangle CartItem
+  rectangle CartSummary
+  rectangle App
+
+  ProductItem -[hidden]> CartItem
+  CartItem -[hidden]> CartSummary
+  CartSummary -[hidden]> App
+}
+
+rectangle apps {
+  rectangle addEvent
+  rectangle setupEvents
+
+  addEvent -[hidden]> setupEvents
+}
+
+rectangle main {
+  rectangle render
+  rectangle store
+
+  render -[hidden]> store
+}
+
+domains -down-> components
+components -down-> apps
+apps -down-> main
+
+@enduml
 
 이런 방향으로 함수를 호출하고 있다.
 
@@ -1877,7 +1866,7 @@ import { expect, type Page, test } from '@playwright/test';
 // 그리고 테스트를 수행하는 페이지를 다르게 할 수 있도록 지정했다.
 async function testFirstAssignmentAtPage(page: Page, path: string) {
   await page.goto(`http://localhost:5173/${path}.html`);
-  
+
   await expect(page.locator('body')).toMatchAriaSnapshot(`
     /* ... 길어서 생략. 기존 코드 참고. ... */
   `);
@@ -1937,7 +1926,7 @@ test.describe('첫 번째 요구사항에 대한 테스트 > ', () => {
 $ pnpm run test:e2e
 ```
 
-![image.png](0.png)
+![image.png](./0.png)
 
 이렇게 학습을 위해 리팩토링을 할 때에는 기존 코드를 보존하고 테스트를 통해 내가 작성한 코드에 문제가 없는지 계속 검증을 해보면 좋다.
 
@@ -2343,7 +2332,7 @@ $ pnpm run test:coverage --coverage.include=src/step3
 - e2e가 있기 때문에 main에 대한 통합테스트는 진행하지 않아도 무방할 것 같다.
 - domains에 branch coverage가 조금 부족해서 확인해봤는데, carts에서 참조가 불가능한 product가 있을 때에 대한 엣지케이스가 없어서 그런 것으로 확인되었다.
     
-    ```jsx
+    ```tsx
     get totalCartPrice() {
       return this.carts.items.reduce((total, item) => {
         const product = this.products.get(item.productId);
@@ -2355,7 +2344,7 @@ $ pnpm run test:coverage --coverage.include=src/step3
     
 - 이렇게 테스트 케이스를 하나 더 추가해보자.
     
-    ```jsx
+    ```tsx
     
       test('실제로 없는 제품을 장바구니에 추가할 경우, totalCartPrice는 0이 된다.', () => {
         store.carts.add('3');
@@ -2366,9 +2355,17 @@ $ pnpm run test:coverage --coverage.include=src/step3
     ![image.png](./2.png)
     
     테스트 추가 후 다시 실행했더니 커버리지가 채워진 것을 확인할 수 있다.
-    
 
-### (7) Summary
+
+### (8) 2단계 데모
+
+링크: [https://junilhwang.github.io/simple-clean-code-project/step2.html](https://junilhwang.github.io/simple-clean-code-project/step2.html)
+
+<div class="iframe-container">
+  <iframe src="https://junilhwang.github.io/simple-clean-code-project/step2.html"></iframe>
+</div>
+
+### (9) Summary
 
 일단 다음 단계로 넘어가기 이전에, 여태까지 작업한 내용을 정리해보자.
 
@@ -2382,30 +2379,28 @@ $ pnpm run test:coverage --coverage.include=src/step3
 8. 코드를 분할 후에 vitest 기반으로 단위 테스트를 작성했다.
 9. 단위 테스트에 대한 커버리지를 확인하면서 검증하지 못한 구간에 대해 테스트를 작성했다.
 
-드디어 새로운 기능을 추가할 수 있는 상태가 되었다.
+**드디어 새로운 기능을 추가할 수 있는 상태가 되었다.**
+
 
 ## 3단계: 추가 요구사항 구현하기
 
 이제 추가 요구사항을 구현해보자.
 
-<aside>
-📌
-
-앞에서 정의한 추가 요구사항
+::: tip 📌 앞에서 정의한 추가 요구사항
 
 1. 상품목록 UI 변화
-    - [ ]  상품 검색 가능
-    - [ ]  상품 이름과 가격으로 정렬 가능
+    - 상품 검색 가능
+    - 상품 이름과 가격으로 정렬 가능
 2. 상품에 새로운 속성 추가
-    - [ ]  재고가 추가되고, 남은 재고만큼만 장바구니에 추가 가능
-    - [ ]  재고가 0일 때 품절 상태가 되고 이를 UI에 반영
+    - 재고가 추가되고, 남은 재고만큼만 장바구니에 추가 가능
+    - 재고가 0일 때 품절 상태가 되고 이를 UI에 반영
 3. UI 기능 추가
-    - [ ]  장바구니에 전체선택 / 부분선택 후 삭제 가능
-</aside>
+    - 장바구니에 전체선택 / 부분선택 후 삭제 가능
+:::
 
-앞선 과정을 통해 관심사 분리를 완료했으므로, 사실 변경할 부분이 생각보다 많진 않다. 한 번 차근차근 작성해보자.
+앞선 과정을 통해 관심사 분리를 완료했으므로 **사실 변경할 부분이 생각보다 많진 않다.** 한 번 차근차근 작성해보자.
 
-앞에서 했던 것 처럼, 이번에는 step2 폴더를 그대로 복사해서 step3로 만들어보자.
+먼저 앞에서 했던 것 처럼 step2 폴더를 그대로 복사해서 step3로 만들어보자.
 
 ```bash
 ./src
@@ -2475,7 +2470,7 @@ const createProducts = (initValue = INITIAL_PRODUCTS) => {
   };
 
   return {
-    get value() { return Object.freeze(value); },
+    get value() { return value; },
     get items() { return Object.values(value); },
 
     // 🆕 필터링된 상품 목록 (검색 + 정렬 적용)
@@ -2824,28 +2819,47 @@ function render() {
 - 컴포넌트 테스트 추가: [https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9](https://github.com/JunilHwang/simple-clean-code-project/commit/3409663da56eb5a0d43b71c1ce30c65f52c1925d#diff-9277c4f54e3d7d2f80ca9b592aa3846ffd8b408f412bffb8738c757878091ce9)
 - e2e 테스트 추가 및 개선: [https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be](https://github.com/JunilHwang/simple-clean-code-project/commit/e368611d0d147cfb1c6e44bde296746ec12006be)
 
-그리고 테스트 케이스 추가가 아닌 테스트 코드 개선에 대한 변경도 있다. 기존에는 하나의 테스트 파일에서 더미 데이터를 정의해서 사용하였으나, 아예 별도의 파일로 분리해서 사용하였다. 이럴 경우의 장점은 다음과 같다.
+그리고 테스트 케이스 추가가 아닌 **테스트 코드 개선에 대한 변경**도 있다. 기존에는 하나의 테스트 파일에서 더미 데이터를 정의해서 사용하였으나, 아예 별도의 파일로 분리해서 사용하였다. 이럴 경우의 장점은 다음과 같다.
+
+```tsx
+// AS-IS
+test('상품 목록을 조회할 수 있으며, 이름/가격/상품이미지 등을 확인할 수 있다.', () => {
+  expect(store.products.items).toEqual([
+    { id: '1', name: '상품1', price: 10000, image: 'image1.jpg' },
+    { id: '2', name: '상품2', price: 20000, image: 'image2.jpg' },
+  ]);
+
+  expect(store.products.value).toEqual({
+    '1': { id: '1', name: '상품1', price: 10000, image: 'image1.jpg' },
+    '2': { id: '2', name: '상품2', price: 20000, image: 'image2.jpg' },
+  });
+});
+
+// TO-BE
+test('상품 목록을 조회할 수 있으며, 이름/가격/상품이미지 등을 확인할 수 있다.', () => {
+  expect(store.products.items).toEqual([MOCK_PRODUCT_1, MOCK_PRODUCT_2]);
+  expect(store.products.value).toEqual({
+    [MOCK_PRODUCT_1.id]: MOCK_PRODUCT_1,
+    [MOCK_PRODUCT_2.id]: MOCK_PRODUCT_2,
+  });
+});
+```
 
 1. 중앙화된 테스트 데이터 관리
     - 여러 테스트 파일에서 동일한 데이터를 재사용
     - 데이터 변경시 한 곳만 수정하면 됨
 2. 타입 안전성
-    
     ```tsx
     export const MOCK_PRODUCT_1: Product = { /* ... */ }
     ```
-    
     - TypeScript 타입을 활용해서 컴파일 타임에 오류 검출
 3. 가독성 향상
     - 테스트 코드에서 데이터 설정 부분이 깔끔해짐
     - 테스트의 의도에 집중할 수 있음
 
-중요한 부분은 이런 테스트 데이터를 통해 “반복을 줄이는 것”이 목적이 아니라 **테스트 자체에 더 집중할 수 있게 하는 것이다.**
+중요한 부분은 이런 테스트 데이터를 통해 반복을 줄이는 것이 목적이 아니라 **테스트 자체에 더 집중할 수 있게 하는 것이다.**
 
-<aside>
-📌
-
-테스트 데이터에 대한 용어
+::: tip 📌 테스트 데이터에 대한 용어
 
 1. Test Fixtures
 2. Mock Data or Stub Data
@@ -2857,9 +2871,17 @@ function render() {
 - [https://stackoverflow.com/questions/2665812/what-is-mocking](https://stackoverflow.com/questions/2665812/what-is-mocking)
 - [https://github.com/junit-team/junit4/wiki/Test-fixtures](https://github.com/junit-team/junit4/wiki/Test-fixtures)
 - [https://ko.wikipedia.org/wiki/모의_객체d](https://ko.wikipedia.org/wiki/%EB%AA%A8%EC%9D%98_%EA%B0%9D%EC%B2%B4d)
-</aside>
+:::
 
-### (5) Summary
+### (5) 3단계 데모
+
+링크: [https://junilhwang.github.io/simple-clean-code-project/step3.html](https://junilhwang.github.io/simple-clean-code-project/step3.html)
+
+<div class="iframe-container">
+  <iframe src="https://junilhwang.github.io/simple-clean-code-project/step3.html"></iframe>
+</div>
+
+### (6) Summary
 
 ![refactoring_process_diagram.svg](./refactoring_process_diagram.svg)
 
@@ -2874,17 +2896,20 @@ function render() {
 
 이걸 설명하기 위해 여기까지 달려왔다.. 어휴 힘들다.
 
-## 4단계: React로 전환하기
+## 4단계: React로 전환 (기술 요구사항의 변화)
 
-앞선 단계에서 관심사 분리를 통해 구축한 코드가 얼마나 잘 설계되었는지 확인해보기 위한 다른 방법 중 하나가 React로 다시 표현해보는 것이다. 좋은 아키텍처라면 기술 스택이 바뀌어도 핵심 비즈니스 로직은 그대로 유지되면서 최소한의 수정만으로 전환이 가능해야 한다.
+앞선 단계에서 관심사 분리를 통해 구축한 코드가 얼마나 잘 설계되었는지 확인해보기 위한 다른 방법 중 하나가 **React로 다시 표현해보는 것**이다.
+좋은 아키텍처라면 기술 스택이 바뀌어도 **핵심 비즈니스 로직은 그대로 유지되면서 최소한의 수정만으로 전환**이 가능해야 한다.
 
-가령, "Vue로 만들어진걸 React로 다시 만들자!" 같은 상황을 겪은 사람이 종종 있을 것이다. 혹은 내가 작성한 코드를 라이브러리로 배포 되어 여러 플랫폼에서 쓰이는 상황도 가정해볼 수 있다. 이 또한 요구사항의 변화, 더 정확히는 기술적 요구사항의 변화라고 할 수 있다.
+가령, **"Vue로 만들어진걸 React로 다시 만들자!" 같은 상황**을 겪은 사람이 종종 있을 것이다.
+혹은 내가 작성한 코드를 라이브러리로 배포 되어 여러 플랫폼에서 쓰이는 상황도 가정해볼 수 있다.
+이 또한 요구사항의 변화, 더 정확히는 **기술적 요구사항의 변화**라고 할 수 있다.
 
 ### (1) React 세팅하기
 
-세팅의 경우 지금 중요한 부분은 아니라서, 중요한 부분을 제외하곤 생략하겠다. [이 커밋 링크](https://github.com/junilhwang/simple-clean-code-project/commit/19e4fd2862ca4156dd1bb68b2360931541588744)를 참고하면 된다.
+세팅의 경우 지금 중요한 부분은 아니라서, 중요한 부분을 제외하곤 생략하겠다. 궁금하다면 [이 커밋 링크](https://github.com/junilhwang/simple-clean-code-project/commit/19e4fd2862ca4156dd1bb68b2360931541588744)를 참고하면 된다.
 
-중요한 부분은 폴더구조인데, 앞선 과정처럼 step3 는 유지하고 step4 를 새로 만자.
+중요한 부분은 폴더구조인데, 앞선 과정처럼 step3 는 유지하고 **step4를 새로 만들자.**
 
 ```bash
 ├── src
@@ -2910,454 +2935,340 @@ function render() {
 ├── step2.html
 ├── step3.html
 └── step4.html                # react 어플리케이션을 실행할 html 생성
-
 ```
 
-- apps 는 사라질 것이다. 렌더링에 대한 부분을 React에게 위임했기 때문에 크게 신경쓰지 않아도 된다.
-- domains의 내용을 hooks와 분할했다. 기존에 store가 하던 역할을 hooks이 대체할 것이다.
+- apps는 사라질 것이다. **렌더링에 대한 부분을 React에게 위임**했기 때문에 크게 신경쓰지 않아도 된다.
+- domains의 내용을 hooks와 분할했다. **기존에 store가 하던 역할을 hooks이 대체**할 것이다.
 - components의 내용은 크게 다르지 않을 것이다.
 
-### (2) 각 레이어별 전환 분석
+@startuml
+title 아키텍처 전환: Store 기반 → Hook + Service 구조
 
-#### 1) 비즈니스 로직
-
-1. 기존에는 이렇게 **값과 함수를 묶어서 store로 사용**했었다.
-1. 핵심 로직을 cartUtils, productUtils, cartService 로 분리하고, useCarts, useProducts 등의 훅을 만든 후 도메인 로직을 가져다 사용하는 방식으로 만들면 좋다. 즉, 기존의 `createCarts` 과 유사한 모습으로 `useCarts` 라는 훅을 정의한다고 생각하면 된다.
-
-변환 과정에 대해 정리를 해보자면 다음과 같다.
-
-- store의 역할을 hook이 대체한다.
-- store의 로직을 utils와 service로 분리한다.
-- hooks에서 utils와 service를 가져다 사용한다.
-
-사실 이걸 3단계에서 미리 했어도 좋았을 것 같다. 하지만 **이렇게 경험을 해봐야 다음에 더 신중하게 작성**할 수 있다.
-
-#### 2) UI 컴포넌트: 구조는 동일, 문법만 변화
-
-- 기존 컴포넌트는 다음과 같이 template literal 로 만들어졌다.
-- 이제 jsx 문법을 이용하여 표현할 수 있다.
-
-대부분의 코드는 거의 동일하다. 제일 큰 변화는 컴포넌트에서 이벤트 함수를 받오는 부분이다. 리액트 컴포넌트의 반환 값은 ReactNode 인데 node에 이벤트 함수를 할당해놓으면 나중에 렌더링할 때 리액트 내부에서 DOM에 이벤트를 등록해준다.
-
-#### 3) 이벤트 연결하기 (구조 개선)
-
-1. AS-IS: 기존에는 main.ts 에서 모든 이벤트를 연결해줬다.
-1. TO-BE: 상위 컴포넌트에서 hook을 통해 정의된 핵심 로직을 가져오고, 이걸 컴포넌트에 내려주는 방식으로 만들었다.
-
-이벤트를 다루는 로직은 사실 대부분 유사하다. 다만 "이벤트 연결"에 대한 부분을 각각의 컴포넌트에게 위임했다.
-
-### (3) 전환 과정에서 드러난 기존 설계의 장점
-
-#### 1) 관심사 분리의 효과
-
-```tsx
-// 기존에 UI와 비즈니스 로직을 완전히 분리하여 관리하는 방식이었다.
-function main() {
-  // 비즈니스 로직
-	const store = createStore({});  
-	
-	// UI에 반영
-	$root.innerHTML = App({
-	  products: store.products.filteredItems,
-	  carts: {
-	    items: store.cartsWithProduct,
-	    selectedIds: store.carts.selectedItems.map((v) => v.productId),
-	  },
-	  totalCartPrice: store.totalCartPrice,
-	});
-	
-	// 이벤트 연결
-	addEvent(/* 이벤트 연결 */);       // 상호작용
+skinparam linetype ortho
+skinparam packageStyle rectangle
+skinparam Store {
+  BackgroundColor #f0f0f0
+  BorderColor #333
 }
 
-// ✅ React 전환 시 기존의 코드를 거의 그대로 재사용할 수 있었다.
-function App() {
-  // 비즈니스 로직
-  const products = useProducts();
-  const carts = useCarts(products.items);
-  const selection = carts.selectedItems.length > 0;
+package "1) 비즈니스 로직" as Domains {
+  rectangle "기존 store 구조" as Store
+  rectangle "cartUtils\nproductUtils\ncartService" as Utils
+  rectangle "useCarts\nuseProducts" as Hooks #LightBlue
+  
+  Utils -up-> Hooks  
+  Store -up-> Utils  
+}
 
-  // UI에 반영. UI 구조는 거의 그대로 사용
-  return (
-    <div className="container mx-auto py-20">
-      <h1 className="text-3xl font-bold mb-8 text-center">쇼핑몰</h1>
+package "2) UI 컴포넌트" as Components {
+  rectangle "템플릿 리터럴\n컴포넌트" as TemplateComp
+  rectangle "JSX 기반\nReact 컴포넌트" as JSXComp #LightBlue
+  
+  TemplateComp -up-> JSXComp  
+}
 
-      <div className="flex gap-8">
-        <div className="flex-1">
-          {/* 이벤트는 props으로 자연스럽게 연결 */}
-          <ProductControls
-            onInputEnterKeyDown={(searchKey) =>
-              products.changeOptions({ searchKey })
-            }
-            onOrderChange={(orderBy) => products.changeOptions({ orderBy })}
-            onSortChange={(sortBy) => products.changeOptions({ sortBy })}
-          />
-          <div
-            id="product-list"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            {products.filteredItems.map((product) => (
-              <ProductItem
-                key={product.id}
-                {...product}
-                onCartAddClick={carts.add}
-              />
-            ))}
-          </div>
-        </div>
+package "3) 이벤트 연결 방식" as Apps {
+  rectangle "main.ts\n이벤트 일괄 연결" as OldMain
+  rectangle "상위 컴포넌트에서\nhook 로직 주입" as NewMain #LightBlue
+  
+  OldMain -up-> NewMain  
+}
 
-        {/* 장바구니 */}
-        <div className="bg-white p-6 rounded-lg shadow w-[400px]">
-          <h2 className="text-2xl font-bold mb-4">장바구니</h2>
-          <div id="cart-items">
-            {carts.itemsWithProduct.length > 0 && (
-              <div className="flex gap-2 mb-2 ml-3">
-                <input
-                  type="checkbox"
-                  id="select-all-cart"
-                  checked={carts.allSelected}
-                  onChange={carts.toggleAllSelected}
-                  readOnly
-                />
-              </div>
-            )}
-            {carts.itemsWithProduct.map((cartItem) => (
-              <CartItem
-                key={cartItem.id}
-                {...cartItem}
-                onIncrementClick={(id) => carts.incrementQuantity(id, 1)}
-                onDecrementClick={(id) => carts.incrementQuantity(id, -1)}
-                onRemoveClick={carts.remove}
-                onSelect={carts.toggleSelect}
-              />
-            ))}
-          </div>
-          <CartSummary
-            totalPrice={carts.totalPrice}
-            selection={selection}
-            onRemoveSelectedClick={carts.removeSelected}
-            onClearCartClick={carts.clear}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}## 4단계: React로 전환하기
+Hooks -> JSXComp
+JSXComp -> NewMain
 
-앞선 단계에서 관심사 분리를 통해 구축한 코드가 얼마나 잘 설계되었는지 확인해보기 위한 다른 방법 중 하나가 React로 다시 표현해보는 것이다. 좋은 아키텍처라면 기술 스택이 바뀌어도 핵심 비즈니스 로직은 그대로 유지되면서 최소한의 수정만으로 전환이 가능해야 한다.
+Domains -[hidden]> Components
+Components -[hidden]> Apps
 
-가령, "Vue로 만들어진걸 React로 다시 만들자!" 같은 상황을 겪은 사람이 종종 있을 것이다. 혹은 내가 작성한 코드를 라이브러리로 배포 되어 여러 플랫폼에서 쓰이는 상황도 가정해볼 수 있다. 이 또한 요구사항의 변화, 더 정확히는 기술적 요구사항의 변화라고 할 수 있다.
-
-### (1) React 세팅하기
-
-세팅의 경우 지금 중요한 부분은 아니라서, 중요한 부분을 제외하곤 생략하겠다. [이 커밋 링크](https://github.com/junilhwang/simple-clean-code-project/commit/19e4fd2862ca4156dd1bb68b2360931541588744)를 참고하면 된다.
-
-중요한 부분은 폴더구조인데, 앞선 과정처럼 step3 는 유지하고 step4 를 새로 만자.
-
-```bash
-├── src
-│  ├── step1
-│  ├── step2
-│  ├── step3
-│  ├── step4
-│  │  ├── domains							# 📁 비즈니스 로직 (거의 그대로 유지)
-│  │  │  ├── types.ts
-│  │  │  ├── constants.ts
-│  │  │  ├── cartService.ts
-│  │  │  ├── productUtils.ts
-│  │  │  └── cartUtils.ts
-│  │  ├── hooks	              # 📁 React와 도메인 로직 연결
-│  │  │  ├── useProducts.ts
-│  │  │  └── useCarts.ts
-│  │  ├── main.tsx            # React 진입점
-│  │  ├── components.tsx      # JSX로 변환
-│  │  └── App.tsx             # 컴포넌트 조합
-│  ├── vite-env.d.ts
-│  └── setupTests.ts
-├── step1.html
-├── step2.html
-├── step3.html
-└── step4.html                # react 어플리케이션을 실행할 html 생성
-
-```
-
-- apps 는 사라질 것이다. 렌더링에 대한 부분을 React에게 위임했기 때문에 크게 신경쓰지 않아도 된다.
-- domains의 내용을 hooks와 분할했다. 기존에 store가 하던 역할을 hooks이 대체할 것이다.
-- components의 내용은 크게 다르지 않을 것이다.
+@enduml
 
 ### (2) 각 레이어별 전환 분석
 
 #### 1) 비즈니스 로직
 
-1. 기존에는 이렇게 **값과 함수를 묶어서 store로 사용**했었다.
-    
-    ```tsx
-    // 기존: domains.ts
-    const createCarts = (initValue: Record<Product['id'], Cart> = {}) => {
-      let value = { ...initValue };
-    
-      return {
-        get value() {
-          return value;
-        },
-        get items() {
-          return Object.values(value);
-        },
-        get selectedItems() {
-          return this.items.filter((item) => item.selected);
-        },
-        add(productId: string) {
-          if (!value[productId]) {
-            value[productId] = { productId, quantity: 0, selected: false };
-          }
-          value[productId].quantity += 1;
-        },
-        updateQuantity(productId: string, quantity: number) {
-          value[productId].quantity = Math.max(quantity, 1);
-        },
-        // ...
-      };
+기존에는 이렇게 **값과 함수를 묶어서 store로 사용**했었다.
+
+```tsx
+// 기존: domains.ts
+const createCarts = (initValue: Record<Product['id'], Cart> = {}) => {
+  let value = { ...initValue };
+
+  return {
+    get value() {
+      return value;
+    },
+    get items() {
+      return Object.values(value);
+    },
+    get selectedItems() {
+      return this.items.filter((item) => item.selected);
+    },
+    add(productId: string) {
+      if (!value[productId]) {
+        value[productId] = { productId, quantity: 0, selected: false };
+      }
+      value[productId].quantity += 1;
+    },
+    updateQuantity(productId: string, quantity: number) {
+      value[productId].quantity = Math.max(quantity, 1);
+    },
+    // ...
+  };
+};
+
+const createProducts = (initValue = INITIAL_PRODUCTS) => {/* 생략 */};
+
+export const createStore = ({
+  products: defaultProducts = INITIAL_PRODUCTS,
+  carts: defaultCarts = {},
+}: {
+  products?: Product[];
+  carts?: Record<Product['id'], Cart>;
+}) => {
+  const products = createProducts(defaultProducts);
+  const carts = createCarts(defaultCarts);
+
+  return {
+    products,
+    carts,
+    get totalCartPrice() { /* 생략 */ },
+    get cartsWithProduct() { /* 생략 */ },
+    addToCart(id: string) { /* 생략 */ },
+    incrementCartQuantity(id: string, quantity: number) { /* 생략 */ },
+  };
+};
+
+```
+
+다만 리액트에서는 값을 불변성으로 다루기 때문에, **이걸 그대로 사용하기가 쉽지 않다.** 이 로직에서 함수의 사이드 이펙트를 제거하는 방향으로 개선하고, **함수가 값을 반환하도록** 만들어야 한다.
+
+그 다음 핵심 로직을 cartUtils, productUtils, cartService 로 분리하고, useCarts, useProducts 등의 훅을 만든 후 도메인 로직을 가져다 사용하는 방식으로 만들수 있다.
+즉, 기존의 `createCarts` 과 유사한 모습으로 `useCarts` 라는 훅을 정의한다고 생각하면 된다.
+
+```tsx
+// domains/types.ts
+  export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
+
+export interface Cart {
+  productId: string;
+  quantity: number;
+  selected: boolean;
+}
+
+export type Carts = Record<Product['id'], Cart>;
+export type Products = Record<Product['id'], Product>;
+
+export type CartWithProduct = Omit<Product, 'quantity'> &
+  Pick<Cart, 'quantity' | 'selected'> & { subtotal: number };
+
+// domains/cartUtils.ts
+export const cartUtils = {
+  add(carts: Carts, productId: string) {
+    const newCart = carts[productId] ?? {
+      productId,
+      quantity: 0,
+      selected: false,
     };
-    
-    const createProducts = (initValue = INITIAL_PRODUCTS) => {/* 생략 */};
-    
-    export const createStore = ({
-      products: defaultProducts = INITIAL_PRODUCTS,
-      carts: defaultCarts = {},
-    }: {
-      products?: Product[];
-      carts?: Record<Product['id'], Cart>;
-    }) => {
-      const products = createProducts(defaultProducts);
-      const carts = createCarts(defaultCarts);
-    
-      return {
-        products,
-        carts,
-        get totalCartPrice() { /* 생략 */ },
-        get cartsWithProduct() { /* 생략 */ },
-        addToCart(id: string) { /* 생략 */ },
-        incrementCartQuantity(id: string, quantity: number) { /* 생략 */ },
-      };
+
+    return {
+      ...carts,
+      [newCart.productId]: { ...newCart, quantity: newCart.quantity + 1 },
     };
-    
-    ```
-    
-    다만 리액트에서는 값을 불변성으로 다루기 때문에, **이걸 그대로 사용하기가 쉽지 않다.** 이 로직에서 함수의 사이드 이펙트를 제거하는 방향으로 개선하고, **함수가 값을 반환하도록** 만들어야 한다.
-    
-1. 핵심 로직을 cartUtils, productUtils, cartService 로 분리하고, useCarts, useProducts 등의 훅을 만든 후 도메인 로직을 가져다 사용하는 방식으로 만들면 좋다. 즉, 기존의 `createCarts` 과 유사한 모습으로 `useCarts` 라는 훅을 정의한다고 생각하면 된다.
-    
-    ```tsx
-    // domains/types.ts
-    	export interface Product {
-      id: string;
-      name: string;
-      price: number;
-      image: string;
-      quantity: number;
+  },
+  updateQuantity: (carts: Carts, productId: string, quantity: number) => ({
+    ...carts,
+    [productId]: {
+      ...carts[productId],
+      quantity: Math.max(quantity, 1),
+    },
+  }),
+  remove: (carts: Carts, productId: string) => {
+    const newCarts = { ...carts };
+    delete newCarts[productId];
+    return newCarts;
+  },
+  removeSelected: (carts: Carts) =>
+    Object.fromEntries(
+      Object.entries(carts).filter(([, cart]) => !cart.selected)
+    ),
+  toggleSelect(carts: Carts, productId: string) {
+    const { [productId]: cart } = carts;
+    return {
+      ...carts,
+      [productId]: { ...cart, selected: !cart.selected },
+    };
+  },
+  updateAllSelected: (carts: Carts, selected: boolean) =>
+    Object.fromEntries(
+      Object.entries(carts).map(([id, cart]) => [id, { ...cart, selected }])
+    ),
+  selectAll: (carts: Carts) => cartUtils.updateAllSelected(carts, true),
+  deselectAll: (carts: Carts) => cartUtils.updateAllSelected(carts, false),
+};
+
+// domains/productUtils.ts
+export const productUtils = {
+  getFilteredItems: (
+    products: Products,
+    { searchKey = '', orderBy, sortBy = 'default' }: Partial<ProductOptions>
+  ) => {
+    const values = Object.values(products);
+    const searchedItems =
+      searchKey.trim() === ''
+        ? values
+        : values.filter((item) =>
+            item.name.toLowerCase().includes(searchKey.toLowerCase())
+          );
+
+    if (sortBy === 'default' && orderBy === 'asc') {
+      return searchedItems;
     }
-    
-    export interface Cart {
-      productId: string;
-      quantity: number;
-      selected: boolean;
-    }
-    
-    export type Carts = Record<Product['id'], Cart>;
-    export type Products = Record<Product['id'], Product>;
-    
-    export type CartWithProduct = Omit<Product, 'quantity'> &
-      Pick<Cart, 'quantity' | 'selected'> & { subtotal: number };
-    
-    // domains/cartUtils.ts
-    export const cartUtils = {
-      add(carts: Carts, productId: string) {
-        const newCart = carts[productId] ?? {
-          productId,
-          quantity: 0,
-          selected: false,
-        };
-    
-        return {
-          ...carts,
-          [newCart.productId]: { ...newCart, quantity: newCart.quantity + 1 },
-        };
-      },
-      updateQuantity: (carts: Carts, productId: string, quantity: number) => ({
-        ...carts,
-        [productId]: {
-          ...carts[productId],
-          quantity: Math.max(quantity, 1),
-        },
-      }),
-      remove: (carts: Carts, productId: string) => {
-        const newCarts = { ...carts };
-        delete newCarts[productId];
-        return newCarts;
-      },
-      removeSelected: (carts: Carts) =>
-        Object.fromEntries(
-          Object.entries(carts).filter(([, cart]) => !cart.selected)
-        ),
-      toggleSelect(carts: Carts, productId: string) {
-        const { [productId]: cart } = carts;
-        return {
-          ...carts,
-          [productId]: { ...cart, selected: !cart.selected },
-        };
-      },
-      updateAllSelected: (carts: Carts, selected: boolean) =>
-        Object.fromEntries(
-          Object.entries(carts).map(([id, cart]) => [id, { ...cart, selected }])
-        ),
-      selectAll: (carts: Carts) => cartUtils.updateAllSelected(carts, true),
-      deselectAll: (carts: Carts) => cartUtils.updateAllSelected(carts, false),
-    };
-    
-    // domains/productUtils.ts
-    export const productUtils = {
-      getFilteredItems: (
-        products: Products,
-        { searchKey = '', orderBy, sortBy = 'default' }: Partial<ProductOptions>
-      ) => {
-        const values = Object.values(products);
-        const searchedItems =
-          searchKey.trim() === ''
-            ? values
-            : values.filter((item) =>
-                item.name.toLowerCase().includes(searchKey.toLowerCase())
-              );
-    
-        if (sortBy === 'default' && orderBy === 'asc') {
-          return searchedItems;
-        }
-    
-        return searchedItems.sort((a, b) => {
-          const comparison =
-            sortBy === 'name' ? a.name.localeCompare(b.name) : a.price - b.price;
-    
-          return orderBy === 'asc' ? comparison : -comparison;
-        });
-      },
-      isOutOfStock: (product: Product) => product.quantity === 0,
-    };
-    
-    // domains/cartService.ts
-    export const cartService = {
-      getTotalCartPrice: (carts: Carts, products: Products) =>
-        Object.values(carts).reduce((total, item) => {
-          const product = products[item.productId];
-          return total + (product ? product.price * item.quantity : 0);
-        }, 0),
-      getCartsWithProduct: (carts: Carts, products: Products): CartWithProduct[] =>
-        Object.values(carts).map(({ productId, quantity, selected }) => {
-          const product = products[productId];
-          return {
-            ...product,
-            quantity,
-            selected,
-            subtotal: product.price * quantity,
-          };
-        }),
-      addToCart: (carts: Carts, products: Products, id: string) => {
-        const cartQuantity = carts[id]?.quantity ?? 0;
-        const productQuantity = products[id].quantity;
-        if (
-          productUtils.isOutOfStock(products[id]) ||
-          cartQuantity >= productQuantity
-        ) {
-          return carts;
-        }
-        return cartUtils.add(carts, id);
-      },
-      incrementCartQuantity: (
-        carts: Carts,
-        products: Products,
-        id: string,
-        quantity: number
-      ) => {
-        const cartQuantity = carts[id].quantity;
-        const productQuantity = products[id].quantity;
-        return cartUtils.updateQuantity(
-          carts,
-          id,
-          Math.min(cartQuantity + quantity, productQuantity)
-        );
-      },
-    };
-    
-    // hooks/useCarts.ts
-    export const useCarts = (products) => {
-    	const [carts, setCarts] = useState<Carts>({});
-    
-    	// 기존에 getter로 정의된 것들은 hook에서 파생상태로 관리하면 된다.
-    	// 어차피 렌더링을 할 때 이 값들이 재계산 되어 쓰여진다.
-    	const values = Object.values(carts);
-    
-    	// cartUtils 뿐만 아니라 cartService 의 로직도 가져다 사용할 수 있다.
-    	const totalPrice = cartService.getTotalCartPrice(carts, products);
-      const itemsWithProduct = cartService.getCartsWithProduct(carts, products);
-    
-      const selectedItems = values.filter((v) => v.selected);
-      const selectedSize = selectedItems.length;
-      const allSelected = selectedSize > 0 && selectedSize === itemsWithProduct.length;
-    
-      const add = (id: ProductId) =>
-        setCarts(cartService.addToCart(carts, products, id);
-    
-      const incrementQuantity = (id: ProductId, quantity: number) =>
-        setCarts(cartService.incrementCartQuantity(carts, products, id, quantity));
-    
-      const remove = (id: ProductId) =>
-        setCarts(cartUtils.remove(carts, id);
-    
-      const removeSelected = () =>
-        setCarts(cartUtils.removeSelected(carts);
-    
-      const toggleSelect = (id: ProductId) =>
-        setCarts(cartUtils.toggleSelect(carts, id);
-    
-      const toggleAllSelected = () =>
-        setCarts(cartUtils.updateAllSelected(carts, !allSelected);
-    
-      const clear = () => setCarts({});
-    
+
+    return searchedItems.sort((a, b) => {
+      const comparison =
+        sortBy === 'name' ? a.name.localeCompare(b.name) : a.price - b.price;
+
+      return orderBy === 'asc' ? comparison : -comparison;
+    });
+  },
+  isOutOfStock: (product: Product) => product.quantity === 0,
+};
+
+// domains/cartService.ts
+export const cartService = {
+  getTotalCartPrice: (carts: Carts, products: Products) =>
+    Object.values(carts).reduce((total, item) => {
+      const product = products[item.productId];
+      return total + (product ? product.price * item.quantity : 0);
+    }, 0),
+  getCartsWithProduct: (carts: Carts, products: Products): CartWithProduct[] =>
+    Object.values(carts).map(({ productId, quantity, selected }) => {
+      const product = products[productId];
       return {
-        items: carts,
-        itemsWithProduct,
-        selectedItems,
-        totalPrice,
-        allSelected,
-        add,
-        incrementQuantity,
-        remove,
-        removeSelected,
-        toggleSelect,
-        toggleAllSelected,
-        clear,
+        ...product,
+        quantity,
+        selected,
+        subtotal: product.price * quantity,
       };
+    }),
+  addToCart: (carts: Carts, products: Products, id: string) => {
+    const cartQuantity = carts[id]?.quantity ?? 0;
+    const productQuantity = products[id].quantity;
+    if (
+      productUtils.isOutOfStock(products[id]) ||
+      cartQuantity >= productQuantity
+    ) {
+      return carts;
     }
-    
-    // hooks/useProducts.ts
-    const toMap = (arr: Product[]): Products =>
-    arr.reduce((acc, product) => ({ ...acc, [product.id]: product }), {});
-    
-    export const useProducts = (initValue = INITIAL_PRODUCTS) => {
-      const [products] = useState(() => toMap(initValue));
-      const [options, setOptions] = useState(() => INITIAL_PRODUCT_OPTIONS);
-    
-      const filteredItems = productUtils.getFilteredItems(products, options);
-    
-      const changeOptions = (newValue: Partial<ProductOptions>) =>
-        setOptions({ ...options, ...newValue });
-    
-      return { items: products, filteredItems, changeOptions };
-    };
-    
-    ```
-    
+    return cartUtils.add(carts, id);
+  },
+  incrementCartQuantity: (
+    carts: Carts,
+    products: Products,
+    id: string,
+    quantity: number
+  ) => {
+    const cartQuantity = carts[id].quantity;
+    const productQuantity = products[id].quantity;
+    return cartUtils.updateQuantity(
+      carts,
+      id,
+      Math.min(cartQuantity + quantity, productQuantity)
+    );
+  },
+};
+
+// hooks/useCarts.ts
+export const useCarts = (products) => {
+  const [carts, setCarts] = useState<Carts>({});
+
+  // 기존에 getter로 정의된 것들은 hook에서 파생상태로 관리하면 된다.
+  // 어차피 렌더링을 할 때 이 값들이 재계산 되어 쓰여진다.
+  const values = Object.values(carts);
+
+  // cartUtils 뿐만 아니라 cartService 의 로직도 가져다 사용할 수 있다.
+  const totalPrice = cartService.getTotalCartPrice(carts, products);
+  const itemsWithProduct = cartService.getCartsWithProduct(carts, products);
+
+  const selectedItems = values.filter((v) => v.selected);
+  const selectedSize = selectedItems.length;
+  const allSelected = selectedSize > 0 && selectedSize === itemsWithProduct.length;
+
+  const add = (id: ProductId) =>
+    setCarts(cartService.addToCart(carts, products, id);
+
+  const incrementQuantity = (id: ProductId, quantity: number) =>
+    setCarts(cartService.incrementCartQuantity(carts, products, id, quantity));
+
+  const remove = (id: ProductId) =>
+    setCarts(cartUtils.remove(carts, id);
+
+  const removeSelected = () =>
+    setCarts(cartUtils.removeSelected(carts);
+
+  const toggleSelect = (id: ProductId) =>
+    setCarts(cartUtils.toggleSelect(carts, id);
+
+  const toggleAllSelected = () =>
+    setCarts(cartUtils.updateAllSelected(carts, !allSelected);
+
+  const clear = () => setCarts({});
+
+  return {
+    items: carts,
+    itemsWithProduct,
+    selectedItems,
+    totalPrice,
+    allSelected,
+    add,
+    incrementQuantity,
+    remove,
+    removeSelected,
+    toggleSelect,
+    toggleAllSelected,
+    clear,
+  };
+}
+
+// hooks/useProducts.ts
+const toMap = (arr: Product[]): Products =>
+arr.reduce((acc, product) => ({ ...acc, [product.id]: product }), {});
+
+export const useProducts = (initValue = INITIAL_PRODUCTS) => {
+  const [products] = useState(() => toMap(initValue));
+  const [options, setOptions] = useState(() => INITIAL_PRODUCT_OPTIONS);
+
+  const filteredItems = productUtils.getFilteredItems(products, options);
+
+  const changeOptions = (newValue: Partial<ProductOptions>) =>
+    setOptions({ ...options, ...newValue });
+
+  return { items: products, filteredItems, changeOptions };
+};
+```
 
 변환 과정에 대해 정리를 해보자면 다음과 같다.
+
+@startuml
+title: Hook + Utils + Service
+
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+rectangle "기존 store 구조" as Store
+rectangle "cartUtils\nproductUtils\ncartService" as Utils
+rectangle "useCarts\nuseProducts" as Hooks #LightBlue
+
+Utils -> Hooks  
+Store -> Utils
+
+@enduml
 
 - store의 역할을 hook이 대체한다.
 - store의 로직을 utils와 service로 분리한다.
@@ -3368,7 +3279,7 @@ function App() {
 #### 2) UI 컴포넌트: 구조는 동일, 문법만 변화
 
 - 기존 컴포넌트는 다음과 같이 template literal 로 만들어졌다.
-    
+
     ```tsx
     // 기존: components.ts
     export function ProductItem({ image, name, price, id, quantity }: Product) {
@@ -3388,9 +3299,9 @@ function App() {
     }
     
     ```
-    
+
 - 이제 jsx 문법을 이용하여 표현할 수 있다.
-    
+
     ```tsx
     export function ProductItem({
       id,
@@ -3610,11 +3521,204 @@ function App() {
     }
     
     ```
-    
+
 
 대부분의 코드는 거의 동일하다. 제일 큰 변화는 컴포넌트에서 이벤트 함수를 받오는 부분이다. 리액트 컴포넌트의 반환 값은 ReactNode 인데 node에 이벤트 함수를 할당해놓으면 나중에 렌더링할 때 리액트 내부에서 DOM에 이벤트를 등록해준다.
 
 #### 3) 이벤트 연결하기 (구조 개선)
+
+AS-IS: 기존에는 main.ts 에서 모든 이벤트를 연결해줬다.
+
+```tsx
+// 기존: main.ts - 복잡한 DOM 탐색 필요
+addEvent('click', '.increase-btn, .decrease-btn', (event) => {
+  const target = event.target as HTMLElement;
+  const cartItemEl = target.closest('.cart-item');
+  const productId = cartItemEl?.getAttribute('data-product-id');
+
+  if (!productId || !cartItemEl) return;
+
+  const quantity = target.classList.contains('increase-btn') ? 1 : -1;
+  store.incrementCartQuantity(productId, quantity);
+  render();
+});
+
+```
+
+TO-BE: 상위 컴포넌트에서 hook을 통해 정의된 핵심 로직을 가져오고, 이걸 컴포넌트에 내려주는 방식으로 만들었다.
+
+```tsx
+// ./App.tsx
+export function App() {
+  const products = useProducts();
+  const carts = useCarts(products.items);
+  const selection = carts.selectedItems.length > 0;
+
+  return (
+    <div className="container mx-auto py-20">
+      <h1 className="text-3xl font-bold mb-8 text-center">쇼핑몰</h1>
+
+      <div className="flex gap-8">
+        <div className="flex-1">
+          <ProductControls
+            onInputEnterKeyDown={(searchKey) =>
+              products.changeOptions({ searchKey })
+            }
+            onOrderChange={(orderBy) => products.changeOptions({ orderBy })}
+            onSortChange={(sortBy) => products.changeOptions({ sortBy })}
+          />
+          <div
+            id="product-list"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {products.filteredItems.map((product) => (
+              <ProductItem
+                key={product.id}
+                {...product}
+                onCartAddClick={carts.add}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* 장바구니 */}
+        <div className="bg-white p-6 rounded-lg shadow w-[400px]">
+          <h2 className="text-2xl font-bold mb-4">장바구니</h2>
+          <div id="cart-items">
+            {carts.itemsWithProduct.length > 0 && (
+              <div className="flex gap-2 mb-2 ml-3">
+                <input
+                  type="checkbox"
+                  id="select-all-cart"
+                  checked={carts.allSelected}
+                  onChange={carts.toggleAllSelected}
+                  readOnly
+                />
+              </div>
+            )}
+            {carts.itemsWithProduct.map((cartItem) => (
+              <CartItem
+                key={cartItem.id}
+                {...cartItem}
+                onIncrementClick={(id) => carts.incrementQuantity(id, 1)}
+                onDecrementClick={(id) => carts.incrementQuantity(id, -1)}
+                onRemoveClick={carts.remove}
+                onSelect={carts.toggleSelect}
+              />
+            ))}
+          </div>
+          <CartSummary
+            totalPrice={carts.totalPrice}
+            selection={selection}
+            onRemoveSelectedClick={carts.removeSelected}
+            onClearCartClick={carts.clear}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+이벤트를 다루는 로직은 사실 대부분 유사하다. 다만 "**이벤트 연결"에 대한 부분을 각각의 컴포넌트에게 위임**했다.
+
+### (3) 전환 과정에서 드러난 기존 설계의 장점
+
+#### 1) 관심사 분리의 효과
+
+```tsx
+// 기존에 UI와 비즈니스 로직을 완전히 분리하여 관리하는 방식이었다.
+function main() {
+  // 비즈니스 로직
+	const store = createStore({});  
+	
+	// UI에 반영
+	$root.innerHTML = App({
+	  products: store.products.filteredItems,
+	  carts: {
+	    items: store.cartsWithProduct,
+	    selectedIds: store.carts.selectedItems.map((v) => v.productId),
+	  },
+	  totalCartPrice: store.totalCartPrice,
+	});
+	
+	// 이벤트 연결
+	addEvent(/* 이벤트 연결 */);       // 상호작용
+}
+
+// ✅ React 전환 시 기존의 코드를 거의 그대로 재사용할 수 있었다.
+function App() {
+  // 비즈니스 로직
+  const products = useProducts();
+  const carts = useCarts(products.items);
+  const selection = carts.selectedItems.length > 0;
+
+  // UI에 반영. UI 구조는 거의 그대로 사용
+  return (
+    <div className="container mx-auto py-20">
+      <h1 className="text-3xl font-bold mb-8 text-center">쇼핑몰</h1>
+
+      <div className="flex gap-8">
+        <div className="flex-1">
+          {/* 이벤트는 props으로 자연스럽게 연결 */}
+          <ProductControls
+            onInputEnterKeyDown={(searchKey) =>
+              products.changeOptions({ searchKey })
+            }
+            onOrderChange={(orderBy) => products.changeOptions({ orderBy })}
+            onSortChange={(sortBy) => products.changeOptions({ sortBy })}
+          />
+          <div
+            id="product-list"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {products.filteredItems.map((product) => (
+              <ProductItem
+                key={product.id}
+                {...product}
+                onCartAddClick={carts.add}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* 장바구니 */}
+        <div className="bg-white p-6 rounded-lg shadow w-[400px]">
+          <h2 className="text-2xl font-bold mb-4">장바구니</h2>
+          <div id="cart-items">
+            {carts.itemsWithProduct.length > 0 && (
+              <div className="flex gap-2 mb-2 ml-3">
+                <input
+                  type="checkbox"
+                  id="select-all-cart"
+                  checked={carts.allSelected}
+                  onChange={carts.toggleAllSelected}
+                  readOnly
+                />
+              </div>
+            )}
+            {carts.itemsWithProduct.map((cartItem) => (
+              <CartItem
+                key={cartItem.id}
+                {...cartItem}
+                onIncrementClick={(id) => carts.incrementQuantity(id, 1)}
+                onDecrementClick={(id) => carts.incrementQuantity(id, -1)}
+                onRemoveClick={carts.remove}
+                onSelect={carts.toggleSelect}
+              />
+            ))}
+          </div>
+          <CartSummary
+            totalPrice={carts.totalPrice}
+            selection={selection}
+            onRemoveSelectedClick={carts.removeSelected}
+            onClearCartClick={carts.clear}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 ```
 
 #### 2) 순수 함수 설계의 효과
@@ -3791,7 +3895,7 @@ test.describe('두 번째 요구사항에 대한 테스트 > ', () => {
 
 테스트는 step2에서 다뤘던 것 처럼 codegen 을 이용하는게 제일 좋다고 생각한다. 나는 그 마저도 귀찮아서 일단 AI에게 위임했다.
 
-![image.png](./3.png)
+![3.png](./3.png)
 
 e2e 가 통과 되도록 테스트를 만들었으면, 이제 단위테스트를 만들어보자.
 
@@ -3829,9 +3933,17 @@ e2e 가 통과 되도록 테스트를 만들었으면, 이제 단위테스트를
 $ pnpm run test:coverage --coverage.include=src/step4
 ```
 
-![image.png](./4.png)
+![4.png](./4.png)
 
-### (5) Summary: 좋은 설계의 검증
+### (5) 4단계 데모
+
+링크: [https://junilhwang.github.io/simple-clean-code-project/step4.html](https://junilhwang.github.io/simple-clean-code-project/step4.html)
+
+<div class="iframe-container">
+  <iframe src="https://junilhwang.github.io/simple-clean-code-project/step4.html"></iframe>
+</div>
+
+### (6) Summary: 좋은 설계의 검증
 
 React로의 전환 과정을 통해 확인할 수 있었던 것들은 다음과 같다.
 
@@ -3848,19 +3960,17 @@ React로의 전환 과정을 통해 확인할 수 있었던 것들은 다음과 
 
 #### 1) React component 렌더링 분석
 
-1. 먼저 React devtools 확장 프로그램을 설치해야 한다.
+먼저 [React Developer Tools](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ko) 확장 프로그램을 설치해야 한다.
     
-    [React Developer Tools - Chrome 웹 스토어](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ko)
-    
-2. 설치가 되었으면 개발자 도구를 열어서 `Profile > General > Highlight updates when components render` 를 활성화 해야한다.
-    
-    ![image.png](./5.png)
-    
-3. 어플리케이션에서 인터랙션을 발생시켜 컴포넌트가 어떻게 렌더링 되는지 확인해볼 수 있다.
-    
-    ![step5-성능문제.gif](./step5-as-is.gif)
-    
-    잘 보면 인터랙션이 발생할 때 마다 모든 컴포넌트가 리렌더링 되는 것을 확인할 수 있다.
+설치가 완료 되었으면 개발자 도구를 열어서 `Profile > General > Highlight updates when components render` 를 활성화 해야한다.
+
+![image.png](./5.png)
+
+어플리케이션에서 인터랙션을 발생시켜 컴포넌트가 어떻게 렌더링 되는지 확인해볼 수 있다.
+
+![step5-성능문제.gif](./step5-as-is.gif)
+
+잘 보면 인터랙션이 발생할 때 마다 모든 컴포넌트가 리렌더링 되는 것을 확인할 수 있다.
     
 
 #### 2) 모든 상태가 App에 집중됨
@@ -3930,30 +4040,75 @@ export function App() {
   );
 }
 
+// 장바구니에 상품 하나를 추가하는 경우, 모든 컴포넌트에 렌더링이 전파됨
+const addToCart = (productId: string) => {
+  carts.add(productId); // 이 함수가 실행되면...
+};
+
+// 📈 렌더링 과정:
+// 1. App 컴포넌트 리렌더링
+// 2. ProductControls 리렌더링 (상품과 무관함에도)
+// 3. 모든 ProductItem 컴포넌트 리렌더링 (변경되지 않았음에도)
+// 4. 모든 CartItem 컴포넌트 리렌더링
+// 5. CartSummary 리렌더링
 ```
 
+@startuml
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam sequenceMessageAlign center
+
+participant "👤 User" as User
+participant "🏪 App" as App #FFE5E5
+participant "🔍 ProductControls" as PC #FFF3E0
+participant "📦 ProductItem A" as PA #FFF3E0
+participant "📦 ProductItem B" as PB #FFF3E0
+participant "📦 ProductItem C" as PC2 #FFF3E0
+participant "🛒 CartItem A" as CA #E8F5E8
+participant "🛒 CartItem B" as CB #E8F5E8
+participant "💰 CartSummary" as CS #F3E5F5
+
+User -> App: 🖱️ 장바구니에 상품 추가
+note over App: ⚠️ 모든 상태가 여기 집중됨\ncarts.add(productId)
+
+App -> App: 🔄 State 변경
+note over App: 💥 전체 리렌더링 시작
+
+App -> PC: 🔄 리렌더링
+note over PC: ❌ 상품과 무관함에도\n리렌더링 발생
+
+App -> PA: 🔄 리렌더링  
+note over PA: ❌ 변경되지 않았음에도\n리렌더링 발생
+
+App -> PB: 🔄 리렌더링
+note over PB: ❌ 변경되지 않았음에도\n리렌더링 발생
+
+App -> PC2: 🔄 리렌더링
+note over PC2: ❌ 변경되지 않았음에도\n리렌더링 발생
+
+App -> CA: 🔄 리렌더링
+note over CA: ✅ 실제로 필요한 리렌더링
+
+App -> CB: 🔄 리렌더링
+note over CB: ❌ 변경되지 않았음에도\n리렌더링 발생
+
+App -> CS: 🔄 리렌더링
+note over CS: ✅ 총합계 변경으로\n필요한 리렌더링
+
+note over User, CS
+💡 문제점:
+• 모든 상태가 App에 집중
+• 한 곳의 변경이 전체에 영향
+• 불필요한 렌더링 다수 발생
+• 성능 저하 및 복잡성 증가
+end note
+
+@enduml
+
+현재 구조에서는 상태가 변경될 때마다 불필요한 렌더링이 발생한다.
 - `products`, `carts`, `selection` 등 모든 상태가 App 컴포넌트에 선언되었다.
 - 즉, **상태가 변경될 때마다 App 전체가 리렌더링의 시작점**이 되고 있다. cart를 변경해도 product에 영향이 가고, product를 변경해도 cart에 영향이 간다.
-
-#### 2) 전역 리렌더링 문제
-
-1. 현재 구조에서는 상태가 변경될 때마다 불필요한 렌더링이 발생한다.
-    
-    ```tsx
-    // 예시: 장바구니에 상품 하나를 추가하는 경우
-    const handleAddToCart = (productId: string) => {
-      carts.add(productId); // 이 함수가 실행되면...
-    };
-    
-    // 📈 렌더링 과정:
-    // 1. App 컴포넌트 리렌더링
-    // 2. ProductControls 리렌더링 (상품과 무관함에도)
-    // 3. 모든 ProductItem 컴포넌트 리렌더링 (변경되지 않았음에도)
-    // 4. 모든 CartItem 컴포넌트 리렌더링
-    // 5. CartSummary 리렌더링
-    ```
-    
-1. 어떤 함수를 실행하든, 전체적인 렌더링이 발생한다.
+- 어떤 함수를 실행하든, 전체적인 렌더링이 발생한다.
 
 #### 3) React.memo를 사용한 해결 시도와 한계
 
@@ -3980,7 +4135,6 @@ const ProductItem = memo(function ProductItem({
     </div>
   );
 });
-
 ```
 
 **하지만 여전히 문제가 발생한다**
@@ -4059,15 +4213,85 @@ export function App() {
     </div>
   );
 }
-
 ```
 
-- 코드가 복잡해지고 가독성이 떨어질 수 있다.
-- 의존성 배열 관리가 어렵다. 꼼꼼하게 메모이제이션을 한다고 해도 놓치는 구간이 분명 생길 수 있다.
-- 실수로 빠뜨린 의존성이 있으면 버그 발생할 수 있다.
-- 메모화 자체에도 비용이 들어간다.
+@startuml
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam sequenceMessageAlign left
 
-#### 5) 상태 분산 시의 문제
+participant "🏪 App" as App #FFE5E5
+participant "📦 ProductItem\n(memo 적용)" as PI #FFF3E0
+participant "🔍 React.memo" as Memo #E3F2FD
+
+== 1차 시도: React.memo 적용 ==
+
+App -> App: 🔄 State 변경 (장바구니 추가)
+App -> PI: props = {\n  id: "1",\n  name: "맥북",\n  onCartAddClick: **새로운 함수**\n}
+
+PI -> Memo: 🤔 props 비교 체크
+note over Memo
+**이전 props vs 새로운 props**
+✅ id: "1" === "1"
+✅ name: "맥북" === "맥북"
+❌ onCartAddClick: func1 !== **func2**
+
+**결과: 리렌더링 필요!**
+end note
+
+Memo -> PI: 🔄 리렌더링 실행
+note over PI: ❌ memo 효과 없음\n함수가 매번 새로 생성됨
+
+== 2차 시도: useCallback 추가 ==
+
+App -> App: 🔧 useCallback 적용\nconst handleAdd = useCallback(\n  (id) => carts.add(id),\n  [carts.add]\n)
+
+App -> App: ⚠️ 의존성 문제 발견\ncarts.add도 매번 새로 생성됨
+
+== 3차 시도: 모든 함수 메모화 ==
+
+App -> App: 🔧 useMemo로 carts 메모화\nconst memoizedCarts = useMemo(\n  () => ({ add: carts.add }),\n  [carts.add]\n)
+
+App -> App: 🔧 useCallback 체인 추가\nconst handleAdd = useCallback(...)\nconst handleRemove = useCallback(...)\nconst handleIncrement = useCallback(...)
+
+note over App
+💥 **복잡성 폭발**
+• 모든 함수에 useCallback 필요
+• 의존성 배열 관리 복잡
+• 실수로 빠뜨린 의존성 → 버그
+• 메모화 자체에도 비용 발생
+end note
+
+App -> PI: props = {\n  id: "1",\n  name: "맥북",\n  onCartAddClick: **동일한 함수 참조**\n}
+
+PI -> Memo: 🤔 props 비교 체크
+note over Memo
+**이전 props vs 새로운 props**
+✅ id: "1" === "1"
+✅ name: "맥북" === "맥북"
+✅ onCartAddClick: func1 === func1
+
+**결과: 리렌더링 불필요**
+end note
+
+Memo -> PI: ✅ 리렌더링 스킵
+
+note over App, PI
+🤔 **결론: 해결은 되지만...**
+• 코드 복잡성 증가
+• 개발자 실수 가능성 높음
+• 메모화 오버헤드
+• 더 나은 해결책 필요
+end note
+
+@enduml
+
+- 코드가 복잡해지고 **가독성이 떨어질 수 있다.**
+- **의존성 배열 관리**가 어렵다. 꼼꼼하게 메모이제이션을 한다고 해도 **놓치는 구간**이 분명 생길 수 있다.
+- 실수로 **빠뜨린 의존성이 있으면 버그** 발생할 수 있다.
+- **메모화 자체에도 비용**이 들어간다.
+
+#### 4) 상태 분산 시의 문제
 
 다른 접근 방법으로 상태를 작은 단위로 나누어 관리해보자.
 
@@ -4109,7 +4333,6 @@ export function App() {
     </div>
   );
 }
-
 ```
 
 - 상품과 장바구니 간의 상호작용이 어려워진다.
@@ -4118,7 +4341,8 @@ export function App() {
 
 ### (2) 상태관리 라이브러리의 필요성
 
-앞서 분석한 문제들을 해결하기 위해 상태관리 라이브러리를 도입해보자. 보통 "전역 상태 관리"를 위해 Redux나 Zustand를 사용한다고 생각하지만, 실제로는 “전역 상태 관리” 라는 키워드에서 중요한건 “전역”이 아닌 “상태 관리” 이다. 
+앞서 분석한 문제들을 해결하기 위해 **상태관리 라이브러리**를 도입해보자.
+보통 '전역 상태 관리'를 위해 Redux나 Zustand를 사용한다고 생각하지만, 실제로는 '전역 상태 관리'라는 키워드에서 중요한건 **'전역'이 아닌 _'상태 관리'_ 이다.** 
 
 #### 1) 관심사의 집중화
 
@@ -4429,10 +4653,24 @@ export const useToggleAllCartsSelected = () =>
 export const useClearCart = () => useStore((state) => state.clearCart);
 ```
 
-<aside>
-🤔
+::: tip 🤔 그런데 왜 여러개의 훅을 구성해야 하는걸까?
 
-</aside>
+```tsx
+// 🚨 하나의 훅이 너무 많은 데이터를 반환
+const { products, carts, totalPrice, selectedItems } = useStore();
+
+// 🚨 장바구니 수량만 변경해도 모든 데이터가 변경되어 불필요한 리렌더링 발생
+function CartItem({ id }) {
+  const { products, carts } = useStore();
+  // ...
+}
+```
+
+여러 개의 훅을 사용하면 **컴포넌트가 정말 필요한 데이터만 구독**할 수 있다.
+예를 들어 ProductItem 컴포넌트는 해당 상품의 데이터만 구독하고, CartSummary 컴포넌트는 총 가격만 구독하면 된다.
+이렇게 세분화된 구독은 **불필요한 리렌더링을 막아 성능을 최적화**할 수 있다.
+
+:::
 
 #### 5) 최적화된 컴포넌트
 
@@ -4549,6 +4787,7 @@ export const CartItem = memo(({ id }: { id: string }) => {
   );
 });
 
+// ✅ CartCheckboxAll이 allSelected와 toggleAllSelected 를 참조
 export function CartCheckboxAll() {
   const allSelected = useCartAllSelected();
   const toggleAllSelected = useToggleAllCartsSelected();
@@ -4565,6 +4804,8 @@ export function CartCheckboxAll() {
   );
 }
 
+// ✅ CartItemList이 cart의 ids 배열만 사용.
+// CartItem 내부에서 id를 토대로 useCartItemWithProduct 훅을 사용하여 필요한 데이터를 가져온다.
 export function CartItemList() {
   const cartIds = useCartIds();
   return (
@@ -4709,7 +4950,6 @@ export function App() {
     </div>
   );
 }
-
 ```
 
 ![step5_렌더링개선.gif](./step5-to-be.gif)
@@ -4737,23 +4977,156 @@ test.describe('두 번째 요구사항에 대한 테스트 > ', () => {
 
 ### (4) 결과 비교
 
+@startuml
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam sequenceMessageAlign left
+
+participant "👤 User" as User
+participant "🏪 App\n(상태 없음)" as App #E8F5E8
+participant "🔍 ProductControls" as PC #FFF3E0
+participant "📦 ProductItem A" as PA #FFF3E0
+participant "📦 ProductItem B" as PB #FFF3E0
+participant "📦 ProductItem C" as PC2 #FFF3E0
+participant "🛒 CartItem A" as CA #E8F5E8
+participant "🛒 CartItem B" as CB #E8F5E8
+participant "💰 CartSummary" as CS #F3E5F5
+participant "🗄️ Zustand Store" as Store #E3F2FD
+
+== Zustand 선택적 구독 구조 ==
+
+note over PA
+useProduct(id: "A")
+상품 A 데이터만 구독
+end note
+
+note over PB  
+useProduct(id: "B")
+상품 B 데이터만 구독
+end note
+
+note over CA
+useCartItemWithProduct(id: "A")
+장바구니 A 아이템만 구독
+end note
+
+note over CB
+useCartItemWithProduct(id: "B")  
+장바구니 B 아이템만 구독
+end note
+
+note over CS
+useCartTotalPrice()
+총 가격만 구독
+end note
+
+== 사용자 인터랙션: 장바구니에 상품 A 추가 ==
+
+User -> PA: 🖱️ 장바구니 담기 클릭
+PA -> Store: addToCart("A")
+
+Store -> Store: 🔄 상태 변경\ncarts.A.quantity += 1
+
+note over Store
+💡 **선택적 알림**
+변경된 데이터를 구독하는
+컴포넌트들에게만 알림
+end note
+
+Store -> CA: 🔔 Cart A 데이터 변경 알림
+CA -> CA: 🔄 리렌더링\n✅ 실제로 필요함
+
+Store -> CS: 🔔 총 가격 변경 알림  
+CS -> CS: 🔄 리렌더링\n✅ 실제로 필요함
+
+note over App
+✅ **App 리렌더링 없음**
+상태가 없어서 변경 감지 안됨
+end note
+
+note over PC
+✅ **ProductControls 리렌더링 없음**
+상품 데이터 변경과 무관
+end note
+
+note over PA
+✅ **ProductItem A 리렌더링 없음**  
+상품 정보는 변경되지 않음
+end note
+
+note over PB, PC2
+✅ **다른 ProductItem들 리렌더링 없음**
+다른 상품 데이터와 무관
+end note
+
+note over CB
+✅ **CartItem B 리렌더링 없음**
+CartItem B 데이터와 무관
+end note
+
+== 결과 비교 ==
+
+note over User, Store
+🎯 **최적화된 렌더링**
+• App: 상태 없음 → 리렌더링 없음
+• ProductControls: 무관한 변경 → 리렌더링 없음  
+• 다른 ProductItem들: 무관한 변경 → 리렌더링 없음
+• 다른 CartItem들: 무관한 변경 → 리렌더링 없음
+• CartItem A: 실제 변경 → ✅ 리렌더링
+• CartSummary: 총 가격 변경 → ✅ 리렌더링
+
+💡 **핵심**: 필요한 곳만 정확히 리렌더링
+end note
+
+@enduml
+
 - AS-IS
+
+    ```tsx
+    // 🚨 모든 상태가 App에 집중
+    const products = useProducts();
+    const carts = useCarts(products.items);
+    
+    // 🚨 복잡한 prop drilling
+    <ProductItem {...product} onCartAddClick={carts.add} />
+    
+    // 🚨 불필요한 렌더링 발생
+    // 장바구니 변경 → 모든 상품 아이템 리렌더링
+    ```
+
 - TO-BE
 
-### (5) Summary
+    ```tsx
+    // ✅ 컴포넌트가 필요한 데이터만 구독
+    const { name, price } = useProduct(id);
+    const addToCart = useAddToCart();
+  
+    // ✅ 간단한 props
+    <ProductItem id={product.id} />
+  
+    // ✅ 선택적 렌더링
+    // 장바구니 변경 → 관련된 컴포넌트만 리렌더링
+    ```
 
-1. **상태 집중화 문제**: Zustand를 통한 관심사별 상태 분리
-1. **불필요한 렌더링**: 선택적 구독으로 필요한 부분만 렌더링
-1. **복잡한 메모화**: 자동화된 참조 안정성으로 `useMemo`/`useCallback` 제거
-1. **Prop Drilling**: 컴포넌트가 필요한 데이터를 직접 구독
-1. **관심사 분산**: 도메인 로직이 스토어에 집중화
+### (5) 5단계 데모
+
+링크: [https://junilhwang.github.io/simple-clean-code-project/step5.html](https://junilhwang.github.io/simple-clean-code-project/step5.html)
+
+<div class="iframe-container">
+  <iframe src="https://junilhwang.github.io/simple-clean-code-project/step5.html"></iframe>
+</div>
+
+### (6) Summary
+
+- **상태 집중화 문제**: Zustand를 통한 관심사별 상태 분리
+- **불필요한 렌더링**: 선택적 구독으로 필요한 부분만 렌더링
+- **복잡한 메모화**: 자동화된 참조 안정성으로 `useMemo`/`useCallback` 제거
+- **Prop Drilling**: 컴포넌트가 필요한 데이터를 직접 구독
+- **관심사 분산**: 도메인 로직이 스토어에 집중화
 
 상태관리 라이브러리는 "전역 상태"를 위해서가 아니라 **성능 최적화와 관심사 집중화**를 위해 사용한다.
 
-<aside>
-🤔
-
-상태관리 라이브러리 대신에 Context를 사용하면 어떨까?
+::: tip 🤔 상태관리 라이브러리 대신에 Context를 사용하면 어떨까?
 
 - React Context를 사용하는 방법도 고려는 해볼 수 있다. 하지만 Context를 상태관리를 위해 사용하는 것은 적절하지 않다.
     
@@ -4791,9 +5164,78 @@ test.describe('두 번째 요구사항에 대한 테스트 > ', () => {
     ```
     
 - Context value가 변경되면 context를 사용하는 모든 구독자가 리렌더링 된다.
-- **성능 최적화를 위해서는 여러 개의 Context로 분리**해야 하는데, 이는 **관리 복잡도를 증가**시킴
-- 세밀한 구독 제어가 어렵다. 가령, products만 구독하고 싶어도, 의도하지 않게 전체 context를 구독해야 할 수 있다.
-    
+
+@startuml
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam sequenceMessageAlign left
+
+participant "👤 User" as User
+participant "🏪 StoreProvider" as Provider #FFE5E5
+participant "🔍 ProductControls" as PC #FFF3E0
+participant "📦 ProductItem A" as PA #FFF3E0
+participant "📦 ProductItem B" as PB #FFF3E0
+participant "🛒 CartItem A" as CA #E8F5E8
+participant "🛒 CartItem B" as CB #E8F5E8
+participant "💰 CartSummary" as CS #F3E5F5
+
+== 단일 Context 구조 ==
+
+note over PC, CS
+모든 컴포넌트가 useStore()로
+동일한 Context 구독
+
+const store = {
+products: {...},
+carts: {...},
+actions: {...}
+}
+end note
+
+== 문제 상황: 장바구니 수량 변경 ==
+
+User -> CA: 🖱️ 장바구니 수량 증가
+CA -> Provider: addToCart("A")
+
+Provider -> Provider: 🔄 상태 변경\nsetCarts(newCarts)\n\nuseMemo(() => ({\n  products, carts, actions\n}), [products, carts])
+
+note over Provider
+💥 **거대한 Context value 새로 생성**
+carts만 변경되었지만
+전체 store 객체가 새로 생성됨
+end note
+
+Provider -> PC: 🔔 Context 변경 알림
+PC -> PC: 🔄 리렌더링\n❌ products 변경 없었는데도
+
+Provider -> PA: 🔔 Context 변경 알림  
+PA -> PA: 🔄 리렌더링\n❌ 상품 A 정보 변경 없었는데도
+
+Provider -> PB: 🔔 Context 변경 알림
+PB -> PB: 🔄 리렌더링\n❌ 상품 B와 완전 무관한데도
+
+Provider -> CA: 🔔 Context 변경 알림
+CA -> CA: 🔄 리렌더링\n✅ 실제로 필요한 리렌더링
+
+Provider -> CB: 🔔 Context 변경 알림
+CB -> CB: 🔄 리렌더링\n❌ 장바구니 B와 무관한데도
+
+Provider -> CS: 🔔 Context 변경 알림
+CS -> CS: 🔄 리렌더링\n✅ 총 가격 변경으로 필요
+
+== 결과 ==
+
+note over User, CS
+🚨 **단일 Context의 문제**
+• Context value 변경 시 모든 구독자 리렌더링
+• 세밀한 구독 제어 불가능
+• 불필요한 렌더링 다수 발생
+• 성능 저하 심각
+end note
+
+@enduml
+
+- **성능 최적화를 위해서는 여러 개의 Context로 분리**해야 하는데, 이는 **관리 복잡도를 증가**시키기 때문에 세밀한 구독 제어가 어렵다. 가령, products만 구독하고 싶어도, **의도하지 않게 전체 context를 구독**해야 할 수 있다.
     ```tsx
     // Context를 여러 개로 분리해야 함
     const ProductContext = createContext(/* ... */);
@@ -4809,62 +5251,181 @@ test.describe('두 번째 요구사항에 대한 테스트 > ', () => {
       const canAddToCart = products.items[id].quantity > carts.items[id]?.quantity;
     }
     ```
-    
-</aside>
+
+
+
+@startuml
+!theme plain
+skinparam backgroundColor #FAFAFA
+skinparam sequenceMessageAlign left
+
+participant "👤 User" as User
+participant "📊 ProductProvider" as PP #FFF3E0
+participant "🛒 CartProvider" as CP #E8F5E8
+participant "🎛️ UIProvider" as UP #F3E5F5
+participant "🛒 CartItem A" as CA #E8F5E8
+
+== 여러 Context 분리 구조 ==
+
+note over PP, UP
+성능 최적화를 위해 Context 분리:
+• ProductContext - 상품 데이터
+• CartContext - 장바구니 데이터  
+• UIContext - UI 상태
+
+하지만 새로운 문제 발생...
+end note
+
+== 문제 상황: 재고 확인 후 장바구니 추가 ==
+
+User -> CA: 🖱️ 재고 확인 후 장바구니 추가
+
+note over CA
+🤔 **복잡한 의존성**
+
+재고 확인을 위해:
+const products = useContext(ProductContext)
+const carts = useContext(CartContext)
+
+두 Context를 동시에 구독 필요
+end note
+
+CA -> PP: 📊 상품 재고 정보 요청
+PP -> CA: products.items[id].quantity 제공
+
+CA -> CP: 🛒 현재 장바구니 수량 요청
+CP -> CA: carts.items[id]?.quantity 제공
+
+CA -> CA: 🧮 재고 계산\nif (productQty > cartQty) {\n  // 추가 가능\n}
+
+CA -> CP: addToCart("A") 실행
+CP -> CP: 🔄 Cart 상태 변경
+
+note over CA
+💥 **추가 문제들**
+
+1. 다중 Context 구독:
+   어느 쪽이 변경되어도 리렌더링
+2. 의존성 체인 복잡화
+3. 데이터 동기화 어려움
+   end note
+
+== 추가 복잡성 ==
+
+CP -> CA: 🔔 Cart Context 변경 알림
+CA -> CA: 🔄 리렌더링 (Cart 변경)
+
+note over PP
+❌ **Provider 중첩**
+
+<ProductProvider>
+  <CartProvider>
+    <UIProvider>
+      <App />
+    </UIProvider>
+  </CartProvider>
+</ProductProvider>
+
+각각의 Provider마다 별도 관리 필요
+end note
+
+note over CA
+🚨 **컴포넌트 복잡화**
+
+function CartItem() {
+// 여러 Context 구독 필요
+const products = useContext(ProductContext)
+const carts = useContext(CartContext)
+const ui = useContext(UIContext)
+
+// 복잡한 계산 로직
+const canAdd = products.items[id].quantity >
+carts.items[id]?.quantity
+}
+end note
+
+== 결론 ==
+
+note over User, UP
+❌ **여러 Context 분리의 한계**
+
+성능 문제는 해결되지만:
+• 관리 복잡도 폭증
+• Provider 중첩 문제
+• 의존성 체인 관리 어려움
+• 컴포넌트별 다중 Context 구독
+• 데이터 간 상호작용 복잡
+
+💡 **전용 상태관리 라이브러리 필요**
+end note
+
+@enduml
+
+:::
+
+
 
 ## 학습 과정 정리
 
-클린코드는 코딩 스타일이나 네이밍 규칙의 문제만 해당하진 않으며 변화하는 요구사항에 유연하게 대응하는 것을 목적으로 작성하는 것이 클린코드라고 생각한다. 좋은 코드는 처음부터 완벽하게 작성되는 것이 아니라, 지속적인 개선과 리팩토링을 통해 만들어진다. 중요한 것은 현재 코드의 문제점을 정확히 인식하고, 이를 체계적으로 개선해나가는 역량을 기르는 것이다.
+클린코드는 코딩 스타일이나 네이밍 규칙의 문제만 해당하진 않으며 **변화하는 요구사항에 유연하게 대응하는 것을 목적으로 작성하는 것이 클린코드**라고 생각한다. 
+좋은 코드는 처음부터 완벽하게 작성되는 것이 아니라, 지속적인 개선과 리팩토링을 통해 만들어진다.
+중요한 것은 현재 코드의 문제점을 정확히 인식하고, 이를 체계적으로 개선해나가는 역량을 기르는 것이다.
 
 ### (1) 학습 과정의 전체 흐름
 
-이 글을 통해 클린코드를 단순한 이론이 아닌 실제 요구사항 변화에 대응하는 과정으로 학습해보았다. 총 5단계에 걸쳐 동일한 쇼핑몰 기능을 구현하면서, 각 단계마다 발생하는 문제점을 분석하고 개선하는 방식으로 진행했다.
+이 글을 통해 클린코드를 단순한 이론이 아닌 실제 요구사항 변화에 대응하는 과정으로 학습해보았다. 
+총 5단계에 걸쳐 동일한 쇼핑몰 기능을 구현하면서, 각 단계마다 발생하는 문제점을 분석하고 개선하는 방식으로 진행했다.
 
-- **1단계에서는** 기본적인 요구사항을 Vanilla JavaScript로 구현했다. 모든 데이터가 DOM에 저장되고, 명령형 프로그래밍 방식으로 UI를 직접 조작하는 전형적인 초기 구현 형태였다.
-- **2단계에서는** 새로운 요구사항을 시뮬레이션하며 기존 코드의 한계를 명확히 드러냈다. 데이터와 UI의 강결합, 상태 관리 부재, 복잡한 DOM 조작 등의 문제점을 발견하고, 이를 해결하기 위해 관심사 분리를 수행했다. 도메인 로직, UI 컴포넌트, 이벤트 핸들링을 각각 별도의 파일로 분리하여 MVC 패턴을 적용했다.
-- **3단계에서는** 실제로 새로운 요구사항을 구현해보며 관심사 분리의 효과를 검증했다. 상품 검색, 정렬, 재고 관리, 다중 선택 등의 복잡한 기능을 추가했음에도 불구하고, 기존 코드 구조 덕분에 체계적이고 안전하게 확장할 수 있었다.
-- **4단계에서는** React로 기술 스택을 전환하여 좋은 설계의 이식성을 확인했다. 기존의 도메인 로직을 거의 그대로 유지하면서도 React의 장점을 활용할 수 있었으며, 이는 관심사 분리가 제대로 이루어졌음을 증명했다.
-- **5단계에서는** React 환경에서의 성능 문제를 분석하고, Zustand를 활용한 상태관리로 이를 해결했다. 불필요한 렌더링을 제거하고 컴포넌트별 선택적 구독을 통해 최적화된 애플리케이션을 완성했다.
+- **1단계**: 기본적인 요구사항을 Vanilla JavaScript로 구현했다. 모든 데이터가 DOM에 저장되고, 명령형 프로그래밍 방식으로 UI를 직접 조작하는 전형적인 초기 구현 형태였다.
+- **2단계**: 새로운 요구사항을 시뮬레이션하며 기존 코드의 한계를 명확히 드러냈다. 데이터와 UI의 강결합, 상태 관리 부재, 복잡한 DOM 조작 등의 문제점을 발견하고, 이를 해결하기 위해 관심사 분리를 수행했다. 도메인 로직, UI 컴포넌트, 이벤트 핸들링을 각각 별도의 파일로 분리하여 MVC 패턴을 적용했다.
+- **3단계**: 실제로 새로운 요구사항을 구현해보며 관심사 분리의 효과를 검증했다. 상품 검색, 정렬, 재고 관리, 다중 선택 등의 복잡한 기능을 추가했음에도 불구하고, 기존 코드 구조 덕분에 체계적이고 안전하게 확장할 수 있었다.
+- **4단계**: React로 기술 스택을 전환하여 좋은 설계의 이식성을 확인했다. 기존의 도메인 로직을 거의 그대로 유지하면서도 React의 장점을 활용할 수 있었으며, 이는 관심사 분리가 제대로 이루어졌음을 증명했다.
+- **5단계**: React 환경에서의 성능 문제를 분석하고, Zustand를 활용한 상태관리로 이를 해결했다. 불필요한 렌더링을 제거하고 컴포넌트별 선택적 구독을 통해 최적화된 애플리케이션을 완성했다.
 
 ### (2) 핵심 인사이트
 
-- 클린코드의 진정한 가치는 요구사항 변화 대응력이다.
+- 클린코드의 진정한 가치는 **요구사항 변화 대응력**이다.
     
     클린코드를 단순히 "읽기 좋은 코드"로 이해하는 것은 피상적이다. 진정한 가치는 새로운 요구사항이나 기술적 변화에 직면했을 때 최소한의 수정으로 대응할 수 있는 유연성에 있다. 이번 학습 과정에서 관심사 분리가 제대로 이루어진 2단계 이후의 코드는 새로운 기능 추가나 기술 스택 변경에도 안정적으로 대응할 수 있었다.
     
-- 명령형에서 선언형으로의 패러다임 전환
+- 명령형에서 **선언형으로의 패러다임** 전환
     
     초기 단계의 명령형 코드는 "어떻게(How)" 구현할지에 집중하여 복잡성을 증가시켰다. 반면 선언형 접근방식은 "무엇을(What)" 달성할지에 집중하여 코드의 의도를 명확히 하고 유지보수성을 향상시켰다. 이러한 전환은 단순한 문법 변경이 아닌 사고방식의 근본적인 변화를 요구한다.
     
-- 테스트 주도적 안전망의 중요성
+- **테스트 주도적 안전망**의 중요성
     
-    각 단계별 리팩토링 과정에서 E2E 테스트와 단위 테스트가 변경의 안전망 역할을 수행했다. 특히 Playwright의 codegen 기능을 활용한 E2E 테스트는 빠른 작성과 높은 신뢰성을 동시에 제공했다. 테스트는 단순한 검증 도구가 아닌 리팩토링을 가능하게 하는 핵심 인프라임을 확인할 수 있었다.
+    각 단계별 리팩토링 과정에서 E2E 테스트와 단위 테스트가 변경의 안전망 역할을 수행했다.
+    특히 Playwright의 codegen 기능을 활용한 E2E 테스트는 빠른 작성과 높은 신뢰성을 동시에 제공했다.
+    테스트는 단순한 검증 도구가 아닌 리팩토링을 가능하게 하는 핵심 인프라임을 확인할 수 있었다.
+    **여기서 헷갈리면 안 되는 지점이, TDD를 해야한다는 이야기가 아니다. 작성된 코드에 대한 테스트가 필요하다는 이야기이다.**
     
-- 관심사 분리의 실질적 효과
+- **관심사 분리**의 실질적 효과
     
-    도메인 로직, UI 컴포넌트, 이벤트 핸들링의 분리는 각각의 변경이 다른 영역에 미치는 영향을 최소화했다. 특히 4단계에서 React로 전환할 때 도메인 로직을 거의 수정 없이 재사용할 수 있었던 것은 관심사 분리의 실질적 효과를 보여주는 명확한 사례였다.
+    도메인 로직, UI 컴포넌트, 이벤트 핸들링의 분리는 각각의 변경이 다른 영역에 미치는 영향을 최소화했다.
+    특히 4단계에서 React로 전환할 때 도메인 로직을 거의 수정 없이 재사용할 수 있었던 것은 관심사 분리의 실질적 효과를 보여주는 명확한 사례였다.
     
 - 성능 최적화와 구조적 문제
     
-    5단계에서 다룬 성능 문제는 단순히 기술적 최적화 이슈가 아니었다. 상태 관리의 구조적 문제가 불필요한 렌더링을 야기했으며, 이는 상태관리 라이브러리를 통한 관심사 재구성으로 해결되었다. 성능 최적화가 기술적 트릭이 아닌 좋은 설계의 결과임을 보여준다.
+    5단계에서 다룬 성능 문제는 단순히 기술적 최적화 이슈가 아니었다.
+    **상태 관리의 구조적 문제가 불필요한 렌더링을 야기**했으며, 이는 상태관리 라이브러리를 통한 관심사 재구성으로 해결되었다.
+    성능 최적화가 기술적 트릭이 아닌 좋은 설계의 결과임을 보여준다.
     
 
 ### (3) 학습한 내용을 실무에서 어떻게 활용할 수 있을까?
 
-- 점진적 개선의 중요성
+- **점진적 개선의 중요성:** 완벽한 설계를 처음부터 구현하려고 시도하기보다는, 동작하는 코드를 먼저 만들고 문제점을 명확히 파악한 후 단계적으로 개선하는 접근방식이 현실적이다. 이번 학습 과정에서도 각 단계별로 명확한 문제 정의와 해결책 적용을 반복했다.
     
-    완벽한 설계를 처음부터 구현하려고 시도하기보다는, 동작하는 코드를 먼저 만들고 문제점을 명확히 파악한 후 단계적으로 개선하는 접근방식이 현실적이다. 이번 학습 과정에서도 각 단계별로 명확한 문제 정의와 해결책 적용을 반복했다.
+- **요구사항 시뮬레이션의 활용:** 새로운 요구사항을 가정하고 현재 코드로 구현할 때의 어려움을 **시뮬레이션해보는 것**은 코드 품질을 평가하는 효과적인 방법이다. 실제 요구사항 변화를 기다리지 않고도 설계의 문제점을 사전에 발견할 수 있다.
     
-- 요구사항 시뮬레이션의 활용
-    
-    새로운 요구사항을 가정하고 현재 코드로 구현할 때의 어려움을 시뮬레이션해보는 것은 코드 품질을 평가하는 효과적인 방법이다. 실제 요구사항 변화를 기다리지 않고도 설계의 문제점을 사전에 발견할 수 있다.
-    
-- 기술 스택 독립적 설계
-    
-    특정 기술에 종속되지 않는 핵심 비즈니스 로직을 구성하는 것은 장기적 유지보수성을 위해 필수적이다. 4단계에서 확인했듯이, 잘 분리된 도메인 로직은 기술 스택이 변경되어도 재사용 가능하다.
-    
+- **기술 스택 독립적 설계:** 특정 기술에 종속되지 않는 핵**심 비즈니스 로직을 구성하는 것은 장기적 유지보수성을 위해 필수적**이다. 4단계에서 확인했듯이, 잘 분리된 도메인 로직은 기술 스택이 변경되어도 재사용 가능하다.
 
-## AI로 클린코드를 위한 규칙을 만들어가기
+### (4) 전체 데모 및 코드
+
+- 전체 데모는 [여기](https://junilhwang.github.io/simple-clean-code-project/)에서 확인할 수 있다.
+- 전체 코드는 [GitHub](https://github.com/junilhwang/simple-clean-code-project)에서 확인할 수 있다.
+
+
+## AI로 클린코드 규칙을 만들어가기
 
 여태까지의 자료를 토대로 AI와 함께 다양한 규칙을 만들어서 실제 프로젝트에 적용해볼 수 있을 것이다.
 
@@ -5207,32 +5768,34 @@ const getAvailableProducts = (products: Product[]) =>
 💡 **핵심 원칙**: 요구사항 변화에 유연하게 대응할 수 있는 코드가 클린코드입니다. 현재 동작하는 코드가 아닌, 미래에도 쉽게 변경할 수 있는 코드를 작성하세요.
 ```
 
-이 rule을 기반으로 리팩토링을 어떻게 해주는지 테스트해봤다. model 성능에 따라 다르긴 하지만, 기본적인 원칙들을 잘 지켜가면서 만들어준다. 한 번에 리팩토링을 해달라고 요청하기 보단 작은 단위로 시작하는게 좋을 것이다.
+이 rule을 기반으로 리팩토링을 어떻게 해주는지 테스트해봤다.
+model 성능에 따라 다르긴 하지만, 기본적인 원칙들을 잘 지켜가면서 만들어준다.
+**한 번에 리팩토링을 해달라고 요청하기 보단 작은 단위로 시작**하는게 좋을 것이다.
 
-그리고 항상 이 rule을 통해 코드를 작성하기보단, 작성된 코드에 대해 리팩토링할 때 덕 적합할 수 있다.
+그리고 항상 이 rule을 통해 코드를 작성하기보단, **작성된 코드에 대해 리팩토링할 때 덕 적합**할 수 있다.
 
 ### (2) 리팩토링을 위한 시스템 프롬프트 만들고 활용하기
 
-1. 이어서 claude에게 system prompt 를 구성하도록 요청했다.
-    
-    [Claude](https://claude.ai/share/6e4fcf4a-c13a-466e-bb29-ba9a06b98d57)
-    
-    ```markdown
-    `본문.md` 의 내용을 기반으로 LLM이 리팩토링을 수행하기 적합한 system prompt 를 만들고 싶어.
-    본문에서 활용한 코드를 사용하는 것이 목적이 아니라, 요구사항의 변화를 고려하여 코드를 작성하는 것이 목적이야. 
-    
-    1. 코드의 요구사항을 뽑아낸다. 현재 요구사항의 변화를 고려하여 코드를 작성한다.
-    2. 요구사항은 기능 요구사항과 기술 요구사항 두 가지를 모두 고려한다.
-    3. 재활용할 수 있는 코드 (데이터와 함수)는 분리하고, 재활용하기 런타임 혹은 라이브러리나 프레임워크에 의존적인 부분도 분리한다. 이를 액션이라고 부르겠다.
-    4. 명령형 기반으로 작성된 코드의 경우 가능한 범위 내에서 선언형 코드로 변경해줘. 기본적으로 선언형 기반의 코드를 작성할 수 있으면 좋겠어.
-    5. 폴더 구조는 강제가 아니라 권장 사항이다.
-    
-    기타: 만약 리팩토링을 해야 하는 대상의 코드가 리액트라면, 땐 상태의 전파를 고려하고, 최소한의 setState만 발생할 수 있도록 한다. 특히 컴포넌트 내부 로직에 대한 관심사를 hook으로 분리하고, hook이 도메인 로직을 활용하는 방식으로 만들도록 한다. 필요하다면 현재 프로젝트에 설치된 상태관리 라이브러리 (zustand, redux 등)를 이용하여 설계할 수 있도록 제안한다. 
-    
-    여기에 추가할만한 내용이나 주제가 더 있으면 추가해줘도 좋아.
-    
-    이건 내가 간단하게 구성한 리팩토링 초안이야.
-    ```
+이어서 claude에게 system prompt 를 구성하도록 요청했다.
+
+[Claude](https://claude.ai/share/6e4fcf4a-c13a-466e-bb29-ba9a06b98d57)
+
+```markdown
+`본문.md` 의 내용을 기반으로 LLM이 리팩토링을 수행하기 적합한 system prompt 를 만들고 싶어.
+본문에서 활용한 코드를 사용하는 것이 목적이 아니라, 요구사항의 변화를 고려하여 코드를 작성하는 것이 목적이야. 
+
+1. 코드의 요구사항을 뽑아낸다. 현재 요구사항의 변화를 고려하여 코드를 작성한다.
+2. 요구사항은 기능 요구사항과 기술 요구사항 두 가지를 모두 고려한다.
+3. 재활용할 수 있는 코드 (데이터와 함수)는 분리하고, 재활용하기 런타임 혹은 라이브러리나 프레임워크에 의존적인 부분도 분리한다. 이를 액션이라고 부르겠다.
+4. 명령형 기반으로 작성된 코드의 경우 가능한 범위 내에서 선언형 코드로 변경해줘. 기본적으로 선언형 기반의 코드를 작성할 수 있으면 좋겠어.
+5. 폴더 구조는 강제가 아니라 권장 사항이다.
+
+기타: 만약 리팩토링을 해야 하는 대상의 코드가 리액트라면, 땐 상태의 전파를 고려하고, 최소한의 setState만 발생할 수 있도록 한다. 특히 컴포넌트 내부 로직에 대한 관심사를 hook으로 분리하고, hook이 도메인 로직을 활용하는 방식으로 만들도록 한다. 필요하다면 현재 프로젝트에 설치된 상태관리 라이브러리 (zustand, redux 등)를 이용하여 설계할 수 있도록 제안한다. 
+
+여기에 추가할만한 내용이나 주제가 더 있으면 추가해줘도 좋아.
+
+이건 내가 간단하게 구성한 리팩토링 초안이야.
+```
     
 
 이를 통해 산출된 시스템 프롬프트는 다음과 같다.
@@ -5547,33 +6110,33 @@ src/
 ...
 ```
 
-1. GPTs로 만들어서 사용하기
-    
-    그리고 다시 이렇게 만들어진 시스템 프롬프트를 GPTs 로 만들었다.
-    
-    [ChatGPT - 요구사항 기반의 리팩토링 도우미](https://chatgpt.com/g/g-685048fd1bb48191a58f91f32063c670-yogusahang-gibanyi-ripaegtoring-doumi)
-    
+#### 1) GPTs로 만들어서 사용하기
+
+그리고 다시 이렇게 만들어진 시스템 프롬프트를 GPTs 로 만들었다.
+
+[ChatGPT - 요구사항 기반의 리팩토링 도우미](https://chatgpt.com/g/g-685048fd1bb48191a58f91f32063c670-yogusahang-gibanyi-ripaegtoring-doumi)
+
 
 코드를 업로드하거나 붙여넣고 리팩토링을 해달라고 요청할 수 있다.
 
 [ChatGPT - 코드 리팩토링 제안](https://chatgpt.com/share/68505684-b1bc-8001-934e-b6a9f5b8a599)
 
-1. Claude Project로 만들어서 활용하기
-    
-    직접 custom해서 사용하고 싶다면 claude project 혹은 chatgpt 의 project 기능를 활용할 수도 있다.
-    
-    ![claude_project.gif](./claude_project.gif)
-    
-    cladue 접속 → project 생성 → 프로젝트 지침 설정 → 프롬프트 붙여넣기
-    
+#### 2) Claude Project로 만들어서 활용하기
 
-1. ChatGPT Project로 만들어서 활용하기
-    
-    마찬가지로, GPT에도 시스템 프롬프트를 붙여넣고 커스텀해서 사용할 수 있다.
-    
-    ![chatgpt_project.gif](./chatgpt_project.gif)
-    
-    chatpgt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이름 입력 → 지침에 시스템 프롬프트 추가
+직접 custom해서 사용하고 싶다면 claude project 혹은 chatgpt 의 project 기능을 활용할 수도 있다.
+
+![claude_project.gif](./claude_project.gif)
+
+cladue 접속 → project 생성 → 프로젝트 지침 설정 → 프롬프트 붙여넣기
+
+
+#### 3. ChatGPT Project로 만들어서 활용하기
+
+마찬가지로, GPT에도 시스템 프롬프트를 붙여넣고 커스텀해서 사용할 수 있다.
+
+![chatgpt_project.gif](./chatgpt_project.gif)
+
+chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이름 입력 → 지침에 시스템 프롬프트 추가
     
 
 ## 99. 항해플러스
@@ -5600,42 +6163,33 @@ src/
 
 1기, 2기 때는 50명 정도의 수강생이 있었고, 3기, 4기, 5기는 70~90명 정도의 수강생이 있었다.
 
-항해플러스 수료생의 회고를 참고해보면 대략 어떤 과정을 수행하는지 알 수 있다.
+::: tip 항해플러스 수료생의 회고를 참고해보면 대략 어떤 과정을 수행하는지 알 수 있다.
 
 - 2기
     
-    [[항해플러스 프론트엔드 2기] 과제만 매주 제출하자고 다짐했던 사람의 10주 회고_정말 힘들었나요_네](https://kimfield.tistory.com/entry/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%EC%88%98%EB%A3%8C-%EA%B3%BC%EC%A0%9C%EB%A7%8C-%EB%A7%A4%EC%A3%BC-%EC%A0%9C%EC%B6%9C%ED%95%98%EC%9E%90%EA%B3%A0-%EB%8B%A4%EC%A7%90%ED%96%88%EB%8D%98-%EC%82%AC%EB%9E%8C%EC%9D%98-10%EC%A3%BC-%ED%9A%8C%EA%B3%A0-%EC%A0%95%EB%A7%90-%ED%9E%98%EB%93%A4%EC%97%88%EB%82%98%EC%9A%94-%EB%84%A4-%EB%B6%80%EC%A0%9C-%EB%8F%88-%EB%82%B4%EA%B3%A0-%EA%B5%90%EC%9C%A1-%EB%93%A3%EB%8A%94-%ED%98%84%EC%97%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%97%AC%EA%B8%B0-%EB%A7%8E%EC%95%84%EC%9A%94)
-    
-    [항해 플러스 리얼 후기 및 회고](https://velog.io/@junman95/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A6%AC%EC%96%BC-%ED%9B%84%EA%B8%B0-%EB%B0%8F-%ED%9A%8C%EA%B3%A0)
-    
-    [항해 플러스 프론트엔드 2기 회고: 70일간의 여정을 마치며](https://velog.io/@bbbjihan/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%ED%9A%8C%EA%B3%A0-70%EC%9D%BC%EA%B0%84%EC%9D%98-%EC%97%AC%EC%A0%95%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0)
-    
-    [10. 항해 플러스 마지막 회고: 한 단계 더 성장한 개발자 되기](https://velog.io/@yoosion030/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A7%88%EC%A7%80%EB%A7%89-%ED%9A%8C%EA%B3%A0-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%8D%94-%EC%84%B1%EC%9E%A5%ED%95%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%90%98%EA%B8%B0)
+    - 김초원님: [[항해플러스 프론트엔드 2기] 과제만 매주 제출하자고 다짐했던 사람의 10주 회고_정말 힘들었나요_네](https://kimfield.tistory.com/entry/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%EC%88%98%EB%A3%8C-%EA%B3%BC%EC%A0%9C%EB%A7%8C-%EB%A7%A4%EC%A3%BC-%EC%A0%9C%EC%B6%9C%ED%95%98%EC%9E%90%EA%B3%A0-%EB%8B%A4%EC%A7%90%ED%96%88%EB%8D%98-%EC%82%AC%EB%9E%8C%EC%9D%98-10%EC%A3%BC-%ED%9A%8C%EA%B3%A0-%EC%A0%95%EB%A7%90-%ED%9E%98%EB%93%A4%EC%97%88%EB%82%98%EC%9A%94-%EB%84%A4-%EB%B6%80%EC%A0%9C-%EB%8F%88-%EB%82%B4%EA%B3%A0-%EA%B5%90%EC%9C%A1-%EB%93%A3%EB%8A%94-%ED%98%84%EC%97%85-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%97%AC%EA%B8%B0-%EB%A7%8E%EC%95%84%EC%9A%94)
+    - 박지한님: [항해 플러스 프론트엔드 2기 회고: 70일간의 여정을 마치며](https://velog.io/@bbbjihan/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-2%EA%B8%B0-%ED%9A%8C%EA%B3%A0-70%EC%9D%BC%EA%B0%84%EC%9D%98-%EC%97%AC%EC%A0%95%EC%9D%84-%EB%A7%88%EC%B9%98%EB%A9%B0)
+    - 유시온님: [10. 항해 플러스 마지막 회고: 한 단계 더 성장한 개발자 되기](https://velog.io/@yoosion030/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EB%A7%88%EC%A7%80%EB%A7%89-%ED%9A%8C%EA%B3%A0-%ED%95%9C-%EB%8B%A8%EA%B3%84-%EB%8D%94-%EC%84%B1%EC%9E%A5%ED%95%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%90%98%EA%B8%B0)
     
 - 3기
     
-    [더 큰 바다 앞으로 나아갈 수 있게 된,,, 🌊  [항해 플러스 프론트 3기 최종 회고]](https://velog.io/@osohyun0224/%EB%8D%94-%ED%81%B0-%EB%B0%94%EB%8B%A4-%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%98%EC%95%84%EA%B0%88-%EC%88%98-%EC%9E%88%EA%B2%8C-%EB%90%9C-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8-3%EA%B8%B0-%EC%B5%9C%EC%A2%85-%ED%9A%8C%EA%B3%A0)
-    
-    [[항해 플러스] 프론트엔드 3기 수료 후기](https://soyoondaily.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-3%EA%B8%B0-%EC%88%98%EB%A3%8C-%ED%9B%84%EA%B8%B0)
-    
-    [10주간의 항해를 마치며✍️](https://velog.io/@jwberry1113/10%EC%A3%BC%EA%B0%84%EC%9D%98-%ED%95%AD%ED%95%B4%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0)
-    
-    [항해 플러스 프론트엔드 솔직 후기](https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0)
+    - 오소현님: [더 큰 바다 앞으로 나아갈 수 있게 된,,, 🌊  [항해 플러스 프론트 3기 최종 회고]](https://velog.io/@osohyun0224/%EB%8D%94-%ED%81%B0-%EB%B0%94%EB%8B%A4-%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%82%98%EC%95%84%EA%B0%88-%EC%88%98-%EC%9E%88%EA%B2%8C-%EB%90%9C-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8-3%EA%B8%B0-%EC%B5%9C%EC%A2%85-%ED%9A%8C%EA%B3%A0)
+    - 정소윤님: [[항해 플러스] 프론트엔드 3기 수료 후기](https://soyoondaily.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-3%EA%B8%B0-%EC%88%98%EB%A3%8C-%ED%9B%84%EA%B8%B0)
+    - 박정우님: [10주간의 항해를 마치며✍️](https://velog.io/@jwberry1113/10%EC%A3%BC%EA%B0%84%EC%9D%98-%ED%95%AD%ED%95%B4%EB%A5%BC-%EB%A7%88%EC%B9%98%EB%A9%B0)
+    - 장효령님: [항해 플러스 프론트엔드 솔직 후기](https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0)
     
 - 4기
     
-    [[항해 플러스 프론트엔드 4기] 나의 항해 원정기](https://velog.io/@jang_expedition/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-4%EA%B8%B0-%EB%82%98%EC%9D%98-%ED%95%AD%ED%95%B4-%EC%9B%90%EC%A0%95%EA%B8%B0)
-    
-    [항해 플러스 프론트엔드 후기 (마지막) - 진짜 항해는 지금부터 시작](https://velog.io/@khy2106/31?utm_source=googlereview&utm_medium=search&utm_campaign=review&utm_term=1&utm_content=1&gad_source=1&gad_campaignid=21458524526)
+    - 장원정님: [[항해 플러스 프론트엔드 4기] 나의 항해 원정기](https://velog.io/@jang_expedition/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-4%EA%B8%B0-%EB%82%98%EC%9D%98-%ED%95%AD%ED%95%B4-%EC%9B%90%EC%A0%95%EA%B8%B0)
+    - 김혜연님: [항해 플러스 프론트엔드 후기 (마지막) - 진짜 항해는 지금부터 시작](https://velog.io/@khy2106/31?utm_source=googlereview&utm_medium=search&utm_campaign=review&utm_term=1&utm_content=1&gad_source=1&gad_campaignid=21458524526)
     
 - 5기
     
-    [항해플러스 프론트엔드 5기 회고](https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0)
-    
-    [항해 플러스 프론트엔드 후기 (5기) 드디어 수료](https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C)
-    
-    [[항해 플러스 프론트엔드] 마무리 회고 - 🌊 여기가 육지인가? ⛵](https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5)
-    
+    - 유한별님: [항해플러스 프론트엔드 5기 회고](https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0)
+    - 김영웅님: [항해 플러스 프론트엔드 후기 (5기) 드디어 수료](https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C)
+    - 박수민님: [[항해 플러스 프론트엔드] 마무리 회고 - 🌊 여기가 육지인가? ⛵](https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5)
+
+:::
 
 ### (2) 멘토링
 
@@ -5647,57 +6201,83 @@ src/
 
 기술적인 이야기, 커리어에 대한 이야기, 가끔은 개인적인 이야기 (고민상담 / 연애상담 / 결혼..?) 등 꽤 많은 종류의 이야기가 오고간다.
 
-혼자서 쓸쓸하게 개발하던 사람들을 연결시켜주는 게 항해플러스의 역할이라고 생각한다.
+**혼자서 쓸쓸하게 개발하던 사람들을 연결시켜주는 게 항해플러스의 역할**이라고 생각한다.
 
 ### (3) 커뮤니티
 
-사실 항해플러스라는 교육의 제일 큰 의미는 “커뮤니티” 라고 생각한다. 위에서 언급한 5기 수료생 유한별님의 회고에 나오는 일 부분을 발췌했다.
+**사실 항해플러스라는 교육의 제일 큰 의미는 “커뮤니티” 라고 생각한다.** 위에서 언급한 5기 수료생 유한별님의 회고에 나오는 일 부분을 발췌했다.
 
-<aside>
-🤔
-
-개발자를 연결하는 곳, 항해플러스.
+::: tip 🤔 개발자를 연결하는 곳, 항해플러스.
 
 ![image.png](./8.png)
 
-</aside>
+:::
 
-성장을 갈망하는 개발자들을 연결하고 앞으로의 커리어를 혼자가 아닌 함께, 다같이 이어나갈 수 있도록 만들어준다는 것. 그래서 이들의 열기가 정말 뜨겁다. 코치로 함께하고 있지만, “나도 교육생으로 참여한다면 어떤 느낌일까?” 라는 생각을 매번 하게 된다.
+성장을 갈망하는 개발자들을 연결하고 앞으로의 커리어를 혼자가 아닌 함께, 다같이 이어나갈 수 있도록 만들어준다는 것.
+그래서 이들의 열기가 정말 뜨겁다.
+코치로 함께하고 있지만, “나도 교육생으로 참여한다면 어떤 느낌일까?” 라는 생각을 매번 하게 된다.
 
 그리고 수료생 이후에 학습메이트로 참여하여 학습에 더 적극적으로 참여할 수 있도록 도와주고, 함께 네트워킹을 참여하는 모습도 무척 인상적이다.
 
-[항해 플러스 프론트엔드 학습메이트 후기](https://velog.io/@osohyun0224/%EB%82%B4-%EC%9E%90%EB%B6%80%EC%8B%AC-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9B%84%EA%B8%B0)
+::: tip 학습메이트 회고
 
-[학습메이트 회고](https://velog.io/@hty0525/%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0)
+- 황태영님: [항해 플러스 프론트엔드 학습메이트 후기](https://velog.io/@osohyun0224/%EB%82%B4-%EC%9E%90%EB%B6%80%EC%8B%AC-%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9B%84%EA%B8%B0)
+- 오소현님: [학습메이트 회고](https://velog.io/@hty0525/%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0)
+- 박지수님: [항해 99 프론트엔드 학습메이트 회고 - 마지막](https://until.blog/@susmisc14/%ED%95%AD%ED%95%B4-99-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0---%EB%A7%88%EC%A7%80%EB%A7%89)
 
-[항해 99 프론트엔드 학습메이트 회고 - 마지막](https://until.blog/@susmisc14/%ED%95%AD%ED%95%B4-99-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%95%99%EC%8A%B5%EB%A9%94%EC%9D%B4%ED%8A%B8-%ED%9A%8C%EA%B3%A0---%EB%A7%88%EC%A7%80%EB%A7%89)
+:::
 
 ### (4) 내가 생각하는 교육
 
-5기 마지막 멘토링에 어떤 분께서 “준일님께서 생각하는 좋은 교육이란 무엇인가요?” 라는 질문을 주신 적이 있다. 좋은 교육은 정답을 제공하지 않는 교육이라고 생각한다.
+5기 마지막 멘토링에 어떤 분께서 “준일님께서 생각하는 좋은 교육이란 무엇인가요?” 라는 질문을 주신 적이 있다. **좋은 교육은 정답을 제공하지 않는 교육이라고 생각한다.**
 
-- 좋은 코드를 알려주는 것이 아니라, 좋은 코드를 찾아가는 방법을 알려주는 것.
-- 경험을 해보는 것. 경험을 나의 것으로 만들 수 있도록 경험하는 과정을 만들어주는 것.
-- 피드백을 해주는 것. 정답이 아닌 방향으로.
+- 좋은 코드를 알려주는 것이 아니라, **좋은 코드를 찾아가는 방법**을 알려주는 것.
+- 경험을 해보는 것. 경험을 나의 것으로 만들 수 있도록 **경험하는 과정**을 만들어주는 것.
+- 피드백을 해주는 것. **정답이 아닌 방향**으로.
 
 이런 생각은 우아한테크코스, 넥스트스텝, 부스트캠프 등의 교육과정에 교육생/리뷰어/멘토/강사 등으로 참여하면서 쌓아온 생각이다. 그리고 이런 경험과 생각을 항해에 최대한 녹여보려고 시도 중이다.
 
-### (5) 항해플러스에 지원하고 싶은 분들께
+::: tip 👉🏻 항해플러스에 지원하고 싶은 분들께
 
-<aside>
-👉🏻
+![지원하기](https://hanghae99.spartacodingclub.kr/images/plus/fe-og.jpg)
+- [지원하기](https://bit.ly/43OaDNK)
+- 추천인코드: `43OaDNK`
 
-[항해99](https://bit.ly/43OaDNK)
-
-추천인코드: `43OaDNK`
-
-이 추천인 코드를 사용하면 **30만원 할인**을 받을 수 있습니다!
-
-</aside>
+위의 추천인 코드를 사용하면 **30만원 할인**을 받을 수 있습니다!
 
 이 외에 교육과정에 대해 궁금한점이 있다면 아래의 연락처로 편하게 문의 주세요!
 
 - 오픈카톡 링크: [https://open.kakao.com/me/junilhwang](https://open.kakao.com/me/junilhwang)
 - 이메일: junil.h@kakao.com
 
-[https://velog.io/@ryeong1109/항해-플러스-프론트엔드-솔직-후기](https://velog.io/@ryeong1109/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%86%94%EC%A7%81-%ED%9B%84%EA%B8%B0)
+:::
+
+<style>
+.theme-default-content {
+  h2 {
+    margin-top: 60px;
+  }
+  h3 {
+    margin-top: 40px;
+  }
+  *:not(h3) + h4 {
+    margin-top: 40px;
+  }
+}
+img[alt*="400"] {
+  max-width: 400px !important;
+}
+.iframe-container {
+  position: relative;
+  padding-top: 85%;
+  iframe {
+    position: absolute;
+    transform: scale(0.5) translate(-50%, -50%);
+    border: none;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+  }
+}
+</style>

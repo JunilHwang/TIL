@@ -7,6 +7,7 @@ import {searchPlugin} from "@vuepress/plugin-search";
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
 import MarkdownItTaskLists from 'markdown-it-task-lists';
+
 import * as path from "path";
 import * as glob from "glob";
 import * as fs from "fs";
