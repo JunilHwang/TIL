@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>개발자 황준일</title>
+    <link>https://junilhwang.github.io/TIL</link>
+    <description>Today I learned</description>
+    <language>ko-KR</language>
+    <lastBuildDate>2025-06-20T07:52:34.229Z</lastBuildDate>
+    <pubDate>2025-06-20T07:52:34.229Z</pubDate>
+    <ttl>60</ttl>
+    <item>
+      <title><![CDATA[요구사항의 변화로 알아가는 클린코드]]></title>
+      <link>https://junilhwang.github.io/TIL/clean-code/as-requirements-change/</link>
+      <guid>https://junilhwang.github.io/TIL/clean-code/as-requirements-change/</guid>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[클린코드를 요구사항을 떼어놓고 이야기할 수 있을까?]]></description>
+      <category>javascript, 클린코드</category>
+    </item>
+    <item>
+      <title><![CDATA[자동차 경주 미션을 통해 산출된 코드 리뷰]]></title>
+      <link>https://junilhwang.github.io/TIL/with-ai/code-review/woowacourse/racing-car/</link>
+      <guid>https://junilhwang.github.io/TIL/with-ai/code-review/woowacourse/racing-car/</guid>
+      <pubDate>Tue, 08 Apr 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[우아한 테크코스 리뷰어로 참여하면서 남긴 피드백을 정리한 내용입니다.]]></description>
+      <category>클린코드, 피드백 정리, with-ai</category>
+    </item>
+    <item>
+      <title><![CDATA[2024년 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2024-year/end/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2024-year/end/</guid>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[개발자 그리고 교육자로서 지낸 1년의 이야기]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[Typescript A 부터 Z 까지]]></title>
+      <link>https://junilhwang.github.io/TIL/with-ai/typescript-a-to-z/</link>
+      <guid>https://junilhwang.github.io/TIL/with-ai/typescript-a-to-z/</guid>
+      <pubDate>Tue, 23 Jul 2024 00:00:00 GMT</pubDate>
+      <description><![CDATA[typescript와 관련된 내용을 AI와 함께 정리한 내용입니다.]]></description>
+      <category>typescript, with-ai</category>
+    </item>
+    <item>
+      <title><![CDATA[Start with why 서평]]></title>
+      <link>https://junilhwang.github.io/TIL/Book/start-with-why/</link>
+      <guid>https://junilhwang.github.io/TIL/Book/start-with-why/</guid>
+      <pubDate>Mon, 12 Feb 2024 00:00:00 GMT</pubDate>
+      <description><![CDATA[특히 요즘들어 많이 느끼는 감정(생각?)이랄까. 어떤 결정이나 판단을 할 때 논리적인 여러가지 이유가 있지만, 이보다 더 우선순위가 높은 말로 표현할 수 없는 감정이나 가치가 뒤따라온다.]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[2024년 1월 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2024-year/01/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2024-year/01/</guid>
+      <pubDate>Sat, 03 Feb 2024 18:30:00 GMT</pubDate>
+      <description><![CDATA[1년치 목표를 정하는건 너무 어려운 일이다. 내가 되고 싶은 모습과, 그 모습이 되었음을 증명하는 것, 참 어렵다.]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[2023년 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2023-year/end/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2023-year/end/</guid>
+      <pubDate>Tue, 09 Jan 2024 10:00:00 GMT</pubDate>
+      <description><![CDATA[나 자신에 대해 참 많은 것들을 알 수 있었던 1년]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[프레임워크 없이 만드는 SSR]]></title>
+      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Server-Side-Rendering/</link>
+      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Server-Side-Rendering/</guid>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 GMT</pubDate>
+      <description><![CDATA[프레임워크를 사용하지 않고 SSR과 CSR을 적용해보면서 프론트엔드에서의 SSR에 대해 학습합니다.]]></description>
+      <category>javascript, vanilla, ssr</category>
+    </item>
+    <item>
+      <title><![CDATA[주니어 개발자의 2022년 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2022-year/end/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2022-year/end/</guid>
+      <pubDate>Sun, 01 Jan 2023 23:00:00 GMT</pubDate>
+      <description><![CDATA[줌인터넷과의 작별, 네이버 입사, 그리고 부스트캠프]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[단국대학교 강의 시간표를 제공하는 서비스를 만들자]]></title>
+      <link>https://junilhwang.github.io/TIL/side-project/dku-schedule-manager/</link>
+      <guid>https://junilhwang.github.io/TIL/side-project/dku-schedule-manager/</guid>
+      <pubDate>Wed, 26 Jan 2022 11:00:00 GMT</pubDate>
+      <description><![CDATA[단국대학교 재학생들을 타겟팅하는 간단한 사이드 프로젝트를 진행했다. 이에 대한 내용을 정리하는 글이다.]]></description>
+      <category>project</category>
+    </item>
+    <item>
+      <title><![CDATA[주니어 개발자의 2021년 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2021-year/end/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2021-year/end/</guid>
+      <pubDate>Fri, 31 Dec 2021 23:40:00 GMT</pubDate>
+      <description><![CDATA[주니어 개발자의 2021년 회고]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[Vanilla Javascript로 React UseState Hook 만들기]]></title>
+      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/</link>
+      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/</guid>
+      <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
+      <description><![CDATA[React의 UseState Hook의 작동방식에 대해 고민해보고, 구현해보고, 최적화하는 내용을 다룹니다.]]></description>
+      <category>javascript, vanilla</category>
+    </item>
+    <item>
+      <title><![CDATA[Vanilla Javascript로 가상돔(VirtualDOM) 만들기]]></title>
+      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/</link>
+      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/</guid>
+      <pubDate>Wed, 18 Aug 2021 00:00:00 GMT</pubDate>
+      <description><![CDATA[React와 Vue에서 사용되고 있는 가상돔(VirtualDOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.]]></description>
+      <category>javascript, vanilla</category>
+    </item>
+    <item>
+      <title><![CDATA[Vanilla Javascript로 상태관리 시스템 만들기]]></title>
+      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/</link>
+      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/</guid>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 GMT</pubDate>
+      <description><![CDATA[Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.]]></description>
+      <category>javascript, vanilla</category>
+    </item>
+    <item>
+      <title><![CDATA[Vanilla Javascript로 웹 컴포넌트 만들기]]></title>
+      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</link>
+      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</guid>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 GMT</pubDate>
+      <description><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></description>
+      <category>javascript, vanilla</category>
+    </item>
+    <item>
+      <title><![CDATA[주니어 개발자의 2021년 상반기 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</guid>
+      <pubDate>Mon, 12 Jul 2021 02:30:00 GMT</pubDate>
+      <description><![CDATA[주니어 개발자의 2021년 상반기 회고]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[주니어 개발자의 2020년 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2020-year/end/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2020-year/end/</guid>
+      <pubDate>Thu, 07 Jan 2021 11:00:00 GMT</pubDate>
+      <description><![CDATA[주니어 개발자의 2020년 12월 회고입니다.]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[2020년 12월 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2020-year/12-December/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2020-year/12-December/</guid>
+      <pubDate>Wed, 30 Dec 2020 18:20:00 GMT</pubDate>
+      <description><![CDATA[개발자 황준일의 2020년 12월 회고입니다.]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[2020년 11월 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2020-year/11-November/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2020-year/11-November/</guid>
+      <pubDate>Tue, 29 Dec 2020 23:00:00 GMT</pubDate>
+      <description><![CDATA[개발자 황준일의 2020년 11월 회고입니다.]]></description>
+      <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[2020년 10월 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2020-year/10-October/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2020-year/10-October/</guid>
+      <pubDate>Mon, 28 Dec 2020 23:30:00 GMT</pubDate>
+      <description><![CDATA[개발자 황준일의 2020년 10월 회고입니다.]]></description>
+      <category>회고</category>
+    </item>
+  </channel>
+</rss>
