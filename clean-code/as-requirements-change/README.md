@@ -6164,7 +6164,7 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 ### (1) 커리큘럼
 
-![image.png](./6.png)
+[![image.png](./6.png)](https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616)
 
 처음에는 “프론트엔드 개발” 이라는 주제로 시작한다. 프론트엔드 개발자가 어떤 이유 때문에 등장하게 되었는지, 어떤 문제들을 해결해왔는지에 대해 설명한다.
 

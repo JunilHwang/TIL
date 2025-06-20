@@ -28,14 +28,22 @@ function generatePreviewHTML(metadata) {
   };
 
   const escapedTitle = escapeHtml(title);
-  const escapedDescription = escapeHtml(description);
   const escapedUrl = escapeHtml(url);
   const escapedImage = escapeHtml(image);
   const escapedSiteName = escapeHtml(siteName);
+  const escapedDescription = escapeHtml(description);
 
-  return `<a href="url">${title}</a>`;
+  return `
+    <span class="link-preview">
+      <a href="${escapedUrl}" target="_blank" rel="noopener noreferrer">
+        ${escapedImage ? `<span class="link-preview-image"><img src="${escapedImage}" alt="${escapedTitle}" /></span>` : ''}
+        <span class="link-preview-content"><span class="link-preview-title">${escapedTitle}</span>
+          ${escapedDescription ? `<span class="link-preview-description">${escapedDescription}</span>` : ''}
+          <span class="link-preview-url">${escapedSiteName}</span>
+        </span>
+      </a>
+    </span>`;
 }
-
 
 module.exports = function linkPreviewPlugin(md) {
   // [link-preview: <url>] 형식 파싱을 위한 인라인 룰 추가
