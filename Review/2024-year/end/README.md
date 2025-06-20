@@ -78,11 +78,11 @@ feed:
 
 - AS-IS
     
-    ![image.png](./image%201.jpeg)
+    ![image.png](./image1.jpeg)
     
 - TO-BE
     
-    ![image.png](./image%202.jpeg)
+    ![image.png](./image2.jpeg)
     
 
 편집 페이지에서 Desktop 모드에서 Tablet 혹은 Mobile로 전환할 때 렌더링 비용이 미친듯이 늘어나는 현상이 있었다.
@@ -100,9 +100,9 @@ Drag&Drop 방식으로 중첩된 개체를 표현하려고 하니 정말… 말�
 
 이 작업을 하면서 시도했던 부분은 “인수조건”과 “인수테스트”를 작업 전에 미리 다 정의하는 것. 어찌보면 TDD와 비슷하다고 할 수 있다. 목표가 달성된 모습을 텍스트로 정의한 다음에 이를 코드를 통해 자동 테스트를 하는게 아니라 개발자가 한땀한땀(?) 직접 테스트하는 과정이랄까.
 
-![image.png](./image%203.jpeg)
+![image.png](./image3.jpeg)
 
-![image.png](./image%204.jpeg)
+![image.png](./image4.jpeg)
 
 작업을 나열하고 병렬로 진행할 수 있는 부분과 직렬로 진행할 수 있는 부분을 구분했고, 하나의 작업은 최대 2MD로 산정했다.
 
@@ -119,8 +119,8 @@ Drag&Drop 방식으로 중첩된 개체를 표현하려고 하니 정말… 말�
 앞에서 언급한 것 처럼, “인수조건”과 “인수테스트”를 작성할 때 claude에게 엣지케이스를 도출할 수 있게 가이드를 했고, 복잡한 UI에서 재활용할 수 있는 부분을 분리하고 리팩토링을 할 때에도 적극적으로 사용했다.
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="./image%205.jpeg" alt=".205" style="width: 49%; max-width: 100%;" />
-  <img src="./image%206.jpeg" alt=".206" style="width: 49%; max-width: 100%;" />
+  <img src="./image5.jpeg" alt=".205" style="width: 49%; max-width: 100%;" />
+  <img src="./image6.jpeg" alt=".206" style="width: 49%; max-width: 100%;" />
 </div>
 
 - 유사하지만 약간 다른 Tree UI
@@ -141,7 +141,7 @@ Drag&Drop 방식으로 중첩된 개체를 표현하려고 하니 정말… 말�
 
 #### 5) 빌드/배포 파이프라인 개선
 
-![image.png](./image%207.jpeg)
+![image.png](./image7.jpeg)
 
 모노레포에 여러 어플리케이션이 있으니 이를 관리하는 비용이 점점 증가했다. 그래서 사이드 이펙트를 최소화 하기 위한 과정에 대해 고민하고 리서치를 진행했었다.
 
@@ -154,9 +154,9 @@ Drag&Drop 방식으로 중첩된 개체를 표현하려고 하니 정말… 말�
 
 #### 6) nBilly + claude + n8n → 대시보드가 뿅!
 
-![image.png](./image%208.png)
+![image.png](./image8.png)
 
-![image.png](./image%209.png)
+![image.png](./image9.png)
 
 n8n이라는 워크플로우 자동화 도구를 이용해 서비스 지표를 수집하고, nbilly에 접목해서 제품의 서비스 지표를 한 페이지에서 한 눈에 볼 수 있도록 만들었다.
 
@@ -166,7 +166,7 @@ sentry, wiki, github 등 다양한 곳에서 데이터를 수집하고 보여주
 
 그리고 이에 대한 연장선으로 서비스 지표를 주기적으로 슬랙으로 확인할 수 있도록 만들기도 했다.
 
-![image.png](./image%2010.jpeg)
+![image.png](./image10.jpeg)
 
 지표를 보내준다는 것보다, 워크플로우를 손쉽게 만들 수 있는 기술을 도입했다는 것에 더 큰 의의가 있는 것 같다.
 
@@ -227,7 +227,7 @@ nBilly의 상위 조직인 SmartStudio의 워크숍을 진행하는 위원회 �
 
 연말 워크숍 때 강점과 성향에 대해 찾아내고 분석하는 프로그램을 진행했다. 나는 완전한 회색분자였달까…
 
-![image.png](./image%2011.jpeg)
+![image.png](./image11.jpeg)
 
 혼자서 일하는 것을 선호하지만,  주도적인 성향이 있고, 팀원들과의 시너지를 중요하게 생각하는 친절형이다.
 
@@ -251,7 +251,7 @@ AC2는 함께자라기 라는 책의 저자로 유명한 김창준님께서 운�
 
 사실 몇 년전부터 너무 듣고 싶었던 교육 과정이었다. 2021년, 줌인터넷(현 이스트에이드)에 근무할 때 협업, 성장, 기업문화 같은 주제로 리서치를 하다가 AC2의 존재를 알게 되었고, 너무 듣고 싶어서 오픈 알림 신청을 했었는데 정규 과정 대신 Effectuation 이라는 주제의 Patch 과정을 들을 수 있었다. 처음 김창준님의 인사이트를 접한 영상이 [**Agile Korea 2012 - 개인이 조직을 바꾸는 법 by 김창준](https://www.youtube.com/watch?v=eDtuLZ3nskc)** 이었고, 이게 Effectuation 을 다루는 내용이었는데, 저 영상을 본 날 Effectuation 과정을 진행한다는 알림을 메일로 받은 것이다.
 
-![image.png](./image%2012.jpeg)
+![image.png](./image12.jpeg)
 
 이 때 들었던 내용이 지금도 선명하게 기억날정도로 인상 깊었고, 무엇보다 이론 설명 후 바로 실습을 해보는 과정으로 진행되기 때문에 내가 마음만 먹으면 배운 지식을 즉시 활용하기 좋았었다.
 
@@ -465,7 +465,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 [https://github.com/next-step/react-shopping-cart/pulls?q=is%3Apr+assignee%3AJunilHwang+3%EA%B8%B0+](https://github.com/next-step/react-shopping-cart/pulls?q=is%3Apr+assignee%3AJunilHwang+3%EA%B8%B0+)
 
-![image.png](./image%2013.jpeg)
+![image.png](./image13.jpeg)
 
 클린코드 리액트 과정은 국내에 현존하는 리액트 강의 중에 제일 실용적인 강의라고 생각한다. 내용 자체가 어렵기도 하고, 무엇보다 과정을 진행하는 현석님께서 실무적인 관점으로 디테일하게 설계해주셨다. 나도 리뷰어이긴 하지만 과정을 수행할 때 마다 학습하는 양이 무척 많은 편이다.
 
@@ -503,7 +503,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 [https://github.com/next-step/js-movie-review/pulls?q=is%3Apr+assignee%3AJunilHwang+6%EA%B8%B0+](https://github.com/next-step/js-movie-review/pulls?q=is%3Apr+assignee%3AJunilHwang+6%EA%B8%B0+)
 
-![image.png](./image%2014.jpeg)
+![image.png](./image14.jpeg)
 
 자바스크립트 클린코드 과정도 리뷰어로 참여했다. 자바스크립트 과정은 큰 변화가 없다보니 이제 물 흐르듯 리뷰를 하게 되는 상태가 되었다. ~~큰 부담이 없달까…~~
 
@@ -515,7 +515,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 20년도(5기)부터 지금까지, 커리어의 시작과 함께 5년째 이어오고 있는 부스트캠프 활동이다.
 
-![image.png](./image%2015.jpeg)
+![image.png](./image15.jpeg)
 
 #### 1) 마스터 활동
 
@@ -577,7 +577,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 #### 2) 글쓰기 멘토링
 
-![image.png](./image%2016.jpeg)
+![image.png](./image16.jpeg)
 
 이번 기수에는 매주 글쓰기 멘토링을 진행했다. 사실 멘토링은 핑계에 가깝고, 캠퍼들과 친밀감을 형성할 수 있는 창구가 필요했다. 어차피 글쓰기 자체는 너무 잘 하고 있다. 운영진의 권유로 시작하긴 했으나, 결국 글쓰기는 스킬도 중요하지만 글을 쓰는 행위 그 자체가 제일 중요하다고 생각한다. 왜냐면 우리 대부분은 작가가 아니고  글을 통해 밥벌이를 하는 사람도 아니기 때문이고, 글을 쓰는 목적이 “나를 표현하는 수단”이라고 생각하기 때문이다. 내가 가진 생각과 경험을 잘 전달하는 수단이랄까? 그래서 글을 잘쓰게 하기 위해선 글을 쓰고 싶다고 느끼게 만들어야 한다. 어떻게 그런 느낌을 줄 수 있을까 고민을 해봤더니, 글을 쓰고 보여주면 되는 것 같다.
 
@@ -589,7 +589,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 ![스크린샷 2025-02-15 오후 7.12.59.png](./writing.png)
 
-![image.png](./image%2017.jpeg)
+![image.png](./image17.jpeg)
 
 이런 분들이 있기 때문에 계속 교육과 관련된 활동을 이어갈 수 있는게 아닐까?
 
@@ -664,7 +664,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 학습을 위한 화상채팅 플랫폼 제작한 [Web21 TICLE](https://github.com/boostcampwm-2024/web21-TICLE) 팀과 [Web20 Camon](https://github.com/boostcampwm-2024/web20-camon/) 팀도 있다. 인데, 마찬가지로 너무 잘 만들어서 깜짝 놀랐다. 초기 구축 이후에 별도의 화상채팅 플랫폼을 사용하지 않고 직접 만든 서비스에서 진행한걸로 알고 있다.
 
-![image.png](./image%2018.jpeg)
+![image.png](./image18.jpeg)
 
 다같이 모여서 프로젝트 피드백을 할 때 이런 플랫폼에 들어가서 이야기 하면 재미가 배로 되는 경험을 할 수 있다.
 
@@ -686,7 +686,7 @@ AC2에서 CTA라는 것에 대해 알게 되었는데, 질문을 토대로 전�
 
 ### (3) 항해플러스
 
-![image.png](./image%2019.jpeg)
+![image.png](./image19.jpeg)
 
 항해플러스는 경력 개발자를 대상으로 진행하는 10주 교육과정이다. 매주 다양한 학습 콘텐츠와 과제 그리고 멘토링이 제공되고 커뮤니티를 기반으로 성장하는 교육 플랫폼이라고 할 수 있다.
 
@@ -1161,7 +1161,7 @@ describe("hooks test", () => {
     
     응답 내용을 그대로 project의 set custom instruction에 넣어서 사용하면 된다.
     
-    ![image.png](./image%2020.jpeg)
+    ![image.png](./image20.jpeg)
     
 3. 프로젝트 내에 다른 채팅을 만들고 클린코드를 학습할 수 있는 프로젝트를 제시해달라고 요청한다.
     
@@ -1306,7 +1306,7 @@ describe("hooks test", () => {
     
     :::
     
-    ![image.png](./image%2021.jpeg)
+    ![image.png](./image21.jpeg)
     
     리팩토링이 필요한 과제이기 때문에, 함수에 대한 단위테스트가 아니라 어플리케이션에 대한 통합테스트로 작성해야 한다. 그리고 claude가 제공하는 테스트 코드의 70~80% 정도는 대체로 잘 작성이 되지만, 디테일한 부분에 대해선 직접 작성이 필요하다. 그래서 생각보다 개선에 시간을 많이 썼던 것 같다.
     
@@ -1361,15 +1361,15 @@ describe("hooks test", () => {
 
 - 과제를 수행하기 전의 모습
     
-    ![image.png](./image%2022.jpeg)
+    ![image.png](./image22.jpeg)
     
 - 정상적으로 과제를 제출했을 때의 모습
     
-    ![image.png](./image%2023.jpeg)
+    ![image.png](./image23.jpeg)
     
 - playwright e2e test 를 추가해서 과제 검증에 대한 회색영역을 보완했다.
     
-    ![image.png](./image%2024.jpeg)
+    ![image.png](./image24.jpeg)
     
 :::
 
@@ -1524,7 +1524,7 @@ OT 때 같은 테이블이었던 11팀! 열정이 가득한 팀 중에 하나여
 
 고등학교 때 부터 인연을 이어오고 있는 애증의 기능경기대회… 그렇지만 날 놓아주질 않는다.
 
-![image.png](./image%2025.jpeg)
+![image.png](./image25.jpeg)
 
 매년 7월이 되면 선생님의 호출(?)로 서울디지텍고등학교에 방문해서 전국대회에 출전하는 학생들과 만난다. 이 학교에서 바라보는 이태원의 풍경이 항상 장관이다. ~~대신 올라가기 너무 힘들다..~~
 
