@@ -15,7 +15,7 @@ try {
 // 링크 미리보기 HTML 생성 (hydration 안전)
 function generatePreviewHTML(metadata) {
   const { title, description, image, siteName, url } = metadata;
-  
+
   // HTML 특수문자 이스케이프
   const escapeHtml = (text) => {
     if (!text) return '';
@@ -38,84 +38,59 @@ function generatePreviewHTML(metadata) {
 
 
 module.exports = function linkPreviewPlugin(md) {
-  // 원본 링크 렌더링 함수 저장
-  const defaultRender = md.renderer.rules.link_open || function (tokens, idx, options, env, renderer) {
-    return renderer.renderToken(tokens, idx, options);
-  };
+  // [link-preview: <url>] 형식 파싱을 위한 인라인 룰 추가
+  function linkPreviewInline(state, silent) {
+    const start = state.pos;
+    const max = state.posMax;
 
-  const defaultLinkCloseRender = md.renderer.rules.link_close || function (tokens, idx, options, env, renderer) {
-    return renderer.renderToken(tokens, idx, options);
-  };
+    // [link-preview: 로 시작하는지 확인
+    if (start + 15 >= max) return false;
 
-  // 링크 렌더링 규칙 오버라이드
-  md.renderer.rules.link_open = function (tokens, idx, options, env, renderer) {
-    const token = tokens[idx];
-    const hrefIndex = token.attrIndex('href');
+    const marker = state.src.slice(start, start + 15);
+    if (marker !== '[link-preview: ') return false;
 
-    if (hrefIndex >= 0) {
-      const href = token.attrs[hrefIndex][1];
-
-      // 이미지 링크인지 확인 (이전 토큰이 image인 경우)
-      const prevToken = tokens[idx - 1];
-      if (prevToken && prevToken.type === 'image') {
-        return defaultRender(tokens, idx, options, env, renderer);
+    // 닫는 ] 찾기
+    let pos = start + 15;
+    while (pos < max) {
+      if (state.src.charAt(pos) === ']') {
+        break;
       }
-
-      // 외부 링크이고 HTTP/HTTPS로 시작하는 경우만 처리
-      if (href.startsWith('http://') || href.startsWith('https://')) {
-        const nextToken = tokens[idx + 1];
-        const closeToken = tokens[idx + 2];
-
-        // link-preview 처리 조건을 확인
-        const isLinkPreview = nextToken && nextToken.type === 'text' &&
-          closeToken && closeToken.type === 'link_close' &&
-          nextToken.content && nextToken.content.includes('link-preview');
-
-        if (isLinkPreview && idx + 2 < tokens.length) {
-          // 링크 미리보기로 변환
-          let siteName = '';
-          try {
-            siteName = new URL(href).hostname;
-          } catch (e) {
-            siteName = href;
-          }
-          
-          const metadata = linkMetadata[href] || {
-            title: href,
-            description: '',
-            image: '',
-            siteName: siteName,
-            url: href
-          };
-
-          // 미리보기 HTML로 대체
-          nextToken.content = generatePreviewHTML(metadata);
-          nextToken.type = 'html_inline';
-          
-          // close 토큰에 표시를 남겨둠
-          closeToken.linkPreviewProcessed = true;
-          
-          // link_open 토큰을 무효화
-          return '';
-        }
-      }
+      pos++;
     }
 
-    return defaultRender(tokens, idx, options, env, renderer);
-  };
+    if (pos >= max) return false;
 
-  // link_close도 처리
-  md.renderer.rules.link_close = function (tokens, idx, options, env, renderer) {
-    const token = tokens[idx];
-    
-    // link-preview로 처리된 토큰인지 확인
-    if (token.linkPreviewProcessed) {
-      return '';  // 미리보기로 변환된 경우 닫는 태그도 무효화
+    // URL 추출
+    const url = state.src.slice(start + 15, pos).trim();
+
+    if (silent) return true;
+
+    // 메타데이터 가져오기
+    let siteName = '';
+    try {
+      siteName = new URL(url).hostname;
+    } catch {
+      siteName = url;
     }
 
-    // 기본 렌더링 사용 (내부 링크 등)
-    return defaultLinkCloseRender(tokens, idx, options, env, renderer);
-  };
+    const metadata = linkMetadata[url] || {
+      title: url,
+      description: '',
+      image: '',
+      siteName: siteName,
+      url: url
+    };
+
+    // HTML 토큰 생성
+    const token = state.push('html_inline', '', 0);
+    token.content = generatePreviewHTML(metadata);
+
+    state.pos = pos + 1; // ']' 길이만큼 이동
+    return true;
+  }
+
+  // 인라인 룰 등록
+  md.inline.ruler.before('link', 'link_preview_inline', linkPreviewInline);
 
   // 사용자 정의 컨테이너도 유지 (기존 사용법 호환성)
   md.use(require('markdown-it-container'), 'link-preview', {
@@ -133,10 +108,10 @@ module.exports = function linkPreviewPlugin(md) {
         let siteName = '';
         try {
           siteName = new URL(url).hostname;
-        } catch (e) {
+        } catch {
           siteName = url;
         }
-        
+
         const metadata = linkMetadata[url] || {
           title: url,
           description: '',

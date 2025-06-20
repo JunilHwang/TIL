@@ -94,17 +94,11 @@ function extractLinkPreviewUrls(content) {
     urls.push(match[1]);
   }
   
-  // 2. 인라인 링크 방식: [텍스트 link-preview](URL)
-  const inlineLinkRegex = /\[([^\]]*link-preview[^\]]*)\]\((https?:\/\/[^)]+)\)/g;
+  // 2. 새로운 인라인 방식: [link-preview: URL]
+  const inlineRegex = /\[link-preview:\s*(https?:\/\/[^\]]+)\]/g;
   
-  while ((match = inlineLinkRegex.exec(content)) !== null) {
-    const linkText = match[1]; // [안의 텍스트]
-    const url = match[2]; // (안의 URL)
-    
-    // "link-preview"가 포함된 링크 텍스트인 경우만 수집
-    if (linkText.includes('link-preview')) {
-      urls.push(url);
-    }
+  while ((match = inlineRegex.exec(content)) !== null) {
+    urls.push(match[1]);
   }
   
   return [...new Set(urls)]; // 중복 제거
