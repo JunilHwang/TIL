@@ -6192,7 +6192,7 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
     
     - 유한별님: [항해플러스 프론트엔드 5기 회고](https://velog.io/@hayou/%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-5%EA%B8%B0-%ED%9A%8C%EA%B3%A0)
     - 김영웅님: [항해 플러스 프론트엔드 후기 (5기) 드디어 수료](https://velog.io/@houndhollis/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%ED%9B%84%EA%B8%B0-5%EA%B8%B0-%EB%93%9C%EB%94%94%EC%96%B4-%EC%88%98%EB%A3%8C)
-    - 박수민님: [[항해 플러스 프론트엔드] 마무리 회고 - 🌊 여기가 육지인가? ⛵](https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5)
+    - 임수민님: [[항해 플러스 프론트엔드] 마무리 회고 - 🌊 여기가 육지인가? ⛵](https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5)
 
 :::
 
