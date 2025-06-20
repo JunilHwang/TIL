@@ -99,6 +99,19 @@ function extractLinkPreviewUrls(content) {
 async function buildLinkMetadata() {
   console.log('🔍 링크 미리보기 메타데이터 수집 시작...');
   
+  // 기존 메타데이터 로드
+  const outputPath = path.join('.vuepress', 'link-metadata.json');
+  let existingMetadata = {};
+  
+  if (fs.existsSync(outputPath)) {
+    try {
+      existingMetadata = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+      console.log(`📋 기존 메타데이터 ${Object.keys(existingMetadata).length}개 로드됨`);
+    } catch (error) {
+      console.warn('기존 메타데이터 파일을 읽을 수 없습니다:', error.message);
+    }
+  }
+  
   // 모든 마크다운 파일 찾기
   const markdownFiles = glob.sync('**/*.md', { 
     cwd: process.cwd(),
@@ -116,10 +129,26 @@ async function buildLinkMetadata() {
   
   console.log(`📊 발견된 링크: ${allUrls.size}개`);
   
-  const metadata = {};
+  // 기존 메타데이터를 복사하여 시작
+  const metadata = { ...existingMetadata };
   
-  // 각 URL에 대해 메타데이터 수집
-  for (const url of allUrls) {
+  // 새로 수집해야 할 URL들만 필터링
+  const newUrls = Array.from(allUrls).filter(url => !existingMetadata[url]);
+  const skippedCount = allUrls.size - newUrls.length;
+  
+  if (skippedCount > 0) {
+    console.log(`⏭️  이미 수집된 링크 ${skippedCount}개 건너뜀`);
+  }
+  
+  if (newUrls.length === 0) {
+    console.log('🎉 모든 링크의 메타데이터가 이미 수집되어 있습니다!');
+    return;
+  }
+  
+  console.log(`🆕 새로 수집할 링크: ${newUrls.length}개`);
+  
+  // 새로운 URL들에 대해서만 메타데이터 수집
+  for (const url of newUrls) {
     try {
       console.log(`🌐 메타데이터 수집 중: ${url}`);
       const meta = await fetchMetadata(url);
@@ -140,11 +169,10 @@ async function buildLinkMetadata() {
   }
   
   // 메타데이터를 JSON 파일로 저장
-  const outputPath = path.join('.vuepress', 'link-metadata.json');
   fs.writeFileSync(outputPath, JSON.stringify(metadata, null, 2));
   
   console.log(`✅ 메타데이터 파일 저장 완료: ${outputPath}`);
-  console.log(`📦 총 ${Object.keys(metadata).length}개의 링크 처리됨`);
+  console.log(`📦 총 ${Object.keys(metadata).length}개의 링크 (신규 ${newUrls.length}개 추가)`);
 }
 
 // 스크립트 실행
