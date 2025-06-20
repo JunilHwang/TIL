@@ -5,7 +5,7 @@ description: 클린코드를 요구사항을 떼어놓고 클린코드를 이야
 sidebarDepth: 2
 date: 2025-06-19
 tag: javascript, 클린코드
-thumbnail: https://github.com/JunilHwang/TIL/blob/master/clean-code/as-requirements-change/diagram1.png
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/as-requirements-change/diagram1.png
 
 ---
 
