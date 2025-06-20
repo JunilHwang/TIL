@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import ParentLayout from '@vuepress/theme-default/lib/client/layouts/Layout.vue';
-import {computed, onMounted, reactive} from "vue";
+import {computed, onMounted, reactive, ref} from "vue";
 
 import {Footer, Posts} from "../components";
 import {usePosts} from "../hooks";
@@ -13,10 +13,14 @@ const state = reactive({
   selectedTag: '전체',
 });
 
+// 하이드레이션 상태 추적
+const isHydrated = ref(false);
+
 const posts = usePosts();
 
 const tagsAndCount = computed(() =>
   posts.value.reduce((acc, item) => {
+    if (!item.tag) return acc;
     const tags = item.tag.split(",").map(v => v.trim());
     for (const tag of tags) {
       acc[tag] = (acc[tag] || 0) + 1;
@@ -48,7 +52,15 @@ function selectTag(tag: string) {
 }
 
 onMounted(async () => {
-  state.currentPage = Number(sessionStorage.getItem(PAGE_KEY) || 1);
+  isHydrated.value = true;
+
+  // 하이드레이션 후 sessionStorage에서 페이지 복원
+  if (typeof window !== 'undefined') {
+    const savedPage = sessionStorage.getItem(PAGE_KEY);
+    if (savedPage) {
+      state.currentPage = Number(savedPage);
+    }
+  }
 })
 </script>
 

@@ -1,9 +1,8 @@
-import {defaultTheme, DefaultThemeOptions, defineUserConfig, Theme, viteBundler} from 'vuepress-vite';
-import {pwaPlugin} from '@vuepress/plugin-pwa';
-import {googleAnalyticsPlugin} from '@vuepress/plugin-google-analytics';
-import {feed} from 'vuepress-plugin-feed2';
-import {sitemap} from 'vuepress-plugin-sitemap2';
-import {searchPlugin} from "@vuepress/plugin-search";
+import { defaultTheme, DefaultThemeOptions, defineUserConfig, Theme, viteBundler } from 'vuepress-vite';
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
+import { feed } from 'vuepress-plugin-feed2';
+import { sitemap } from 'vuepress-plugin-sitemap2';
+import { searchPlugin } from "@vuepress/plugin-search";
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
 import MarkdownItTaskLists from 'markdown-it-task-lists';
@@ -51,8 +50,8 @@ export default defineUserConfig({
   theme: localTheme({
     logo: 'https://avatars1.githubusercontent.com/u/18749057?s=460&v=4',
     navbar: [
-      {text: 'Home', link: '/'},
-      {text: 'About', link: '/About/'},
+      { text: 'Home', link: '/' },
+      { text: 'About', link: '/About/' },
     ],
     sidebar: 'auto',
     lastUpdated: true,
@@ -61,22 +60,28 @@ export default defineUserConfig({
   bundler: viteBundler(),
   base: '/TIL/',
   head: [
-    ['meta', {name: "google-site-verification", content: "sHfBWIoCUOYFXJ3b0ulN8jp9jpD8SEW5Wpxvlk-UABA"}],
-    ['link', {rel: "apple-touch-icon", sizes: "180x180", href: "/TIL/assets/favicons/apple-touch-icon.png"}],
-    ['link', {rel: "icon", type: "image/png", sizes: "32x32", href: "/TIL/assets/favicons/favicon-32x32.png"}],
-    ['link', {rel: "icon", type: "image/png", sizes: "16x16", href: "/TIL/assets/favicons/favicon-16x16.png"}],
-    ['link', {rel: "manifest", href: "/TIL/manifest.webmanifest"}],
-    ['link', {rel: "mask-icon", href: "/TIL/assets/favicons/safari-pinned-tab.svg", color: "#3a0839"}],
-    ['link', {rel: "shortcut icon", href: "/TIL/assets/favicons/favicon.ico"}],
-    ['link', {rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap"}],
-    ['meta', {name: "msapplication-TileColor", content: "#3a0839"}],
-    ['meta', {name: "msapplication-config", content: "/TIL/browserconfig.xml"}],
-    ['meta', {name: "theme-color", content: "#ffffff"}],
+    ['meta', { name: "google-site-verification", content: "sHfBWIoCUOYFXJ3b0ulN8jp9jpD8SEW5Wpxvlk-UABA" }],
+    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/TIL/assets/favicons/apple-touch-icon.png" }],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/TIL/assets/favicons/favicon-32x32.png" }],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/TIL/assets/favicons/favicon-16x16.png" }],
+    ['link', { rel: "manifest", href: "/TIL/manifest.webmanifest" }],
+    ['link', { rel: "mask-icon", href: "/TIL/assets/favicons/safari-pinned-tab.svg", color: "#3a0839" }],
+    ['link', { rel: "shortcut icon", href: "/TIL/assets/favicons/favicon.ico" }],
+    ['link', { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" }],
+    ['meta', { name: "msapplication-TileColor", content: "#3a0839" }],
+    ['meta', { name: "msapplication-config", content: "/TIL/browserconfig.xml" }],
+    ['meta', { name: "theme-color", content: "#ffffff" }],
   ],
   extendsMarkdown: md => {
     md.use(MarkdownItPlantuml);
     md.use(MarkdownItUnderline);
     md.use(MarkdownItTaskLists);
+  },
+  extendsPage: (page) => {
+    // README.md (홈페이지)에 posts 데이터 주입
+    if (page.filePath?.endsWith('README.md') && page.filePathRelative === 'README.md') {
+      page.data.posts = posts;
+    }
   },
   plugins: [
     feed({
@@ -88,7 +93,7 @@ export default defineUserConfig({
     googleAnalyticsPlugin({
       id: 'UA-113171398-2'
     }),
-    sitemap({hostname: 'https://junilhwang.github.io/TIL'}),
+    sitemap({ hostname: 'https://junilhwang.github.io/TIL' }),
     searchPlugin({}),
     // demoBlock({}),
   ],
