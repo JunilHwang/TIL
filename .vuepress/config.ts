@@ -6,6 +6,7 @@ import { searchPlugin } from "@vuepress/plugin-search";
 import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
 import MarkdownItTaskLists from 'markdown-it-task-lists';
+import linkPreviewPlugin from './plugins/markdown-it-link-preview';
 
 import * as path from "path";
 import * as glob from "glob";
@@ -76,6 +77,7 @@ export default defineUserConfig({
     md.use(MarkdownItPlantuml);
     md.use(MarkdownItUnderline);
     md.use(MarkdownItTaskLists);
+    md.use(linkPreviewPlugin);
   },
   extendsPage: (page) => {
     // README.md (홈페이지)에 posts 데이터 주입

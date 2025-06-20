@@ -5,8 +5,9 @@
   "repository": "https://github.com/JunilHwang/TIL",
   "author": "junil-hwang <junil.h@kakao.com>",
   "scripts": {
-    "docs:dev": "vuepress-vite dev",
-    "docs:build": "vuepress-vite build"
+    "docs:dev": "node .vuepress/scripts/build-link-metadata.js && vuepress-vite dev",
+    "docs:build": "npm run build:metadata && vuepress-vite build",
+    "build:metadata": "node .vuepress/scripts/build-link-metadata.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,14 +19,16 @@
     "vuepress": "^2.0.0-beta.46",
     "vuepress-plugin-demo-block": "^0.7.2",
     "vuepress-plugin-feed2": "^2.0.0-alpha.33",
+    "vuepress-plugin-mermaidjs": "^2.0.0-beta.2",
     "vuepress-plugin-sitemap2": "^2.0.0-beta.24",
-    "vuepress-vite": "^2.0.0-beta.46",
-    "vuepress-plugin-mermaidjs": "^2.0.0-beta.2"
+    "vuepress-vite": "^2.0.0-beta.46"
   },
   "dependencies": {
+    "markdown-it-container": "^3.0.0",
     "markdown-it-plantuml": "^1.4.1",
     "markdown-it-task-lists": "^2.1.1",
-    "markdown-it-underline": "^1.0.1"
+    "markdown-it-underline": "^1.0.1",
+    "node-html-parser": "^7.0.1"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
