@@ -51,15 +51,22 @@ module.exports = function linkPreviewPlugin(md) {
     if (hrefIndex >= 0) {
       const href = token.attrs[hrefIndex][1];
 
+      // 이미지 링크인지 확인 (이전 토큰이 image인 경우)
+      const prevToken = tokens[idx - 1];
+      if (prevToken && prevToken.type === 'image') {
+        return defaultRender(tokens, idx, options, env, renderer);
+      }
+
       // 외부 링크이고 HTTP/HTTPS로 시작하는 경우만 처리
       if (href.startsWith('http://') || href.startsWith('https://')) {
         const nextToken = tokens[idx + 1];
         const closeToken = tokens[idx + 2];
 
-        // 텍스트 토큰이 있고 "link-preview"가 포함된 경우
+        // 매우 엄격한 조건: 텍스트 토큰이 있고, "link-preview"가 포함되고, 정확히 3개의 토큰으로 구성된 경우만 처리
         if (nextToken && nextToken.type === 'text' &&
           closeToken && closeToken.type === 'link_close' &&
-          nextToken.content.includes('link-preview')) {
+          nextToken.content && nextToken.content.includes('link-preview') &&
+          idx + 2 < tokens.length) {
 
           // 링크 미리보기로 변환
           const metadata = linkMetadata[href] || {
