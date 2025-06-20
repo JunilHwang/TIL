@@ -25,7 +25,7 @@ export function usePosts() {
     if (postsFromPageData.value.length > 0) {
       state.posts = postsFromPageData.value;
       posts = postsFromPageData.value;
-    } 
+    }
     // 없으면 기존 방식으로 fallback (CSR)
     else if (!posts) {
       posts = await fetch(withBase("/posts.json")).then(res => res.json());
