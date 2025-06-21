@@ -123,6 +123,18 @@ em {
   .custom-container.tip {
     border-color: var(--c-brand);
   }
+
+  h2 {
+    margin-top: 60px;
+  }
+
+  h3 {
+    margin-top: 40px;
+  }
+
+  *:not(h3) + h4 {
+    margin-top: 40px;
+  }
 }
 
 .sidebar {

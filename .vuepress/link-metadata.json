@@ -77,8 +77,8 @@
     "url": "https://bit.ly/43OaDNK"
   },
   "https://open.kakao.com/me/junilhwang": {
-    "title": "준일님의 오픈프로필",
-    "description": "",
+    "title": "카카오톡 오픈프로필",
+    "description": "개발자 황준일",
     "image": "http://mk.kakaocdn.net/dn/openchat/scrap/og/me/junilhwang_out.jpg?1689310580",
     "siteName": "open.kakao.com",
     "url": "https://open.kakao.com/me/junilhwang"
@@ -271,5 +271,152 @@
     "image": "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcpTQv6%2FbtsOEPuDswc%2FCsmFrghgGK6B8V7fc1z6c0%2Fimg.png",
     "siteName": "수빡이의 개발",
     "url": "https://s-o-o-min.tistory.com/entry/%ED%95%AD%ED%95%B4-%ED%94%8C%EB%9F%AC%EC%8A%A4-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0-%F0%9F%8C%8A-%EC%97%AC%EA%B8%B0%EA%B0%80-%EC%9C%A1%EC%A7%80%EC%9D%B8%EA%B0%80-%E2%9B%B5"
+  },
+  "https://github.com/JunilHwang": {
+    "title": "JunilHwang - Overview",
+    "description": "@naver Frontend Developer. JunilHwang has 142 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/18749057?v=4?s=400",
+    "siteName": "GitHub",
+    "url": "https://github.com/JunilHwang"
+  },
+  "https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/": {
+    "title": "https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/",
+    "description": "Frontend developer at NAVER Corp.",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQEYknR62Wl7mQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1690481307332?e=1755734400&v=beta&t=OeamQuEwwonxZ2ZQWDmTCBS4gmKAIvsQWj-VbYzoGHg",
+    "siteName": "www.linkedin.com",
+    "url": "https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/"
+  },
+  "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Server-Side-Rendering/": {
+    "title": "프레임워크 없이 만드는 SSR",
+    "description": "프레임워크를 사용하지 않고 SSR과 CSR을 적용해보면서 프론트엔드에서의 SSR에 대해 학습합니다.",
+    "image": "https://user-images.githubusercontent.com/18749057/218312378-4a6d1e60-813b-4dab-a1aa-a07dcba82411.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Server-Side-Rendering/"
+  },
+  "https://junilhwang.github.io/TIL/side-project/dku-schedule-manager/": {
+    "title": "단국대학교 강의 시간표를 제공하는 서비스를 만들자",
+    "description": "단국대학교 재학생들을 타겟팅하는 간단한 사이드 프로젝트를 진행했다. 이에 대한 내용을 정리하는 글이다.",
+    "image": "https://user-images.githubusercontent.com/18749057/172793209-17b5d1e9-a196-4019-8e36-b7024d533bf2.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/side-project/dku-schedule-manager/"
+  },
+  "https://zuminternet.github.io/zum-portal-core-js/": {
+    "title": "Zum Portal Core JS 소개",
+    "description": "줌인터넷 프론트엔드 파트에서 사용되고 있는 core package에 대해 소개합니다.",
+    "image": "https://zuminternet.github.io/images/front/post/2021-12-06-zum-portal-core-js/thumbnail.png",
+    "siteName": "ZUM 기술 블로그",
+    "url": "https://zuminternet.github.io/zum-portal-core-js/"
+  },
+  "https://zuminternet.github.io/nestjs-custom-decorator/": {
+    "title": "NestJS Custom Caching Decorator 만들기",
+    "description": "NestJS 서비스 로직에 Caching Decorator를 적용하기 위한 삽질 과정을 다루고 있습니다.",
+    "image": "https://zuminternet.github.io/images/front/post/2021-11-11-nestjs-custom-decorator/thumbnail.jpg",
+    "siteName": "ZUM 기술 블로그",
+    "url": "https://zuminternet.github.io/nestjs-custom-decorator/"
+  },
+  "https://zuminternet.github.io/vue-ssr/": {
+    "title": "Vue SSR 제대로 적용하기 (feat. Vanilla SSR)",
+    "description": "SSR에 대한 개념을 알아보고, 이를 적용하기 위한 과정을 소개합니다.",
+    "image": "https://zuminternet.github.io/images/front/post/2021-10-01-vue-ssr/thumbnail.png",
+    "siteName": "ZUM 기술 블로그",
+    "url": "https://zuminternet.github.io/vue-ssr/"
+  },
+  "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/": {
+    "title": "Vanilla Javascript로 웹 컴포넌트 만들기",
+    "description": "Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/"
+  },
+  "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/": {
+    "title": "Vanilla Javascript로 상태관리 시스템 만들기",
+    "description": "Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.",
+    "image": "https://user-images.githubusercontent.com/18749057/172793385-33a57d25-a9e7-4225-9b4e-0b1e70133633.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/"
+  },
+  "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/": {
+    "title": "Vanilla Javascript로 가상돔(VirtualDOM) 만들기",
+    "description": "React와 Vue에서 사용되고 있는 가상돔(VirtualDOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.",
+    "image": "https://user-images.githubusercontent.com/18749057/172793454-927322f5-e7e7-48f4-8aa6-a79350b219e3.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/"
+  },
+  "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/": {
+    "title": "Vanilla Javascript로 React UseState Hook 만들기",
+    "description": "React의 UseState Hook의 작동방식에 대해 고민해보고, 구현해보고, 최적화하는 내용을 다룹니다.",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/"
+  },
+  "https://junilhwang.github.io/TIL/Review/2024-year/end/": {
+    "title": "2024년 회고",
+    "description": "개발자 그리고 교육자로서 지낸 1년의 이야기",
+    "image": "https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/Review/2024-year/end/thumbnail.jpeg",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Review/2024-year/end/"
+  },
+  "https://junilhwang.github.io/TIL/Review/2023-year/end/": {
+    "title": "2023년 회고",
+    "description": "나 자신에 대해 참 많은 것들을 알 수 있었던 1년",
+    "image": "https://raw.githubusercontent.com/JunilHwang/TIL/master/Review/2023-year/end/thumbnail.jpg",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Review/2023-year/end/"
+  },
+  "https://junilhwang.github.io/TIL/Review/2022-year/end/": {
+    "title": "주니어 개발자의 2022년 회고",
+    "description": "줌인터넷과의 작별, 네이버 입사, 그리고 부스트캠프",
+    "image": "https://user-images.githubusercontent.com/18749057/210173339-3986e61a-5645-4bfc-be71-119d51842809.jpg",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Review/2022-year/end/"
+  },
+  "https://junilhwang.github.io/TIL/writing/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%8B%AC%EC%95%BC-FE-%ED%9B%84%EA%B8%B0/": {
+    "title": "인프런 심야 FE 네트워킹 후기 | 개발자 황준일",
+    "description": "인프런의 심야 FE 네트워킹에 참여했습니다. 발표를 보면서 생각했던 내용과 네트워킹에 대한 내용을 다룹니다.",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/writing/%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%8B%AC%EC%95%BC-FE-%ED%9B%84%EA%B8%B0/"
+  },
+  "https://junilhwang.github.io/TIL/Review/2021-year/end/": {
+    "title": "주니어 개발자의 2021년 회고",
+    "description": "주니어 개발자의 2021년 회고",
+    "image": "https://user-images.githubusercontent.com/18749057/172793231-f0ddc40c-1309-4c64-a74a-4522a4ef4ef2.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Review/2021-year/end/"
+  },
+  "https://zuminternet.github.io/zum-front-recurit-review/": {
+    "title": "주니어 프론트엔드 개발자의 채용 프로세스 참여 후기",
+    "description": "주니어 프론트엔드 개발자가 함께 일할 파트너를 구하기 위한 여정에 대해 소개합니다.",
+    "image": "https://zuminternet.github.io/images/front/post/2021-07-01-zum-front-recurit-review/0-thumbnail.png",
+    "siteName": "ZUM 기술 블로그",
+    "url": "https://zuminternet.github.io/zum-front-recurit-review/"
+  },
+  "https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/": {
+    "title": "주니어 개발자의 2021년 상반기 회고",
+    "description": "주니어 개발자의 2021년 상반기 회고",
+    "image": "https://user-images.githubusercontent.com/18749057/172793670-9f6fe122-b21b-4f77-93c0-f16e67b69c6d.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/"
+  },
+  "https://junilhwang.github.io/TIL/Review/2020-year/end/": {
+    "title": "주니어 개발자의 2020년 회고",
+    "description": "주니어 개발자의 2020년 12월 회고입니다.",
+    "image": "https://user-images.githubusercontent.com/18749057/172793727-c9a2ab28-1038-4531-b74e-26ca75d3c6da.png",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/Review/2020-year/end/"
+  },
+  "https://junilhwang.github.io/TIL/writing/%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%B7%A8%EC%A4%80/": {
+    "title": "2023년을 돌아보며 생각한 개발자로 취업하기 | 개발자 황준일",
+    "description": "개발자로 취업을 하기 위해선 어떤 방식으로 준비를 해야 좋을까?",
+    "image": "",
+    "siteName": "junilhwang.github.io",
+    "url": "https://junilhwang.github.io/TIL/writing/%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%B7%A8%EC%A4%80/"
+  },
+  "https://junilhwang.notion.site/8-4f845ae31c7d4b46b5120ccee3690693?pvs=74": {
+    "title": "[글또 8기 지원] 삶의 지도",
+    "description": "요즘 “안녕? 나야!” 라는 드라마를 보고 있다. 20년전의 내가 현재에 갑자기 나타나면서 일어나는 이야기를 다룬 드라마인데, 소재가 참 참신하다. 보고 있으면 20년전의 나에게 나는 어떤 이야기를 해줄 수 있을지 계속 생각해본다.",
+    "image": "",
+    "siteName": "Notion",
+    "url": "https://junilhwang.notion.site/8-4f845ae31c7d4b46b5120ccee3690693?pvs=74"
   }
 }

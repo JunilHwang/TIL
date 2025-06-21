@@ -6268,23 +6268,14 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 :::
 
 <style>
-.theme-default-content {
-  h2 {
-    margin-top: 60px;
-  }
-  h3 {
-    margin-top: 40px;
-  }
-  *:not(h3) + h4 {
-    margin-top: 40px;
-  }
-}
 img[alt*="400"] {
   max-width: 400px !important;
 }
+
 .iframe-container {
   position: relative;
   padding-top: 85%;
+
   iframe {
     position: absolute;
     transform: scale(0.5) translate(-50%, -50%);
