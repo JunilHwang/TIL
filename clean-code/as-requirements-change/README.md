@@ -6257,7 +6257,7 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 ::: tip 👉🏻 항해플러스에 지원하고 싶은 분들께
 
 - 지원하기: [link-preview: https://hanghae99.spartacodingclub.kr/plus/fe?utm_source=influencer&utm_medium=earned&utm_campaign=%ED%95%AD%ED%95%B4%ED%94%8C%EB%9F%AC%EC%8A%A4&utm_content=%EB%A6%AC%EB%93%9C%ED%9A%8D%EB%93%9D&utm_term=%ED%99%A9%EC%A4%80%EC%9D%BC%EC%BD%94%EC%B9%98%EB%8B%98_blog_250616]
-- 추천인코드: `43OaDNK`
+- 추천인코드: `7H2Jlu`
 
   위의 추천인 코드를 사용하면 **30만원 할인**을 받을 수 있습니다!
   이 외에 교육과정에 대해 궁금한점이 있다면 편하게 문의 주세요!
