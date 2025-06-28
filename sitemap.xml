@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://junilhwang.github.io/TIL/</loc>
-    <lastmod>2025-06-23T05:45:00.770Z</lastmod>
+    <lastmod>2025-06-28T01:38:24.181Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://junilhwang.github.io/TIL/About/</loc>
-    <lastmod>2025-06-23T05:45:00.770Z</lastmod>
+    <lastmod>2025-06-28T01:38:24.181Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -49,6 +49,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://junilhwang.github.io/TIL/writing/개발자-취준/</loc>
+    <lastmod>2024-01-13T23:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://junilhwang.github.io/TIL/Review/2023-year/end/</loc>
     <lastmod>2024-01-09T10:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -63,6 +69,12 @@
   <url>
     <loc>https://junilhwang.github.io/TIL/Review/2022-year/end/</loc>
     <lastmod>2023-01-01T23:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/writing/인프런-심야-FE-후기/</loc>
+    <lastmod>2022-06-19T21:45:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -103,6 +115,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://junilhwang.github.io/TIL/writing/03-생각정리/</loc>
+    <lastmod>2021-07-19T16:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</loc>
     <lastmod>2021-07-12T02:30:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -129,6 +147,30 @@
   <url>
     <loc>https://junilhwang.github.io/TIL/Review/2020-year/10-October/</loc>
     <lastmod>2020-12-28T23:30:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/writing/02-2021-계획/</loc>
+    <lastmod>2020-12-24T00:16:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/writing/01-유년시절-이야기-3/</loc>
+    <lastmod>2020-11-23T01:18:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/writing/01-유년시절-이야기-2/</loc>
+    <lastmod>2020-11-09T10:16:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/writing/01-유년시절-이야기-1/</loc>
+    <lastmod>2020-11-01T11:45:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -5,8 +5,8 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2025-06-23T05:45:00.771Z</lastBuildDate>
-    <pubDate>2025-06-23T05:45:00.771Z</pubDate>
+    <lastBuildDate>2025-06-28T01:38:24.182Z</lastBuildDate>
+    <pubDate>2025-06-28T01:38:24.182Z</pubDate>
     <ttl>60</ttl>
     <item>
       <title><![CDATA[요구사항의 변화로 알아가는 클린코드]]></title>
@@ -57,6 +57,14 @@
       <category>회고</category>
     </item>
     <item>
+      <title><![CDATA[2023년을 돌아보며 생각한 개발자로 취업하기]]></title>
+      <link>https://junilhwang.github.io/TIL/writing/개발자-취준/</link>
+      <guid>https://junilhwang.github.io/TIL/writing/개발자-취준/</guid>
+      <pubDate>Sat, 13 Jan 2024 23:00:00 GMT</pubDate>
+      <description><![CDATA[개발자로 취업을 하기 위해선 어떤 방식으로 준비를 해야 좋을까?]]></description>
+      <category>생각</category>
+    </item>
+    <item>
       <title><![CDATA[2023년 회고]]></title>
       <link>https://junilhwang.github.io/TIL/Review/2023-year/end/</link>
       <guid>https://junilhwang.github.io/TIL/Review/2023-year/end/</guid>
@@ -79,6 +87,14 @@
       <pubDate>Sun, 01 Jan 2023 23:00:00 GMT</pubDate>
       <description><![CDATA[줌인터넷과의 작별, 네이버 입사, 그리고 부스트캠프]]></description>
       <category>회고</category>
+    </item>
+    <item>
+      <title><![CDATA[인프런 심야 FE 네트워킹 후기]]></title>
+      <link>https://junilhwang.github.io/TIL/writing/인프런-심야-FE-후기/</link>
+      <guid>https://junilhwang.github.io/TIL/writing/인프런-심야-FE-후기/</guid>
+      <pubDate>Sun, 19 Jun 2022 21:45:00 GMT</pubDate>
+      <description><![CDATA[인프런의 심야 FE 네트워킹에 참여했습니다. 발표를 보면서 생각했던 내용과 네트워킹에 대한 내용을 다룹니다.]]></description>
+      <category>일상</category>
     </item>
     <item>
       <title><![CDATA[단국대학교 강의 시간표를 제공하는 서비스를 만들자]]></title>
@@ -129,6 +145,14 @@
       <category>javascript, vanilla</category>
     </item>
     <item>
+      <title><![CDATA[생각정리]]></title>
+      <link>https://junilhwang.github.io/TIL/writing/03-생각정리/</link>
+      <guid>https://junilhwang.github.io/TIL/writing/03-생각정리/</guid>
+      <pubDate>Mon, 19 Jul 2021 16:00:00 GMT</pubDate>
+      <description><![CDATA[가끔은 나의 개인적인 생각을 정리해보자.]]></description>
+      <category>일상</category>
+    </item>
+    <item>
       <title><![CDATA[주니어 개발자의 2021년 상반기 회고]]></title>
       <link>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</link>
       <guid>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</guid>
@@ -142,30 +166,6 @@
       <guid>https://junilhwang.github.io/TIL/Review/2020-year/end/</guid>
       <pubDate>Thu, 07 Jan 2021 11:00:00 GMT</pubDate>
       <description><![CDATA[주니어 개발자의 2020년 12월 회고입니다.]]></description>
-      <category>회고</category>
-    </item>
-    <item>
-      <title><![CDATA[2020년 12월 회고]]></title>
-      <link>https://junilhwang.github.io/TIL/Review/2020-year/12-December/</link>
-      <guid>https://junilhwang.github.io/TIL/Review/2020-year/12-December/</guid>
-      <pubDate>Wed, 30 Dec 2020 18:20:00 GMT</pubDate>
-      <description><![CDATA[개발자 황준일의 2020년 12월 회고입니다.]]></description>
-      <category>회고</category>
-    </item>
-    <item>
-      <title><![CDATA[2020년 11월 회고]]></title>
-      <link>https://junilhwang.github.io/TIL/Review/2020-year/11-November/</link>
-      <guid>https://junilhwang.github.io/TIL/Review/2020-year/11-November/</guid>
-      <pubDate>Tue, 29 Dec 2020 23:00:00 GMT</pubDate>
-      <description><![CDATA[개발자 황준일의 2020년 11월 회고입니다.]]></description>
-      <category>회고</category>
-    </item>
-    <item>
-      <title><![CDATA[2020년 10월 회고]]></title>
-      <link>https://junilhwang.github.io/TIL/Review/2020-year/10-October/</link>
-      <guid>https://junilhwang.github.io/TIL/Review/2020-year/10-October/</guid>
-      <pubDate>Mon, 28 Dec 2020 23:30:00 GMT</pubDate>
-      <description><![CDATA[개발자 황준일의 2020년 10월 회고입니다.]]></description>
       <category>회고</category>
     </item>
   </channel>
