@@ -24,7 +24,6 @@ const getProperty = (data, property) => {
 }
 
 const posts = glob.sync('!(node_modules)/**/*.md')
-  .filter(path => !path.includes('writing/'))
   .map(path => {
     const data = fs.readFileSync(path, "utf8");
     if (Boolean(getProperty(data, 'disabledPost'))) return;
