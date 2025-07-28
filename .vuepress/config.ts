@@ -20,7 +20,12 @@ const localTheme = (options: DefaultThemeOptions): Theme => ({
 
 const getProperty = (data, property) => {
   const reg = new RegExp(`${property}:(.*)`);
-  return data.match(reg)?.[1].trim();
+  const result = data.match(reg)?.[1].trim();
+  try {
+    return JSON.parse(result);
+  } catch {
+    return result;
+  }
 }
 
 const posts = glob.sync('!(node_modules)/**/*.md')
