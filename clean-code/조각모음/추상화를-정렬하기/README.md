@@ -5,6 +5,7 @@ description: 문장이 단어로 단어가 글자로 구성되듯 코드도 적�
 sidebarDepth: 2
 date: 2025-07-28
 tag: javascript, react, 클린코드
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/조각모음/thumbnail.webp
 
 ---
 
@@ -23,12 +24,81 @@ tag: javascript, react, 클린코드
 
 자음과 모음이 모여서 글자가 되고, 글자가 모여 단어가 되고, 단어가 모여 문장이 된다.
 
+가령, "안녕하세요 황준일입니다"라는 문장은 이렇게 구성이 된다.
+
+@startuml
+skinparam backgroundColor #f8f9fa
+skinparam defaultFontName "Malgun Gothic"
+
+package "한글 추상화 계층" {
+
+class "자음·모음" as consonant_vowel {
+ㅇ, ㅏ, ㄴ, ㄴ, ㅕ, ㅇ, ㅎ, ㅏ...
+ㅈ, ㅓ, ㄴ, ㅡ, ㄴ, ㅎ, ㅘ, ㅇ...
+}
+
+class "글자" as character {
+안, 녕, 하, 세, 요
+저, 는, 황, 준, 일, 입, 니, 다
+}
+
+class "단어" as word {
+안녕하세요
+저는, 황준일, 입니다
+}
+
+class "문장" as sentence {
+안녕하세요. 저는 황준일입니다.
+}
+
+consonant_vowel ||--o{ character : "조합"
+character ||--o{ word : "결합"
+word ||--o{ sentence : "구성"
+}
+
+note right of sentence : 최종적으로 의미를 전달하는 단위
+note right of word : 독립적인 의미를 가진 최소 단위
+note right of character : 발음 가능한 최소 단위
+note bottom of consonant_vowel : 한글의 기본 구성 요소
+
+@enduml
+
 그럼 이 규칙이 깨지면 어떤 모습일까?
 
-- 정상적인 문장: “안녕하세요. 저는 황준일입니다.”
-- 추상화 규칙이 깨진 문장: **“안녕하세요ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다”**
+**“안녕하세요ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다”** 이라는 추상화 규칙이 깨진 문장을 파헤쳐보면 다음과 같다.
 
-문장을 파헤쳐보면 다음과 같다.
+@startuml
+skinparam backgroundColor #f8f9fa
+skinparam defaultFontName "Malgun Gothic"
+
+participant "독자" as reader
+participant "정상 문장\n(안녕하세요)" as normal
+participant "깨진 문장\n(ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다)" as broken
+
+== 정상적인 읽기 ==
+reader -> normal : 읽기 시도
+activate normal
+normal --> reader : 즉시 인식\n(에너지 1x)
+deactivate normal
+
+== 추상화가 깨진 읽기 ==
+reader -> broken : 읽기 시도
+activate broken
+
+loop 각 자음·모음별로
+broken -> broken : 자음·모음 분석\n(ㅈ + ㅓ = 저)
+end
+
+broken -> broken : 글자 조합\n(저 + 는 = 저는)
+broken -> broken : 단어 해석\n(저는 황준일입니다)
+broken --> reader : 최종 해석 완료\n(에너지 2~3x)
+deactivate broken
+
+note over reader : 추상화가 깨지면\n2~3배 더 많은 에너지 소모
+
+@enduml
+
+
 
 - “안녕하세요” → 처음에는 매끄럽게 잘 읽힌다.
 - “ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다” → **한 글자씩 곱씹어보면서 자음 모음을 조합하여 어떤 단어인지 유추**한다
