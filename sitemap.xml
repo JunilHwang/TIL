@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://junilhwang.github.io/TIL/</loc>
-    <lastmod>2025-06-28T01:38:24.181Z</lastmod>
+    <lastmod>2025-07-29T00:15:46.626Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://junilhwang.github.io/TIL/About/</loc>
-    <lastmod>2025-06-28T01:38:24.181Z</lastmod>
+    <lastmod>2025-07-29T00:15:46.626Z</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/clean-code/조각모음/추상화를-정렬하기/</loc>
+    <lastmod>2025-07-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

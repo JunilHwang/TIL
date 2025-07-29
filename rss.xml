@@ -5,9 +5,17 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2025-06-28T01:38:24.182Z</lastBuildDate>
-    <pubDate>2025-06-28T01:38:24.182Z</pubDate>
+    <lastBuildDate>2025-07-29T00:15:46.626Z</lastBuildDate>
+    <pubDate>2025-07-29T00:15:46.626Z</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[[클린코드 조각모음] 추상화를 정렬하기]]></title>
+      <link>https://junilhwang.github.io/TIL/clean-code/조각모음/추상화를-정렬하기/</link>
+      <guid>https://junilhwang.github.io/TIL/clean-code/조각모음/추상화를-정렬하기/</guid>
+      <pubDate>Mon, 28 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[문장이 단어로 단어가 글자로 구성되듯 코드도 적절한 추상화 계층을 만들어 정렬해야 한다.]]></description>
+      <category>javascript, react, 클린코드</category>
+    </item>
     <item>
       <title><![CDATA[요구사항의 변화로 알아가는 클린코드]]></title>
       <link>https://junilhwang.github.io/TIL/clean-code/as-requirements-change/</link>
@@ -158,14 +166,6 @@
       <guid>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</guid>
       <pubDate>Mon, 12 Jul 2021 02:30:00 GMT</pubDate>
       <description><![CDATA[주니어 개발자의 2021년 상반기 회고]]></description>
-      <category>회고</category>
-    </item>
-    <item>
-      <title><![CDATA[주니어 개발자의 2020년 회고]]></title>
-      <link>https://junilhwang.github.io/TIL/Review/2020-year/end/</link>
-      <guid>https://junilhwang.github.io/TIL/Review/2020-year/end/</guid>
-      <pubDate>Thu, 07 Jan 2021 11:00:00 GMT</pubDate>
-      <description><![CDATA[주니어 개발자의 2020년 12월 회고입니다.]]></description>
       <category>회고</category>
     </item>
   </channel>
