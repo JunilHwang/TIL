@@ -20,7 +20,7 @@ const relationPosts = computed(() => {
   const lists = posts.value.filter(v => !v.path.includes('as-requirements-change') && tagList.some(tag => v.tag.includes(tag as string)));
   const current = lists.find(v => v.path === pageData.value.path);
   const index = lists.indexOf(current);
-  return [ alwaysPost, ...lists.slice(Math.max(index - 3, 0), index + 3).filter(v => v !== current) ].filter(Boolean);
+  return [ alwaysPost, ...lists.slice(Math.max(index - 5, 0), index + 5).filter(v => v !== current) ].filter(Boolean);
 })
 </script>
 
