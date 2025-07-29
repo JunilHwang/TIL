@@ -114,60 +114,81 @@ React에서 무한 스크롤을 구현하는 커스텀 훅을 살펴보자.
 
 ```tsx
 // useThemeInfiniteScroll.ts - 문제가 있는 코드
-const useThemeInfiniteScroll = (
-  queryKey: string[],
-  queryFn: (page: number) => Promise<ThemeProductsResponse>,
-  threshold = 0.8
-) => {
-  // Level 2: useQuery 훅을 직접 사용
-  const {
-    data: queryData,
-    error: queryError,
-    isLoading: queryLoading,
-    refetch,
-  } = useQuery({
-    queryKey,
-    queryFn: () => queryFn(1),
+export function useThemeInfiniteScroll({
+  themeId,
+  initialCursor = null,
+  threshold = 0.5,
+}: ThemeInfiniteScrollOptions) {
+  
+  // Level 1: 기본 훅과 상태 관리
+  const observerRef = useRef<HTMLDivElement | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [cursor, setCursor] = useState<number | null>(initialCursor);
+  const [moreAvailable, setMoreAvailable] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<any>(null);
+
+  // Level 2: API 호출 훅
+  const { data: initialData } = useSuspenseApiQuery<ThemeProductResponse>({
+    url: `${API_ENDPOINTS.THEME_PRODUCTS(Number(themeId))}`,
+    queryKey: ["theme-products", themeId, "initial"],
   });
 
-  // Level 1: 원시 상태들을 직접 관리
-  const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [moreAvailable, setMoreAvailable] = useState(true);
-  const observerRef = useRef<HTMLDivElement>(null);
-
-  // Level 1: 복잡한 비즈니스 로직을 직접 구현
-  const fetchNext = useCallback(async () => {
-    if (loading || !moreAvailable) return;
-
-    setLoading(true);
-    try {
-      const nextPage = currentPage + 1;
-      const response = await queryFn(nextPage);
-
-      if (response.products.length > 0) {
-        setProducts(prev => [...prev, ...response.products]);
-        setCurrentPage(nextPage);
-        setMoreAvailable(response.hasMore);
-      } else {
-        setMoreAvailable(false);
-      }
-    } catch (error) {
-      console.error('Error fetching next page:', error);
-    } finally {
-      setLoading(false);
+  // Level 2: API 호출 훅
+  const {
+    isLoading: queryLoading,
+    error: queryError,
+    refetch,
+  } = useApiQuery<ThemeProductResponse>({
+    url: `${API_ENDPOINTS.THEME_PRODUCTS(Number(themeId))}${cursor ? `?cursor=${cursor}` : ""}`,
+    queryKey: ["theme-products", themeId, cursor],
+    enabled: false,
+  });
+  
+  // level 1: 초기 데이터 설정
+  useEffect(() => {
+    if (initialData) {
+       setProducts(initialData.list);
+       setCursor(initialData.cursor ?? null);
+       setMoreAvailable(
+         initialData.hasMoreList !== false && !!initialData.list.length
+       );
     }
-  }, [currentPage, loading, moreAvailable, queryFn]);
-
-  // Level 2: useIntersectionObserver 훅을 직접 사용
+  }, [initialData]);
+  
+  // Level 1: 복잡한 페이징 로직과 에러처리
+  const fetchNext = useCallback(
+   async (entries: IntersectionObserverEntry[]) => {
+      if (!moreAvailable || loading) return;
+      setLoading(true);
+      setError(null);
+      try {
+         const result = await refetch();
+         const res = result.data as ThemeProductResponse;
+         setProducts((prev) => {
+            const existingIds = new Set(prev.map((item) => item.id));
+            const filtered = res.list.filter((item) => !existingIds.has(item.id));
+            return [...prev, ...filtered];
+         });
+         setCursor(res.cursor ?? null);
+         setMoreAvailable(res.hasMoreList !== false && !!res.list.length);
+      } catch (err) {
+         setError(err);
+      } finally {
+         setLoading(false);
+      }
+   },
+   [refetch, moreAvailable, loading]
+  );
+  
+  // Level 2: Intersection Observer 훅
   useIntersectionObserver({
     targetRef: observerRef,
     onIntersect: fetchNext,
     enabled: moreAvailable && !loading && products.length > 0,
     threshold,
   });
-
+  
   return {
     products,
     loading: loading || queryLoading,
@@ -176,7 +197,7 @@ const useThemeInfiniteScroll = (
     observerRef,
     fetchNext,
   };
-};
+}
 ```
 
 이 코드는 추상화 수준이 정렬되지 않은 **서로 다른 추상화 레벨로 조합된 코드이다.**
