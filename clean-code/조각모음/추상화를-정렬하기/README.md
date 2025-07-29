@@ -27,33 +27,32 @@ thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/cl
 가령, "안녕하세요 황준일입니다"라는 문장은 이렇게 구성이 된다.
 
 @startuml
-skinparam backgroundColor #f8f9fa
-skinparam defaultFontName "Malgun Gothic"
+!theme plain
 
 package "한글 추상화 계층" {
-
-class "자음·모음" as consonant_vowel {
-ㅇ, ㅏ, ㄴ, ㄴ, ㅕ, ㅇ, ㅎ, ㅏ...
-ㅈ, ㅓ, ㄴ, ㅡ, ㄴ, ㅎ, ㅘ, ㅇ...
-}
-
-class "글자" as character {
-안, 녕, 하, 세, 요
-저, 는, 황, 준, 일, 입, 니, 다
-}
-
-class "단어" as word {
-안녕하세요
-저는, 황준일, 입니다
-}
-
-class "문장" as sentence {
-안녕하세요. 저는 황준일입니다.
-}
-
-consonant_vowel ||--o{ character : "조합"
-character ||--o{ word : "결합"
-word ||--o{ sentence : "구성"
+   
+   class "자음·모음" as consonant_vowel {
+      ㅇ, ㅏ, ㄴ, ㄴ, ㅕ, ㅇ, ㅎ, ㅏ...
+      ㅈ, ㅓ, ㄴ, ㅡ, ㄴ, ㅎ, ㅘ, ㅇ...
+   }
+   
+   class "글자" as character {
+      안, 녕, 하, 세, 요
+      저, 는, 황, 준, 일, 입, 니, 다
+   }
+   
+   class "단어" as word {
+      안녕하세요
+      저는, 황준일, 입니다
+   }
+   
+   class "문장" as sentence {
+      안녕하세요. 저는 황준일입니다.
+   }
+   
+   consonant_vowel ||--o{ character : "조합"
+   character ||--o{ word : "결합"
+   word ||--o{ sentence : "구성"
 }
 
 note right of sentence : 최종적으로 의미를 전달하는 단위
@@ -68,8 +67,7 @@ note bottom of consonant_vowel : 한글의 기본 구성 요소
 **“안녕하세요ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다”** 이라는 추상화 규칙이 깨진 문장을 파헤쳐보면 다음과 같다.
 
 @startuml
-skinparam backgroundColor #f8f9fa
-skinparam defaultFontName "Malgun Gothic"
+!theme plain
 
 participant "독자" as reader
 participant "정상 문장\n(안녕하세요)" as normal
@@ -186,6 +184,31 @@ const useThemeInfiniteScroll = (
 - Level 1: `useState` 등의 기본 훅과 이를 사용하는 복잡한 페이징 로직과 에러처리
 - Level 2: `useQuery`, `useIntersectionObserver` 등의 커스텀 훅
 - Level 3: 1~2를 가져다 사용한 `useThemeInfiniteScroll` 훅 자체
+
+@startuml
+!theme plain
+
+rectangle "Level 1" as level1 #ffcccc {
+   rectangle "useState, useRef, useCallback"
+   rectangle "복잡한 페이징 로직"
+}
+
+rectangle "Level 2" as level2 #ffffcc {
+   rectangle "useQuery"
+   rectangle "useIntersectionObserver"
+}
+
+rectangle "Level 3" as level3 #ccffcc {
+   rectangle "useThemeInfiniteScroll"
+}
+
+level1 --> level3 : "직접 사용"
+level2 --> level3 : "함께 사용"
+
+note bottom : 문제: 서로 다른 추상화 수준이 한 곳에 섞임\n마치 "안녕하세요ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다"와 같음
+
+@enduml
+
 
 마치 문장을 쓸 때 "**안녕하세요ㅈㅓㄴㅡㄴㅎㅘㅇ준일ㅇㅣㅂ니다**" 처럼 읽기 어려운 형태의 훅이라고 할 수 있다. 이걸 “안녕하세요 저는 황준일입니다” 로 개선하는 과정이 필요하다.
 
@@ -348,6 +371,30 @@ export function useThemeInfiniteScroll({
   };
 }
 ```
+
+@startuml
+!theme plain
+
+rectangle "Level 1" as new_level1 #e6f3ff {
+   rectangle "useIntersectionObserver"
+   rectangle "useSuspenseApiQuery"  
+   rectangle "useApiQuery"
+}
+
+rectangle "Level 2" as new_level2 #cce6ff {
+   rectangle "useInitThemeData"
+   rectangle "useInitNextThemeData"
+   rectangle "useThemeData"
+}
+
+rectangle "Level 3" as new_level3 #b3daff {
+   rectangle "useThemeInfiniteScroll"
+}
+
+new_level1 --> new_level2 : "구성"
+new_level2 --> new_level3 : "조합"
+
+@enduml
 
 ::: tip 정리하기
 
