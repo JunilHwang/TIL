@@ -4,6 +4,7 @@ import MarkdownItPlantuml from 'markdown-it-plantuml';
 import MarkdownItUnderline from 'markdown-it-underline';
 import MarkdownItTaskLists from 'markdown-it-task-lists';
 import linkPreviewPlugin from './plugins/markdown-it-link-preview';
+import generateOgMetaPlugin from './plugins/og-meta-plugin.js';
 
 import * as path from "path";
 import * as glob from "glob";
@@ -180,52 +181,10 @@ export default defineUserConfig({
     if (page.filePath?.endsWith('README.md') && page.filePathRelative === 'README.md') {
       page.data.posts = posts;
     }
-
-    // 각 페이지에 대한 OG 메타태그 설정
-    const post = posts.find(post => post.path === page.path);
-    if (post) {
-      page.frontmatter.head = page.frontmatter.head || [];
-
-      // og:title
-      if (post.title) {
-        page.frontmatter.head.push(['meta', { property: 'og:title', content: post.title }]);
-      }
-
-      // og:description
-      if (post.description) {
-        page.frontmatter.head.push(['meta', { property: 'og:description', content: post.description }]);
-      }
-
-      // og:image (thumbnail)
-      if (post.thumbnail) {
-        const thumbnailUrl = post.thumbnail.startsWith('http')
-          ? post.thumbnail
-          : `https://junilhwang.github.io/TIL/${post.thumbnail}`;
-        page.frontmatter.head.push(['meta', { property: 'og:image', content: thumbnailUrl }]);
-      }
-
-      // og:url
-      page.frontmatter.head.push(['meta', { property: 'og:url', content: `https://junilhwang.github.io/TIL${post.path}` }]);
-
-      // og:type
-      page.frontmatter.head.push(['meta', { property: 'og:type', content: 'article' }]);
-
-      // Twitter Card
-      page.frontmatter.head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }]);
-      page.frontmatter.head.push(['meta', { name: 'twitter:title', content: post.title || '개발자 황준일' }]);
-      if (post.description) {
-        page.frontmatter.head.push(['meta', { name: 'twitter:description', content: post.description }]);
-      }
-      if (post.thumbnail) {
-        const thumbnailUrl = post.thumbnail.startsWith('http')
-          ? post.thumbnail
-          : `https://junilhwang.github.io/TIL/${post.thumbnail}`;
-        page.frontmatter.head.push(['meta', { name: 'twitter:image', content: thumbnailUrl }]);
-      }
-    }
   },
   plugins: [
     searchPlugin({}),
+    generateOgMetaPlugin(),
     // demoBlock({}),
   ],
 });
