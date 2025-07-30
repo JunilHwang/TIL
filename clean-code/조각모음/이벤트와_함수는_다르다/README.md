@@ -114,10 +114,14 @@ const App = () => {
 **`onLogout`이 유의미한 이벤트가 되기 위해선** 이런 역할을 수행해야 하지 않을까?
 ```tsx
 // 올바른 관점에서의 사용법
-const Header = ({ onLogout }: { onLogout: () => void }) => {
-  const { logout } = useAuth({
-    onLogout: handleLogout  // 로그아웃이 발생했을 때의 알림 처리
-  });
+const Header = ({ onLogout }) => {
+  const handleLogout = () => {
+    alert('로그아웃이 완료되었습니다.')
+    onLogout?.();  // "로그아웃이 발생했음"을 알리는 콜백 호출
+  };
+  
+  const { logout } = useAuth({ onLogout: handleLogout });
+  
   return (
     <header>
       <button onClick={logout}>로그아웃</button>
