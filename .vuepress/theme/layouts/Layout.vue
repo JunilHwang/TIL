@@ -18,7 +18,7 @@ const relationPosts = computed(() => {
   if (!tags) return [alwaysPost].filter(Boolean);
   const tagList = tags.split(',').map(v => v.trim());
   const lists = posts.value.filter(v => !v.path.includes('as-requirements-change') && tagList.some(tag => v.tag.includes(tag as string)));
-  const current = lists.find(v => v.path === pageData.value.path);
+  const current = lists.find(v => v.title === pageData.value.title);
   const index = lists.indexOf(current);
   return [ alwaysPost, ...lists.slice(Math.max(index - 5, 0), index + 5).filter(v => v !== current) ].filter(Boolean);
 })
