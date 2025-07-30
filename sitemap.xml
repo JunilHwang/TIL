@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://junilhwang.github.io/TIL/</loc>
-    <lastmod>2025-07-29T04:19:14.238Z</lastmod>
+    <lastmod>2025-07-30T09:16:34.992Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://junilhwang.github.io/TIL/About/</loc>
-    <lastmod>2025-07-29T04:19:14.238Z</lastmod>
+    <lastmod>2025-07-30T09:16:34.992Z</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://junilhwang.github.io/TIL/clean-code/조각모음/이벤트와_함수는_다르다/</loc>
+    <lastmod>2025-07-30T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

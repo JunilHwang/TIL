@@ -5,9 +5,17 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2025-07-29T04:19:14.239Z</lastBuildDate>
-    <pubDate>2025-07-29T04:19:14.239Z</pubDate>
+    <lastBuildDate>2025-07-30T09:16:34.992Z</lastBuildDate>
+    <pubDate>2025-07-30T09:16:34.992Z</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[[클린코드 조각모음] 이벤트와 함수는 다르다]]></title>
+      <link>https://junilhwang.github.io/TIL/clean-code/조각모음/이벤트와_함수는_다르다/</link>
+      <guid>https://junilhwang.github.io/TIL/clean-code/조각모음/이벤트와_함수는_다르다/</guid>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[이벤트는 "알림"이고, 함수는 "실행"이다.]]></description>
+      <category>javascript, react, 클린코드</category>
+    </item>
     <item>
       <title><![CDATA[[클린코드 조각모음] 추상화를 정렬하기]]></title>
       <link>https://junilhwang.github.io/TIL/clean-code/조각모음/추상화를-정렬하기/</link>
@@ -159,14 +167,6 @@
       <pubDate>Mon, 19 Jul 2021 16:00:00 GMT</pubDate>
       <description><![CDATA[가끔은 나의 개인적인 생각을 정리해보자.]]></description>
       <category>일상</category>
-    </item>
-    <item>
-      <title><![CDATA[주니어 개발자의 2021년 상반기 회고]]></title>
-      <link>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</link>
-      <guid>https://junilhwang.github.io/TIL/Review/2021-year/01-First-Quarter/</guid>
-      <pubDate>Mon, 12 Jul 2021 02:30:00 GMT</pubDate>
-      <description><![CDATA[주니어 개발자의 2021년 상반기 회고]]></description>
-      <category>회고</category>
     </item>
   </channel>
 </rss>
