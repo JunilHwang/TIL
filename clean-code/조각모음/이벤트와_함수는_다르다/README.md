@@ -1,15 +1,19 @@
 ---
 
-title: "[클린코드 조각모음] 이벤트와 함수는 다르다"
-description: 이벤트는 "알림"이고, 함수는 "실행"이다.
+title: 이벤트와 함수는 다르다 | 리액트 클린코드
+description:  React와 JavaScript에서 이벤트와 함수를 구분하는 방법에 대해 다룹니다.
 sidebarDepth: 2
 date: 2025-07-30
 tag: javascript, react, 클린코드
+keywords: javascript clean code, react clean code, 자바스크립트 클린코드, 리액트 클린코드, 프론트엔드 클린코드
 thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/조각모음/thumbnail.webp
 
 ---
 
 # [클린코드 조각모음] 이벤트와 함수는 다르다
+
+> 이 글은 **React**와 **JavaScript**를 사용한 **프론트엔드 개발**에서 **클린코드**를 작성하기 위한 실용적인 가이드입니다.
+> 특히 **자바스크립트** 이벤트 처리와 **리액트** 컴포넌트 설계에 대한 베스트 프랙티스를 다룹니다.
 
 ![클린코드 조각모음](https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/조각모음/thumbnail.webp)
 

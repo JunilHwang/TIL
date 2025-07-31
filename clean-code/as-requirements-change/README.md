@@ -1,10 +1,11 @@
 ---
 
-title: 요구사항의 변화로 알아가는 클린코드
+title: 요구사항의 변화로 알아가는 프론트엔드 클린코드
 description: 클린코드를 요구사항을 떼어놓고 이야기할 수 있을까?
 sidebarDepth: 2
 date: 2025-06-19
-tag: javascript, 클린코드
+tag: javascript, react, 클린코드
+keywords: javascript clean code, react clean code, 자바스크립트 클린코드, 리액트 클린코드, 프론트엔드 클린코드
 thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/as-requirements-change/diagram1.png
 
 ---

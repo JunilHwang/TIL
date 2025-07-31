@@ -14,6 +14,7 @@ const generateOgMetaPlugin = () => {
             description: page.frontmatter.description,
             thumbnail: page.frontmatter.thumbnail,
             tag: page.frontmatter.tag,
+            keywords: page.frontmatter.keywords,
           };
         })
         .filter(post => post !== null);
@@ -34,6 +35,11 @@ const generateOgMetaPlugin = () => {
           // og:description
           if (post.description) {
             page.frontmatter.head.push(['meta', { property: 'og:description', content: post.description }]);
+          }
+
+          // keywords
+          if (post.keywords) {
+            page.frontmatter.head.push(['meta', { name: 'keywords', content: post.keywords }]);
           }
 
           // og:image (thumbnail)

@@ -94,6 +94,11 @@ em {
     }
   }
 
+  blockquote {
+    font-style: italic;
+    color: #666;
+  }
+
   strong {
     color: var(--c-text-dark);
   }

@@ -1,15 +1,21 @@
 ---
 
-title: "[클린코드 조각모음] 추상화를 정렬하기"
+title: 추상화를 정렬하기 | 리액트 클린코드
 description: 문장이 단어로 단어가 글자로 구성되듯 코드도 적절한 추상화 계층을 만들어 정렬해야 한다.
 sidebarDepth: 2
 date: 2025-07-28
 tag: javascript, react, 클린코드
+keywords: javascript clean code, react clean code, 자바스크립트 클린코드, 리액트 클린코드, 프론트엔드 클린코드
 thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/조각모음/thumbnail.webp
 
 ---
 
 # [클린코드 조각모음] 추상화를 정렬하기
+
+> 이 글은 **React**와 **JavaScript**를 사용한 **프론트엔드 개발**에서 **클린코드**를 작성하기 위한 실용적인 가이드입니다.
+> 특히 함수와 훅을 이용하여 **추상화 수준**을 정렬하는 방법에 중점을 두고 있습니다.
+ 
+![클린코드 조각모음](https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/조각모음/thumbnail.webp)
 
 ::: tip 좋은 코드는 한 편의 글과 같다.
 
