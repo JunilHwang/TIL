@@ -5,19 +5,19 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2025-07-30T23:26:07.497Z</lastBuildDate>
-    <pubDate>2025-07-30T23:26:07.497Z</pubDate>
+    <lastBuildDate>2025-07-31T06:05:21.145Z</lastBuildDate>
+    <pubDate>2025-07-31T06:05:21.145Z</pubDate>
     <ttl>60</ttl>
     <item>
-      <title><![CDATA[[클린코드 조각모음] 이벤트와 함수는 다르다]]></title>
+      <title><![CDATA[이벤트와 함수는 다르다 | 리액트 클린코드]]></title>
       <link>https://junilhwang.github.io/TIL/clean-code/조각모음/이벤트와_함수는_다르다/</link>
       <guid>https://junilhwang.github.io/TIL/clean-code/조각모음/이벤트와_함수는_다르다/</guid>
       <pubDate>Wed, 30 Jul 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[이벤트는 "알림"이고, 함수는 "실행"이다.]]></description>
+      <description><![CDATA[React와 JavaScript에서 이벤트와 함수를 구분하는 방법에 대해 다룹니다.]]></description>
       <category>javascript, react, 클린코드</category>
     </item>
     <item>
-      <title><![CDATA[[클린코드 조각모음] 추상화를 정렬하기]]></title>
+      <title><![CDATA[추상화를 정렬하기 | 리액트 클린코드]]></title>
       <link>https://junilhwang.github.io/TIL/clean-code/조각모음/추상화를-정렬하기/</link>
       <guid>https://junilhwang.github.io/TIL/clean-code/조각모음/추상화를-정렬하기/</guid>
       <pubDate>Mon, 28 Jul 2025 00:00:00 GMT</pubDate>
@@ -25,12 +25,12 @@
       <category>javascript, react, 클린코드</category>
     </item>
     <item>
-      <title><![CDATA[요구사항의 변화로 알아가는 클린코드]]></title>
+      <title><![CDATA[요구사항의 변화로 알아가는 프론트엔드 클린코드]]></title>
       <link>https://junilhwang.github.io/TIL/clean-code/as-requirements-change/</link>
       <guid>https://junilhwang.github.io/TIL/clean-code/as-requirements-change/</guid>
       <pubDate>Thu, 19 Jun 2025 00:00:00 GMT</pubDate>
       <description><![CDATA[클린코드를 요구사항을 떼어놓고 이야기할 수 있을까?]]></description>
-      <category>javascript, 클린코드</category>
+      <category>javascript, react, 클린코드</category>
     </item>
     <item>
       <title><![CDATA[자동차 경주 미션을 통해 산출된 코드 리뷰]]></title>
