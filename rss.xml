@@ -5,9 +5,17 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2025-07-31T06:05:21.145Z</lastBuildDate>
-    <pubDate>2025-07-31T06:05:21.145Z</pubDate>
+    <lastBuildDate>2025-08-17T03:32:48.208Z</lastBuildDate>
+    <pubDate>2025-08-17T03:32:48.208Z</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[변화는 가시화된 행동에서 시작한다]]></title>
+      <link>https://junilhwang.github.io/TIL/writing/변화는-가시화된-행동에서-시작한다/</link>
+      <guid>https://junilhwang.github.io/TIL/writing/변화는-가시화된-행동에서-시작한다/</guid>
+      <pubDate>Sun, 17 Aug 2025 09:00:00 GMT</pubDate>
+      <description><![CDATA[변화는 어떻게 시작되는걸까? 에 대한 나의 개인적인 경험이다.]]></description>
+      <category>생각</category>
+    </item>
     <item>
       <title><![CDATA[이벤트와 함수는 다르다 | 리액트 클린코드]]></title>
       <link>https://junilhwang.github.io/TIL/clean-code/조각모음/이벤트와_함수는_다르다/</link>
@@ -159,14 +167,6 @@
       <pubDate>Sun, 25 Jul 2021 00:00:00 GMT</pubDate>
       <description><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></description>
       <category>javascript, vanilla</category>
-    </item>
-    <item>
-      <title><![CDATA[생각정리]]></title>
-      <link>https://junilhwang.github.io/TIL/writing/03-생각정리/</link>
-      <guid>https://junilhwang.github.io/TIL/writing/03-생각정리/</guid>
-      <pubDate>Mon, 19 Jul 2021 16:00:00 GMT</pubDate>
-      <description><![CDATA[가끔은 나의 개인적인 생각을 정리해보자.]]></description>
-      <category>일상</category>
     </item>
   </channel>
 </rss>
