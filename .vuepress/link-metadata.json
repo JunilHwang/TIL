@@ -425,5 +425,19 @@
     "image": "https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/조각모음/thumbnail.webp",
     "siteName": "junilhwang.github.io",
     "url": "https://junilhwang.github.io/TIL/clean-code/%EC%A1%B0%EA%B0%81%EB%AA%A8%EC%9D%8C/%EC%B6%94%EC%83%81%ED%99%94%EB%A5%BC-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0/"
+  },
+  "https://github.com/zum-study/zum-blog-study": {
+    "title": "GitHub - zum-study/zum-blog-study: 줌인터넷 사내 블로그 스터디",
+    "description": "줌인터넷 사내 블로그 스터디. Contribute to zum-study/zum-blog-study development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/461cee4a78465013d89e3963e5aa0626091a2e82e975c913796a0f70f0077f85/zum-study/zum-blog-study",
+    "siteName": "GitHub",
+    "url": "https://github.com/zum-study/zum-blog-study"
+  },
+  "https://github.com/zum-study/zum-blog-study/tree/main/%ED%99%A9%EC%A4%80%EC%9D%BC": {
+    "title": "zum-blog-study/황준일 at main · zum-study/zum-blog-study",
+    "description": "줌인터넷 사내 블로그 스터디. Contribute to zum-study/zum-blog-study development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/461cee4a78465013d89e3963e5aa0626091a2e82e975c913796a0f70f0077f85/zum-study/zum-blog-study",
+    "siteName": "GitHub",
+    "url": "https://github.com/zum-study/zum-blog-study/tree/main/%ED%99%A9%EC%A4%80%EC%9D%BC"
   }
 }
