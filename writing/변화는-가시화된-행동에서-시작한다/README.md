@@ -2,7 +2,7 @@
 
 title: 변화는 가시화된 행동에서 시작한다
 description: 변화는 어떻게 시작되는걸까? 에 대한 나의 개인적인 경험이다. 
-date: 2025-08-17 09:00:00
+date: 2025-08-17
 tag: 생각
 thumbnail: https://github.com/user-attachments/assets/abe6b9ae-8f70-4fcf-8245-9d5237c9fc3c
 
