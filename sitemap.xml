@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://junilhwang.github.io/TIL/</loc>
-    <lastmod>2025-08-17T04:55:21.884Z</lastmod>
+    <lastmod>2025-08-18T04:23:38.638Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://junilhwang.github.io/TIL/About/</loc>
-    <lastmod>2025-08-17T04:55:21.884Z</lastmod>
+    <lastmod>2025-08-18T04:23:38.638Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://junilhwang.github.io/TIL/writing/변화는-가시화된-행동에서-시작한다/</loc>
+    <loc>https://junilhwang.github.io/TIL/writing/변화는-가시화된-행동에서-시작된다/</loc>
     <lastmod>2025-08-17T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
