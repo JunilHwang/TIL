@@ -246,3 +246,31 @@ em {
     }
   }
 }
+
+@include only-pc {
+  div.flow {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    & > * {
+      max-width: 100%;
+    }
+
+    &.items-2 {
+      & > * {
+        width: calc(50% - 10px);
+      }
+    }
+    &.items-3 {
+      & > * {
+        width: calc(33.33% - 10px);
+      }
+    }
+    &.items-4 {
+      & > * {
+        width: calc(25% - 10px);
+      }
+    }
+  }
+}

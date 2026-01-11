@@ -439,5 +439,116 @@
     "image": "https://opengraph.githubassets.com/461cee4a78465013d89e3963e5aa0626091a2e82e975c913796a0f70f0077f85/zum-study/zum-blog-study",
     "siteName": "GitHub",
     "url": "https://github.com/zum-study/zum-blog-study/tree/main/%ED%99%A9%EC%A4%80%EC%9D%BC"
+  },
+  "https://hanghae-plus.github.io/front_7th_chapter2-1/": {
+    "title": "상품 쇼핑몰",
+    "description": "",
+    "image": "",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_7th_chapter2-1/"
+  },
+  "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/27": {
+    "title": "[7팀 황준태] Chapter 4-1 성능최적화: SSR, SSG, Infra by jthw1005 · Pull Request #27 · hanghae-plus/front_7th_chapter4-1",
+    "description": "과제 체크포인트\n배포 링크\nvanilla\nreact\n기본과제 (Vanilla SSR &amp; SSG)\nExpress SSR 서버\n\n Express 미들웨어 기반 서버 구현\n 개발/프로덕션 환경 분기 처리\n HTML 템플릿 치환 (&lt;!--app-html--&gt;, &lt;!--app-head--&gt;)\n\n서버 사이드 렌더링\n\n 서버에서 동작하...",
+    "image": "https://opengraph.githubassets.com/61f9546d62234e6992ffb04c319e4afda471f97774cbd5fee88cd55dc93b2899/hanghae-plus/front_7th_chapter4-1/pull/27",
+    "siteName": "GitHub",
+    "url": "https://github.com/hanghae-plus/front_7th_chapter4-1/pull/27"
+  },
+  "https://github.com/hanghae-plus/front_6th": {
+    "title": "GitHub - hanghae-plus/front_6th: 블로그를 만들어볼까?",
+    "description": "블로그를 만들어볼까? Contribute to hanghae-plus/front_6th development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/a84d01deadc46b2f55f9b3033736367d7230d66dc9814302ac41bc8329930ff1/hanghae-plus/front_6th",
+    "siteName": "GitHub",
+    "url": "https://github.com/hanghae-plus/front_6th"
+  },
+  "https://hanghae-plus.github.io/front_6th/": {
+    "title": "수강생 목록 - 항해플러스 프론트엔드 6기",
+    "description": "항해플러스 프론트엔드 6기 수강생들의 프로필과 과제 진행 현황을 한눈에 확인하세요. 각 수강생의 GitHub 정보, 제출한 과제 수, 합격 현황을 살펴보실 수 있습니다.",
+    "image": "https://hanghae-plus.github.io/front_6th/defaultThumbnail.jpg",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_6th/"
+  },
+  "https://hanghae-plus.github.io/front_6th/@Hwirin-Kim/assignment/2797611356/": {
+    "title": "[1팀 김휘린] Chapter 4-1 성능 최적화 - 김휘린 | 항해플러스 프론트엔드 6기",
+    "description": "[항해플러스 프론트엔드 6기] 김휘린님이 제출한 [1팀 김휘린] Chapter 4-1 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다.",
+    "image": "https://hanghae-plus.github.io/front_6th/defaultThumbnail.jpg",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_6th/@Hwirin-Kim/assignment/2797611356/"
+  },
+  "https://hanghae-plus.github.io/front_6th/@YeongseoYoon-hanghae/assignment/2795839063/": {
+    "title": "[5팀 윤영서] Chapter 4-1 성능 최적화 - 윤영서 | 항해플러스 프론트엔드 6기",
+    "description": "[항해플러스 프론트엔드 6기] 윤영서님이 제출한 [5팀 윤영서] Chapter 4-1 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다.",
+    "image": "https://hanghae-plus.github.io/front_6th/defaultThumbnail.jpg",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_6th/@YeongseoYoon-hanghae/assignment/2795839063/"
+  },
+  "https://hanghae-plus.github.io/front_6th/@BBAK-jun/assignment/2790151647/": {
+    "title": "[3팀 박준형] Chapter 4-1 성능 최적화 - 박준형 | 항해플러스 프론트엔드 6기",
+    "description": "[항해플러스 프론트엔드 6기] 박준형님이 제출한 [3팀 박준형] Chapter 4-1 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다.",
+    "image": "https://hanghae-plus.github.io/front_6th/defaultThumbnail.jpg",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_6th/@BBAK-jun/assignment/2790151647/"
+  },
+  "https://hanghae-plus.github.io/front_6th/@JiHoon-0330/assignment/2788552093/": {
+    "title": "[5팀 이지훈] Chapter 4-1 성능 최적화 - 이지훈 | 항해플러스 프론트엔드 6기",
+    "description": "[항해플러스 프론트엔드 6기] 이지훈님이 제출한 [5팀 이지훈] Chapter 4-1 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다.",
+    "image": "https://hanghae-plus.github.io/front_6th/defaultThumbnail.jpg",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_6th/@JiHoon-0330/assignment/2788552093/"
+  },
+  "https://hanghae-plus.github.io/front_6th/@ckdwns9121/assignment/2795842037/": {
+    "title": "[8팀 박창준] Chapter 4-1 성능 최적화 - 박창준 | 항해플러스 프론트엔드 6기",
+    "description": "[항해플러스 프론트엔드 6기] 박창준님이 제출한 [8팀 박창준] Chapter 4-1 성능 최적화 과제를 확인하세요. 코드 구현, 문제 해결 과정, 피드백 내용을 상세히 살펴볼 수 있습니다.",
+    "image": "https://hanghae-plus.github.io/front_6th/defaultThumbnail.jpg",
+    "siteName": "hanghae-plus.github.io",
+    "url": "https://hanghae-plus.github.io/front_6th/@ckdwns9121/assignment/2795842037/"
+  },
+  "https://github.com/hanghae-plus/front_7th_chapter2-1/pull/55": {
+    "title": "[3팀 남은주] Chapter2-1. 프레임워크 없이 SPA 만들기  by amorpaty · Pull Request #55 · hanghae-plus/front_7th_chapter2-1",
+    "description": "과제 체크포인트\n배포 링크\n-- 배포링크 : https://amorpaty.github.io/front_7th_chapter2-1/\n기본과제\n상품목록\n상품 목록 로딩\n\n 페이지 접속 시 로딩 상태가 표시된다\n 데이터 로드 완료 후 상품 목록이 ���더링된다\n 로딩 실패 시 에러 상태가 표시된다\n 에러 발생 시 재시도 버튼이 제공된다\n\n상품 목록 조회\n\n ...",
+    "image": "https://opengraph.githubassets.com/fac3e2a42ac5ac4748806f17bdc3ae32c95a05c43995d2593dfa57a0d7f36bdd/hanghae-plus/front_7th_chapter2-1/pull/55",
+    "siteName": "GitHub",
+    "url": "https://github.com/hanghae-plus/front_7th_chapter2-1/pull/55"
+  },
+  "https://hanghae-bf.netlify.app/result/JunilHwang": {
+    "title": "항해에서 비피 말고 베프 찾기",
+    "description": "나랑 찰떡궁합인 항해인은 누구? 지금 바로 시작해보세요!",
+    "image": "https://hanghae-bf.netlify.app/og_2.png",
+    "siteName": "hanghae-bf.netlify.app",
+    "url": "https://hanghae-bf.netlify.app/result/JunilHwang"
+  },
+  "https://junilhwang.github.io/TIL/with-ai/code-review/woowacourse/racing-car/": {
+    "title": "자동차 경주 미션을 통해 산출된 코드 리뷰",
+    "description": "우아한 테크코스 리뷰어로 참여하면서 남긴 피드백을 정리한 내용입니다.",
+    "image": "https://raw.githubusercontent.com/JunilHwang/TIL/master/with-ai/code-review/woowacourse/racing-car/1.png",
+    "siteName": "개발자 황준일",
+    "url": "https://junilhwang.github.io/TIL/with-ai/code-review/woowacourse/racing-car/"
+  },
+  "https://junilhwang.github.io/TIL/clean-code/as-requirements-change/": {
+    "title": "요구사항의 변화로 알아가는 프론트엔드 클린코드",
+    "description": "클린코드를 요구사항을 떼어놓고 이야기할 수 있을까?",
+    "image": "https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/clean-code/as-requirements-change/diagram1.png",
+    "siteName": "개발자 황준일",
+    "url": "https://junilhwang.github.io/TIL/clean-code/as-requirements-change/"
+  },
+  "https://docs.google.com/presentation/d/1AVqtBQvRx-yfxfgB9SNmbE6BBit80FqfDNYlUtqsg6U/edit?usp=sharing": {
+    "title": "20250628_개발자취업_이모저모",
+    "description": "개발자 취업 이모저모 20250628_황준일 1",
+    "siteName": "Google Docs",
+    "url": "https://docs.google.com/presentation/d/1AVqtBQvRx-yfxfgB9SNmbE6BBit80FqfDNYlUtqsg6U/edit?usp=sharing"
+  },
+  "https://www.youtube.com/shorts/b2TUKLQKHyw": {
+    "title": "서로를 맞춰가는 사랑의 의미",
+    "description": "YouTube에서 마음에 드는 동영상과 음악을 감상하고, 직접 만든 콘텐츠를 업로드하여 친구, 가족뿐 아니라 전 세계 사람들과 콘텐츠를 공유할 수 있습니다.",
+    "image": "https://i.ytimg.com/vi/b2TUKLQKHyw/oar2.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLD6B4S2RwodCAELsYo0a-qubZBCdw",
+    "siteName": "YouTube",
+    "url": "https://www.youtube.com/shorts/b2TUKLQKHyw"
+  },
+  "https://junilhwang.notion.site/n8n-2a7514bc465480e99feceead628247c0": {
+    "title": "The AI workspace that works for you. | Notion",
+    "description": "A tool that connects everyday work into one space. It gives you and your teams AI tools—search, writing, note-taking—inside an all-in-one, flexible workspace.",
+    "image": "https://www.notion.so/images/meta/default.png",
+    "siteName": "Notion",
+    "url": "https://junilhwang.notion.site/n8n-2a7514bc465480e99feceead628247c0"
   }
 }
