@@ -5,9 +5,17 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2025-08-18T05:10:14.112Z</lastBuildDate>
-    <pubDate>2025-08-18T05:10:14.112Z</pubDate>
+    <lastBuildDate>2026-01-11T05:00:06.665Z</lastBuildDate>
+    <pubDate>2026-01-11T05:00:06.665Z</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[2025년 회고]]></title>
+      <link>https://junilhwang.github.io/TIL/Review/2025-year/end/</link>
+      <guid>https://junilhwang.github.io/TIL/Review/2025-year/end/</guid>
+      <pubDate>Sun, 11 Jan 2026 14:00:00 GMT</pubDate>
+      <description><![CDATA[다양한 시작과 끝이 있었던 2025년의 이야기]]></description>
+      <category>회고</category>
+    </item>
     <item>
       <title><![CDATA[변화는 가시화된 행동에서 시작된다]]></title>
       <link>https://junilhwang.github.io/TIL/writing/변화는-가시화된-행동에서-시작된다/</link>
@@ -158,14 +166,6 @@
       <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Store/</guid>
       <pubDate>Mon, 26 Jul 2021 00:00:00 GMT</pubDate>
       <description><![CDATA[Vanilla Javascript로 Vuex와 Redux 같은 상태관리 시스템을 만드는 방법에 대해 소개합니다.]]></description>
-      <category>javascript, vanilla</category>
-    </item>
-    <item>
-      <title><![CDATA[Vanilla Javascript로 웹 컴포넌트 만들기]]></title>
-      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</link>
-      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Component/</guid>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 GMT</pubDate>
-      <description><![CDATA[Vanilla Javascript로 간단한 웹 컴포넌트를 만드는 과정에 대해 소개합니다.]]></description>
       <category>javascript, vanilla</category>
     </item>
   </channel>
