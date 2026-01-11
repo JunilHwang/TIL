@@ -545,9 +545,9 @@
     "url": "https://www.youtube.com/shorts/b2TUKLQKHyw"
   },
   "https://junilhwang.notion.site/n8n-2a7514bc465480e99feceead628247c0": {
-    "title": "The AI workspace that works for you. | Notion",
-    "description": "A tool that connects everyday work into one space. It gives you and your teams AI tools—search, writing, note-taking—inside an all-in-one, flexible workspace.",
-    "image": "https://www.notion.so/images/meta/default.png",
+    "title": "n8n으로 코드리뷰 시스템 만들기",
+    "description": "n8n은 노드 기반의 워크플로우 자동화 플랫폼입니다. 코드를 작성하지 않고도 다양한 애플리케이션과 서비스를 연결하여 반복적인 작업을 자동화할 수 있는 도구로, 기술자와 비기술자 모두가 사용할 수 있도록 설계되었습니다.",
+    "image": "https://img.notionusercontent.com/s3/prod-files-secure%2Fd069880d-d520-4cc0-8b9e-7d01bc9675d0%2F36cdedec-f4ea-4023-93bb-c9d037ee88a7%2Fimage.png/size/w=1420?exp=1768194122&sig=oJeDRAG1ERCChxQzk5scqToijPtcCuw0tIJeazssFFw&id=2a7514bc-4654-808f-b1e8-e0bae6ad9e5a&table=block",
     "siteName": "Notion",
     "url": "https://junilhwang.notion.site/n8n-2a7514bc465480e99feceead628247c0"
   }
