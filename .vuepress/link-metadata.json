@@ -550,5 +550,12 @@
     "image": "https://img.notionusercontent.com/s3/prod-files-secure%2Fd069880d-d520-4cc0-8b9e-7d01bc9675d0%2F36cdedec-f4ea-4023-93bb-c9d037ee88a7%2Fimage.png/size/w=1420?exp=1768194122&sig=oJeDRAG1ERCChxQzk5scqToijPtcCuw0tIJeazssFFw&id=2a7514bc-4654-808f-b1e8-e0bae6ad9e5a&table=block",
     "siteName": "Notion",
     "url": "https://junilhwang.notion.site/n8n-2a7514bc465480e99feceead628247c0"
+  },
+  "https://www.linkedin.com/in/junilhwang/": {
+    "title": "https://www.linkedin.com/in/junilhwang/",
+    "description": "Frontend developer 황준일",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQF43OG2vb4mug/profile-displayphoto-scale_400_400/B56ZuoyugKHEAk-/0/1768063430069?e=1770249600&v=beta&t=9tt3EX0XreiUTUnInCsjlSeowUplOW8m0YlNRvxUtgk",
+    "siteName": "www.linkedin.com",
+    "url": "https://www.linkedin.com/in/junilhwang/"
   }
 }

@@ -17,7 +17,7 @@ disabledPost: true
 
 [link-preview: https://github.com/JunilHwang] 
 
-[link-preview: https://www.linkedin.com/in/%EC%A4%80%EC%9D%BC-%ED%99%A9-3053911ba/] 
+[link-preview: https://www.linkedin.com/in/junilhwang/] 
 
 [link-preview: https://open.kakao.com/me/junilhwang]
 
@@ -43,14 +43,18 @@ disabledPost: true
 
 ##  이력
 
-- :office: 2022.06 ~ 현재 / 네이버 SmartStudio nBilly / 프론트엔드 엔지니어
+- **:office: 2026.01 ~ 현재 / 토스 플레이스 / 프론트엔드 엔지니어**
+- :office: 2022.06 ~ 2026.01 / 네이버 No-code Dev / 프론트엔드 엔지니어
 - :office: 2019.11 ~ 2022.05 / 줌인터넷(이스트에이드) 포털개발팀 / 프론트엔드 파트리더
 - :office: 2016.10 ~ 2018.02 / 디자인톡톡 / 웹 개발자
 - :school: 2014.02 ~ 2016.11 / 서울디지텍고등학교 / 기능경기대회 외부강사 (계약직)
 
 ### 주요 경력
 
-#### NAVER > SmartStudio > No-code dev (2022.06 ~ 현재)
+#### 토스 플레이스 (2026.01 ~ 현재)
+- POS 내부 시스템 개발
+
+#### NAVER > SmartStudio > No-code dev (2022.06 ~ 2026.01)
 - Drag/Drop 기반 웹 빌더 개발
 - UI 자동화 SDK 개발, 성능 최적화, CI/CD 파이프라인 구축
 - 자동화 도구(AI, n8n) 활용한 생산성 향상
@@ -104,6 +108,7 @@ disabledPost: true
 
 ### (2) 회고
 
+[link-preview: https://junilhwang.github.io/TIL/Review/2025-year/end/]
 [link-preview: https://junilhwang.github.io/TIL/Review/2024-year/end/]
 [link-preview: https://junilhwang.github.io/TIL/Review/2023-year/end/]
 [link-preview: https://junilhwang.github.io/TIL/Review/2022-year/end/]
