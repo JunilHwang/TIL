@@ -4,10 +4,13 @@ title: 욕심을 버리자
 description: 욕심을 버리자. 다 잘 하고 싶은 욕심을 버리자. 한 가지만 잘 해도 된다. 아니, 한 가지라도 일단 잘 해야 한다.
 date: 2026-10-25
 tag: 생각
+thumbnail: https://private-user-images.githubusercontent.com/18749057/683650556-381eef78-0790-4074-a427-3800bb9609d5.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTI4NTYxOTYsIm5iZiI6MTc5Mjg1NTg5NiwicGF0aCI6Ii8xODc0OTA1Ny82ODM2NTA1NTYtMzgxZWVmNzgtMDc5MC00MDc0LWE0MjctMzgwMGJiOTYwOWQ1LmpwZWc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDI0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAyNFQxNTMxMzZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YzhmMTY4ODZmMTE0ZDViMjQ3MDhlMzE5ODNjY2Q0MDY2YjhlMDRlYzhiNzQyNjZiNzBjY2ExODhkZjFmODk2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.cte-H4BJGcgsjeZPNDJS5Z5I-UNJRhfcl5ixz5k_z5M
 
 ---
 
 # 욕심을 버리자
+
+![1](./1.jpeg)
 
 요즘 다양한 고민을 참 많이 하고 있다.
 세상이 변화하는 속도가 내 생각보다 훨씬 빠르고, 변화의 속도는 따라가기가 점점 벅차고, AI(혹은 유튜브나 인스타) 때문에 도파민에 절여지면서 점점 멍청해지는 중이다.
@@ -101,3 +104,8 @@ tag: 생각
 아 그리고 기록하자.
 발산하자.
 그게 나의 확실하고 안전한 자산이 될 것이다.
+
+<div class="flow items-2">
+  <img src="./2.jpeg" alt="2" />
+  <img src="./3.jpeg" alt="3" />
+</div>
