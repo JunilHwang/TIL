@@ -896,7 +896,7 @@ app.listen(8000, () => console.log('listen to http://localhost:8000'));
 CSR을 같이 하기 위해서 javascript 파일을 client(browser)에서도 사용할 수 있게 정적파일(static)으로 등록하는 과정이 필요하다. 지금은 클라이언트(브라우저)에서 src 폴더에 있는 파일들에 접근할 수 없는 상태이다.
 
 
-<img src="./23.png" alt="image 23" style="max-width: 400px" />
+<img src="./23.png" alt="image 23" style="width: 400px; max-width: 100%" />
 
 일단 위의 문제를 해결해야 한다.
 

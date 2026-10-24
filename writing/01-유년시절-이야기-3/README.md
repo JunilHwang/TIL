@@ -364,11 +364,11 @@ function disp(one, two) {
 
 이제는 고대 유물이 되어버린 플래시이다.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b3hBODVJmYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="max-width: 100%; aspect-ratio: 16 / 9; height: auto" src="https://www.youtube.com/embed/b3hBODVJmYI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 메인페이지에 삽입되는 플래시 애니메이션이다. 재생/정지/페이징 등의 기능이 있다.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ti37YswHIus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="max-width: 100%; aspect-ratio: 16 / 9; height: auto" src="https://www.youtube.com/embed/Ti37YswHIus" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 이건 플래시로 만든 메뉴인데, DB와 연동해야 해서 XML로 메뉴의 내용을 관리해야 했다.
 이 때는 별 생각 없이 무조건 `/common/xml/menu.php`에 있는 것을 가져오도록 만들었는데 덕분에 복구해서 본다고 애좀 먹었다.. ~~반성해라 과거의 나~~

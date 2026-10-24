@@ -6270,7 +6270,7 @@ chatgpt 접속 → 좌측의 “새 프로젝트” 클릭 → 프로젝트 이�
 
 <style>
 img[alt*="400"] {
-  max-width: 400px !important;
+  max-width: min(400px, 100%) !important;
 }
 
 .iframe-container {

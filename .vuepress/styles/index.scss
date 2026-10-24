@@ -78,6 +78,7 @@ em {
   width: auto;
   max-width: 800px;
   min-height: 600px;
+  overflow-wrap: anywhere;
 
   @include only-pc {
     margin: 0 auto;
@@ -109,11 +110,16 @@ em {
 
   img {
     border: 1px solid var(--c-border-dark);
+    box-sizing: border-box;
 
     &[alt="uml diagram"],
     &[alt*="bn"] {
       border: none;
     }
+  }
+
+  table {
+    contain: paint;
   }
 
   hr {
@@ -139,6 +145,14 @@ em {
 
   *:not(h3) + h4 {
     margin-top: 40px;
+  }
+}
+
+@media (max-width: 419px) {
+  .theme-default-content:not(.custom) {
+    div[class*="language-"] {
+      margin-inline: -20px;
+    }
   }
 }
 
