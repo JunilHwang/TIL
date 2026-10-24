@@ -5,9 +5,17 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2026-10-24T13:56:08.486Z</lastBuildDate>
-    <pubDate>2026-10-24T13:56:08.486Z</pubDate>
+    <lastBuildDate>2026-10-24T15:21:46.200Z</lastBuildDate>
+    <pubDate>2026-10-24T15:21:46.200Z</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[욕심을 버리자]]></title>
+      <link>https://junilhwang.github.io/TIL/writing/욕심을-버리자/</link>
+      <guid>https://junilhwang.github.io/TIL/writing/욕심을-버리자/</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[욕심을 버리자. 다 잘 하고 싶은 욕심을 버리자. 한 가지만 잘 해도 된다. 아니, 한 가지라도 일단 잘 해야 한다.]]></description>
+      <category>생각</category>
+    </item>
     <item>
       <title><![CDATA[사람이라는 시스템을 이해하는 일]]></title>
       <link>https://junilhwang.github.io/TIL/writing/사람이라는_시스템을_이해하는_일/</link>
@@ -158,14 +166,6 @@
       <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/</guid>
       <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
       <description><![CDATA[React의 UseState Hook의 작동방식에 대해 고민해보고, 구현해보고, 최적화하는 내용을 다룹니다.]]></description>
-      <category>javascript, vanilla</category>
-    </item>
-    <item>
-      <title><![CDATA[Vanilla Javascript로 가상돔(VirtualDOM) 만들기]]></title>
-      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/</link>
-      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/</guid>
-      <pubDate>Wed, 18 Aug 2021 00:00:00 GMT</pubDate>
-      <description><![CDATA[React와 Vue에서 사용되고 있는 가상돔(VirtualDOM)을 Vanilla JS로 직접 만드는 과정에 대해 소개합니다.]]></description>
       <category>javascript, vanilla</category>
     </item>
   </channel>
