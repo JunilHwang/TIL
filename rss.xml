@@ -5,9 +5,17 @@
     <link>https://junilhwang.github.io/TIL</link>
     <description>Today I learned</description>
     <language>ko-KR</language>
-    <lastBuildDate>2026-10-24T15:39:57.619Z</lastBuildDate>
-    <pubDate>2026-10-24T15:39:57.619Z</pubDate>
+    <lastBuildDate>2026-11-08T14:08:31.804Z</lastBuildDate>
+    <pubDate>2026-11-08T14:08:31.804Z</pubDate>
     <ttl>60</ttl>
+    <item>
+      <title><![CDATA[이력서, 어떻게 작성해야 좋을까?]]></title>
+      <link>https://junilhwang.github.io/TIL/career/how-to-write-a-resume/</link>
+      <guid>https://junilhwang.github.io/TIL/career/how-to-write-a-resume/</guid>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[이력서는 엔지니어링 관점에서 생각하면 일종의 나에 대한 공식문서이지 않을까?]]></description>
+      <category>커리어</category>
+    </item>
     <item>
       <title><![CDATA[욕심을 버리자]]></title>
       <link>https://junilhwang.github.io/TIL/writing/욕심을-버리자/</link>
@@ -159,14 +167,6 @@
       <pubDate>Fri, 31 Dec 2021 23:40:00 GMT</pubDate>
       <description><![CDATA[주니어 개발자의 2021년 회고]]></description>
       <category>회고</category>
-    </item>
-    <item>
-      <title><![CDATA[Vanilla Javascript로 React UseState Hook 만들기]]></title>
-      <link>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/</link>
-      <guid>https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Make-useSate-hook/</guid>
-      <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
-      <description><![CDATA[React의 UseState Hook의 작동방식에 대해 고민해보고, 구현해보고, 최적화하는 내용을 다룹니다.]]></description>
-      <category>javascript, vanilla</category>
     </item>
   </channel>
 </rss>
