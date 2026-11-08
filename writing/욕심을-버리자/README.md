@@ -4,7 +4,7 @@ title: 욕심을 버리자
 description: 욕심을 버리자. 다 잘 하고 싶은 욕심을 버리자. 한 가지만 잘 해도 된다. 아니, 한 가지라도 일단 잘 해야 한다.
 date: 2026-10-25
 tag: 생각
-thumbnail: https://private-user-images.githubusercontent.com/18749057/683650556-381eef78-0790-4074-a427-3800bb9609d5.jpeg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTI4NTYxOTYsIm5iZiI6MTc5Mjg1NTg5NiwicGF0aCI6Ii8xODc0OTA1Ny82ODM2NTA1NTYtMzgxZWVmNzgtMDc5MC00MDc0LWE0MjctMzgwMGJiOTYwOWQ1LmpwZWc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDI0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAyNFQxNTMxMzZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YzhmMTY4ODZmMTE0ZDViMjQ3MDhlMzE5ODNjY2Q0MDY2YjhlMDRlYzhiNzQyNjZiNzBjY2ExODhkZjFmODk2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.cte-H4BJGcgsjeZPNDJS5Z5I-UNJRhfcl5ixz5k_z5M
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/writing/%EC%9A%95%EC%8B%AC%EC%9D%84-%EB%B2%84%EB%A6%AC%EC%9E%90/1.jpeg
 
 ---
 
