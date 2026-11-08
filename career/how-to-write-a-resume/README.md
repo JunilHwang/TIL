@@ -4,7 +4,7 @@ title: 이력서, 어떻게 작성해야 좋을까?
 description: 이력서는 엔지니어링 관점에서 생각하면 일종의 나에 대한 공식문서이지 않을까?
 date: 2026-11-08
 tag: 커리어
-thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/writing/%EC%9A%95%EC%8B%AC%EC%9D%84-%EB%B2%84%EB%A6%AC%EC%9E%90/1.jpeg
+thumbnail: https://raw.githubusercontent.com/JunilHwang/TIL/refs/heads/master/career/how-to-write-a-resume/assets/thumbnail.jpeg
 
 ---
 
